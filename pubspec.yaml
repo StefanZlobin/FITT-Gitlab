@@ -1,0 +1,179 @@
+name: fitt
+description: One-time training purchases service.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.0 <3.3.3"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  #Internationalization and localization
+  intl: ^0.17.0
+  #Routing
+  go_router: ^6.0.2
+  #HTTP client and retrofit
+  dio: ^4.0.6
+  retrofit: ^3.3.1
+  #Handling JSON
+  json_serializable: ^6.5.4
+  json_annotation: ^4.7.0
+  #Code generation for classes
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
+  #Google maps
+  google_maps_flutter: ^2.2.2
+  #JWT decoder
+  jwt_decoder: ^2.0.1
+  #Hive & encrypted
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_secure_storage: ^7.0.1
+  #Bloc
+  bloc: ^8.1.0
+  flutter_bloc: ^8.1.1
+  bloc_concurrency: ^0.2.1
+  #Locator
+  get_it: ^7.2.0
+  #Shape borders
+  superellipse_shape: ^0.2.0
+  #Mask text
+  mask_text_input_formatter: ^2.4.0
+  #Firebase services
+  firebase_core: ^2.4.0
+  firebase_messaging: ^14.1.4
+  #Cache network images
+  cached_network_image: ^3.2.3
+  #DateTime
+  clock: ^1.1.1
+  #Webview
+  webview_flutter: ^4.0.1
+  #Search field
+  material_floating_search_bar: ^0.3.7
+  #Photo slider
+  carousel_slider: ^4.2.1
+  smooth_page_indicator: ^1.0.0+2
+  #Equatable
+  equatable: ^2.0.5
+  #Collection
+  collection: ^1.16.0
+  #Expandable
+  expandable: ^5.0.1
+  #RxDart & Stream transformer
+  rxdart: ^0.27.7
+  stream_transform: ^2.1.0
+  #Date form field
+  date_field: ^3.0.2
+  #Image picker & crop image
+  image_picker: ^0.8.6+1
+  image_cropper: ^3.0.1
+  #Code gen for assets
+  flutter_gen: ^5.2.0
+  #Geolocation
+  geolocator: ^9.0.2
+  #Url launcher
+  url_launcher: ^6.1.9
+  #Native splash
+  animated_splash_screen: ^1.3.0
+  #Timezone
+  timezone: ^0.9.1
+  #Local notifications
+  flutter_local_notifications: ^13.0.0
+  #Platform
+  platform: ^3.1.0
+  #Shake
+  shake: ^2.2.0
+  #Feedback
+  feedback: ^2.5.0
+  #Sentry
+  sentry_flutter: ^6.20.1
+  sentry_dio: ^6.9.1
+  feedback_sentry: ^2.3.0
+  #Page transition
+  page_transition: ^2.0.9
+
+  #Scroll snap list
+  #Carousel of clubs aka Svetozar
+  scroll_snap_list:
+    git:
+      url: https://github.com/Svet-00/scroll_snap_list.git
+      ref: master
+
+  #Cluster manager (Fluster)
+  #aka Stefan
+  fluster:
+    git:
+      url: https://github.com/StefanZlobin/fluster.git
+      ref: master
+  uuid: ^3.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+  #Code generation
+  build_runner: any #^2.3.2
+  go_router_builder: ^1.0.15
+  hive_generator: ^2.0.0
+  retrofit_generator: ^4.2.0
+  flutter_gen_runner: any
+
+flutter_gen:
+  output: lib/gen/ # Optional (default: lib/gen/)
+  line_length: 120 # Optional (default: 80)
+
+  # Optional
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    rive: true
+    lottie: true
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/
+    - assets/images/
+
+  fonts:
+    - family: storm iconset
+      fonts:
+        - asset: fonts/storm-fontset.ttf
+    - family: SF Pro Display
+      fonts:
+        - asset: fonts/SFProDisplay-Ultralight.ttf
+        - asset: fonts/SFProDisplay-Thin.ttf
+        - asset: fonts/SFProDisplay-Light.ttf
+        - asset: fonts/SFProDisplay-Regular.ttf
+        - asset: fonts/SFProDisplay-Bold.ttf
+        - asset: fonts/SFProDisplay-Black.ttf
+    - family: Montserrat
+      fonts:
+        - asset: fonts/google/Montserrat/Montserrat-Black.ttf
+        - asset: fonts/google/Montserrat/Montserrat-Bold.ttf
+        - asset: fonts/google/Montserrat/Montserrat-ExtraBold.ttf
+        - asset: fonts/google/Montserrat/Montserrat-ExtraLight.ttf
+        - asset: fonts/google/Montserrat/Montserrat-Light.ttf
+        - asset: fonts/google/Montserrat/Montserrat-Medium.ttf
+        - asset: fonts/google/Montserrat/Montserrat-Regular.ttf
+        - asset: fonts/google/Montserrat/Montserrat-SemiBold.ttf
+        - asset: fonts/google/Montserrat/Montserrat-Thin.ttf
+    - family: Open Sans
+      fonts:
+        - asset: fonts/google/Open_Sans/OpenSans-Bold.ttf
+        - asset: fonts/google/Open_Sans/OpenSans-ExtraBold.ttf
+        - asset: fonts/google/Open_Sans/OpenSans-Light.ttf
+        - asset: fonts/google/Open_Sans/OpenSans-Regular.ttf
+        - asset: fonts/google/Open_Sans/OpenSans-SemiBold.ttf
+
+flutter_intl:
+  enabled: true

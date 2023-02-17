@@ -1,0 +1,1 @@
+int kAppBorderRadiusToSuperellipseFactor = 2;

@@ -1,0 +1,16 @@
+{
+   "@@locale" : "ru",
+   
+   "inputPhoneNumber" : "Вход в аккаунт",
+   "inputSecureCode" : "Подтверждение номера",
+   "workoutPageTitle" : "Тренировка",
+   "informationPageTitle" : "Информация",
+   "workoutListPageTitle" : "Тренировки ({workoutCount})",
+   "workoutArchivePageTitle" : "История тренировок",
+   "clubFavouriteListPageTitle" : "Избранные клубы ({clubCount})",
+   "feedbackPageTitle" : "Обратиться в поддержку",
+   "buyWorkoutPageTitle" : "Разовая тренировка",
+   "clubBatchesPageTitle" : "Пакеты тренировок",
+   "clubBatchPageTitle" : "Покупка пакета тренировок",
+   "clubInformationPageTitle" : "Информация"
+}

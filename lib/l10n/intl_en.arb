@@ -1,0 +1,16 @@
+{
+   "@@locale" : "en",
+
+   "inputPhoneNumber" : "Log in to your account",
+   "inputSecureCode" : "Confirmation of the number",
+   "workoutPageTitle" : "Workout",
+   "informationPageTitle" : "Information",
+   "workoutListPageTitle" : "Workouts ({workoutCount})",
+   "workoutArchivePageTitle" : "Workout history",
+   "clubFavouriteListPageTitle" : "Favourite clubs ({clubCount})",
+   "feedbackPageTitle" : "Contact support",
+   "buyWorkoutPageTitle" : "One-time training",
+   "clubBatchesPageTitle" : "Training Packages",
+   "clubBatchPageTitle" : "Purchase of a training package",
+   "clubInformationPageTitle" : "Information"
+}

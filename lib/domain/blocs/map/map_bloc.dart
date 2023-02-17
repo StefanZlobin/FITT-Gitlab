@@ -1,0 +1,352 @@
+import 'dart:async';
+import 'dart:ui' as ui;
+
+import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
+import 'package:fluster/fluster.dart';
+import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart' as gm;
+import 'package:uuid/uuid.dart';
+
+import '../../../core/constants/app_colors.dart';
+import '../../../core/enum/map_points_enum.dart';
+import '../../../core/helpers/map_helper.dart';
+import '../../../core/locator/service_locator.dart';
+import '../../../gen/assets.gen.dart';
+import '../../entities/filters/club_filters.dart';
+import '../../entities/lat_lng/lat_lng.dart';
+import '../../entities/map_point/map_marker.dart';
+import '../../entities/map_point/map_point.dart';
+import '../../use_cases/map/map_use_case.dart';
+import '../carousel/carousel_bloc.dart';
+
+part 'map_bloc.freezed.dart';
+part 'map_event.dart';
+part 'map_state.dart';
+
+class MapBloc extends Bloc<MapEvent, MapState> {
+  MapBloc() : super(const _MapStateInitial()) {
+    on<_MapEventMapCreated>(_onMapCreated);
+    on<_MapEventCameraMove>(_onCameraMoved);
+    on<_MapEventFiltersDetected>(_onFiltersDetected);
+    on<_MapEventMarkerTapped>(_onMarkerTapped);
+    on<_MapEventCarouselCardFocused>(_onCarouselCardFocused);
+  }
+
+  final _mapUseCase = MapUseCase();
+
+  final Completer<gm.GoogleMapController> _controller = Completer();
+
+  /// Minimum zoom at which the markers will cluster
+  final int _minClusterZoom = 0;
+
+  /// Maximum zoom at which the markers will cluster
+  final int _maxClusterZoom = 19;
+
+  /// Color of the cluster circle
+  final Color _clusterColor = AppColors.kBaseBlack;
+
+  /// Color of the cluster text
+  final Color _clusterTextColor = AppColors.kBaseWhite;
+
+  final _activeMarkerImage = gm.BitmapDescriptor.fromAssetImage(
+    ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
+    Assets.images.markerActive.path,
+  );
+
+  final _activeMarkerWithBatchImage = gm.BitmapDescriptor.fromAssetImage(
+    ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
+    Assets.images.mapBatchActive.path,
+  );
+
+  final _inactiveMarkerImage = gm.BitmapDescriptor.fromAssetImage(
+    ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
+    Assets.images.marker.path,
+  );
+
+  final _inactiveMarkerWithBatchImage = gm.BitmapDescriptor.fromAssetImage(
+    ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
+    Assets.images.mapBatch.path,
+  );
+
+  _MapStateLoaded? get _prevLoaded => state.maybeMap(
+        loaded: (s) => s,
+        orElse: () => null,
+      );
+
+  ClubFilters get _filters => _prevLoaded?.filters ?? ClubFilters.defaultValue;
+
+  CarouselBloc get _carouselBloc => getIt();
+
+  Future<void> _onMapCreated(
+    _MapEventMapCreated event,
+    Emitter<MapState> emit,
+  ) async {
+    if (!_controller.isCompleted) {
+      _controller.complete(event.controller);
+    }
+  }
+
+  Future<void> _onFiltersDetected(
+    _MapEventFiltersDetected event,
+    Emitter emit,
+  ) async {
+    final filters = event.filters;
+    final mapPoints = await _mapUseCase.getMapPoints(
+      filters: filters,
+      northeast: _prevLoaded!.visibleRegion.northeast.toEntity(),
+      southwest: _prevLoaded!.visibleRegion.southwest.toEntity(),
+    );
+
+    add(
+      MapEvent.cameraMove(
+        northeast: _prevLoaded!.visibleRegion.northeast.toEntity(),
+        southwest: _prevLoaded!.visibleRegion.southwest.toEntity(),
+        visibleRegion: _prevLoaded!.visibleRegion,
+        zoom: 12, // переделать
+      ),
+    );
+
+    emit(
+      _prevLoaded!.copyWith(
+        filters: filters,
+        mapPoints: mapPoints,
+        visibleRegion: _prevLoaded!.visibleRegion,
+      ),
+    );
+  }
+
+  /// Inits [Fluster] and all the markers with network images and updates the loading state.
+  Future<void> _onCameraMoved(
+    _MapEventCameraMove event,
+    Emitter<MapState> emit,
+  ) async {
+    final mapPoints = await _mapUseCase.getMapPoints(
+      northeast: event.northeast,
+      southwest: event.southwest,
+      filters: _filters,
+    );
+
+    final gm.BitmapDescriptor markerImage = await _inactiveMarkerImage;
+
+    final Map<String, MapMarker> prevMarkers = Map.fromEntries(
+      _prevLoaded?.markers.map((e) => MapEntry(e.markerId, e)) ?? [],
+    );
+    final List<MapMarker> newMarkers = [];
+
+    for (final mapPoint in mapPoints) {
+      late MapMarker marker;
+
+      marker = prevMarkers[mapPoint.id] ??
+          MapMarker(
+            markerId: mapPoint.id,
+            coordinates: mapPoint.coordinates.toGoogleMaps(),
+            icon: markerImage,
+            type: mapPoint.type,
+            onPressed: () => add(MapEvent.markerTapped(marker)),
+          );
+
+      newMarkers.add(marker);
+    }
+
+    final markersList = await _makeClusters(newMarkers, event.zoom);
+    final markers = await _ensureSingleActiveMarker(markersList);
+
+    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(markers.active)));
+
+    emit(
+      MapState.loaded(
+        markers: markers.all,
+        filters: _filters,
+        mapPoints: mapPoints,
+        visibleRegion: gm.LatLngBounds(
+          northeast:
+              gm.LatLng(event.northeast.latitude, event.northeast.longitude),
+          southwest:
+              gm.LatLng(event.southwest.latitude, event.southwest.longitude),
+        ),
+      ),
+    );
+  }
+
+  Future<List<MapMarker>> _makeClusters(
+    List<MapMarker> markers,
+    double updatedZoom,
+  ) async {
+    final clusterManager = MapHelper.initClusterManager(
+      markers.map((e) => e.toClusterable()).toList(),
+      _minClusterZoom,
+      _maxClusterZoom,
+      (m) => add(MapEvent.markerTapped(m)),
+    );
+
+    return MapHelper.getClusterMarkers(
+      clusterManager,
+      updatedZoom,
+      _clusterColor,
+      _clusterTextColor,
+      100,
+    );
+  }
+
+  Future<_Markers> _ensureSingleActiveMarker(
+    List<MapMarker> markers,
+  ) async {
+    var clusters = markers;
+    final activeClusters = <MapMarker>[];
+    final inactiveClusters = <MapMarker>[];
+    late MapMarker activeMarker;
+
+    for (final c in clusters) {
+      if (c.isActive) {
+        activeClusters.add(c);
+      } else {
+        inactiveClusters.add(c);
+      }
+    }
+
+    if (activeClusters.length > 1) {
+      final deactivated = await Future.wait(activeClusters
+          .take(activeClusters.length - 1)
+          .map(_deactivateMarker));
+
+      activeMarker = activeClusters.last;
+      clusters = inactiveClusters + deactivated + [activeMarker];
+    } else {
+      if (activeClusters.isNotEmpty) {
+        activeMarker = activeClusters.single;
+      }
+    }
+
+    if (activeClusters.isEmpty && markers.isNotEmpty) {
+      activeMarker = clusters[0] = await _activateMarker(clusters[0]);
+    }
+
+    return _Markers(clusters, activeMarker);
+  }
+
+  // select marker
+  Future<void> _onMarkerTapped(
+    _MapEventMarkerTapped event,
+    Emitter emit,
+  ) async {
+    final marker = event.marker;
+    final prevState = _prevLoaded;
+    if (prevState == null) {
+      return;
+    }
+
+    if (marker.isCluster) {
+      final controller = await _controller.future;
+      final zoom = await controller.getZoomLevel();
+      final update = gm.CameraUpdate.newLatLngZoom(
+        marker.coordinates,
+        zoom + 0.5,
+      );
+
+      unawaited(controller.animateCamera(update));
+    }
+
+    final newState = prevState.copyWith(
+      markers: [
+        for (final m in prevState.markers)
+          if (m.markerId == marker.markerId)
+            await _activateMarker(marker)
+          else if (m.isActive)
+            await _deactivateMarker(m)
+          else
+            m
+      ],
+    );
+
+    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(marker)));
+
+    emit(newState);
+  }
+
+  Future<void> _onCarouselCardFocused(
+    _MapEventCarouselCardFocused event,
+    Emitter<MapState> emit,
+  ) async {
+    final prevState = _prevLoaded;
+    if (prevState == null) {
+      return;
+    }
+
+    bool isTargetMarker(MapMarker marker, String clubId) {
+      return marker.markerId == clubId ||
+          marker.childMarkerIds.contains(clubId);
+    }
+
+    final newState = prevState.copyWith(
+      markers: [
+        for (final m in prevState.markers)
+          if (isTargetMarker(m, event.clubId))
+            await _activateMarker(m)
+          else if (m.isActive)
+            await _deactivateMarker(m)
+          else
+            m
+      ],
+    );
+
+    emit(newState);
+  }
+
+  Future<MapMarker> _activateMarker(MapMarker marker) async {
+    final gm.BitmapDescriptor activeMarkerImage;
+    if (marker.isCluster) {
+      activeMarkerImage = await MapHelper.getActiveClusterMarker(
+        marker.pointsSize!,
+        _clusterColor,
+        AppColors.kPrimaryRed,
+        _clusterTextColor,
+        120,
+      );
+    } else {
+      if (marker.type == MapPointsEnum.partnerClubWithBatch) {
+        activeMarkerImage = await _activeMarkerWithBatchImage;
+      } else {
+        activeMarkerImage = await _activeMarkerImage;
+      }
+    }
+
+    return marker.copyWith(isActive: true, icon: activeMarkerImage);
+  }
+
+  Future<MapMarker> _deactivateMarker(MapMarker marker) async {
+    final gm.BitmapDescriptor inactiveMarkerImage;
+    if (marker.isCluster) {
+      inactiveMarkerImage = await MapHelper.getInactiveClusterMarker(
+        marker.pointsSize!,
+        _clusterColor,
+        _clusterTextColor,
+        120,
+      );
+    } else {
+      if (marker.type == MapPointsEnum.partnerClubWithBatch) {
+        inactiveMarkerImage = await _inactiveMarkerWithBatchImage;
+      } else {
+        inactiveMarkerImage = await _inactiveMarkerImage;
+      }
+    }
+    return marker.copyWith(isActive: false, icon: inactiveMarkerImage);
+  }
+
+  String _clubId(MapMarker marker) {
+    final id = marker.childMarkerIds.firstWhereOrNull(
+          (markerId) => Uuid.isValidUUID(fromString: markerId),
+        ) ??
+        marker.markerId;
+    assert(Uuid.isValidUUID(fromString: id), 'No valid club id');
+    return id;
+  }
+}
+
+class _Markers {
+  final List<MapMarker> all;
+  final MapMarker active;
+
+  const _Markers(this.all, this.active);
+}
