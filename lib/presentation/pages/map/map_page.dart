@@ -1,22 +1,17 @@
 import 'dart:io';
 
+import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 import '../../../core/constants/app_colors.dart';
-import '../../../core/enum/user_role_enum.dart';
 import '../../../core/locator/service_locator.dart';
 import '../../../core/utils/app_icons.dart';
-import '../../../core/utils/functions/app_modal_bottom_sheet.dart';
 import '../../../domain/cubits/geolocation/geolocation_cubit.dart';
-import '../../../domain/cubits/modal_bottom_sheet/modal_bottom_sheet_cubit.dart';
-import '../../../domain/cubits/notification/notification_cubit.dart';
 import '../../../domain/cubits/partner_clubs/partner_clubs_cubit.dart';
-import '../../../domain/cubits/workouts/workouts_cubit.dart';
 import '../../components/menu/menu_widget.dart';
-import '../../components/modals/workout_finish_modal_bottom_sheet.dart';
-import '../../components/modals/workout_start_modal_bottom_sheet.dart';
 import '../../components/workout/closest_workout_card.dart';
 import 'widgets/club_carousel.dart';
 import 'widgets/map_widget.dart';
@@ -28,34 +23,12 @@ class MapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notificationBloc = getIt<NotificationCubit>();
-
-    return BlocListener<NotificationCubit, NotificationState>(
-      bloc: notificationBloc,
+    return BlocListener<NotificationsBloc, NotificationsState>(
+      bloc: getIt<NotificationsBloc>(),
       listener: (context, state) {
-        state.mapOrNull(
-          changeWorkout: (message) {
-            if (message.message.data['user_type'] ==
-                UserTypeEnum.CUSTOMER.name) {
-              if (message.message.data['status'] == 'REQUIRED_START') {
-                getIt<ModalBottomSheetCubit>()
-                    .setLoadingStateModalBottomSheet();
-                showAppModalBottomSheet(
-                    context, const WorkoutStartModalBottomSheet());
-              } else if (message.message.data['status'] == 'START') {
-                getIt<ModalBottomSheetCubit>().setLoadedStateModalBottomSheet();
-                getIt<WorkoutsCubit>().getWorkouts();
-              } else if (message.message.data['status'] == 'REQUIRED_FINISH') {
-                getIt<ModalBottomSheetCubit>()
-                    .setLoadingStateModalBottomSheet();
-                showAppModalBottomSheet(
-                    context, const WorkoutFinishModalBottomSheet());
-              } else if (message.message.data['status'] == 'FINISH') {
-                getIt<ModalBottomSheetCubit>().setLoadedStateModalBottomSheet();
-                getIt<WorkoutsCubit>().getWorkouts();
-              }
-            }
-          },
+        state.whenOrNull(
+          workoutStatusStarted: () => getIt<WorkoutsCubit>().getWorkouts(),
+          workoutStatusFinished: () => getIt<WorkoutsCubit>().getWorkouts(),
         );
       },
       child: Scaffold(

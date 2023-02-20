@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/functions/app_modal_bottom_sheet.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/cubits/workout_slider_button_type/workout_slider_button_type_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/presentation/components/buttons/app_button_slider_factory.dart';
+import 'package:fitt/presentation/components/modals/workout_finish_modal_bottom_sheet.dart';
+import 'package:fitt/presentation/components/modals/workout_start_modal_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -72,6 +77,10 @@ class WorkoutActionButton extends StatelessWidget {
               regAvailableTime: workout.canStartTime,
               enabled: workout.canStartTime.isBefore(DateTime.now()),
               action: () async {
+                unawaited(showAppModalBottomSheet(
+                  context,
+                  const WorkoutStartModalBottomSheet(),
+                ));
                 await getIt<WorkoutCubit>().startWorkout(w: workout);
                 bloc.setFinishTypeSliderButton();
                 return true;
@@ -92,6 +101,10 @@ class WorkoutActionButton extends StatelessWidget {
             return AppButtonSliderFactory.finishWorkout(
               key: const Key('finish-slider'),
               action: () async {
+                unawaited(showAppModalBottomSheet(
+                  context,
+                  const WorkoutFinishModalBottomSheet(),
+                ));
                 await getIt<WorkoutCubit>().finishWorkout(w: workout);
                 return true;
               },

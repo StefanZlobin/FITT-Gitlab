@@ -2,31 +2,34 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
-import 'package:fitt/domain/cubits/modal_bottom_sheet/modal_bottom_sheet_cubit.dart';
 import 'package:fitt/presentation/components/modals/widget/header_rounded_container_line.dart';
 import 'package:fitt/presentation/components/modals/widget/radar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WorkoutFinishModalBottomSheet extends StatelessWidget {
-  const WorkoutFinishModalBottomSheet({super.key});
+  const WorkoutFinishModalBottomSheet({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final bloc = getIt<ModalBottomSheetCubit>();
-
-    return BlocBuilder<ModalBottomSheetCubit, ModalBottomSheetState>(
-      bloc: bloc,
+    return BlocBuilder<NotificationsBloc, NotificationsState>(
+      bloc: getIt<NotificationsBloc>(),
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox(),
-          loading: () {
-            return _buildFinishLoadingWorkoutPullup();
-          },
-          loaded: () {
-            return _buildFinishedWorkoutPullup();
-          },
+          paymentBatchReject: () => const SizedBox(),
+          paymentBatchSuccess: () => const SizedBox(),
+          paymentWorkoutReject: () => const SizedBox(),
+          paymentWorkoutSuccess: () => const SizedBox(),
+          workoutStatusPlanned: () => const SizedBox(),
+          workoutStatusRS: () => const SizedBox(),
+          workoutStatusStarted: () => const SizedBox(),
+          workoutStatusRF: () => _buildFinishLoadingWorkoutPullup(),
+          workoutStatusFinished: () => _buildFinishedWorkoutPullup(),
         );
       },
     );

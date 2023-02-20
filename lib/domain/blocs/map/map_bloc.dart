@@ -53,6 +53,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   final _activeMarkerImage = gm.BitmapDescriptor.fromAssetImage(
     ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
     Assets.images.markerActive.path,
+
   );
 
   final _activeMarkerWithBatchImage = gm.BitmapDescriptor.fromAssetImage(
@@ -128,6 +129,22 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       filters: _filters,
     );
 
+    if (mapPoints.isEmpty) {
+      emit(
+        MapState.loaded(
+          markers: [],
+          filters: _filters,
+          mapPoints: mapPoints,
+          visibleRegion: gm.LatLngBounds(
+            northeast:
+                gm.LatLng(event.northeast.latitude, event.northeast.longitude),
+            southwest:
+                gm.LatLng(event.southwest.latitude, event.southwest.longitude),
+          ),
+        ),
+      );
+    }
+
     final gm.BitmapDescriptor markerImage = await _inactiveMarkerImage;
 
     final Map<String, MapMarker> prevMarkers = Map.fromEntries(
@@ -186,7 +203,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       updatedZoom,
       _clusterColor,
       _clusterTextColor,
-      100,
+      120,
     );
   }
 

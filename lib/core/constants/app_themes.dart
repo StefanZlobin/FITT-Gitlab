@@ -1,6 +1,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 const double _kThumbRadius = 12;
 const double _kBoundsVerticalMarkHeight = 4;
@@ -10,13 +11,14 @@ abstract class AppThemes {
   static ThemeData get lightAppTheme {
     return ThemeData(
       appBarTheme: AppBarTheme(
-          backgroundColor: AppColors.kBaseWhite,
-          shadowColor: AppColors.kBaseWhite.withOpacity(.12),
-          centerTitle: true,
-          titleTextStyle: AppTypography.kH16.apply(color: AppColors.kOxford),
-          iconTheme: const IconThemeData(
-            color: AppColors.kBaseBlack,
-          )),
+        backgroundColor: AppColors.kBaseWhite,
+        shadowColor: AppColors.kBaseWhite.withOpacity(.12),
+        centerTitle: true,
+        titleTextStyle: AppTypography.kH16.apply(color: AppColors.kOxford),
+        iconTheme: const IconThemeData(
+          color: AppColors.kBaseBlack,
+        ),
+      ),
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: AppColors.kPrimaryBlue,

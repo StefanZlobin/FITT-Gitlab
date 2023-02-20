@@ -8,7 +8,6 @@ class ModalBottomSheetCubit extends Cubit<ModalBottomSheetState> {
   ModalBottomSheetCubit() : super(const ModalBottomSheetState.initial());
 
   void setLoadingStateModalBottomSheet() {
-    emit(const ModalBottomSheetState.initial());
     emit(const ModalBottomSheetState.loading());
   }
 

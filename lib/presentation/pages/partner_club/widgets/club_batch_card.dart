@@ -39,15 +39,60 @@ class ClubBatchCard extends StatelessWidget {
               const SizedBox(height: 16),
               _buildBatchList(),
               const Expanded(child: SizedBox()),
-              ButtonForCard(
-                isBig: true,
-                showIconOnButton: false,
-                onPressed: () =>
-                    context.push(AppRoute.clubBatchList.routeToPath),
-                workoutSlot: 'Все предложения',
-              )
+              _buildMoveToPageButton(context, state),
+              const SizedBox(height: 1),
             ],
           ),
+        );
+      },
+    );
+  }
+
+  Widget _buildMoveToPageButton(BuildContext context, ClubState state) {
+    return getIt<ClubCubit>().state.when(
+      loading: () {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+      loaded: (_, __, ___, ____, _____, ______, batches) {
+        if (batches == null) {
+          return SizedBox(
+            height: 48,
+            child: Center(
+              child: Text(
+                'Пакеты тренировок отсутствуют',
+                style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+        } else if (batches.isEmpty) {
+          return SizedBox(
+            height: 48,
+            child: Center(
+              child: Text(
+                'Пакеты тренировок отсутствуют',
+                style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+        } else {
+          return ButtonForCard(
+            isBig: true,
+            showIconOnButton: false,
+            onPressed: () => context.push(AppRoute.clubBatchList.routeToPath),
+            workoutSlot: 'Все предложения',
+          );
+        }
+      },
+      error: (_) {
+        return ButtonForCard(
+          isBig: true,
+          showIconOnButton: false,
+          onPressed: () => context.push(AppRoute.clubBatchList.routeToPath),
+          workoutSlot: 'Все предложения',
         );
       },
     );
@@ -58,24 +103,54 @@ class ClubBatchCard extends StatelessWidget {
           loading: () => const SizedBox(),
           error: (error) => const SizedBox(),
           loaded: (_, __, ___, ____, _____, ______, batches) {
-            return SizedBox(
-              height: 71,
-              child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return _buildBatchOffer(
-                    batches[index].hours ?? 0,
-                    batches[index].factPrice,
-                  );
-                },
-                separatorBuilder: (_, index) {
-                  if (index == batches.length) {
+            if (batches == null) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      Icons.lock,
+                      color: AppColors.kBaseWhite,
+                      size: 26,
+                    ),
+                  ],
+                ),
+              );
+            } else if (batches.isEmpty) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      Icons.lock,
+                      color: AppColors.kBaseWhite,
+                      size: 26,
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return SizedBox(
+                height: 71,
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    return _buildBatchOffer(
+                      batches[index].hours ?? 0,
+                      batches[index].factPrice,
+                    );
+                  },
+                  separatorBuilder: (_, index) {
+                    if (index == batches.length) {
+                      return const Divider(color: AppColors.kBaseWhite);
+                    }
                     return const Divider(color: AppColors.kBaseWhite);
-                  }
-                  return const Divider(color: AppColors.kBaseWhite);
-                },
-                itemCount: batches!.length,
-              ),
-            );
+                  },
+                  itemCount: batches.length,
+                ),
+              );
+            }
           },
         );
   }

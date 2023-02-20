@@ -118,7 +118,7 @@ extension AppRouterExtension on AppRoute {
         return AppRoute.workoutList.name.toUpperCase();
 
       case AppRoute.workoutArchiveList:
-        return AppRoute.workoutArchiveList.name.toUpperCase();
+        return '/${AppRoute.workoutArchiveList.name.toUpperCase()}';
 
       case AppRoute.club:
         return '/${AppRoute.club.name.toUpperCase()}';

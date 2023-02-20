@@ -145,7 +145,10 @@ class UserDetected extends StatelessWidget {
             final workoutsBloc = getIt<ArchiveWorkoutsCubit>();
             workoutsBloc.getArchiveWorkouts(
                 workoutPhase: WorkoutPhaseEnum.done);
-            context.push(AppRoute.workoutArchiveList.routeToPath);
+            context.pushNamed(
+              AppRoute.workoutArchiveList.routeToPath,
+              extra: false,
+            );
           },
         ),
         UserMenuTile(

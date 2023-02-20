@@ -25,7 +25,7 @@ class ArchiveWorkoutsCubit extends Cubit<ArchiveWorkoutsState> {
 
   Future<void> getArchiveWorkouts({
     WorkoutSortingEnum workoutSorting = WorkoutSortingEnum.newFirst,
-    WorkoutPhaseEnum workoutPhase = WorkoutPhaseEnum.planned,
+    WorkoutPhaseEnum workoutPhase = WorkoutPhaseEnum.done,
   }) async {
     if (state is _ArchiveWorkoutsStateLoading) return;
 
@@ -54,7 +54,7 @@ class ArchiveWorkoutsCubit extends Cubit<ArchiveWorkoutsState> {
 
       archiveWorkouts.addAll(newArchiveWorkouts);
 
-      offset += archiveWorkouts.length;
+      offset += newArchiveWorkouts.length;
 
       emit(
         _prevLoaded?.copyWith(archiveWorkouts: archiveWorkouts) ??

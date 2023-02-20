@@ -27,7 +27,6 @@ class WorkoutsCubit extends Cubit<WorkoutsState> {
         return emit(
             _WorkoutsStateLoaded(workouts: [], closestWorkout: startedWorkout));
       } else {
-        workouts.removeWhere((w) => w.endTime.isBefore(DateTime.now()));
         workoutCount = workouts.length;
         workouts.sort((a, b) => a.canStartTime.compareTo(b.canStartTime));
         final closestWorkout = await _getStartedWorkout() ?? workouts.first;

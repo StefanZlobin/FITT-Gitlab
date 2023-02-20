@@ -1,8 +1,9 @@
-import 'dart:async';
-
 import 'package:fitt/core/constants/app_colors.dart';
+import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
@@ -16,7 +17,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ArchiveWorkoutsPage extends StatelessWidget {
-  const ArchiveWorkoutsPage({Key? key}) : super(key: key);
+  const ArchiveWorkoutsPage({
+    Key? key,
+    this.fromWorkoutPage = false,
+  }) : super(key: key);
+
+  final bool fromWorkoutPage;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +47,9 @@ class ArchiveWorkoutsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () => context.pop(),
+            onPressed: () => fromWorkoutPage
+                ? context.push(AppRoute.map.routeToPath)
+                : context.pop(),
             icon: const Icon(Icons.arrow_back),
           ),
           title: Text(S.of(context).workoutArchivePageTitle),
@@ -97,12 +105,15 @@ class ArchiveWorkoutsPage extends StatelessWidget {
       height: MediaQuery.of(context).size.height - 175,
       child: ListView.separated(
         controller: scrollController,
-        itemCount: workouts.length + (isLoading ? 1 : 0),
+        itemCount: workouts.length + 1 + (isLoading ? 1 : 0),
         separatorBuilder: (_, __) => const Separator(
           color: AppColors.kOxford10,
         ),
         itemBuilder: (context, index) {
-          if (index < workouts.length) {
+          if (index < workouts.length + 1) {
+            if (index == workouts.length) {
+              return const SizedBox(height: 64);
+            }
             final workout = workouts[index];
             return ArchiveWorkoutCard(
               workout: workout,
@@ -111,11 +122,8 @@ class ArchiveWorkoutsPage extends StatelessWidget {
                   : const EdgeInsets.fromLTRB(16, 24, 16, 13),
             );
           } else {
-            Timer(const Duration(milliseconds: 300), () {
-              scrollController
-                  .jumpTo(scrollController.position.maxScrollExtent);
-            });
-            return const Center(child: CircularProgressIndicator());
+            scrollController.jumpTo(scrollController.position.maxScrollExtent);
+            return const BottomCenter(child: CircularProgressIndicator());
           }
         },
       ),

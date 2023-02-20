@@ -169,7 +169,7 @@ class FilterModalBottomSheet extends StatelessWidget {
     );
     return RangeFilterWidget(
       initialValues: currentValues,
-      bounds: currentValues,
+      bounds: RangeValues(minPrice.toDouble(), maxPrice.toDouble()),
       popularityStats: const [
         10,
         20,

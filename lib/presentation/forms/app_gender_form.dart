@@ -1,6 +1,9 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/user_gender_enum.dart';
+import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +14,14 @@ class AppGenderFormField extends StatefulWidget {
     super.key,
     required this.helper,
     required this.userGender,
+    required this.user,
     this.padding = const EdgeInsets.only(top: 24, left: 16, right: 16),
   });
 
   final Widget helper;
   final EdgeInsets padding;
   final UserGenderEnum userGender;
+  final User user;
 
   @override
   State<AppGenderFormField> createState() => _AppGenderFormFieldState();
@@ -29,6 +34,8 @@ class _AppGenderFormFieldState extends State<AppGenderFormField> {
     if (gender != genderGroup && gender != null) {
       setState(() {
         genderGroup = gender;
+        getIt<UserBloc>().add(UserEvent.updateUserData(
+            user: widget.user.copyWith(gender: genderGroup)));
       });
     }
   }

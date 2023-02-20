@@ -182,7 +182,8 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                       AppGenderFormField(
                         helper: const Text('Пол'),
-                        userGender: user?.gender ?? UserGenderEnum.male,
+                        user: user!,
+                        userGender: user.gender ?? UserGenderEnum.male,
                       ),
                       const Separator(
                         padding:

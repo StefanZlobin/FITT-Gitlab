@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../config/config.dart';
@@ -208,6 +209,7 @@ void _registerBlocs() {
   getIt.registerLazySingleton<BuyBatchCubit>(() => BuyBatchCubit());
   getIt.registerLazySingleton<BuyWorkoutCubit>(() => BuyWorkoutCubit());
   getIt.registerLazySingleton<NotificationCubit>(() => NotificationCubit());
+  getIt.registerLazySingleton<NotificationsBloc>(() => NotificationsBloc());
   getIt.registerLazySingleton<ResourceCubit>(() => ResourceCubit());
   getIt.registerLazySingleton<FilteringCubit>(() => FilteringCubit());
   getIt.registerLazySingleton<SortingCubit>(() => SortingCubit());

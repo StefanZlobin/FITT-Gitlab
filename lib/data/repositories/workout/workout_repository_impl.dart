@@ -40,7 +40,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
       final workouts = await _apiClient.getWorkouts(
         '59.934127, 30.342414',
         GetWorkoutsRequestBody(
-          limit: _perPage,
+          limit: offset == -1 ? 0 : _perPage,
           offset: offset,
           workoutPhase: workoutPhase.convertSortingToField(workoutPhase),
           workoutSorting: workoutSorting.convertSortingToField(workoutSorting),

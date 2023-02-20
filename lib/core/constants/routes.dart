@@ -47,6 +47,7 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
 }) {
   return CustomTransitionPage<T>(
     key: state.pageKey,
+    transitionDuration: const Duration(milliseconds: 400),
     child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) =>
         FadeTransition(opacity: animation, child: child),
@@ -125,7 +126,9 @@ class Routes {
     GoRoute(
       path: AppRoute.workoutArchiveList.routeToPath,
       name: AppRoute.workoutArchiveList.routeToName,
-      builder: (context, state) => const ArchiveWorkoutsPage(),
+      builder: (context, state) => ArchiveWorkoutsPage(
+        fromWorkoutPage: state.extra! as bool,
+      ),
     ),
     GoRoute(
       path: AppRoute.clubInformation.routeToPath,

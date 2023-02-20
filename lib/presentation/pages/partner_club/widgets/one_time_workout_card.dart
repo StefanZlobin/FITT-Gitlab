@@ -76,7 +76,6 @@ class OneTimeWorkoutCard extends StatelessWidget {
               ),
             ],
           ),
-          //const SizedBox(height: 8),
           const Expanded(child: SizedBox()),
           GestureDetector(
             onTap: () => context.push(AppRoute.clubBuyWorkout.routeToPath),

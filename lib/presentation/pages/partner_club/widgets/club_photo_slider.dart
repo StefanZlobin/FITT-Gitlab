@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitt/core/constants/app_colors.dart';
@@ -24,7 +26,11 @@ class ClubPhotoSlider extends StatelessWidget {
           itemCount: clubUrlImages.length,
           options: CarouselOptions(
             height: 210,
-            autoPlay: true,
+            autoPlay: clubUrlImages.isEmpty ? false : true,
+            enableInfiniteScroll: clubUrlImages.isEmpty ? false : true,
+            scrollPhysics: clubUrlImages.isEmpty
+                ? const NeverScrollableScrollPhysics()
+                : const AlwaysScrollableScrollPhysics(),
             viewportFraction: 1,
             onPageChanged: (index, reason) {
               getIt<ClubPhotoSliderCubit>().updateActivePhoto(index: index);

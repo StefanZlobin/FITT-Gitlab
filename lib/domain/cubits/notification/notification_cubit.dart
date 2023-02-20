@@ -14,14 +14,13 @@ class NotificationCubit extends Cubit<NotificationState> {
       log(const JsonEncoder.withIndent('  ').convert(message.toMap()));
       switch (message.data['type']) {
         case 'PAYMENT_BATCH_NOTIFICATION':
-          emit(_NotificationStatePaymentBatchNotification(message: message));
-          return;
+          return emit(
+              _NotificationStatePaymentBatchNotification(message: message));
         case 'PAYMENT_WORKOUT_NOTIFICATION':
-          emit(_NotificationStatePaymentWorkoutNotification(message: message));
-          return;
+          return emit(
+              _NotificationStatePaymentWorkoutNotification(message: message));
         case 'CHANGE_WORKOUT':
-          emit(_NotificationStateChangeWorkout(message: message));
-          return;
+          return emit(_NotificationStateChangeWorkout(message: message));
       }
     });
   }

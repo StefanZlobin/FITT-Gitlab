@@ -7,11 +7,13 @@ import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/timer_utils.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
+import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
 import 'package:fitt/presentation/components/compact_map.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/components/workout/archive_workout_card.dart';
 import 'package:fitt/presentation/components/workout/workout_card.dart';
+import 'package:fitt/presentation/dialogs/cancel_workout_dialog.dart';
 import 'package:fitt/presentation/pages/workout/widget/route_description.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +46,11 @@ class WorkoutPage extends StatelessWidget {
         state.whenOrNull(
           loaded: (workout) {
             if (workout.status == WorkoutStatusEnum.canceled) {
-              context.push(AppRoute.workoutArchiveList.routeToPath);
+              getIt<WorkoutsCubit>().getWorkouts();
+              context.pushNamed(
+                AppRoute.workoutArchiveList.routeToPath,
+                extra: false,
+              );
             } else if (workout.status == WorkoutStatusEnum.started) {
               getIt<LocalNotificationsService>().scheduleLocalNotification(
                 id: workout.workoutHashCode - 3,
@@ -135,7 +141,15 @@ class WorkoutPage extends StatelessWidget {
                   const SizedBox(height: 40),
                   if (workout.isMissed && !isArchivePage) ...[
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog<void>(
+                          useRootNavigator: false,
+                          context: context,
+                          builder: (context) {
+                            return CancelWorkoutDialog(workout: workout);
+                          },
+                        );
+                      },
                       child: Text(
                         'Отменить тренировку',
                         style: AppTypography.kH14
