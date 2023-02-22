@@ -9,7 +9,7 @@ part 'sorting_state.dart';
 class SortingCubit extends Cubit<SortingState> {
   SortingCubit() : super(const SortingState.initial()) {
     setClubSortingEnum(clubSortingEnum: ClubSortingEnum.nearest);
-    setWorkoutSortingEnum(workoutSortingEnum: WorkoutSortingEnum.nearest);
+    setWorkoutSortingEnum(workoutSortingEnum: WorkoutSortingEnum.newFirst);
   }
 
   ClubSortingEnum? clubSortingValue;

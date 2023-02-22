@@ -1,7 +1,6 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 const double _kThumbRadius = 12;
 const double _kBoundsVerticalMarkHeight = 4;

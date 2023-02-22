@@ -1,6 +1,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/club_sorting_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
@@ -13,7 +14,8 @@ import 'package:fitt/domain/entities/filters/club_filters.dart';
 import 'package:fitt/generated/l10n.dart';
 import 'package:fitt/presentation/components/club_card.dart';
 import 'package:fitt/presentation/components/empty_state_widget.dart';
-import 'package:fitt/presentation/components/modals/club_sorting_modal_bottom_sheet.dart';
+import 'package:fitt/presentation/components/modals/filter_modal_bottom_sheet.dart';
+import 'package:fitt/presentation/components/modals/sorting_modal_bottom_sheet.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +27,9 @@ class FavoriteClubsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getIt<SortingCubit>()
+        .setClubSortingEnum(clubSortingEnum: ClubSortingEnum.nearest);
+
     return MultiBlocListener(
       listeners: [
         BlocListener<FilteringCubit, FilteringState>(
@@ -75,7 +80,6 @@ class FavoriteClubsPage extends StatelessWidget {
                   ),
                   leading: IconButton(
                     onPressed: () {
-                      //getIt<FilteringCubit>().resetFilters();
                       context.pop();
                     },
                     icon: const Icon(Icons.arrow_back),
@@ -134,7 +138,7 @@ class FavoriteClubsPage extends StatelessWidget {
                     else
                       Container(
                         height: MediaQuery.of(context).size.height -
-                            (48 + 24 + 36 + 18 + 89 + 28),
+                            (48 + 24 + 36 + 18 + 89 + 28 + 10),
                         margin: const EdgeInsets.only(top: 28),
                         child: ListView.separated(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -186,7 +190,7 @@ class FavoriteClubsPage extends StatelessWidget {
           ),
           context: context,
           builder: (context) {
-            return const ClubSortingModalBottomSheet();
+            return const SortingModalBottomSheet();
           },
         );
       },
@@ -200,19 +204,9 @@ class FavoriteClubsPage extends StatelessWidget {
               return Row(
                 children: [
                   const SizedBox(width: 16),
-                  RichText(
-                    text: TextSpan(
-                      style:
-                          AppTypography.kH14.apply(color: AppColors.kOxford60),
-                      children: [
-                        const TextSpan(text: 'Показать '),
-                        TextSpan(
-                          text:
-                              clubSortingEnum.sortingToString(clubSortingEnum),
-                          style: const TextStyle(color: AppColors.kPrimaryBlue),
-                        ),
-                      ],
-                    ),
+                  Text(
+                    clubSortingEnum.sortingToString(clubSortingEnum),
+                    style: const TextStyle(color: AppColors.kPrimaryBlue),
                   ),
                   const SizedBox(width: 8.0),
                   const Icon(
@@ -235,7 +229,8 @@ class FavoriteClubsPage extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox(),
-          loaded: (filters, selectedFacilities, _, __, ___, ____) {
+          loaded: (filters, selectedFacilities, _, __, isPriceUpdated,
+              activeFacilities) {
             return Container(
               height: 48,
               margin: const EdgeInsets.only(top: 24, bottom: 36),
@@ -246,7 +241,11 @@ class FavoriteClubsPage extends StatelessWidget {
                 separatorBuilder: (context, index) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
                   if (index == 0) {
-                    return _buildOpenFiltersButton();
+                    return _buildOpenFiltersButton(
+                      context,
+                      isPriceUpdated,
+                      activeFacilities ?? <Facility>[],
+                    );
                   }
                   if (index == selectedFacilities.length + 1) {
                     return const SizedBox();
@@ -315,26 +314,56 @@ class FavoriteClubsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildOpenFiltersButton() {
-    return Container(
-      height: 48,
-      width: 48,
-      decoration: ShapeDecoration(
-        color: Colors.white,
-        shape: SuperellipseShape(
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(24),
-            bottomLeft: Radius.circular(24),
-            bottomRight: Radius.circular(24),
-            topLeft: Radius.circular(24),
-          ),
-          side: const BorderSide(color: AppColors.kOxford20),
-        ),
+  Widget _buildOpenFiltersButton(
+    BuildContext context,
+    bool isPriceUpdated,
+    List<Facility> activeFacilities,
+  ) {
+    final countActiveFacilitie = activeFacilities.length;
+
+    return GestureDetector(
+      onTap: () => showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: AppColors.kBaseWhite.withOpacity(0),
+        builder: (context) => const FilterModalBottomSheet(),
       ),
-      child: const Icon(
-        AppIcons.filters,
-        size: 16,
-        color: AppColors.kOxford60,
+      child: Container(
+        height: 48,
+        width: 48,
+        decoration: ShapeDecoration(
+          color: Colors.white,
+          shape: SuperellipseShape(
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(24),
+              bottomLeft: Radius.circular(24),
+              bottomRight: Radius.circular(24),
+              topLeft: Radius.circular(24),
+            ),
+            side: const BorderSide(color: AppColors.kOxford20),
+          ),
+        ),
+        child: Center(
+          child: Badge(
+            backgroundColor:
+                countActiveFacilitie + (isPriceUpdated ? 1 : 0) == 0
+                    ? AppColors.kPrimaryBlue.withOpacity(0)
+                    : AppColors.kPrimaryBlue,
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            label: countActiveFacilitie + (isPriceUpdated ? 1 : 0) == 0
+                ? const SizedBox()
+                : Text(
+                    '${countActiveFacilitie + (isPriceUpdated ? 1 : 0)}',
+                    style: AppTypography.kBody10
+                        .apply(color: AppColors.kBaseWhite),
+                  ),
+            child: const Icon(
+              AppIcons.filters,
+              size: 18,
+              color: AppColors.kOxford60,
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -44,7 +44,7 @@ class AppIcons {
   static const spinner_base = QleverIconsetIconData(0xe93b);
   static const spinner = QleverIconsetIconData(0xe93c);
   /* icons calendar */
-  static const calendar_select = QleverIconsetIconData(0xe912);
+  static const calendar_select = QleverIconsetIconData(0xe90c);
   static const calendar = QleverIconsetIconData(0xe913);
   /* icons user profile */
   static const user_avatar = QleverIconsetIconData(0xe90e);

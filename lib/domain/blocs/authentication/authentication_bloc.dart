@@ -12,6 +12,9 @@ part 'authentication_state.dart';
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   late final AuthUseCase authUseCase;
+  int attemptsEnterSecureCode = 5;
+  int circularAttempt = 0;
+  Duration repeatCallVia = const Duration(seconds: 180);
 
   AuthenticationBloc() : super(const _AuthenticationStateLoading()) {
     _init();
@@ -23,7 +26,7 @@ class AuthenticationBloc
     on<_AuthenticationEventSignIn>((event, emit) async {
       try {
         await authUseCase.signIn(phoneNumber: event.phoneNumber);
-        emit(_AuthenticationStateLoaded(phoneNumber: event.phoneNumber));
+        emit(const _AuthenticationStateLoaded());
       } on Exception catch (e) {
         emit(_AuthenticationStateError(error: e.toString()));
       }
@@ -32,19 +35,29 @@ class AuthenticationBloc
     on<_AuthenticationEventCheckSecureCode>((event, emit) async {
       try {
         await authUseCase.checkSecureCode(
-            phoneNumber: event.phoneNumber,
-            secureCode: event.secureCode,
-            fcmToken: event.fcmToken);
-        emit(const _AuthenticationStateLoaded());
+          phoneNumber: event.phoneNumber,
+          secureCode: event.secureCode,
+          fcmToken: event.fcmToken,
+        );
+        emit(const _AuthenticationStateSuccess());
       } on Exception catch (e) {
-        emit(_AuthenticationStateError(error: e.toString()));
+        attemptsEnterSecureCode -= 1;
+        circularAttempt = circularAttempt == 0
+            ? attemptsEnterSecureCode == 0
+                ? circularAttempt + 1
+                : 0
+            : circularAttempt;
+        emit(_AuthenticationStateLoaded(
+          attemptsEnterSecureCode: attemptsEnterSecureCode,
+          circularAttempt: circularAttempt,
+        ));
       }
     });
 
     on<_AuthenticationEventSignOut>((event, emit) async {
       try {
         await authUseCase.signOut();
-        emit(const _AuthenticationStateLoaded());
+        emit(const _AuthenticationStateSuccess());
         getIt<UserBloc>().add(const UserEvent.checkUser());
       } on Exception catch (e) {
         emit(_AuthenticationStateError(error: e.toString()));
@@ -54,7 +67,7 @@ class AuthenticationBloc
     on<_AuthenticationEventGetToken>((event, emit) async {
       try {
         await authUseCase.getToken();
-        emit(const _AuthenticationStateLoaded());
+        emit(const _AuthenticationStateSuccess());
       } on Exception catch (e) {
         emit(_AuthenticationStateError(error: e.toString()));
       }
@@ -63,7 +76,7 @@ class AuthenticationBloc
     on<_AuthenticationEventSaveToken>((event, emit) async {
       try {
         await authUseCase.saveToken(token: event.token);
-        emit(const _AuthenticationStateLoaded());
+        emit(const _AuthenticationStateSuccess());
       } on Exception catch (e) {
         emit(_AuthenticationStateError(error: e.toString()));
       }
@@ -72,7 +85,7 @@ class AuthenticationBloc
     on<_AuthenticationEventRefreshToken>((event, emit) async {
       try {
         await authUseCase.refreshToken();
-        emit(const _AuthenticationStateLoaded());
+        emit(const _AuthenticationStateSuccess());
       } on Exception catch (e) {
         emit(_AuthenticationStateError(error: e.toString()));
       }

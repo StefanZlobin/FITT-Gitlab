@@ -163,8 +163,8 @@ class _RangeFilterWidgetState extends State<RangeFilterWidget> {
             ),
             const SizedBox(height: 8),
             _BoundsInfo(
-              start: widget.bounds.start.toString(),
-              end: widget.bounds.end.toString(),
+              start: '${widget.bounds.start.toInt().toString()} \u20BD',
+              end: '${widget.bounds.end.toInt().toString()} \u20BD',
             ),
           ],
         ),
@@ -245,8 +245,8 @@ class _RangeFilterWidgetState extends State<RangeFilterWidget> {
 
   String _createLabelFor(Thumb thumb) {
     return thumb == Thumb.start
-        ? sliderValues.start.round().toDouble().toString()
-        : sliderValues.end.round().toDouble().toString();
+        ? '${sliderValues.start.round().toString()} \u20BD'
+        : '${sliderValues.end.round().toString()} \u20BD';
   }
 
   double _getValueOffsetFor(Thumb thumb) {

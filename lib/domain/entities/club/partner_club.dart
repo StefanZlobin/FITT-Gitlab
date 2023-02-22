@@ -21,7 +21,7 @@ class PartnerClub with _$PartnerClub {
     @JsonKey(name: 'min_price', fromJson: toRublesNullable)
         required int? minPrice,
     @JsonKey(name: 'address') required Address? address,
-    @JsonKey(name: 'distance') required String? distance,
+    @JsonKey(name: 'distance') required double? distance,
     @JsonKey(name: 'label') required String? label,
     @JsonKey(name: 'rating') required Rating? rating,
     @JsonKey(name: 'photos') required List<Photo>? photos,

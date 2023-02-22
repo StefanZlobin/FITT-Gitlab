@@ -26,13 +26,15 @@ class ArchiveWorkoutsCubit extends Cubit<ArchiveWorkoutsState> {
   Future<void> getArchiveWorkouts({
     WorkoutSortingEnum workoutSorting = WorkoutSortingEnum.newFirst,
     WorkoutPhaseEnum workoutPhase = WorkoutPhaseEnum.done,
+    bool needClearLoadedWorkouts = false,
   }) async {
     if (state is _ArchiveWorkoutsStateLoading) return;
 
     final currentState = state;
 
-    if (currentState is _$_ArchiveWorkoutsStateLoaded) {
+    if (currentState is _ArchiveWorkoutsStateLoaded) {
       oldArchiveWorkouts = _prevLoaded?.archiveWorkouts ?? [];
+      if (needClearLoadedWorkouts) oldArchiveWorkouts.clear();
     }
 
     emit(
@@ -49,8 +51,7 @@ class ArchiveWorkoutsCubit extends Cubit<ArchiveWorkoutsState> {
         workoutSorting: workoutSorting,
       );
 
-      final archiveWorkouts =
-          _prevLoaded?.archiveWorkouts ?? oldArchiveWorkouts;
+      final archiveWorkouts = oldArchiveWorkouts;
 
       archiveWorkouts.addAll(newArchiveWorkouts);
 

@@ -27,7 +27,7 @@ mixin _$PartnerClub {
   @JsonKey(name: 'address')
   Address? get address => throw _privateConstructorUsedError;
   @JsonKey(name: 'distance')
-  String? get distance => throw _privateConstructorUsedError;
+  double? get distance => throw _privateConstructorUsedError;
   @JsonKey(name: 'label')
   String? get label => throw _privateConstructorUsedError;
   @JsonKey(name: 'rating')
@@ -74,7 +74,7 @@ abstract class $PartnerClubCopyWith<$Res> {
       {@JsonKey(name: 'id') String? uuid,
       @JsonKey(name: 'min_price', fromJson: toRublesNullable) int? minPrice,
       @JsonKey(name: 'address') Address? address,
-      @JsonKey(name: 'distance') String? distance,
+      @JsonKey(name: 'distance') double? distance,
       @JsonKey(name: 'label') String? label,
       @JsonKey(name: 'rating') Rating? rating,
       @JsonKey(name: 'photos') List<Photo>? photos,
@@ -143,7 +143,7 @@ class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub>
       distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       label: freezed == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -252,7 +252,7 @@ abstract class _$$_PartnerClubCopyWith<$Res>
       {@JsonKey(name: 'id') String? uuid,
       @JsonKey(name: 'min_price', fromJson: toRublesNullable) int? minPrice,
       @JsonKey(name: 'address') Address? address,
-      @JsonKey(name: 'distance') String? distance,
+      @JsonKey(name: 'distance') double? distance,
       @JsonKey(name: 'label') String? label,
       @JsonKey(name: 'rating') Rating? rating,
       @JsonKey(name: 'photos') List<Photo>? photos,
@@ -322,7 +322,7 @@ class __$$_PartnerClubCopyWithImpl<$Res>
       distance: freezed == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       label: freezed == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -443,7 +443,7 @@ class _$_PartnerClub implements _PartnerClub {
   final Address? address;
   @override
   @JsonKey(name: 'distance')
-  final String? distance;
+  final double? distance;
   @override
   @JsonKey(name: 'label')
   final String? label;
@@ -616,7 +616,7 @@ abstract class _PartnerClub implements PartnerClub {
       @JsonKey(name: 'address')
           required final Address? address,
       @JsonKey(name: 'distance')
-          required final String? distance,
+          required final double? distance,
       @JsonKey(name: 'label')
           required final String? label,
       @JsonKey(name: 'rating')
@@ -660,7 +660,7 @@ abstract class _PartnerClub implements PartnerClub {
   Address? get address;
   @override
   @JsonKey(name: 'distance')
-  String? get distance;
+  double? get distance;
   @override
   @JsonKey(name: 'label')
   String? get label;

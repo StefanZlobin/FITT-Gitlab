@@ -4,10 +4,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clock/clock.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/constants/border_avatar_radius.dart';
 import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
-import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/core/validation/date_validator.dart';
 import 'package:fitt/core/validation/email_validator.dart';
@@ -182,8 +182,8 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                       AppGenderFormField(
                         helper: const Text('Пол'),
-                        user: user!,
-                        userGender: user.gender ?? UserGenderEnum.male,
+                        user: user,
+                        userGender: user?.gender ?? UserGenderEnum.male,
                       ),
                       const Separator(
                         padding:
@@ -294,17 +294,21 @@ class _AccountPageState extends State<AccountPage> {
           ),
         );
       },
-      placeholder: (context, url) => const CircularProgressIndicator(),
-      errorWidget: (context, url, dynamic error) => const CenterLeft(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 40, 16, 16),
-          child: Icon(
-            AppIcons.user_avatar,
-            size: 96,
-            color: AppColors.kOxford40,
+      placeholder: (context, url) =>
+          const CenterLeft(child: CircularProgressIndicator()),
+      errorWidget: (context, url, dynamic error) {
+        return CenterLeft(
+          child: Container(
+            width: 96,
+            height: 96,
+            margin: const EdgeInsets.only(top: 40, left: 16),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(96 * borderRadiusFactor),
+              color: const Color(0xFFD2D2D2),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

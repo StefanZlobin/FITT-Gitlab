@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:feedback_sentry/feedback_sentry.dart';
+import 'package:fitt/config/config.dart';
 import 'package:fitt/config/init.dart';
 import 'package:fitt/presentation/app.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,7 @@ Future<void> main() async {
   Bloc.observer = SimpleBlocObserver();
   await SentryFlutter.init(
     (options) => {
-      options.dsn =
-          'http://053ecdea8a0440858a5f8759f28bb6b8@sentry.support.storm.fit:9000/4',
+      options.dsn = Config.sentryDSN,
       options.tracesSampleRate = 1.0,
       options.attachStacktrace = false,
     },

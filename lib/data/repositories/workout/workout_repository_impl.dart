@@ -1,13 +1,18 @@
+// ignore_for_file: only_throw_errors
+
 import 'package:dio/dio.dart';
 import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/data/models/request/workout/cancel_workout_request_body.dart';
 import 'package:fitt/data/models/request/workout/finish_workout_request_body.dart';
 import 'package:fitt/data/models/request/workout/get_workouts_request_body.dart';
 import 'package:fitt/data/models/request/workout/start_workout_request_body.dart';
 import 'package:fitt/data/source/remote_data_source/workout_api_client/workout_api_client.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/workout/workout_repository.dart';
+import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
 
 class WorkoutRepositoryImpl implements WorkoutRepository {
   WorkoutRepositoryImpl(this.dio, {this.baseUrl})
@@ -36,9 +41,18 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
     WorkoutSortingEnum workoutSorting = WorkoutSortingEnum.newFirst,
     WorkoutPhaseEnum workoutPhase = WorkoutPhaseEnum.planned,
   }) async {
+    late String xPosition;
+    try {
+      final geolocation =
+          await getIt<GeolocationService>().getCurrentPosition();
+      xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
+    } on Exception catch (e) {
+      print(e);
+      xPosition = '';
+    }
     try {
       final workouts = await _apiClient.getWorkouts(
-        '59.934127, 30.342414',
+        xPosition,
         GetWorkoutsRequestBody(
           limit: offset == -1 ? 0 : _perPage,
           offset: offset,
@@ -86,8 +100,8 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         StartWorkoutRequestBody(workout),
       );
       return startedWorkout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e) {
+      throw NetworkExceptions.getDioException(e);
     }
   }
 }

@@ -18,4 +18,5 @@ class NotificationsState with _$NotificationsState {
   const factory NotificationsState.workoutStatusRF() = _WorkoutStatusRF;
   const factory NotificationsState.workoutStatusFinished() =
       _WorkoutStatusFinished;
+  const factory NotificationsState.error({required String error}) = _Error;
 }

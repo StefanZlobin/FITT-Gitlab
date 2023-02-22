@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$BuyBatch {
+mixin _$BuyBatchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -40,38 +40,39 @@ mixin _$BuyBatch {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BuyBatchInitial value) initial,
-    required TResult Function(_BuyBatchLoaded value) loaded,
-    required TResult Function(_BuyBatchError value) error,
+    required TResult Function(_BuyBatchStateInitial value) initial,
+    required TResult Function(_BuyBatchStateLoaded value) loaded,
+    required TResult Function(_BuyBatchStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BuyBatchInitial value)? initial,
-    TResult? Function(_BuyBatchLoaded value)? loaded,
-    TResult? Function(_BuyBatchError value)? error,
+    TResult? Function(_BuyBatchStateInitial value)? initial,
+    TResult? Function(_BuyBatchStateLoaded value)? loaded,
+    TResult? Function(_BuyBatchStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BuyBatchInitial value)? initial,
-    TResult Function(_BuyBatchLoaded value)? loaded,
-    TResult Function(_BuyBatchError value)? error,
+    TResult Function(_BuyBatchStateInitial value)? initial,
+    TResult Function(_BuyBatchStateLoaded value)? loaded,
+    TResult Function(_BuyBatchStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BuyBatchCopyWith<$Res> {
-  factory $BuyBatchCopyWith(BuyBatch value, $Res Function(BuyBatch) then) =
-      _$BuyBatchCopyWithImpl<$Res, BuyBatch>;
+abstract class $BuyBatchStateCopyWith<$Res> {
+  factory $BuyBatchStateCopyWith(
+          BuyBatchState value, $Res Function(BuyBatchState) then) =
+      _$BuyBatchStateCopyWithImpl<$Res, BuyBatchState>;
 }
 
 /// @nodoc
-class _$BuyBatchCopyWithImpl<$Res, $Val extends BuyBatch>
-    implements $BuyBatchCopyWith<$Res> {
-  _$BuyBatchCopyWithImpl(this._value, this._then);
+class _$BuyBatchStateCopyWithImpl<$Res, $Val extends BuyBatchState>
+    implements $BuyBatchStateCopyWith<$Res> {
+  _$BuyBatchStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -80,35 +81,35 @@ class _$BuyBatchCopyWithImpl<$Res, $Val extends BuyBatch>
 }
 
 /// @nodoc
-abstract class _$$_BuyBatchInitialCopyWith<$Res> {
-  factory _$$_BuyBatchInitialCopyWith(
-          _$_BuyBatchInitial value, $Res Function(_$_BuyBatchInitial) then) =
-      __$$_BuyBatchInitialCopyWithImpl<$Res>;
+abstract class _$$_BuyBatchStateInitialCopyWith<$Res> {
+  factory _$$_BuyBatchStateInitialCopyWith(_$_BuyBatchStateInitial value,
+          $Res Function(_$_BuyBatchStateInitial) then) =
+      __$$_BuyBatchStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_BuyBatchInitialCopyWithImpl<$Res>
-    extends _$BuyBatchCopyWithImpl<$Res, _$_BuyBatchInitial>
-    implements _$$_BuyBatchInitialCopyWith<$Res> {
-  __$$_BuyBatchInitialCopyWithImpl(
-      _$_BuyBatchInitial _value, $Res Function(_$_BuyBatchInitial) _then)
+class __$$_BuyBatchStateInitialCopyWithImpl<$Res>
+    extends _$BuyBatchStateCopyWithImpl<$Res, _$_BuyBatchStateInitial>
+    implements _$$_BuyBatchStateInitialCopyWith<$Res> {
+  __$$_BuyBatchStateInitialCopyWithImpl(_$_BuyBatchStateInitial _value,
+      $Res Function(_$_BuyBatchStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_BuyBatchInitial implements _BuyBatchInitial {
-  const _$_BuyBatchInitial();
+class _$_BuyBatchStateInitial implements _BuyBatchStateInitial {
+  const _$_BuyBatchStateInitial();
 
   @override
   String toString() {
-    return 'BuyBatch.initial()';
+    return 'BuyBatchState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BuyBatchInitial);
+        (other.runtimeType == runtimeType && other is _$_BuyBatchStateInitial);
   }
 
   @override
@@ -151,9 +152,9 @@ class _$_BuyBatchInitial implements _BuyBatchInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BuyBatchInitial value) initial,
-    required TResult Function(_BuyBatchLoaded value) loaded,
-    required TResult Function(_BuyBatchError value) error,
+    required TResult Function(_BuyBatchStateInitial value) initial,
+    required TResult Function(_BuyBatchStateLoaded value) loaded,
+    required TResult Function(_BuyBatchStateError value) error,
   }) {
     return initial(this);
   }
@@ -161,9 +162,9 @@ class _$_BuyBatchInitial implements _BuyBatchInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BuyBatchInitial value)? initial,
-    TResult? Function(_BuyBatchLoaded value)? loaded,
-    TResult? Function(_BuyBatchError value)? error,
+    TResult? Function(_BuyBatchStateInitial value)? initial,
+    TResult? Function(_BuyBatchStateLoaded value)? loaded,
+    TResult? Function(_BuyBatchStateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -171,9 +172,9 @@ class _$_BuyBatchInitial implements _BuyBatchInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BuyBatchInitial value)? initial,
-    TResult Function(_BuyBatchLoaded value)? loaded,
-    TResult Function(_BuyBatchError value)? error,
+    TResult Function(_BuyBatchStateInitial value)? initial,
+    TResult Function(_BuyBatchStateLoaded value)? loaded,
+    TResult Function(_BuyBatchStateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,25 +184,25 @@ class _$_BuyBatchInitial implements _BuyBatchInitial {
   }
 }
 
-abstract class _BuyBatchInitial implements BuyBatch {
-  const factory _BuyBatchInitial() = _$_BuyBatchInitial;
+abstract class _BuyBatchStateInitial implements BuyBatchState {
+  const factory _BuyBatchStateInitial() = _$_BuyBatchStateInitial;
 }
 
 /// @nodoc
-abstract class _$$_BuyBatchLoadedCopyWith<$Res> {
-  factory _$$_BuyBatchLoadedCopyWith(
-          _$_BuyBatchLoaded value, $Res Function(_$_BuyBatchLoaded) then) =
-      __$$_BuyBatchLoadedCopyWithImpl<$Res>;
+abstract class _$$_BuyBatchStateLoadedCopyWith<$Res> {
+  factory _$$_BuyBatchStateLoadedCopyWith(_$_BuyBatchStateLoaded value,
+          $Res Function(_$_BuyBatchStateLoaded) then) =
+      __$$_BuyBatchStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({BuyBatchResponse response});
 }
 
 /// @nodoc
-class __$$_BuyBatchLoadedCopyWithImpl<$Res>
-    extends _$BuyBatchCopyWithImpl<$Res, _$_BuyBatchLoaded>
-    implements _$$_BuyBatchLoadedCopyWith<$Res> {
-  __$$_BuyBatchLoadedCopyWithImpl(
-      _$_BuyBatchLoaded _value, $Res Function(_$_BuyBatchLoaded) _then)
+class __$$_BuyBatchStateLoadedCopyWithImpl<$Res>
+    extends _$BuyBatchStateCopyWithImpl<$Res, _$_BuyBatchStateLoaded>
+    implements _$$_BuyBatchStateLoadedCopyWith<$Res> {
+  __$$_BuyBatchStateLoadedCopyWithImpl(_$_BuyBatchStateLoaded _value,
+      $Res Function(_$_BuyBatchStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -209,7 +210,7 @@ class __$$_BuyBatchLoadedCopyWithImpl<$Res>
   $Res call({
     Object? response = null,
   }) {
-    return _then(_$_BuyBatchLoaded(
+    return _then(_$_BuyBatchStateLoaded(
       response: null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
@@ -220,22 +221,22 @@ class __$$_BuyBatchLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BuyBatchLoaded implements _BuyBatchLoaded {
-  const _$_BuyBatchLoaded({required this.response});
+class _$_BuyBatchStateLoaded implements _BuyBatchStateLoaded {
+  const _$_BuyBatchStateLoaded({required this.response});
 
   @override
   final BuyBatchResponse response;
 
   @override
   String toString() {
-    return 'BuyBatch.loaded(response: $response)';
+    return 'BuyBatchState.loaded(response: $response)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BuyBatchLoaded &&
+            other is _$_BuyBatchStateLoaded &&
             (identical(other.response, response) ||
                 other.response == response));
   }
@@ -246,8 +247,9 @@ class _$_BuyBatchLoaded implements _BuyBatchLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BuyBatchLoadedCopyWith<_$_BuyBatchLoaded> get copyWith =>
-      __$$_BuyBatchLoadedCopyWithImpl<_$_BuyBatchLoaded>(this, _$identity);
+  _$$_BuyBatchStateLoadedCopyWith<_$_BuyBatchStateLoaded> get copyWith =>
+      __$$_BuyBatchStateLoadedCopyWithImpl<_$_BuyBatchStateLoaded>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -286,9 +288,9 @@ class _$_BuyBatchLoaded implements _BuyBatchLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BuyBatchInitial value) initial,
-    required TResult Function(_BuyBatchLoaded value) loaded,
-    required TResult Function(_BuyBatchError value) error,
+    required TResult Function(_BuyBatchStateInitial value) initial,
+    required TResult Function(_BuyBatchStateLoaded value) loaded,
+    required TResult Function(_BuyBatchStateError value) error,
   }) {
     return loaded(this);
   }
@@ -296,9 +298,9 @@ class _$_BuyBatchLoaded implements _BuyBatchLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BuyBatchInitial value)? initial,
-    TResult? Function(_BuyBatchLoaded value)? loaded,
-    TResult? Function(_BuyBatchError value)? error,
+    TResult? Function(_BuyBatchStateInitial value)? initial,
+    TResult? Function(_BuyBatchStateLoaded value)? loaded,
+    TResult? Function(_BuyBatchStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -306,9 +308,9 @@ class _$_BuyBatchLoaded implements _BuyBatchLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BuyBatchInitial value)? initial,
-    TResult Function(_BuyBatchLoaded value)? loaded,
-    TResult Function(_BuyBatchError value)? error,
+    TResult Function(_BuyBatchStateInitial value)? initial,
+    TResult Function(_BuyBatchStateLoaded value)? loaded,
+    TResult Function(_BuyBatchStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -318,31 +320,31 @@ class _$_BuyBatchLoaded implements _BuyBatchLoaded {
   }
 }
 
-abstract class _BuyBatchLoaded implements BuyBatch {
-  const factory _BuyBatchLoaded({required final BuyBatchResponse response}) =
-      _$_BuyBatchLoaded;
+abstract class _BuyBatchStateLoaded implements BuyBatchState {
+  const factory _BuyBatchStateLoaded(
+      {required final BuyBatchResponse response}) = _$_BuyBatchStateLoaded;
 
   BuyBatchResponse get response;
   @JsonKey(ignore: true)
-  _$$_BuyBatchLoadedCopyWith<_$_BuyBatchLoaded> get copyWith =>
+  _$$_BuyBatchStateLoadedCopyWith<_$_BuyBatchStateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_BuyBatchErrorCopyWith<$Res> {
-  factory _$$_BuyBatchErrorCopyWith(
-          _$_BuyBatchError value, $Res Function(_$_BuyBatchError) then) =
-      __$$_BuyBatchErrorCopyWithImpl<$Res>;
+abstract class _$$_BuyBatchStateErrorCopyWith<$Res> {
+  factory _$$_BuyBatchStateErrorCopyWith(_$_BuyBatchStateError value,
+          $Res Function(_$_BuyBatchStateError) then) =
+      __$$_BuyBatchStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_BuyBatchErrorCopyWithImpl<$Res>
-    extends _$BuyBatchCopyWithImpl<$Res, _$_BuyBatchError>
-    implements _$$_BuyBatchErrorCopyWith<$Res> {
-  __$$_BuyBatchErrorCopyWithImpl(
-      _$_BuyBatchError _value, $Res Function(_$_BuyBatchError) _then)
+class __$$_BuyBatchStateErrorCopyWithImpl<$Res>
+    extends _$BuyBatchStateCopyWithImpl<$Res, _$_BuyBatchStateError>
+    implements _$$_BuyBatchStateErrorCopyWith<$Res> {
+  __$$_BuyBatchStateErrorCopyWithImpl(
+      _$_BuyBatchStateError _value, $Res Function(_$_BuyBatchStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -350,7 +352,7 @@ class __$$_BuyBatchErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_BuyBatchError(
+    return _then(_$_BuyBatchStateError(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -361,22 +363,22 @@ class __$$_BuyBatchErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BuyBatchError implements _BuyBatchError {
-  const _$_BuyBatchError({required this.error});
+class _$_BuyBatchStateError implements _BuyBatchStateError {
+  const _$_BuyBatchStateError({required this.error});
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'BuyBatch.error(error: $error)';
+    return 'BuyBatchState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BuyBatchError &&
+            other is _$_BuyBatchStateError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -386,8 +388,9 @@ class _$_BuyBatchError implements _BuyBatchError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BuyBatchErrorCopyWith<_$_BuyBatchError> get copyWith =>
-      __$$_BuyBatchErrorCopyWithImpl<_$_BuyBatchError>(this, _$identity);
+  _$$_BuyBatchStateErrorCopyWith<_$_BuyBatchStateError> get copyWith =>
+      __$$_BuyBatchStateErrorCopyWithImpl<_$_BuyBatchStateError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -426,9 +429,9 @@ class _$_BuyBatchError implements _BuyBatchError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BuyBatchInitial value) initial,
-    required TResult Function(_BuyBatchLoaded value) loaded,
-    required TResult Function(_BuyBatchError value) error,
+    required TResult Function(_BuyBatchStateInitial value) initial,
+    required TResult Function(_BuyBatchStateLoaded value) loaded,
+    required TResult Function(_BuyBatchStateError value) error,
   }) {
     return error(this);
   }
@@ -436,9 +439,9 @@ class _$_BuyBatchError implements _BuyBatchError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BuyBatchInitial value)? initial,
-    TResult? Function(_BuyBatchLoaded value)? loaded,
-    TResult? Function(_BuyBatchError value)? error,
+    TResult? Function(_BuyBatchStateInitial value)? initial,
+    TResult? Function(_BuyBatchStateLoaded value)? loaded,
+    TResult? Function(_BuyBatchStateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -446,9 +449,9 @@ class _$_BuyBatchError implements _BuyBatchError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BuyBatchInitial value)? initial,
-    TResult Function(_BuyBatchLoaded value)? loaded,
-    TResult Function(_BuyBatchError value)? error,
+    TResult Function(_BuyBatchStateInitial value)? initial,
+    TResult Function(_BuyBatchStateLoaded value)? loaded,
+    TResult Function(_BuyBatchStateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -458,12 +461,12 @@ class _$_BuyBatchError implements _BuyBatchError {
   }
 }
 
-abstract class _BuyBatchError implements BuyBatch {
-  const factory _BuyBatchError({required final String error}) =
-      _$_BuyBatchError;
+abstract class _BuyBatchStateError implements BuyBatchState {
+  const factory _BuyBatchStateError({required final String error}) =
+      _$_BuyBatchStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_BuyBatchErrorCopyWith<_$_BuyBatchError> get copyWith =>
+  _$$_BuyBatchStateErrorCopyWith<_$_BuyBatchStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

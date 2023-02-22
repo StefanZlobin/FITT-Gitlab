@@ -1,9 +1,12 @@
 part of 'buy_batch_cubit.dart';
 
 @freezed
-class BuyBatch with _$BuyBatch {
-  const factory BuyBatch.initial() = _BuyBatchInitial;
-  const factory BuyBatch.loaded({required BuyBatchResponse response}) =
-      _BuyBatchLoaded;
-  const factory BuyBatch.error({required String error}) = _BuyBatchError;
+class BuyBatchState with _$BuyBatchState {
+  const factory BuyBatchState.initial() = _BuyBatchStateInitial;
+  const factory BuyBatchState.loaded({
+    required BuyBatchResponse response,
+  }) = _BuyBatchStateLoaded;
+  const factory BuyBatchState.error({
+    required String error,
+  }) = _BuyBatchStateError;
 }

@@ -2,7 +2,6 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/enum/user_role_enum.dart';
-import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
@@ -88,7 +87,7 @@ class UserDetected extends StatelessWidget {
                     closestWorkoutText = 'Начните тренировку';
                   } else {
                     closestWorkoutText =
-                        'Ближайщая через ${DateTimeUtils.nextWorkoutSession(workout.startTime)}';
+                        'Ближайшая через ${DateTimeUtils.nextWorkoutSession(workout.startTime)}';
                   }
                   return Text(closestWorkoutText);
                 },
@@ -143,8 +142,7 @@ class UserDetected extends StatelessWidget {
           title: const Text('История тренировок'),
           onPressed: () {
             final workoutsBloc = getIt<ArchiveWorkoutsCubit>();
-            workoutsBloc.getArchiveWorkouts(
-                workoutPhase: WorkoutPhaseEnum.done);
+            workoutsBloc.getArchiveWorkouts();
             context.pushNamed(
               AppRoute.workoutArchiveList.routeToPath,
               extra: false,

@@ -2,6 +2,7 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/presentation/pages/account/account_page.dart';
+import 'package:fitt/presentation/pages/account/personal_data_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workout_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workouts_page.dart';
 import 'package:fitt/presentation/pages/archive_workouts/archive_workouts_page.dart';
@@ -86,7 +87,9 @@ class Routes {
     GoRoute(
       path: AppRoute.inputSecureCode.routeToPath,
       name: AppRoute.inputSecureCode.routeToName,
-      builder: (context, state) => const InputSecureCodePage(),
+      builder: (context, state) => InputSecureCodePage(
+        phoneNumber: state.extra! as String,
+      ),
     ),
     // Webview
     GoRoute(
@@ -109,7 +112,9 @@ class Routes {
     GoRoute(
       path: AppRoute.personalData.routeToPath,
       name: AppRoute.personalData.routeToName,
-      builder: (context, state) => mockPage(state),
+      builder: (context, state) => PersonalDataPage(
+        canSkip: state.extra! as bool,
+      ),
     ),
     GoRoute(
       path: AppRoute.workout.routeToPath,

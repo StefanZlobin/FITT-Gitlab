@@ -39,8 +39,9 @@ dependencies:
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
   bloc_concurrency: ^0.2.1
-  #Locator
+  #Locator and place from latlng
   get_it: ^7.2.0
+  geocoding: ^2.0.5
   #Shape borders
   superellipse_shape: ^0.2.0
   #Mask text

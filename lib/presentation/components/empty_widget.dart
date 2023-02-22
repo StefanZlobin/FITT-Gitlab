@@ -16,35 +16,38 @@ class EmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  hintText,
-                  style:
-                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
-                  textAlign: TextAlign.center,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height - 175,
+      child: Column(
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Text(
+                    hintText,
+                    style:
+                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              TextButton(
-                onPressed: onPressed,
-                child: Text(
-                  buttonText,
-                  style:
-                      AppTypography.kH14.apply(color: AppColors.kPrimaryPurple),
+                const SizedBox(height: 24),
+                TextButton(
+                  onPressed: onPressed,
+                  child: Text(
+                    buttonText,
+                    style: AppTypography.kH14
+                        .apply(color: AppColors.kPrimaryPurple),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        const Expanded(child: SizedBox()),
-      ],
+          const Expanded(child: SizedBox()),
+        ],
+      ),
     );
   }
 }

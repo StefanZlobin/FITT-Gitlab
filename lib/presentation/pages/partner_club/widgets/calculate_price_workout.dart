@@ -66,7 +66,7 @@ class CalculatedPriceWorkout extends StatelessWidget {
                               const Expanded(child: SizedBox()),
                               if (club.batchHoursAvailable == 0)
                                 Text(
-                                  '${e.price} р',
+                                  '${e.price} \u20BD',
                                   style: AppTypography.kBody14
                                       .apply(color: AppColors.kOxford),
                                 )
@@ -93,7 +93,7 @@ class CalculatedPriceWorkout extends StatelessWidget {
                         ),
                         if (club.batchHoursAvailable == 0)
                           Text(
-                            '${getIt<ClubCubit>().selectedSlot!.price} р',
+                            '${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
                             style: AppTypography.kH16
                                 .apply(color: AppColors.kOxford),
                           )

@@ -74,7 +74,7 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
                       ),
                       TextSpan(
                         text:
-                            '${adminWorkout.user.gender!.genderEnumToLabeling(adminWorkout.user.gender!)} - ${ageUtils(adminWorkout.user.age)})}',
+                            '${adminWorkout.user.gender!.genderEnumToLabeling(adminWorkout.user.gender!)} - ${ageUtils(adminWorkout.user.age)}',
                         style: AppTypography.kBody14
                             .apply(color: AppColors.kOxford40),
                       ),

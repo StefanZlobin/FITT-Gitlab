@@ -1069,26 +1069,25 @@ mixin _$AuthenticationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String? phoneNumber, String? securecode, String? fcmToken)
+    required TResult Function(int attemptsEnterSecureCode, int circularAttempt)
         loaded,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult? Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -1097,6 +1096,7 @@ mixin _$AuthenticationState {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthenticationStateLoading value) loading,
     required TResult Function(_AuthenticationStateLoaded value) loaded,
+    required TResult Function(_AuthenticationStateSuccess value) success,
     required TResult Function(_AuthenticationStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1104,6 +1104,7 @@ mixin _$AuthenticationState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthenticationStateLoading value)? loading,
     TResult? Function(_AuthenticationStateLoaded value)? loaded,
+    TResult? Function(_AuthenticationStateSuccess value)? success,
     TResult? Function(_AuthenticationStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1111,6 +1112,7 @@ mixin _$AuthenticationState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthenticationStateLoading value)? loading,
     TResult Function(_AuthenticationStateLoaded value)? loaded,
+    TResult Function(_AuthenticationStateSuccess value)? success,
     TResult Function(_AuthenticationStateError value)? error,
     required TResult orElse(),
   }) =>
@@ -1178,9 +1180,9 @@ class _$_AuthenticationStateLoading implements _AuthenticationStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String? phoneNumber, String? securecode, String? fcmToken)
+    required TResult Function(int attemptsEnterSecureCode, int circularAttempt)
         loaded,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -1190,9 +1192,8 @@ class _$_AuthenticationStateLoading implements _AuthenticationStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult? Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -1202,8 +1203,8 @@ class _$_AuthenticationStateLoading implements _AuthenticationStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1218,6 +1219,7 @@ class _$_AuthenticationStateLoading implements _AuthenticationStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthenticationStateLoading value) loading,
     required TResult Function(_AuthenticationStateLoaded value) loaded,
+    required TResult Function(_AuthenticationStateSuccess value) success,
     required TResult Function(_AuthenticationStateError value) error,
   }) {
     return loading(this);
@@ -1228,6 +1230,7 @@ class _$_AuthenticationStateLoading implements _AuthenticationStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthenticationStateLoading value)? loading,
     TResult? Function(_AuthenticationStateLoaded value)? loaded,
+    TResult? Function(_AuthenticationStateSuccess value)? success,
     TResult? Function(_AuthenticationStateError value)? error,
   }) {
     return loading?.call(this);
@@ -1238,6 +1241,7 @@ class _$_AuthenticationStateLoading implements _AuthenticationStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthenticationStateLoading value)? loading,
     TResult Function(_AuthenticationStateLoaded value)? loaded,
+    TResult Function(_AuthenticationStateSuccess value)? success,
     TResult Function(_AuthenticationStateError value)? error,
     required TResult orElse(),
   }) {
@@ -1259,7 +1263,7 @@ abstract class _$$_AuthenticationStateLoadedCopyWith<$Res> {
           $Res Function(_$_AuthenticationStateLoaded) then) =
       __$$_AuthenticationStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? phoneNumber, String? securecode, String? fcmToken});
+  $Res call({int attemptsEnterSecureCode, int circularAttempt});
 }
 
 /// @nodoc
@@ -1275,23 +1279,18 @@ class __$$_AuthenticationStateLoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phoneNumber = freezed,
-    Object? securecode = freezed,
-    Object? fcmToken = freezed,
+    Object? attemptsEnterSecureCode = null,
+    Object? circularAttempt = null,
   }) {
     return _then(_$_AuthenticationStateLoaded(
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      securecode: freezed == securecode
-          ? _value.securecode
-          : securecode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fcmToken: freezed == fcmToken
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+      attemptsEnterSecureCode: null == attemptsEnterSecureCode
+          ? _value.attemptsEnterSecureCode
+          : attemptsEnterSecureCode // ignore: cast_nullable_to_non_nullable
+              as int,
+      circularAttempt: null == circularAttempt
+          ? _value.circularAttempt
+          : circularAttempt // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1300,18 +1299,18 @@ class __$$_AuthenticationStateLoadedCopyWithImpl<$Res>
 
 class _$_AuthenticationStateLoaded implements _AuthenticationStateLoaded {
   const _$_AuthenticationStateLoaded(
-      {this.phoneNumber, this.securecode, this.fcmToken});
+      {this.attemptsEnterSecureCode = 5, this.circularAttempt = 0});
 
   @override
-  final String? phoneNumber;
+  @JsonKey()
+  final int attemptsEnterSecureCode;
   @override
-  final String? securecode;
-  @override
-  final String? fcmToken;
+  @JsonKey()
+  final int circularAttempt;
 
   @override
   String toString() {
-    return 'AuthenticationState.loaded(phoneNumber: $phoneNumber, securecode: $securecode, fcmToken: $fcmToken)';
+    return 'AuthenticationState.loaded(attemptsEnterSecureCode: $attemptsEnterSecureCode, circularAttempt: $circularAttempt)';
   }
 
   @override
@@ -1319,17 +1318,16 @@ class _$_AuthenticationStateLoaded implements _AuthenticationStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthenticationStateLoaded &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.securecode, securecode) ||
-                other.securecode == securecode) &&
-            (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken));
+            (identical(
+                    other.attemptsEnterSecureCode, attemptsEnterSecureCode) ||
+                other.attemptsEnterSecureCode == attemptsEnterSecureCode) &&
+            (identical(other.circularAttempt, circularAttempt) ||
+                other.circularAttempt == circularAttempt));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, phoneNumber, securecode, fcmToken);
+      Object.hash(runtimeType, attemptsEnterSecureCode, circularAttempt);
 
   @JsonKey(ignore: true)
   @override
@@ -1342,37 +1340,36 @@ class _$_AuthenticationStateLoaded implements _AuthenticationStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String? phoneNumber, String? securecode, String? fcmToken)
+    required TResult Function(int attemptsEnterSecureCode, int circularAttempt)
         loaded,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
-    return loaded(phoneNumber, securecode, fcmToken);
+    return loaded(attemptsEnterSecureCode, circularAttempt);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult? Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(phoneNumber, securecode, fcmToken);
+    return loaded?.call(attemptsEnterSecureCode, circularAttempt);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(phoneNumber, securecode, fcmToken);
+      return loaded(attemptsEnterSecureCode, circularAttempt);
     }
     return orElse();
   }
@@ -1382,6 +1379,7 @@ class _$_AuthenticationStateLoaded implements _AuthenticationStateLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthenticationStateLoading value) loading,
     required TResult Function(_AuthenticationStateLoaded value) loaded,
+    required TResult Function(_AuthenticationStateSuccess value) success,
     required TResult Function(_AuthenticationStateError value) error,
   }) {
     return loaded(this);
@@ -1392,6 +1390,7 @@ class _$_AuthenticationStateLoaded implements _AuthenticationStateLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthenticationStateLoading value)? loading,
     TResult? Function(_AuthenticationStateLoaded value)? loaded,
+    TResult? Function(_AuthenticationStateSuccess value)? success,
     TResult? Function(_AuthenticationStateError value)? error,
   }) {
     return loaded?.call(this);
@@ -1402,6 +1401,7 @@ class _$_AuthenticationStateLoaded implements _AuthenticationStateLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthenticationStateLoading value)? loading,
     TResult Function(_AuthenticationStateLoaded value)? loaded,
+    TResult Function(_AuthenticationStateSuccess value)? success,
     TResult Function(_AuthenticationStateError value)? error,
     required TResult orElse(),
   }) {
@@ -1414,16 +1414,133 @@ class _$_AuthenticationStateLoaded implements _AuthenticationStateLoaded {
 
 abstract class _AuthenticationStateLoaded implements AuthenticationState {
   const factory _AuthenticationStateLoaded(
-      {final String? phoneNumber,
-      final String? securecode,
-      final String? fcmToken}) = _$_AuthenticationStateLoaded;
+      {final int attemptsEnterSecureCode,
+      final int circularAttempt}) = _$_AuthenticationStateLoaded;
 
-  String? get phoneNumber;
-  String? get securecode;
-  String? get fcmToken;
+  int get attemptsEnterSecureCode;
+  int get circularAttempt;
   @JsonKey(ignore: true)
   _$$_AuthenticationStateLoadedCopyWith<_$_AuthenticationStateLoaded>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AuthenticationStateSuccessCopyWith<$Res> {
+  factory _$$_AuthenticationStateSuccessCopyWith(
+          _$_AuthenticationStateSuccess value,
+          $Res Function(_$_AuthenticationStateSuccess) then) =
+      __$$_AuthenticationStateSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_AuthenticationStateSuccessCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res,
+        _$_AuthenticationStateSuccess>
+    implements _$$_AuthenticationStateSuccessCopyWith<$Res> {
+  __$$_AuthenticationStateSuccessCopyWithImpl(
+      _$_AuthenticationStateSuccess _value,
+      $Res Function(_$_AuthenticationStateSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_AuthenticationStateSuccess implements _AuthenticationStateSuccess {
+  const _$_AuthenticationStateSuccess();
+
+  @override
+  String toString() {
+    return 'AuthenticationState.success()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthenticationStateSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(int attemptsEnterSecureCode, int circularAttempt)
+        loaded,
+    required TResult Function() success,
+    required TResult Function(String error) error,
+  }) {
+    return success();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult? Function()? success,
+    TResult? Function(String error)? error,
+  }) {
+    return success?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult Function()? success,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthenticationStateLoading value) loading,
+    required TResult Function(_AuthenticationStateLoaded value) loaded,
+    required TResult Function(_AuthenticationStateSuccess value) success,
+    required TResult Function(_AuthenticationStateError value) error,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthenticationStateLoading value)? loading,
+    TResult? Function(_AuthenticationStateLoaded value)? loaded,
+    TResult? Function(_AuthenticationStateSuccess value)? success,
+    TResult? Function(_AuthenticationStateError value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthenticationStateLoading value)? loading,
+    TResult Function(_AuthenticationStateLoaded value)? loaded,
+    TResult Function(_AuthenticationStateSuccess value)? success,
+    TResult Function(_AuthenticationStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthenticationStateSuccess implements AuthenticationState {
+  const factory _AuthenticationStateSuccess() = _$_AuthenticationStateSuccess;
 }
 
 /// @nodoc
@@ -1493,9 +1610,9 @@ class _$_AuthenticationStateError implements _AuthenticationStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String? phoneNumber, String? securecode, String? fcmToken)
+    required TResult Function(int attemptsEnterSecureCode, int circularAttempt)
         loaded,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -1505,9 +1622,8 @@ class _$_AuthenticationStateError implements _AuthenticationStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult? Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult? Function()? success,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -1517,8 +1633,8 @@ class _$_AuthenticationStateError implements _AuthenticationStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String? phoneNumber, String? securecode, String? fcmToken)?
-        loaded,
+    TResult Function(int attemptsEnterSecureCode, int circularAttempt)? loaded,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1533,6 +1649,7 @@ class _$_AuthenticationStateError implements _AuthenticationStateError {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthenticationStateLoading value) loading,
     required TResult Function(_AuthenticationStateLoaded value) loaded,
+    required TResult Function(_AuthenticationStateSuccess value) success,
     required TResult Function(_AuthenticationStateError value) error,
   }) {
     return error(this);
@@ -1543,6 +1660,7 @@ class _$_AuthenticationStateError implements _AuthenticationStateError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthenticationStateLoading value)? loading,
     TResult? Function(_AuthenticationStateLoaded value)? loaded,
+    TResult? Function(_AuthenticationStateSuccess value)? success,
     TResult? Function(_AuthenticationStateError value)? error,
   }) {
     return error?.call(this);
@@ -1553,6 +1671,7 @@ class _$_AuthenticationStateError implements _AuthenticationStateError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthenticationStateLoading value)? loading,
     TResult Function(_AuthenticationStateLoaded value)? loaded,
+    TResult Function(_AuthenticationStateSuccess value)? success,
     TResult Function(_AuthenticationStateError value)? error,
     required TResult orElse(),
   }) {

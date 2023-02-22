@@ -4,9 +4,11 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/authentication/authentication_bloc.dart';
+import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/presentation/components/auth_user_disclaimer.dart';
 import 'package:fitt/presentation/components/page_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -53,19 +55,20 @@ class _InputPhoneNumberPageState extends State<InputPhoneNumberPage> {
           const AuthUserDisclaimer(
             padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
           ),
-          Container(
-            margin: const EdgeInsets.all(16),
-            width: MediaQuery.of(context).size.width,
-            height: 56,
-            child: _maskComplete
-                ? ElevatedButton(
-                    onPressed: () => callback(context, phoneNumberFormatter),
-                    child: const Text('Продолжить'),
-                  )
-                : const ElevatedButton(
-                    onPressed: null,
-                    child: Text('Продолжить'),
-                  ),
+          BlocBuilder<AuthenticationErrorTimerBloc,
+              AuthenticationErrorTimerState>(
+            bloc: getIt<AuthenticationErrorTimerBloc>(),
+            builder: (context, state) {
+              return state.when(
+                timerInitial: (_) =>
+                    _buildCompleteButton(context, enabled: true),
+                timerRunInProgress: (_) =>
+                    _buildCompleteButton(context, enabled: false),
+                timerRunPause: (_) => const SizedBox(),
+                timerRunComplete: (_) =>
+                    _buildCompleteButton(context, enabled: true),
+              );
+            },
           ),
           const SizedBox(height: 16),
         ],
@@ -73,11 +76,33 @@ class _InputPhoneNumberPageState extends State<InputPhoneNumberPage> {
     );
   }
 
+  Container _buildCompleteButton(
+    BuildContext context, {
+    required bool enabled,
+  }) {
+    return Container(
+      margin: const EdgeInsets.all(16),
+      width: MediaQuery.of(context).size.width,
+      height: 56,
+      child: _maskComplete && enabled
+          ? ElevatedButton(
+              onPressed: () => callback(context, phoneNumberFormatter),
+              child: const Text('Продолжить'),
+            )
+          : const ElevatedButton(
+              onPressed: null,
+              child: Text('Продолжить'),
+            ),
+    );
+  }
+
   Widget _buildTextHintWidget(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 96, bottom: 16),
       child: Text(
-        'Введите ваш номер телефона',
+        getIt<AuthenticationBloc>().circularAttempt > 1
+            ? 'Пожалуйста, проверьте номер телефона и состояние мобильной сети'
+            : 'Введите ваш номер телефона',
         style: AppTypography.kH14.apply(color: AppColors.kBaseBlack),
       ),
     );
@@ -131,7 +156,11 @@ class _InputPhoneNumberPageState extends State<InputPhoneNumberPage> {
       final bloc = getIt<AuthenticationBloc>();
       final unmaskedPhoneNumber = '+7${phoneNumberFormatter.getUnmaskedText()}';
       bloc.add(AuthenticationEvent.signIn(phoneNumber: unmaskedPhoneNumber));
-      context.push(AppRoute.inputSecureCode.routeToPath);
+      getIt<AuthenticationBloc>().attemptsEnterSecureCode = 5;
+      context.pushNamed(
+        AppRoute.inputSecureCode.routeToPath,
+        extra: unmaskedPhoneNumber,
+      );
     }
   }
 }

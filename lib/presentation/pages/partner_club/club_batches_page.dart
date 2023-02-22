@@ -132,7 +132,7 @@ class ClubBatchesPage extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          '${batch.factPrice} р',
+          '${batch.factPrice} \u20BD',
           style: AppTypography.kH24B.apply(color: AppColors.kBaseWhite),
         ),
       ],

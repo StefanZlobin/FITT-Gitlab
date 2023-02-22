@@ -1,29 +1,50 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qlever.fitt">
-    <!--Геолокация-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
-    <!-- If your app checks for SMS support -->
-    <intent>
-        <action android:name="android.intent.action.VIEW" />
-        <data android:scheme="sms" />
-    </intent>
-    <!-- If your app checks for call support -->
-    <intent>
-        <action android:name="android.intent.action.VIEW" />
-        <data android:scheme="tel" />
-    </intent>
+        <!-- Open urls in browser. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
     </queries>
-   <application
-        android:label="fitt"
-        android:name="${applicationName}"
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--Геолокация-->
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!--Какая-тозалупа-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <application
+        android:label="FITT"
+    android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
-         <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyAyq555paCshXIWrH8Kl8gaqBKDLF_DBjM" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAyq555paCshXIWrH8Kl8gaqBKDLF_DBjM" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -37,28 +58,29 @@
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
             <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@style/NormalTheme"
-              />
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme"
+            />
 
             <!-- Firebase notifications -->
             <intent-filter>
                 <action android:name="FLUTTER_NOTIFICATION_CLICK" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-             
+
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--fro crop images-->
+        <!--fro
+        crop images-->
         <activity
-                android:name="com.yalantis.ucrop.UCropActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                android:exported="false" />
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="false" />
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

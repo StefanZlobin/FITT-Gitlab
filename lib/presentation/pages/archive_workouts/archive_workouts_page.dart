@@ -1,15 +1,17 @@
 import 'package:fitt/core/constants/app_colors.dart';
+import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/workout_sorting_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/components/animated_dots.dart';
 import 'package:fitt/presentation/components/empty_widget.dart';
-import 'package:fitt/presentation/components/modals/club_sorting_modal_bottom_sheet.dart';
+import 'package:fitt/presentation/components/modals/sorting_modal_bottom_sheet.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/components/workout/archive_workout_card.dart';
 import 'package:flutter/material.dart';
@@ -26,9 +28,12 @@ class ArchiveWorkoutsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getIt<SortingCubit>()
+        .setWorkoutSortingEnum(workoutSortingEnum: WorkoutSortingEnum.newFirst);
+
     final scrollController = ScrollController();
 
-    scrollController.addListener(() {
+    scrollController.addListener(() { 
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
           getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts();
@@ -36,14 +41,33 @@ class ArchiveWorkoutsPage extends StatelessWidget {
       }
     });
 
-    return BlocListener<SortingCubit, SortingState>(
-      bloc: getIt<SortingCubit>(),
-      listener: (context, state) {
-        state.whenOrNull(
-          workoutSorting: (workoutSortingEnum) => getIt<ArchiveWorkoutsCubit>()
-              .getArchiveWorkouts(workoutSorting: workoutSortingEnum),
-        );
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<SortingCubit, SortingState>(
+          bloc: getIt<SortingCubit>(),
+          listener: (context, state) {
+            state.whenOrNull(
+              workoutSorting: (workoutSortingEnum) {
+                getIt<ArchiveWorkoutsCubit>().offset = 0;
+                getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
+                  workoutSorting: workoutSortingEnum,
+                  needClearLoadedWorkouts: true,
+                );
+              },
+            );
+          },
+        ),
+        BlocListener<ArchiveWorkoutsCubit, ArchiveWorkoutsState>(
+          bloc: getIt<ArchiveWorkoutsCubit>(),
+          listener: (context, state) {
+            state.whenOrNull(
+              loaded: (archiveWorkouts) {
+                if (archiveWorkouts.isEmpty) {}
+              },
+            );
+          },
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -106,13 +130,21 @@ class ArchiveWorkoutsPage extends StatelessWidget {
       child: ListView.separated(
         controller: scrollController,
         itemCount: workouts.length + 1 + (isLoading ? 1 : 0),
-        separatorBuilder: (_, __) => const Separator(
-          color: AppColors.kOxford10,
-        ),
+        separatorBuilder: (_, index) {
+          if (index == workouts.length) {
+            return const SizedBox();
+          }
+          if (index == workouts.length + 1) {
+            return const SizedBox(height: 32);
+          }
+          return const Separator(
+            color: AppColors.kOxford10,
+          );
+        },
         itemBuilder: (context, index) {
           if (index < workouts.length + 1) {
             if (index == workouts.length) {
-              return const SizedBox(height: 64);
+              return const SizedBox(height: 14);
             }
             final workout = workouts[index];
             return ArchiveWorkoutCard(
@@ -123,7 +155,17 @@ class ArchiveWorkoutsPage extends StatelessWidget {
             );
           } else {
             scrollController.jumpTo(scrollController.position.maxScrollExtent);
-            return const BottomCenter(child: CircularProgressIndicator());
+            return Column(
+              children: [
+                const AnimatedDots(),
+                const SizedBox(height: 16),
+                Text(
+                  'Загружаем тренировки',
+                  style:
+                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                ),
+              ],
+            );
           }
         },
       ),
@@ -143,7 +185,7 @@ class ArchiveWorkoutsPage extends StatelessWidget {
           ),
           context: context,
           builder: (context) {
-            return const ClubSortingModalBottomSheet();
+            return const SortingModalBottomSheet();
           },
         );
       },

@@ -166,7 +166,7 @@ class ClubBatchCard extends StatelessWidget {
             style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
           ),
           Text(
-            '$price р',
+            '$price \u20BD',
             style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
           ),
         ],

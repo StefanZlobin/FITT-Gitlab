@@ -13,7 +13,7 @@ _$_PartnerClub _$$_PartnerClubFromJson(Map<String, dynamic> json) =>
       address: json['address'] == null
           ? null
           : Address.fromJson(json['address'] as Map<String, dynamic>),
-      distance: json['distance'] as String?,
+      distance: (json['distance'] as num?)?.toDouble(),
       label: json['label'] as String?,
       rating: json['rating'] == null
           ? null

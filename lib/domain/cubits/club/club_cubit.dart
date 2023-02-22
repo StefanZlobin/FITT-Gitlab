@@ -9,6 +9,7 @@ import 'package:fitt/domain/entities/activity/activity.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
 import 'package:fitt/domain/entities/time_slot/time_slot.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/use_cases/partner_club/partner_club_use_case.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,8 +34,8 @@ class ClubCubit extends Cubit<ClubState> {
           ? await partnerClubUseCase.addClubToFavorites(clubUuid: clubUuid)
           : await partnerClubUseCase.removeClubToFavorites(clubUuid: clubUuid);
       await getPartnerClub(clubUuid: clubUuid);
-    } on Exception catch (e) {
-      emit(_ClubStateError(error: e.toString()));
+    } on NetworkExceptions catch (e) {
+      emit(_ClubStateError(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 
@@ -52,8 +53,8 @@ class ClubCubit extends Cubit<ClubState> {
       );
       selectActivity(_clubState.club.activities!.first);
       emit(_clubState);
-    } on Exception catch (e) {
-      emit(_ClubStateError(error: e.toString()));
+    } on NetworkExceptions catch (e) {
+      emit(_ClubStateError(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 

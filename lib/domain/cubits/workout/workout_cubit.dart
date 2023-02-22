@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/use_cases/workout/workout_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -16,8 +17,8 @@ class WorkoutCubit extends Cubit<WorkoutState> {
       final workout =
           await _workoutUseCase.getWorkout(workoutUuid: workoutUuid);
       emit(WorkoutState.loaded(workout: workout));
-    } on Exception catch (e) {
-      emit(WorkoutState.error(error: e.toString()));
+    } on NetworkExceptions catch (e) {
+      emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 
@@ -25,8 +26,8 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     try {
       final workout = await _workoutUseCase.startWorkout(workout: w);
       emit(WorkoutState.loaded(workout: workout));
-    } on Exception catch (e) {
-      emit(WorkoutState.error(error: e.toString()));
+    } on NetworkExceptions catch (e) {
+      emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 
@@ -34,8 +35,8 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     try {
       final workout = await _workoutUseCase.finishWorkout(workout: w);
       emit(WorkoutState.loaded(workout: workout));
-    } on Exception catch (e) {
-      emit(WorkoutState.error(error: e.toString()));
+    } on NetworkExceptions catch (e) {
+      emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 
@@ -43,8 +44,8 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     try {
       final workout = await _workoutUseCase.cancelWorkout(workout: w);
       emit(WorkoutState.loaded(workout: workout));
-    } on Exception catch (e) {
-      emit(WorkoutState.error(error: e.toString()));
+    } on NetworkExceptions catch (e) {
+      emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 }

@@ -26,19 +26,38 @@ class ClubBatchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ClubCubit, ClubState>(
-      bloc: getIt<ClubCubit>(),
-      builder: (context, state) {
-        return Scaffold(
-          appBar: state.when(
-            loading: () => null,
-            loaded: (_, __, ___, ____, _____, ______, _______) =>
-                _buildPageTitle(context),
-            error: (error) => null,
-          ),
-          body: _buildBody(state, context),
+    return BlocListener<BuyBatchCubit, BuyBatchState>(
+      bloc: getIt<BuyBatchCubit>(),
+      listener: (context, state) {
+        state.when(
+          initial: () => null,
+          loaded: (response) {
+            context.pushNamed(
+              AppRoute.webview.routeToPath,
+              queryParams: <String, String>{
+                'url': response.payForm,
+                'pageTitle': S.of(context).clubBatchPageTitle,
+              },
+            );
+          },
+          error: (error) => ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(error))),
         );
       },
+      child: BlocBuilder<ClubCubit, ClubState>(
+        bloc: getIt<ClubCubit>(),
+        builder: (context, state) {
+          return Scaffold(
+            appBar: state.when(
+              loading: () => null,
+              loaded: (_, __, ___, ____, _____, ______, _______) =>
+                  _buildPageTitle(context),
+              error: (_) => null,
+            ),
+            body: _buildBody(state, context),
+          );
+        },
+      ),
     );
   }
 
@@ -80,24 +99,13 @@ class ClubBatchPage extends StatelessWidget {
       child: AppElevatedButton(
         onPressedAsync: () async {
           await getIt<BuyBatchCubit>()
-              .buyBatch(clubUuid: batch.clubUuid, batchUuid: batch.uuid)
-              .then((_) {
-            getIt<BuyBatchCubit>().state.whenOrNull(
-              loaded: (response) {
-                context.pushNamed(AppRoute.webview.routeToPath,
-                    queryParams: <String, String>{
-                      'url': response.payForm,
-                      'pageTitle': S.of(context).clubBatchPageTitle,
-                    });
-              },
-            );
-          });
+              .buyBatch(clubUuid: batch.clubUuid, batchUuid: batch.uuid);
         },
         textButton: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Стоимость ${batch.factPrice} р',
+              'Стоимость ${batch.factPrice} \u20BD',
               style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
             ),
             Text(
@@ -122,12 +130,12 @@ class ClubBatchPage extends StatelessWidget {
         const SizedBox(height: 16),
         _buildAmountToPayRow(
           'Пакет ${batch.hours} часов',
-          '${batch.factPrice} р',
+          '${batch.factPrice} \u20BD',
         ),
         const SizedBox(height: 10),
         _buildAmountToPayRow(
           'Итого за пакет',
-          '${batch.factPrice} р',
+          '${batch.factPrice} \u20BD',
         ),
       ],
     );

@@ -14,14 +14,14 @@ class AppGenderFormField extends StatefulWidget {
     super.key,
     required this.helper,
     required this.userGender,
-    required this.user,
+    this.user,
     this.padding = const EdgeInsets.only(top: 24, left: 16, right: 16),
   });
 
   final Widget helper;
   final EdgeInsets padding;
   final UserGenderEnum userGender;
-  final User user;
+  final User? user;
 
   @override
   State<AppGenderFormField> createState() => _AppGenderFormFieldState();
@@ -34,8 +34,10 @@ class _AppGenderFormFieldState extends State<AppGenderFormField> {
     if (gender != genderGroup && gender != null) {
       setState(() {
         genderGroup = gender;
-        getIt<UserBloc>().add(UserEvent.updateUserData(
-            user: widget.user.copyWith(gender: genderGroup)));
+        if (widget.user != null) {
+          getIt<UserBloc>().add(UserEvent.updateUserData(
+              user: widget.user!.copyWith(gender: genderGroup)));
+        }
       });
     }
   }

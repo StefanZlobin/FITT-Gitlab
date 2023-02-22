@@ -90,7 +90,7 @@ class OneTimeWorkoutCard extends StatelessWidget {
               child: Center(
                 child: club.batchHoursAvailable == 0
                     ? Text(
-                        'Оплатить ${getIt<ClubCubit>().selectedSlot!.price} р',
+                        'Оплатить ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
                         style: AppTypography.kH14
                             .apply(color: AppColors.kPrimaryBlue),
                       )

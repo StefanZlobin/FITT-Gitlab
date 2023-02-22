@@ -1,3 +1,5 @@
+// ignore_for_file: only_throw_errors
+
 import 'package:dio/dio.dart';
 import 'package:fitt/data/models/request/payment/buy_batch_request_body.dart';
 import 'package:fitt/data/models/request/payment/buy_workout_by_batch_request_body.dart';
@@ -6,6 +8,7 @@ import 'package:fitt/data/models/response/payment/buy_batch_response.dart';
 import 'package:fitt/data/source/remote_data_source/payment_api_client/payment_api_client.dart';
 import 'package:fitt/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/payment/payment_repository.dart';
 
 class PaymentRepositoryImpl implements PaymentRepository {
@@ -17,20 +20,24 @@ class PaymentRepositoryImpl implements PaymentRepository {
   final PaymentApiClient _apiClient;
 
   @override
-  Future<BuyBatchResponse> buyBatch(
-      {required String clubUuid, required int batchUuid}) async {
+  Future<BuyBatchResponse> buyBatch({
+    required String clubUuid,
+    required int batchUuid,
+  }) async {
     try {
       final response = await _apiClient.buyBatchOffers(
           clubUuid, BuyBatchRequestBody(batchUuid));
       return response;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e) {
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
   @override
-  Future<Workout> buyWorkout(
-      {required TimeSlot slot, required String activityUuid}) async {
+  Future<Workout> buyWorkout({
+    required TimeSlot slot,
+    required String activityUuid,
+  }) async {
     try {
       final response = await _apiClient.buyWorkout(BuyWorkoutRequestBody(
         activity: activityUuid,
@@ -39,14 +46,16 @@ class PaymentRepositoryImpl implements PaymentRepository {
         price: slot.price,
       ));
       return response;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e) {
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
   @override
-  Future<Workout> buyWorkoutByBatch(
-      {required TimeSlot slot, required String activityUuid}) async {
+  Future<Workout> buyWorkoutByBatch({
+    required TimeSlot slot,
+    required String activityUuid,
+  }) async {
     try {
       final response =
           await _apiClient.buyWorkoutByBatch(BuyWorkoutByBatchRequestBody(
@@ -55,8 +64,8 @@ class PaymentRepositoryImpl implements PaymentRepository {
         endTime: slot.startTime.add(slot.duration).toString(),
       ));
       return response;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e) {
+      throw NetworkExceptions.getDioException(e);
     }
   }
 }

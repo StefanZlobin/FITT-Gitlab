@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -25,7 +26,6 @@ import '../../domain/blocs/carousel/carousel_bloc.dart';
 import '../../domain/blocs/map/map_bloc.dart';
 import '../../domain/blocs/search/search_bloc.dart';
 import '../../domain/blocs/user/user_bloc.dart';
-import '../../domain/blocs/workout_timer/ticker.dart';
 import '../../domain/blocs/workout_timer/workout_timer_bloc.dart';
 import '../../domain/cubits/account_save_button/account_save_button_cubit.dart';
 import '../../domain/cubits/admin_club/admin_club_cubit.dart';
@@ -63,6 +63,7 @@ import '../../domain/repositories/user/user_repository.dart';
 import '../../domain/repositories/workout/workout_repository.dart';
 import '../../domain/services/geolocation/geolocation_service.dart';
 import '../../domain/services/local_notifications/local_notifications_service.dart';
+import '../../domain/ticker.dart';
 import '../constants/stotages.dart';
 import '../interceptors/token_interceptor.dart';
 
@@ -202,6 +203,8 @@ void _registerBlocs() {
   getIt.registerLazySingleton<PartnerClubsFavoriteCubit>(
       () => PartnerClubsFavoriteCubit());
   getIt.registerLazySingleton<ClubCubit>(() => ClubCubit());
+  getIt.registerLazySingleton<AuthenticationErrorTimerBloc>(
+      () => AuthenticationErrorTimerBloc(ticker: const Ticker()));
   getIt.registerLazySingleton<ClubPhotoSliderCubit>(
       () => ClubPhotoSliderCubit());
   getIt.registerLazySingleton<CalculateWorkoutPriceCubit>(

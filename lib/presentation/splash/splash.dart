@@ -21,7 +21,7 @@ class Splash extends StatelessWidget {
       splashTransition: SplashTransition.fadeTransition,
       screenRouteFunction: () async {
         context.push(AppRoute.map.routeToPath);
-        return '';
+        return AppRoute.map.routeToPath;
       },
     );
   }

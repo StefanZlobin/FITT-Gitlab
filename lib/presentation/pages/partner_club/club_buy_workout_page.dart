@@ -43,14 +43,18 @@ class ClubBuyWorkoutPage extends StatelessWidget {
               getIt<WorkoutCubit>().getWorkout(workoutUuid: workout.uuid);
               context.push(AppRoute.paymentSuccess.routeToPath);
             } else {
-              context.pushNamed(AppRoute.webview.routeToPath,
-                  queryParams: <String, String>{
-                    'url': workout.payForm!,
-                    'pageTitle': 'Оплата',
-                    'workoutUuid': workout.uuid,
-                  });
+              context.pushNamed(
+                AppRoute.webview.routeToPath,
+                queryParams: <String, String>{
+                  'url': workout.payForm!,
+                  'pageTitle': 'Оплата',
+                  'workoutUuid': workout.uuid,
+                },
+              );
             }
           },
+          error: (error) => ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(error))),
         );
       },
       child: BlocBuilder<ClubCubit, ClubState>(
@@ -119,7 +123,6 @@ class ClubBuyWorkoutPage extends StatelessWidget {
             _buildPickDurationWidget(durationSlots),
             CalculatedPriceWorkout(club: club),
             ClubBuyWorkoutDisclaimer(club: club),
-            //const SizedBox(height: 100),
           ],
         ),
         _buildPayButton(club, selectedActivity),
@@ -177,7 +180,7 @@ class ClubBuyWorkoutPage extends StatelessWidget {
         children: [
           if (club.batchHoursAvailable == 0)
             Text(
-              'Стоимость ${getIt<ClubCubit>().selectedSlot!.price} р',
+              'Стоимость ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
               style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
             )
           else

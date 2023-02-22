@@ -8,8 +8,12 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
+import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
+import 'package:fitt/presentation/components/animated_dots.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
 class UserAvatar extends StatelessWidget {
@@ -61,7 +65,32 @@ class UserAvatar extends StatelessWidget {
             : Text('${user?.firstName} ${user?.lastName}'),
         subtitle: user?.firstName == null && user?.lastName == null
             ? null
-            : const Text('Санкт-Петербург'),
+            : FutureBuilder<Position>(
+                future: getIt<GeolocationService>().getCurrentPosition(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const AnimatedDots();
+                  }
+                  final position = snapshot.data;
+                  if (position == null) {
+                    return const Text('Геопозиция не определена');
+                  }
+                  return FutureBuilder<List<Placemark>>(
+                    future: placemarkFromCoordinates(
+                        position.latitude, position.longitude),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const AnimatedDots();
+                      }
+                      final locationAddress = snapshot.data;
+                      if (locationAddress == null) {
+                        return const Text('Не удалось определить город');
+                      }
+                      return Text('${locationAddress[0].locality}');
+                    },
+                  );
+                },
+              ),
         trailing: isAdminPage
             ? const Icon(
                 AppIcons.arr_big_right,
@@ -99,10 +128,8 @@ class UserAvatar extends StatelessWidget {
       height: avatarSize,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(avatarSize * borderRadiusFactor),
-        border: Border.all(width: 2, color: Colors.black26),
-        color: Colors.white24,
+        color: const Color(0xFFD2D2D2),
       ),
-      child: const Icon(Icons.account_circle_rounded),
     );
   }
 }

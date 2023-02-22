@@ -126,7 +126,7 @@ class WorkoutPage extends StatelessWidget {
                   ),
                   _buildInformationText(
                     'Иноформация о платеже',
-                    'Сумма ${workout.price} р',
+                    'Сумма ${workout.price} \u20BD',
                     '',
                   ),
                   _buildInformationText(

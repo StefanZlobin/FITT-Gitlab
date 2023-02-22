@@ -169,13 +169,13 @@ extension AppRouterExtension on AppRoute {
         return AppRoute.account.name.toUpperCase();
 
       case AppRoute.personalData:
-        return AppRoute.personalData.name.toUpperCase();
+        return '/${AppRoute.personalData.name.toUpperCase()}';
 
       case AppRoute.inputPhoneNumber:
-        return AppRoute.inputPhoneNumber.name.toUpperCase();
+        return '/${AppRoute.inputPhoneNumber.name.toUpperCase()}';
 
       case AppRoute.inputSecureCode:
-        return AppRoute.inputSecureCode.name.toUpperCase();
+        return '/${AppRoute.inputSecureCode.name.toUpperCase()}';
     }
   }
 

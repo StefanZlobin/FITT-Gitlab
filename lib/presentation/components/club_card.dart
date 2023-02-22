@@ -72,7 +72,7 @@ class ClubCard extends StatelessWidget {
 
   Text _buildClubMinPrice() {
     return Text(
-      'Тренировки от ${club.minPrice} р',
+      'Тренировки от ${club.minPrice} \u20BD',
       style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
       overflow: TextOverflow.ellipsis,
     );
