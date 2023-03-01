@@ -5,10 +5,10 @@
 		<key>NSAppTransportSecurity</key>
 		<dict>
 			<key>NSAllowsArbitraryLoads</key>
-			<true/>
+			<true />
 		</dict>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
-		<true/>
+		<true />
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
@@ -37,7 +37,7 @@
 			<string>tel</string>
 		</array>
 		<key>LSRequiresIPhoneOS</key>
-		<true/>
+		<true />
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>This app needs access to location when in the background</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
@@ -45,7 +45,7 @@
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>The gallery may be needed to display the user's avatar</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
-		<true/>
+		<true />
 		<key>UIBackgroundModes</key>
 		<array>
 			<string>fetch</string>
@@ -69,8 +69,8 @@
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false/>
+		<false />
 		<key>UIStatusBarHidden</key>
-		<false/>
+		<false />
 	</dict>
 </plist>

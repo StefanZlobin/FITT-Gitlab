@@ -80,8 +80,6 @@ dependencies:
   geolocator: ^9.0.2
   #Url launcher
   url_launcher: ^6.1.9
-  #Native splash
-  animated_splash_screen: ^1.3.0
   #Timezone
   timezone: ^0.9.1
   #Local notifications
@@ -95,6 +93,13 @@ dependencies:
   feedback_sentry: ^2.3.0
   #Page transition
   page_transition: ^2.0.9
+
+  #Animated native splash screen
+  #aka Stefan
+  animated_splash_screen:
+    git:
+      url: https://github.com/StefanZlobin/animated_splash_screen.git
+      ref: master
 
   #Scroll snap list
   #Carousel of clubs aka Svetozar

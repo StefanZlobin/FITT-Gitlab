@@ -28,10 +28,11 @@ packages:
   animated_splash_screen:
     dependency: "direct main"
     description:
-      name: animated_splash_screen
-      sha256: f45634db6ec4e8cf034c53e03f3bd83898a16fe3c9286bf5510b6831dfcf2124
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: master
+      resolved-ref: bcc823aef770822e590c049df44c45d96364ee6f
+      url: "https://github.com/StefanZlobin/animated_splash_screen.git"
+    source: git
     version: "1.3.0"
   args:
     dependency: transitive
@@ -1480,34 +1481,34 @@ packages:
     dependency: "direct main"
     description:
       name: webview_flutter
-      sha256: f7ec234830f86d0ef2bd664e8460b0038b8c1a83ff076035cad74ac70273753c
+      sha256: "9ba213434f13e760ea0f175fbc4d6bb6aeafd7dfc6c7d973f15d3e47a5d6686e"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.2"
+    version: "4.0.5"
   webview_flutter_android:
     dependency: transitive
     description:
       name: webview_flutter_android
-      sha256: da98c8cdaebea4cf89481853f37ca93ccc8d31fc386f5b3c928aea3b6e83268c
+      sha256: "48c8cfb023168473c0a3a4c21ffea6c23a32cc7156701c39f618b303c6a3c96e"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.0"
+    version: "3.3.1"
   webview_flutter_platform_interface:
     dependency: transitive
     description:
       name: webview_flutter_platform_interface
-      sha256: "8b2262dda5d26eabc600a7282a8c16a9473a0c765526afb0ffc33eef912f7968"
+      sha256: df6472164b3f4eaf3280422227f361dc8424b106726b7f21d79a8656ba53f71f
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   webview_flutter_wkwebview:
     dependency: transitive
     description:
       name: webview_flutter_wkwebview
-      sha256: dcd9ad0ef0f608f399d7a54d0b289597385e59a89f04983a672b9348faddfd98
+      sha256: "283a38c2a2544768033864c698e0133aa9eee0f2c800f494b538a3d1044f7ecb"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "3.1.1"
   win32:
     dependency: transitive
     description:

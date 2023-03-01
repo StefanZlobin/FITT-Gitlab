@@ -1,0 +1,9 @@
+{
+   "dart.normalizeFileCasing": false,
+   "dart.flutterCreateOrganization": null,
+
+   "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true,
+  }
+}
