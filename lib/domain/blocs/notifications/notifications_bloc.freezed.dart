@@ -718,6 +718,7 @@ mixin _$NotificationsState {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -733,6 +734,7 @@ mixin _$NotificationsState {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -748,6 +750,7 @@ mixin _$NotificationsState {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -766,6 +769,7 @@ mixin _$NotificationsState {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -781,6 +785,7 @@ mixin _$NotificationsState {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -796,6 +801,7 @@ mixin _$NotificationsState {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -867,6 +873,7 @@ class _$_Initial implements _Initial {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -885,6 +892,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -903,6 +911,7 @@ class _$_Initial implements _Initial {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -927,6 +936,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -945,6 +955,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -963,6 +974,7 @@ class _$_Initial implements _Initial {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1025,6 +1037,7 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return paymentBatchSuccess();
@@ -1043,6 +1056,7 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return paymentBatchSuccess?.call();
@@ -1061,6 +1075,7 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1085,6 +1100,7 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return paymentBatchSuccess(this);
@@ -1103,6 +1119,7 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return paymentBatchSuccess?.call(this);
@@ -1121,6 +1138,7 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1183,6 +1201,7 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return paymentBatchReject();
@@ -1201,6 +1220,7 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return paymentBatchReject?.call();
@@ -1219,6 +1239,7 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1243,6 +1264,7 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return paymentBatchReject(this);
@@ -1261,6 +1283,7 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return paymentBatchReject?.call(this);
@@ -1279,6 +1302,7 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1341,6 +1365,7 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return paymentWorkoutSuccess();
@@ -1359,6 +1384,7 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return paymentWorkoutSuccess?.call();
@@ -1377,6 +1403,7 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1401,6 +1428,7 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return paymentWorkoutSuccess(this);
@@ -1419,6 +1447,7 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return paymentWorkoutSuccess?.call(this);
@@ -1437,6 +1466,7 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1499,6 +1529,7 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return paymentWorkoutReject();
@@ -1517,6 +1548,7 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return paymentWorkoutReject?.call();
@@ -1535,6 +1567,7 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1559,6 +1592,7 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return paymentWorkoutReject(this);
@@ -1577,6 +1611,7 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return paymentWorkoutReject?.call(this);
@@ -1595,6 +1630,7 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1657,6 +1693,7 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return workoutStatusPlanned();
@@ -1675,6 +1712,7 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return workoutStatusPlanned?.call();
@@ -1693,6 +1731,7 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1717,6 +1756,7 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return workoutStatusPlanned(this);
@@ -1735,6 +1775,7 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return workoutStatusPlanned?.call(this);
@@ -1753,6 +1794,7 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1815,6 +1857,7 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return workoutStatusRS();
@@ -1833,6 +1876,7 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return workoutStatusRS?.call();
@@ -1851,6 +1895,7 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -1875,6 +1920,7 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return workoutStatusRS(this);
@@ -1893,6 +1939,7 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return workoutStatusRS?.call(this);
@@ -1911,6 +1958,7 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1973,6 +2021,7 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return workoutStatusStarted();
@@ -1991,6 +2040,7 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return workoutStatusStarted?.call();
@@ -2009,6 +2059,7 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -2033,6 +2084,7 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return workoutStatusStarted(this);
@@ -2051,6 +2103,7 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return workoutStatusStarted?.call(this);
@@ -2069,6 +2122,7 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -2131,6 +2185,7 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return workoutStatusRF();
@@ -2149,6 +2204,7 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return workoutStatusRF?.call();
@@ -2167,6 +2223,7 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -2191,6 +2248,7 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return workoutStatusRF(this);
@@ -2209,6 +2267,7 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return workoutStatusRF?.call(this);
@@ -2227,6 +2286,7 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -2289,6 +2349,7 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return workoutStatusFinished();
@@ -2307,6 +2368,7 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return workoutStatusFinished?.call();
@@ -2325,6 +2387,7 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -2349,6 +2412,7 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return workoutStatusFinished(this);
@@ -2367,6 +2431,7 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return workoutStatusFinished?.call(this);
@@ -2385,6 +2450,7 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -2397,6 +2463,170 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
 
 abstract class _WorkoutStatusFinished implements NotificationsState {
   const factory _WorkoutStatusFinished() = _$_WorkoutStatusFinished;
+}
+
+/// @nodoc
+abstract class _$$_WorkoutStatusFFCopyWith<$Res> {
+  factory _$$_WorkoutStatusFFCopyWith(
+          _$_WorkoutStatusFF value, $Res Function(_$_WorkoutStatusFF) then) =
+      __$$_WorkoutStatusFFCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WorkoutStatusFFCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusFF>
+    implements _$$_WorkoutStatusFFCopyWith<$Res> {
+  __$$_WorkoutStatusFFCopyWithImpl(
+      _$_WorkoutStatusFF _value, $Res Function(_$_WorkoutStatusFF) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_WorkoutStatusFF implements _WorkoutStatusFF {
+  const _$_WorkoutStatusFF();
+
+  @override
+  String toString() {
+    return 'NotificationsState.workoutStatusFF()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusFF);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() paymentBatchSuccess,
+    required TResult Function() paymentBatchReject,
+    required TResult Function() paymentWorkoutSuccess,
+    required TResult Function() paymentWorkoutReject,
+    required TResult Function() workoutStatusPlanned,
+    required TResult Function() workoutStatusRS,
+    required TResult Function() workoutStatusStarted,
+    required TResult Function() workoutStatusRF,
+    required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
+    required TResult Function(String error) error,
+  }) {
+    return workoutStatusFF();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? paymentBatchSuccess,
+    TResult? Function()? paymentBatchReject,
+    TResult? Function()? paymentWorkoutSuccess,
+    TResult? Function()? paymentWorkoutReject,
+    TResult? Function()? workoutStatusPlanned,
+    TResult? Function()? workoutStatusRS,
+    TResult? Function()? workoutStatusStarted,
+    TResult? Function()? workoutStatusRF,
+    TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
+    TResult? Function(String error)? error,
+  }) {
+    return workoutStatusFF?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? paymentBatchSuccess,
+    TResult Function()? paymentBatchReject,
+    TResult Function()? paymentWorkoutSuccess,
+    TResult Function()? paymentWorkoutReject,
+    TResult Function()? workoutStatusPlanned,
+    TResult Function()? workoutStatusRS,
+    TResult Function()? workoutStatusStarted,
+    TResult Function()? workoutStatusRF,
+    TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (workoutStatusFF != null) {
+      return workoutStatusFF();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
+    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
+    required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
+    required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
+    required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
+    required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
+    required TResult Function(_Error value) error,
+  }) {
+    return workoutStatusFF(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
+    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
+    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
+    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
+    TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
+    TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
+    TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
+    TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
+    TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
+    TResult? Function(_Error value)? error,
+  }) {
+    return workoutStatusFF?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
+    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
+    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
+    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
+    TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
+    TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
+    TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
+    TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
+    TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (workoutStatusFF != null) {
+      return workoutStatusFF(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WorkoutStatusFF implements NotificationsState {
+  const factory _WorkoutStatusFF() = _$_WorkoutStatusFF;
 }
 
 /// @nodoc
@@ -2471,6 +2701,7 @@ class _$_Error implements _Error {
     required TResult Function() workoutStatusStarted,
     required TResult Function() workoutStatusRF,
     required TResult Function() workoutStatusFinished,
+    required TResult Function() workoutStatusFF,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -2489,6 +2720,7 @@ class _$_Error implements _Error {
     TResult? Function()? workoutStatusStarted,
     TResult? Function()? workoutStatusRF,
     TResult? Function()? workoutStatusFinished,
+    TResult? Function()? workoutStatusFF,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -2507,6 +2739,7 @@ class _$_Error implements _Error {
     TResult Function()? workoutStatusStarted,
     TResult Function()? workoutStatusRF,
     TResult Function()? workoutStatusFinished,
+    TResult Function()? workoutStatusFF,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -2531,6 +2764,7 @@ class _$_Error implements _Error {
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
     required TResult Function(_WorkoutStatusFinished value)
         workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -2549,6 +2783,7 @@ class _$_Error implements _Error {
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -2567,6 +2802,7 @@ class _$_Error implements _Error {
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
     TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
     TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
+    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

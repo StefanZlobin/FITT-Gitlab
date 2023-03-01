@@ -1,15 +1,15 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fitt/core/enum/payment_status_enum.dart';
 import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'notifications_bloc.freezed.dart';
 part 'notifications_event.dart';
 part 'notifications_state.dart';
-part 'notifications_bloc.freezed.dart';
 
 class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   NotificationsBloc() : super(const _Initial()) {
@@ -36,20 +36,38 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     on<_OnChangeWorkoutNotification>(_onChangeWorkoutNotification);
   }
 
-  Future<void> _onPaymentBatchNotification(
+  void setInitialState() {
+    emit(const _Initial());
+  }
+
+  void _onPaymentBatchNotification(
     _OnPaymentBatchNotification event,
     Emitter<NotificationsState> emit,
-  ) async {}
+  ) {
+    if (event.message.data['payment_status'] ==
+        PaymentStatusEnum.success.name.toUpperCase()) {
+      emit(const _PaymentBatchSuccess());
+    } else {
+      emit(const _PaymentBatchReject());
+    }
+  }
 
-  Future<void> _onPaymentWorkoutNotification(
+  void _onPaymentWorkoutNotification(
     _OnPaymentWorkoutNotification event,
     Emitter<NotificationsState> emit,
-  ) async {}
+  ) {
+    if (event.message.data['payment_status'] ==
+        PaymentStatusEnum.success.name.toUpperCase()) {
+      emit(const _PaymentWorkoutSuccess());
+    } else {
+      emit(const _PaymentWorkoutReject());
+    }
+  }
 
-  Future<void> _onChangeWorkoutNotification(
+  void _onChangeWorkoutNotification(
     _OnChangeWorkoutNotification event,
     Emitter<NotificationsState> emit,
-  ) async {
+  ) {
     if (event.message.data['user_type'] == UserTypeEnum.CUSTOMER.name) {
       if (event.message.data['status'] == 'REQUIRED_START') {
         emit(const NotificationsState.workoutStatusRS());
@@ -58,6 +76,8 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
       } else if (event.message.data['status'] == 'REQUIRED_FINISH') {
         emit(const NotificationsState.workoutStatusRF());
       } else if (event.message.data['status'] == 'FINISH') {
+        emit(const NotificationsState.workoutStatusFinished());
+      } else if (event.message.data['status'] == 'FORCE_FINISH') {
         emit(const NotificationsState.workoutStatusFinished());
       }
     }
