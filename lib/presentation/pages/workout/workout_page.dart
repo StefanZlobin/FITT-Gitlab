@@ -1,14 +1,13 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
-import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
-import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/timer_utils.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/compact_map.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/components/workout/archive_workout_card.dart';
@@ -36,7 +35,13 @@ class WorkoutPage extends StatelessWidget {
   }
 
   AppBar _buildAppBar(BuildContext context) {
-    return AppBar(title: Text(AppRoute.workout.routeToTitle(context)!));
+    return AppBar(
+      title: Text(L.of(context).workoutPageTitle),
+      leading: IconButton(
+        onPressed: () => context.pop(),
+        icon: const Icon(AppIcons.arr_big_left),
+      ),
+    );
   }
 
   Widget _buildBody(BuildContext context) {
@@ -45,13 +50,7 @@ class WorkoutPage extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           loaded: (workout) {
-            if (workout.status == WorkoutStatusEnum.canceled) {
-              getIt<WorkoutsCubit>().getWorkouts();
-              context.pushNamed(
-                AppRoute.workoutArchiveList.routeToPath,
-                extra: false,
-              );
-            } else if (workout.status == WorkoutStatusEnum.started) {
+            if (workout.status == WorkoutStatusEnum.started) {
               getIt<LocalNotificationsService>().scheduleLocalNotification(
                 id: workout.workoutHashCode - 3,
                 title: 'До конца тренировки осталось 10 минут',

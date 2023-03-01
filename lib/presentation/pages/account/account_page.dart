@@ -8,6 +8,7 @@ import 'package:fitt/core/constants/border_avatar_radius.dart';
 import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/core/validation/date_validator.dart';
 import 'package:fitt/core/validation/email_validator.dart';
@@ -57,7 +58,13 @@ class _AccountPageState extends State<AccountPage> {
     DateTime? newBirthday;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Личные данные')),
+      appBar: AppBar(
+        title: const Text('Личные данные'),
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(AppIcons.arr_big_left),
+        ),
+      ),
       body: BlocListener<UserBloc, UserState>(
         bloc: getIt<UserBloc>(),
         listener: (context, state) {

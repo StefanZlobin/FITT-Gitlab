@@ -2,9 +2,11 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/authentication/authentication_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/auth_user_disclaimer.dart';
 import 'package:fitt/presentation/components/page_title.dart';
 import 'package:flutter/material.dart';
@@ -35,13 +37,11 @@ class _InputPhoneNumberPageState extends State<InputPhoneNumberPage> {
         leading: GestureDetector(
           onTap: () => context.pop(),
           child: const Icon(
-            Icons.arrow_back,
+            AppIcons.arr_big_left,
             color: AppColors.kBaseBlack,
           ),
         ),
-        title: Text(
-          AppRoute.inputPhoneNumber.routeToTitle(context)!,
-        ),
+        title: Text(L.of(context).inputPhoneNumber),
       ),
       body: Column(
         children: [

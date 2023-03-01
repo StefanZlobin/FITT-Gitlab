@@ -15,7 +15,7 @@ import 'package:fitt/domain/entities/activity/activity.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
 import 'package:fitt/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/gen/assets.gen.dart';
-import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/club_buy_workout_disclaimer.dart';
 import 'package:fitt/presentation/pages/partner_club/widgets/calculate_price_workout.dart';
@@ -61,7 +61,13 @@ class ClubBuyWorkoutPage extends StatelessWidget {
         bloc: getIt<ClubCubit>(),
         builder: (context, state) {
           return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).buyWorkoutPageTitle)),
+            appBar: AppBar(
+              title: Text(L.of(context).buyWorkoutPageTitle),
+              leading: IconButton(
+                onPressed: () => context.pop(),
+                icon: const Icon(AppIcons.close_big),
+              ),
+            ),
             body: state.when(
               loading: () => const SizedBox(),
               loaded: (

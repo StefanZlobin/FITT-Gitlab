@@ -2,6 +2,7 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/core/validation/email_validator.dart';
@@ -46,6 +47,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Обратиться в поддержку'),
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: const Icon(AppIcons.arr_big_left),
+          ),
         ),
         body: Stack(
           children: [
@@ -169,7 +174,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 ),
                 marginButton: const EdgeInsets.all(0),
                 onPressed: () {
-                  context.push(AppRoute.information.routeToPath);
+                  context.push(AppRoute.map.routeToPath);
                 },
               ),
             ),

@@ -1,7 +1,8 @@
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
-import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/empty_widget.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/components/workout/workout_card.dart';
@@ -18,9 +19,9 @@ class WorkoutsPage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => context.pop(),
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(AppIcons.arr_big_left),
         ),
-        title: Text(S
+        title: Text(L
             .of(context)
             .workoutListPageTitle(getIt<WorkoutsCubit>().workoutCount)),
       ),

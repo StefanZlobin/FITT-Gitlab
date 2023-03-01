@@ -2,6 +2,7 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
@@ -9,15 +10,15 @@ import 'package:fitt/domain/cubits/buy_batch/buy_batch_cubit.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
-import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/club_buy_workout_disclaimer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class ClubBatchPage extends StatelessWidget {
-  const ClubBatchPage({
+class ClubBuyBatchPage extends StatelessWidget {
+  const ClubBuyBatchPage({
     super.key,
     required this.batch,
   });
@@ -36,7 +37,7 @@ class ClubBatchPage extends StatelessWidget {
               AppRoute.webview.routeToPath,
               queryParams: <String, String>{
                 'url': response.payForm,
-                'pageTitle': S.of(context).clubBatchPageTitle,
+                'pageTitle': L.of(context).clubBatchPageTitle,
               },
             );
           },
@@ -206,7 +207,11 @@ class ClubBatchPage extends StatelessWidget {
 
   AppBar _buildPageTitle(BuildContext context) {
     return AppBar(
-      title: Text(S.of(context).clubBatchPageTitle),
+      title: Text(L.of(context).clubBatchPageTitle),
+      leading: IconButton(
+        onPressed: () => context.pop(),
+        icon: const Icon(AppIcons.close_big),
+      ),
     );
   }
 }

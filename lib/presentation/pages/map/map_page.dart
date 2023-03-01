@@ -27,6 +27,7 @@ class MapPage extends StatelessWidget {
       bloc: getIt<NotificationsBloc>(),
       listener: (context, state) {
         state.whenOrNull(
+          workoutStatusPlanned: () => getIt<WorkoutsCubit>().getWorkouts(),
           workoutStatusStarted: () => getIt<WorkoutsCubit>().getWorkouts(),
           workoutStatusFinished: () => getIt<WorkoutsCubit>().getWorkouts(),
         );

@@ -11,7 +11,7 @@ import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
 import 'package:fitt/domain/entities/facility/facility.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
-import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/club_card.dart';
 import 'package:fitt/presentation/components/empty_state_widget.dart';
 import 'package:fitt/presentation/components/modals/filter_modal_bottom_sheet.dart';
@@ -76,13 +76,13 @@ class FavoriteClubsPage extends StatelessWidget {
               loaded: (clubs, _) {
                 return AppBar(
                   title: Text(
-                    S.of(context).clubFavouriteListPageTitle(clubs.length),
+                    L.of(context).clubFavouriteListPageTitle(clubs.length),
                   ),
                   leading: IconButton(
                     onPressed: () {
                       context.pop();
                     },
-                    icon: const Icon(Icons.arrow_back),
+                    icon: const Icon(AppIcons.arr_big_left),
                   ),
                 );
               },

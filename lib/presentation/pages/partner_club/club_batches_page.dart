@@ -8,7 +8,7 @@ import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
-import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -207,7 +207,11 @@ class ClubBatchesPage extends StatelessWidget {
 
   AppBar _buildAppBarWidget(PartnerClub club, BuildContext context) {
     return AppBar(
-      title: Text(S.of(context).clubBatchesPageTitle),
+      title: Text(L.of(context).clubBatchesPageTitle),
+      leading: IconButton(
+        onPressed: () => context.pop(),
+        icon: const Icon(AppIcons.close_big),
+      ),
     );
   }
 }

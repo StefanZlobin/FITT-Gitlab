@@ -4,6 +4,7 @@ import 'package:fitt/core/constants/fitt_links.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,11 @@ class InformrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppRoute.information.routeToTitle(context)!),
+        title: Text(L.of(context).informationPageTitle),
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(AppIcons.arr_big_left),
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 32),
@@ -28,7 +33,7 @@ class InformrationPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Обратиться в поддежку',
+                  'Обратиться в поддержку',
                   style: AppTypography.kH14.apply(color: AppColors.kBaseBlack),
                 ),
                 const Icon(

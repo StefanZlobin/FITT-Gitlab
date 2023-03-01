@@ -4,10 +4,13 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/tokens/user_device_token.dart';
 import 'package:fitt/domain/blocs/authentication/authentication_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +29,8 @@ class InputSecureCodePage extends StatefulWidget {
   State<InputSecureCodePage> createState() => _InputSecureCodePageState();
 }
 
-class _InputSecureCodePageState extends State<InputSecureCodePage> {
+class _InputSecureCodePageState extends State<InputSecureCodePage>
+    with UserMixin {
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
   bool _inited = false;
@@ -56,10 +60,22 @@ class _InputSecureCodePageState extends State<InputSecureCodePage> {
       bloc: getIt<AuthenticationBloc>(),
       listener: (context, state) {
         state.whenOrNull(
-          success: () =>  context.pushNamed(
-            AppRoute.personalData.routeToPath,
-            extra: true,
-          ),
+          success: () {
+            if (userSnapshot == null) {
+              context.pushNamed(
+                AppRoute.personalData.routeToPath,
+                extra: true,
+              );
+            }
+            if (userSnapshot!.hasFullData) {
+              context.push(AppRoute.map.routeToPath);
+            } else {
+              context.pushNamed(
+                AppRoute.personalData.routeToPath,
+                extra: true,
+              );
+            }
+          },
           loaded: (attemptsEnterSecureCode, circularAttempt) {
             if (attemptsEnterSecureCode == 4 && circularAttempt == 0) {
               getIt<AuthenticationErrorTimerBloc>().add(
@@ -79,11 +95,9 @@ class _InputSecureCodePageState extends State<InputSecureCodePage> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () => context.pop(),
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(AppIcons.arr_big_left),
           ),
-          title: Text(
-            AppRoute.inputSecureCode.routeToTitle(context)!,
-          ),
+          title: Text(L.of(context).inputSecureCode),
         ),
         body: Column(
           children: [
@@ -106,7 +120,18 @@ class _InputSecureCodePageState extends State<InputSecureCodePage> {
                     ],
                   ),
                   success: () => const SizedBox(),
-                  error: (error) => const SizedBox(),
+                  error: (error) => Column(
+                    children: [
+                      _buildTextHintWidget(context),
+                      _buildInputSecureCodeWidget(
+                        context,
+                        secureCodeFormatter,
+                        secureCodeMask,
+                        0,
+                        0,
+                      ),
+                    ],
+                  ),
                 );
               },
             ),

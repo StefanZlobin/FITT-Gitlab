@@ -36,8 +36,8 @@ class ClubPage extends StatelessWidget {
           appBar: state.when(
             loading: () => null,
             loaded: (club, _, __, ___, ____, _____, ______) =>
-                _buildAppBarWidget(club),
-            error: (error) => AppBar(),
+                _buildAppBarWidget(context, club),
+            error: (error) => null,
           ),
           body: state.when(
             loading: () => const Center(child: CircularProgressIndicator()),
@@ -57,13 +57,22 @@ class ClubPage extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBarWidget(PartnerClub club) {
+  AppBar _buildAppBarWidget(BuildContext context, PartnerClub club) {
     return AppBar(
       title: Text(club.label!.toUpperCase()),
+      leading: IconButton(
+        onPressed: () => context.pop(),
+        icon: const Icon(
+          AppIcons.close_big,
+          size: 16,
+        ),
+      ),
       actions: [
         GestureDetector(
-          onTap: () => getIt<ClubCubit>().setFavorite(
-              favorite: club.isFavorite ?? false, clubUuid: clubUuid),
+          onTap: () {
+            getIt<ClubCubit>().setFavorite(
+                favorite: club.isFavorite ?? false, clubUuid: clubUuid);
+          },
           child: Padding(
             padding: const EdgeInsets.only(right: 16),
             child: Icon(

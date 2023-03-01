@@ -1,12 +1,14 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
-import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/pages/partner_club/widgets/expanded_schedule_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ClubInformationPage extends StatelessWidget {
@@ -16,7 +18,11 @@ class ClubInformationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).clubInformationPageTitle),
+        title: Text(L.of(context).clubInformationPageTitle),
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(AppIcons.arr_big_left),
+        ),
       ),
       body: BlocBuilder<ClubCubit, ClubState>(
         bloc: getIt<ClubCubit>(),

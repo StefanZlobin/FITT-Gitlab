@@ -8,7 +8,7 @@ import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
-import 'package:fitt/generated/l10n.dart';
+import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/animated_dots.dart';
 import 'package:fitt/presentation/components/empty_widget.dart';
 import 'package:fitt/presentation/components/modals/sorting_modal_bottom_sheet.dart';
@@ -33,7 +33,7 @@ class ArchiveWorkoutsPage extends StatelessWidget {
 
     final scrollController = ScrollController();
 
-    scrollController.addListener(() { 
+    scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
           getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts();
@@ -74,9 +74,9 @@ class ArchiveWorkoutsPage extends StatelessWidget {
             onPressed: () => fromWorkoutPage
                 ? context.push(AppRoute.map.routeToPath)
                 : context.pop(),
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(AppIcons.arr_big_left),
           ),
-          title: Text(S.of(context).workoutArchivePageTitle),
+          title: Text(L.of(context).workoutArchivePageTitle),
         ),
         body: Column(
           children: [
@@ -85,9 +85,6 @@ class ArchiveWorkoutsPage extends StatelessWidget {
             const SizedBox(height: 24),
             BlocBuilder<ArchiveWorkoutsCubit, ArchiveWorkoutsState>(
               bloc: getIt<ArchiveWorkoutsCubit>(),
-              buildWhen: (previous, current) {
-                return current != previous;
-              },
               builder: (context, state) {
                 return state.when(
                   initial: () =>
@@ -128,24 +125,14 @@ class ArchiveWorkoutsPage extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height - 175,
       child: ListView.separated(
+        padding: const EdgeInsets.only(bottom: 32),
         controller: scrollController,
-        itemCount: workouts.length + 1 + (isLoading ? 1 : 0),
+        itemCount: workouts.length + (isLoading ? 1 : 0),
         separatorBuilder: (_, index) {
-          if (index == workouts.length) {
-            return const SizedBox();
-          }
-          if (index == workouts.length + 1) {
-            return const SizedBox(height: 32);
-          }
-          return const Separator(
-            color: AppColors.kOxford10,
-          );
+          return const Separator(color: AppColors.kOxford10);
         },
         itemBuilder: (context, index) {
-          if (index < workouts.length + 1) {
-            if (index == workouts.length) {
-              return const SizedBox(height: 14);
-            }
+          if (index < workouts.length) {
             final workout = workouts[index];
             return ArchiveWorkoutCard(
               workout: workout,
@@ -154,17 +141,26 @@ class ArchiveWorkoutsPage extends StatelessWidget {
                   : const EdgeInsets.fromLTRB(16, 24, 16, 13),
             );
           } else {
-            scrollController.jumpTo(scrollController.position.maxScrollExtent);
-            return Column(
-              children: [
-                const AnimatedDots(),
-                const SizedBox(height: 16),
-                Text(
-                  'Загружаем тренировки',
-                  style:
-                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
-                ),
-              ],
+            scrollController.animateTo(
+              scrollController.position.maxScrollExtent + 256,
+              duration: const Duration(microseconds: 1),
+              curve: Curves.easeIn,
+            );
+
+            return SizedBox(
+              height: 256,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const AnimatedDots(),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Загружаем тренировки',
+                    style:
+                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                  ),
+                ],
+              ),
             );
           }
         },

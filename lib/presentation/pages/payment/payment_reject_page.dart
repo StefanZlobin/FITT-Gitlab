@@ -69,9 +69,6 @@ class PaymentRejectPage extends StatelessWidget {
                           } else {
                             context.pop();
                             context.pop();
-                            context.pop();
-                            context.pop();
-                            context.pop();
                           }
                         },
                         style: ButtonStyle(backgroundColor:
@@ -99,9 +96,6 @@ class PaymentRejectPage extends StatelessWidget {
                             context.pop();
                             context.pop();
                           } else {
-                            context.pop();
-                            context.pop();
-                            context.pop();
                             context.pop();
                             context.pop();
                           }
