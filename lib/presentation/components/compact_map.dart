@@ -27,7 +27,7 @@ class _CompactMapState extends State<CompactMap> {
     super.didChangeDependencies();
     BitmapDescriptor.fromAssetImage(
       ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
-      Assets.images.markerActive.path,
+      Assets.images.activeMapMarker.path,
     ).then((value) => setState(() => marker = value));
   }
 
