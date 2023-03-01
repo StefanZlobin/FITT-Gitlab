@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:fitt/core/constants/threshold.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/domain/entities/admin_user/admin_user.dart';
@@ -10,6 +11,8 @@ part 'admin_workout.g.dart';
 
 @freezed
 class AdminWorkout with _$AdminWorkout {
+  const AdminWorkout._();
+
   const factory AdminWorkout({
     @JsonKey(name: 'id')
         String? uuid,
@@ -51,4 +54,7 @@ class AdminWorkout with _$AdminWorkout {
 
   factory AdminWorkout.fromJson(Map<String, dynamic> json) =>
       _$AdminWorkoutFromJson(json);
+
+  DateTime get canStartTime => planStartTime.subtract(kWorkoutStartThreshold);
+  DateTime get canEndTime => planEndTime.add(kWorkoutEndThreshold);
 }

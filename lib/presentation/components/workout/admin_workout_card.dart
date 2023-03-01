@@ -2,9 +2,11 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/age_utils.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/timer_utils.dart';
-import 'package:fitt/domain/blocs/workout_timer/workout_timer_bloc.dart';
+import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
+import 'package:fitt/domain/cubits/admin_workout_action_button/admin_workout_action_button_cubit.dart';
 import 'package:fitt/domain/entities/admin_workout/admin_workout.dart';
 import 'package:fitt/presentation/components/buttons/admin_workout_action_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
@@ -25,6 +27,15 @@ class AdminWorkoutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getIt<AdminWorkoutTimerBloc>().add(
+      AdminWorkoutTimerEvent.timerStarted(
+        workout: adminWorkout,
+        duration: adminWorkout.status == WorkoutStatusEnum.started
+            ? adminWorkout.canEndTime.difference(DateTime.now())
+            : adminWorkout.planStartTime.difference(DateTime.now()),
+      ),
+    );
+
     return Container(
       margin: margin,
       child: Column(
@@ -98,21 +109,23 @@ class AdminWorkoutCard extends StatelessWidget {
   Widget _buildWorkoutTimeInformationWidget() {
     return Row(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              adminWorkout.status == WorkoutStatusEnum.planned
-                  ? 'Начало через'
-                  : 'До окончания',
-              style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
-            ),
-            _buildWorkoutTimer(),
-          ],
+        SizedBox(
+          width: 144,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                adminWorkout.status == WorkoutStatusEnum.planned
+                    ? 'Начало через'
+                    : 'Окончание через',
+                style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
+              ),
+              _buildWorkoutTimer(),
+            ],
+          ),
         ),
         const Separator(
           color: AppColors.kPrimaryBlue,
-          padding: EdgeInsets.only(left: 64, right: 16),
           height: 72,
           width: 2,
         ),
@@ -155,28 +168,26 @@ class AdminWorkoutCard extends StatelessWidget {
   }
 
   Widget _buildWorkoutTimer() {
-    return BlocBuilder<WorkoutTimerBloc, WorkoutTimerState>(
-      bloc: getIt<WorkoutTimerBloc>(),
+    return BlocBuilder<AdminWorkoutTimerBloc, AdminWorkoutTimerState>(
+      bloc: getIt<AdminWorkoutTimerBloc>(),
       builder: (context, state) {
+        if (adminWorkout.status != WorkoutStatusEnum.planned &&
+            adminWorkout.canEndTime.isBefore(DateTime.now())) {
+          getIt<AdminWorkoutActionButtonCubit>().setFinishSlider();
+        }
         return state.when(
           timerInitial: (duration) => Text(duration.toString()),
           timerRunInProgress: (duration) => Text(
             TimerUtils.createTimerString(duration),
-            style: AppTypography.kNum36.apply(
-              color: AppColors.kPrimaryBlue,
-            ),
+            style: AppTypography.kNum36.apply(color: AppColors.kOxford),
           ),
           timerRunInDanger: (duration) => Text(
             TimerUtils.createTimerString(duration),
-            style: AppTypography.kNum36.apply(
-              color: AppColors.kPrimaryBlue,
-            ),
+            style: AppTypography.kNum36.apply(color: AppColors.kPrimaryBlue),
           ),
           timerRunComplete: (duration) => Text(
             TimerUtils.createTimerString(duration),
-            style: AppTypography.kNum36.apply(
-              color: AppColors.kPrimaryBlue,
-            ),
+            style: AppTypography.kNum36.apply(color: AppColors.kPrimaryBlue),
           ),
         );
       },
@@ -194,7 +205,7 @@ class AdminWorkoutCard extends StatelessWidget {
           ),
           TextSpan(
             text:
-                '${adminWorkout.user.gender!.genderEnumToLabeling(adminWorkout.user.gender!)} - ${adminWorkout.user.gender!.genderEnumToString(adminWorkout.user.gender!)}',
+                '${adminWorkout.user.gender!.genderEnumToLabeling(adminWorkout.user.gender!)} - ${ageUtils(adminWorkout.user.age)}',
           ),
           TextSpan(
             text: '\n${adminWorkout.user.fullname}',

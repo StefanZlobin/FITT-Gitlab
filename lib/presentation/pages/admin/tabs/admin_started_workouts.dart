@@ -1,12 +1,11 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/admin_workout_sorting_enum.dart';
-import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/data/models/request/admin/admin_workouts_filters_body.dart';
+import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/cubits/admin_workouts/admin_workouts_cubit.dart';
-import 'package:fitt/domain/cubits/notification/notification_cubit.dart';
 import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/presentation/components/workout/admin_preview_workout_card.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,7 @@ class AdminStartedWorkouts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notificationBloc = getIt<NotificationCubit>();
+    final notificationsBloc = getIt<NotificationsBloc>();
 
     final now = DateTime.now();
     final startDateFrom = DateTime.parse(
@@ -47,28 +46,47 @@ class AdminStartedWorkouts extends StatelessWidget {
 
     return MultiBlocListener(
       listeners: [
-        BlocListener<NotificationCubit, NotificationState>(
-          bloc: notificationBloc,
+        BlocListener<NotificationsBloc, NotificationsState>(
+          bloc: notificationsBloc,
           listener: (context, state) {
-            state.whenOrNull(changeWorkout: (message) {
-              if (message.data['user_type'] ==
-                  UserTypeEnum.ADMINISTRATOR.name) {
-                if (message.data['status'] == 'REQUIRED_FINISH' ||
-                    message.data['status'] == 'FINISH') {
+            state.whenOrNull(
+              workoutStatusRF: () =>
                   getIt<AdminWorkoutsCubit>().getAdminWorkouts(
-                    filters: AdminWorkoutsFiltersRequestBody(
-                      clubIds: [adminClub.uuid!],
-                      phase: WorkoutPhaseEnum.inProcess,
-                      startDateFrom: startDateFrom,
-                      startDateTo: startDateTo,
-                      endDateFrom: startDateFrom,
-                      endDateTo: startDateTo,
-                      sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
-                    ),
-                  );
-                }
-              }
-            });
+                filters: AdminWorkoutsFiltersRequestBody(
+                  clubIds: [adminClub.uuid!],
+                  phase: WorkoutPhaseEnum.inProcess,
+                  startDateFrom: startDateFrom,
+                  startDateTo: startDateTo,
+                  endDateFrom: startDateFrom,
+                  endDateTo: startDateTo,
+                  sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
+                ),
+              ),
+              workoutStatusFinished: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+                filters: AdminWorkoutsFiltersRequestBody(
+                  clubIds: [adminClub.uuid!],
+                  phase: WorkoutPhaseEnum.inProcess,
+                  startDateFrom: startDateFrom,
+                  startDateTo: startDateTo,
+                  endDateFrom: startDateFrom,
+                  endDateTo: startDateTo,
+                  sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
+                ),
+              ),
+              workoutStatusFF: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+                filters: AdminWorkoutsFiltersRequestBody(
+                  clubIds: [adminClub.uuid!],
+                  phase: WorkoutPhaseEnum.inProcess,
+                  startDateFrom: startDateFrom,
+                  startDateTo: startDateTo,
+                  endDateFrom: startDateFrom,
+                  endDateTo: startDateTo,
+                  sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
+                ),
+              ),
+            );
           },
         ),
       ],
@@ -85,7 +103,8 @@ class AdminStartedWorkouts extends StatelessWidget {
                   textAlign: TextAlign.center,
                 );
               }
-              return ListView.builder(
+              return ListView.separated(
+                separatorBuilder: (_, __) => const SizedBox(height: 8),
                 itemBuilder: (context, index) {
                   final adminWorkout = adminWorkouts[index];
                   return AdminPreviewWorkoutCard(

@@ -270,7 +270,7 @@ class __$$_AdminWorkoutCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AdminWorkout implements _AdminWorkout {
+class _$_AdminWorkout extends _AdminWorkout {
   const _$_AdminWorkout(
       {@JsonKey(name: 'id')
           this.uuid,
@@ -291,7 +291,8 @@ class _$_AdminWorkout implements _AdminWorkout {
       @JsonKey(name: 'is_overdue')
           this.isOverdue,
       @JsonKey(name: 'key')
-          this.key});
+          this.key})
+      : super._();
 
   factory _$_AdminWorkout.fromJson(Map<String, dynamic> json) =>
       _$$_AdminWorkoutFromJson(json);
@@ -385,7 +386,7 @@ class _$_AdminWorkout implements _AdminWorkout {
   }
 }
 
-abstract class _AdminWorkout implements AdminWorkout {
+abstract class _AdminWorkout extends AdminWorkout {
   const factory _AdminWorkout(
       {@JsonKey(name: 'id')
           final String? uuid,
@@ -407,6 +408,7 @@ abstract class _AdminWorkout implements AdminWorkout {
           final bool? isOverdue,
       @JsonKey(name: 'key')
           final String? key}) = _$_AdminWorkout;
+  const _AdminWorkout._() : super._();
 
   factory _AdminWorkout.fromJson(Map<String, dynamic> json) =
       _$_AdminWorkout.fromJson;

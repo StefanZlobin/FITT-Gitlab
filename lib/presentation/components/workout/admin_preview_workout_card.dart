@@ -5,6 +5,7 @@ import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/age_utils.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/admin_workout/admin_workout_cubit.dart';
@@ -31,7 +32,9 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
         context.pushNamed(
           AppRoute.adminWorkout.routeToPath,
           extra: !(adminWorkout.status == WorkoutStatusEnum.finished ||
-              adminWorkout.status == WorkoutStatusEnum.forceFinish),
+              adminWorkout.status == WorkoutStatusEnum.forceFinish ||
+              adminWorkout.status == WorkoutStatusEnum.missed ||
+              adminWorkout.status == WorkoutStatusEnum.canceled),
         );
       },
       child: Container(
@@ -61,23 +64,55 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
                   style: AppTypography.kNum48.apply(color: AppColors.kOxford60),
                 ),
                 const SizedBox(width: 16),
-                RichText(
-                  overflow: TextOverflow.ellipsis,
-                  text: TextSpan(
-                    text: '${adminWorkout.user.fullname}\n',
-                    style: AppTypography.kH14.apply(color: AppColors.kOxford60),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextSpan(
-                        text: 'ID ${adminWorkout.user.userId}  ',
-                        style: AppTypography.kBody14
+                      Text(
+                        '${adminWorkout.user.fullname}',
+                        style: AppTypography.kH14
                             .apply(color: AppColors.kOxford60),
+                        softWrap: false,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      TextSpan(
-                        text:
-                            '${adminWorkout.user.gender!.genderEnumToLabeling(adminWorkout.user.gender!)} - ${ageUtils(adminWorkout.user.age)}',
-                        style: AppTypography.kBody14
-                            .apply(color: AppColors.kOxford40),
+                      Row(
+                        children: [
+                          if (adminWorkout.key != null) ...[
+                            const Icon(
+                              AppIcons.lockers,
+                              size: 10,
+                              color: AppColors.kOxford60,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${adminWorkout.key}',
+                              style: AppTypography.kBody14
+                                  .apply(color: AppColors.kOxford60),
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                          Text(
+                            'ID ${adminWorkout.user.userId}',
+                            style: AppTypography.kBody14
+                                .apply(color: AppColors.kOxford60),
+                            softWrap: false,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Text(
+                              '${adminWorkout.user.gender!.genderEnumToLabeling(adminWorkout.user.gender!)} - ${ageUtils(adminWorkout.user.age)}',
+                              style: AppTypography.kBody14
+                                  .apply(color: AppColors.kOxford40),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              softWrap: false,
+                            ),
+                          ),
+                        ],
                       ),
+                      const SizedBox(height: 2),
                     ],
                   ),
                 ),
