@@ -8,6 +8,7 @@ class AppRouter {
   GoRouter get router => _goRouter;
 
   late final _goRouter = GoRouter(
+    debugLogDiagnostics: true,
     routes: <GoRoute>[
       ...routes.publicRoutes,
       ...routes.userRoutes,

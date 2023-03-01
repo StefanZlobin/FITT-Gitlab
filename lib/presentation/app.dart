@@ -4,6 +4,12 @@ import 'package:fitt/presentation/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+class L extends S {
+  static S of(BuildContext context) {
+    return S.current;
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -18,15 +24,12 @@ class MyApp extends StatelessWidget {
       darkTheme: AppThemes.lightAppTheme,
       routerConfig: goRouter.router,
       localizationsDelegates: const [
-        AppLocalizationDelegate(),
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('ru', ''),
-        Locale('en', ''),
-      ],
+      supportedLocales: S.delegate.supportedLocales,
       locale: const Locale('ru', ''),
     );
   }

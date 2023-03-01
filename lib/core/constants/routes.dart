@@ -1,6 +1,8 @@
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/helpers/shake_feedback_wrapper.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
+import 'package:fitt/domain/entities/club/partner_club.dart';
 import 'package:fitt/presentation/pages/account/account_page.dart';
 import 'package:fitt/presentation/pages/account/personal_data_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workout_page.dart';
@@ -10,11 +12,12 @@ import 'package:fitt/presentation/pages/favorite_clubs/favorite_clubs_page.dart'
 import 'package:fitt/presentation/pages/feedback/feedback_page.dart';
 import 'package:fitt/presentation/pages/information/information_page.dart';
 import 'package:fitt/presentation/pages/map/map_page.dart';
-import 'package:fitt/presentation/pages/partner_club/club_batch_page.dart';
 import 'package:fitt/presentation/pages/partner_club/club_batches_page.dart';
+import 'package:fitt/presentation/pages/partner_club/club_buy_batch_page.dart';
 import 'package:fitt/presentation/pages/partner_club/club_buy_workout_page.dart';
 import 'package:fitt/presentation/pages/partner_club/club_information_page.dart';
 import 'package:fitt/presentation/pages/partner_club/club_page.dart';
+import 'package:fitt/presentation/pages/payment/payment_batch_succes_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_loading_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_reject_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_succes_page.dart';
@@ -63,7 +66,7 @@ class Routes {
       pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
         context: context,
         state: state,
-        child: const MapPage(),
+        child: const ShakeFeedbackWrapper(child: MapPage()),
       ),
       builder: (context, state) => const MapPage(),
     ),
@@ -75,30 +78,37 @@ class Routes {
     GoRoute(
       path: '${AppRoute.club.routeToPath}/:clubUuid',
       name: AppRoute.club.routeToName,
-      builder: (context, state) => ClubPage(
-        clubUuid: state.params['clubUuid']!,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: ClubPage(
+          clubUuid: state.params['clubUuid']!,
+        ),
       ),
     ),
     GoRoute(
       path: AppRoute.inputPhoneNumber.routeToPath,
       name: AppRoute.inputPhoneNumber.routeToName,
-      builder: (context, state) => const InputPhoneNumberPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: InputPhoneNumberPage()),
     ),
     GoRoute(
       path: AppRoute.inputSecureCode.routeToPath,
       name: AppRoute.inputSecureCode.routeToName,
-      builder: (context, state) => InputSecureCodePage(
-        phoneNumber: state.extra! as String,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: InputSecureCodePage(
+          phoneNumber: state.extra! as String,
+        ),
       ),
     ),
     // Webview
     GoRoute(
       path: AppRoute.webview.routeToPath,
       name: AppRoute.webview.routeToName,
-      builder: (context, state) => Webview(
-        url: state.queryParams['url']!,
-        pageTitle: state.queryParams['pageTitle']!,
-        workoutUuid: state.queryParams['workoutUuid'],
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: Webview(
+          url: state.queryParams['url']!,
+          pageTitle: state.queryParams['pageTitle']!,
+          workoutUuid: state.queryParams['workoutUuid'],
+        ),
       ),
     ),
   ];
@@ -107,100 +117,122 @@ class Routes {
     GoRoute(
       path: AppRoute.account.routeToPath,
       name: AppRoute.account.routeToName,
-      builder: (context, state) => const AccountPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: AccountPage()),
     ),
     GoRoute(
       path: AppRoute.personalData.routeToPath,
       name: AppRoute.personalData.routeToName,
-      builder: (context, state) => PersonalDataPage(
-        canSkip: state.extra! as bool,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: PersonalDataPage(
+          canSkip: state.extra! as bool,
+        ),
       ),
     ),
     GoRoute(
       path: AppRoute.workout.routeToPath,
       name: AppRoute.workout.routeToName,
-      builder: (context, state) => WorkoutPage(
-        isArchivePage: state.extra! as bool,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: WorkoutPage(
+          isArchivePage: state.extra! as bool,
+        ),
       ),
     ),
     GoRoute(
       path: AppRoute.workoutList.routeToPath,
       name: AppRoute.workoutList.routeToName,
-      builder: (context, state) => const WorkoutsPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: WorkoutsPage()),
     ),
     GoRoute(
       path: AppRoute.workoutArchiveList.routeToPath,
       name: AppRoute.workoutArchiveList.routeToName,
-      builder: (context, state) => ArchiveWorkoutsPage(
-        fromWorkoutPage: state.extra! as bool,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: ArchiveWorkoutsPage(
+          fromWorkoutPage: state.extra! as bool,
+        ),
       ),
     ),
     GoRoute(
       path: AppRoute.clubInformation.routeToPath,
       name: AppRoute.clubInformation.routeToName,
-      builder: (context, state) => const ClubInformationPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: ClubInformationPage()),
     ),
     GoRoute(
       path: AppRoute.clubBatchList.routeToPath,
       name: AppRoute.clubBatchList.routeToName,
-      builder: (context, state) => const ClubBatchesPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: ClubBatchesPage()),
     ),
     GoRoute(
       path: AppRoute.clubBatch.routeToPath,
       name: AppRoute.clubBatch.routeToName,
-      builder: (context, state) {
-        final batch = state.extra! as Batch;
-        return ClubBatchPage(
-          batch: batch,
-        );
-      },
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: ClubBuyBatchPage(
+          batch: state.extra! as Batch,
+        ),
+      ),
     ),
     GoRoute(
       path: AppRoute.clubBuyWorkout.routeToPath,
       name: AppRoute.clubBuyWorkout.routeToName,
-      builder: (context, state) => const ClubBuyWorkoutPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: ClubBuyWorkoutPage()),
     ),
     GoRoute(
       path: AppRoute.paymentWebview.routeToPath,
       name: AppRoute.paymentWebview.routeToName,
-      builder: (context, state) => mockPage(state),
+      builder: (context, state) => ShakeFeedbackWrapper(child: mockPage(state)),
     ),
     GoRoute(
       path: AppRoute.paymentLoading.routeToPath,
       name: AppRoute.paymentLoading.routeToName,
-      builder: (context, state) => const PaymentLoadingPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: PaymentLoadingPage()),
     ),
     GoRoute(
       path: AppRoute.paymentReject.routeToPath,
       name: AppRoute.paymentReject.routeToName,
-      builder: (context, state) => PaymentRejectPage(
-        isBatch: state.extra! as bool,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: PaymentRejectPage(
+          isBatch: state.extra! as bool,
+        ),
       ),
     ),
     GoRoute(
       path: AppRoute.paymentBuyBatchSuccess.routeToPath,
       name: AppRoute.paymentBuyBatchSuccess.routeToName,
-      builder: (context, state) => mockPage(state),
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: PaymentBatchSuccessPage(
+          club: state.extra! as PartnerClub,
+          batch: state.extra! as Batch,
+        ),
+      ),
     ),
     GoRoute(
       path: AppRoute.paymentSuccess.routeToPath,
       name: AppRoute.paymentSuccess.routeToName,
-      builder: (context, state) => const PaymentSuccessPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: PaymentSuccessPage()),
     ),
     GoRoute(
       path: AppRoute.clubListFavourite.routeToPath,
       name: AppRoute.clubListFavourite.routeToName,
-      builder: (context, state) => const FavoriteClubsPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: FavoriteClubsPage()),
     ),
     GoRoute(
       path: AppRoute.information.routeToPath,
       name: AppRoute.information.routeToName,
-      builder: (context, state) => const InformrationPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: InformrationPage()),
     ),
     GoRoute(
       path: AppRoute.feedback.routeToPath,
       name: AppRoute.feedback.routeToName,
-      builder: (context, state) => const FeedbackPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: FeedbackPage()),
     ),
   ];
 
@@ -208,13 +240,16 @@ class Routes {
     GoRoute(
       path: AppRoute.adminWorkoutList.routeToPath,
       name: AppRoute.adminWorkoutList.routeToName,
-      builder: (context, state) => const AdminWorkoutsPage(),
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: AdminWorkoutsPage()),
     ),
     GoRoute(
       path: AppRoute.adminWorkout.routeToPath,
       name: AppRoute.adminWorkout.routeToName,
-      builder: (context, state) => AdminWorkoutPage(
-        showHeader: state.extra! as bool,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: AdminWorkoutPage(
+          showHeader: state.extra! as bool,
+        ),
       ),
     ),
   ];

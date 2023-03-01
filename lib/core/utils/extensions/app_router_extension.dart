@@ -1,6 +1,4 @@
 import 'package:fitt/core/enum/app_route_enum.dart';
-import 'package:fitt/generated/l10n.dart';
-import 'package:flutter/material.dart';
 
 extension AppRouterExtension on AppRoute {
   String get routeToPath {
@@ -176,95 +174,6 @@ extension AppRouterExtension on AppRoute {
 
       case AppRoute.inputSecureCode:
         return '/${AppRoute.inputSecureCode.name.toUpperCase()}';
-    }
-  }
-
-  String? routeToTitle(BuildContext context) {
-    final localization = S.of(context);
-    switch (this) {
-      case AppRoute.webview:
-        return null;
-
-      case AppRoute.map:
-        return null;
-
-      case AppRoute.splash:
-        return null;
-
-      case AppRoute.information:
-        return localization.informationPageTitle;
-
-      case AppRoute.feedback:
-        return localization.feedbackPageTitle;
-
-      case AppRoute.purchasedHours:
-        return AppRoute.purchasedHours.name;
-
-      case AppRoute.workout:
-        return localization.workoutPageTitle;
-
-      case AppRoute.workoutList:
-        return AppRoute.workoutList.name;
-
-      case AppRoute.workoutArchiveList:
-        return AppRoute.workoutArchiveList.name;
-
-      case AppRoute.club:
-        return AppRoute.club.name;
-
-      case AppRoute.clubInformation:
-        return AppRoute.clubInformation.name;
-
-      case AppRoute.clubBuyWorkout:
-        return AppRoute.clubBuyWorkout.name;
-
-      case AppRoute.clubBatchList:
-        return AppRoute.clubBatchList.name;
-
-      case AppRoute.clubBatch:
-        return AppRoute.clubBatch.name;
-
-      case AppRoute.clubBuyBatch:
-        return AppRoute.clubBuyBatch.name.toUpperCase();
-
-      case AppRoute.clubMap:
-        return AppRoute.clubMap.name.toUpperCase();
-
-      case AppRoute.clubListFavourite:
-        return AppRoute.clubListFavourite.name.toUpperCase();
-
-      case AppRoute.paymentWebview:
-        return AppRoute.paymentWebview.name.toUpperCase();
-
-      case AppRoute.paymentLoading:
-        return AppRoute.paymentLoading.name.toUpperCase();
-
-      case AppRoute.paymentSuccess:
-        return AppRoute.paymentSuccess.name.toUpperCase();
-
-      case AppRoute.paymentBuyBatchSuccess:
-        return AppRoute.paymentBuyBatchSuccess.name.toUpperCase();
-
-      case AppRoute.paymentReject:
-        return AppRoute.paymentReject.name.toUpperCase();
-
-      case AppRoute.adminWorkoutList:
-        return AppRoute.adminWorkoutList.name.toUpperCase();
-
-      case AppRoute.adminWorkout:
-        return AppRoute.adminWorkout.name.toUpperCase();
-
-      case AppRoute.account:
-        return AppRoute.account.name.toUpperCase();
-
-      case AppRoute.personalData:
-        return AppRoute.personalData.name.toUpperCase();
-
-      case AppRoute.inputPhoneNumber:
-        return localization.inputPhoneNumber;
-
-      case AppRoute.inputSecureCode:
-        return localization.inputSecureCode;
     }
   }
 }
