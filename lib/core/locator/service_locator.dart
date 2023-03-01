@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -44,7 +45,6 @@ import '../../domain/cubits/feedback/feedback_cubit.dart';
 import '../../domain/cubits/filtering/filtering_cubit.dart';
 import '../../domain/cubits/geolocation/geolocation_cubit.dart';
 import '../../domain/cubits/modal_bottom_sheet/modal_bottom_sheet_cubit.dart';
-import '../../domain/cubits/notification/notification_cubit.dart';
 import '../../domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import '../../domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
 import '../../domain/cubits/resource/resource_cubit.dart';
@@ -177,6 +177,8 @@ void _registerBlocs() {
   getIt.registerLazySingleton<WorkoutCubit>(() => WorkoutCubit());
   getIt.registerFactory<WorkoutTimerBloc>(
       () => WorkoutTimerBloc(ticker: const Ticker()));
+  getIt.registerLazySingleton<AdminWorkoutTimerBloc>(
+      () => AdminWorkoutTimerBloc(ticker: const Ticker()));
   getIt.registerFactory<WorkoutSliderButtonTypeCubit>(
       () => WorkoutSliderButtonTypeCubit());
 
@@ -211,7 +213,6 @@ void _registerBlocs() {
       () => CalculateWorkoutPriceCubit());
   getIt.registerLazySingleton<BuyBatchCubit>(() => BuyBatchCubit());
   getIt.registerLazySingleton<BuyWorkoutCubit>(() => BuyWorkoutCubit());
-  getIt.registerLazySingleton<NotificationCubit>(() => NotificationCubit());
   getIt.registerLazySingleton<NotificationsBloc>(() => NotificationsBloc());
   getIt.registerLazySingleton<ResourceCubit>(() => ResourceCubit());
   getIt.registerLazySingleton<FilteringCubit>(() => FilteringCubit());
