@@ -11,6 +11,7 @@ import 'package:fitt/domain/cubits/admin_workout/admin_workout_cubit.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
 import 'package:fitt/presentation/components/modals/widget/header_rounded_container_line.dart';
+import 'package:fitt/presentation/forms/app_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -31,17 +32,22 @@ class AdminWorkoutFinishModalBottomSheet extends StatelessWidget {
     return BlocBuilder<AdminModalBottomSheetCubit, AdminModalBottomSheetState>(
       bloc: getIt<AdminModalBottomSheetCubit>(),
       builder: (context, state) {
-        return state.when(
-          initial: () => _buildFinishedWorkoutPullup(),
-          inputLockerNumber: (_) => const SizedBox(),
-          forceFinish: (reason, comment) =>
-              _buildForceFinishWorkoutPullup(reason, comment, context),
+        return SizedBox(
+          height: 540,
+          child: state.when(
+            initial: () => _buildFinishedWorkoutPullup(),
+            inputLockerNumber: (_) => const SizedBox(),
+            forceFinish: (showCommentForm, reason, comment) =>
+                _buildForceFinishWorkoutPullup(
+                    showCommentForm, reason, comment, context),
+          ),
         );
       },
     );
   }
 
   Widget _buildForceFinishWorkoutPullup(
+    bool showCommentForm,
     AdminWorkoutFinishReasonEnum? reason,
     String? comment,
     BuildContext context,
@@ -107,12 +113,20 @@ class AdminWorkoutFinishModalBottomSheet extends StatelessWidget {
           groupValue: reason ?? AdminWorkoutFinishReasonEnum.none,
           onChanged: (v) {
             getIt<AdminModalBottomSheetCubit>().forceFinish(
+              showCommentFrom: true,
               adminWorkoutFinishReasonEnum: v,
             );
           },
         ),
+        if (showCommentForm)
+          const AppTextFormField(
+            padding: EdgeInsets.fromLTRB(24, 12, 24, 0),
+            title: SizedBox(),
+            isHight: true,
+            placeholder: 'Напишите причину завершения тренировки',
+          ),
         AppElevatedButton(
-          marginButton: const EdgeInsets.fromLTRB(24, 16, 24, 24),
+          marginButton: const EdgeInsets.fromLTRB(24, 24, 24, 24),
           textButton: const Text('Готово'),
           isDisable:
               reason == null || reason == AdminWorkoutFinishReasonEnum.none,

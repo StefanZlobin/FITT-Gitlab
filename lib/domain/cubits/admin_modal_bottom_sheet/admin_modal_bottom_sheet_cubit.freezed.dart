@@ -21,6 +21,7 @@ mixin _$AdminModalBottomSheetState {
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)
         forceFinish,
@@ -31,6 +32,7 @@ mixin _$AdminModalBottomSheetState {
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
@@ -40,7 +42,9 @@ mixin _$AdminModalBottomSheetState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
+    TResult Function(
+            bool showCommentFrom,
+            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
     required TResult orElse(),
@@ -136,6 +140,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)
         forceFinish,
@@ -149,6 +154,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
@@ -161,7 +167,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
+    TResult Function(
+            bool showCommentFrom,
+            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
     required TResult orElse(),
@@ -292,6 +300,7 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)
         forceFinish,
@@ -305,6 +314,7 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
@@ -317,7 +327,9 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
+    TResult Function(
+            bool showCommentFrom,
+            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
     required TResult orElse(),
@@ -390,7 +402,8 @@ abstract class _$$_AdminModalBottomSheetStateForceFinishCopyWith<$Res> {
       __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
+      {bool showCommentFrom,
+      AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
       String? comment});
 }
 
@@ -407,10 +420,15 @@ class __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? showCommentFrom = null,
     Object? adminWorkoutFinishReasonEnum = freezed,
     Object? comment = freezed,
   }) {
     return _then(_$_AdminModalBottomSheetStateForceFinish(
+      showCommentFrom: null == showCommentFrom
+          ? _value.showCommentFrom
+          : showCommentFrom // ignore: cast_nullable_to_non_nullable
+              as bool,
       adminWorkoutFinishReasonEnum: freezed == adminWorkoutFinishReasonEnum
           ? _value.adminWorkoutFinishReasonEnum
           : adminWorkoutFinishReasonEnum // ignore: cast_nullable_to_non_nullable
@@ -428,8 +446,13 @@ class __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<$Res>
 class _$_AdminModalBottomSheetStateForceFinish
     implements _AdminModalBottomSheetStateForceFinish {
   const _$_AdminModalBottomSheetStateForceFinish(
-      {this.adminWorkoutFinishReasonEnum, this.comment});
+      {this.showCommentFrom = false,
+      this.adminWorkoutFinishReasonEnum,
+      this.comment});
 
+  @override
+  @JsonKey()
+  final bool showCommentFrom;
   @override
   final AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum;
   @override
@@ -437,7 +460,7 @@ class _$_AdminModalBottomSheetStateForceFinish
 
   @override
   String toString() {
-    return 'AdminModalBottomSheetState.forceFinish(adminWorkoutFinishReasonEnum: $adminWorkoutFinishReasonEnum, comment: $comment)';
+    return 'AdminModalBottomSheetState.forceFinish(showCommentFrom: $showCommentFrom, adminWorkoutFinishReasonEnum: $adminWorkoutFinishReasonEnum, comment: $comment)';
   }
 
   @override
@@ -445,6 +468,8 @@ class _$_AdminModalBottomSheetStateForceFinish
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdminModalBottomSheetStateForceFinish &&
+            (identical(other.showCommentFrom, showCommentFrom) ||
+                other.showCommentFrom == showCommentFrom) &&
             (identical(other.adminWorkoutFinishReasonEnum,
                     adminWorkoutFinishReasonEnum) ||
                 other.adminWorkoutFinishReasonEnum ==
@@ -453,8 +478,8 @@ class _$_AdminModalBottomSheetStateForceFinish
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, adminWorkoutFinishReasonEnum, comment);
+  int get hashCode => Object.hash(
+      runtimeType, showCommentFrom, adminWorkoutFinishReasonEnum, comment);
 
   @JsonKey(ignore: true)
   @override
@@ -470,11 +495,12 @@ class _$_AdminModalBottomSheetStateForceFinish
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)
         forceFinish,
   }) {
-    return forceFinish(adminWorkoutFinishReasonEnum, comment);
+    return forceFinish(showCommentFrom, adminWorkoutFinishReasonEnum, comment);
   }
 
   @override
@@ -483,11 +509,13 @@ class _$_AdminModalBottomSheetStateForceFinish
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
+            bool showCommentFrom,
             AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
   }) {
-    return forceFinish?.call(adminWorkoutFinishReasonEnum, comment);
+    return forceFinish?.call(
+        showCommentFrom, adminWorkoutFinishReasonEnum, comment);
   }
 
   @override
@@ -495,13 +523,16 @@ class _$_AdminModalBottomSheetStateForceFinish
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
+    TResult Function(
+            bool showCommentFrom,
+            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
             String? comment)?
         forceFinish,
     required TResult orElse(),
   }) {
     if (forceFinish != null) {
-      return forceFinish(adminWorkoutFinishReasonEnum, comment);
+      return forceFinish(
+          showCommentFrom, adminWorkoutFinishReasonEnum, comment);
     }
     return orElse();
   }
@@ -550,9 +581,11 @@ class _$_AdminModalBottomSheetStateForceFinish
 abstract class _AdminModalBottomSheetStateForceFinish
     implements AdminModalBottomSheetState {
   const factory _AdminModalBottomSheetStateForceFinish(
-      {final AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
+      {final bool showCommentFrom,
+      final AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
       final String? comment}) = _$_AdminModalBottomSheetStateForceFinish;
 
+  bool get showCommentFrom;
   AdminWorkoutFinishReasonEnum? get adminWorkoutFinishReasonEnum;
   String? get comment;
   @JsonKey(ignore: true)

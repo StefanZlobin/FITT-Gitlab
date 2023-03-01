@@ -13,16 +13,19 @@ class AdminModalBottomSheetCubit extends Cubit<AdminModalBottomSheetState> {
     emit(const AdminModalBottomSheetState.initial());
   }
 
+
   void setLockerNumber({String? lockerNumber}) {
     emit(_AdminModalBottomSheetStateInputLockerNumber(
         lockerNumber: lockerNumber));
   }
 
   void forceFinish({
+    bool showCommentFrom = false,
     AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
     String? comment,
   }) {
     emit(_AdminModalBottomSheetStateForceFinish(
+      showCommentFrom: showCommentFrom,
       adminWorkoutFinishReasonEnum: adminWorkoutFinishReasonEnum,
       comment: comment,
     ));

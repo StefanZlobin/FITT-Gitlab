@@ -6,6 +6,7 @@ class AdminModalBottomSheetState with _$AdminModalBottomSheetState {
   const factory AdminModalBottomSheetState.inputLockerNumber(
       {String? lockerNumber}) = _AdminModalBottomSheetStateInputLockerNumber;
   const factory AdminModalBottomSheetState.forceFinish({
+    @Default(false) bool showCommentFrom,
     AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
     String? comment,
   }) = _AdminModalBottomSheetStateForceFinish;

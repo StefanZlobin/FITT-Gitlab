@@ -11,6 +11,7 @@ import 'package:fitt/presentation/components/modals/widget/header_rounded_contai
 import 'package:fitt/presentation/forms/app_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AdminWorkoutStartModalBottomSheet extends StatelessWidget {
   const AdminWorkoutStartModalBottomSheet({
@@ -36,7 +37,7 @@ class AdminWorkoutStartModalBottomSheet extends StatelessWidget {
             nameValidator,
             lockerNumber,
           ),
-          forceFinish: (_, __) => const SizedBox(),
+          forceFinish: (_, __, ___) => const SizedBox(),
         );
       },
     );
@@ -92,10 +93,14 @@ class AdminWorkoutStartModalBottomSheet extends StatelessWidget {
               // ignore: avoid_bool_literals_in_conditional_expressions
               lockerNumber == null || lockerNumber.isEmpty ? true : false,
           onPressedAsync: () async {
-            await getIt<AdminWorkoutCubit>().setLockerNumber(
-              adminWorkoutUuid: adminWorkoutUuid,
-              lockerNumber: lockerNumber!,
-            );
+            await getIt<AdminWorkoutCubit>()
+                .setLockerNumber(
+                  adminWorkoutUuid: adminWorkoutUuid,
+                  lockerNumber: lockerNumber!,
+                )
+                .then(
+                  (value) => context.pop(),
+                );
           },
         ),
       ],

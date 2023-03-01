@@ -1,18 +1,26 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/entities/workout/workout.dart';
+import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/modals/widget/header_rounded_container_line.dart';
 import 'package:fitt/presentation/components/modals/widget/radar.dart';
+import 'package:fitt/presentation/components/separator.dart';
+import 'package:fitt/presentation/components/submit_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class WorkoutFinishModalBottomSheet extends StatelessWidget {
   const WorkoutFinishModalBottomSheet({
     super.key,
+    required this.workout,
   });
+
+  final Workout workout;
 
   @override
   Widget build(BuildContext context) {
@@ -22,28 +30,32 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
         state.whenOrNull(
           error: (error) => ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Не получилось начать тренировку'),
+              content: Text('Не получилось совершить действие с тренировкой'),
             ),
           ),
         );
       },
-      child: BlocBuilder<NotificationsBloc, NotificationsState>(
-        bloc: getIt<NotificationsBloc>(),
-        builder: (context, state) {
-          return state.when(
-            initial: () => const SizedBox(),
-            paymentBatchReject: () => const SizedBox(),
-            paymentBatchSuccess: () => const SizedBox(),
-            paymentWorkoutReject: () => const SizedBox(),
-            paymentWorkoutSuccess: () => const SizedBox(),
-            workoutStatusPlanned: () => const SizedBox(),
-            workoutStatusRS: () => const SizedBox(),
-            workoutStatusStarted: () => const SizedBox(),
-            workoutStatusRF: () => _buildFinishLoadingWorkoutPullup(),
-            workoutStatusFinished: () => _buildFinishedWorkoutPullup(),
-            error: (error) => const SizedBox(),
-          );
-        },
+      child: SizedBox(
+        height: 500,
+        child: BlocBuilder<NotificationsBloc, NotificationsState>(
+          bloc: getIt<NotificationsBloc>(),
+          builder: (context, state) {
+            return state.when(
+              initial: () => const SizedBox(),
+              paymentBatchReject: () => const SizedBox(),
+              paymentBatchSuccess: () => const SizedBox(),
+              paymentWorkoutReject: () => const SizedBox(),
+              paymentWorkoutSuccess: () => const SizedBox(),
+              workoutStatusPlanned: () => const SizedBox(),
+              workoutStatusRS: () => const SizedBox(),
+              workoutStatusFF: () => const SizedBox(),
+              workoutStatusStarted: () => const SizedBox(),
+              workoutStatusRF: () => _buildFinishLoadingWorkoutPullup(),
+              workoutStatusFinished: () => _buildFinishedWorkoutPullup(context),
+              error: (error) => const SizedBox(),
+            );
+          },
+        ),
       ),
     );
   }
@@ -91,28 +103,60 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildFinishedWorkoutPullup() {
+  Widget _buildFinishedWorkoutPullup(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HeaderRoundedContainerLine(),
-        Container(
-          width: 114,
-          height: 114,
-          decoration: BoxDecoration(
-            color: const Color(0xFF63B412).withOpacity(0.5),
-            shape: BoxShape.circle,
-          ),
-          child: const Icon(
-            AppIcons.tick,
-            color: AppColors.kBaseWhite,
-            size: 28,
+        const Center(child: HeaderRoundedContainerLine(bigPadding: false)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+              '${DateTimeUtils.dateWithPrefix(DateTime.now())}, ${workout.club.label}'),
+        ),
+        const SizedBox(height: 4),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            'Тренировка завершена',
+            style: AppTypography.kH24B.apply(color: AppColors.kBaseBlack),
           ),
         ),
-        const SizedBox(height: 32.0),
-        Text(
-          'Тренировка завершена',
-          style: AppTypography.kH24B.apply(color: AppColors.kBaseBlack),
+        const SizedBox(height: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            'Спасибо что выбрали FITT!\nДо встречи на следующей тренировке',
+            style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
+          ),
         ),
+        const Separator(padding: EdgeInsets.fromLTRB(16, 24, 16, 32)),
+        SizedBox(
+          width: double.infinity,
+          child: Text(
+            'Пожалуйста оцените клуб',
+            style: AppTypography.kH14.apply(color: AppColors.kBaseBlack),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        const SubmitRating(maximumRating: 5),
+        const Separator(padding: EdgeInsets.fromLTRB(16, 24, 16, 32)),
+        AppElevatedButton(
+          onPressed: () => context.pop(),
+          buttonColor: AppColors.kBaseBlack,
+          textButton: const Text('Готово'),
+          marginButton: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              'Запланировать следущую тернировку',
+              style: AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
+            ),
+          ),
+        ),
+        const SizedBox(height: 30),
       ],
     );
   }

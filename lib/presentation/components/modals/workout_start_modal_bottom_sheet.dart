@@ -27,23 +27,27 @@ class WorkoutStartModalBottomSheet extends StatelessWidget {
           ),
         );
       },
-      child: BlocBuilder<NotificationsBloc, NotificationsState>(
-        bloc: getIt<NotificationsBloc>(),
-        builder: (context, state) {
-          return state.when(
-            initial: () => const SizedBox(),
-            paymentBatchReject: () => const SizedBox(),
-            paymentBatchSuccess: () => const SizedBox(),
-            paymentWorkoutReject: () => const SizedBox(),
-            paymentWorkoutSuccess: () => const SizedBox(),
-            workoutStatusPlanned: () => const SizedBox(),
-            workoutStatusRS: () => _buildStartLoadingPullup(),
-            workoutStatusStarted: () => _buildStartedWorkoutPullup(),
-            workoutStatusRF: () => const SizedBox(),
-            workoutStatusFinished: () => const SizedBox(),
-            error: (error) => const SizedBox(),
-          );
-        },
+      child: SizedBox(
+        height: 500,
+        child: BlocBuilder<NotificationsBloc, NotificationsState>(
+          bloc: getIt<NotificationsBloc>(),
+          builder: (context, state) {
+            return state.when(
+              initial: () => const SizedBox(),
+              paymentBatchReject: () => const SizedBox(),
+              paymentBatchSuccess: () => const SizedBox(),
+              paymentWorkoutReject: () => const SizedBox(),
+              paymentWorkoutSuccess: () => const SizedBox(),
+              workoutStatusPlanned: () => const SizedBox(),
+              workoutStatusFF: () => const SizedBox(),
+              workoutStatusRS: () => _buildStartLoadingPullup(),
+              workoutStatusStarted: () => _buildStartedWorkoutPullup(),
+              workoutStatusRF: () => const SizedBox(),
+              workoutStatusFinished: () => const SizedBox(),
+              error: (error) => const SizedBox(),
+            );
+          },
+        ),
       ),
     );
   }

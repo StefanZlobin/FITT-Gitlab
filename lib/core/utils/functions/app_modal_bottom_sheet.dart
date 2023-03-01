@@ -7,6 +7,7 @@ Future<void> showAppModalBottomSheet(
 ) async {
   await showModalBottomSheet<void>(
     backgroundColor: AppColors.kBaseWhite,
+    isScrollControlled: true,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(24),
