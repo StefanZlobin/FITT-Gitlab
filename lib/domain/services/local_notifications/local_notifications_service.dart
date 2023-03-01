@@ -19,4 +19,7 @@ abstract class LocalNotificationsService {
 
   /// Delete local notification
   Future<void> deleteLocalNotification({required int id});
+
+  /// Сhecks whether a notification has been created
+  Future<bool> checkNotificationExist({required int id});
 }

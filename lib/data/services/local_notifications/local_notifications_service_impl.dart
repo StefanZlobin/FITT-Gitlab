@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:fitt/core/local_notifications_details/android_notification_details.dart';
 import 'package:fitt/core/local_notifications_details/ios_notification_details.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
@@ -37,7 +38,19 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
 
   @override
   Future<void> deleteLocalNotification({required int id}) async {
-    await localNotification.cancel(id);
+    final canDelete = await checkNotificationExist(id: id);
+    if (canDelete) await localNotification.cancel(id);
+  }
+
+  @override
+  Future<bool> checkNotificationExist({required int id}) async {
+    final notifications = await localNotification.pendingNotificationRequests();
+    final foundNotification = notifications.firstWhereOrNull((n) => n.id == id);
+    if (foundNotification != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override

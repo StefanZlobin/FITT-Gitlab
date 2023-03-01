@@ -82,24 +82,32 @@ class PaymentSuccessPage extends StatelessWidget {
                     marginButton: const EdgeInsets.symmetric(horizontal: 16),
                     textButton: const Text('Отлично'),
                     onPressed: () {
-                      getIt<LocalNotificationsService>()
-                          .scheduleLocalNotification(
-                        id: workout.workoutHashCode,
-                        title: 'До тренировки остался 1 час',
-                        body: 'Тренажеры уже готовы к твоему приходу',
-                        scheduleDuration:
-                            workout.startTime.difference(DateTime.now()) -
-                                const Duration(hours: 1),
-                      );
-                      getIt<LocalNotificationsService>()
-                          .scheduleLocalNotification(
-                        id: workout.workoutHashCode - 2,
-                        title: 'Регистрация на тренировку открыта',
-                        body: 'Подтверди начало тренировки у администратора',
-                        scheduleDuration:
-                            workout.canStartTime.difference(DateTime.now()),
-                      );
-                      context.push(AppRoute.map.routeToPath);
+                      if (!(workout.startTime.difference(DateTime.now()) -
+                              const Duration(hours: 1))
+                          .isNegative) {
+                        getIt<LocalNotificationsService>()
+                            .scheduleLocalNotification(
+                          id: workout.workoutHashCode,
+                          title: 'До тренировки остался 1 час',
+                          body: 'Тренажеры уже готовы к твоему приходу',
+                          scheduleDuration:
+                              workout.startTime.difference(DateTime.now()) -
+                                  const Duration(hours: 1),
+                        );
+                      }
+                      if (!workout.canStartTime
+                          .difference(DateTime.now())
+                          .isNegative) {
+                        getIt<LocalNotificationsService>()
+                            .scheduleLocalNotification(
+                          id: workout.workoutHashCode - 2,
+                          title: 'Регистрация на тренировку открыта',
+                          body: 'Подтверди начало тренировки у администратора',
+                          scheduleDuration:
+                              workout.canStartTime.difference(DateTime.now()),
+                        );
+                        context.push(AppRoute.map.routeToPath);
+                      }
                     },
                   ),
                 ],
