@@ -65,30 +65,30 @@ class UserAvatar extends StatelessWidget {
             : Text('${user?.firstName} ${user?.lastName}'),
         subtitle: user?.firstName == null && user?.lastName == null
             ? null
-            : FutureBuilder<Position>(
-                future: getIt<GeolocationService>().getCurrentPosition(),
+            : FutureBuilder<Position?>(
+                future: getIt<GeolocationService>().getLastKnowPosition(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const AnimatedDots();
                   }
                   final position = snapshot.data;
                   if (position == null) {
-                    return const Text('Геопозиция не определена');
+                    return FutureBuilder<Position>(
+                      future: getIt<GeolocationService>().getCurrentPosition(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const AnimatedDots();
+                        }
+                        final position = snapshot.data;
+                        if (position == null) {
+                          return const Text('Геопозиция не определена');
+                        }
+                        return _buildCurrentCity(position);
+                      },
+                    );
                   }
-                  return FutureBuilder<List<Placemark>>(
-                    future: placemarkFromCoordinates(
-                        position.latitude, position.longitude),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const AnimatedDots();
-                      }
-                      final locationAddress = snapshot.data;
-                      if (locationAddress == null) {
-                        return const Text('Не удалось определить город');
-                      }
-                      return Text('${locationAddress[0].locality}');
-                    },
-                  );
+                  return _buildCurrentCity(position);
                 },
               ),
         trailing: isAdminPage
@@ -99,6 +99,22 @@ class UserAvatar extends StatelessWidget {
               )
             : null,
       ),
+    );
+  }
+
+  FutureBuilder<List<Placemark>> _buildCurrentCity(Position position) {
+    return FutureBuilder<List<Placemark>>(
+      future: placemarkFromCoordinates(position.latitude, position.longitude),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const AnimatedDots();
+        }
+        final locationAddress = snapshot.data;
+        if (locationAddress == null) {
+          return const Text('Не удалось определить город');
+        }
+        return Text('${locationAddress[0].locality}');
+      },
     );
   }
 
