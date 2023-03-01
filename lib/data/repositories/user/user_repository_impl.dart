@@ -7,6 +7,7 @@ import 'package:fitt/data/source/remote_data_source/user_api_client/user_api_cli
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/repositories/authentication/auth_repository.dart';
 import 'package:fitt/domain/repositories/user/user_repository.dart';
+import 'package:rxdart/rxdart.dart';
 
 class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.dio, this._userLocalClient, {this.baseUrl})
@@ -19,12 +20,21 @@ class UserRepositoryImpl implements UserRepository {
 
   final AuthRepository authRepository = getIt<AuthRepository>();
 
+  final BehaviorSubject<User?> _userController = BehaviorSubject(sync: true);
+  void Function(User?) get updateUser => _userController.sink.add;
+
+  @override
+  Stream<User?> get user => _userController;
+  @override
+  User? get userSnapshot => _userController.value;
+
   @override
   Future<User?> getSignedUser() async {
     await authRepository.getToken();
     User? user;
     user = await _userLocalClient.getSignedUser();
     user ??= await getUserData();
+    if (user != null) updateUser(user);
     return user;
   }
 
@@ -39,18 +49,21 @@ class UserRepositoryImpl implements UserRepository {
     final user = await getSignedUser();
     await _userLocalClient.deleteUser(user);
     await authRepository.signOut();
+    updateUser(null);
   }
 
   @override
   Future<void> logoutUser() async {
     final user = await getSignedUser();
     await _userLocalClient.deleteUser(user);
+    updateUser(null);
   }
 
   @override
   Future<User?> getUserData() async {
     final user = await _apiClient.getUserData();
     await saveUser(user: user);
+    updateUser(user);
     return user;
   }
 
@@ -64,5 +77,10 @@ class UserRepositoryImpl implements UserRepository {
   Future<void> updateUserData({required User user}) async {
     await _apiClient.updateUserData(user);
     await saveUser(user: user);
+    updateUser(user);
+  }
+
+  void dispose() {
+    _userController.close();
   }
 }

@@ -6,6 +6,9 @@ abstract class UserRepository {
   Future<User?> getUserData();
   Future<void> updateUserData({required User user});
 
+  Stream<User?> get user;
+  User? get userSnapshot;
+
   ///Also use for upload user avatar in first time
   Future<void> updateUserAvatar({required File photo});
 
