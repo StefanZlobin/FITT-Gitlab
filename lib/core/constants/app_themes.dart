@@ -16,6 +16,7 @@ abstract class AppThemes {
         titleTextStyle: AppTypography.kH16.apply(color: AppColors.kOxford),
         iconTheme: const IconThemeData(
           color: AppColors.kBaseBlack,
+          size: 16,
         ),
       ),
       colorScheme: const ColorScheme(

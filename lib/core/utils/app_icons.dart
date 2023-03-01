@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class AppIcons {
   const AppIcons._();
   /* icons arr */
-  static const arr_big_left = QleverIconsetIconData(0xe90d);
+  static const arr_big_left = QleverIconsetIconData(0xe902);
   static const arr_big_right = QleverIconsetIconData(0xe905);
   static const arr_left = QleverIconsetIconData(0xe908);
   static const arr_up = QleverIconsetIconData(0xe90a);
@@ -22,7 +22,7 @@ class AppIcons {
   static const close = QleverIconsetIconData(0xe919);
   /* icons star */
   static const star_big_outlined = QleverIconsetIconData(0xe93d);
-  static const star_big = QleverIconsetIconData(0xe93e);
+  static const star_big = QleverIconsetIconData(0xe91d);
   static const star = QleverIconsetIconData(0xe93f);
   /* icons filters */
   static const filters = QleverIconsetIconData(0xe93e);
@@ -61,7 +61,7 @@ class AppIcons {
   static const parking = QleverIconsetIconData(0xe931);
   static const hairdryer = QleverIconsetIconData(0xe924);
   static const wifi = QleverIconsetIconData(0xe944);
-  static const lockers = QleverIconsetIconData(0xe929);
+  static const lockers = QleverIconsetIconData(0xe937);
   static const swimming_pool = QleverIconsetIconData(0xe90c);
   static const water = QleverIconsetIconData(0xe943);
   static const towel = QleverIconsetIconData(0xe941);
