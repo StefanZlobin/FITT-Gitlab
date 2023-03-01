@@ -52,23 +52,22 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
   final _activeMarkerImage = gm.BitmapDescriptor.fromAssetImage(
     ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
-    Assets.images.markerActive.path,
-
+    Assets.images.activeMapMarker.path,
   );
 
   final _activeMarkerWithBatchImage = gm.BitmapDescriptor.fromAssetImage(
     ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
-    Assets.images.mapBatchActive.path,
+    Assets.images.activeBatchMapMarker.path,
   );
 
   final _inactiveMarkerImage = gm.BitmapDescriptor.fromAssetImage(
     ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
-    Assets.images.marker.path,
+    Assets.images.mapMarker.path,
   );
 
   final _inactiveMarkerWithBatchImage = gm.BitmapDescriptor.fromAssetImage(
     ImageConfiguration(devicePixelRatio: ui.window.devicePixelRatio),
-    Assets.images.mapBatch.path,
+    Assets.images.batchMapMarker.path,
   );
 
   _MapStateLoaded? get _prevLoaded => state.maybeMap(
