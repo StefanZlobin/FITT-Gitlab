@@ -1,11 +1,11 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
-import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
+import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
@@ -70,12 +70,16 @@ class CancelWorkoutDialog extends StatelessWidget {
                     await getIt<WorkoutCubit>()
                         .cancelWorkout(w: workout)
                         .then((value) {
-                      getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
-                          workoutPhase: WorkoutPhaseEnum.done);
-                      context.pushNamed(
-                        AppRoute.workoutArchiveList.routeToPath,
-                        extra: true,
-                      );
+                      getIt<WorkoutsCubit>().getWorkouts().then((value) {
+                        getIt<ArchiveWorkoutsCubit>().offset = 0;
+                        getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
+                          needClearLoadedWorkouts: true,
+                        );
+                        context.pushNamed(
+                          AppRoute.workoutArchiveList.routeToPath,
+                          extra: true,
+                        );
+                      });
                     });
                   },
                   marginButton: const EdgeInsets.all(0),
