@@ -12,8 +12,17 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/active_batch_map_marker.png
+  AssetGenImage get activeBatchMapMarker => const AssetGenImage('assets/images/active_batch_map_marker.png');
+
+  /// File path: assets/images/active_map_marker.png
+  AssetGenImage get activeMapMarker => const AssetGenImage('assets/images/active_map_marker.png');
+
   /// File path: assets/images/batch.png
   AssetGenImage get batch => const AssetGenImage('assets/images/batch.png');
+
+  /// File path: assets/images/batch_map_marker.png
+  AssetGenImage get batchMapMarker => const AssetGenImage('assets/images/batch_map_marker.png');
 
   /// File path: assets/images/checkin.png
   AssetGenImage get checkin => const AssetGenImage('assets/images/checkin.png');
@@ -21,17 +30,8 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
-  /// File path: assets/images/map_batch.png
-  AssetGenImage get mapBatch => const AssetGenImage('assets/images/map_batch.png');
-
-  /// File path: assets/images/map_batch_active.png
-  AssetGenImage get mapBatchActive => const AssetGenImage('assets/images/map_batch_active.png');
-
-  /// File path: assets/images/marker.png
-  AssetGenImage get marker => const AssetGenImage('assets/images/marker.png');
-
-  /// File path: assets/images/marker_active.png
-  AssetGenImage get markerActive => const AssetGenImage('assets/images/marker_active.png');
+  /// File path: assets/images/map_marker.png
+  AssetGenImage get mapMarker => const AssetGenImage('assets/images/map_marker.png');
 
   /// File path: assets/images/radar.png
   AssetGenImage get radar => const AssetGenImage('assets/images/radar.png');
@@ -40,8 +40,17 @@ class $AssetsImagesGen {
   AssetGenImage get userLocationMarker => const AssetGenImage('assets/images/user_location_marker.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [batch, checkin, logo, mapBatch, mapBatchActive, marker, markerActive, radar, userLocationMarker];
+  List<AssetGenImage> get values => [
+        activeBatchMapMarker,
+        activeMapMarker,
+        batch,
+        batchMapMarker,
+        checkin,
+        logo,
+        mapMarker,
+        radar,
+        userLocationMarker
+      ];
 }
 
 class Assets {
