@@ -4,6 +4,7 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/functions/app_modal_bottom_sheet.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/cubits/workout_slider_button_type/workout_slider_button_type_cubit.dart';
@@ -14,6 +15,7 @@ import 'package:fitt/presentation/components/modals/workout_start_modal_bottom_s
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:superellipse_shape/superellipse_shape.dart';
 
 class WorkoutActionButton extends StatelessWidget {
   const WorkoutActionButton({
@@ -56,6 +58,13 @@ class WorkoutActionButton extends StatelessWidget {
       bloc: getIt<WorkoutCubit>(),
       listener: (context, state) {
         state.whenOrNull(
+          loaded: (workout) {
+            if (workout.status == WorkoutStatusEnum.requiresStart) {
+              bloc.setConfirmationTypeSliderButton();
+            } else if (workout.status == WorkoutStatusEnum.requiersFinish) {
+              bloc.setConfirmationTypeSliderButton();
+            }
+          },
           error: (error) {
             context.pop();
             bloc.setStartTypeSliderButton();
@@ -78,23 +87,28 @@ class WorkoutActionButton extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             initial: () => const SizedBox(),
+            confirmation: () {
+              return Container(
+                height: 56,
+                decoration: ShapeDecoration(
+                  shape: SuperellipseShape(
+                    borderRadius: superellipseRadius(12),
+                  ),
+                  color: AppColors.kOxford10,
+                ),
+                child: Center(
+                  child: Text(
+                    'Ждите подтверждения',
+                    style: AppTypography.kH14.apply(color: AppColors.kOxford60),
+                  ),
+                ),
+              );
+            },
             start: () {
               if (!showBeforeCanStart &&
                   workout.canStartTime.isAfter(DateTime.now())) {
                 return const SizedBox();
               }
-              if (workout.status == WorkoutStatusEnum.requiresStart) {
-                return AppButtonSliderFactory.startWorkout(
-                  key: const Key('start-slider'),
-                  regAvailableTime: workout.canStartTime,
-                  enabled: false,
-                  warningText: 'Ждите подтверждения тренировки администратором',
-                  action: () async {
-                    return null;
-                  },
-                );
-              }
-
               return AppButtonSliderFactory.startWorkout(
                 key: const Key('start-slider'),
                 regAvailableTime: workout.canStartTime,
@@ -105,30 +119,20 @@ class WorkoutActionButton extends StatelessWidget {
                     const WorkoutStartModalBottomSheet(),
                   ));
                   await getIt<WorkoutCubit>().startWorkout(w: workout);
-                  bloc.setFinishTypeSliderButton();
                   return true;
                 },
               );
             },
             finish: () {
-              if (workout.status == WorkoutStatusEnum.requiersFinish) {
-                return AppButtonSliderFactory.finishWorkout(
-                  key: const Key('finish-slider'),
-                  enabled: false,
-                  inactiveText:
-                      'Ждите подтверждения тренировки администратором',
-                  action: () async {
-                    return null;
-                  },
-                );
-              }
               return AppButtonSliderFactory.finishWorkout(
                 key: const Key('finish-slider'),
                 action: () async {
-                  unawaited(showAppModalBottomSheet(
-                    context,
-                    const WorkoutFinishModalBottomSheet(),
-                  ));
+                  unawaited(
+                    showAppModalBottomSheet(
+                      context,
+                      WorkoutFinishModalBottomSheet(workout: workout),
+                    ),
+                  );
                   await getIt<WorkoutCubit>().finishWorkout(w: workout);
                   return true;
                 },
