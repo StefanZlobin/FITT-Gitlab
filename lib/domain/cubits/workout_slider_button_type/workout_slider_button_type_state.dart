@@ -8,4 +8,6 @@ class WorkoutSliderButtonTypeState with _$WorkoutSliderButtonTypeState {
       _WorkoutSliderButtonTypeStateStart;
   const factory WorkoutSliderButtonTypeState.finish() =
       _WorkoutSliderButtonTypeStateFinish;
+  const factory WorkoutSliderButtonTypeState.confirmation() =
+      _WorkoutSliderButtonTypeStateConfirmation;
 }

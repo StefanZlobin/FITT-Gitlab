@@ -21,6 +21,7 @@ mixin _$WorkoutSliderButtonTypeState {
     required TResult Function() initial,
     required TResult Function() start,
     required TResult Function() finish,
+    required TResult Function() confirmation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$WorkoutSliderButtonTypeState {
     TResult? Function()? initial,
     TResult? Function()? start,
     TResult? Function()? finish,
+    TResult? Function()? confirmation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$WorkoutSliderButtonTypeState {
     TResult Function()? initial,
     TResult Function()? start,
     TResult Function()? finish,
+    TResult Function()? confirmation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,8 @@ mixin _$WorkoutSliderButtonTypeState {
         initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
+        confirmation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +56,8 @@ mixin _$WorkoutSliderButtonTypeState {
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +65,8 @@ mixin _$WorkoutSliderButtonTypeState {
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,6 +139,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
     required TResult Function() initial,
     required TResult Function() start,
     required TResult Function() finish,
+    required TResult Function() confirmation,
   }) {
     return initial();
   }
@@ -140,6 +150,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
     TResult? Function()? initial,
     TResult? Function()? start,
     TResult? Function()? finish,
+    TResult? Function()? confirmation,
   }) {
     return initial?.call();
   }
@@ -150,6 +161,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
     TResult Function()? initial,
     TResult Function()? start,
     TResult Function()? finish,
+    TResult Function()? confirmation,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,6 +177,8 @@ class _$_WorkoutSliderButtonTypeStateInitial
         initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
+        confirmation,
   }) {
     return initial(this);
   }
@@ -175,6 +189,8 @@ class _$_WorkoutSliderButtonTypeStateInitial
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
   }) {
     return initial?.call(this);
   }
@@ -185,6 +201,8 @@ class _$_WorkoutSliderButtonTypeStateInitial
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -246,6 +264,7 @@ class _$_WorkoutSliderButtonTypeStateStart
     required TResult Function() initial,
     required TResult Function() start,
     required TResult Function() finish,
+    required TResult Function() confirmation,
   }) {
     return start();
   }
@@ -256,6 +275,7 @@ class _$_WorkoutSliderButtonTypeStateStart
     TResult? Function()? initial,
     TResult? Function()? start,
     TResult? Function()? finish,
+    TResult? Function()? confirmation,
   }) {
     return start?.call();
   }
@@ -266,6 +286,7 @@ class _$_WorkoutSliderButtonTypeStateStart
     TResult Function()? initial,
     TResult Function()? start,
     TResult Function()? finish,
+    TResult Function()? confirmation,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -281,6 +302,8 @@ class _$_WorkoutSliderButtonTypeStateStart
         initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
+        confirmation,
   }) {
     return start(this);
   }
@@ -291,6 +314,8 @@ class _$_WorkoutSliderButtonTypeStateStart
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
   }) {
     return start?.call(this);
   }
@@ -301,6 +326,8 @@ class _$_WorkoutSliderButtonTypeStateStart
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -362,6 +389,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
     required TResult Function() initial,
     required TResult Function() start,
     required TResult Function() finish,
+    required TResult Function() confirmation,
   }) {
     return finish();
   }
@@ -372,6 +400,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
     TResult? Function()? initial,
     TResult? Function()? start,
     TResult? Function()? finish,
+    TResult? Function()? confirmation,
   }) {
     return finish?.call();
   }
@@ -382,6 +411,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
     TResult Function()? initial,
     TResult Function()? start,
     TResult Function()? finish,
+    TResult Function()? confirmation,
     required TResult orElse(),
   }) {
     if (finish != null) {
@@ -397,6 +427,8 @@ class _$_WorkoutSliderButtonTypeStateFinish
         initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
+        confirmation,
   }) {
     return finish(this);
   }
@@ -407,6 +439,8 @@ class _$_WorkoutSliderButtonTypeStateFinish
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
   }) {
     return finish?.call(this);
   }
@@ -417,6 +451,8 @@ class _$_WorkoutSliderButtonTypeStateFinish
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
     required TResult orElse(),
   }) {
     if (finish != null) {
@@ -430,4 +466,129 @@ abstract class _WorkoutSliderButtonTypeStateFinish
     implements WorkoutSliderButtonTypeState {
   const factory _WorkoutSliderButtonTypeStateFinish() =
       _$_WorkoutSliderButtonTypeStateFinish;
+}
+
+/// @nodoc
+abstract class _$$_WorkoutSliderButtonTypeStateConfirmationCopyWith<$Res> {
+  factory _$$_WorkoutSliderButtonTypeStateConfirmationCopyWith(
+          _$_WorkoutSliderButtonTypeStateConfirmation value,
+          $Res Function(_$_WorkoutSliderButtonTypeStateConfirmation) then) =
+      __$$_WorkoutSliderButtonTypeStateConfirmationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WorkoutSliderButtonTypeStateConfirmationCopyWithImpl<$Res>
+    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
+        _$_WorkoutSliderButtonTypeStateConfirmation>
+    implements _$$_WorkoutSliderButtonTypeStateConfirmationCopyWith<$Res> {
+  __$$_WorkoutSliderButtonTypeStateConfirmationCopyWithImpl(
+      _$_WorkoutSliderButtonTypeStateConfirmation _value,
+      $Res Function(_$_WorkoutSliderButtonTypeStateConfirmation) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_WorkoutSliderButtonTypeStateConfirmation
+    implements _WorkoutSliderButtonTypeStateConfirmation {
+  const _$_WorkoutSliderButtonTypeStateConfirmation();
+
+  @override
+  String toString() {
+    return 'WorkoutSliderButtonTypeState.confirmation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WorkoutSliderButtonTypeStateConfirmation);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() start,
+    required TResult Function() finish,
+    required TResult Function() confirmation,
+  }) {
+    return confirmation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function()? finish,
+    TResult? Function()? confirmation,
+  }) {
+    return confirmation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? start,
+    TResult Function()? finish,
+    TResult Function()? confirmation,
+    required TResult orElse(),
+  }) {
+    if (confirmation != null) {
+      return confirmation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WorkoutSliderButtonTypeStateInitial value)
+        initial,
+    required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
+    required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
+        confirmation,
+  }) {
+    return confirmation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
+    TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
+    TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
+  }) {
+    return confirmation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
+    TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
+    TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
+        confirmation,
+    required TResult orElse(),
+  }) {
+    if (confirmation != null) {
+      return confirmation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WorkoutSliderButtonTypeStateConfirmation
+    implements WorkoutSliderButtonTypeState {
+  const factory _WorkoutSliderButtonTypeStateConfirmation() =
+      _$_WorkoutSliderButtonTypeStateConfirmation;
 }

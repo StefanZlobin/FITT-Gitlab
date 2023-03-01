@@ -16,6 +16,10 @@ class WorkoutSliderButtonTypeCubit extends Cubit<WorkoutSliderButtonTypeState> {
     emit(const _WorkoutSliderButtonTypeStateFinish());
   }
 
+  void setConfirmationTypeSliderButton() {
+    emit(const _WorkoutSliderButtonTypeStateConfirmation());
+  }
+
   void setNoneTypeSliderButton() {
     emit(const _WorkoutSliderButtonTypeStateInitial());
   }
