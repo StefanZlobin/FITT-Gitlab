@@ -50,6 +50,9 @@ class AdminWorkoutActionButton extends StatelessWidget {
       case WorkoutStatusEnum.planned:
         bloc.setNoneSlider();
         break;
+      case null:
+        bloc.setNoneSlider();
+        break;
     }
 
     return BlocBuilder<AdminWorkoutActionButtonCubit,
@@ -88,9 +91,7 @@ class AdminWorkoutActionButton extends StatelessWidget {
               child: AppButtonSliderFactory.finishWorkout(
                 key: const Key('finish-slider'),
                 action: () async {
-                  if (adminWorkout.planEndTime
-                      .add(const Duration(minutes: 10))
-                      .isBefore(DateTime.now())) {
+                  if (adminWorkout.canEndTime.isBefore(DateTime.now())) {
                     getIt<AdminModalBottomSheetCubit>().forceFinish();
                     unawaited(
                       showAppModalBottomSheet(
@@ -100,7 +101,7 @@ class AdminWorkoutActionButton extends StatelessWidget {
                         ),
                       ),
                     );
-                    return true;
+                    return false;
                   } else {
                     getIt<AdminModalBottomSheetCubit>().setInitial();
                     unawaited(
