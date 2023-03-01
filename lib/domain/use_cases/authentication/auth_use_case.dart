@@ -11,10 +11,11 @@ class AuthUseCase {
     await _authRepository.signIn(phoneNumber: phoneNumber);
   }
 
-  Future<TokenPair> checkSecureCode(
-      {required String phoneNumber,
-      required String secureCode,
-      required String fcmToken}) async {
+  Future<TokenPair> checkSecureCode({
+    required String phoneNumber,
+    required String secureCode,
+    required String fcmToken,
+  }) async {
     final token = await _authRepository.checkSecureCode(
         phoneNumber: phoneNumber, secureCode: secureCode, fcmToken: fcmToken);
     return token;

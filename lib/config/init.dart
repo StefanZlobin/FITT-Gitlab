@@ -21,6 +21,7 @@ Future<void> init() async {
   await getIt<LocalNotificationsService>().init();
   await getIt<GeolocationService>().requestPermission();
   getIt<UserBloc>().add(const UserEvent.checkUser());
+  //TODO: если пользователь будет неавторизован, то будет ошибка 401, вынести этот участок кода
   await getIt<PartnerClubsCubit>().getPartnerClubs();
   await getIt<WorkoutsCubit>().getWorkouts();
 }
