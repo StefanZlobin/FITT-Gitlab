@@ -2,6 +2,7 @@ import 'package:fitt/core/constants/app_themes.dart';
 import 'package:fitt/generated/l10n.dart';
 import 'package:fitt/presentation/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class L extends S {
@@ -16,6 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppRouter goRouter = AppRouter();
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 
     return MaterialApp.router(
       title: 'FITT',
