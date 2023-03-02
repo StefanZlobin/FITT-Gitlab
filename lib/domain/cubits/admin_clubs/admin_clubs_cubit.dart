@@ -7,7 +7,9 @@ part 'admin_clubs_cubit.freezed.dart';
 part 'admin_clubs_state.dart';
 
 class AdminClubsCubit extends Cubit<AdminClubsState> {
-  AdminClubsCubit() : super(const AdminClubsState.initial());
+  AdminClubsCubit() : super(const AdminClubsState.initial()) {
+    getAdminClubs();
+  }
 
   final adminUseCase = AdminUseCase();
 

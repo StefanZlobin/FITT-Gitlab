@@ -6,6 +6,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
@@ -20,19 +21,32 @@ class ClosestWorkoutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WorkoutsCubit, WorkoutsState>(
-      bloc: getIt<WorkoutsCubit>(),
-      builder: (context, state) {
-        return state.when(
-          initial: () => const SizedBox(),
-          loading: () => const SizedBox(),
-          error: (_) => const SizedBox(),
-          loaded: (_, closestWorkout) {
-            if (closestWorkout == null) return const SizedBox();
-            return _buildClosestWorkoutWidget(closestWorkout, context);
+    return BlocListener<UserBloc, UserState>(
+      bloc: getIt<UserBloc>(),
+      listener: (context, state) {
+        state.whenOrNull(
+          loaded: (_) {
+            getIt<WorkoutsCubit>().getWorkouts();
+          },
+          loadedWithNoUser: (_) {
+            getIt<WorkoutsCubit>().getWorkouts();
           },
         );
       },
+      child: BlocBuilder<WorkoutsCubit, WorkoutsState>(
+        bloc: getIt<WorkoutsCubit>(),
+        builder: (context, state) {
+          return state.when(
+            initial: () => const SizedBox(),
+            loading: () => const SizedBox(),
+            error: (_) => const SizedBox(),
+            loaded: (_, closestWorkout) {
+              if (closestWorkout == null) return const SizedBox();
+              return _buildClosestWorkoutWidget(closestWorkout, context);
+            },
+          );
+        },
+      ),
     );
   }
 

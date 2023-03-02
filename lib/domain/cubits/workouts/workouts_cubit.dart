@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/use_cases/workout/workout_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'workouts_cubit.freezed.dart';
 part 'workouts_state.dart';
 
-class WorkoutsCubit extends Cubit<WorkoutsState> {
+class WorkoutsCubit extends Cubit<WorkoutsState> with UserMixin {
   WorkoutsCubit() : super(const _WorkoutsStateInitial());
 
   final workoutUseCase = WorkoutUseCase();

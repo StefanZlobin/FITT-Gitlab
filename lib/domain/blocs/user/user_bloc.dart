@@ -10,7 +10,6 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  final userUseCase = UserUseCase();
   UserBloc() : super(const _UserStateLoading()) {
     on<_UserEventLogout>((event, emit) async {
       try {
@@ -71,5 +70,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         emit(_UserStateError(error: e.toString()));
       }
     });
+
+    add(const _UserEventCheckUser());
   }
+  final userUseCase = UserUseCase();
 }
