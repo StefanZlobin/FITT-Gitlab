@@ -123,7 +123,7 @@ class ArchiveWorkoutsPage extends StatelessWidget {
       );
     }
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 175,
+      height: MediaQuery.of(context).size.height - 185,
       child: ListView.separated(
         padding: const EdgeInsets.only(bottom: 32),
         controller: scrollController,
@@ -142,13 +142,13 @@ class ArchiveWorkoutsPage extends StatelessWidget {
             );
           } else {
             scrollController.animateTo(
-              scrollController.position.maxScrollExtent + 256,
+              scrollController.position.maxScrollExtent + 144,
               duration: const Duration(microseconds: 1),
               curve: Curves.easeIn,
             );
 
             return SizedBox(
-              height: 256,
+              height: 144,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -172,6 +172,7 @@ class ArchiveWorkoutsPage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         showModalBottomSheet<void>(
+          useRootNavigator: true,
           backgroundColor: AppColors.kBaseWhite,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -197,12 +198,13 @@ class ArchiveWorkoutsPage extends StatelessWidget {
                   const SizedBox(width: 16),
                   Text(
                     workoutSortingEnum.sortingToString(workoutSortingEnum),
-                    style: const TextStyle(color: AppColors.kPrimaryBlue),
+                    style:
+                        AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
                   ),
                   const SizedBox(width: 8.0),
                   const Icon(
                     AppIcons.arr_down,
-                    size: 10,
+                    size: 12,
                     color: AppColors.kPrimaryBlue,
                   ),
                 ],

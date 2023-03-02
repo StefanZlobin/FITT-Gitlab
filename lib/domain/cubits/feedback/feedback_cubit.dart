@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-part 'feedback_state.dart';
 part 'feedback_cubit.freezed.dart';
+part 'feedback_state.dart';
 
 class FeedbackCubit extends Cubit<FeedbackState> {
   FeedbackCubit() : super(const FeedbackState.initial());
@@ -11,6 +11,7 @@ class FeedbackCubit extends Cubit<FeedbackState> {
   Future<void> sentUserFeedback({
     required String comment,
     required String email,
+    required String name,
   }) async {
     emit(const FeedbackState.initial());
     try {
@@ -20,7 +21,7 @@ class FeedbackCubit extends Cubit<FeedbackState> {
         eventId: sentryId,
         comments: comment,
         email: email,
-        name: '',
+        name: name,
       );
       await Sentry.captureUserFeedback(userFeedback);
       emit(const FeedbackState.loaded());

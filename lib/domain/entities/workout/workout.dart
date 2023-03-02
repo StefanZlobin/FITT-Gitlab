@@ -50,7 +50,7 @@ class Workout with _$Workout {
 
   Workout._();
 
-  int get workoutHashCode => hashCode;
+  int get workoutHashCode => uuid.hashCode;
   DateTime get canStartTime => startTime.subtract(kWorkoutStartThreshold);
   DateTime get canEndTime => endTime.add(kWorkoutEndThreshold);
   bool get inProgress => status == WorkoutStatusEnum.started;

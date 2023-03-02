@@ -109,6 +109,7 @@ class _SearchFieldState extends State<SearchField> {
                     showModalBottomSheet<void>(
                       context: context,
                       isScrollControlled: true,
+                      useRootNavigator: true,
                       backgroundColor: AppColors.kBaseWhite.withOpacity(0),
                       builder: (context) {
                         return const FilterModalBottomSheet();
@@ -138,6 +139,7 @@ class _SearchFieldState extends State<SearchField> {
                             showModalBottomSheet<void>(
                               context: context,
                               isScrollControlled: true,
+                              useRootNavigator: true,
                               backgroundColor:
                                   AppColors.kBaseWhite.withOpacity(0),
                               builder: (context) {

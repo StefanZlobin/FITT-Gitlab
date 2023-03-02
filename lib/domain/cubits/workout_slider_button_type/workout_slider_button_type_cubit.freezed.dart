@@ -19,7 +19,7 @@ mixin _$WorkoutSliderButtonTypeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() start,
+    required TResult Function(bool showBeforeCanStart) start,
     required TResult Function() finish,
     required TResult Function() confirmation,
   }) =>
@@ -27,7 +27,7 @@ mixin _$WorkoutSliderButtonTypeState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? start,
+    TResult? Function(bool showBeforeCanStart)? start,
     TResult? Function()? finish,
     TResult? Function()? confirmation,
   }) =>
@@ -35,7 +35,7 @@ mixin _$WorkoutSliderButtonTypeState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? start,
+    TResult Function(bool showBeforeCanStart)? start,
     TResult Function()? finish,
     TResult Function()? confirmation,
     required TResult orElse(),
@@ -137,7 +137,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() start,
+    required TResult Function(bool showBeforeCanStart) start,
     required TResult Function() finish,
     required TResult Function() confirmation,
   }) {
@@ -148,7 +148,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? start,
+    TResult? Function(bool showBeforeCanStart)? start,
     TResult? Function()? finish,
     TResult? Function()? confirmation,
   }) {
@@ -159,7 +159,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? start,
+    TResult Function(bool showBeforeCanStart)? start,
     TResult Function()? finish,
     TResult Function()? confirmation,
     required TResult orElse(),
@@ -224,6 +224,8 @@ abstract class _$$_WorkoutSliderButtonTypeStateStartCopyWith<$Res> {
           _$_WorkoutSliderButtonTypeStateStart value,
           $Res Function(_$_WorkoutSliderButtonTypeStateStart) then) =
       __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool showBeforeCanStart});
 }
 
 /// @nodoc
@@ -235,62 +237,89 @@ class __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<$Res>
       _$_WorkoutSliderButtonTypeStateStart _value,
       $Res Function(_$_WorkoutSliderButtonTypeStateStart) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? showBeforeCanStart = null,
+  }) {
+    return _then(_$_WorkoutSliderButtonTypeStateStart(
+      showBeforeCanStart: null == showBeforeCanStart
+          ? _value.showBeforeCanStart
+          : showBeforeCanStart // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_WorkoutSliderButtonTypeStateStart
     implements _WorkoutSliderButtonTypeStateStart {
-  const _$_WorkoutSliderButtonTypeStateStart();
+  const _$_WorkoutSliderButtonTypeStateStart(
+      {required this.showBeforeCanStart});
+
+  @override
+  final bool showBeforeCanStart;
 
   @override
   String toString() {
-    return 'WorkoutSliderButtonTypeState.start()';
+    return 'WorkoutSliderButtonTypeState.start(showBeforeCanStart: $showBeforeCanStart)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSliderButtonTypeStateStart);
+            other is _$_WorkoutSliderButtonTypeStateStart &&
+            (identical(other.showBeforeCanStart, showBeforeCanStart) ||
+                other.showBeforeCanStart == showBeforeCanStart));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, showBeforeCanStart);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WorkoutSliderButtonTypeStateStartCopyWith<
+          _$_WorkoutSliderButtonTypeStateStart>
+      get copyWith => __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<
+          _$_WorkoutSliderButtonTypeStateStart>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() start,
+    required TResult Function(bool showBeforeCanStart) start,
     required TResult Function() finish,
     required TResult Function() confirmation,
   }) {
-    return start();
+    return start(showBeforeCanStart);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? start,
+    TResult? Function(bool showBeforeCanStart)? start,
     TResult? Function()? finish,
     TResult? Function()? confirmation,
   }) {
-    return start?.call();
+    return start?.call(showBeforeCanStart);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? start,
+    TResult Function(bool showBeforeCanStart)? start,
     TResult Function()? finish,
     TResult Function()? confirmation,
     required TResult orElse(),
   }) {
     if (start != null) {
-      return start();
+      return start(showBeforeCanStart);
     }
     return orElse();
   }
@@ -339,8 +368,15 @@ class _$_WorkoutSliderButtonTypeStateStart
 
 abstract class _WorkoutSliderButtonTypeStateStart
     implements WorkoutSliderButtonTypeState {
-  const factory _WorkoutSliderButtonTypeStateStart() =
+  const factory _WorkoutSliderButtonTypeStateStart(
+          {required final bool showBeforeCanStart}) =
       _$_WorkoutSliderButtonTypeStateStart;
+
+  bool get showBeforeCanStart;
+  @JsonKey(ignore: true)
+  _$$_WorkoutSliderButtonTypeStateStartCopyWith<
+          _$_WorkoutSliderButtonTypeStateStart>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -387,7 +423,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() start,
+    required TResult Function(bool showBeforeCanStart) start,
     required TResult Function() finish,
     required TResult Function() confirmation,
   }) {
@@ -398,7 +434,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? start,
+    TResult? Function(bool showBeforeCanStart)? start,
     TResult? Function()? finish,
     TResult? Function()? confirmation,
   }) {
@@ -409,7 +445,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? start,
+    TResult Function(bool showBeforeCanStart)? start,
     TResult Function()? finish,
     TResult Function()? confirmation,
     required TResult orElse(),
@@ -512,7 +548,7 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() start,
+    required TResult Function(bool showBeforeCanStart) start,
     required TResult Function() finish,
     required TResult Function() confirmation,
   }) {
@@ -523,7 +559,7 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? start,
+    TResult? Function(bool showBeforeCanStart)? start,
     TResult? Function()? finish,
     TResult? Function()? confirmation,
   }) {
@@ -534,7 +570,7 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? start,
+    TResult Function(bool showBeforeCanStart)? start,
     TResult Function()? finish,
     TResult Function()? confirmation,
     required TResult orElse(),

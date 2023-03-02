@@ -30,6 +30,8 @@ class MapPage extends StatelessWidget {
           workoutStatusPlanned: () => getIt<WorkoutsCubit>().getWorkouts(),
           workoutStatusStarted: () => getIt<WorkoutsCubit>().getWorkouts(),
           workoutStatusFinished: () => getIt<WorkoutsCubit>().getWorkouts(),
+          workoutStatusMissed: () => getIt<WorkoutsCubit>().getWorkouts(),
+          workoutStatusFF: () => getIt<WorkoutsCubit>().getWorkouts(),
         );
       },
       child: Scaffold(

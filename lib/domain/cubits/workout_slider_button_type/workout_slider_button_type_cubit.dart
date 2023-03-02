@@ -8,8 +8,10 @@ class WorkoutSliderButtonTypeCubit extends Cubit<WorkoutSliderButtonTypeState> {
   WorkoutSliderButtonTypeCubit()
       : super(const WorkoutSliderButtonTypeState.initial());
 
-  void setStartTypeSliderButton() {
-    emit(const _WorkoutSliderButtonTypeStateStart());
+  void setStartTypeSliderButton({required bool showBeforeCanStart}) {
+    emit(_WorkoutSliderButtonTypeStateStart(
+      showBeforeCanStart: showBeforeCanStart,
+    ));
   }
 
   void setFinishTypeSliderButton() {

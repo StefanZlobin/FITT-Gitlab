@@ -138,7 +138,7 @@ class FavoriteClubsPage extends StatelessWidget {
                     else
                       Container(
                         height: MediaQuery.of(context).size.height -
-                            (48 + 24 + 36 + 18 + 89 + 28 + 10),
+                            (48 + 24 + 36 + 18 + 89 + 28 + 10 + 3),
                         margin: const EdgeInsets.only(top: 28),
                         child: ListView.separated(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -181,6 +181,7 @@ class FavoriteClubsPage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         showModalBottomSheet<void>(
+          useRootNavigator: true,
           backgroundColor: AppColors.kBaseWhite,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -206,12 +207,13 @@ class FavoriteClubsPage extends StatelessWidget {
                   const SizedBox(width: 16),
                   Text(
                     clubSortingEnum.sortingToString(clubSortingEnum),
-                    style: const TextStyle(color: AppColors.kPrimaryBlue),
+                    style:
+                        AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
                   ),
                   const SizedBox(width: 8.0),
                   const Icon(
                     AppIcons.arr_down,
-                    size: 10,
+                    size: 12,
                     color: AppColors.kPrimaryBlue,
                   ),
                 ],
@@ -325,6 +327,7 @@ class FavoriteClubsPage extends StatelessWidget {
       onTap: () => showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
+        useRootNavigator: true,
         backgroundColor: AppColors.kBaseWhite.withOpacity(0),
         builder: (context) => const FilterModalBottomSheet(),
       ),

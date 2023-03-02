@@ -24,7 +24,9 @@ class UserRepositoryImpl implements UserRepository {
   void Function(User?) get updateUser => _userController.sink.add;
 
   @override
-  Stream<User?> get user => _userController;
+  Stream<User?> get user => _userController;  
+  @override
+  BehaviorSubject<User?> get userController => _userController;
   @override
   User? get userSnapshot => _userController.value;
 

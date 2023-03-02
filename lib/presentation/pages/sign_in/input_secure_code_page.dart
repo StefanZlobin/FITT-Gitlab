@@ -68,7 +68,8 @@ class _InputSecureCodePageState extends State<InputSecureCodePage>
               );
             }
             if (userSnapshot!.hasFullData) {
-              context.push(AppRoute.map.routeToPath);
+              context.pop();
+              context.pop();
             } else {
               context.pushNamed(
                 AppRoute.personalData.routeToPath,

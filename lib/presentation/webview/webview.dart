@@ -49,9 +49,7 @@ class _WebviewState extends State<Webview> {
           onProgress: (int progress) {
             // Update loading bar.
           },
-          onPageStarted: (String url) { 
-            print(url);
-          },
+          onPageStarted: (String url) {},
           onPageFinished: (String url) {
             if (url == 'https://fitandtech.app/') {
               context.push(AppRoute.paymentLoading.routeToPath);
@@ -73,22 +71,29 @@ class _WebviewState extends State<Webview> {
         bloc: notificationsBloc,
         listener: (context, state) {
           state.whenOrNull(
-            paymentBatchSuccess: () => context.pushNamed(
-              AppRoute.paymentBuyBatchSuccess.routeToPath,
-              extra: {
-                'club': widget.club,
-                'batch': widget.batch,
-              },
-            ),
-            paymentBatchReject: () => context.pushNamed(
-              AppRoute.paymentReject.routeToPath,
-              extra: true,
-            ),
+            paymentBatchSuccess: () {
+              context.pushNamed(
+                AppRoute.paymentBuyBatchSuccess.routeToPath,
+                extra: {
+                  'club': widget.club,
+                  'batch': widget.batch,
+                },
+              );
+              notificationsBloc.setInitialState();
+            },
+            paymentBatchReject: () {
+              context.pushNamed(
+                AppRoute.paymentReject.routeToPath,
+                extra: true,
+              );
+              notificationsBloc.setInitialState();
+            },
             paymentWorkoutSuccess: () {
               getIt<WorkoutsCubit>().getWorkouts();
               getIt<WorkoutCubit>()
                   .getWorkout(workoutUuid: widget.workoutUuid ?? '');
               context.push(AppRoute.paymentSuccess.routeToPath);
+              notificationsBloc.setInitialState();
             },
             paymentWorkoutReject: () {
               context.pushNamed(

@@ -33,13 +33,14 @@ class WorkoutStartModalBottomSheet extends StatelessWidget {
           bloc: getIt<NotificationsBloc>(),
           builder: (context, state) {
             return state.when(
-              initial: () => const SizedBox(),
+              initial: () => _buildStartLoadingPullup(),
               paymentBatchReject: () => const SizedBox(),
               paymentBatchSuccess: () => const SizedBox(),
               paymentWorkoutReject: () => const SizedBox(),
               paymentWorkoutSuccess: () => const SizedBox(),
               workoutStatusPlanned: () => const SizedBox(),
               workoutStatusFF: () => const SizedBox(),
+              workoutStatusMissed: () => const SizedBox(),
               workoutStatusRS: () => _buildStartLoadingPullup(),
               workoutStatusStarted: () => _buildStartedWorkoutPullup(),
               workoutStatusRF: () => const SizedBox(),
@@ -78,7 +79,7 @@ class WorkoutStartModalBottomSheet extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 46.0),
           child: Text(
-            'Мы оповестим вас об окончании тренировки за 15 минут. Удачи!',
+            'Мы оповестим вас об окончании тренировки за 10 минут. Удачи!',
             style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
             textAlign: TextAlign.center,
           ),

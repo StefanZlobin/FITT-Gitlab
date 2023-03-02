@@ -86,6 +86,18 @@ class AdminStartedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
+              workoutStatusMissed: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+                filters: AdminWorkoutsFiltersRequestBody(
+                  clubIds: [adminClub.uuid!],
+                  phase: WorkoutPhaseEnum.inProcess,
+                  startDateFrom: startDateFrom,
+                  startDateTo: startDateTo,
+                  endDateFrom: startDateFrom,
+                  endDateTo: startDateTo,
+                  sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
+                ),
+              ),
             );
           },
         ),

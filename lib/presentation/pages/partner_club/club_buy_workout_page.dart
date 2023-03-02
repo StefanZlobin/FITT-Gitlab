@@ -5,6 +5,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/cubits/buy_workout/buy_workout_cubit.dart';
@@ -28,7 +29,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
-class ClubBuyWorkoutPage extends StatelessWidget {
+class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
   const ClubBuyWorkoutPage({super.key});
 
   @override
@@ -39,7 +40,7 @@ class ClubBuyWorkoutPage extends StatelessWidget {
         state.whenOrNull(
           loaded: (workout) {
             if (workout.payForm == null) {
-              getIt<WorkoutsCubit>().getWorkouts();
+              getIt<WorkoutsCubit>().getWorkouts(); //Remove
               getIt<WorkoutCubit>().getWorkout(workoutUuid: workout.uuid);
               context.push(AppRoute.paymentSuccess.routeToPath);
             } else {
@@ -142,11 +143,30 @@ class ClubBuyWorkoutPage extends StatelessWidget {
         bloc: getIt<UserBloc>(),
         builder: (context, state) {
           return state.when(
-            loading: () => _buildAppElevatedPayButton(club, activity, true),
-            loadedWithNoUser: (_) =>
-                _buildAppElevatedPayButton(club, activity, true),
-            loaded: (_) => _buildAppElevatedPayButton(club, activity, false),
-            error: (_) => _buildAppElevatedPayButton(club, activity, true),
+            loading: () => _buildAppElevatedPayButton(
+              club,
+              activity,
+              true,
+              context,
+            ),
+            loadedWithNoUser: (_) => _buildAppElevatedPayButton(
+              club,
+              activity,
+              true,
+              context,
+            ),
+            loaded: (_) => _buildAppElevatedPayButton(
+              club,
+              activity,
+              false,
+              context,
+            ),
+            error: (_) => _buildAppElevatedPayButton(
+              club,
+              activity,
+              true,
+              context,
+            ),
           );
         },
       ),
@@ -157,10 +177,22 @@ class ClubBuyWorkoutPage extends StatelessWidget {
     PartnerClub club,
     Activity activity,
     bool isDisable,
+    BuildContext context,
   ) {
     return AppElevatedButton(
-      isDisable: isDisable,
+      //isDisable: isDisable,
       onPressedAsync: () async {
+        // ignore: unnecessary_null_comparison
+        if (!userController.hasValue ||
+            userController == null ||
+            userSnapshot == null) {
+          context.push(AppRoute.inputPhoneNumber.routeToPath);
+        } else if (!userSnapshot!.hasFullData) {
+          context.pushNamed(
+            AppRoute.personalData.routeToPath,
+            extra: true,
+          );
+        }
         club.batchHoursAvailable != 0
             ? await getIt<BuyWorkoutCubit>().buyWorkoutByBatch(
                 slot: TimeSlot(

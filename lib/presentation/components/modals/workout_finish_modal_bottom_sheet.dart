@@ -41,7 +41,7 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
           bloc: getIt<NotificationsBloc>(),
           builder: (context, state) {
             return state.when(
-              initial: () => const SizedBox(),
+              initial: () => _buildFinishLoadingWorkoutPullup(),
               paymentBatchReject: () => const SizedBox(),
               paymentBatchSuccess: () => const SizedBox(),
               paymentWorkoutReject: () => const SizedBox(),
@@ -50,6 +50,7 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
               workoutStatusRS: () => const SizedBox(),
               workoutStatusFF: () => const SizedBox(),
               workoutStatusStarted: () => const SizedBox(),
+              workoutStatusMissed: () => const SizedBox(),
               workoutStatusRF: () => _buildFinishLoadingWorkoutPullup(),
               workoutStatusFinished: () => _buildFinishedWorkoutPullup(context),
               error: (error) => const SizedBox(),

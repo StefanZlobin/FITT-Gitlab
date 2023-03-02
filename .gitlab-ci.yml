@@ -1,0 +1,122 @@
+image: cirrusci/flutter:3.3.3
+
+stages:
+  - analyze
+  - test
+  - code_generation
+  - build_ios
+  - build_android
+  - reporting
+
+before_script:
+  - flutter pub get
+
+code_quality:
+ stage: analyze
+ before_script:
+   - dart pub global activate dart_code_metrics
+   - export PATH="$PATH:$HOME/.pub-cache/bin"
+ script:
+   - metrics lib -r codeclimate  > gl-code-quality-report.json
+ artifacts:
+   reports:
+     codequality: gl-code-quality-report.json
+ tags:
+   - docker
+
+lint:
+ stage: analyze
+ script:
+   - flutter analyze
+ tags:
+   - docker
+
+test:
+ stage: test
+ before_script:
+   - dart pub global activate junitreport
+   - export PATH="$PATH:$HOME/.pub-cache/bin"
+ script:
+   - flutter test --machine --coverage | tojunit -o report.xml
+ artifacts:
+   reports:
+     junit: report.xml
+
+ tags:
+   - docker
+
+.build-and-push-to-android:
+ stage: build_android
+ before_script:
+   - flutter pub get
+   - flutter pub run build_runner build --delete-conflicting-outputs
+ script:
+   - flutter build apk --profile --dart-define=API_HOST=$API_HOST
+   - mv build/app/outputs/flutter-apk/app-profile.apk app-profile.apk
+ artifacts:
+   paths:
+     - app-profile.apk
+ tags:
+   - hard-work
+   - docker
+
+build-and-push-to-android-test:
+  extends: .build-and-push-to-android
+  environment:
+    name: test
+  only:
+    - development
+
+build-and-push-to-android-preprod:
+  extends: .build-and-push-to-android
+  environment:
+    name: preprod
+  only:
+    - master
+
+build-and-push-to-ios-test:
+  stage: build_ios
+  environment:
+    name: test
+  before_script:
+    - flutter pub get
+    - flutter pub run build_runner build --delete-conflicting-outputs
+  script:
+    - cd ios
+    - bundle exec fastlane match appstore
+    - pod install --repo-update
+    - bundle exec fastlane match appstore
+    - bundle exec fastlane test
+  only:
+    - development
+  tags:
+    - ios
+    - raw-shell
+
+
+build-and-push-to-ios-preprod:
+  stage: build_ios
+  environment:
+    name: preprod
+  before_script:
+    - flutter pub get
+    - flutter pub run build_runner build --delete-conflicting-outputs
+  script:
+    - cd ios
+    - pod install --repo-update
+    - bundle exec fastlane match appstore
+    - bundle exec fastlane preprod
+  only:
+    - master
+  tags:
+    - ios
+    - raw-shell
+
+new-version-reports:
+ stage: reporting
+ only: 
+   - master
+   - development
+ script:
+   - |
+     curl -X POST "https://hooks.slack.com/services/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" -d "{\"blocks\":  [{\"type\": \"section\",\"text\": {\"type\": \"mrkdwn\",\"text\": \"Релиз новой версии мобильного приложения \\n\\n Изменения: \\n\\n> $CI_COMMIT_MESSAGE\"}},{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \":android: Android\"}},{\"type\": \"section\",\"text\": {\"type\": \"plain_text\",\"text\": \"Версия: \"},\"accessory\": {\"type\": \"button\",\"text\": {\"type\": \"plain_text\",\"text\": \"Скачать .apk\"},\"url\": \"https://gitlab.qlever.ru/api/v4/projects/88/jobs/artifacts/$CI_COMMIT_BRANCH/raw/app-profile.apk?job=build-and-push-to-android\"}},{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \":apple-ios: Apple iOS\"}},{\"type\": \"section\",\"text\": {\"type\": \"plain_text\",\"text\": \"Версия: \"},\"accessory\": {\"type\": \"button\",\"text\": {\"type\": \"plain_text\",\"text\": \"TestFlight\"},\"url\": \"itms-beta://testflight.apple.com/v1/app/1559533429\"}}]}"

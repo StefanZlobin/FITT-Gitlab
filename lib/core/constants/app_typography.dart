@@ -89,7 +89,7 @@ abstract class AppTypography {
     fontFamily: 'SF Pro Display',
     fontWeight: FontWeight.w700,
     fontSize: 16,
-    height: 26 / 16,
+    height: 19.09 / 16,
     letterSpacing: 0.2,
     textBaseline: TextBaseline.alphabetic,
     color: AppColors.kBaseBlack,

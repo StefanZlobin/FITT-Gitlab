@@ -29,15 +29,18 @@ class AdminWorkoutStartModalBottomSheet extends StatelessWidget {
     return BlocBuilder<AdminModalBottomSheetCubit, AdminModalBottomSheetState>(
       bloc: getIt<AdminModalBottomSheetCubit>(),
       builder: (context, state) {
-        return state.when(
-          initial: () => _buildStartedWorkoutPullup(),
-          inputLockerNumber: (lockerNumber) => _buildInputLockerNumber(
-            focusNode,
-            context,
-            nameValidator,
-            lockerNumber,
+        return SizedBox(
+          height: 540,
+          child: state.when(
+            initial: () => _buildStartedWorkoutPullup(),
+            inputLockerNumber: (lockerNumber) => _buildInputLockerNumber(
+              focusNode,
+              context,
+              nameValidator,
+              lockerNumber,
+            ),
+            forceFinish: (_, __, ___) => const SizedBox(),
           ),
-          forceFinish: (_, __, ___) => const SizedBox(),
         );
       },
     );

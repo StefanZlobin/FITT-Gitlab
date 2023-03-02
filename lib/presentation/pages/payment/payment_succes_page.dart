@@ -23,7 +23,7 @@ class PaymentSuccessPage extends StatelessWidget {
         bloc: getIt<WorkoutCubit>(),
         builder: (context, state) {
           return state.when(
-            initial: () => const CircularProgressIndicator(),
+            initial: () => const Center(child: CircularProgressIndicator()),
             error: (error) => const SizedBox(),
             loaded: (workout) {
               return ListView(
@@ -106,8 +106,8 @@ class PaymentSuccessPage extends StatelessWidget {
                           scheduleDuration:
                               workout.canStartTime.difference(DateTime.now()),
                         );
-                        context.push(AppRoute.map.routeToPath);
                       }
+                      context.pushReplacement(AppRoute.map.routeToPath);
                     },
                   ),
                 ],

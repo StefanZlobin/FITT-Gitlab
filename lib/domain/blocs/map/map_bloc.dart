@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:collection/collection.dart';
 import 'package:fluster/fluster.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +28,13 @@ part 'map_state.dart';
 
 class MapBloc extends Bloc<MapEvent, MapState> {
   MapBloc() : super(const _MapStateInitial()) {
-    on<_MapEventMapCreated>(_onMapCreated);
-    on<_MapEventCameraMove>(_onCameraMoved);
-    on<_MapEventFiltersDetected>(_onFiltersDetected);
-    on<_MapEventMarkerTapped>(_onMarkerTapped);
-    on<_MapEventCarouselCardFocused>(_onCarouselCardFocused);
+    on<_MapEventMapCreated>(_onMapCreated, transformer: restartable());
+    on<_MapEventCameraMove>(_onCameraMoved, transformer: restartable());
+    on<_MapEventFiltersDetected>(_onFiltersDetected,
+        transformer: restartable());
+    on<_MapEventMarkerTapped>(_onMarkerTapped, transformer: restartable());
+    on<_MapEventCarouselCardFocused>(_onCarouselCardFocused,
+        transformer: restartable());
   }
 
   final _mapUseCase = MapUseCase();
@@ -298,9 +301,9 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     final newState = prevState.copyWith(
       markers: [
         for (final m in prevState.markers)
-          if (isTargetMarker(m, event.clubId))
+          if (isTargetMarker(m, event.clubId)) ...{
             await _activateMarker(m)
-          else if (m.isActive)
+          } else if (m.isActive)
             await _deactivateMarker(m)
           else
             m
@@ -327,6 +330,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
         activeMarkerImage = await _activeMarkerImage;
       }
     }
+
+    //_carouselBloc.add(CarouselEvent.clubSelected(_clubId(marker)));
 
     return marker.copyWith(isActive: true, icon: activeMarkerImage);
   }

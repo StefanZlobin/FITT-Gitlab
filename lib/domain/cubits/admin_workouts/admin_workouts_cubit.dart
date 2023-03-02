@@ -20,6 +20,7 @@ class AdminWorkoutsCubit extends Cubit<AdminWorkoutsState> {
     try {
       final adminWorkouts =
           await adminUseCase.getAdminWorkouts(-1, 0, filters: filters);
+      adminWorkouts.sort((a, b) => a.canStartTime.compareTo(b.canStartTime));
       emit(_AdminWorkoutsStateLoaded(adminWorkouts: adminWorkouts));
     } on Exception catch (e) {
       emit(_AdminWorkoutsStateError(error: e.toString()));

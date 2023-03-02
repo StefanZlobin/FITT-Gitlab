@@ -80,22 +80,29 @@ class FilteringCubit extends Cubit<FilteringState> {
   }
 
   void updatePrice({required RangeValues price}) {
+    final activeFacilitiesList = selectedFacilities.entries
+        .where((element) => element.value)
+        .map((e) => e.key)
+        .map((e) => e)
+        .toList();
+
     final newState = _filteringState.copyWith(
       filters: _filteringState.filters.copyWith(
         minPrice: price.start.toInt(),
         maxPrice: price.end.toInt(),
       ),
       selectedFacilities: selectedFacilities,
+      activeFacilitiesList: activeFacilitiesList,
       isPriceUpdate: true,
     );
 
     emit(
       _FilteringStateLoaded(
-        filters: newState.filters,
+        filters: newState.filters,    
         minPriceStart: newState.minPriceStart,
         maxPriceEnd: newState.maxPriceEnd,
         selectedFacilities: newState.selectedFacilities,
-        activeFacilitiesList: _filteringState.activeFacilitiesList,
+        activeFacilitiesList: newState.activeFacilitiesList,
         isPriceUpdate: true,
       ),
     );

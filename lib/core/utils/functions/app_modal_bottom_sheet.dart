@@ -6,6 +6,7 @@ Future<void> showAppModalBottomSheet(
   Widget content,
 ) async {
   await showModalBottomSheet<void>(
+    useRootNavigator: true,
     backgroundColor: AppColors.kBaseWhite,
     isScrollControlled: true,
     shape: const RoundedRectangleBorder(

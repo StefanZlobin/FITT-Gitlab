@@ -4,6 +4,7 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/core/validation/email_validator.dart';
 import 'package:fitt/core/validation/name_validator.dart';
@@ -22,7 +23,7 @@ class FeedbackPage extends StatefulWidget {
   State<FeedbackPage> createState() => _FeedbackPageState();
 }
 
-class _FeedbackPageState extends State<FeedbackPage> {
+class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
   final formKey = GlobalKey<FormState>();
   final commentController = TextEditingController();
   final emailController = TextEditingController();
@@ -114,10 +115,17 @@ class _FeedbackPageState extends State<FeedbackPage> {
     return BottomCenter(
       child: AppElevatedButton(
         onPressedAsync: () async {
-          await getIt<FeedbackCubit>().sentUserFeedback(
-            comment: commentController.text,
-            email: email ?? emailController.text,
-          );
+          try {
+            await getIt<FeedbackCubit>().sentUserFeedback(
+              comment: commentController.text,
+              email: email ?? emailController.text,
+              name: '${userSnapshot?.firstName} ${userSnapshot?.lastName}',
+            );
+            await Future<void>.delayed(const Duration(seconds: 2));
+          } on Exception catch (e) {
+            print(e);
+            throw Exception(e);
+          }
         },
         textButton: const Text('Отправить'),
         isDisable: commentController.text.isEmpty &&

@@ -104,9 +104,6 @@ class ClosestWorkoutCard extends StatelessWidget {
                 const SizedBox(width: 8),
               ],
             ),
-            if (closestWorkout.canStartTime.isBefore(DateTime.now())) ...[
-              const SizedBox(height: 8)
-            ],
             WorkoutActionButton(
               workout: closestWorkout,
               showBeforeCanStart: false,

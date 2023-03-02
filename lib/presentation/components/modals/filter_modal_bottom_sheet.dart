@@ -11,6 +11,7 @@ import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 import '../../../core/utils/widget_alignments.dart';
@@ -74,15 +75,42 @@ class FilterModalBottomSheet extends StatelessWidget {
             ),
           ),
           BottomCenter(
-            child: AppElevatedButton(
-              textButton: const Text('Показать клубы'),
-              marginButton: const EdgeInsets.only(
-                  left: 16, right: 16, bottom: 32, top: 16),
-              onPressedAsync: () async {},
+            child: BlocBuilder<FilteringCubit, FilteringState>(
+              bloc: getIt<FilteringCubit>(),
+              builder: (context, state) {
+                return state.when(
+                  initial: () => const SizedBox(),
+                  error: (error) => const SizedBox(),
+                  loaded: (filters, selectedFacilities, _, __, isPriceUpdate,
+                      activeFacilitiesList) {
+                    final countActiveFacilities =
+                        activeFacilitiesList?.length ?? 0;
+                    final countActiveFilters =
+                        countActiveFacilities + (isPriceUpdate ? 1 : 0);
+                    if (countActiveFilters == 0) {
+                      return _buildShowClubsButton(context, isDisable: true);
+                    }
+                    return _buildShowClubsButton(context, isDisable: false);
+                  },
+                );
+              },
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildShowClubsButton(
+    BuildContext context, {
+    required bool isDisable,
+  }) {
+    return AppElevatedButton(
+      textButton: const Text('Показать клубы'),
+      isDisable: isDisable,
+      marginButton:
+          const EdgeInsets.only(left: 16, right: 16, bottom: 32, top: 16),
+      onPressed: () => context.pop(),
     );
   }
 

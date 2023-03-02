@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fitt/core/enum/payment_status_enum.dart';
-import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'notifications_bloc.freezed.dart';
@@ -68,18 +67,18 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     _OnChangeWorkoutNotification event,
     Emitter<NotificationsState> emit,
   ) {
-    if (event.message.data['user_type'] == UserTypeEnum.CUSTOMER.name) {
-      if (event.message.data['status'] == 'REQUIRED_START') {
-        emit(const NotificationsState.workoutStatusRS());
-      } else if (event.message.data['status'] == 'START') {
-        emit(const NotificationsState.workoutStatusStarted());
-      } else if (event.message.data['status'] == 'REQUIRED_FINISH') {
-        emit(const NotificationsState.workoutStatusRF());
-      } else if (event.message.data['status'] == 'FINISH') {
-        emit(const NotificationsState.workoutStatusFinished());
-      } else if (event.message.data['status'] == 'FORCE_FINISH') {
-        emit(const NotificationsState.workoutStatusFinished());
-      }
+    if (event.message.data['status'] == 'REQUIRED_START') {
+      emit(const NotificationsState.workoutStatusRS());
+    } else if (event.message.data['status'] == 'START') {
+      emit(const NotificationsState.workoutStatusStarted());
+    } else if (event.message.data['status'] == 'REQUIRED_FINISH') {
+      emit(const NotificationsState.workoutStatusRF());
+    } else if (event.message.data['status'] == 'FINISH') {
+      emit(const NotificationsState.workoutStatusFinished());
+    } else if (event.message.data['status'] == 'FORCE_FINISH') {
+      emit(const NotificationsState.workoutStatusFF());
+    } else if (event.message.data['status'] == 'PLAN') {
+      emit(const NotificationsState.workoutStatusPlanned());
     }
   }
 }

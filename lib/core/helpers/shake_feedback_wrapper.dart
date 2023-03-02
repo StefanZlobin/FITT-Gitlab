@@ -17,8 +17,9 @@ class ShakeFeedbackWrapper extends StatelessWidget with UserMixin {
     return BetterFeedback(
       key: GlobalKey(debugLabel: 'FEEDBACKBUILDER'),
       child: Builder(
-        builder: (context) {
+        builder: (shakeContext) {
           ShakeDetector.autoStart(
+            minimumShakeCount: 3,
             onPhoneShake: () {
               Sentry.addBreadcrumb(
                 Breadcrumb(
@@ -27,7 +28,7 @@ class ShakeFeedbackWrapper extends StatelessWidget with UserMixin {
                   category: 'ui.click',
                 ),
               );
-              final feedback = BetterFeedback.of(context);
+              final feedback = BetterFeedback.of(shakeContext);
               feedback.showAndUploadToSentry(
                 name: '${userSnapshot?.firstName} ${userSnapshot?.lastName}',
                 email: '${userSnapshot?.email}',

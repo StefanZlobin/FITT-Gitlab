@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
+import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/ticker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -51,7 +51,8 @@ class WorkoutTimerBloc extends Bloc<WorkoutTimerEvent, WorkoutTimerState> {
           DateTime.now().minute,
           DateTime.now().second,
         )) {
-      getIt<WorkoutsCubit>().getWorkouts();
+      //getIt<WorkoutsCubit>().getWorkouts();
+      getIt<WorkoutCubit>().getWorkout(workoutUuid: event.workout.uuid);
     }
     if (event.workout.status == WorkoutStatusEnum.started &&
         event.workout.endTime.isBefore(DateTime.now())) {

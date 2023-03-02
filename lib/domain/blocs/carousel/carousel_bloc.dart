@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
@@ -13,8 +14,8 @@ part 'carousel_state.dart';
 
 class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
   CarouselBloc() : super(const _Initial()) {
-    on<_ClubSelected>(_onClubSelected);
-    on<_ClubsChanged>(_onClubsChanged);
+    on<_ClubSelected>(_onClubSelected, transformer: sequential());
+    on<_ClubsChanged>(_onClubsChanged, transformer: restartable());
   }
 
   // TODO: remove extent

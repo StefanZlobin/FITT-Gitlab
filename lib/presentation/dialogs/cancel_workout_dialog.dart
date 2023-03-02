@@ -65,7 +65,7 @@ class CancelWorkoutDialog extends StatelessWidget {
                     );
                     await getIt<LocalNotificationsService>()
                         .deleteLocalNotification(
-                      id: workout.workoutHashCode + 2,
+                      id: workout.workoutHashCode - 2,
                     );
                     await getIt<WorkoutCubit>()
                         .cancelWorkout(w: workout)

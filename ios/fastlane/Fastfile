@@ -1,0 +1,71 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :test do
+    previous_build_number = latest_testflight_build_number
+
+    current_build_number = previous_build_number + 1
+
+    increment_build_number(
+      build_number: current_build_number
+    )
+    sync_code_signing(type: "appstore")
+    build_app(scheme: "fitt",
+              workspace: "Runner.xcworkspace",
+              include_bitcode: false,
+              silent: true,
+            )
+    upload_to_testflight(
+      expire_previous_builds: true,
+    )
+  end  
+
+  lane :preprod do
+    previous_build_number = latest_testflight_build_number
+
+    current_build_number = previous_build_number + 1
+
+    increment_build_number(
+      build_number: current_build_number
+    )
+    sync_code_signing(type: "appstore")
+    build_app(scheme: "fitt",
+              workspace: "Runner.xcworkspace",
+              include_bitcode: false,
+              silent: true
+            )
+    upload_to_testflight(submit_beta_review: false)
+  end  
+  
+  lane :patch_project_for_pods_script do      
+    fastlane_require 'xcodeproj'
+    project = Xcodeproj::Project.open("../Runner.xcodeproj")
+    project.targets.each do |target|
+      script_need_to_be_removed = '[CP] Check Pods Manifest.lock'
+
+      phase = target.shell_script_build_phases.select { |phase| phase.name.include?(script_need_to_be_removed) }.first
+      unless phase.nil?
+        target.build_phases.delete(phase)
+        puts "script #{script_need_to_be_removed} removed"
+      end
+    end
+    project.save()
+  end
+end
+

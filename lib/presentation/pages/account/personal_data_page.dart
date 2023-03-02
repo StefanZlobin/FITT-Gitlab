@@ -5,6 +5,7 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/validation/date_validator.dart';
 import 'package:fitt/core/validation/email_validator.dart';
 import 'package:fitt/core/validation/name_validator.dart';
@@ -19,7 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class PersonalDataPage extends StatelessWidget {
+class PersonalDataPage extends StatelessWidget with UserMixin {
   const PersonalDataPage({
     super.key,
     required this.canSkip,
@@ -57,6 +58,7 @@ class PersonalDataPage extends StatelessWidget {
                     title: const Text('Имя'),
                     placeholder: 'Введите имя',
                     validator: (v) => nameValidator.getValidationErrorName(v),
+                    initialValue: userSnapshot?.firstName,
                     onChanged: (value) {
                       getIt<UserBloc>().add(UserEvent.updateUserData(
                           user: user!.copyWith(firstName: value)));
@@ -69,6 +71,7 @@ class PersonalDataPage extends StatelessWidget {
                     title: const Text('Фамилия'),
                     placeholder: 'Введите фамилию',
                     validator: (v) => nameValidator.getValidationErrorName(v),
+                    initialValue: userSnapshot?.lastName,
                     onChanged: (value) {
                       getIt<UserBloc>().add(UserEvent.updateUserData(
                           user: user!.copyWith(lastName: value)));
@@ -80,6 +83,7 @@ class PersonalDataPage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, right: 16),
                     helper: const Text('Дата рождения'),
                     validator: (v) => dateValidator.getValidationError(v),
+                    initialValue: userSnapshot?.birthday,
                     placeholder: 'Введите дату рождения',
                     onTap: () async {
                       await showDatePicker(
@@ -101,6 +105,7 @@ class PersonalDataPage extends StatelessWidget {
                     title: const Text('E-mail'),
                     placeholder: 'Введите E-mail',
                     isEmailField: true,
+                    initialValue: userSnapshot?.email,
                     validator: (v) => emailValidator.getValidationError(v),
                     onChanged: (value) {
                       getIt<UserBloc>().add(UserEvent.updateUserData(
@@ -154,7 +159,10 @@ class PersonalDataPage extends StatelessWidget {
               onPressed: () {
                 getIt<UserBloc>().add(UserEvent.updateUserData(
                     user: user.copyWith(gender: genderGroup)));
-                context.push(AppRoute.map.routeToPath);
+                //context.push(AppRoute.map.routeToPath);
+                context.pop();
+                context.pop();
+                context.pop();
               },
             );
           },
