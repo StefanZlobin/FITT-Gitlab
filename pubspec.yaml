@@ -95,6 +95,8 @@ dependencies:
   feedback_sentry: ^2.3.0
   #Page transition
   page_transition: ^2.0.9
+  #Running line
+  marquee: ^2.2.3
 
   #Animated native splash screen
   #aka Stefan

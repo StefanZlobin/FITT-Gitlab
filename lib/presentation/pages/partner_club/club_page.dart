@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:marquee/marquee.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 class ClubPage extends StatelessWidget {
@@ -59,7 +60,21 @@ class ClubPage extends StatelessWidget {
 
   AppBar _buildAppBarWidget(BuildContext context, PartnerClub club) {
     return AppBar(
-      title: Text(club.label!.toUpperCase()),
+      title: club.label!.length <= 20
+          ? Text(club.label!.toUpperCase())
+          : Container(
+              height: 30,
+              margin: const EdgeInsets.only(right: 20),
+              child: Marquee(
+                text: club.label!.toUpperCase(),
+                style: AppTypography.kH16.apply(color: AppColors.kOxford),
+                blankSpace: 100,
+                startAfter: const Duration(seconds: 3),
+                pauseAfterRound: const Duration(seconds: 5),
+                showFadingOnlyWhenScrolling: false,
+                fadingEdgeEndFraction: 1,
+              ),
+            ),
       leading: IconButton(
         onPressed: () => context.pop(),
         icon: const Icon(

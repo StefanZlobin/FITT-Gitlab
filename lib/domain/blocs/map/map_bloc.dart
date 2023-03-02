@@ -261,7 +261,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       final zoom = await controller.getZoomLevel();
       final update = gm.CameraUpdate.newLatLngZoom(
         marker.coordinates,
-        zoom + 0.5,
+        zoom + 1,
       );
 
       unawaited(controller.animateCamera(update));
@@ -330,8 +330,6 @@ class MapBloc extends Bloc<MapEvent, MapState> {
         activeMarkerImage = await _activeMarkerImage;
       }
     }
-
-    //_carouselBloc.add(CarouselEvent.clubSelected(_clubId(marker)));
 
     return marker.copyWith(isActive: true, icon: activeMarkerImage);
   }

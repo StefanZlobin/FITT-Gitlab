@@ -49,9 +49,11 @@ class _ClubCarouselState extends State<ClubCarousel> {
           bloc: getIt<PartnerClubsCubit>(),
           listener: (context, state) {
             state.whenOrNull(
-              loaded: (clubs) => getIt<CarouselBloc>().add(
-                CarouselEvent.clubsChanged(clubs),
-              ),
+              loaded: (clubs) {
+                getIt<CarouselBloc>().add(
+                  CarouselEvent.clubsChanged(clubs),
+                );
+              },
             );
           },
         ),
