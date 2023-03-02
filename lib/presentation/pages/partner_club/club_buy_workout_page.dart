@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
@@ -180,9 +182,7 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
     BuildContext context,
   ) {
     return AppElevatedButton(
-      //isDisable: isDisable,
       onPressedAsync: () async {
-        // ignore: unnecessary_null_comparison
         if (!userController.hasValue ||
             userController == null ||
             userSnapshot == null) {

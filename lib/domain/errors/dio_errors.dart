@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_constructors_over_static_methods
+// ignore_for_file: prefer_constructors_over_static_methods, avoid_catches_without_on_clauses
 
 import 'dart:io';
 
@@ -95,8 +95,7 @@ abstract class NetworkExceptions with _$NetworkExceptions {
           networkExceptions = const NetworkExceptions.unexpectedError();
         }
         return networkExceptions;
-      } on FormatException catch (e) {
-        // Helper.printError(e.toString());
+      } on FormatException {
         return const NetworkExceptions.formatException();
       } catch (_) {
         return const NetworkExceptions.unexpectedError();

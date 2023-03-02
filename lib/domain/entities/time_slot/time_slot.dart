@@ -1,4 +1,4 @@
-// ignore_for_file: invalid_annotation_target
+// ignore_for_file: invalid_annotation_target, deprecated_member_use
 
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

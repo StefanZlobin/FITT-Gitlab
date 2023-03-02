@@ -46,8 +46,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
       final geolocation =
           await getIt<GeolocationService>().getCurrentPosition();
       xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
-    } on Exception catch (e) {
-      print(e);
+    } on Exception {
       xPosition = '';
     }
     try {
