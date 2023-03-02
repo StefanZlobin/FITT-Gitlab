@@ -43,7 +43,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to location when open</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>The gallery may be needed to display the user's avatar</string>
+	<string>The gallery may be needed to display the user&apos;s avatar</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
