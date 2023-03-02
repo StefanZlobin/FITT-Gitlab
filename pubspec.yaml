@@ -82,6 +82,8 @@ dependencies:
   url_launcher: ^6.1.9
   #Timezone
   timezone: ^0.9.1
+  #Flutter cache manager
+  flutter_cache_manager: ^3.3.0
   #Local notifications
   flutter_local_notifications: ^13.0.0
   #Platform
