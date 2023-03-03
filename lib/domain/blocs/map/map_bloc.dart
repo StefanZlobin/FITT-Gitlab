@@ -148,6 +148,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     }
 
     final gm.BitmapDescriptor markerImage = await _inactiveMarkerImage;
+    final gm.BitmapDescriptor batchMarkerImage =
+        await _inactiveMarkerWithBatchImage;
 
     final Map<String, MapMarker> prevMarkers = Map.fromEntries(
       _prevLoaded?.markers.map((e) => MapEntry(e.markerId, e)) ?? [],
@@ -161,7 +163,9 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           MapMarker(
             markerId: mapPoint.id,
             coordinates: mapPoint.coordinates.toGoogleMaps(),
-            icon: markerImage,
+            icon: mapPoint.type == MapPointsEnum.partnerClubWithBatch
+                ? batchMarkerImage
+                : markerImage,
             type: mapPoint.type,
             onPressed: () => add(MapEvent.markerTapped(marker)),
           );
