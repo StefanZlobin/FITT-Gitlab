@@ -237,8 +237,6 @@ class ClubPage extends StatelessWidget {
 
     final DateTime? openAt = currentWorkSchedule.startDateTime;
 
-    final bool isWeekend = currentWorkSchedule.isWeekend;
-
     final bool isOpen;
     if (closeAt == null || openAt == null) {
       isOpen = false;
@@ -250,8 +248,10 @@ class ClubPage extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: Text.rich(
         TextSpan(
-          style: AppTypography.kBody14.apply(color: AppColors.kExtraGreen),
-          text: isWeekend ? 'Сейчас закрыто' : 'Сейчас открыто',
+          style: !isOpen
+              ? AppTypography.kBody14.apply(color: AppColors.kPrimaryRed)
+              : AppTypography.kBody14.apply(color: AppColors.kExtraGreen),
+          text: !isOpen ? 'Сейчас закрыто' : 'Сейчас открыто',
           children: [
             TextSpan(
               text: '  -  ',

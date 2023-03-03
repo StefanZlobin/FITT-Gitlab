@@ -28,38 +28,3 @@ class WorkSchedule with _$WorkSchedule {
   DateTime? get endDateTime =>
       endTime == null ? null : DateTimeUtils.fromDateAndTime(date!, endTime!);
 }
-
-//class WorkScheduleConverter implements JsonConverter<WorkSchedule, Map> {
-//  const WorkScheduleConverter();
-
-//  @override
-//  WorkSchedule fromJson(Map json) {
-//    final date = dateFromString(json['date'] as String);
-//    // необработанные данные о дате начала
-//    final startTimeRow = json['start_time'] as String?;
-//    // необработанные данные о дате конца
-//    final endTimeRow = json['end_time'] as String?;
-//    final startTime = timeFromString(startTimeRow ?? '00:00:00');
-//    final endTime = timeFromString(endTimeRow ?? '10:00:00');
-//    final isSpecial = json['is_special'] as bool? ?? false;
-//    final isWeekend = startTimeRow == null && endTimeRow == null;
-
-//    return WorkSchedule(
-//      startTime: DateTimeUtils.fromDateAndTime(date, startTime),
-//      endTime: DateTimeUtils.fromDateAndTime(date, endTime),
-//      isSpecial: isSpecial,
-//      isWeekend: isWeekend,
-//    );
-//  }
-
-//  @override
-//  Map<String, Object?> toJson(WorkSchedule object) {
-//    final json = {
-//      'date': dateToString(object.startTime ?? DateTime.now()),
-//      'start_time': timeToString(object.startTime ?? DateTime.now()),
-//      'end_time': timeToString(object.endTime ?? DateTime.now()),
-//      'is_special': object.isSpecial,
-//    };
-//    return json;
-//  }
-//}
