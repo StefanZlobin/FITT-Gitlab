@@ -42,6 +42,9 @@ class ClosestWorkoutCard extends StatelessWidget {
             error: (_) => const SizedBox(),
             loaded: (_, closestWorkout) {
               if (closestWorkout == null) return const SizedBox();
+              if (closestWorkout.canStartTime.isAfter(DateTime.now())) {
+                return const SizedBox();
+              }
               return _buildClosestWorkoutWidget(closestWorkout, context);
             },
           );
