@@ -6,6 +6,7 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
+import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/pages/partner_club/widgets/button_for_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -135,6 +136,7 @@ class ClubBatchCard extends StatelessWidget {
               return SizedBox(
                 height: 71,
                 child: ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return _buildBatchOffer(
                       batches[index].hours ?? 0,
@@ -142,12 +144,12 @@ class ClubBatchCard extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (_, index) {
-                    if (index == batches.length) {
-                      return const Divider(color: AppColors.kBaseWhite);
-                    }
-                    return const Divider(color: AppColors.kBaseWhite);
+                    return const Separator(
+                      color: AppColors.kBaseWhite,
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                    );
                   },
-                  itemCount: batches.length,
+                  itemCount: batches.take(2).length,
                 ),
               );
             }
@@ -156,21 +158,18 @@ class ClubBatchCard extends StatelessWidget {
   }
 
   Widget _buildBatchOffer(int hours, int price) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '$hours час.',
-            style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
-          ),
-          Text(
-            '$price \u20BD',
-            style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          '$hours час.',
+          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+        ),
+        Text(
+          '$price \u20BD',
+          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+        ),
+      ],
     );
   }
 

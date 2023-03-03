@@ -75,8 +75,8 @@ class _WebviewState extends State<Webview> {
               context.pushNamed(
                 AppRoute.paymentBuyBatchSuccess.routeToPath,
                 extra: {
-                  'club': widget.club,
-                  'batch': widget.batch,
+                  'club': widget.club!,
+                  'batch': widget.batch!,
                 },
               );
               notificationsBloc.setInitialState();

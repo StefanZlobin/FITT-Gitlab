@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:fitt/core/enum/map_points_enum.dart';
 import 'package:fitt/domain/entities/lat_lng/lat_lng.dart';
 import 'package:fitt/domain/entities/map_point/map_point_data.dart';
@@ -9,7 +11,7 @@ part 'map_point.g.dart';
 @freezed
 class MapPoint with _$MapPoint {
   factory MapPoint({
-    required MapPointsEnum type,
+    @JsonKey(name: 'type') required MapPointsEnum type,
     required LatLng coordinates,
     required String id,
     required MapPointData data,

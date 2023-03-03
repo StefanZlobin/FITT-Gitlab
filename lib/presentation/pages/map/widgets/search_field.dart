@@ -201,7 +201,7 @@ class _SearchFieldState extends State<SearchField> {
               itemCount: searchAddresses.length,
               separatorBuilder: (_, __) {
                 return const Separator(
-                  padding: EdgeInsets.symmetric(horizontal: 4),
+                  margin: EdgeInsets.symmetric(horizontal: 4),
                 );
               },
               itemBuilder: (BuildContext context, int index) {

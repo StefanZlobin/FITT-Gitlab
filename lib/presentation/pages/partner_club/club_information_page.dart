@@ -41,8 +41,7 @@ class ClubInformationPage extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     club.description.toString(),
-                    style:
-                        AppTypography.kBody14.apply(color: AppColors.kOxford),
+                    style: AppTypography.kParagraph14,
                   ),
                   const SizedBox(height: 28),
                   const Text(
@@ -61,20 +60,17 @@ class ClubInformationPage extends StatelessWidget {
                   ...[
                     Text(
                       club.organization?.officalLabel ?? '',
-                      style:
-                          AppTypography.kBody14.apply(color: AppColors.kOxford),
+                      style: AppTypography.kBody14,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       'ИНН ${club.organization?.inn}',
-                      style:
-                          AppTypography.kBody14.apply(color: AppColors.kOxford),
+                      style: AppTypography.kBody14,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       club.organization?.corporateEmail ?? '',
-                      style:
-                          AppTypography.kBody14.apply(color: AppColors.kOxford),
+                      style: AppTypography.kBody14,
                     ),
                     const SizedBox(height: 8),
                     GestureDetector(

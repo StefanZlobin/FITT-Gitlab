@@ -5,6 +5,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/cubits/buy_batch/buy_batch_cubit.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
@@ -17,7 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class ClubBuyBatchPage extends StatelessWidget {
+class ClubBuyBatchPage extends StatelessWidget with UserMixin {
   const ClubBuyBatchPage({
     super.key,
     required this.batch,
@@ -33,11 +34,18 @@ class ClubBuyBatchPage extends StatelessWidget {
         state.when(
           initial: () => null,
           loaded: (response) {
+            final club = getIt<ClubCubit>()
+                .state
+                .mapOrNull(loaded: (value) => value.club);
             context.pushNamed(
               AppRoute.webview.routeToPath,
               queryParams: <String, String>{
                 'url': response.payForm,
                 'pageTitle': L.of(context).clubBatchPageTitle,
+              },
+              extra: {
+                'club': club!,
+                'batch': batch,
               },
             );
           },
@@ -99,6 +107,14 @@ class ClubBuyBatchPage extends StatelessWidget {
     return BottomCenter(
       child: AppElevatedButton(
         onPressedAsync: () async {
+          if (!userController.hasValue || userSnapshot == null) {
+            context.push(AppRoute.inputPhoneNumber.routeToPath);
+          } else if (!userSnapshot!.hasFullData) {
+            context.pushNamed(
+              AppRoute.personalData.routeToPath,
+              extra: true,
+            );
+          }
           await getIt<BuyBatchCubit>()
               .buyBatch(clubUuid: batch.clubUuid, batchUuid: batch.uuid);
         },

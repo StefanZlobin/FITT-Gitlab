@@ -152,7 +152,7 @@ extension AppRouterExtension on AppRoute {
         return AppRoute.paymentSuccess.name.toUpperCase();
 
       case AppRoute.paymentBuyBatchSuccess:
-        return AppRoute.paymentBuyBatchSuccess.name.toUpperCase();
+        return '/${AppRoute.paymentBuyBatchSuccess.name.toUpperCase()}';
 
       case AppRoute.paymentReject:
         return '/${AppRoute.paymentReject.name.toUpperCase()}';

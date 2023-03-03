@@ -3,6 +3,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
+import 'package:fitt/core/utils/extensions/string_extension.dart';
 import 'package:fitt/domain/entities/work_shedule/work_shedule.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -82,7 +83,7 @@ Widget _buildWorkScheduleRow({
     margin: const EdgeInsets.only(bottom: 8),
     child: Row(
       children: [
-        Text(dayOfWeek),
+        Text(dayOfWeek.capitalize()),
         Text(
           dayPostfix,
           style: AppTypography.kBody14.apply(color: AppColors.kPrimaryRed),

@@ -137,7 +137,7 @@ class AdminWorkoutsPage extends StatelessWidget {
             height: 40,
             width: 2,
             color: AppColors.kPrimaryBlue,
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            margin: EdgeInsets.symmetric(horizontal: 24),
           ),
           RichText(
             overflow: TextOverflow.ellipsis,

@@ -89,7 +89,7 @@ class ClosestWorkoutCard extends StatelessWidget {
                 const Separator(
                   width: 1,
                   height: 24,
-                  padding: EdgeInsets.only(left: 19, right: 16),
+                  margin: EdgeInsets.only(left: 19, right: 16),
                 ),
                 RichText(
                   maxLines: 2,

@@ -36,39 +36,48 @@ class PaymentBatchSuccessPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 150, 16, 32),
-            child: Column(
-              children: [
-                Text(
+          ListView(
+            padding: const EdgeInsets.fromLTRB(0, 150, 0, 0),
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
                   'Оплата прошла успешно',
                   style: AppTypography.kH24B.apply(color: AppColors.kOxford),
                 ),
-                const SizedBox(height: 16),
-                Text(
+              ),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
                   club.address!.shortAddress,
                   style:
                       AppTypography.kBody14.apply(color: AppColors.kOxford60),
                 ),
-                const Separator(
-                  color: AppColors.kPrimaryBlue,
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  width: 40,
-                ),
-                Text(
+              ),
+              Separator(
+                color: AppColors.kPrimaryBlue,
+                margin: EdgeInsets.fromLTRB(
+                    16, 16, MediaQuery.of(context).size.width - 40, 16),
+                height: 2,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
                   'Пакет действует с $batchStartAt по $batchExpireAt\n',
                   style: AppTypography.kH14.apply(color: AppColors.kOxford),
                 ),
-                const SizedBox(height: 21),
-                CompactMap(
-                  clubCoordinates: club.address!.coordinates,
-                ),
-                const SizedBox(height: 180),
-              ],
-            ),
+              ),
+              const SizedBox(height: 20),
+              CompactMap(
+                clubCoordinates: club.address!.coordinates,
+              ),
+              const SizedBox(height: 180),
+            ],
           ),
           BottomCenter(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),

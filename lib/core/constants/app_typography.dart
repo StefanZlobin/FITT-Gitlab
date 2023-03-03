@@ -4,6 +4,17 @@ import 'package:flutter/material.dart';
 //TODO: Наполнить типографией
 
 abstract class AppTypography {
+  static const kParagraph14 = TextStyle(
+    fontFamily: 'SF Pro Display',
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    fontSize: 14,
+    height: 24 / 14,
+    textBaseline: TextBaseline.alphabetic,
+    color: AppColors.kBaseBlack,
+    inherit: false,
+  );
+
   static const kParagraph16 = TextStyle(
     fontFamily: 'SF Pro Display',
     fontWeight: FontWeight.w400,

@@ -61,7 +61,7 @@ class ClubCard extends StatelessWidget {
           height: 2,
           width: 40,
           color: AppColors.kPrimaryBlue,
-          padding: EdgeInsets.symmetric(vertical: 12),
+          margin: EdgeInsets.symmetric(vertical: 12),
         ),
         _buildClubAddress(context),
         const SizedBox(height: 4),
@@ -121,7 +121,8 @@ class ClubCard extends StatelessWidget {
 
   CachedNetworkImage _buildClubImage() {
     return CachedNetworkImage(
-      imageUrl: club.photos!.first.medium,
+      fit: BoxFit.cover,
+      imageUrl: club.photos?.first.medium ?? '',
       imageBuilder: (context, imageProvider) {
         return Container(
           width: 96,
@@ -138,7 +139,16 @@ class ClubCard extends StatelessWidget {
         );
       },
       placeholder: (context, url) => const CircularProgressIndicator(),
-      errorWidget: (context, url, dynamic error) => const Icon(Icons.error),
+      errorWidget: (context, url, dynamic error) {
+        return Container(
+          width: 96,
+          height: 96,
+          decoration: ShapeDecoration(
+            shape: SuperellipseShape(borderRadius: superellipseRadius(24)),
+            color: AppColors.kOxford20,
+          ),
+        );
+      },
     );
   }
 }

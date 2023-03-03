@@ -193,7 +193,7 @@ class _AccountPageState extends State<AccountPage> {
                         userGender: user?.gender ?? UserGenderEnum.male,
                       ),
                       const Separator(
-                        padding:
+                        margin:
                             EdgeInsets.symmetric(vertical: 32, horizontal: 16),
                       ),
                       TextButton(

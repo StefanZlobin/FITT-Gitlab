@@ -162,7 +162,7 @@ class FavoriteClubsPage extends StatelessWidget {
                             );
                           },
                           separatorBuilder: (_, __) => const Separator(
-                              padding: EdgeInsets.symmetric(vertical: 24)),
+                              margin: EdgeInsets.symmetric(vertical: 24)),
                           itemCount: clubs.length,
                         ),
                       ),

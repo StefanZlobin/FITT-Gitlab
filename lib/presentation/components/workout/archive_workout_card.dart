@@ -50,7 +50,7 @@ class ArchiveWorkoutCard extends StatelessWidget {
               width: 40,
               height: 2,
               color: AppColors.kPrimaryBlue,
-              padding: EdgeInsets.only(bottom: 5, top: 16),
+              margin: EdgeInsets.only(bottom: 5, top: 16),
             ),
             if (isPage)
               AppElevatedButton(

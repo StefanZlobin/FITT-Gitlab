@@ -106,7 +106,7 @@ class ClubBatchesPage extends StatelessWidget {
           ),
           const Separator(
             color: AppColors.kBaseWhite,
-            padding: EdgeInsets.symmetric(vertical: 12),
+            margin: EdgeInsets.symmetric(vertical: 12),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

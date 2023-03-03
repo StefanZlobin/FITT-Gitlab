@@ -62,7 +62,7 @@ class FilterModalBottomSheet extends StatelessWidget {
                           const SizedBox(height: 32),
                           _buildFacilitiesFilter(filters, selectedFacilities),
                           const Separator(
-                            padding: EdgeInsets.symmetric(vertical: 32),
+                            margin: EdgeInsets.symmetric(vertical: 32),
                           ),
                           _buildRangeSlider(filters, minPrice!, maxPrice!),
                         ],

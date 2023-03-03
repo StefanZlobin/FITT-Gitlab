@@ -146,7 +146,7 @@ void _registerRepositories() {
 
   getIt.registerLazySingleton<MapRepository>(
     () => MapRepositoryImpl(
-      getIt(instanceName: 'no-token'),
+      getIt(),
       baseUrl: Config.baseUrl,
     ),
   );

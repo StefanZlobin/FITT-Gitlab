@@ -9,7 +9,7 @@ class Separator extends StatelessWidget {
     this.color,
     this.borderColor,
     this.borderRadius,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16),
+    this.margin = const EdgeInsets.symmetric(horizontal: 16),
   }) : super(key: key);
 
   final double width;
@@ -17,20 +17,18 @@ class Separator extends StatelessWidget {
   final Color? color;
   final Color? borderColor;
   final double? borderRadius;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry margin;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: padding,
-      child: Container(
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-          color: color ?? AppColors.kOxford10,
-          border: Border.all(color: color ?? AppColors.kOxford10),
-          borderRadius: BorderRadius.circular(borderRadius ?? 0.0),
-        ),
+    return Container(
+      margin: margin,
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: color ?? AppColors.kOxford10,
+        border: Border.all(color: color ?? AppColors.kOxford10),
+        borderRadius: BorderRadius.circular(borderRadius ?? 0.0),
       ),
     );
   }

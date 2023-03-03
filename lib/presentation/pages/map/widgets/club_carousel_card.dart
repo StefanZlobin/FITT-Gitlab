@@ -43,24 +43,49 @@ class ClubCarouselCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Container(
-              decoration: ShapeDecoration(
-                shape: SuperellipseShape(
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(44),
-                    topLeft: Radius.circular(44),
-                    bottomLeft: Radius.circular(44),
-                    bottomRight: Radius.circular(44),
-                  ),
-                ),
-                image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                    partnerClub.photos!.first.medium,
-                  ),
-                  filterQuality: FilterQuality.high,
-                  fit: BoxFit.cover,
-                ),
+            CachedNetworkImage(
+              imageUrl: partnerClub.photos?.first.medium ?? '',
+              filterQuality: FilterQuality.high,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const CenterLeft(
+                child: CircularProgressIndicator(),
               ),
+              errorWidget: (context, url, dynamic error) {
+                return Container(
+                  decoration: ShapeDecoration(
+                    color: AppColors.kOxford20,
+                    shape: SuperellipseShape(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(44),
+                        topLeft: Radius.circular(44),
+                        bottomLeft: Radius.circular(44),
+                        bottomRight: Radius.circular(44),
+                      ),
+                    ),
+                  ),
+                );
+              },
+              imageBuilder: (context, imageProvider) {
+                return Container(
+                  decoration: ShapeDecoration(
+                    shape: SuperellipseShape(
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(44),
+                        topLeft: Radius.circular(44),
+                        bottomLeft: Radius.circular(44),
+                        bottomRight: Radius.circular(44),
+                      ),
+                    ),
+                    image: DecorationImage(
+                      image: CachedNetworkImageProvider(
+                        partnerClub.photos!.first.medium,
+                      ),
+                      filterQuality: FilterQuality.high,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              },
             ),
             Container(
               decoration: ShapeDecoration(

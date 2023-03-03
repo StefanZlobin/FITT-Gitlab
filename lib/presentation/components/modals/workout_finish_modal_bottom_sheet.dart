@@ -130,7 +130,7 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
             style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
           ),
         ),
-        const Separator(padding: EdgeInsets.fromLTRB(16, 24, 16, 32)),
+        const Separator(margin: EdgeInsets.fromLTRB(16, 24, 16, 32)),
         SizedBox(
           width: double.infinity,
           child: Text(
@@ -140,7 +140,7 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
           ),
         ),
         const SubmitRating(maximumRating: 5),
-        const Separator(padding: EdgeInsets.fromLTRB(16, 24, 16, 32)),
+        const Separator(margin: EdgeInsets.fromLTRB(16, 24, 16, 32)),
         AppElevatedButton(
           onPressed: () => context.pop(),
           buttonColor: AppColors.kBaseBlack,

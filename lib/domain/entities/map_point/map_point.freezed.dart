@@ -20,6 +20,7 @@ MapPoint _$MapPointFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapPoint {
+  @JsonKey(name: 'type')
   MapPointsEnum get type => throw _privateConstructorUsedError;
   LatLng get coordinates => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
@@ -37,7 +38,10 @@ abstract class $MapPointCopyWith<$Res> {
       _$MapPointCopyWithImpl<$Res, MapPoint>;
   @useResult
   $Res call(
-      {MapPointsEnum type, LatLng coordinates, String id, MapPointData data});
+      {@JsonKey(name: 'type') MapPointsEnum type,
+      LatLng coordinates,
+      String id,
+      MapPointData data});
 
   $MapPointDataCopyWith<$Res> get data;
 }
@@ -97,7 +101,10 @@ abstract class _$$_MapPointCopyWith<$Res> implements $MapPointCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {MapPointsEnum type, LatLng coordinates, String id, MapPointData data});
+      {@JsonKey(name: 'type') MapPointsEnum type,
+      LatLng coordinates,
+      String id,
+      MapPointData data});
 
   @override
   $MapPointDataCopyWith<$Res> get data;
@@ -144,7 +151,7 @@ class __$$_MapPointCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MapPoint extends _MapPoint {
   _$_MapPoint(
-      {required this.type,
+      {@JsonKey(name: 'type') required this.type,
       required this.coordinates,
       required this.id,
       required this.data})
@@ -154,6 +161,7 @@ class _$_MapPoint extends _MapPoint {
       _$$_MapPointFromJson(json);
 
   @override
+  @JsonKey(name: 'type')
   final MapPointsEnum type;
   @override
   final LatLng coordinates;
@@ -199,7 +207,7 @@ class _$_MapPoint extends _MapPoint {
 
 abstract class _MapPoint extends MapPoint {
   factory _MapPoint(
-      {required final MapPointsEnum type,
+      {@JsonKey(name: 'type') required final MapPointsEnum type,
       required final LatLng coordinates,
       required final String id,
       required final MapPointData data}) = _$_MapPoint;
@@ -208,6 +216,7 @@ abstract class _MapPoint extends MapPoint {
   factory _MapPoint.fromJson(Map<String, dynamic> json) = _$_MapPoint.fromJson;
 
   @override
+  @JsonKey(name: 'type')
   MapPointsEnum get type;
   @override
   LatLng get coordinates;

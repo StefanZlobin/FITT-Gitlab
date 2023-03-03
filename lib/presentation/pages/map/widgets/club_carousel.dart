@@ -63,9 +63,9 @@ class _ClubCarouselState extends State<ClubCarousel> {
         buildWhen: (previous, current) => current != previous,
         builder: (context, state) {
           return state.when(
-            loading: () => const SizedBox(),
+            loading: () => const _BuildEmptyWidget(),
             loaded: (partnerClubs) => _buildPartnerClubsWidget(partnerClubs),
-            error: (error) => const SizedBox(),
+            error: (error) => const _BuildEmptyWidget(),
           );
         },
       ),

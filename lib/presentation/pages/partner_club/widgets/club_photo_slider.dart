@@ -20,6 +20,13 @@ class ClubPhotoSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (clubUrlImages.isEmpty) {
+      return Container(
+        height: 210,
+        color: AppColors.kOxford20,
+      );
+    }
+
     return Stack(
       children: [
         CarouselSlider.builder(

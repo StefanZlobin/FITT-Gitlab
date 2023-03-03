@@ -110,14 +110,14 @@ class ClubPage extends StatelessWidget {
     FilterGroup<bool, ToggledFilter<DateTime>>? timeSlots,
     FilterGroup<bool, ToggledFilter<Duration>>? durationSlots,
   ) {
-    final List<String> clubUrlImages =
-        club.photos!.map((e) => e.large).toList();
+    final List<String>? clubUrlImages =
+        club.photos?.map((e) => e.large).toList();
 
     return ListView(
       primary: true,
       physics: const AlwaysScrollableScrollPhysics(),
       children: [
-        ClubPhotoSlider(clubUrlImages: clubUrlImages),
+        ClubPhotoSlider(clubUrlImages: clubUrlImages ?? []),
         _buildClubAddressSection(club.address!.shortAddress),
         _buildClubSheduleSection(club),
         _buildClubCardsSection(),

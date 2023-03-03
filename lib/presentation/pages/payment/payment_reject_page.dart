@@ -63,9 +63,6 @@ class PaymentRejectPage extends StatelessWidget {
                           if (isBatch) {
                             context.pop();
                             context.pop();
-                            context.pop();
-                            context.pop();
-                            context.pop();
                           } else {
                             context.pop();
                             context.pop();
@@ -89,9 +86,6 @@ class PaymentRejectPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           if (isBatch) {
-                            context.pop();
-                            context.pop();
-                            context.pop();
                             context.pop();
                             context.pop();
                             context.pop();

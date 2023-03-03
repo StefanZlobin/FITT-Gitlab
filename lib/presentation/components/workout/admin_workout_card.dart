@@ -51,7 +51,7 @@ class AdminWorkoutCard extends StatelessWidget {
           if (showHeader) _buildWorkoutTimeInformationWidget(),
           AdminWorkoutActionButton(adminWorkout: adminWorkout),
           const Separator(
-            padding: EdgeInsets.symmetric(vertical: 32),
+            margin: EdgeInsets.symmetric(vertical: 32),
           ),
           _buildInformationText(
             'Дата',

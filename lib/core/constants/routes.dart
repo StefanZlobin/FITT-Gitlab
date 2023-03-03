@@ -1,3 +1,5 @@
+// ignore_for_file: cast_nullable_to_non_nullable
+
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/helpers/shake_feedback_wrapper.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
@@ -103,13 +105,18 @@ class Routes {
     GoRoute(
       path: AppRoute.webview.routeToPath,
       name: AppRoute.webview.routeToName,
-      builder: (context, state) => ShakeFeedbackWrapper(
-        child: Webview(
-          url: state.queryParams['url']!,
-          pageTitle: state.queryParams['pageTitle']!,
-          workoutUuid: state.queryParams['workoutUuid'],
-        ),
-      ),
+      builder: (context, state) {
+        final param = state.extra as Map<String, Object>?;
+        return ShakeFeedbackWrapper(
+          child: Webview(
+            url: state.queryParams['url']!,
+            pageTitle: state.queryParams['pageTitle']!,
+            workoutUuid: state.queryParams['workoutUuid'],
+            club: param?['club'] == null ? null : param!['club'] as PartnerClub,
+            batch: param?['batch'] == null ? null : param!['batch'] as Batch,
+          ),
+        );
+      },
     ),
   ];
 
@@ -203,12 +210,15 @@ class Routes {
     GoRoute(
       path: AppRoute.paymentBuyBatchSuccess.routeToPath,
       name: AppRoute.paymentBuyBatchSuccess.routeToName,
-      builder: (context, state) => ShakeFeedbackWrapper(
-        child: PaymentBatchSuccessPage(
-          club: state.extra! as PartnerClub,
-          batch: state.extra! as Batch,
-        ),
-      ),
+      builder: (context, state) {
+        final param = state.extra! as Map<String, Object>;
+        return ShakeFeedbackWrapper(
+          child: PaymentBatchSuccessPage(
+            club: param['club']! as PartnerClub,
+            batch: param['batch']! as Batch,
+          ),
+        );
+      },
     ),
     GoRoute(
       path: AppRoute.paymentSuccess.routeToPath,
