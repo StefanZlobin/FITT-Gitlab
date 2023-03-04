@@ -13,6 +13,7 @@ import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/workout/workout_repository.dart';
 import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class WorkoutRepositoryImpl implements WorkoutRepository {
   WorkoutRepositoryImpl(this.dio, {this.baseUrl})
@@ -30,8 +31,12 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
     try {
       final workout = await _apiClient.getWorkout(uuid);
       return workout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -60,8 +65,12 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         ),
       );
       return workouts.results;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -73,8 +82,12 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         CancelWorkoutRequestBody(workout),
       );
       return canceledWorkout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -86,8 +99,12 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         FinishWorkoutRequestBody(workout),
       );
       return finishedWorkout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -99,7 +116,11 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         StartWorkoutRequestBody(workout),
       );
       return startedWorkout;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }

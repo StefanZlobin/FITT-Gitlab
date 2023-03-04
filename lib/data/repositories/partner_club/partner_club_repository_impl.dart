@@ -14,6 +14,7 @@ import 'package:fitt/domain/entities/lat_lng/lat_lng.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/partner_club/partner_club_repository.dart';
 import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class PartnerClubRepositoryImpl implements PartnerClubRepository {
   PartnerClubRepositoryImpl(this.dio, {this.baseUrl})
@@ -28,7 +29,11 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     try {
       final partnerClub = await _apiClient.addClubToFavorites(clubUuid);
       return partnerClub;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -38,7 +43,11 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     try {
       final partnerClub = await _apiClient.removeClubFromFavorites(clubUuid);
       return partnerClub;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -51,7 +60,11 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
       final calculatePrice =
           await _apiClient.getCalculatedPriceWorkout(slotUuid);
       return calculatePrice;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -61,7 +74,11 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     try {
       final partnerClub = await _apiClient.getPartnerClub(clubUuid);
       return partnerClub;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -96,7 +113,11 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
         ),
       );
       return partnerClubs.results;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -106,7 +127,11 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     try {
       final batches = await _apiClient.getClubBatches(clubUuid);
       return batches;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
