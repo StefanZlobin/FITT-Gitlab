@@ -8,7 +8,11 @@ import 'package:fitt/domain/entities/lat_lng/lat_lng.dart';
 import 'package:fitt/domain/repositories/partner_club/partner_club_repository.dart';
 
 class PartnerClubsUseCase {
-  final partnerClubRepository = getIt<PartnerClubRepository>();
+  PartnerClubsUseCase() {
+    partnerClubRepository = getIt<PartnerClubRepository>();
+  }
+
+  late final PartnerClubRepository partnerClubRepository;
 
   Future<List<PartnerClub>> getParternClubs({
     ClubFilters clubFilters = const ClubFilters(favorite: false),

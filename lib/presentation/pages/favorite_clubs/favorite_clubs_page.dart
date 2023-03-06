@@ -33,7 +33,7 @@ class FavoriteClubsPage extends StatelessWidget {
     return MultiBlocListener(
       listeners: [
         BlocListener<FilteringCubit, FilteringState>(
-          bloc: getIt<FilteringCubit>(),
+          bloc: getIt<FilteringCubit>(instanceName: 'favorite'),
           listener: (context, state) {
             state.whenOrNull(
               loaded: (filters, selectedFacilities, __, ___, ____,
@@ -59,11 +59,12 @@ class FavoriteClubsPage extends StatelessWidget {
           },
         ),
         BlocListener<ResourceCubit, ResourceState>(
-          bloc: getIt<ResourceCubit>(),
+          bloc: getIt<ResourceCubit>(instanceName: 'favorite'),
           listener: (context, state) {
             state.whenOrNull(
-                loaded: (filters) =>
-                    getIt<FilteringCubit>().setFilters(filters: filters));
+                loaded: (filters) => getIt<FilteringCubit>(
+                      instanceName: 'favorite',
+                    ).setFilters(filters: filters));
           },
         ),
       ],
@@ -115,7 +116,9 @@ class FavoriteClubsPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 100, left: 16),
                         child: GestureDetector(
-                          onTap: () => getIt<FilteringCubit>().resetFilters(),
+                          onTap: () =>
+                              getIt<FilteringCubit>(instanceName: 'favorite')
+                                  .resetFilters(),
                           child: RichText(
                             text: TextSpan(
                               style: AppTypography.kH14
@@ -227,7 +230,7 @@ class FavoriteClubsPage extends StatelessWidget {
 
   Widget _buildFiltersRowWidget() {
     return BlocBuilder<FilteringCubit, FilteringState>(
-      bloc: getIt<FilteringCubit>(),
+      bloc: getIt<FilteringCubit>(instanceName: 'favorite'),
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox(),
@@ -279,7 +282,7 @@ class FavoriteClubsPage extends StatelessWidget {
       Facility facility, ClubFilters filters, bool isFacilityActive) {
     return GestureDetector(
       onTap: () {
-        getIt<FilteringCubit>().selectFacility(
+        getIt<FilteringCubit>(instanceName: 'favorite').selectFacility(
           facility: facility,
           filters: filters,
         );

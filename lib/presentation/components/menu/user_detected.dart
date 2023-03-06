@@ -133,7 +133,9 @@ class UserDetected extends StatelessWidget {
         UserMenuTile(
           title: const Text('Избранное'),
           onPressed: () {
-            getIt<ResourceCubit>().getClubFilters();
+            getIt<ResourceCubit>(
+              instanceName: 'favorite',
+            ).getClubFilters();
             getIt<PartnerClubsFavoriteCubit>().getPartnerClubs();
             context.push(AppRoute.clubListFavourite.routeToPath);
           },

@@ -5,6 +5,7 @@ import 'package:fitt/domain/cubits/filtering/filtering_cubit.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/use_cases/partner_club/partner_club_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -27,14 +28,19 @@ class PartnerClubsFavoriteCubit extends Cubit<PartnerClubsFavoriteState> {
     try {
       final partnerClubs = await partnerClubsUseCase.getParternClubs(
         clubFilters: clubFilters.copyWith(
-            facilities: getIt<FilteringCubit>().activeFavilitiesIndex ??
+            facilities: getIt<FilteringCubit>(instanceName: 'favorite')
+                    .activeFavilitiesIndex ??
                 clubFilters.facilities),
         clubSorting: getIt<SortingCubit>().clubSortingValue ?? clubSorting,
         isFavorite: clubFilters.favorite,
       );
       bool isFiltersUpdated = false;
-      if (getIt<FilteringCubit>().activeFavilitiesIndex != null) {
-        if (getIt<FilteringCubit>().activeFavilitiesIndex!.isNotEmpty) {
+      if (getIt<FilteringCubit>(instanceName: 'favorite')
+              .activeFavilitiesIndex !=
+          null) {
+        if (getIt<FilteringCubit>(instanceName: 'favorite')
+            .activeFavilitiesIndex!
+            .isNotEmpty) {
           isFiltersUpdated = true;
         } else {
           isFiltersUpdated = false;
@@ -43,8 +49,9 @@ class PartnerClubsFavoriteCubit extends Cubit<PartnerClubsFavoriteState> {
       _partnerClubsFavoriteStateLoaded = _PartnerClubsFavoriteStateLoaded(
           clubs: partnerClubs, isFiltersUpdated: isFiltersUpdated);
       emit(_partnerClubsFavoriteStateLoaded);
-    } on Exception catch (e) {
-      emit(_PartnerClubsFavoriteStateError(error: e.toString()));
+    } on NetworkExceptions catch (e) {
+      emit(_PartnerClubsFavoriteStateError(
+          error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 

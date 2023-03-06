@@ -215,7 +215,15 @@ void _registerBlocs() {
   getIt.registerLazySingleton<BuyWorkoutCubit>(() => BuyWorkoutCubit());
   getIt.registerLazySingleton<NotificationsBloc>(() => NotificationsBloc());
   getIt.registerLazySingleton<ResourceCubit>(() => ResourceCubit());
+  getIt.registerLazySingleton<ResourceCubit>(
+    instanceName: 'favorite',
+    () => ResourceCubit(),
+  );
   getIt.registerLazySingleton<FilteringCubit>(() => FilteringCubit());
+  getIt.registerLazySingleton<FilteringCubit>(
+    instanceName: 'favorite',
+    () => FilteringCubit(),
+  );
   getIt.registerLazySingleton<SortingCubit>(() => SortingCubit());
   getIt.registerLazySingleton<FeedbackCubit>(() => FeedbackCubit());
   getIt.registerLazySingleton<AccountSaveButtonCubit>(
