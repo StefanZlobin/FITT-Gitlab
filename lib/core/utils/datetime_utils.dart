@@ -27,7 +27,7 @@ class DateTimeUtils {
   static final DateFormat dateFormatDetailed = DateFormat('dd MMMM y');
   static final DateFormat dateFormatWithoutYear = DateFormat('d MMMM');
   static final DateFormat timeFormat = DateFormat.Hm();
-  static final DateFormat fullDateTimeFormat = DateFormat('dd MMMM y H:m');
+  static final DateFormat fullDateTimeFormat = DateFormat('dd MMMM y HH:mm');
 
   static String dateWithPrefix(DateTime date, [DateFormat? format]) {
     format ??= dateFormatWithoutYear;

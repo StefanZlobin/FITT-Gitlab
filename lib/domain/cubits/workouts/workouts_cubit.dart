@@ -13,7 +13,6 @@ class WorkoutsCubit extends Cubit<WorkoutsState> with UserMixin {
   WorkoutsCubit() : super(const _WorkoutsStateInitial());
 
   final workoutUseCase = WorkoutUseCase();
-  int workoutCount = 0;
 
   Future<void> getWorkouts({
     WorkoutSortingEnum workoutSorting = WorkoutSortingEnum.newFirst,
@@ -28,7 +27,6 @@ class WorkoutsCubit extends Cubit<WorkoutsState> with UserMixin {
         return emit(
             _WorkoutsStateLoaded(workouts: [], closestWorkout: startedWorkout));
       } else {
-        workoutCount = workouts.length;
         workouts.sort((a, b) => a.canStartTime.compareTo(b.canStartTime));
         final closestWorkout = await _getStartedWorkout() ?? workouts.first;
         emit(_WorkoutsStateLoaded(

@@ -21,9 +21,18 @@ class WorkoutsPage extends StatelessWidget {
           onPressed: () => context.pop(),
           icon: const Icon(AppIcons.arr_big_left),
         ),
-        title: Text(L
-            .of(context)
-            .workoutListPageTitle(getIt<WorkoutsCubit>().workoutCount)),
+        title: BlocBuilder<WorkoutsCubit, WorkoutsState>(
+          bloc: getIt<WorkoutsCubit>(),
+          builder: (context, state) {
+            return state.when(
+              error: (_) => Text(L.of(context).workoutListPageTitle(0)),
+              initial: () => Text(L.of(context).workoutListPageTitle(0)),
+              loading: () => Text(L.of(context).workoutListPageTitle(0)),
+              loaded: (workouts, _) =>
+                  Text(L.of(context).workoutListPageTitle(workouts.length)),
+            );
+          },
+        ),
       ),
       body: BlocBuilder<WorkoutsCubit, WorkoutsState>(
         bloc: getIt<WorkoutsCubit>(),
