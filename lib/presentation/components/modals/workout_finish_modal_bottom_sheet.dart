@@ -1,7 +1,9 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
+import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
@@ -150,7 +152,15 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.pop();
+              context.pushNamed(
+                AppRoute.club.routeToPath,
+                params: {
+                  'clubUuid': workout.club.uuid!,
+                },
+              );
+            },
             child: Text(
               'Запланировать следущую тернировку',
               style: AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),

@@ -59,27 +59,26 @@ class CancelWorkoutDialog extends StatelessWidget {
                 child: AppElevatedButton(
                   isHeight: false,
                   onPressedAsync: () async {
-                    await getIt<LocalNotificationsService>()
-                        .deleteLocalNotification(
-                      id: workout.workoutHashCode,
-                    );
-                    await getIt<LocalNotificationsService>()
-                        .deleteLocalNotification(
-                      id: workout.workoutHashCode - 2,
-                    );
                     await getIt<WorkoutCubit>()
                         .cancelWorkout(w: workout)
                         .then((value) {
-                      getIt<WorkoutsCubit>().getWorkouts().then((value) {
-                        getIt<ArchiveWorkoutsCubit>().offset = 0;
-                        getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
-                          needClearLoadedWorkouts: true,
-                        );
-                        context.pushNamed(
-                          AppRoute.workoutArchiveList.routeToPath,
-                          extra: true,
-                        );
-                      });
+                      getIt<LocalNotificationsService>()
+                          .deleteLocalNotification(
+                        id: workout.workoutHashCode,
+                      );
+                      getIt<LocalNotificationsService>()
+                          .deleteLocalNotification(
+                        id: workout.workoutHashCode - 2,
+                      );
+                      getIt<WorkoutsCubit>().getWorkouts();
+                      getIt<ArchiveWorkoutsCubit>().offset = 0;
+                      getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
+                        needClearLoadedWorkouts: true,
+                      );
+                      context.pushNamed(
+                        AppRoute.workoutArchiveList.routeToPath,
+                        extra: true,
+                      );
                     });
                   },
                   marginButton: const EdgeInsets.all(0),
