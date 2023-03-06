@@ -10,6 +10,7 @@ import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/authentication/auth_repository.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.dio, this._authLocalClient, {this.baseUrl})
@@ -49,7 +50,11 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signIn({required String phoneNumber}) async {
     try {
       await _apiClient.signIn(SignInRequestBody(phoneNumber));
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -65,7 +70,11 @@ class AuthRepositoryImpl implements AuthRepository {
           CheckSecureCodeRequestBody(phoneNumber, secureCode, fcmToken));
       await saveToken(token: token);
       return token;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }

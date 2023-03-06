@@ -114,7 +114,7 @@ class UserDetected extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '$countWorkout',
+                        '',
                         style: AppTypography.kBody12
                             .apply(color: AppColors.kBaseWhite),
                       ),

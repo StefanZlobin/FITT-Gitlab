@@ -1,3 +1,5 @@
+// ignore_for_file: only_throw_errors
+
 import 'package:dio/dio.dart';
 import 'package:fitt/core/enum/admin_workout_finish_reason_enum.dart';
 import 'package:fitt/data/models/request/admin/admin_set_locker_number_request_body.dart';
@@ -6,7 +8,9 @@ import 'package:fitt/data/models/request/admin/admin_workouts_filters_body.dart'
 import 'package:fitt/data/source/remote_data_source/admin_api_client/admin_api_client.dart';
 import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/domain/entities/admin_workout/admin_workout.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/admin/admin_repository.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class AdminRepositoryImpl implements AdminRepository {
   AdminRepositoryImpl(this.dio, {this.baseUrl})
@@ -31,8 +35,12 @@ class AdminRepositoryImpl implements AdminRepository {
         ),
       );
       return adminWorkout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -46,8 +54,12 @@ class AdminRepositoryImpl implements AdminRepository {
         uuid,
         AdminSetLockerNumberRequestBody(key: lockerNumber),
       );
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -59,8 +71,12 @@ class AdminRepositoryImpl implements AdminRepository {
       final adminWorkout =
           await _apiClient.adminWorkoutConfirmFinish(adminWorkoutUuid);
       return adminWorkout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -72,8 +88,12 @@ class AdminRepositoryImpl implements AdminRepository {
       final adminWorkout =
           await _apiClient.adminWorkoutConfirmStart(adminWorkoutUuid);
       return adminWorkout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -82,8 +102,12 @@ class AdminRepositoryImpl implements AdminRepository {
     try {
       final adminClub = await _apiClient.getAdminClub(adminClubUuid);
       return adminClub;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -92,8 +116,12 @@ class AdminRepositoryImpl implements AdminRepository {
     try {
       final adminClubs = await _apiClient.getAdminClubs(-1, 0);
       return adminClubs.results;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -104,8 +132,12 @@ class AdminRepositoryImpl implements AdminRepository {
     try {
       final adminWorkout = await _apiClient.getAdminWorkout(adminWorkoutUuid);
       return adminWorkout;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 
@@ -122,8 +154,12 @@ class AdminRepositoryImpl implements AdminRepository {
         filters: filters,
       );
       return adminWorkouts.results;
-    } on Exception catch (e) {
-      throw Exception(e);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
     }
   }
 }

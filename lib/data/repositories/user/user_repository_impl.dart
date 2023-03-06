@@ -1,3 +1,5 @@
+// ignore_for_file: only_throw_errors
+
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -5,9 +7,11 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/data/source/local_data_source/user_local_client/user_local_client.dart';
 import 'package:fitt/data/source/remote_data_source/user_api_client/user_api_client.dart';
 import 'package:fitt/domain/entities/user/user.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/authentication/auth_repository.dart';
 import 'package:fitt/domain/repositories/user/user_repository.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.dio, this._userLocalClient, {this.baseUrl})
@@ -24,7 +28,7 @@ class UserRepositoryImpl implements UserRepository {
   void Function(User?) get updateUser => _userController.sink.add;
 
   @override
-  Stream<User?> get user => _userController;  
+  Stream<User?> get user => _userController;
   @override
   BehaviorSubject<User?> get userController => _userController;
   @override
@@ -47,11 +51,19 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> deleteUser() async {
-    await _apiClient.deleteUserData();
-    final user = await getSignedUser();
-    await _userLocalClient.deleteUser(user);
-    await authRepository.signOut();
-    updateUser(null);
+    try {
+      await _apiClient.deleteUserData();
+      final user = await getSignedUser();
+      await _userLocalClient.deleteUser(user);
+      await authRepository.signOut();
+      updateUser(null);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
   }
 
   @override

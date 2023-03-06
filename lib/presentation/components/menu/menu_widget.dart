@@ -1,5 +1,6 @@
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/presentation/components/menu/user_detected.dart';
 import 'package:fitt/presentation/components/menu/user_not_detected.dart';
 import 'package:flutter/material.dart';
@@ -24,16 +25,26 @@ class MenuWidget extends StatelessWidget {
         ),
       ),
       child: SafeArea(
-        child: BlocBuilder<UserBloc, UserState>(
+        child: BlocListener<UserBloc, UserState>(
           bloc: getIt<UserBloc>(),
-          builder: (context, state) {
-            return state.when(
-              loading: () => const SizedBox(),
-              loaded: (user) => UserDetected(user: user),
-              loadedWithNoUser: (_) => const UserNotDetected(),
-              error: (error) => const UserNotDetected(),
+          listener: (context, state) {
+            state.whenOrNull(
+              loaded: (_) {
+                getIt<AdminClubsCubit>().getAdminClubs();
+              },
             );
           },
+          child: BlocBuilder<UserBloc, UserState>(
+            bloc: getIt<UserBloc>(),
+            builder: (context, state) {
+              return state.when(
+                loading: () => const SizedBox(),
+                loaded: (user) => UserDetected(user: user),
+                loadedWithNoUser: (_) => const UserNotDetected(),
+                error: (error) => const UserNotDetected(),
+              );
+            },
+          ),
         ),
       ),
     );
