@@ -42,6 +42,7 @@ _$_PartnerClub _$$_PartnerClubFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       email: json['email'] as String?,
       phoneNumber: json['phone'] as String?,
+      payAvailable: json['pay_available'] as bool?,
     );
 
 Map<String, dynamic> _$$_PartnerClubToJson(_$_PartnerClub instance) =>
@@ -64,4 +65,5 @@ Map<String, dynamic> _$$_PartnerClubToJson(_$_PartnerClub instance) =>
       'description': instance.description,
       'email': instance.email,
       'phone': instance.phoneNumber,
+      'pay_available': instance.payAvailable,
     };

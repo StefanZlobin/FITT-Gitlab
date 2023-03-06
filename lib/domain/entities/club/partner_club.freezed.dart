@@ -47,8 +47,7 @@ mixin _$PartnerClub {
   @JsonKey(name: 'organization')
   Organization? get organization => throw _privateConstructorUsedError;
   @JsonKey(name: 'documents')
-  List<Document>? get documents =>
-      throw _privateConstructorUsedError; //@JsonKey(name: 'batches') required String? batches,
+  List<Document>? get documents => throw _privateConstructorUsedError;
   @JsonKey(name: 'timezone')
   String? get timezone => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
@@ -57,6 +56,8 @@ mixin _$PartnerClub {
   String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone')
   String? get phoneNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: 'pay_available')
+  bool? get payAvailable => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -88,7 +89,8 @@ abstract class $PartnerClubCopyWith<$Res> {
       @JsonKey(name: 'timezone') String? timezone,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'phone') String? phoneNumber});
+      @JsonKey(name: 'phone') String? phoneNumber,
+      @JsonKey(name: 'pay_available') bool? payAvailable});
 
   $AddressCopyWith<$Res>? get address;
   $RatingCopyWith<$Res>? get rating;
@@ -126,6 +128,7 @@ class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub>
     Object? description = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
+    Object? payAvailable = freezed,
   }) {
     return _then(_value.copyWith(
       uuid: freezed == uuid
@@ -200,6 +203,10 @@ class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
+      payAvailable: freezed == payAvailable
+          ? _value.payAvailable
+          : payAvailable // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -266,7 +273,8 @@ abstract class _$$_PartnerClubCopyWith<$Res>
       @JsonKey(name: 'timezone') String? timezone,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'phone') String? phoneNumber});
+      @JsonKey(name: 'phone') String? phoneNumber,
+      @JsonKey(name: 'pay_available') bool? payAvailable});
 
   @override
   $AddressCopyWith<$Res>? get address;
@@ -305,6 +313,7 @@ class __$$_PartnerClubCopyWithImpl<$Res>
     Object? description = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
+    Object? payAvailable = freezed,
   }) {
     return _then(_$_PartnerClub(
       uuid: freezed == uuid
@@ -379,6 +388,10 @@ class __$$_PartnerClubCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
+      payAvailable: freezed == payAvailable
+          ? _value.payAvailable
+          : payAvailable // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -422,7 +435,9 @@ class _$_PartnerClub implements _PartnerClub {
       @JsonKey(name: 'email')
           required this.email,
       @JsonKey(name: 'phone')
-          required this.phoneNumber})
+          required this.phoneNumber,
+      @JsonKey(name: 'pay_available')
+          required this.payAvailable})
       : _photos = photos,
         _facilities = facilities,
         _workSchedule = workSchedule,
@@ -514,7 +529,6 @@ class _$_PartnerClub implements _PartnerClub {
     return EqualUnmodifiableListView(value);
   }
 
-//@JsonKey(name: 'batches') required String? batches,
   @override
   @JsonKey(name: 'timezone')
   final String? timezone;
@@ -527,10 +541,13 @@ class _$_PartnerClub implements _PartnerClub {
   @override
   @JsonKey(name: 'phone')
   final String? phoneNumber;
+  @override
+  @JsonKey(name: 'pay_available')
+  final bool? payAvailable;
 
   @override
   String toString() {
-    return 'PartnerClub(uuid: $uuid, minPrice: $minPrice, address: $address, distance: $distance, label: $label, rating: $rating, photos: $photos, facilities: $facilities, batchHoursAvailable: $batchHoursAvailable, isFavorite: $isFavorite, workSchedule: $workSchedule, activities: $activities, organization: $organization, documents: $documents, timezone: $timezone, description: $description, email: $email, phoneNumber: $phoneNumber)';
+    return 'PartnerClub(uuid: $uuid, minPrice: $minPrice, address: $address, distance: $distance, label: $label, rating: $rating, photos: $photos, facilities: $facilities, batchHoursAvailable: $batchHoursAvailable, isFavorite: $isFavorite, workSchedule: $workSchedule, activities: $activities, organization: $organization, documents: $documents, timezone: $timezone, description: $description, email: $email, phoneNumber: $phoneNumber, payAvailable: $payAvailable)';
   }
 
   @override
@@ -567,31 +584,35 @@ class _$_PartnerClub implements _PartnerClub {
                 other.description == description) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.payAvailable, payAvailable) ||
+                other.payAvailable == payAvailable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      uuid,
-      minPrice,
-      address,
-      distance,
-      label,
-      rating,
-      const DeepCollectionEquality().hash(_photos),
-      const DeepCollectionEquality().hash(_facilities),
-      batchHoursAvailable,
-      isFavorite,
-      const DeepCollectionEquality().hash(_workSchedule),
-      const DeepCollectionEquality().hash(_activities),
-      organization,
-      const DeepCollectionEquality().hash(_documents),
-      timezone,
-      description,
-      email,
-      phoneNumber);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        uuid,
+        minPrice,
+        address,
+        distance,
+        label,
+        rating,
+        const DeepCollectionEquality().hash(_photos),
+        const DeepCollectionEquality().hash(_facilities),
+        batchHoursAvailable,
+        isFavorite,
+        const DeepCollectionEquality().hash(_workSchedule),
+        const DeepCollectionEquality().hash(_activities),
+        organization,
+        const DeepCollectionEquality().hash(_documents),
+        timezone,
+        description,
+        email,
+        phoneNumber,
+        payAvailable
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -644,7 +665,9 @@ abstract class _PartnerClub implements PartnerClub {
       @JsonKey(name: 'email')
           required final String? email,
       @JsonKey(name: 'phone')
-          required final String? phoneNumber}) = _$_PartnerClub;
+          required final String? phoneNumber,
+      @JsonKey(name: 'pay_available')
+          required final bool? payAvailable}) = _$_PartnerClub;
 
   factory _PartnerClub.fromJson(Map<String, dynamic> json) =
       _$_PartnerClub.fromJson;
@@ -691,7 +714,7 @@ abstract class _PartnerClub implements PartnerClub {
   @override
   @JsonKey(name: 'documents')
   List<Document>? get documents;
-  @override //@JsonKey(name: 'batches') required String? batches,
+  @override
   @JsonKey(name: 'timezone')
   String? get timezone;
   @override
@@ -703,6 +726,9 @@ abstract class _PartnerClub implements PartnerClub {
   @override
   @JsonKey(name: 'phone')
   String? get phoneNumber;
+  @override
+  @JsonKey(name: 'pay_available')
+  bool? get payAvailable;
   @override
   @JsonKey(ignore: true)
   _$$_PartnerClubCopyWith<_$_PartnerClub> get copyWith =>

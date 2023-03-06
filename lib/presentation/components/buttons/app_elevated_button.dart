@@ -13,6 +13,7 @@ class AppElevatedButton extends StatefulWidget {
     this.buttonColor = AppColors.kPrimaryBlue,
     this.isHeight = true,
     this.isDisable = false,
+    this.errorText,
   }) : super(key: key);
 
   final VoidCallback? onPressed;
@@ -22,6 +23,7 @@ class AppElevatedButton extends StatefulWidget {
   final Color buttonColor;
   final bool isHeight;
   final bool isDisable;
+  final Widget? errorText;
 
   @override
   State<AppElevatedButton> createState() => _AppElevatedButtonState();
@@ -59,7 +61,7 @@ class _AppElevatedButtonState extends State<AppElevatedButton> {
               ? const SizedBox()
               : DefaultTextStyle(
                   style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
-                  child: widget.textButton,
+                  child: widget.errorText ?? widget.textButton,
                 ),
           icon: _isLoading
               ? const CircularProgressIndicator(color: AppColors.kBaseWhite)

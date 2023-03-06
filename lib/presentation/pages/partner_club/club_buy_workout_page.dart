@@ -182,6 +182,9 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
     BuildContext context,
   ) {
     return AppElevatedButton(
+      isDisable: !club.payAvailable!,
+      errorText:
+          club.payAvailable! ? null : const Text('Подключаем Банк к клубу'),
       onPressedAsync: () async {
         if (!userController.hasValue ||
             userController == null ||

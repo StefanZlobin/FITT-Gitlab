@@ -33,11 +33,11 @@ class PartnerClub with _$PartnerClub {
     @JsonKey(name: 'activities') required List<Activity>? activities,
     @JsonKey(name: 'organization') required Organization? organization,
     @JsonKey(name: 'documents') required List<Document>? documents,
-    //@JsonKey(name: 'batches') required String? batches,
     @JsonKey(name: 'timezone') required String? timezone,
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'email') required String? email,
     @JsonKey(name: 'phone') required String? phoneNumber,
+    @JsonKey(name: 'pay_available') required bool? payAvailable,
   }) = _PartnerClub;
 
   factory PartnerClub.fromJson(Map<String, dynamic> json) =>
