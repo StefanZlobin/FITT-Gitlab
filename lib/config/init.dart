@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/permissions/firebase_notifications.dart';
+import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
@@ -18,5 +19,7 @@ Future<void> init() async {
 
   await getIt<LocalNotificationsService>().init();
   await getIt<GeolocationService>().requestPermission();
+
   await getIt<PartnerClubsCubit>().getPartnerClubs();
+  getIt<UserBloc>().add(const UserEvent.checkUser());
 }
