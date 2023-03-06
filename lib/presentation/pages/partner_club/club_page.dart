@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:clock/clock.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
@@ -6,6 +8,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
 import 'package:fitt/presentation/pages/partner_club/widgets/club_batch_card.dart';
@@ -18,7 +21,7 @@ import 'package:intl/intl.dart';
 import 'package:marquee/marquee.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
-class ClubPage extends StatelessWidget {
+class ClubPage extends StatelessWidget with UserMixin {
   const ClubPage({
     super.key,
     required this.clubUuid,
@@ -68,7 +71,7 @@ class ClubPage extends StatelessWidget {
               child: Marquee(
                 text: club.label!.toUpperCase(),
                 style: AppTypography.kH16.apply(color: AppColors.kOxford),
-                blankSpace: 100,
+                blankSpace: 150,
                 startAfter: const Duration(seconds: 3),
                 pauseAfterRound: const Duration(seconds: 5),
                 showFadingOnlyWhenScrolling: false,
@@ -83,22 +86,27 @@ class ClubPage extends StatelessWidget {
         ),
       ),
       actions: [
-        GestureDetector(
-          onTap: () {
-            getIt<ClubCubit>().setFavorite(
-                favorite: club.isFavorite ?? false, clubUuid: clubUuid);
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Icon(
-              club.isFavorite ?? false
-                  ? AppIcons.favorite_rounded
-                  : AppIcons.favorite_outlined_rounded,
-              size: 20,
-              color: club.isFavorite ?? false ? AppColors.kPrimaryBlue : null,
-            ),
-          ),
-        ),
+        if (userController.hasValue)
+          if (userController != null)
+            if (userSnapshot?.isLoggedIn ?? false)
+              GestureDetector(
+                onTap: () {
+                  getIt<ClubCubit>().setFavorite(
+                      favorite: club.isFavorite ?? false, clubUuid: clubUuid);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Icon(
+                    club.isFavorite ?? false
+                        ? AppIcons.favorite_rounded
+                        : AppIcons.favorite_outlined_rounded,
+                    size: 20,
+                    color: club.isFavorite ?? false
+                        ? AppColors.kPrimaryBlue
+                        : null,
+                  ),
+                ),
+              ),
       ],
     );
   }
