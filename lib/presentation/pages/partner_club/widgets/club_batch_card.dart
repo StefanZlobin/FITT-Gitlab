@@ -183,7 +183,7 @@ class ClubBatchCard extends StatelessWidget {
 
   Text _buildTitle() {
     return Text(
-      'Пакеты\nтренировок'.toUpperCase(),
+      'Пакеты\nчасов'.toUpperCase(),
       style: AppTypography.kH18.apply(color: AppColors.kBaseWhite),
     );
   }

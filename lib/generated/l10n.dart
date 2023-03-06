@@ -140,20 +140,20 @@ class S {
     );
   }
 
-  /// `Training Packages`
+  /// `Watch Packages`
   String get clubBatchesPageTitle {
     return Intl.message(
-      'Training Packages',
+      'Watch Packages',
       name: 'clubBatchesPageTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Purchase of a training package`
+  /// `Buying a watch package`
   String get clubBatchPageTitle {
     return Intl.message(
-      'Purchase of a training package',
+      'Buying a watch package',
       name: 'clubBatchPageTitle',
       desc: '',
       args: [],

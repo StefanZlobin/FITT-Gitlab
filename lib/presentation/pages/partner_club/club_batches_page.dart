@@ -198,7 +198,7 @@ class ClubBatchesPage extends StatelessWidget {
       ),
       child: RichText(
         text: TextSpan(
-          text: 'Купленый пакет тренировок будет работать только в клубе',
+          text: 'Купленый пакет часов будет работать только в клубе',
           style: AppTypography.kH14.apply(color: AppColors.kOxford60),
         ),
       ),

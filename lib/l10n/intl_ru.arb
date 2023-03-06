@@ -10,7 +10,7 @@
    "clubFavouriteListPageTitle" : "Избранные клубы ({clubCount})",
    "feedbackPageTitle" : "Обратиться в поддержку",
    "buyWorkoutPageTitle" : "Разовая тренировка",
-   "clubBatchesPageTitle" : "Пакеты тренировок",
-   "clubBatchPageTitle" : "Покупка пакета тренировок",
+   "clubBatchesPageTitle" : "Пакеты часов",
+   "clubBatchPageTitle" : "Покупка пакета часов",
    "clubInformationPageTitle" : "Информация"
 }

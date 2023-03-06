@@ -29,9 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "buyWorkoutPageTitle":
             MessageLookupByLibrary.simpleMessage("Разовая тренировка"),
         "clubBatchPageTitle":
-            MessageLookupByLibrary.simpleMessage("Покупка пакета тренировок"),
+            MessageLookupByLibrary.simpleMessage("Покупка пакета часов"),
         "clubBatchesPageTitle":
-            MessageLookupByLibrary.simpleMessage("Пакеты тренировок"),
+            MessageLookupByLibrary.simpleMessage("Пакеты часов"),
         "clubFavouriteListPageTitle": m0,
         "clubInformationPageTitle":
             MessageLookupByLibrary.simpleMessage("Информация"),

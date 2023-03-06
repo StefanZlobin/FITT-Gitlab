@@ -28,10 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "buyWorkoutPageTitle":
             MessageLookupByLibrary.simpleMessage("One-time training"),
-        "clubBatchPageTitle": MessageLookupByLibrary.simpleMessage(
-            "Purchase of a training package"),
+        "clubBatchPageTitle":
+            MessageLookupByLibrary.simpleMessage("Buying a watch package"),
         "clubBatchesPageTitle":
-            MessageLookupByLibrary.simpleMessage("Training Packages"),
+            MessageLookupByLibrary.simpleMessage("Watch Packages"),
         "clubFavouriteListPageTitle": m0,
         "clubInformationPageTitle":
             MessageLookupByLibrary.simpleMessage("Information"),
