@@ -56,8 +56,6 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
               );
             }
           },
-          error: (error) => ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(error))),
         );
       },
       child: BlocBuilder<ClubCubit, ClubState>(

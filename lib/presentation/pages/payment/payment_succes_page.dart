@@ -5,6 +5,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
+import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/compact_map.dart';
@@ -81,11 +82,11 @@ class PaymentSuccessPage extends StatelessWidget {
                   AppElevatedButton(
                     marginButton: const EdgeInsets.symmetric(horizontal: 16),
                     textButton: const Text('Отлично'),
-                    onPressed: () {
+                    onPressedAsync: () async {
                       if (!(workout.startTime.difference(DateTime.now()) -
                               const Duration(hours: 1))
                           .isNegative) {
-                        getIt<LocalNotificationsService>()
+                        await getIt<LocalNotificationsService>()
                             .scheduleLocalNotification(
                           id: workout.workoutHashCode,
                           title: 'До тренировки остался 1 час',
@@ -98,7 +99,7 @@ class PaymentSuccessPage extends StatelessWidget {
                       if (!workout.canStartTime
                           .difference(DateTime.now())
                           .isNegative) {
-                        getIt<LocalNotificationsService>()
+                        await getIt<LocalNotificationsService>()
                             .scheduleLocalNotification(
                           id: workout.workoutHashCode - 2,
                           title: 'Регистрация на тренировку открыта',
@@ -107,7 +108,8 @@ class PaymentSuccessPage extends StatelessWidget {
                               workout.canStartTime.difference(DateTime.now()),
                         );
                       }
-                      context.pushReplacement(AppRoute.map.routeToPath);
+                      await getIt<WorkoutsCubit>().getWorkouts().then((_) =>
+                          context.pushReplacement(AppRoute.map.routeToPath));
                     },
                   ),
                 ],

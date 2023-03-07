@@ -5,7 +5,6 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
 import 'package:fitt/presentation/components/page_title.dart';
@@ -89,7 +88,6 @@ class _WebviewState extends State<Webview> {
               notificationsBloc.setInitialState();
             },
             paymentWorkoutSuccess: () {
-              getIt<WorkoutsCubit>().getWorkouts();
               getIt<WorkoutCubit>()
                   .getWorkout(workoutUuid: widget.workoutUuid ?? '');
               context.push(AppRoute.paymentSuccess.routeToPath);

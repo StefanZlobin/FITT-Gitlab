@@ -84,8 +84,6 @@ class _MapWidgetState extends State<MapWidget> {
                 );
               },
               locationDetectingError: (error) async {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text(error)));
                 await getIt<GeolocationService>().openSettings();
               },
             );

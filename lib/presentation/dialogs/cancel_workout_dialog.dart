@@ -3,7 +3,6 @@ import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
@@ -71,10 +70,10 @@ class CancelWorkoutDialog extends StatelessWidget {
                         id: workout.workoutHashCode - 2,
                       );
                       getIt<WorkoutsCubit>().getWorkouts();
-                      getIt<ArchiveWorkoutsCubit>().offset = 0;
-                      getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
-                        needClearLoadedWorkouts: true,
-                      );
+                      //getIt<ArchiveWorkoutsCubit>().offset = 0;
+                      //getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
+                      //  needClearLoadedWorkouts: true,
+                      //);
                       context.pushNamed(
                         AppRoute.workoutArchiveList.routeToPath,
                         extra: true,

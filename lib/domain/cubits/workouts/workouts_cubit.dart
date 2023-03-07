@@ -10,7 +10,9 @@ part 'workouts_cubit.freezed.dart';
 part 'workouts_state.dart';
 
 class WorkoutsCubit extends Cubit<WorkoutsState> with UserMixin {
-  WorkoutsCubit() : super(const _WorkoutsStateInitial());
+  WorkoutsCubit() : super(const _WorkoutsStateInitial()) {
+    getWorkouts();
+  }
 
   final workoutUseCase = WorkoutUseCase();
 

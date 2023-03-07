@@ -65,173 +65,155 @@ class _AccountPageState extends State<AccountPage> {
           icon: const Icon(AppIcons.arr_big_left),
         ),
       ),
-      body: BlocListener<UserBloc, UserState>(
+      body: BlocBuilder<UserBloc, UserState>(
         bloc: getIt<UserBloc>(),
-        listener: (context, state) {
-          state.whenOrNull(
-            error: (error) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content:
-                      Text('Упс, что-то пошло не по плану, попробуйте позже'),
+        builder: (context, state) {
+          return state.when(
+            loading: () => const Center(child: CircularProgressIndicator()),
+            loadedWithNoUser: (_) => const SizedBox(),
+            error: (error) => const Center(child: CircularProgressIndicator()),
+            loaded: (user) {
+              return Form(
+                key: formFieldKey,
+                child: ListView(
+                  children: [
+                    _buildAvatarImage(user),
+                    TextButton(
+                      onPressed: () async {
+                        final xFile = await imagePicker.pickImage(
+                          source: ImageSource.gallery,
+                        );
+                        final CroppedFile? croppedFile =
+                            await ImageCropper().cropImage(
+                          sourcePath: xFile!.path,
+                        );
+
+                        getIt<UserBloc>().add(
+                          UserEvent.updateUserAvatar(
+                            avatar: File(croppedFile!.path),
+                          ),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                      ),
+                      child: CenterLeft(
+                        child: Text(
+                          'Заменить изображение',
+                          style: AppTypography.kH14
+                              .apply(color: AppColors.kPrimaryBlue),
+                        ),
+                      ),
+                    ),
+                    AppTextFormField(
+                      controller: user?.firstName != null ? null : controller,
+                      title: const Text('Имя'),
+                      initialValue: user?.firstName,
+                      validator: (v) => nameValidator.getValidationErrorName(v),
+                      onChanged: (value) {
+                        getIt<UserBloc>().add(UserEvent.updateUserData(
+                            user: user!.copyWith(firstName: value)));
+                        getIt<AccountSaveButtonCubit>()
+                            .disableButton(isDisabled: false);
+                      },
+                    ),
+                    AppTextFormField(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      title: const Text('Фамилия'),
+                      initialValue: user?.lastName,
+                      validator: (v) => nameValidator.getValidationErrorName(v),
+                      onChanged: (value) {
+                        getIt<UserBloc>().add(UserEvent.updateUserData(
+                            user: user!.copyWith(lastName: value)));
+                        getIt<AccountSaveButtonCubit>()
+                            .disableButton(isDisabled: false);
+                      },
+                    ),
+                    AppDateForm(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      helper: const Text('Дата рождения'),
+                      initialValue: user?.birthday,
+                      validator: (v) => dateValidator.getValidationError(v),
+                      onTap: () async {
+                        final pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: clock.yearsAgo(18),
+                          firstDate: clock.yearsAgo(100),
+                          lastDate: clock.yearsAgo(0),
+                        );
+                        newBirthday = pickedDate;
+                      },
+                      onDateSelected: (value) {
+                        getIt<UserBloc>().add(UserEvent.updateUserData(
+                            user: user!.copyWith(birthday: value)));
+                        getIt<AccountSaveButtonCubit>()
+                            .disableButton(isDisabled: false);
+                      },
+                    ),
+                    AppTextFormField(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      title: const Text('Номер телефона'),
+                      initialValue:
+                          phoneFormatter.maskText(user?.phoneNumber ?? ''),
+                      readOnly: true,
+                    ),
+                    AppTextFormField(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      title: const Text('E-mail'),
+                      initialValue: user?.email,
+                      isEmailField: true,
+                      validator: (v) => emailValidator.getValidationError(v),
+                      onChanged: (value) {
+                        getIt<UserBloc>().add(UserEvent.updateUserData(
+                            user: user!.copyWith(email: value)));
+                        getIt<AccountSaveButtonCubit>()
+                            .disableButton(isDisabled: false);
+                      },
+                    ),
+                    AppGenderFormField(
+                      helper: const Text('Пол'),
+                      user: user,
+                      userGender: user?.gender ?? UserGenderEnum.male,
+                    ),
+                    const Separator(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        showDialog<void>(
+                          useRootNavigator: false,
+                          context: context,
+                          builder: (context) {
+                            return const DeleteUserAccountDialog();
+                          },
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                      ),
+                      child: CenterLeft(
+                        child: Text(
+                          'Удалить мой аккаунт',
+                          style: AppTypography.kH14
+                              .apply(color: AppColors.kOxford40),
+                        ),
+                      ),
+                    ),
+                    _buildSaveButton(
+                      user,
+                      newName,
+                      newSurname,
+                      newBirthday,
+                      newEmail,
+                      context,
+                    ),
+                  ],
                 ),
               );
             },
           );
         },
-        child: BlocBuilder<UserBloc, UserState>(
-          bloc: getIt<UserBloc>(),
-          builder: (context, state) {
-            return state.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              loadedWithNoUser: (_) => const SizedBox(),
-              error: (error) =>
-                  const Center(child: CircularProgressIndicator()),
-              loaded: (user) {
-                return Form(
-                  key: formFieldKey,
-                  child: ListView(
-                    children: [
-                      _buildAvatarImage(user),
-                      TextButton(
-                        onPressed: () async {
-                          final xFile = await imagePicker.pickImage(
-                            source: ImageSource.gallery,
-                          );
-                          final CroppedFile? croppedFile =
-                              await ImageCropper().cropImage(
-                            sourcePath: xFile!.path,
-                          );
-
-                          getIt<UserBloc>().add(
-                            UserEvent.updateUserAvatar(
-                              avatar: File(croppedFile!.path),
-                            ),
-                          );
-                        },
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                        ),
-                        child: CenterLeft(
-                          child: Text(
-                            'Заменить изображение',
-                            style: AppTypography.kH14
-                                .apply(color: AppColors.kPrimaryBlue),
-                          ),
-                        ),
-                      ),
-                      AppTextFormField(
-                        controller: user?.firstName != null ? null : controller,
-                        title: const Text('Имя'),
-                        initialValue: user?.firstName,
-                        validator: (v) =>
-                            nameValidator.getValidationErrorName(v),
-                        onChanged: (value) {
-                          getIt<UserBloc>().add(UserEvent.updateUserData(
-                              user: user!.copyWith(firstName: value)));
-                          getIt<AccountSaveButtonCubit>()
-                              .disableButton(isDisabled: false);
-                        },
-                      ),
-                      AppTextFormField(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
-                        title: const Text('Фамилия'),
-                        initialValue: user?.lastName,
-                        validator: (v) =>
-                            nameValidator.getValidationErrorName(v),
-                        onChanged: (value) {
-                          getIt<UserBloc>().add(UserEvent.updateUserData(
-                              user: user!.copyWith(lastName: value)));
-                          getIt<AccountSaveButtonCubit>()
-                              .disableButton(isDisabled: false);
-                        },
-                      ),
-                      AppDateForm(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
-                        helper: const Text('Дата рождения'),
-                        initialValue: user?.birthday,
-                        validator: (v) => dateValidator.getValidationError(v),
-                        onTap: () async {
-                          final pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: clock.yearsAgo(18),
-                            firstDate: clock.yearsAgo(100),
-                            lastDate: clock.yearsAgo(0),
-                          );
-                          newBirthday = pickedDate;
-                        },
-                        onDateSelected: (value) {
-                          getIt<UserBloc>().add(UserEvent.updateUserData(
-                              user: user!.copyWith(birthday: value)));
-                          getIt<AccountSaveButtonCubit>()
-                              .disableButton(isDisabled: false);
-                        },
-                      ),
-                      AppTextFormField(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
-                        title: const Text('Номер телефона'),
-                        initialValue:
-                            phoneFormatter.maskText(user?.phoneNumber ?? ''),
-                        readOnly: true,
-                      ),
-                      AppTextFormField(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
-                        title: const Text('E-mail'),
-                        initialValue: user?.email,
-                        isEmailField: true,
-                        validator: (v) => emailValidator.getValidationError(v),
-                        onChanged: (value) {
-                          getIt<UserBloc>().add(UserEvent.updateUserData(
-                              user: user!.copyWith(email: value)));
-                          getIt<AccountSaveButtonCubit>()
-                              .disableButton(isDisabled: false);
-                        },
-                      ),
-                      AppGenderFormField(
-                        helper: const Text('Пол'),
-                        user: user,
-                        userGender: user?.gender ?? UserGenderEnum.male,
-                      ),
-                      const Separator(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          showDialog<void>(
-                            useRootNavigator: false,
-                            context: context,
-                            builder: (context) {
-                              return const DeleteUserAccountDialog();
-                            },
-                          );
-                        },
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                        ),
-                        child: CenterLeft(
-                          child: Text(
-                            'Удалить мой аккаунт',
-                            style: AppTypography.kH14
-                                .apply(color: AppColors.kOxford40),
-                          ),
-                        ),
-                      ),
-                      _buildSaveButton(
-                        user,
-                        newName,
-                        newSurname,
-                        newBirthday,
-                        newEmail,
-                        context,
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          },
-        ),
       ),
     );
   }

@@ -49,8 +49,7 @@ class ClubBuyBatchPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          error: (error) => ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(error))),
+          error: (_) => null,
         );
       },
       child: BlocBuilder<ClubCubit, ClubState>(

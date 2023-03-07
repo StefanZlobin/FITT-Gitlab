@@ -9,7 +9,9 @@ part 'archive_workouts_cubit.freezed.dart';
 part 'archive_workouts_state.dart';
 
 class ArchiveWorkoutsCubit extends Cubit<ArchiveWorkoutsState> {
-  ArchiveWorkoutsCubit() : super(const ArchiveWorkoutsState.initial());
+  ArchiveWorkoutsCubit() : super(const ArchiveWorkoutsState.initial()) {
+    getArchiveWorkouts();
+  }
 
   final workoutUseCase = WorkoutUseCase();
 

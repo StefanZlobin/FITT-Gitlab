@@ -47,7 +47,7 @@ class ClubCarouselCard extends StatelessWidget {
               imageUrl: partnerClub.photos?.first.medium ?? '',
               filterQuality: FilterQuality.high,
               fit: BoxFit.cover,
-              placeholder: (context, url) => const CenterLeft(
+              placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(),
               ),
               errorWidget: (context, url, dynamic error) {

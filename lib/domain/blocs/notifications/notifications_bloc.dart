@@ -1,9 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fitt/core/enum/payment_status_enum.dart';
+import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'notifications_bloc.freezed.dart';
@@ -69,10 +72,26 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     Emitter<NotificationsState> emit,
   ) {
     if (event.message.data['status'] == 'REQUIRED_START') {
+      if (event.message.data['user_type'] == 'ADMINISTRATOR' &&
+          Platform.isAndroid) {
+        getIt<LocalNotificationsService>().showLocalNotification(
+          id: event.message.data['id'].toString().hashCode,
+          title: event.message.notification?.title ?? '',
+          body: event.message.notification?.body ?? '',
+        );
+      }
       emit(const NotificationsState.workoutStatusRS());
     } else if (event.message.data['status'] == 'START') {
       emit(const NotificationsState.workoutStatusStarted());
     } else if (event.message.data['status'] == 'REQUIRED_FINISH') {
+      if (event.message.data['user_type'] == 'ADMINISTRATOR' &&
+          Platform.isAndroid) {
+        getIt<LocalNotificationsService>().showLocalNotification(
+          id: event.message.data['id'].toString().hashCode,
+          title: event.message.notification?.title ?? '',
+          body: event.message.notification?.body ?? '',
+        );
+      }
       emit(const NotificationsState.workoutStatusRF());
     } else if (event.message.data['status'] == 'FINISH') {
       emit(const NotificationsState.workoutStatusFinished());

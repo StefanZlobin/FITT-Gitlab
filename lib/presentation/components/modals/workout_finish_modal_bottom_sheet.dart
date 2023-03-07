@@ -26,39 +26,27 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<NotificationsBloc, NotificationsState>(
-      bloc: getIt<NotificationsBloc>(),
-      listener: (context, state) {
-        state.whenOrNull(
-          error: (error) => ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Не получилось совершить действие с тренировкой'),
-            ),
-          ),
-        );
-      },
-      child: SizedBox(
-        height: 500,
-        child: BlocBuilder<NotificationsBloc, NotificationsState>(
-          bloc: getIt<NotificationsBloc>(),
-          builder: (context, state) {
-            return state.when(
-              initial: () => _buildFinishLoadingWorkoutPullup(),
-              paymentBatchReject: () => const SizedBox(),
-              paymentBatchSuccess: () => const SizedBox(),
-              paymentWorkoutReject: () => const SizedBox(),
-              paymentWorkoutSuccess: () => const SizedBox(),
-              workoutStatusPlanned: () => const SizedBox(),
-              workoutStatusRS: () => const SizedBox(),
-              workoutStatusFF: () => const SizedBox(),
-              workoutStatusStarted: () => const SizedBox(),
-              workoutStatusMissed: () => const SizedBox(),
-              workoutStatusRF: () => _buildFinishLoadingWorkoutPullup(),
-              workoutStatusFinished: () => _buildFinishedWorkoutPullup(context),
-              error: (error) => const SizedBox(),
-            );
-          },
-        ),
+    return SizedBox(
+      height: 500,
+      child: BlocBuilder<NotificationsBloc, NotificationsState>(
+        bloc: getIt<NotificationsBloc>(),
+        builder: (context, state) {
+          return state.when(
+            initial: () => _buildFinishLoadingWorkoutPullup(),
+            paymentBatchReject: () => const SizedBox(),
+            paymentBatchSuccess: () => const SizedBox(),
+            paymentWorkoutReject: () => const SizedBox(),
+            paymentWorkoutSuccess: () => const SizedBox(),
+            workoutStatusPlanned: () => const SizedBox(),
+            workoutStatusRS: () => const SizedBox(),
+            workoutStatusFF: () => const SizedBox(),
+            workoutStatusStarted: () => const SizedBox(),
+            workoutStatusMissed: () => const SizedBox(),
+            workoutStatusRF: () => _buildFinishLoadingWorkoutPullup(),
+            workoutStatusFinished: () => _buildFinishedWorkoutPullup(context),
+            error: (error) => const SizedBox(),
+          );
+        },
       ),
     );
   }

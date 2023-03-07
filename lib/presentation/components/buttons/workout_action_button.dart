@@ -81,21 +81,6 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
               bloc.setConfirmationTypeSliderButton();
             }
           },
-          error: (error) {
-            context.pop();
-            bloc.setStartTypeSliderButton(
-                showBeforeCanStart: showBeforeCanStart);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  error,
-                  style: AppTypography.kH14.apply(
-                    color: AppColors.kPrimaryBlue,
-                  ),
-                ),
-              ),
-            );
-          },
         );
       },
       child: BlocBuilder<WorkoutSliderButtonTypeCubit,

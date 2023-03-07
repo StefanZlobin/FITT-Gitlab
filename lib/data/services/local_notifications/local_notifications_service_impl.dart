@@ -81,7 +81,11 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
     required String title,
     required String body,
   }) async {
-    // TODO: implement showLocalNotification
-    throw UnimplementedError();
+    await localNotification.show(
+      id,
+      title,
+      body,
+      platformChannelSpecifics,
+    );
   }
 }

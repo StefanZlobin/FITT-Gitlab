@@ -7,5 +7,6 @@ const AndroidNotificationDetails androidPlatformChannelSpecifics =
   channelDescription: 'fitt_channel_description',
   importance: Importance.high,
   priority: Priority.high,
+  visibility: NotificationVisibility.public,
   icon: 'ic_stat_name',
 );
