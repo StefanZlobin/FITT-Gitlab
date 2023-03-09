@@ -112,19 +112,21 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
     BuildContext context, {
     String? email,
   }) {
+    final e = email ?? '';
+    final isDisable = commentController.text.isEmpty ||
+        (emailController.text.isEmpty && e.isEmpty);
     return BottomCenter(
       child: AppElevatedButton(
         onPressedAsync: () async {
           await getIt<FeedbackCubit>().sentUserFeedback(
             comment: commentController.text,
-            email: email ?? emailController.text,
+            email: e.isNotEmpty ? e : emailController.text,
             name: '${userSnapshot?.firstName} ${userSnapshot?.lastName}',
           );
           await Future<void>.delayed(const Duration(seconds: 2));
         },
         textButton: const Text('Отправить'),
-        isDisable: commentController.text.isEmpty ||
-            (emailController.text.isEmpty || email == null),
+        isDisable: isDisable,
       ),
     );
   }
