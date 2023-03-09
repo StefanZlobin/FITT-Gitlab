@@ -177,6 +177,7 @@ class _AccountPageState extends State<AccountPage> {
                       isEmailField: true,
                       validator: (v) => emailValidator.getValidationError(v),
                       onChanged: (value) {
+                        value.trim();
                         getIt<UserBloc>().add(UserEvent.updateUserData(
                             user: user!.copyWith(email: value)));
                         getIt<AccountSaveButtonCubit>()
