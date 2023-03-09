@@ -111,7 +111,7 @@ class FavoriteClubsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildFiltersRowWidget(),
-                    _buildSortingWidget(context),
+                    if (clubs.isNotEmpty) _buildSortingWidget(context),
                     if (clubs.isEmpty && isFilterUpdated)
                       Padding(
                         padding: const EdgeInsets.only(top: 100, left: 16),
