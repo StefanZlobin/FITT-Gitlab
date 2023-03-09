@@ -191,28 +191,32 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
         } else if (!userSnapshot!.hasFullData) {
           context.pushNamed(
             AppRoute.personalData.routeToPath,
-            extra: true,
+            extra: {
+              'canSkip': false,
+              'afterSignin': false,
+            },
           );
+        } else {
+          club.batchHoursAvailable != 0
+              ? await getIt<BuyWorkoutCubit>().buyWorkoutByBatch(
+                  slot: TimeSlot(
+                    id: getIt<ClubCubit>().selectedSlot!.id,
+                    startTime: getIt<ClubCubit>().selectedSlot!.startTime,
+                    duration: getIt<ClubCubit>().selectedSlot!.duration,
+                    price: getIt<ClubCubit>().selectedSlot!.price,
+                  ),
+                  activityUuid: activity.uuid,
+                )
+              : await getIt<BuyWorkoutCubit>().buyWorkout(
+                  slot: TimeSlot(
+                    id: getIt<ClubCubit>().selectedSlot!.id,
+                    startTime: getIt<ClubCubit>().selectedSlot!.startTime,
+                    duration: getIt<ClubCubit>().selectedSlot!.duration,
+                    price: getIt<ClubCubit>().selectedSlot!.price,
+                  ),
+                  activityUuid: activity.uuid,
+                );
         }
-        club.batchHoursAvailable != 0
-            ? await getIt<BuyWorkoutCubit>().buyWorkoutByBatch(
-                slot: TimeSlot(
-                  id: getIt<ClubCubit>().selectedSlot!.id,
-                  startTime: getIt<ClubCubit>().selectedSlot!.startTime,
-                  duration: getIt<ClubCubit>().selectedSlot!.duration,
-                  price: getIt<ClubCubit>().selectedSlot!.price,
-                ),
-                activityUuid: activity.uuid,
-              )
-            : await getIt<BuyWorkoutCubit>().buyWorkout(
-                slot: TimeSlot(
-                  id: getIt<ClubCubit>().selectedSlot!.id,
-                  startTime: getIt<ClubCubit>().selectedSlot!.startTime,
-                  duration: getIt<ClubCubit>().selectedSlot!.duration,
-                  price: getIt<ClubCubit>().selectedSlot!.price,
-                ),
-                activityUuid: activity.uuid,
-              );
       },
       textButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

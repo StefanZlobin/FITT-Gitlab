@@ -4,6 +4,7 @@ import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/validation/date_validator.dart';
@@ -24,9 +25,11 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
   const PersonalDataPage({
     super.key,
     required this.canSkip,
+    required this.afterSignin,
   });
 
   final bool canSkip;
+  final bool afterSignin;
 
   @override
   Widget build(BuildContext context) {
@@ -159,10 +162,13 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               onPressed: () {
                 getIt<UserBloc>().add(UserEvent.updateUserData(
                     user: user.copyWith(gender: genderGroup)));
-                //context.push(AppRoute.map.routeToPath);
-                context.pop();
-                context.pop();
-                context.pop();
+                if (!afterSignin) {
+                  context.pop();
+                } else {
+                  context.pop();
+                  context.pop();
+                  context.pop();
+                }
               },
             );
           },
@@ -174,20 +180,32 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       title: const Text('Личные данные'),
-      leading: const SizedBox(),
+      leading: !canSkip
+          ? IconButton(
+              onPressed: () => context.pop(),
+              icon: const Icon(AppIcons.arr_big_left),
+            )
+          : const SizedBox(),
       actions: [
-        Center(
-          child: GestureDetector(
-            onTap: () => context.push(AppRoute.map.routeToPath),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: Text(
-                'Пропустить',
-                style: AppTypography.kH16.apply(color: AppColors.kOxford60),
+        if (canSkip)
+          Center(
+            child: GestureDetector(
+              onTap: () {
+                if (!afterSignin) {
+                  context.pop();
+                } else {
+                  context.push(AppRoute.map.routeToPath);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: Text(
+                  'Пропустить',
+                  style: AppTypography.kH16.apply(color: AppColors.kOxford60),
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }

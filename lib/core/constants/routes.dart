@@ -130,11 +130,15 @@ class Routes {
     GoRoute(
       path: AppRoute.personalData.routeToPath,
       name: AppRoute.personalData.routeToName,
-      builder: (context, state) => ShakeFeedbackWrapper(
-        child: PersonalDataPage(
-          canSkip: state.extra! as bool,
-        ),
-      ),
+      builder: (context, state) {
+        final param = state.extra! as Map<String, Object>;
+        return ShakeFeedbackWrapper(
+          child: PersonalDataPage(
+            canSkip: param['canSkip']! as bool,
+            afterSignin: param['afterSignin']! as bool,
+          ),
+        );
+      },
     ),
     GoRoute(
       path: AppRoute.workout.routeToPath,

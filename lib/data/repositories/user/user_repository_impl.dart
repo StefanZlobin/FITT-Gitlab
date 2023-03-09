@@ -83,15 +83,31 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> updateUserAvatar({required File photo}) async {
-    await _apiClient.uploadProfilePhoto(photo);
-    await getUserData();
+    try {
+      await _apiClient.uploadProfilePhoto(photo);
+      await getUserData();
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
   }
 
   @override
   Future<void> updateUserData({required User user}) async {
-    await _apiClient.updateUserData(user);
-    await saveUser(user: user);
-    updateUser(user);
+    try {
+      await _apiClient.updateUserData(user);
+      await saveUser(user: user);
+      updateUser(user);
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
   }
 
   void dispose() {

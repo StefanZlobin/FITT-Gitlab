@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/use_cases/user/user_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -66,8 +67,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       try {
         await userUseCase.updateUserAvatar(photo: event.avatar);
         add(const _UserEventGetUserFromNetwork());
-      } on Exception catch (e) {
-        emit(_UserStateError(error: e.toString()));
+      } on NetworkExceptions catch (e) {
+        emit(_UserStateError(error: NetworkExceptions.getErrorMessage(e)));
       }
     });
 

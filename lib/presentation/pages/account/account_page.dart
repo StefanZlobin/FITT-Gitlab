@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -82,10 +84,21 @@ class _AccountPageState extends State<AccountPage> {
                       onPressed: () async {
                         final xFile = await imagePicker.pickImage(
                           source: ImageSource.gallery,
+                          //imageQuality: 5,
                         );
+                        final file = File(xFile!.path);
+
+                        final size = await file.length();
+                        if (size > 5242880) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text(
+                                      'Слишком большой размер изображения')));
+                          return;
+                        }
                         final CroppedFile? croppedFile =
                             await ImageCropper().cropImage(
-                          sourcePath: xFile!.path,
+                          sourcePath: xFile.path,
                         );
 
                         getIt<UserBloc>().add(
