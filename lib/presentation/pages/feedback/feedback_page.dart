@@ -123,7 +123,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
           await Future<void>.delayed(const Duration(seconds: 2));
         },
         textButton: const Text('Отправить'),
-        isDisable: commentController.text.isEmpty &&
+        isDisable: commentController.text.isEmpty ||
             (emailController.text.isEmpty || email == null),
       ),
     );
@@ -137,6 +137,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
       ),
       validator: (value) => emailValidator.getValidationError(value),
       placeholder: 'Введите свой e-mail',
+      isEmailField: true,
       initialValue: email,
       onChanged: (value) {
         setState(() {
