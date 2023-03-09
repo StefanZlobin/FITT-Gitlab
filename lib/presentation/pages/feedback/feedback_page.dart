@@ -140,9 +140,11 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
       isEmailField: true,
       initialValue: email,
       onChanged: (value) {
-        setState(() {
-          emailController.text = value;
-        });
+        if (value.contains('@') && value.contains('.')) {
+          setState(() {
+            emailController.text = value;
+          });
+        }
       },
     );
   }
