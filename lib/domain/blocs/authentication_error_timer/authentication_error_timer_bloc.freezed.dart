@@ -1065,10 +1065,9 @@ class __$$_TimerInitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TimerInitial implements _TimerInitial {
-  const _$_TimerInitial({this.duration = const Duration(seconds: 60)});
+  const _$_TimerInitial({required this.duration});
 
   @override
-  @JsonKey()
   final Duration duration;
 
   @override
@@ -1170,7 +1169,8 @@ class _$_TimerInitial implements _TimerInitial {
 }
 
 abstract class _TimerInitial implements AuthenticationErrorTimerState {
-  const factory _TimerInitial({final Duration duration}) = _$_TimerInitial;
+  const factory _TimerInitial({required final Duration duration}) =
+      _$_TimerInitial;
 
   Duration get duration;
   @JsonKey(ignore: true)

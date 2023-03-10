@@ -1,6 +1,7 @@
 // ignore_for_file: only_throw_errors
 
 import 'package:dio/dio.dart';
+import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/data/models/request/authentication/check_secure_code_request_body.dart';
 import 'package:fitt/data/models/request/authentication/refresh_token_request_body.dart';
 import 'package:fitt/data/models/request/authentication/signin_request_body.dart';
@@ -21,7 +22,6 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthApiClient _apiClient;
   final AuthLocalClient _authLocalClient;
 
-  // ignore: close_sinks
   final BehaviorSubject<TokenPair?> _tokenController =
       BehaviorSubject(sync: true);
   void Function(TokenPair?) get updateToken => _tokenController.sink.add;
@@ -30,12 +30,18 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Stream<TokenPair?> get tokens => _tokenController;
 
+  final BehaviorSubject<AuthenticationStatusEnum>
+      _authenticationStatusController =
+      BehaviorSubject.seeded(AuthenticationStatusEnum.unknown, sync: true);
+  void Function(AuthenticationStatusEnum) get updateAuthenticationStatus =>
+      _authenticationStatusController.sink.add;
+  @override
+  Stream<AuthenticationStatusEnum> get authenticationStatus =>
+      _authenticationStatusController;
+
   @override
   Future<TokenPair?> getToken() async {
     final token = await _authLocalClient.getToken();
-    //if (token == null) {
-    //  throw Exception('No refresh token. You should login to obtain new pair.');
-    //}
     updateToken(token);
     return token;
   }
@@ -66,9 +72,13 @@ class AuthRepositoryImpl implements AuthRepository {
     required String fcmToken,
   }) async {
     try {
-      final token = await _apiClient.checkSecureCode(
-          CheckSecureCodeRequestBody(phoneNumber, secureCode, fcmToken));
+      final token = await _apiClient.checkSecureCode(CheckSecureCodeRequestBody(
+        phoneNumber,
+        secureCode,
+        fcmToken,
+      ));
       await saveToken(token: token);
+      updateAuthenticationStatus(AuthenticationStatusEnum.authenticated);
       return token;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
@@ -83,6 +93,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signOut() async {
     await _apiClient.signOut();
     await _authLocalClient.deleteToken();
+    updateAuthenticationStatus(AuthenticationStatusEnum.unauthenticated);
     updateToken(null);
   }
 
@@ -93,5 +104,10 @@ class AuthRepositoryImpl implements AuthRepository {
         .refreshTokens(RefreshTokenRequestBody(token?.refresh ?? ''));
     await saveToken(token: newToken);
     return newToken;
+  }
+
+  void dispose() {
+    _authenticationStatusController.close();
+    _tokenController.close();
   }
 }

@@ -51,7 +51,7 @@ class CalculatedPriceWorkout extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                'Клуб с ${DateTimeUtils.timeFormat.format(e.startTime)} до ${DateTimeUtils.timeFormat.format(e.endTime)} (${e.endTime.difference(e.startTime).inMinutes} минут)',
+                                'Тренировка с ${DateTimeUtils.timeFormat.format(e.startTime)} до ${DateTimeUtils.timeFormat.format(e.endTime)} (${e.endTime.difference(e.startTime).inMinutes} минут)',
                               ),
                               if (calculatedPrice.length > 1) ...[
                                 const SizedBox(width: 4),

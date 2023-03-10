@@ -1,6 +1,5 @@
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
-import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/use_cases/authentication/auth_use_case.dart';
 import 'package:fitt/domain/use_cases/user/user_use_case.dart';
@@ -73,33 +72,6 @@ class AuthenticationBloc
         await authUseCase.signOut();
         emit(const _AuthenticationStateSuccess());
         getIt<UserBloc>().add(const UserEvent.checkUser());
-      } on Exception catch (e) {
-        emit(_AuthenticationStateError(error: e.toString()));
-      }
-    });
-
-    on<_AuthenticationEventGetToken>((event, emit) async {
-      try {
-        await authUseCase.getToken();
-        emit(const _AuthenticationStateSuccess());
-      } on Exception catch (e) {
-        emit(_AuthenticationStateError(error: e.toString()));
-      }
-    });
-
-    on<_AuthenticationEventSaveToken>((event, emit) async {
-      try {
-        await authUseCase.saveToken(token: event.token);
-        emit(const _AuthenticationStateSuccess());
-      } on Exception catch (e) {
-        emit(_AuthenticationStateError(error: e.toString()));
-      }
-    });
-
-    on<_AuthenticationEventRefreshToken>((event, emit) async {
-      try {
-        await authUseCase.refreshToken();
-        emit(const _AuthenticationStateSuccess());
       } on Exception catch (e) {
         emit(_AuthenticationStateError(error: e.toString()));
       }

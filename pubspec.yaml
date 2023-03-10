@@ -39,6 +39,8 @@ dependencies:
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
   bloc_concurrency: ^0.2.1
+  #Formz
+  formz: ^0.5.0+1
   #Locator and place from latlng
   get_it: ^7.2.0
   geocoding: ^2.0.5
