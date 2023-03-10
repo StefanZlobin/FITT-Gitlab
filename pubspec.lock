@@ -407,7 +407,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: da22bce4b0097d7f3cc3bed08622a25a9cd4f5dc
+      resolved-ref: "0bdc8318676586a99c7e1f042bb7902a88f26755"
       url: "https://github.com/StefanZlobin/fluster.git"
     source: git
     version: "1.3.1"
@@ -1558,5 +1558,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.19.0 <3.0.0"
+  dart: ">=2.19.0 <3.3.3"
   flutter: ">=3.3.0"

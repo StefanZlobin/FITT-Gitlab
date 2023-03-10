@@ -100,6 +100,13 @@ dependencies:
   #UUID
   uuid: ^3.0.7
 
+  #Cluster manager (Fluster)
+  #aka Stefan
+  fluster:
+    git:
+      url: https://github.com/StefanZlobin/fluster.git
+      ref: master
+
   #Animated native splash screen
   #aka Stefan
   animated_splash_screen:
@@ -114,12 +121,7 @@ dependencies:
       url: https://github.com/Svet-00/scroll_snap_list.git
       ref: master
 
-  #Cluster manager (Fluster)
-  #aka Stefan
-  fluster:
-    git:
-      url: https://github.com/StefanZlobin/fluster.git
-      ref: master
+
 
 dev_dependencies:
   flutter_test:
