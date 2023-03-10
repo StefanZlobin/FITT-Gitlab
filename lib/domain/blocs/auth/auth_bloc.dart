@@ -18,6 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   late StreamSubscription<AuthenticationStatusEnum>
       _authenticationStatusSubscription;
   int attemptsEnterSecureCode = 5;
+  int circleRepetitions = 0;
 
   AuthBloc() : super(const AuthState.unknown()) {
     on<_AuthEventAuthenticationStatusChanged>(
@@ -28,7 +29,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _onAuthEventAuthenticationCodeVerificationRequested);
     on<_AuthEventAuthenticationLogoutRequested>(
         _onAuthEventAuthenticationLogoutRequested);
-    on<_AuthEventPhoneNumberEntered>(_onAuthEventPhoneNumberEntered);
 
     _authenticationStatusSubscription =
         authRepository.authenticationStatus.listen(
@@ -64,12 +64,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  @override
-  Future<void> close() {
-    _authenticationStatusSubscription.cancel();
-    return super.close();
-  }
-
   Future<void> _onAuthEventAuthenticationLoginRequested(
     _AuthEventAuthenticationLoginRequested event,
     Emitter<AuthState> emit,
@@ -93,19 +87,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     } on NetworkExceptions catch (e) {
       attemptsEnterSecureCode -= 1;
+      if (attemptsEnterSecureCode == 4) {
+        circleRepetitions += 1;
+      }
       emit(_AuthStateError(
         secureCode: event.secureCode,
         attemptsEnterSecureCode: attemptsEnterSecureCode,
+        circleRepetitions: circleRepetitions,
         error: NetworkExceptions.getErrorMessage(e),
         phoneNumber: event.phoneNumber,
       ));
     }
   }
 
-  void _onAuthEventPhoneNumberEntered(
-    _AuthEventPhoneNumberEntered event,
-    Emitter<AuthState> emit,
-  ) {
-    emit(AuthState.loading(phoneNumber: event.phoneNumber));
+  @override
+  Future<void> close() {
+    _authenticationStatusSubscription.cancel();
+    return super.close();
   }
 }

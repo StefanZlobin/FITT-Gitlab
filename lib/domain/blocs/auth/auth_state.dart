@@ -13,6 +13,7 @@ class AuthState with _$AuthState {
   const factory AuthState.error({
     String? secureCode,
     int? attemptsEnterSecureCode,
+    int? circleRepetitions,
     required String error,
     String? phoneNumber,
   }) = _AuthStateError;

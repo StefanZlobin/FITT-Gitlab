@@ -89,7 +89,8 @@ class CompleteButton extends StatelessWidget {
                 },
               );
             },
-            error: (secureCode, attemptsEnterSecureCode, error, phoneNumber) {
+            error: (secureCode, attemptsEnterSecureCode, circleRepetitions,
+                error, phoneNumber) {
               return _buildButton(phoneNumber!);
             },
           );
@@ -202,14 +203,7 @@ class InputPhoneNumberForm extends StatelessWidget {
                     hintStyle:
                         AppTypography.kH24.apply(color: AppColors.kBaseBlack)),
                 keyboardType: TextInputType.phone,
-                onChanged: (_) {
-                  if (phoneNumberFormatter.isFill()) {
-                    getIt<AuthBloc>().add(AuthEvent.phoneNumberEntered(
-                      phoneNumber:
-                          '+7${phoneNumberFormatter.getUnmaskedText()}',
-                    ));
-                  }
-                },
+                onChanged: (_) {},
               ),
             ),
           ],

@@ -20,7 +20,6 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
         authenticationStatusChanged,
-    required TResult Function(String phoneNumber) phoneNumberEntered,
     required TResult Function(String phoneNumber) authenticationLoginRequested,
     required TResult Function(
             String phoneNumber, String secureCode, String fcmToken)
@@ -32,7 +31,6 @@ mixin _$AuthEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult? Function(String phoneNumber)? phoneNumberEntered,
     TResult? Function(String phoneNumber)? authenticationLoginRequested,
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -43,7 +41,6 @@ mixin _$AuthEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult Function(String phoneNumber)? phoneNumberEntered,
     TResult Function(String phoneNumber)? authenticationLoginRequested,
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -55,8 +52,6 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthEventAuthenticationStatusChanged value)
         authenticationStatusChanged,
-    required TResult Function(_AuthEventPhoneNumberEntered value)
-        phoneNumberEntered,
     required TResult Function(_AuthEventAuthenticationLoginRequested value)
         authenticationLoginRequested,
     required TResult Function(
@@ -70,7 +65,6 @@ mixin _$AuthEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult? Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult? Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult? Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -83,7 +77,6 @@ mixin _$AuthEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -187,7 +180,6 @@ class _$_AuthEventAuthenticationStatusChanged
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
         authenticationStatusChanged,
-    required TResult Function(String phoneNumber) phoneNumberEntered,
     required TResult Function(String phoneNumber) authenticationLoginRequested,
     required TResult Function(
             String phoneNumber, String secureCode, String fcmToken)
@@ -202,7 +194,6 @@ class _$_AuthEventAuthenticationStatusChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult? Function(String phoneNumber)? phoneNumberEntered,
     TResult? Function(String phoneNumber)? authenticationLoginRequested,
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -216,7 +207,6 @@ class _$_AuthEventAuthenticationStatusChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult Function(String phoneNumber)? phoneNumberEntered,
     TResult Function(String phoneNumber)? authenticationLoginRequested,
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -234,8 +224,6 @@ class _$_AuthEventAuthenticationStatusChanged
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthEventAuthenticationStatusChanged value)
         authenticationStatusChanged,
-    required TResult Function(_AuthEventPhoneNumberEntered value)
-        phoneNumberEntered,
     required TResult Function(_AuthEventAuthenticationLoginRequested value)
         authenticationLoginRequested,
     required TResult Function(
@@ -252,7 +240,6 @@ class _$_AuthEventAuthenticationStatusChanged
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult? Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult? Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult? Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -268,7 +255,6 @@ class _$_AuthEventAuthenticationStatusChanged
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -293,183 +279,6 @@ abstract class _AuthEventAuthenticationStatusChanged implements AuthEvent {
   @JsonKey(ignore: true)
   _$$_AuthEventAuthenticationStatusChangedCopyWith<
           _$_AuthEventAuthenticationStatusChanged>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_AuthEventPhoneNumberEnteredCopyWith<$Res> {
-  factory _$$_AuthEventPhoneNumberEnteredCopyWith(
-          _$_AuthEventPhoneNumberEntered value,
-          $Res Function(_$_AuthEventPhoneNumberEntered) then) =
-      __$$_AuthEventPhoneNumberEnteredCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String phoneNumber});
-}
-
-/// @nodoc
-class __$$_AuthEventPhoneNumberEnteredCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_AuthEventPhoneNumberEntered>
-    implements _$$_AuthEventPhoneNumberEnteredCopyWith<$Res> {
-  __$$_AuthEventPhoneNumberEnteredCopyWithImpl(
-      _$_AuthEventPhoneNumberEntered _value,
-      $Res Function(_$_AuthEventPhoneNumberEntered) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? phoneNumber = null,
-  }) {
-    return _then(_$_AuthEventPhoneNumberEntered(
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AuthEventPhoneNumberEntered implements _AuthEventPhoneNumberEntered {
-  const _$_AuthEventPhoneNumberEntered({required this.phoneNumber});
-
-  @override
-  final String phoneNumber;
-
-  @override
-  String toString() {
-    return 'AuthEvent.phoneNumberEntered(phoneNumber: $phoneNumber)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AuthEventPhoneNumberEntered &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, phoneNumber);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_AuthEventPhoneNumberEnteredCopyWith<_$_AuthEventPhoneNumberEntered>
-      get copyWith => __$$_AuthEventPhoneNumberEnteredCopyWithImpl<
-          _$_AuthEventPhoneNumberEntered>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
-        authenticationStatusChanged,
-    required TResult Function(String phoneNumber) phoneNumberEntered,
-    required TResult Function(String phoneNumber) authenticationLoginRequested,
-    required TResult Function(
-            String phoneNumber, String secureCode, String fcmToken)
-        authenticationCodeVerificationRequested,
-    required TResult Function() authenticationLogoutRequested,
-  }) {
-    return phoneNumberEntered(phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
-        authenticationStatusChanged,
-    TResult? Function(String phoneNumber)? phoneNumberEntered,
-    TResult? Function(String phoneNumber)? authenticationLoginRequested,
-    TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
-        authenticationCodeVerificationRequested,
-    TResult? Function()? authenticationLogoutRequested,
-  }) {
-    return phoneNumberEntered?.call(phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
-        authenticationStatusChanged,
-    TResult Function(String phoneNumber)? phoneNumberEntered,
-    TResult Function(String phoneNumber)? authenticationLoginRequested,
-    TResult Function(String phoneNumber, String secureCode, String fcmToken)?
-        authenticationCodeVerificationRequested,
-    TResult Function()? authenticationLogoutRequested,
-    required TResult orElse(),
-  }) {
-    if (phoneNumberEntered != null) {
-      return phoneNumberEntered(phoneNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthEventAuthenticationStatusChanged value)
-        authenticationStatusChanged,
-    required TResult Function(_AuthEventPhoneNumberEntered value)
-        phoneNumberEntered,
-    required TResult Function(_AuthEventAuthenticationLoginRequested value)
-        authenticationLoginRequested,
-    required TResult Function(
-            _AuthEventAuthenticationCodeVerificationRequested value)
-        authenticationCodeVerificationRequested,
-    required TResult Function(_AuthEventAuthenticationLogoutRequested value)
-        authenticationLogoutRequested,
-  }) {
-    return phoneNumberEntered(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthEventAuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult? Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
-    TResult? Function(_AuthEventAuthenticationLoginRequested value)?
-        authenticationLoginRequested,
-    TResult? Function(_AuthEventAuthenticationCodeVerificationRequested value)?
-        authenticationCodeVerificationRequested,
-    TResult? Function(_AuthEventAuthenticationLogoutRequested value)?
-        authenticationLogoutRequested,
-  }) {
-    return phoneNumberEntered?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthEventAuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
-    TResult Function(_AuthEventAuthenticationLoginRequested value)?
-        authenticationLoginRequested,
-    TResult Function(_AuthEventAuthenticationCodeVerificationRequested value)?
-        authenticationCodeVerificationRequested,
-    TResult Function(_AuthEventAuthenticationLogoutRequested value)?
-        authenticationLogoutRequested,
-    required TResult orElse(),
-  }) {
-    if (phoneNumberEntered != null) {
-      return phoneNumberEntered(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthEventPhoneNumberEntered implements AuthEvent {
-  const factory _AuthEventPhoneNumberEntered(
-      {required final String phoneNumber}) = _$_AuthEventPhoneNumberEntered;
-
-  String get phoneNumber;
-  @JsonKey(ignore: true)
-  _$$_AuthEventPhoneNumberEnteredCopyWith<_$_AuthEventPhoneNumberEntered>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -546,7 +355,6 @@ class _$_AuthEventAuthenticationLoginRequested
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
         authenticationStatusChanged,
-    required TResult Function(String phoneNumber) phoneNumberEntered,
     required TResult Function(String phoneNumber) authenticationLoginRequested,
     required TResult Function(
             String phoneNumber, String secureCode, String fcmToken)
@@ -561,7 +369,6 @@ class _$_AuthEventAuthenticationLoginRequested
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult? Function(String phoneNumber)? phoneNumberEntered,
     TResult? Function(String phoneNumber)? authenticationLoginRequested,
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -575,7 +382,6 @@ class _$_AuthEventAuthenticationLoginRequested
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult Function(String phoneNumber)? phoneNumberEntered,
     TResult Function(String phoneNumber)? authenticationLoginRequested,
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -593,8 +399,6 @@ class _$_AuthEventAuthenticationLoginRequested
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthEventAuthenticationStatusChanged value)
         authenticationStatusChanged,
-    required TResult Function(_AuthEventPhoneNumberEntered value)
-        phoneNumberEntered,
     required TResult Function(_AuthEventAuthenticationLoginRequested value)
         authenticationLoginRequested,
     required TResult Function(
@@ -611,7 +415,6 @@ class _$_AuthEventAuthenticationLoginRequested
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult? Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult? Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult? Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -627,7 +430,6 @@ class _$_AuthEventAuthenticationLoginRequested
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -755,7 +557,6 @@ class _$_AuthEventAuthenticationCodeVerificationRequested
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
         authenticationStatusChanged,
-    required TResult Function(String phoneNumber) phoneNumberEntered,
     required TResult Function(String phoneNumber) authenticationLoginRequested,
     required TResult Function(
             String phoneNumber, String secureCode, String fcmToken)
@@ -771,7 +572,6 @@ class _$_AuthEventAuthenticationCodeVerificationRequested
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult? Function(String phoneNumber)? phoneNumberEntered,
     TResult? Function(String phoneNumber)? authenticationLoginRequested,
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -786,7 +586,6 @@ class _$_AuthEventAuthenticationCodeVerificationRequested
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult Function(String phoneNumber)? phoneNumberEntered,
     TResult Function(String phoneNumber)? authenticationLoginRequested,
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -805,8 +604,6 @@ class _$_AuthEventAuthenticationCodeVerificationRequested
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthEventAuthenticationStatusChanged value)
         authenticationStatusChanged,
-    required TResult Function(_AuthEventPhoneNumberEntered value)
-        phoneNumberEntered,
     required TResult Function(_AuthEventAuthenticationLoginRequested value)
         authenticationLoginRequested,
     required TResult Function(
@@ -823,7 +620,6 @@ class _$_AuthEventAuthenticationCodeVerificationRequested
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult? Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult? Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult? Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -839,7 +635,6 @@ class _$_AuthEventAuthenticationCodeVerificationRequested
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -917,7 +712,6 @@ class _$_AuthEventAuthenticationLogoutRequested
   TResult when<TResult extends Object?>({
     required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
         authenticationStatusChanged,
-    required TResult Function(String phoneNumber) phoneNumberEntered,
     required TResult Function(String phoneNumber) authenticationLoginRequested,
     required TResult Function(
             String phoneNumber, String secureCode, String fcmToken)
@@ -932,7 +726,6 @@ class _$_AuthEventAuthenticationLogoutRequested
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult? Function(String phoneNumber)? phoneNumberEntered,
     TResult? Function(String phoneNumber)? authenticationLoginRequested,
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -946,7 +739,6 @@ class _$_AuthEventAuthenticationLogoutRequested
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
         authenticationStatusChanged,
-    TResult Function(String phoneNumber)? phoneNumberEntered,
     TResult Function(String phoneNumber)? authenticationLoginRequested,
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         authenticationCodeVerificationRequested,
@@ -964,8 +756,6 @@ class _$_AuthEventAuthenticationLogoutRequested
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthEventAuthenticationStatusChanged value)
         authenticationStatusChanged,
-    required TResult Function(_AuthEventPhoneNumberEntered value)
-        phoneNumberEntered,
     required TResult Function(_AuthEventAuthenticationLoginRequested value)
         authenticationLoginRequested,
     required TResult Function(
@@ -982,7 +772,6 @@ class _$_AuthEventAuthenticationLogoutRequested
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult? Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult? Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult? Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -998,7 +787,6 @@ class _$_AuthEventAuthenticationLogoutRequested
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthEventAuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_AuthEventPhoneNumberEntered value)? phoneNumberEntered,
     TResult Function(_AuthEventAuthenticationLoginRequested value)?
         authenticationLoginRequested,
     TResult Function(_AuthEventAuthenticationCodeVerificationRequested value)?
@@ -1030,7 +818,7 @@ mixin _$AuthState {
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)
+            int? circleRepetitions, String error, String? phoneNumber)
         error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1043,7 +831,7 @@ mixin _$AuthState {
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1055,7 +843,7 @@ mixin _$AuthState {
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
     required TResult orElse(),
   }) =>
@@ -1198,7 +986,7 @@ class _$_AuthStateLoading implements _AuthStateLoading {
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)
+            int? circleRepetitions, String error, String? phoneNumber)
         error,
   }) {
     return loading(phoneNumber, secureCode, fcmToken);
@@ -1214,7 +1002,7 @@ class _$_AuthStateLoading implements _AuthStateLoading {
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
   }) {
     return loading?.call(phoneNumber, secureCode, fcmToken);
@@ -1229,7 +1017,7 @@ class _$_AuthStateLoading implements _AuthStateLoading {
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
     required TResult orElse(),
   }) {
@@ -1339,7 +1127,7 @@ class _$_AuthStateUnknown implements _AuthStateUnknown {
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)
+            int? circleRepetitions, String error, String? phoneNumber)
         error,
   }) {
     return unknown();
@@ -1355,7 +1143,7 @@ class _$_AuthStateUnknown implements _AuthStateUnknown {
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
   }) {
     return unknown?.call();
@@ -1370,7 +1158,7 @@ class _$_AuthStateUnknown implements _AuthStateUnknown {
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
     required TResult orElse(),
   }) {
@@ -1471,7 +1259,7 @@ class _$_AuthStateAuthenticated implements _AuthStateAuthenticated {
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)
+            int? circleRepetitions, String error, String? phoneNumber)
         error,
   }) {
     return authenticated();
@@ -1487,7 +1275,7 @@ class _$_AuthStateAuthenticated implements _AuthStateAuthenticated {
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
   }) {
     return authenticated?.call();
@@ -1502,7 +1290,7 @@ class _$_AuthStateAuthenticated implements _AuthStateAuthenticated {
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
     required TResult orElse(),
   }) {
@@ -1604,7 +1392,7 @@ class _$_AuthStateUnauthenticated implements _AuthStateUnauthenticated {
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)
+            int? circleRepetitions, String error, String? phoneNumber)
         error,
   }) {
     return unauthenticated();
@@ -1620,7 +1408,7 @@ class _$_AuthStateUnauthenticated implements _AuthStateUnauthenticated {
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
   }) {
     return unauthenticated?.call();
@@ -1635,7 +1423,7 @@ class _$_AuthStateUnauthenticated implements _AuthStateUnauthenticated {
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
     required TResult orElse(),
   }) {
@@ -1699,6 +1487,7 @@ abstract class _$$_AuthStateErrorCopyWith<$Res> {
   $Res call(
       {String? secureCode,
       int? attemptsEnterSecureCode,
+      int? circleRepetitions,
       String error,
       String? phoneNumber});
 }
@@ -1716,6 +1505,7 @@ class __$$_AuthStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? secureCode = freezed,
     Object? attemptsEnterSecureCode = freezed,
+    Object? circleRepetitions = freezed,
     Object? error = null,
     Object? phoneNumber = freezed,
   }) {
@@ -1727,6 +1517,10 @@ class __$$_AuthStateErrorCopyWithImpl<$Res>
       attemptsEnterSecureCode: freezed == attemptsEnterSecureCode
           ? _value.attemptsEnterSecureCode
           : attemptsEnterSecureCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+      circleRepetitions: freezed == circleRepetitions
+          ? _value.circleRepetitions
+          : circleRepetitions // ignore: cast_nullable_to_non_nullable
               as int?,
       error: null == error
           ? _value.error
@@ -1746,6 +1540,7 @@ class _$_AuthStateError implements _AuthStateError {
   const _$_AuthStateError(
       {this.secureCode,
       this.attemptsEnterSecureCode,
+      this.circleRepetitions,
       required this.error,
       this.phoneNumber});
 
@@ -1754,13 +1549,15 @@ class _$_AuthStateError implements _AuthStateError {
   @override
   final int? attemptsEnterSecureCode;
   @override
+  final int? circleRepetitions;
+  @override
   final String error;
   @override
   final String? phoneNumber;
 
   @override
   String toString() {
-    return 'AuthState.error(secureCode: $secureCode, attemptsEnterSecureCode: $attemptsEnterSecureCode, error: $error, phoneNumber: $phoneNumber)';
+    return 'AuthState.error(secureCode: $secureCode, attemptsEnterSecureCode: $attemptsEnterSecureCode, circleRepetitions: $circleRepetitions, error: $error, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -1773,14 +1570,16 @@ class _$_AuthStateError implements _AuthStateError {
             (identical(
                     other.attemptsEnterSecureCode, attemptsEnterSecureCode) ||
                 other.attemptsEnterSecureCode == attemptsEnterSecureCode) &&
+            (identical(other.circleRepetitions, circleRepetitions) ||
+                other.circleRepetitions == circleRepetitions) &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, secureCode, attemptsEnterSecureCode, error, phoneNumber);
+  int get hashCode => Object.hash(runtimeType, secureCode,
+      attemptsEnterSecureCode, circleRepetitions, error, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -1798,10 +1597,11 @@ class _$_AuthStateError implements _AuthStateError {
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)
+            int? circleRepetitions, String error, String? phoneNumber)
         error,
   }) {
-    return error(secureCode, attemptsEnterSecureCode, this.error, phoneNumber);
+    return error(secureCode, attemptsEnterSecureCode, circleRepetitions,
+        this.error, phoneNumber);
   }
 
   @override
@@ -1814,11 +1614,11 @@ class _$_AuthStateError implements _AuthStateError {
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
   }) {
-    return error?.call(
-        secureCode, attemptsEnterSecureCode, this.error, phoneNumber);
+    return error?.call(secureCode, attemptsEnterSecureCode, circleRepetitions,
+        this.error, phoneNumber);
   }
 
   @override
@@ -1830,13 +1630,13 @@ class _$_AuthStateError implements _AuthStateError {
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function(String? secureCode, int? attemptsEnterSecureCode,
-            String error, String? phoneNumber)?
+            int? circleRepetitions, String error, String? phoneNumber)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(
-          secureCode, attemptsEnterSecureCode, this.error, phoneNumber);
+      return error(secureCode, attemptsEnterSecureCode, circleRepetitions,
+          this.error, phoneNumber);
     }
     return orElse();
   }
@@ -1886,11 +1686,13 @@ abstract class _AuthStateError implements AuthState {
   const factory _AuthStateError(
       {final String? secureCode,
       final int? attemptsEnterSecureCode,
+      final int? circleRepetitions,
       required final String error,
       final String? phoneNumber}) = _$_AuthStateError;
 
   String? get secureCode;
   int? get attemptsEnterSecureCode;
+  int? get circleRepetitions;
   String get error;
   String? get phoneNumber;
   @JsonKey(ignore: true)

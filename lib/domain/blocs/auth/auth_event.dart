@@ -5,9 +5,6 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.authenticationStatusChanged({
     required AuthenticationStatusEnum authenticationStatusEnum,
   }) = _AuthEventAuthenticationStatusChanged;
-  const factory AuthEvent.phoneNumberEntered({
-    required String phoneNumber,
-  }) = _AuthEventPhoneNumberEntered;
   const factory AuthEvent.authenticationLoginRequested({
     required String phoneNumber,
   }) = _AuthEventAuthenticationLoginRequested;

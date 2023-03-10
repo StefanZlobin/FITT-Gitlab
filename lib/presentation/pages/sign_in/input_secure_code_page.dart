@@ -28,18 +28,7 @@ class InputSecureCodePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
-            getIt<AuthBloc>().attemptsEnterSecureCode = 5;
-            getIt<AuthenticationErrorTimerBloc>().add(
-              AuthenticationErrorTimerEvent.setTimerInitial(
-                duration:
-                    getIt<AuthenticationErrorTimerBloc>().attemptsEnterCode < 3
-                        ? const Duration(minutes: 5)
-                        : const Duration(minutes: 30),
-              ),
-            );
-            context.pop();
-          },
+          onPressed: () => context.pop(),
           icon: const Icon(AppIcons.arr_big_left),
         ),
         title: Text(L.of(context).inputSecureCode),
@@ -62,56 +51,29 @@ class RepeatCallAfter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthenticationErrorTimerBloc,
+    return BlocBuilder<AuthenticationErrorTimerBloc,
         AuthenticationErrorTimerState>(
       bloc: getIt<AuthenticationErrorTimerBloc>(),
-      listener: (context, state) {
-        state.whenOrNull(
-          timerRunComplete: (attemptsEnterCode) {
-            getIt<AuthenticationErrorTimerBloc>().add(
-              AuthenticationErrorTimerEvent.setTimerInitial(
-                duration: attemptsEnterCode < 3
-                    ? const Duration(minutes: 5)
-                    : const Duration(minutes: 30),
+      builder: (context, state) {
+        return state.when(
+          timerInitial: (duration) => _buildTextRepeatCall(duration),
+          timerRunInProgress: (duration) => _buildTextRepeatCall(duration),
+          timerRunPause: (_) => const SizedBox(),
+          timerRunComplete: (_) {
+            return TextButton(
+              onPressed: () => context.pop(),
+              style: TextButton.styleFrom(padding: const EdgeInsets.all(0)),
+              child: Center(
+                child: Text(
+                  'Запросить звонок повторно',
+                  style:
+                      AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
+                ),
               ),
             );
           },
         );
       },
-      child: BlocBuilder<AuthenticationErrorTimerBloc,
-          AuthenticationErrorTimerState>(
-        bloc: getIt<AuthenticationErrorTimerBloc>(),
-        builder: (context, state) {
-          return state.when(
-            timerInitial: (duration) => _buildTextRepeatCall(duration),
-            timerRunInProgress: (duration) => _buildTextRepeatCall(duration),
-            timerRunPause: (_) => const SizedBox(),
-            timerRunComplete: (attemptsEnterCode) {
-              return TextButton(
-                onPressed: () {
-                  getIt<AuthBloc>().attemptsEnterSecureCode = 5;
-                  getIt<AuthenticationErrorTimerBloc>().add(
-                    AuthenticationErrorTimerEvent.setTimerInitial(
-                      duration: attemptsEnterCode < 3
-                          ? const Duration(minutes: 5)
-                          : const Duration(minutes: 30),
-                    ),
-                  );
-                  context.pop();
-                },
-                style: TextButton.styleFrom(padding: const EdgeInsets.all(0)),
-                child: Center(
-                  child: Text(
-                    'Запросить звонок повторно',
-                    style:
-                        AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
-                  ),
-                ),
-              );
-            },
-          );
-        },
-      ),
     );
   }
 
@@ -139,46 +101,34 @@ class InputSecureCodeForm extends StatelessWidget {
       filter: {'_': RegExp(r'[0-9]')},
     );
 
-    return BlocListener<AuthBloc, AuthState>(
+    return BlocBuilder<AuthBloc, AuthState>(
       bloc: getIt<AuthBloc>(),
-      listener: (context, state) {
-        state.whenOrNull(
-          error: (secureCode, attemptsEnterSecureCode, error, phoneNumber) {
-            getIt<AuthenticationErrorTimerBloc>()
-                .add(const AuthenticationErrorTimerEvent.timerStarted(
-              duration: Duration(minutes: 1),
-            ));
+      builder: (context, state) {
+        return state.when(
+          loading: (phoneNumber, secureCode, fcmToken) {
+            return _buildSecureCodeForm(
+              secureCodeFormatter,
+              secureCodeMask,
+              context,
+              false,
+              5,
+            );
+          },
+          unknown: () => const SizedBox(),
+          authenticated: () => const SizedBox(),
+          unauthenticated: () => const SizedBox(),
+          error: (secureCode, attemptsEnterSecureCode, circleRepetitions, error,
+              phoneNumber) {
+            return _buildSecureCodeForm(
+              secureCodeFormatter,
+              secureCodeMask,
+              context,
+              true,
+              attemptsEnterSecureCode ?? 5,
+            );
           },
         );
       },
-      child: BlocBuilder<AuthBloc, AuthState>(
-        bloc: getIt<AuthBloc>(),
-        builder: (context, state) {
-          return state.when(
-            loading: (phoneNumber, secureCode, fcmToken) {
-              return _buildSecureCodeForm(
-                secureCodeFormatter,
-                secureCodeMask,
-                context,
-                false,
-                5,
-              );
-            },
-            unknown: () => const SizedBox(),
-            authenticated: () => const SizedBox(),
-            unauthenticated: () => const SizedBox(),
-            error: (secureCode, attemptsEnterSecureCode, error, phoneNumber) {
-              return _buildSecureCodeForm(
-                secureCodeFormatter,
-                secureCodeMask,
-                context,
-                true,
-                attemptsEnterSecureCode ?? 5,
-              );
-            },
-          );
-        },
-      ),
     );
   }
 
@@ -193,6 +143,7 @@ class InputSecureCodeForm extends StatelessWidget {
       children: [
         TextField(
           inputFormatters: [secureCodeFormatter],
+          enabled: getIt<AuthBloc>().attemptsEnterSecureCode == 0,
           style: isError
               ? AppTypography.kH24.apply(color: AppColors.kPrimaryBlue)
               : AppTypography.kH24.apply(color: AppColors.kOxford),
