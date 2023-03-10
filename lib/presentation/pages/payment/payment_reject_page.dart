@@ -29,7 +29,7 @@ class PaymentRejectPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 174),
+                    const SizedBox(height: 32),
                     Text(
                       'Оплата отклонена',
                       style:

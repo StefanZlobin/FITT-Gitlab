@@ -37,7 +37,7 @@ class PaymentBatchSuccessPage extends StatelessWidget {
       body: Stack(
         children: [
           ListView(
-            padding: const EdgeInsets.fromLTRB(0, 150, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 32, 0, 0),
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -28,7 +28,7 @@ class PaymentSuccessPage extends StatelessWidget {
             error: (error) => const SizedBox(),
             loaded: (workout) {
               return ListView(
-                padding: const EdgeInsets.fromLTRB(0, 150, 0, 32),
+                padding: const EdgeInsets.fromLTRB(0, 32, 0, 32),
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
