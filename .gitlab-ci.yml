@@ -73,13 +73,15 @@ test:
  stage: build
  before_script:
    - flutter pub get
-   - flutter pub run build_runner build --delete-conflicting-outputs 
+   - flutter pub run build_runner build --delete-conflicting-outputs
  script:
+   - echo ${KEYSTORE_BASE64} | base64 -d > /upload-keystore.jks
+   - cp ${KEYFILE} ./android/key.properties
    - flutter build apk --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION
-   - mv build/app/outputs/flutter-apk/app-profile.apk app-profile.apk
+   - mv build/app/outputs/flutter-apk/app-release.apk app-release.apk
  artifacts:
    paths:
-     - app-profile.apk
+     - app-release.apk
  tags:
    - hard-work
    - docker
