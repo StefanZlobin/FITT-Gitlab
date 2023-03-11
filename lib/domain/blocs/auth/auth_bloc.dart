@@ -17,16 +17,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository = getIt<AuthRepository>();
   late StreamSubscription<AuthenticationStatusEnum>
       _authenticationStatusSubscription;
-  int attemptsEnterSecureCode = 5;
-  int circleRepetitions = 0;
 
   AuthBloc() : super(const AuthState.unknown()) {
     on<_AuthEventAuthenticationStatusChanged>(
         _onAuthEventAuthenticationStatusChanged);
-    on<_AuthEventAuthenticationLoginRequested>(
-        _onAuthEventAuthenticationLoginRequested);
-    on<_AuthEventAuthenticationCodeVerificationRequested>(
-        _onAuthEventAuthenticationCodeVerificationRequested);
     on<_AuthEventAuthenticationLogoutRequested>(
         _onAuthEventAuthenticationLogoutRequested);
 
@@ -61,42 +55,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await authUseCase.signOut();
     } on NetworkExceptions catch (e) {
       emit(_AuthStateError(error: NetworkExceptions.getErrorMessage(e)));
-    }
-  }
-
-  Future<void> _onAuthEventAuthenticationLoginRequested(
-    _AuthEventAuthenticationLoginRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    try {
-      await authUseCase.signIn(phoneNumber: event.phoneNumber);
-    } on NetworkExceptions catch (e) {
-      emit(_AuthStateError(error: NetworkExceptions.getErrorMessage(e)));
-    }
-  }
-
-  Future<void> _onAuthEventAuthenticationCodeVerificationRequested(
-    _AuthEventAuthenticationCodeVerificationRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    try {
-      await authUseCase.checkSecureCode(
-        phoneNumber: event.phoneNumber,
-        secureCode: event.secureCode,
-        fcmToken: event.fcmToken,
-      );
-    } on NetworkExceptions catch (e) {
-      attemptsEnterSecureCode -= 1;
-      if (attemptsEnterSecureCode == 4) {
-        circleRepetitions += 1;
-      }
-      emit(_AuthStateError(
-        secureCode: event.secureCode,
-        attemptsEnterSecureCode: attemptsEnterSecureCode,
-        circleRepetitions: circleRepetitions,
-        error: NetworkExceptions.getErrorMessage(e),
-        phoneNumber: event.phoneNumber,
-      ));
     }
   }
 

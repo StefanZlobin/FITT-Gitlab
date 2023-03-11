@@ -1,7 +1,9 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -35,6 +37,8 @@ class UserNotDetected extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
+                      // ignore: invalid_use_of_visible_for_testing_member
+                      getIt<LoginBloc>().emit(const LoginState.initial());
                       context.push(AppRoute.inputPhoneNumber.routeToPath);
                     },
                     child: const Text('Вход'),

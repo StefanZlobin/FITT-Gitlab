@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:async';
 
 import 'package:fitt/core/constants/app_colors.dart';
@@ -5,10 +7,9 @@ import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/tokens/user_device_token.dart';
-import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
-import 'package:fitt/domain/blocs/authentication/authentication_bloc.dart';
-import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
+import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/presentation/app.dart';
+import 'package:fitt/presentation/pages/sign_in/widget/repeat_call_after.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,45 +47,6 @@ class InputSecureCodePage extends StatelessWidget {
   }
 }
 
-class RepeatCallAfter extends StatelessWidget {
-  const RepeatCallAfter({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AuthenticationErrorTimerBloc,
-        AuthenticationErrorTimerState>(
-      bloc: getIt<AuthenticationErrorTimerBloc>(),
-      builder: (context, state) {
-        return state.when(
-          timerInitial: (duration) => _buildTextRepeatCall(duration),
-          timerRunInProgress: (duration) => _buildTextRepeatCall(duration),
-          timerRunPause: (_) => const SizedBox(),
-          timerRunComplete: (_) {
-            return TextButton(
-              onPressed: () => context.pop(),
-              style: TextButton.styleFrom(padding: const EdgeInsets.all(0)),
-              child: Center(
-                child: Text(
-                  'Запросить звонок повторно',
-                  style:
-                      AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
-                ),
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
-
-  Text _buildTextRepeatCall(Duration callAfter) {
-    return Text(
-      'Повторный звонок через ${callAfter.inSeconds} c',
-      style: AppTypography.kH16.apply(color: AppColors.kOxford40),
-    );
-  }
-}
-
 class InputSecureCodeForm extends StatelessWidget {
   const InputSecureCodeForm({
     super.key,
@@ -101,30 +63,36 @@ class InputSecureCodeForm extends StatelessWidget {
       filter: {'_': RegExp(r'[0-9]')},
     );
 
-    return BlocBuilder<AuthBloc, AuthState>(
-      bloc: getIt<AuthBloc>(),
+    return BlocBuilder<LoginBloc, LoginState>(
+      bloc: getIt<LoginBloc>(),
       builder: (context, state) {
         return state.when(
-          loading: (phoneNumber, secureCode, fcmToken) {
+          initial: () => _buildSecureCodeForm(
+            context,
+            secureCodeMask,
+            secureCodeFormatter,
+            null,
+          ),
+          loading: () => _buildSecureCodeForm(
+            context,
+            secureCodeMask,
+            secureCodeFormatter,
+            null,
+          ),
+          loaded: (phoneNumber, verifiationCode) {
             return _buildSecureCodeForm(
-              secureCodeFormatter,
-              secureCodeMask,
               context,
-              false,
-              5,
+              secureCodeMask,
+              secureCodeFormatter,
+              null,
             );
           },
-          unknown: () => const SizedBox(),
-          authenticated: () => const SizedBox(),
-          unauthenticated: () => const SizedBox(),
-          error: (secureCode, attemptsEnterSecureCode, circleRepetitions, error,
-              phoneNumber) {
+          error: (error, countSecureCodeEntryAttempts, _) {
             return _buildSecureCodeForm(
-              secureCodeFormatter,
-              secureCodeMask,
               context,
-              true,
-              attemptsEnterSecureCode ?? 5,
+              secureCodeMask,
+              secureCodeFormatter,
+              countSecureCodeEntryAttempts,
             );
           },
         );
@@ -133,17 +101,18 @@ class InputSecureCodeForm extends StatelessWidget {
   }
 
   Column _buildSecureCodeForm(
-    MaskTextInputFormatter secureCodeFormatter,
-    String secureCodeMask,
     BuildContext context,
-    bool isError,
-    int attemptsEnterSecureCode,
+    String secureCodeMask,
+    MaskTextInputFormatter secureCodeFormatter,
+    int? countSecureCodeEntryAttempts,
   ) {
+    final isError = countSecureCodeEntryAttempts != null &&
+        countSecureCodeEntryAttempts < 5;
     return Column(
       children: [
         TextField(
+          enabled: countSecureCodeEntryAttempts != 0,
           inputFormatters: [secureCodeFormatter],
-          enabled: getIt<AuthBloc>().attemptsEnterSecureCode == 0,
           style: isError
               ? AppTypography.kH24.apply(color: AppColors.kPrimaryBlue)
               : AppTypography.kH24.apply(color: AppColors.kOxford),
@@ -167,7 +136,7 @@ class InputSecureCodeForm extends StatelessWidget {
         ),
         if (isError)
           Text(
-            'Номер введен неверно. Осталось $attemptsEnterSecureCode попытки',
+            'Номер введен неверно. Осталось $countSecureCodeEntryAttempts попытки',
             style: AppTypography.kBody14.apply(color: AppColors.kPrimaryBlue),
           ),
       ],
@@ -179,13 +148,15 @@ class InputSecureCodeForm extends StatelessWidget {
     MaskTextInputFormatter secureCodeFormatter,
     String phoneNumber,
   ) async {
-    final deviceToken = await UserDeviceToken().setupToken();
     final unmaskedSecureCode = secureCodeFormatter.getUnmaskedText();
-    getIt<AuthBloc>().add(AuthEvent.authenticationCodeVerificationRequested(
-      phoneNumber: phoneNumber,
-      secureCode: unmaskedSecureCode,
-      fcmToken: deviceToken,
-    ));
+    final deviceToken = await UserDeviceToken().setupToken();
+    getIt<LoginBloc>().add(
+      LoginEvent.requestCodeVerification(
+        verificationCode: unmaskedSecureCode,
+        phoneNumber: phoneNumber,
+        fcmToken: deviceToken,
+      ),
+    );
   }
 }
 
@@ -197,9 +168,8 @@ class InputSecureCodeHint extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 96, bottom: 16, left: 16, right: 16),
       child: Text(
-        getIt<AuthenticationBloc>().circularAttempt > 0
-            ? 'Попробуем еще раз.\nВведите последние четыре цифры номера, который вам звонил'
-            : 'Введите последние четыре цифры номера, который вам звонил',
+        //'Попробуем еще раз.\nВведите последние четыре цифры номера, который вам звонил'
+        'Введите последние четыре цифры номера, который вам звонил',
         style: AppTypography.kH14.apply(color: AppColors.kOxford),
         textAlign: TextAlign.center,
       ),

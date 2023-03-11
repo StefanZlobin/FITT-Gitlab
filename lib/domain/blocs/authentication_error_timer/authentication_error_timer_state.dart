@@ -8,10 +8,7 @@ class AuthenticationErrorTimerState with _$AuthenticationErrorTimerState {
   const factory AuthenticationErrorTimerState.timerRunInProgress({
     required Duration duration,
   }) = _TimerRunInProgress;
-  const factory AuthenticationErrorTimerState.timerRunPause({
-    required Duration duration,
-  }) = _TimerRunPause;
   const factory AuthenticationErrorTimerState.timerRunComplete({
-    required int attemptsEnterCode,
+    required int countTimerEnd,
   }) = _TimerRunComplete;
 }

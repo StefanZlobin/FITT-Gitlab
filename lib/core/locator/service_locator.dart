@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
 import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
+import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -198,6 +199,7 @@ void _registerBlocs() {
   getIt.registerLazySingleton<CarouselBloc>(() => CarouselBloc());
   getIt.registerLazySingleton<AuthenticationBloc>(() => AuthenticationBloc());
   getIt.registerLazySingleton<AuthBloc>(() => AuthBloc());
+  getIt.registerLazySingleton<LoginBloc>(() => LoginBloc());
   getIt.registerLazySingleton<UserBloc>(() => UserBloc());
   getIt.registerLazySingleton<AdminWorkoutsCubit>(() => AdminWorkoutsCubit());
   getIt.registerLazySingleton<AdminWorkoutCubit>(() => AdminWorkoutCubit());
@@ -208,6 +210,9 @@ void _registerBlocs() {
       () => PartnerClubsFavoriteCubit());
   getIt.registerLazySingleton<ClubCubit>(() => ClubCubit());
   getIt.registerLazySingleton<AuthenticationErrorTimerBloc>(
+      () => AuthenticationErrorTimerBloc(ticker: const Ticker()));
+  getIt.registerLazySingleton<AuthenticationErrorTimerBloc>(
+      instanceName: 'inputPhonePage',
       () => AuthenticationErrorTimerBloc(ticker: const Ticker()));
   getIt.registerLazySingleton<ClubPhotoSliderCubit>(
       () => ClubPhotoSliderCubit());

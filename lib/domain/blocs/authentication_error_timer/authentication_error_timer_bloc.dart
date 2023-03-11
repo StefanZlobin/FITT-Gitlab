@@ -12,7 +12,7 @@ class AuthenticationErrorTimerBloc
     extends Bloc<AuthenticationErrorTimerEvent, AuthenticationErrorTimerState> {
   StreamSubscription<int>? _tickerSubscription;
   final Ticker _ticker;
-  int attemptsEnterCode = 0;
+  int countTimerEnd = 0;
 
   AuthenticationErrorTimerBloc({required Ticker ticker})
       : _ticker = ticker,
@@ -49,8 +49,8 @@ class AuthenticationErrorTimerBloc
     if (event.duration.inSeconds > 0) {
       emit(_TimerRunInProgress(duration: event.duration));
     } else {
-      attemptsEnterCode += 1;
-      emit(_TimerRunComplete(attemptsEnterCode: attemptsEnterCode));
+      countTimerEnd += 1;
+      emit(_TimerRunComplete(countTimerEnd: countTimerEnd));
     }
   }
 

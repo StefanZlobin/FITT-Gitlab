@@ -4,9 +4,8 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
-import 'package:fitt/domain/blocs/authentication/authentication_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
+import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/auth_user_disclaimer.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
@@ -54,66 +53,43 @@ class CompleteButton extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 32),
       width: MediaQuery.of(context).size.width,
       height: 56,
-      child: BlocBuilder<AuthBloc, AuthState>(
-        bloc: getIt<AuthBloc>(),
+      child: BlocBuilder<LoginBloc, LoginState>(
+        bloc: getIt<LoginBloc>(),
         builder: (context, state) {
           return state.when(
-            authenticated: () => const SizedBox(),
-            unauthenticated: () {
-              return const AppElevatedButton(
-                marginButton: EdgeInsets.all(0),
-                isDisable: true,
-                textButton: Text('Продолжить'),
-              );
-            },
-            unknown: () {
-              return const AppElevatedButton(
-                marginButton: EdgeInsets.all(0),
-                isDisable: true,
-                textButton: Text('Продолжить'),
-              );
-            },
-            loading: (phoneNumber, _, __) {
-              return AppElevatedButton(
-                isDisable: phoneNumber == null,
-                marginButton: const EdgeInsets.all(0),
-                textButton: const Text('Продолжить'),
-                onPressed: () {
-                  getIt<AuthBloc>().add(AuthEvent.authenticationLoginRequested(
-                    phoneNumber: phoneNumber!,
-                  ));
-                  context.pushNamed(
-                    AppRoute.inputSecureCode.routeToPath,
-                    extra: phoneNumber,
-                  );
-                },
-              );
-            },
-            error: (secureCode, attemptsEnterSecureCode, circleRepetitions,
-                error, phoneNumber) {
-              return _buildButton(phoneNumber!);
-            },
+            initial: () => _buildButton(null, context),
+            loading: () => const SizedBox(),
+            loaded: (phoneNumber, _) => _buildButton(phoneNumber, context),
+            error: (error, _, phoneNumber) =>
+                _buildButton(phoneNumber, context, isError: true),
           );
         },
       ),
     );
   }
 
-  Widget _buildButton(String phoneNumber) {
+  Widget _buildButton(
+    String? phoneNumber,
+    BuildContext context, {
+    bool isError = false,
+  }) {
+    final phone = phoneNumber ?? '';
     return BlocBuilder<AuthenticationErrorTimerBloc,
         AuthenticationErrorTimerState>(
-      bloc: getIt<AuthenticationErrorTimerBloc>(),
+      bloc: getIt<AuthenticationErrorTimerBloc>(instanceName: 'inputPhonePage'),
       builder: (context, state) {
         return state.when(
-          timerInitial: (attemptsEnterCode) {
+          timerInitial: (duration) {
             return AppElevatedButton(
-              isDisable: true,
-              marginButton: const EdgeInsets.all(0),
               textButton: const Text('Продолжить'),
+              isDisable: isError || phone.isEmpty,
+              marginButton: const EdgeInsets.all(0),
               onPressed: () {
-                getIt<AuthBloc>().add(AuthEvent.authenticationLoginRequested(
-                  phoneNumber: phoneNumber,
-                ));
+                getIt<LoginBloc>().add(
+                  LoginEvent.requestVerificationCode(
+                    phoneNumber: phone,
+                  ),
+                );
                 context.pushNamed(
                   AppRoute.inputSecureCode.routeToPath,
                   extra: phoneNumber,
@@ -123,24 +99,51 @@ class CompleteButton extends StatelessWidget {
           },
           timerRunInProgress: (duration) {
             return AppElevatedButton(
-              isDisable: true,
-              marginButton: const EdgeInsets.all(0),
               textButton: Text(
                 'Повторный звонок через ${duration.inSeconds} c',
-                style: AppTypography.kH16.apply(color: AppColors.kOxford40),
+                style: AppTypography.kH16.apply(color: AppColors.kBaseWhite),
               ),
+              isDisable: isError || phone.isEmpty,
+              marginButton: const EdgeInsets.all(0),
+              onPressed: () {
+                getIt<LoginBloc>().add(
+                  LoginEvent.requestVerificationCode(
+                    phoneNumber: phone,
+                  ),
+                );
+                context.pushNamed(
+                  AppRoute.inputSecureCode.routeToPath,
+                  extra: phoneNumber,
+                );
+              },
             );
           },
-          timerRunPause: (_) => const SizedBox(),
-          timerRunComplete: (attemptsEnterCode) {
+          timerRunComplete: (countTimerEnd) {
+            getIt<LoginBloc>().add(
+              LoginEvent.phoneNumberChanged(phoneNumber: phone),
+            );
             return AppElevatedButton(
-              isDisable: true,
-              marginButton: const EdgeInsets.all(0),
               textButton: const Text('Продолжить'),
+              isDisable: isError || phone.isEmpty,
+              marginButton: const EdgeInsets.all(0),
               onPressed: () {
-                getIt<AuthBloc>().add(AuthEvent.authenticationLoginRequested(
-                  phoneNumber: phoneNumber,
+                getIt<LoginBloc>().countSecureCodeEntryAttempts = 5;
+                late final Duration duration;
+                if (countTimerEnd > 2) {
+                  duration = const Duration(minutes: 30);
+                } else if (countTimerEnd >= 1) {
+                  duration = const Duration(minutes: 5);
+                }
+                getIt<AuthenticationErrorTimerBloc>()
+                    .add(AuthenticationErrorTimerEvent.setTimerInitial(
+                  duration: duration,
                 ));
+
+                getIt<LoginBloc>().add(
+                  LoginEvent.requestVerificationCode(
+                    phoneNumber: phone,
+                  ),
+                );
                 context.pushNamed(
                   AppRoute.inputSecureCode.routeToPath,
                   extra: phoneNumber,
@@ -162,9 +165,8 @@ class InputPhoneNumberHint extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 96, bottom: 16),
       child: Text(
-        getIt<AuthenticationBloc>().circularAttempt > 1
-            ? 'Пожалуйста, проверьте номер телефона и состояние мобильной сети'
-            : 'Введите ваш номер телефона',
+        //'Пожалуйста, проверьте номер телефона и состояние мобильной сети'
+        'Введите ваш номер телефона',
         style: AppTypography.kH14.apply(color: AppColors.kBaseBlack),
       ),
     );
@@ -203,7 +205,20 @@ class InputPhoneNumberForm extends StatelessWidget {
                     hintStyle:
                         AppTypography.kH24.apply(color: AppColors.kBaseBlack)),
                 keyboardType: TextInputType.phone,
-                onChanged: (_) {},
+                onChanged: (_) {
+                  if (phoneNumberFormatter.isFill()) {
+                    getIt<LoginBloc>().add(
+                      LoginEvent.phoneNumberChanged(
+                        phoneNumber:
+                            '+7${phoneNumberFormatter.getUnmaskedText()}',
+                      ),
+                    );
+                  } else {
+                    getIt<LoginBloc>().add(
+                      const LoginEvent.phoneNumberChanged(phoneNumber: ''),
+                    );
+                  }
+                },
               ),
             ),
           ],
