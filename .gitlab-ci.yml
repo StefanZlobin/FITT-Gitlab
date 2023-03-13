@@ -68,7 +68,7 @@ test:
  tags:
    - docker
 
-build-and-push-to-android:
+build-to-android:
  stage: build
  before_script:
    - flutter pub get
@@ -87,10 +87,9 @@ build-and-push-to-android:
  needs:
    - versioning
  only:
-   - master
-   - staging
+   - development
 
-build-and-push-to-ios:
+build-to-ios:
   stage: build
   before_script:
     - flutter pub get
@@ -101,9 +100,10 @@ build-and-push-to-ios:
   artifacts:
     paths:
       - app-release.ipa
+  needs:
+   - versioning
   only:
-   - master
-   - staging
+   - development
   tags:
    - ios
    - raw-shell
@@ -113,13 +113,16 @@ push-to-testflight:
   before_script: []
   script:
     - fastlane run testflight app_version:"$(BUILD_VERSION)" build_number:"$(BUILD_NUMBER)" changelog:"$(CHANGELOG)" ipa:"app-release.ipa"
-
+  needs:
+    - build-to-ios
  
 push-to-google_play:
   stage: release
   before_script: []
   script:
     - fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
+  needs:
+    - build-to-android
 
 
 # build-and-push-to-ios-test:
