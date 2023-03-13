@@ -24,7 +24,6 @@ import '../../data/source/local_data_source/auth_local_client/auth_local_client.
 import '../../data/source/local_data_source/user_local_client/user_local_client.dart';
 import '../../data/storages/local_storage.dart';
 import '../../data/storages/token_storage.dart';
-import '../../domain/blocs/authentication/authentication_bloc.dart';
 import '../../domain/blocs/carousel/carousel_bloc.dart';
 import '../../domain/blocs/map/map_bloc.dart';
 import '../../domain/blocs/search/search_bloc.dart';
@@ -197,7 +196,6 @@ void _registerBlocs() {
       () => ArchiveWorkoutsCubit());
   getIt.registerLazySingleton<MapBloc>(() => MapBloc());
   getIt.registerLazySingleton<CarouselBloc>(() => CarouselBloc());
-  getIt.registerLazySingleton<AuthenticationBloc>(() => AuthenticationBloc());
   getIt.registerLazySingleton<AuthBloc>(() => AuthBloc());
   getIt.registerLazySingleton<LoginBloc>(() => LoginBloc());
   getIt.registerLazySingleton<UserBloc>(() => UserBloc());
