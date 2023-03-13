@@ -28,8 +28,7 @@ class UserNotDetected extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   'Покупка тренировок доступна только зарегистрированным пользователям',
-                  style:
-                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                  style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                 ),
                 const SizedBox(height: 16),
                 SizedBox(

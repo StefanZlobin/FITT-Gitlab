@@ -14,8 +14,7 @@ class AdminWorkoutCubit extends Cubit<AdminWorkoutState> {
 
   Future<void> getAdminWorkout({required String adminWorkoutUuid}) async {
     try {
-      final adminWorkout = await adminUseCase.getAdminWorkout(
-          adminWorkoutUuid: adminWorkoutUuid);
+      final adminWorkout = await adminUseCase.getAdminWorkout(adminWorkoutUuid: adminWorkoutUuid);
       emit(_AdminWorkoutStateLoaded(adminWorkout: adminWorkout));
     } on Exception catch (e) {
       emit(_AdminWorkoutStateError(error: e.toString()));

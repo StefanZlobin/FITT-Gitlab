@@ -6,8 +6,7 @@ import 'package:fitt/domain/repositories/resource/resource_repository.dart';
 
 /// Class [ResourceRepositoryImpl] wich implements [ResourceRepository]
 class ResourceRepositoryImpl implements ResourceRepository {
-  ResourceRepositoryImpl(this.dio, {this.baseUrl})
-      : _apiClient = ResourceApiClient(dio, baseUrl: baseUrl);
+  ResourceRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = ResourceApiClient(dio, baseUrl: baseUrl);
   final Dio dio;
   final String? baseUrl;
   final ResourceApiClient _apiClient;

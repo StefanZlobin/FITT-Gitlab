@@ -726,6 +726,7 @@ class AppTooltipPainter extends SelfSizedCustomPainter {
     /// If we will not inverse points order, part of
     /// circle with [radius] does not filled
     Path trianglePath;
+    // ignore: prefer-conditional-expressions
     if (position == AppTooltipPosition.belowContent) {
       trianglePath = Path()
         ..moveTo(triangleTopLeft.dx, triangleTopLeft.dy)

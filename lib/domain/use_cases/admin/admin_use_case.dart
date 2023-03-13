@@ -17,8 +17,7 @@ class AdminUseCase {
   }
 
   Future<AdminClub> getAdminClub({required String adminClubUuid}) async {
-    final adminClub =
-        await adminRepository.getAdminClub(adminClubUuid: adminClubUuid);
+    final adminClub = await adminRepository.getAdminClub(adminClubUuid: adminClubUuid);
     return adminClub;
   }
 
@@ -27,32 +26,28 @@ class AdminUseCase {
     int offset, {
     required AdminWorkoutsFiltersRequestBody filters,
   }) async {
-    final adminWorkouts =
-        await adminRepository.getAdminWorkouts(limit, offset, filters: filters);
+    final adminWorkouts = await adminRepository.getAdminWorkouts(limit, offset, filters: filters);
     return adminWorkouts;
   }
 
   Future<AdminWorkout> getAdminWorkout({
     required String adminWorkoutUuid,
   }) async {
-    final adminWorkout = await adminRepository.getAdminWorkout(
-        adminWorkoutUuid: adminWorkoutUuid);
+    final adminWorkout = await adminRepository.getAdminWorkout(adminWorkoutUuid: adminWorkoutUuid);
     return adminWorkout;
   }
 
   Future<AdminWorkout> adminWorkoutConfirmStart({
     required String adminWorkoutUuid,
   }) async {
-    final adminWorkout = await adminRepository.adminWorkoutConfirmStart(
-        adminWorkoutUuid: adminWorkoutUuid);
+    final adminWorkout = await adminRepository.adminWorkoutConfirmStart(adminWorkoutUuid: adminWorkoutUuid);
     return adminWorkout;
   }
 
   Future<AdminWorkout> adminWorkoutConfirmFinish({
     required String adminWorkoutUuid,
   }) async {
-    final adminWorkout = await adminRepository.adminWorkoutConfirmFinish(
-        adminWorkoutUuid: adminWorkoutUuid);
+    final adminWorkout = await adminRepository.adminWorkoutConfirmFinish(adminWorkoutUuid: adminWorkoutUuid);
     return adminWorkout;
   }
 
@@ -60,8 +55,7 @@ class AdminUseCase {
     required String uuid,
     required String lockerNumber,
   }) async {
-    await adminRepository.adminSetLockerNumber(
-        uuid: uuid, lockerNumber: lockerNumber);
+    await adminRepository.adminSetLockerNumber(uuid: uuid, lockerNumber: lockerNumber);
   }
 
   Future<AdminWorkout> adminForceFinish({

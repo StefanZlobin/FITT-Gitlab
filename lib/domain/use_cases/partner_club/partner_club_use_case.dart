@@ -31,33 +31,27 @@ class PartnerClubsUseCase {
   }
 
   Future<PartnerClub> getParternClub({required String clubUuid}) async {
-    final partnerClub =
-        await partnerClubRepository.getPartnerClub(clubUuid: clubUuid);
+    final partnerClub = await partnerClubRepository.getPartnerClub(clubUuid: clubUuid);
     return partnerClub;
   }
 
   Future<List<Batch>> getClubBatches({required String clubUuid}) async {
-    final batches =
-        await partnerClubRepository.getClubBatches(clubUuid: clubUuid);
+    final batches = await partnerClubRepository.getClubBatches(clubUuid: clubUuid);
     return batches;
   }
 
-  Future<List<CalculatePrice>> getCalculatedPriceWorkout(
-      {required String slotUuid}) async {
-    final calculatePrice = await partnerClubRepository
-        .getCalculatedPriceWorkout(slotUuid: slotUuid);
+  Future<List<CalculatePrice>> getCalculatedPriceWorkout({required String slotUuid}) async {
+    final calculatePrice = await partnerClubRepository.getCalculatedPriceWorkout(slotUuid: slotUuid);
     return calculatePrice;
   }
 
   Future<PartnerClub> addClubToFavorites({required String clubUuid}) async {
-    final partnerClub =
-        await partnerClubRepository.addClubToFavorites(clubUuid);
+    final partnerClub = await partnerClubRepository.addClubToFavorites(clubUuid);
     return partnerClub;
   }
 
   Future<PartnerClub> removeClubToFavorites({required String clubUuid}) async {
-    final partnerClub =
-        await partnerClubRepository.removeClubFromFavorites(clubUuid);
+    final partnerClub = await partnerClubRepository.removeClubFromFavorites(clubUuid);
     return partnerClub;
   }
 }

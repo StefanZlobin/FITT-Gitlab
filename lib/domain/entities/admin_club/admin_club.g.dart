@@ -9,9 +9,8 @@ part of 'admin_club.dart';
 _$_AdminClub _$$_AdminClubFromJson(Map<String, dynamic> json) => _$_AdminClub(
       uuid: json['id'] as String?,
       permissionType: json['permission_type'] as String?,
-      analyzeInfo: json['analyze_info'] == null
-          ? null
-          : AnalyzeInfo.fromJson(json['analyze_info'] as Map<String, dynamic>),
+      analyzeInfo:
+          json['analyze_info'] == null ? null : AnalyzeInfo.fromJson(json['analyze_info'] as Map<String, dynamic>),
       created: dateTimeFromStringNullable(json['created'] as String?),
       modified: dateTimeFromStringNullable(json['modified'] as String?),
       timezone: json['timezone'] as String?,
@@ -24,12 +23,10 @@ _$_AdminClub _$$_AdminClubFromJson(Map<String, dynamic> json) => _$_AdminClub(
       phone: json['phone'] as String,
       organization: json['organization'] as String,
       address: json['address'] as String?,
-      facilities:
-          (json['facilities'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      facilities: (json['facilities'] as List<dynamic>?)?.map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_AdminClubToJson(_$_AdminClub instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_AdminClubToJson(_$_AdminClub instance) => <String, dynamic>{
       'id': instance.uuid,
       'permission_type': instance.permissionType,
       'analyze_info': instance.analyzeInfo,

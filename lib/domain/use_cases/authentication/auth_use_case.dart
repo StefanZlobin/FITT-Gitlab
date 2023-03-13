@@ -16,8 +16,8 @@ class AuthUseCase {
     required String secureCode,
     required String fcmToken,
   }) async {
-    final token = await _authRepository.checkSecureCode(
-        phoneNumber: phoneNumber, secureCode: secureCode, fcmToken: fcmToken);
+    final token =
+        await _authRepository.checkSecureCode(phoneNumber: phoneNumber, secureCode: secureCode, fcmToken: fcmToken);
     return token;
   }
 

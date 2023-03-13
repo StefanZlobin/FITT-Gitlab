@@ -25,30 +25,18 @@ mixin _$Workout {
   String get user => throw _privateConstructorUsedError;
   @JsonKey(toJson: toCent, fromJson: toRubles)
   int get price => throw _privateConstructorUsedError;
-  @JsonKey(
-      fromJson: dateTimeFromStringRemoveUTC,
-      toJson: dateTimeToString,
-      name: 'plan_start_time')
+  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_start_time')
   DateTime get startTime => throw _privateConstructorUsedError;
-  @JsonKey(
-      fromJson: dateTimeFromStringRemoveUTC,
-      toJson: dateTimeToString,
-      name: 'plan_end_time')
+  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_end_time')
   DateTime get endTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'club')
   PartnerClub get club => throw _privateConstructorUsedError;
   @JsonKey(name: 'pay_form')
   String? get payForm => throw _privateConstructorUsedError;
   WorkoutStatusEnum get status => throw _privateConstructorUsedError;
-  @JsonKey(
-      fromJson: dateTimeFromStringNullable,
-      toJson: dateTimeToStringNullable,
-      name: 'fact_start_time')
+  @JsonKey(fromJson: dateTimeFromStringNullable, toJson: dateTimeToStringNullable, name: 'fact_start_time')
   DateTime? get factStartTime => throw _privateConstructorUsedError;
-  @JsonKey(
-      fromJson: dateTimeFromStringNullable,
-      toJson: dateTimeToStringNullable,
-      name: 'fact_end_time')
+  @JsonKey(fromJson: dateTimeFromStringNullable, toJson: dateTimeToStringNullable, name: 'fact_end_time')
   DateTime? get factEndTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,8 +46,7 @@ mixin _$Workout {
 
 /// @nodoc
 abstract class $WorkoutCopyWith<$Res> {
-  factory $WorkoutCopyWith(Workout value, $Res Function(Workout) then) =
-      _$WorkoutCopyWithImpl<$Res, Workout>;
+  factory $WorkoutCopyWith(Workout value, $Res Function(Workout) then) = _$WorkoutCopyWithImpl<$Res, Workout>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id')
@@ -85,8 +72,7 @@ abstract class $WorkoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WorkoutCopyWithImpl<$Res, $Val extends Workout>
-    implements $WorkoutCopyWith<$Res> {
+class _$WorkoutCopyWithImpl<$Res, $Val extends Workout> implements $WorkoutCopyWith<$Res> {
   _$WorkoutCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -163,9 +149,7 @@ class _$WorkoutCopyWithImpl<$Res, $Val extends Workout>
 
 /// @nodoc
 abstract class _$$_WorkoutCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
-  factory _$$_WorkoutCopyWith(
-          _$_Workout value, $Res Function(_$_Workout) then) =
-      __$$_WorkoutCopyWithImpl<$Res>;
+  factory _$$_WorkoutCopyWith(_$_Workout value, $Res Function(_$_Workout) then) = __$$_WorkoutCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -193,11 +177,9 @@ abstract class _$$_WorkoutCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WorkoutCopyWithImpl<$Res>
-    extends _$WorkoutCopyWithImpl<$Res, _$_Workout>
+class __$$_WorkoutCopyWithImpl<$Res> extends _$WorkoutCopyWithImpl<$Res, _$_Workout>
     implements _$$_WorkoutCopyWith<$Res> {
-  __$$_WorkoutCopyWithImpl(_$_Workout _value, $Res Function(_$_Workout) _then)
-      : super(_value, _then);
+  __$$_WorkoutCopyWithImpl(_$_Workout _value, $Res Function(_$_Workout) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -282,8 +264,7 @@ class _$_Workout extends _Workout {
           required this.factEndTime})
       : super._();
 
-  factory _$_Workout.fromJson(Map<String, dynamic> json) =>
-      _$$_WorkoutFromJson(json);
+  factory _$_Workout.fromJson(Map<String, dynamic> json) => _$$_WorkoutFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -294,16 +275,10 @@ class _$_Workout extends _Workout {
   @JsonKey(toJson: toCent, fromJson: toRubles)
   final int price;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringRemoveUTC,
-      toJson: dateTimeToString,
-      name: 'plan_start_time')
+  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_start_time')
   final DateTime startTime;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringRemoveUTC,
-      toJson: dateTimeToString,
-      name: 'plan_end_time')
+  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_end_time')
   final DateTime endTime;
   @override
   @JsonKey(name: 'club')
@@ -314,16 +289,10 @@ class _$_Workout extends _Workout {
   @override
   final WorkoutStatusEnum status;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringNullable,
-      toJson: dateTimeToStringNullable,
-      name: 'fact_start_time')
+  @JsonKey(fromJson: dateTimeFromStringNullable, toJson: dateTimeToStringNullable, name: 'fact_start_time')
   final DateTime? factStartTime;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringNullable,
-      toJson: dateTimeToStringNullable,
-      name: 'fact_end_time')
+  @JsonKey(fromJson: dateTimeFromStringNullable, toJson: dateTimeToStringNullable, name: 'fact_end_time')
   final DateTime? factEndTime;
 
   @override
@@ -339,28 +308,24 @@ class _$_Workout extends _Workout {
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
+            (identical(other.startTime, startTime) || other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.club, club) || other.club == club) &&
             (identical(other.payForm, payForm) || other.payForm == payForm) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.factStartTime, factStartTime) ||
-                other.factStartTime == factStartTime) &&
-            (identical(other.factEndTime, factEndTime) ||
-                other.factEndTime == factEndTime));
+            (identical(other.factStartTime, factStartTime) || other.factStartTime == factStartTime) &&
+            (identical(other.factEndTime, factEndTime) || other.factEndTime == factEndTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uuid, user, price, startTime,
-      endTime, club, payForm, status, factStartTime, factEndTime);
+  int get hashCode => Object.hash(
+      runtimeType, uuid, user, price, startTime, endTime, club, payForm, status, factStartTime, factEndTime);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutCopyWith<_$_Workout> get copyWith =>
-      __$$_WorkoutCopyWithImpl<_$_Workout>(this, _$identity);
+  _$$_WorkoutCopyWith<_$_Workout> get copyWith => __$$_WorkoutCopyWithImpl<_$_Workout>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -403,16 +368,10 @@ abstract class _Workout extends Workout {
   @JsonKey(toJson: toCent, fromJson: toRubles)
   int get price;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringRemoveUTC,
-      toJson: dateTimeToString,
-      name: 'plan_start_time')
+  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_start_time')
   DateTime get startTime;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringRemoveUTC,
-      toJson: dateTimeToString,
-      name: 'plan_end_time')
+  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_end_time')
   DateTime get endTime;
   @override
   @JsonKey(name: 'club')
@@ -423,19 +382,12 @@ abstract class _Workout extends Workout {
   @override
   WorkoutStatusEnum get status;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringNullable,
-      toJson: dateTimeToStringNullable,
-      name: 'fact_start_time')
+  @JsonKey(fromJson: dateTimeFromStringNullable, toJson: dateTimeToStringNullable, name: 'fact_start_time')
   DateTime? get factStartTime;
   @override
-  @JsonKey(
-      fromJson: dateTimeFromStringNullable,
-      toJson: dateTimeToStringNullable,
-      name: 'fact_end_time')
+  @JsonKey(fromJson: dateTimeFromStringNullable, toJson: dateTimeToStringNullable, name: 'fact_end_time')
   DateTime? get factEndTime;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutCopyWith<_$_Workout> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutCopyWith<_$_Workout> get copyWith => throw _privateConstructorUsedError;
 }

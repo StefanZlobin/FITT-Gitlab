@@ -17,6 +17,5 @@ class Organization with _$Organization {
     @JsonKey(name: 'official_label') required String officalLabel,
   }) = _Organization;
 
-  factory Organization.fromJson(Map<String, dynamic> json) =>
-      _$OrganizationFromJson(json);
+  factory Organization.fromJson(Map<String, dynamic> json) => _$OrganizationFromJson(json);
 }

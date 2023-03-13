@@ -83,8 +83,7 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
           },
         );
       },
-      child: BlocBuilder<WorkoutSliderButtonTypeCubit,
-          WorkoutSliderButtonTypeState>(
+      child: BlocBuilder<WorkoutSliderButtonTypeCubit, WorkoutSliderButtonTypeState>(
         bloc: bloc,
         builder: (context, state) {
           return state.when(
@@ -108,8 +107,7 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
               );
             },
             start: (canShowBeforeStart) {
-              if (!canShowBeforeStart &&
-                  workout.canStartTime.isAfter(DateTime.now())) {
+              if (!canShowBeforeStart && workout.canStartTime.isAfter(DateTime.now())) {
                 return const SizedBox();
               }
               return Padding(
@@ -135,33 +133,23 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
                       const WorkoutStartModalBottomSheet(),
                     ));
                     await getIt<WorkoutCubit>().startWorkout(w: workout);
-                    await getIt<LocalNotificationsService>()
-                        .scheduleLocalNotification(
+                    await getIt<LocalNotificationsService>().scheduleLocalNotification(
                       id: workout.workoutHashCode - 3,
                       title: 'До конца тренировки осталось 10 минут',
-                      body:
-                          'За это время можно горы свернуть! Или сделать заминку',
-                      scheduleDuration:
-                          workout.endTime.difference(DateTime.now()),
+                      body: 'За это время можно горы свернуть! Или сделать заминку',
+                      scheduleDuration: workout.endTime.difference(DateTime.now()),
                     );
-                    await getIt<LocalNotificationsService>()
-                        .scheduleLocalNotification(
+                    await getIt<LocalNotificationsService>().scheduleLocalNotification(
                       id: workout.workoutHashCode - 4,
                       title: 'Твоя тренировка — 10/10!',
-                      body:
-                          'Пора собираться, не забудь подойти к администратору и завершить тренировку',
-                      scheduleDuration:
-                          workout.canEndTime.difference(DateTime.now()),
+                      body: 'Пора собираться, не забудь подойти к администратору и завершить тренировку',
+                      scheduleDuration: workout.canEndTime.difference(DateTime.now()),
                     );
-                    await getIt<LocalNotificationsService>()
-                        .scheduleLocalNotification(
+                    await getIt<LocalNotificationsService>().scheduleLocalNotification(
                       id: workout.workoutHashCode - 5,
                       title: 'Ты не завершил тренировку!',
-                      body:
-                          'Срочно подойди к администратору и подтверди завершение тренировки',
-                      scheduleDuration: workout.canEndTime
-                          .add(const Duration(minutes: 10))
-                          .difference(DateTime.now()),
+                      body: 'Срочно подойди к администратору и подтверди завершение тренировки',
+                      scheduleDuration: workout.canEndTime.add(const Duration(minutes: 10)).difference(DateTime.now()),
                     );
                     return true;
                   },
@@ -181,15 +169,9 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
                       ),
                     );
                     await getIt<WorkoutCubit>().finishWorkout(w: workout);
-                    await getIt<LocalNotificationsService>()
-                        .deleteLocalNotification(
-                            id: workout.workoutHashCode - 3);
-                    await getIt<LocalNotificationsService>()
-                        .deleteLocalNotification(
-                            id: workout.workoutHashCode - 4);
-                    await getIt<LocalNotificationsService>()
-                        .deleteLocalNotification(
-                            id: workout.workoutHashCode - 5);
+                    await getIt<LocalNotificationsService>().deleteLocalNotification(id: workout.workoutHashCode - 3);
+                    await getIt<LocalNotificationsService>().deleteLocalNotification(id: workout.workoutHashCode - 4);
+                    await getIt<LocalNotificationsService>().deleteLocalNotification(id: workout.workoutHashCode - 5);
                     return true;
                   },
                 ),

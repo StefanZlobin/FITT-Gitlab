@@ -33,8 +33,8 @@ class WorkoutTimerBloc extends Bloc<WorkoutTimerEvent, WorkoutTimerState> {
         : emit(_WorkoutTimerStateTimerRunInProgress(duration: event.duration));
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker.tick(ticks: event.duration.inSeconds).listen(
-          (duration) => add(_WorkoutTimerEventTimerTicked(
-              duration: Duration(seconds: duration), workout: event.workout)),
+          (duration) =>
+              add(_WorkoutTimerEventTimerTicked(duration: Duration(seconds: duration), workout: event.workout)),
         );
   }
 
@@ -54,8 +54,7 @@ class WorkoutTimerBloc extends Bloc<WorkoutTimerEvent, WorkoutTimerState> {
       //getIt<WorkoutsCubit>().getWorkouts();
       getIt<WorkoutCubit>().getWorkout(workoutUuid: event.workout.uuid);
     }
-    if (event.workout.status == WorkoutStatusEnum.started &&
-        event.workout.endTime.isBefore(DateTime.now())) {
+    if (event.workout.status == WorkoutStatusEnum.started && event.workout.endTime.isBefore(DateTime.now())) {
       return emit(_WorkoutTimerStateTimerRunInDanger(duration: event.duration));
     }
 

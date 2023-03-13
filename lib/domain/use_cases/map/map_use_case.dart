@@ -12,8 +12,7 @@ class MapUseCase {
     required LatLng northeast,
     required LatLng southwest,
   }) async {
-    final mapPoints = await mapRepository.getMapPoints(
-        filters: filters, northeast: northeast, southwest: southwest);
+    final mapPoints = await mapRepository.getMapPoints(filters: filters, northeast: northeast, southwest: southwest);
     return mapPoints;
   }
 }

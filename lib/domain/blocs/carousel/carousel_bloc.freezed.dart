@@ -64,14 +64,12 @@ mixin _$CarouselEvent {
 
 /// @nodoc
 abstract class $CarouselEventCopyWith<$Res> {
-  factory $CarouselEventCopyWith(
-          CarouselEvent value, $Res Function(CarouselEvent) then) =
+  factory $CarouselEventCopyWith(CarouselEvent value, $Res Function(CarouselEvent) then) =
       _$CarouselEventCopyWithImpl<$Res, CarouselEvent>;
 }
 
 /// @nodoc
-class _$CarouselEventCopyWithImpl<$Res, $Val extends CarouselEvent>
-    implements $CarouselEventCopyWith<$Res> {
+class _$CarouselEventCopyWithImpl<$Res, $Val extends CarouselEvent> implements $CarouselEventCopyWith<$Res> {
   _$CarouselEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -82,17 +80,13 @@ class _$CarouselEventCopyWithImpl<$Res, $Val extends CarouselEvent>
 
 /// @nodoc
 abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+  factory _$$_StartedCopyWith(_$_Started value, $Res Function(_$_Started) then) = __$$_StartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$CarouselEventCopyWithImpl<$Res, _$_Started>
+class __$$_StartedCopyWithImpl<$Res> extends _$CarouselEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
+  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -113,8 +107,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Started);
   }
 
   @override
@@ -195,20 +188,16 @@ abstract class _Started implements CarouselEvent {
 
 /// @nodoc
 abstract class _$$_ClubSelectedCopyWith<$Res> {
-  factory _$$_ClubSelectedCopyWith(
-          _$_ClubSelected value, $Res Function(_$_ClubSelected) then) =
+  factory _$$_ClubSelectedCopyWith(_$_ClubSelected value, $Res Function(_$_ClubSelected) then) =
       __$$_ClubSelectedCopyWithImpl<$Res>;
   @useResult
   $Res call({String id});
 }
 
 /// @nodoc
-class __$$_ClubSelectedCopyWithImpl<$Res>
-    extends _$CarouselEventCopyWithImpl<$Res, _$_ClubSelected>
+class __$$_ClubSelectedCopyWithImpl<$Res> extends _$CarouselEventCopyWithImpl<$Res, _$_ClubSelected>
     implements _$$_ClubSelectedCopyWith<$Res> {
-  __$$_ClubSelectedCopyWithImpl(
-      _$_ClubSelected _value, $Res Function(_$_ClubSelected) _then)
-      : super(_value, _then);
+  __$$_ClubSelectedCopyWithImpl(_$_ClubSelected _value, $Res Function(_$_ClubSelected) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -248,9 +237,7 @@ class _$_ClubSelected with DiagnosticableTreeMixin implements _ClubSelected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ClubSelected &&
-            (identical(other.id, id) || other.id == id));
+        (other.runtimeType == runtimeType && other is _$_ClubSelected && (identical(other.id, id) || other.id == id));
   }
 
   @override
@@ -336,26 +323,21 @@ abstract class _ClubSelected implements CarouselEvent {
 
   String get id;
   @JsonKey(ignore: true)
-  _$$_ClubSelectedCopyWith<_$_ClubSelected> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ClubSelectedCopyWith<_$_ClubSelected> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_ClubsChangedCopyWith<$Res> {
-  factory _$$_ClubsChangedCopyWith(
-          _$_ClubsChanged value, $Res Function(_$_ClubsChanged) then) =
+  factory _$$_ClubsChangedCopyWith(_$_ClubsChanged value, $Res Function(_$_ClubsChanged) then) =
       __$$_ClubsChangedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PartnerClub> clubs});
 }
 
 /// @nodoc
-class __$$_ClubsChangedCopyWithImpl<$Res>
-    extends _$CarouselEventCopyWithImpl<$Res, _$_ClubsChanged>
+class __$$_ClubsChangedCopyWithImpl<$Res> extends _$CarouselEventCopyWithImpl<$Res, _$_ClubsChanged>
     implements _$$_ClubsChangedCopyWith<$Res> {
-  __$$_ClubsChangedCopyWithImpl(
-      _$_ClubsChanged _value, $Res Function(_$_ClubsChanged) _then)
-      : super(_value, _then);
+  __$$_ClubsChangedCopyWithImpl(_$_ClubsChanged _value, $Res Function(_$_ClubsChanged) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -406,8 +388,7 @@ class _$_ClubsChanged with DiagnosticableTreeMixin implements _ClubsChanged {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_clubs));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_clubs));
 
   @JsonKey(ignore: true)
   @override
@@ -489,8 +470,7 @@ abstract class _ClubsChanged implements CarouselEvent {
 
   List<PartnerClub> get clubs;
   @JsonKey(ignore: true)
-  _$$_ClubsChangedCopyWith<_$_ClubsChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ClubsChangedCopyWith<_$_ClubsChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -531,14 +511,12 @@ mixin _$CarouselState {
 
 /// @nodoc
 abstract class $CarouselStateCopyWith<$Res> {
-  factory $CarouselStateCopyWith(
-          CarouselState value, $Res Function(CarouselState) then) =
+  factory $CarouselStateCopyWith(CarouselState value, $Res Function(CarouselState) then) =
       _$CarouselStateCopyWithImpl<$Res, CarouselState>;
 }
 
 /// @nodoc
-class _$CarouselStateCopyWithImpl<$Res, $Val extends CarouselState>
-    implements $CarouselStateCopyWith<$Res> {
+class _$CarouselStateCopyWithImpl<$Res, $Val extends CarouselState> implements $CarouselStateCopyWith<$Res> {
   _$CarouselStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -549,17 +527,13 @@ class _$CarouselStateCopyWithImpl<$Res, $Val extends CarouselState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) = __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CarouselStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$CarouselStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -580,8 +554,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override

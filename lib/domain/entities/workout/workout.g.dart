@@ -15,13 +15,11 @@ _$_Workout _$$_WorkoutFromJson(Map<String, dynamic> json) => _$_Workout(
       club: PartnerClub.fromJson(json['club'] as Map<String, dynamic>),
       payForm: json['pay_form'] as String?,
       status: $enumDecode(_$WorkoutStatusEnumEnumMap, json['status']),
-      factStartTime:
-          dateTimeFromStringNullable(json['fact_start_time'] as String?),
+      factStartTime: dateTimeFromStringNullable(json['fact_start_time'] as String?),
       factEndTime: dateTimeFromStringNullable(json['fact_end_time'] as String?),
     );
 
-Map<String, dynamic> _$$_WorkoutToJson(_$_Workout instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_WorkoutToJson(_$_Workout instance) => <String, dynamic>{
       'id': instance.uuid,
       'user': instance.user,
       'price': toCent(instance.price),

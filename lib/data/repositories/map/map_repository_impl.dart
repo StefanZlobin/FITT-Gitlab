@@ -8,8 +8,7 @@ import 'package:fitt/domain/entities/map_point/map_point.dart';
 import 'package:fitt/domain/repositories/map/map_repository.dart';
 
 class MapRepositoryImpl implements MapRepository {
-  MapRepositoryImpl(this.dio, {this.baseUrl})
-      : _apiClient = MapApiClient(dio, baseUrl: baseUrl);
+  MapRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = MapApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;

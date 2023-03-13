@@ -36,14 +36,12 @@ mixin _$ClubFilters {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ClubFiltersCopyWith<ClubFilters> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ClubFiltersCopyWith<ClubFilters> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ClubFiltersCopyWith<$Res> {
-  factory $ClubFiltersCopyWith(
-          ClubFilters value, $Res Function(ClubFilters) then) =
+  factory $ClubFiltersCopyWith(ClubFilters value, $Res Function(ClubFilters) then) =
       _$ClubFiltersCopyWithImpl<$Res, ClubFilters>;
   @useResult
   $Res call(
@@ -56,8 +54,7 @@ abstract class $ClubFiltersCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClubFiltersCopyWithImpl<$Res, $Val extends ClubFilters>
-    implements $ClubFiltersCopyWith<$Res> {
+class _$ClubFiltersCopyWithImpl<$Res, $Val extends ClubFilters> implements $ClubFiltersCopyWith<$Res> {
   _$ClubFiltersCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -105,10 +102,8 @@ class _$ClubFiltersCopyWithImpl<$Res, $Val extends ClubFilters>
 }
 
 /// @nodoc
-abstract class _$$_ClubFiltersCopyWith<$Res>
-    implements $ClubFiltersCopyWith<$Res> {
-  factory _$$_ClubFiltersCopyWith(
-          _$_ClubFilters value, $Res Function(_$_ClubFilters) then) =
+abstract class _$$_ClubFiltersCopyWith<$Res> implements $ClubFiltersCopyWith<$Res> {
+  factory _$$_ClubFiltersCopyWith(_$_ClubFilters value, $Res Function(_$_ClubFilters) then) =
       __$$_ClubFiltersCopyWithImpl<$Res>;
   @override
   @useResult
@@ -122,12 +117,9 @@ abstract class _$$_ClubFiltersCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClubFiltersCopyWithImpl<$Res>
-    extends _$ClubFiltersCopyWithImpl<$Res, _$_ClubFilters>
+class __$$_ClubFiltersCopyWithImpl<$Res> extends _$ClubFiltersCopyWithImpl<$Res, _$_ClubFilters>
     implements _$$_ClubFiltersCopyWith<$Res> {
-  __$$_ClubFiltersCopyWithImpl(
-      _$_ClubFilters _value, $Res Function(_$_ClubFilters) _then)
-      : super(_value, _then);
+  __$$_ClubFiltersCopyWithImpl(_$_ClubFilters _value, $Res Function(_$_ClubFilters) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -180,8 +172,7 @@ class _$_ClubFilters implements _ClubFilters {
       @JsonKey(name: 'only_favorite') this.favorite})
       : _facilities = facilities;
 
-  factory _$_ClubFilters.fromJson(Map<String, dynamic> json) =>
-      _$$_ClubFiltersFromJson(json);
+  factory _$_ClubFilters.fromJson(Map<String, dynamic> json) => _$$_ClubFiltersFromJson(json);
 
 //TODO: при фильтрации передавать только facility id
   final List<Facility>? _facilities;
@@ -222,30 +213,18 @@ class _$_ClubFilters implements _ClubFilters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClubFilters &&
-            const DeepCollectionEquality()
-                .equals(other._facilities, _facilities) &&
-            (identical(other.minPrice, minPrice) ||
-                other.minPrice == minPrice) &&
-            (identical(other.maxPrice, maxPrice) ||
-                other.maxPrice == maxPrice) &&
-            (identical(other.onlyWithBatch, onlyWithBatch) ||
-                other.onlyWithBatch == onlyWithBatch) &&
-            (identical(other.onlyWithSlots, onlyWithSlots) ||
-                other.onlyWithSlots == onlyWithSlots) &&
-            (identical(other.favorite, favorite) ||
-                other.favorite == favorite));
+            const DeepCollectionEquality().equals(other._facilities, _facilities) &&
+            (identical(other.minPrice, minPrice) || other.minPrice == minPrice) &&
+            (identical(other.maxPrice, maxPrice) || other.maxPrice == maxPrice) &&
+            (identical(other.onlyWithBatch, onlyWithBatch) || other.onlyWithBatch == onlyWithBatch) &&
+            (identical(other.onlyWithSlots, onlyWithSlots) || other.onlyWithSlots == onlyWithSlots) &&
+            (identical(other.favorite, favorite) || other.favorite == favorite));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_facilities),
-      minPrice,
-      maxPrice,
-      onlyWithBatch,
-      onlyWithSlots,
-      favorite);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_facilities), minPrice, maxPrice,
+      onlyWithBatch, onlyWithSlots, favorite);
 
   @JsonKey(ignore: true)
   @override
@@ -270,8 +249,7 @@ abstract class _ClubFilters implements ClubFilters {
       @JsonKey(name: 'only_with_slots') final bool? onlyWithSlots,
       @JsonKey(name: 'only_favorite') final bool? favorite}) = _$_ClubFilters;
 
-  factory _ClubFilters.fromJson(Map<String, dynamic> json) =
-      _$_ClubFilters.fromJson;
+  factory _ClubFilters.fromJson(Map<String, dynamic> json) = _$_ClubFilters.fromJson;
 
   @override //TODO: при фильтрации передавать только facility id
   @JsonKey(name: 'facility_ids')
@@ -293,6 +271,5 @@ abstract class _ClubFilters implements ClubFilters {
   bool? get favorite;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubFiltersCopyWith<_$_ClubFilters> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ClubFiltersCopyWith<_$_ClubFilters> get copyWith => throw _privateConstructorUsedError;
 }

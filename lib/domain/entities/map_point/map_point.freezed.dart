@@ -28,27 +28,20 @@ mixin _$MapPoint {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MapPointCopyWith<MapPoint> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapPointCopyWith<MapPoint> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapPointCopyWith<$Res> {
-  factory $MapPointCopyWith(MapPoint value, $Res Function(MapPoint) then) =
-      _$MapPointCopyWithImpl<$Res, MapPoint>;
+  factory $MapPointCopyWith(MapPoint value, $Res Function(MapPoint) then) = _$MapPointCopyWithImpl<$Res, MapPoint>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'type') MapPointsEnum type,
-      LatLng coordinates,
-      String id,
-      MapPointData data});
+  $Res call({@JsonKey(name: 'type') MapPointsEnum type, LatLng coordinates, String id, MapPointData data});
 
   $MapPointDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class _$MapPointCopyWithImpl<$Res, $Val extends MapPoint>
-    implements $MapPointCopyWith<$Res> {
+class _$MapPointCopyWithImpl<$Res, $Val extends MapPoint> implements $MapPointCopyWith<$Res> {
   _$MapPointCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -95,28 +88,19 @@ class _$MapPointCopyWithImpl<$Res, $Val extends MapPoint>
 
 /// @nodoc
 abstract class _$$_MapPointCopyWith<$Res> implements $MapPointCopyWith<$Res> {
-  factory _$$_MapPointCopyWith(
-          _$_MapPoint value, $Res Function(_$_MapPoint) then) =
-      __$$_MapPointCopyWithImpl<$Res>;
+  factory _$$_MapPointCopyWith(_$_MapPoint value, $Res Function(_$_MapPoint) then) = __$$_MapPointCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'type') MapPointsEnum type,
-      LatLng coordinates,
-      String id,
-      MapPointData data});
+  $Res call({@JsonKey(name: 'type') MapPointsEnum type, LatLng coordinates, String id, MapPointData data});
 
   @override
   $MapPointDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$_MapPointCopyWithImpl<$Res>
-    extends _$MapPointCopyWithImpl<$Res, _$_MapPoint>
+class __$$_MapPointCopyWithImpl<$Res> extends _$MapPointCopyWithImpl<$Res, _$_MapPoint>
     implements _$$_MapPointCopyWith<$Res> {
-  __$$_MapPointCopyWithImpl(
-      _$_MapPoint _value, $Res Function(_$_MapPoint) _then)
-      : super(_value, _then);
+  __$$_MapPointCopyWithImpl(_$_MapPoint _value, $Res Function(_$_MapPoint) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -151,14 +135,10 @@ class __$$_MapPointCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MapPoint extends _MapPoint {
   _$_MapPoint(
-      {@JsonKey(name: 'type') required this.type,
-      required this.coordinates,
-      required this.id,
-      required this.data})
+      {@JsonKey(name: 'type') required this.type, required this.coordinates, required this.id, required this.data})
       : super._();
 
-  factory _$_MapPoint.fromJson(Map<String, dynamic> json) =>
-      _$$_MapPointFromJson(json);
+  factory _$_MapPoint.fromJson(Map<String, dynamic> json) => _$$_MapPointFromJson(json);
 
   @override
   @JsonKey(name: 'type')
@@ -181,8 +161,7 @@ class _$_MapPoint extends _MapPoint {
         (other.runtimeType == runtimeType &&
             other is _$_MapPoint &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.coordinates, coordinates) ||
-                other.coordinates == coordinates) &&
+            (identical(other.coordinates, coordinates) || other.coordinates == coordinates) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.data, data) || other.data == data));
   }
@@ -194,8 +173,7 @@ class _$_MapPoint extends _MapPoint {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MapPointCopyWith<_$_MapPoint> get copyWith =>
-      __$$_MapPointCopyWithImpl<_$_MapPoint>(this, _$identity);
+  _$$_MapPointCopyWith<_$_MapPoint> get copyWith => __$$_MapPointCopyWithImpl<_$_MapPoint>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -226,6 +204,5 @@ abstract class _MapPoint extends MapPoint {
   MapPointData get data;
   @override
   @JsonKey(ignore: true)
-  _$$_MapPointCopyWith<_$_MapPoint> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_MapPointCopyWith<_$_MapPoint> get copyWith => throw _privateConstructorUsedError;
 }

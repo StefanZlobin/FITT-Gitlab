@@ -64,14 +64,12 @@ mixin _$ModalBottomSheetState {
 
 /// @nodoc
 abstract class $ModalBottomSheetStateCopyWith<$Res> {
-  factory $ModalBottomSheetStateCopyWith(ModalBottomSheetState value,
-          $Res Function(ModalBottomSheetState) then) =
+  factory $ModalBottomSheetStateCopyWith(ModalBottomSheetState value, $Res Function(ModalBottomSheetState) then) =
       _$ModalBottomSheetStateCopyWithImpl<$Res, ModalBottomSheetState>;
 }
 
 /// @nodoc
-class _$ModalBottomSheetStateCopyWithImpl<$Res,
-        $Val extends ModalBottomSheetState>
+class _$ModalBottomSheetStateCopyWithImpl<$Res, $Val extends ModalBottomSheetState>
     implements $ModalBottomSheetStateCopyWith<$Res> {
   _$ModalBottomSheetStateCopyWithImpl(this._value, this._then);
 
@@ -84,19 +82,16 @@ class _$ModalBottomSheetStateCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$_ModalBottomSheetStateInitialCopyWith<$Res> {
   factory _$$_ModalBottomSheetStateInitialCopyWith(
-          _$_ModalBottomSheetStateInitial value,
-          $Res Function(_$_ModalBottomSheetStateInitial) then) =
+          _$_ModalBottomSheetStateInitial value, $Res Function(_$_ModalBottomSheetStateInitial) then) =
       __$$_ModalBottomSheetStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_ModalBottomSheetStateInitialCopyWithImpl<$Res>
-    extends _$ModalBottomSheetStateCopyWithImpl<$Res,
-        _$_ModalBottomSheetStateInitial>
+    extends _$ModalBottomSheetStateCopyWithImpl<$Res, _$_ModalBottomSheetStateInitial>
     implements _$$_ModalBottomSheetStateInitialCopyWith<$Res> {
   __$$_ModalBottomSheetStateInitialCopyWithImpl(
-      _$_ModalBottomSheetStateInitial _value,
-      $Res Function(_$_ModalBottomSheetStateInitial) _then)
+      _$_ModalBottomSheetStateInitial _value, $Res Function(_$_ModalBottomSheetStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -112,9 +107,7 @@ class _$_ModalBottomSheetStateInitial implements _ModalBottomSheetStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ModalBottomSheetStateInitial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_ModalBottomSheetStateInitial);
   }
 
   @override
@@ -190,26 +183,22 @@ class _$_ModalBottomSheetStateInitial implements _ModalBottomSheetStateInitial {
 }
 
 abstract class _ModalBottomSheetStateInitial implements ModalBottomSheetState {
-  const factory _ModalBottomSheetStateInitial() =
-      _$_ModalBottomSheetStateInitial;
+  const factory _ModalBottomSheetStateInitial() = _$_ModalBottomSheetStateInitial;
 }
 
 /// @nodoc
 abstract class _$$_ModalBottomSheetStateLoadingCopyWith<$Res> {
   factory _$$_ModalBottomSheetStateLoadingCopyWith(
-          _$_ModalBottomSheetStateLoading value,
-          $Res Function(_$_ModalBottomSheetStateLoading) then) =
+          _$_ModalBottomSheetStateLoading value, $Res Function(_$_ModalBottomSheetStateLoading) then) =
       __$$_ModalBottomSheetStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_ModalBottomSheetStateLoadingCopyWithImpl<$Res>
-    extends _$ModalBottomSheetStateCopyWithImpl<$Res,
-        _$_ModalBottomSheetStateLoading>
+    extends _$ModalBottomSheetStateCopyWithImpl<$Res, _$_ModalBottomSheetStateLoading>
     implements _$$_ModalBottomSheetStateLoadingCopyWith<$Res> {
   __$$_ModalBottomSheetStateLoadingCopyWithImpl(
-      _$_ModalBottomSheetStateLoading _value,
-      $Res Function(_$_ModalBottomSheetStateLoading) _then)
+      _$_ModalBottomSheetStateLoading _value, $Res Function(_$_ModalBottomSheetStateLoading) _then)
       : super(_value, _then);
 }
 
@@ -225,9 +214,7 @@ class _$_ModalBottomSheetStateLoading implements _ModalBottomSheetStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ModalBottomSheetStateLoading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_ModalBottomSheetStateLoading);
   }
 
   @override
@@ -303,26 +290,22 @@ class _$_ModalBottomSheetStateLoading implements _ModalBottomSheetStateLoading {
 }
 
 abstract class _ModalBottomSheetStateLoading implements ModalBottomSheetState {
-  const factory _ModalBottomSheetStateLoading() =
-      _$_ModalBottomSheetStateLoading;
+  const factory _ModalBottomSheetStateLoading() = _$_ModalBottomSheetStateLoading;
 }
 
 /// @nodoc
 abstract class _$$_ModalBottomSheetStateLoadedCopyWith<$Res> {
   factory _$$_ModalBottomSheetStateLoadedCopyWith(
-          _$_ModalBottomSheetStateLoaded value,
-          $Res Function(_$_ModalBottomSheetStateLoaded) then) =
+          _$_ModalBottomSheetStateLoaded value, $Res Function(_$_ModalBottomSheetStateLoaded) then) =
       __$$_ModalBottomSheetStateLoadedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_ModalBottomSheetStateLoadedCopyWithImpl<$Res>
-    extends _$ModalBottomSheetStateCopyWithImpl<$Res,
-        _$_ModalBottomSheetStateLoaded>
+    extends _$ModalBottomSheetStateCopyWithImpl<$Res, _$_ModalBottomSheetStateLoaded>
     implements _$$_ModalBottomSheetStateLoadedCopyWith<$Res> {
   __$$_ModalBottomSheetStateLoadedCopyWithImpl(
-      _$_ModalBottomSheetStateLoaded _value,
-      $Res Function(_$_ModalBottomSheetStateLoaded) _then)
+      _$_ModalBottomSheetStateLoaded _value, $Res Function(_$_ModalBottomSheetStateLoaded) _then)
       : super(_value, _then);
 }
 
@@ -338,9 +321,7 @@ class _$_ModalBottomSheetStateLoaded implements _ModalBottomSheetStateLoaded {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ModalBottomSheetStateLoaded);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_ModalBottomSheetStateLoaded);
   }
 
   @override

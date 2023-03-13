@@ -27,8 +27,7 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        getIt<AdminWorkoutCubit>()
-            .getAdminWorkout(adminWorkoutUuid: adminWorkout.uuid!);
+        getIt<AdminWorkoutCubit>().getAdminWorkout(adminWorkoutUuid: adminWorkout.uuid!);
         context.pushNamed(
           AppRoute.adminWorkout.routeToPath,
           extra: !(adminWorkout.status == WorkoutStatusEnum.finished ||
@@ -71,8 +70,7 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
                     children: [
                       Text(
                         '${adminWorkout.user.fullname}',
-                        style: AppTypography.kH14
-                            .apply(color: AppColors.kOxford60),
+                        style: AppTypography.kH14.apply(color: AppColors.kOxford60),
                         softWrap: false,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -87,15 +85,13 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
                             const SizedBox(width: 4),
                             Text(
                               '${adminWorkout.key}',
-                              style: AppTypography.kBody14
-                                  .apply(color: AppColors.kOxford60),
+                              style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                             ),
                             const SizedBox(width: 8),
                           ],
                           Text(
                             'ID ${adminWorkout.user.userId}',
-                            style: AppTypography.kBody14
-                                .apply(color: AppColors.kOxford60),
+                            style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                             softWrap: false,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -103,8 +99,7 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
                           Flexible(
                             child: Text(
                               '${adminWorkout.user.gender!.genderEnumToLabeling(adminWorkout.user.gender!)} - ${ageUtils(adminWorkout.user.age)}',
-                              style: AppTypography.kBody14
-                                  .apply(color: AppColors.kOxford40),
+                              style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               softWrap: false,

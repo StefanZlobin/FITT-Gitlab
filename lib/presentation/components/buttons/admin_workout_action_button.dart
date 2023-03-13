@@ -33,9 +33,7 @@ class AdminWorkoutActionButton extends StatelessWidget {
         bloc.setFinishSlider();
         break;
       case WorkoutStatusEnum.started:
-        if (adminWorkout.planEndTime
-            .add(const Duration(minutes: 10))
-            .isBefore(DateTime.now())) {
+        if (adminWorkout.planEndTime.add(const Duration(minutes: 10)).isBefore(DateTime.now())) {
           bloc.setFinishSlider();
           break;
         }
@@ -55,8 +53,7 @@ class AdminWorkoutActionButton extends StatelessWidget {
         break;
     }
 
-    return BlocBuilder<AdminWorkoutActionButtonCubit,
-        AdminWorkoutActionButtonState>(
+    return BlocBuilder<AdminWorkoutActionButtonCubit, AdminWorkoutActionButtonState>(
       bloc: bloc,
       builder: (context, state) {
         return state.when(

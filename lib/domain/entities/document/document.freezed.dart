@@ -27,23 +27,18 @@ mixin _$Document {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DocumentCopyWith<Document> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DocumentCopyWith<Document> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DocumentCopyWith<$Res> {
-  factory $DocumentCopyWith(Document value, $Res Function(Document) then) =
-      _$DocumentCopyWithImpl<$Res, Document>;
+  factory $DocumentCopyWith(Document value, $Res Function(Document) then) = _$DocumentCopyWithImpl<$Res, Document>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'name') String documentLabel,
-      @JsonKey(name: 'url') String fileUrl});
+  $Res call({@JsonKey(name: 'name') String documentLabel, @JsonKey(name: 'url') String fileUrl});
 }
 
 /// @nodoc
-class _$DocumentCopyWithImpl<$Res, $Val extends Document>
-    implements $DocumentCopyWith<$Res> {
+class _$DocumentCopyWithImpl<$Res, $Val extends Document> implements $DocumentCopyWith<$Res> {
   _$DocumentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -72,23 +67,16 @@ class _$DocumentCopyWithImpl<$Res, $Val extends Document>
 
 /// @nodoc
 abstract class _$$_DocumentCopyWith<$Res> implements $DocumentCopyWith<$Res> {
-  factory _$$_DocumentCopyWith(
-          _$_Document value, $Res Function(_$_Document) then) =
-      __$$_DocumentCopyWithImpl<$Res>;
+  factory _$$_DocumentCopyWith(_$_Document value, $Res Function(_$_Document) then) = __$$_DocumentCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'name') String documentLabel,
-      @JsonKey(name: 'url') String fileUrl});
+  $Res call({@JsonKey(name: 'name') String documentLabel, @JsonKey(name: 'url') String fileUrl});
 }
 
 /// @nodoc
-class __$$_DocumentCopyWithImpl<$Res>
-    extends _$DocumentCopyWithImpl<$Res, _$_Document>
+class __$$_DocumentCopyWithImpl<$Res> extends _$DocumentCopyWithImpl<$Res, _$_Document>
     implements _$$_DocumentCopyWith<$Res> {
-  __$$_DocumentCopyWithImpl(
-      _$_Document _value, $Res Function(_$_Document) _then)
-      : super(_value, _then);
+  __$$_DocumentCopyWithImpl(_$_Document _value, $Res Function(_$_Document) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -112,12 +100,9 @@ class __$$_DocumentCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Document implements _Document {
-  _$_Document(
-      {@JsonKey(name: 'name') required this.documentLabel,
-      @JsonKey(name: 'url') required this.fileUrl});
+  _$_Document({@JsonKey(name: 'name') required this.documentLabel, @JsonKey(name: 'url') required this.fileUrl});
 
-  factory _$_Document.fromJson(Map<String, dynamic> json) =>
-      _$$_DocumentFromJson(json);
+  factory _$_Document.fromJson(Map<String, dynamic> json) => _$$_DocumentFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -136,8 +121,7 @@ class _$_Document implements _Document {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Document &&
-            (identical(other.documentLabel, documentLabel) ||
-                other.documentLabel == documentLabel) &&
+            (identical(other.documentLabel, documentLabel) || other.documentLabel == documentLabel) &&
             (identical(other.fileUrl, fileUrl) || other.fileUrl == fileUrl));
   }
 
@@ -148,8 +132,7 @@ class _$_Document implements _Document {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DocumentCopyWith<_$_Document> get copyWith =>
-      __$$_DocumentCopyWithImpl<_$_Document>(this, _$identity);
+  _$$_DocumentCopyWith<_$_Document> get copyWith => __$$_DocumentCopyWithImpl<_$_Document>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -174,6 +157,5 @@ abstract class _Document implements Document {
   String get fileUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_DocumentCopyWith<_$_Document> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_DocumentCopyWith<_$_Document> get copyWith => throw _privateConstructorUsedError;
 }

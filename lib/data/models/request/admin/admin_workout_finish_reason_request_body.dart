@@ -15,8 +15,8 @@ class AdminWorkoutFinishReasonRequestBody {
   final String? comment;
 
   factory AdminWorkoutFinishReasonRequestBody.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$AdminWorkoutFinishReasonRequestBodyFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$AdminWorkoutFinishReasonRequestBodyToJson(this);
+  Map<String, dynamic> toJson() => _$AdminWorkoutFinishReasonRequestBodyToJson(this);
 }

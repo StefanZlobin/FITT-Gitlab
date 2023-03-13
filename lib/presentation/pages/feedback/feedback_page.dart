@@ -113,8 +113,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
     String? email,
   }) {
     final e = email ?? '';
-    final isDisable = commentController.text.isEmpty ||
-        (emailController.text.isEmpty && e.isEmpty);
+    final isDisable = commentController.text.isEmpty || (emailController.text.isEmpty && e.isEmpty);
     return BottomCenter(
       child: AppElevatedButton(
         onPressedAsync: () async {
@@ -163,8 +162,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
       titleTextStyle: AppTypography.kH18.apply(color: AppColors.kBaseBlack),
       title: const Text('Сообщение успешно отправлено'),
       contentPadding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
-      contentTextStyle:
-          AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
+      contentTextStyle: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
       content: const Text(
         'Наш менеджер свяжется с вами в ближайшее время, по адресу почты который вы указали',
       ),

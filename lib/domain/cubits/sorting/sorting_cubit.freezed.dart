@@ -20,8 +20,7 @@ mixin _$SortingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ClubSortingEnum clubSortingEnum) clubSorting,
-    required TResult Function(WorkoutSortingEnum workoutSortingEnum)
-        workoutSorting,
+    required TResult Function(WorkoutSortingEnum workoutSortingEnum) workoutSorting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,14 +64,12 @@ mixin _$SortingState {
 
 /// @nodoc
 abstract class $SortingStateCopyWith<$Res> {
-  factory $SortingStateCopyWith(
-          SortingState value, $Res Function(SortingState) then) =
+  factory $SortingStateCopyWith(SortingState value, $Res Function(SortingState) then) =
       _$SortingStateCopyWithImpl<$Res, SortingState>;
 }
 
 /// @nodoc
-class _$SortingStateCopyWithImpl<$Res, $Val extends SortingState>
-    implements $SortingStateCopyWith<$Res> {
+class _$SortingStateCopyWithImpl<$Res, $Val extends SortingState> implements $SortingStateCopyWith<$Res> {
   _$SortingStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -83,17 +80,14 @@ class _$SortingStateCopyWithImpl<$Res, $Val extends SortingState>
 
 /// @nodoc
 abstract class _$$_SortingStateInitialCopyWith<$Res> {
-  factory _$$_SortingStateInitialCopyWith(_$_SortingStateInitial value,
-          $Res Function(_$_SortingStateInitial) then) =
+  factory _$$_SortingStateInitialCopyWith(_$_SortingStateInitial value, $Res Function(_$_SortingStateInitial) then) =
       __$$_SortingStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SortingStateInitialCopyWithImpl<$Res>
-    extends _$SortingStateCopyWithImpl<$Res, _$_SortingStateInitial>
+class __$$_SortingStateInitialCopyWithImpl<$Res> extends _$SortingStateCopyWithImpl<$Res, _$_SortingStateInitial>
     implements _$$_SortingStateInitialCopyWith<$Res> {
-  __$$_SortingStateInitialCopyWithImpl(_$_SortingStateInitial _value,
-      $Res Function(_$_SortingStateInitial) _then)
+  __$$_SortingStateInitialCopyWithImpl(_$_SortingStateInitial _value, $Res Function(_$_SortingStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -109,8 +103,7 @@ class _$_SortingStateInitial implements _SortingStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SortingStateInitial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_SortingStateInitial);
   }
 
   @override
@@ -121,8 +114,7 @@ class _$_SortingStateInitial implements _SortingStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ClubSortingEnum clubSortingEnum) clubSorting,
-    required TResult Function(WorkoutSortingEnum workoutSortingEnum)
-        workoutSorting,
+    required TResult Function(WorkoutSortingEnum workoutSortingEnum) workoutSorting,
   }) {
     return initial();
   }
@@ -192,8 +184,8 @@ abstract class _SortingStateInitial implements SortingState {
 
 /// @nodoc
 abstract class _$$_SortingStateClubSortingCopyWith<$Res> {
-  factory _$$_SortingStateClubSortingCopyWith(_$_SortingStateClubSorting value,
-          $Res Function(_$_SortingStateClubSorting) then) =
+  factory _$$_SortingStateClubSortingCopyWith(
+          _$_SortingStateClubSorting value, $Res Function(_$_SortingStateClubSorting) then) =
       __$$_SortingStateClubSortingCopyWithImpl<$Res>;
   @useResult
   $Res call({ClubSortingEnum clubSortingEnum});
@@ -203,8 +195,8 @@ abstract class _$$_SortingStateClubSortingCopyWith<$Res> {
 class __$$_SortingStateClubSortingCopyWithImpl<$Res>
     extends _$SortingStateCopyWithImpl<$Res, _$_SortingStateClubSorting>
     implements _$$_SortingStateClubSortingCopyWith<$Res> {
-  __$$_SortingStateClubSortingCopyWithImpl(_$_SortingStateClubSorting _value,
-      $Res Function(_$_SortingStateClubSorting) _then)
+  __$$_SortingStateClubSortingCopyWithImpl(
+      _$_SortingStateClubSorting _value, $Res Function(_$_SortingStateClubSorting) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -239,8 +231,7 @@ class _$_SortingStateClubSorting implements _SortingStateClubSorting {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SortingStateClubSorting &&
-            (identical(other.clubSortingEnum, clubSortingEnum) ||
-                other.clubSortingEnum == clubSortingEnum));
+            (identical(other.clubSortingEnum, clubSortingEnum) || other.clubSortingEnum == clubSortingEnum));
   }
 
   @override
@@ -249,18 +240,15 @@ class _$_SortingStateClubSorting implements _SortingStateClubSorting {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SortingStateClubSortingCopyWith<_$_SortingStateClubSorting>
-      get copyWith =>
-          __$$_SortingStateClubSortingCopyWithImpl<_$_SortingStateClubSorting>(
-              this, _$identity);
+  _$$_SortingStateClubSortingCopyWith<_$_SortingStateClubSorting> get copyWith =>
+      __$$_SortingStateClubSortingCopyWithImpl<_$_SortingStateClubSorting>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ClubSortingEnum clubSortingEnum) clubSorting,
-    required TResult Function(WorkoutSortingEnum workoutSortingEnum)
-        workoutSorting,
+    required TResult Function(WorkoutSortingEnum workoutSortingEnum) workoutSorting,
   }) {
     return clubSorting(clubSortingEnum);
   }
@@ -325,21 +313,17 @@ class _$_SortingStateClubSorting implements _SortingStateClubSorting {
 }
 
 abstract class _SortingStateClubSorting implements SortingState {
-  const factory _SortingStateClubSorting(
-          {required final ClubSortingEnum clubSortingEnum}) =
-      _$_SortingStateClubSorting;
+  const factory _SortingStateClubSorting({required final ClubSortingEnum clubSortingEnum}) = _$_SortingStateClubSorting;
 
   ClubSortingEnum get clubSortingEnum;
   @JsonKey(ignore: true)
-  _$$_SortingStateClubSortingCopyWith<_$_SortingStateClubSorting>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_SortingStateClubSortingCopyWith<_$_SortingStateClubSorting> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_SortingStateWorkoutSortingCopyWith<$Res> {
   factory _$$_SortingStateWorkoutSortingCopyWith(
-          _$_SortingStateWorkoutSorting value,
-          $Res Function(_$_SortingStateWorkoutSorting) then) =
+          _$_SortingStateWorkoutSorting value, $Res Function(_$_SortingStateWorkoutSorting) then) =
       __$$_SortingStateWorkoutSortingCopyWithImpl<$Res>;
   @useResult
   $Res call({WorkoutSortingEnum workoutSortingEnum});
@@ -350,8 +334,7 @@ class __$$_SortingStateWorkoutSortingCopyWithImpl<$Res>
     extends _$SortingStateCopyWithImpl<$Res, _$_SortingStateWorkoutSorting>
     implements _$$_SortingStateWorkoutSortingCopyWith<$Res> {
   __$$_SortingStateWorkoutSortingCopyWithImpl(
-      _$_SortingStateWorkoutSorting _value,
-      $Res Function(_$_SortingStateWorkoutSorting) _then)
+      _$_SortingStateWorkoutSorting _value, $Res Function(_$_SortingStateWorkoutSorting) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -396,17 +379,15 @@ class _$_SortingStateWorkoutSorting implements _SortingStateWorkoutSorting {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SortingStateWorkoutSortingCopyWith<_$_SortingStateWorkoutSorting>
-      get copyWith => __$$_SortingStateWorkoutSortingCopyWithImpl<
-          _$_SortingStateWorkoutSorting>(this, _$identity);
+  _$$_SortingStateWorkoutSortingCopyWith<_$_SortingStateWorkoutSorting> get copyWith =>
+      __$$_SortingStateWorkoutSortingCopyWithImpl<_$_SortingStateWorkoutSorting>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ClubSortingEnum clubSortingEnum) clubSorting,
-    required TResult Function(WorkoutSortingEnum workoutSortingEnum)
-        workoutSorting,
+    required TResult Function(WorkoutSortingEnum workoutSortingEnum) workoutSorting,
   }) {
     return workoutSorting(workoutSortingEnum);
   }
@@ -471,12 +452,11 @@ class _$_SortingStateWorkoutSorting implements _SortingStateWorkoutSorting {
 }
 
 abstract class _SortingStateWorkoutSorting implements SortingState {
-  const factory _SortingStateWorkoutSorting(
-          {required final WorkoutSortingEnum workoutSortingEnum}) =
+  const factory _SortingStateWorkoutSorting({required final WorkoutSortingEnum workoutSortingEnum}) =
       _$_SortingStateWorkoutSorting;
 
   WorkoutSortingEnum get workoutSortingEnum;
   @JsonKey(ignore: true)
-  _$$_SortingStateWorkoutSortingCopyWith<_$_SortingStateWorkoutSorting>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_SortingStateWorkoutSortingCopyWith<_$_SortingStateWorkoutSorting> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -35,14 +35,12 @@ mixin _$Organization {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OrganizationCopyWith<Organization> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OrganizationCopyWith<Organization> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OrganizationCopyWith<$Res> {
-  factory $OrganizationCopyWith(
-          Organization value, $Res Function(Organization) then) =
+  factory $OrganizationCopyWith(Organization value, $Res Function(Organization) then) =
       _$OrganizationCopyWithImpl<$Res, Organization>;
   @useResult
   $Res call(
@@ -55,8 +53,7 @@ abstract class $OrganizationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrganizationCopyWithImpl<$Res, $Val extends Organization>
-    implements $OrganizationCopyWith<$Res> {
+class _$OrganizationCopyWithImpl<$Res, $Val extends Organization> implements $OrganizationCopyWith<$Res> {
   _$OrganizationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -104,10 +101,8 @@ class _$OrganizationCopyWithImpl<$Res, $Val extends Organization>
 }
 
 /// @nodoc
-abstract class _$$_OrganizationCopyWith<$Res>
-    implements $OrganizationCopyWith<$Res> {
-  factory _$$_OrganizationCopyWith(
-          _$_Organization value, $Res Function(_$_Organization) then) =
+abstract class _$$_OrganizationCopyWith<$Res> implements $OrganizationCopyWith<$Res> {
+  factory _$$_OrganizationCopyWith(_$_Organization value, $Res Function(_$_Organization) then) =
       __$$_OrganizationCopyWithImpl<$Res>;
   @override
   @useResult
@@ -121,12 +116,9 @@ abstract class _$$_OrganizationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrganizationCopyWithImpl<$Res>
-    extends _$OrganizationCopyWithImpl<$Res, _$_Organization>
+class __$$_OrganizationCopyWithImpl<$Res> extends _$OrganizationCopyWithImpl<$Res, _$_Organization>
     implements _$$_OrganizationCopyWith<$Res> {
-  __$$_OrganizationCopyWithImpl(
-      _$_Organization _value, $Res Function(_$_Organization) _then)
-      : super(_value, _then);
+  __$$_OrganizationCopyWithImpl(_$_Organization _value, $Res Function(_$_Organization) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -179,8 +171,7 @@ class _$_Organization implements _Organization {
       @JsonKey(name: 'official_label') required this.officalLabel})
       : _contacts = contacts;
 
-  factory _$_Organization.fromJson(Map<String, dynamic> json) =>
-      _$$_OrganizationFromJson(json);
+  factory _$_Organization.fromJson(Map<String, dynamic> json) => _$$_OrganizationFromJson(json);
 
   @override
   @JsonKey(name: 'label')
@@ -220,23 +211,15 @@ class _$_Organization implements _Organization {
             (identical(other.label, label) || other.label == label) &&
             (identical(other.inn, inn) || other.inn == inn) &&
             const DeepCollectionEquality().equals(other._contacts, _contacts) &&
-            (identical(other.corporateEmail, corporateEmail) ||
-                other.corporateEmail == corporateEmail) &&
+            (identical(other.corporateEmail, corporateEmail) || other.corporateEmail == corporateEmail) &&
             (identical(other.ogrn, ogrn) || other.ogrn == ogrn) &&
-            (identical(other.officalLabel, officalLabel) ||
-                other.officalLabel == officalLabel));
+            (identical(other.officalLabel, officalLabel) || other.officalLabel == officalLabel));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      label,
-      inn,
-      const DeepCollectionEquality().hash(_contacts),
-      corporateEmail,
-      ogrn,
-      officalLabel);
+      runtimeType, label, inn, const DeepCollectionEquality().hash(_contacts), corporateEmail, ogrn, officalLabel);
 
   @JsonKey(ignore: true)
   @override
@@ -254,21 +237,14 @@ class _$_Organization implements _Organization {
 
 abstract class _Organization implements Organization {
   factory _Organization(
-      {@JsonKey(name: 'label')
-          required final String label,
-      @JsonKey(name: 'inn')
-          required final String inn,
-      @JsonKey(name: 'contacts')
-          required final List<Contacts> contacts,
-      @JsonKey(name: 'corporate_email')
-          required final String corporateEmail,
-      @JsonKey(name: 'ogrn')
-          required final String ogrn,
-      @JsonKey(name: 'official_label')
-          required final String officalLabel}) = _$_Organization;
+      {@JsonKey(name: 'label') required final String label,
+      @JsonKey(name: 'inn') required final String inn,
+      @JsonKey(name: 'contacts') required final List<Contacts> contacts,
+      @JsonKey(name: 'corporate_email') required final String corporateEmail,
+      @JsonKey(name: 'ogrn') required final String ogrn,
+      @JsonKey(name: 'official_label') required final String officalLabel}) = _$_Organization;
 
-  factory _Organization.fromJson(Map<String, dynamic> json) =
-      _$_Organization.fromJson;
+  factory _Organization.fromJson(Map<String, dynamic> json) = _$_Organization.fromJson;
 
   @override
   @JsonKey(name: 'label')
@@ -290,6 +266,5 @@ abstract class _Organization implements Organization {
   String get officalLabel;
   @override
   @JsonKey(ignore: true)
-  _$$_OrganizationCopyWith<_$_Organization> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_OrganizationCopyWith<_$_Organization> get copyWith => throw _privateConstructorUsedError;
 }

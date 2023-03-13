@@ -17,19 +17,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthUseCase authUseCase = AuthUseCase();
   final AuthRepository authRepository = getIt<AuthRepository>();
   final userUseCase = UserUseCase();
-  late StreamSubscription<AuthenticationStatusEnum>
-      _authenticationStatusSubscription;
+  late StreamSubscription<AuthenticationStatusEnum> _authenticationStatusSubscription;
 
   AuthBloc() : super(const AuthState.unknown()) {
-    on<_AuthEventAuthenticationStatusChanged>(
-        _onAuthEventAuthenticationStatusChanged);
-    on<_AuthEventAuthenticationLogoutRequested>(
-        _onAuthEventAuthenticationLogoutRequested);
+    on<_AuthEventAuthenticationStatusChanged>(_onAuthEventAuthenticationStatusChanged);
+    on<_AuthEventAuthenticationLogoutRequested>(_onAuthEventAuthenticationLogoutRequested);
 
-    _authenticationStatusSubscription =
-        authRepository.authenticationStatus.listen(
-      (AuthenticationStatusEnum authenticationStatusEnum) =>
-          add(AuthEvent.authenticationStatusChanged(
+    _authenticationStatusSubscription = authRepository.authenticationStatus.listen(
+      (AuthenticationStatusEnum authenticationStatusEnum) => add(AuthEvent.authenticationStatusChanged(
         authenticationStatusEnum: authenticationStatusEnum,
       )),
     );

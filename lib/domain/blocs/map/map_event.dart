@@ -15,9 +15,7 @@ class MapEvent with _$MapEvent {
   }) = _MapEventFiltersDetected;
 
   const factory MapEvent.markerTapped(MapMarker marker) = _MapEventMarkerTapped;
-  const factory MapEvent.carouselCardFocused(String clubId) =
-      _MapEventCarouselCardFocused;
+  const factory MapEvent.carouselCardFocused(String clubId) = _MapEventCarouselCardFocused;
 
-  const factory MapEvent.mapCreated(gm.GoogleMapController controller) =
-      _MapEventMapCreated;
+  const factory MapEvent.mapCreated(gm.GoogleMapController controller) = _MapEventMapCreated;
 }

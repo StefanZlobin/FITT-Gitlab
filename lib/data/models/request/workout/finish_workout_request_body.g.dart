@@ -6,14 +6,10 @@ part of 'finish_workout_request_body.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FinishWorkoutRequestBody _$FinishWorkoutRequestBodyFromJson(
-        Map<String, dynamic> json) =>
-    FinishWorkoutRequestBody(
+FinishWorkoutRequestBody _$FinishWorkoutRequestBodyFromJson(Map<String, dynamic> json) => FinishWorkoutRequestBody(
       Workout.fromJson(json['workout'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$FinishWorkoutRequestBodyToJson(
-        FinishWorkoutRequestBody instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$FinishWorkoutRequestBodyToJson(FinishWorkoutRequestBody instance) => <String, dynamic>{
       'workout': instance.workout,
     };

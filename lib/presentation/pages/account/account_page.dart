@@ -91,14 +91,12 @@ class _AccountPageState extends State<AccountPage> {
                         if (size > 5242880) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content:
-                                  Text('Слишком большой размер изображения'),
+                              content: Text('Слишком большой размер изображения'),
                             ),
                           );
                           return;
                         }
-                        final CroppedFile? croppedFile =
-                            await ImageCropper().cropImage(
+                        final CroppedFile? croppedFile = await ImageCropper().cropImage(
                           sourcePath: xFile.path,
                         );
 
@@ -114,8 +112,7 @@ class _AccountPageState extends State<AccountPage> {
                       child: CenterLeft(
                         child: Text(
                           'Заменить изображение',
-                          style: AppTypography.kH14
-                              .apply(color: AppColors.kPrimaryBlue),
+                          style: AppTypography.kH14.apply(color: AppColors.kPrimaryBlue),
                         ),
                       ),
                     ),
@@ -125,10 +122,8 @@ class _AccountPageState extends State<AccountPage> {
                       initialValue: user?.firstName,
                       validator: (v) => nameValidator.getValidationErrorName(v),
                       onChanged: (value) {
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(firstName: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
+                        getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(firstName: value)));
+                        getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                       },
                     ),
                     AppTextFormField(
@@ -137,10 +132,8 @@ class _AccountPageState extends State<AccountPage> {
                       initialValue: user?.lastName,
                       validator: (v) => nameValidator.getValidationErrorName(v),
                       onChanged: (value) {
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(lastName: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
+                        getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(lastName: value)));
+                        getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                       },
                     ),
                     AppDateForm(
@@ -158,17 +151,14 @@ class _AccountPageState extends State<AccountPage> {
                         newBirthday = pickedDate;
                       },
                       onDateSelected: (value) {
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(birthday: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
+                        getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(birthday: value)));
+                        getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                       },
                     ),
                     AppTextFormField(
                       padding: const EdgeInsets.only(left: 16, right: 16),
                       title: const Text('Номер телефона'),
-                      initialValue:
-                          phoneFormatter.maskText(user?.phoneNumber ?? ''),
+                      initialValue: phoneFormatter.maskText(user?.phoneNumber ?? ''),
                       readOnly: true,
                     ),
                     AppTextFormField(
@@ -179,10 +169,8 @@ class _AccountPageState extends State<AccountPage> {
                       validator: (v) => emailValidator.getValidationError(v),
                       onChanged: (value) {
                         value.replaceAll(' ', '');
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(email: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
+                        getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(email: value)));
+                        getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                       },
                     ),
                     AppGenderFormField(
@@ -191,8 +179,7 @@ class _AccountPageState extends State<AccountPage> {
                       userGender: user?.gender ?? UserGenderEnum.male,
                     ),
                     const Separator(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+                      margin: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
                     ),
                     TextButton(
                       onPressed: () {
@@ -210,8 +197,7 @@ class _AccountPageState extends State<AccountPage> {
                       child: CenterLeft(
                         child: Text(
                           'Удалить мой аккаунт',
-                          style: AppTypography.kH14
-                              .apply(color: AppColors.kOxford40),
+                          style: AppTypography.kH14.apply(color: AppColors.kOxford40),
                         ),
                       ),
                     ),
@@ -298,8 +284,7 @@ class _AccountPageState extends State<AccountPage> {
           ),
         );
       },
-      placeholder: (context, url) =>
-          const CenterLeft(child: CircularProgressIndicator()),
+      placeholder: (context, url) => const CenterLeft(child: CircularProgressIndicator()),
       errorWidget: (context, url, dynamic error) {
         return CenterLeft(
           child: Container(

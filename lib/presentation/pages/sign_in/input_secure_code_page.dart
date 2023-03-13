@@ -134,8 +134,7 @@ class InputSecureCodeForm extends StatelessWidget {
     MaskTextInputFormatter secureCodeFormatter,
     int? countSecureCodeEntryAttempts,
   ) {
-    final isError = countSecureCodeEntryAttempts != null &&
-        countSecureCodeEntryAttempts < 5;
+    final isError = countSecureCodeEntryAttempts != null && countSecureCodeEntryAttempts < 5;
     return Column(
       children: [
         TextField(

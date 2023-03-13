@@ -26,14 +26,12 @@ class ClubBatchesPage extends StatelessWidget {
         return Scaffold(
           appBar: state.when(
             loading: () => null,
-            loaded: (club, _, __, ___, ____, _____, ______) =>
-                _buildAppBarWidget(club, context),
+            loaded: (club, _, __, ___, ____, _____, ______) => _buildAppBarWidget(club, context),
             error: (error) => null,
           ),
           body: state.when(
             loading: () => const Center(child: CircularProgressIndicator()),
-            loaded: (club, __, ___, ____, _____, ______, batches) =>
-                _buildBatchesCard(context, batches!),
+            loaded: (club, __, ___, ____, _____, ______, batches) => _buildBatchesCard(context, batches!),
             error: (error) => const SizedBox(),
           ),
         );
@@ -79,16 +77,14 @@ class ClubBatchesPage extends StatelessWidget {
                 children: [
                   Text(
                     '${batch.hours}',
-                    style:
-                        AppTypography.kH36.apply(color: AppColors.kBaseWhite),
+                    style: AppTypography.kH36.apply(color: AppColors.kBaseWhite),
                   ),
                   Positioned(
                     left: 2,
                     top: 37,
                     child: Text(
                       'ЧАСОВ',
-                      style:
-                          AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+                      style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
                     ),
                   ),
                 ],
@@ -96,8 +92,7 @@ class ClubBatchesPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildDescriptionBatchOffer(
-                      'На ${batch.duration?.split(' ').first} дней'),
+                  _buildDescriptionBatchOffer('На ${batch.duration?.split(' ').first} дней'),
                   const SizedBox(height: 5),
                   _buildDescriptionBatchOffer('В любое время'),
                 ],

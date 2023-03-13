@@ -24,18 +24,14 @@ class ButtonForCard extends StatelessWidget {
       child: Container(
         height: 48,
         width: isBig ? 208 : 100,
-        padding: showIconOnButton
-            ? const EdgeInsets.symmetric(horizontal: 16)
-            : null,
+        padding: showIconOnButton ? const EdgeInsets.symmetric(horizontal: 16) : null,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: AppColors.kBaseWhite),
           color: AppColors.kBaseWhite.withOpacity(.12),
         ),
         child: Row(
-          mainAxisAlignment: showIconOnButton
-              ? MainAxisAlignment.spaceBetween
-              : MainAxisAlignment.center,
+          mainAxisAlignment: showIconOnButton ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
           children: [
             Text(
               workoutSlot,

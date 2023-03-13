@@ -54,9 +54,7 @@ class Workout with _$Workout {
   DateTime get canStartTime => startTime.subtract(kWorkoutStartThreshold);
   DateTime get canEndTime => endTime.add(kWorkoutEndThreshold);
   bool get inProgress => status == WorkoutStatusEnum.started;
-  bool get isMissed =>
-      status == WorkoutStatusEnum.planned && startTime.isAfter(DateTime.now());
+  bool get isMissed => status == WorkoutStatusEnum.planned && startTime.isAfter(DateTime.now());
 
-  factory Workout.fromJson(Map<String, dynamic> json) =>
-      _$WorkoutFromJson(json);
+  factory Workout.fromJson(Map<String, dynamic> json) => _$WorkoutFromJson(json);
 }

@@ -27,8 +27,7 @@ class TimeSlot with _$TimeSlot {
 
   TimeSlot._();
 
-  factory TimeSlot.fromJson(Map<String, dynamic> json) =>
-      _$TimeSlotFromJson(json);
+  factory TimeSlot.fromJson(Map<String, dynamic> json) => _$TimeSlotFromJson(json);
 
   @JsonKey(ignore: true)
   DateTime get endTime => startTime.add(duration);

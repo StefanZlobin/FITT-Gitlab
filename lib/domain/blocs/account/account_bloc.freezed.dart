@@ -52,17 +52,13 @@ mixin _$AccountEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,14 +88,12 @@ mixin _$AccountEvent {
 
 /// @nodoc
 abstract class $AccountEventCopyWith<$Res> {
-  factory $AccountEventCopyWith(
-          AccountEvent value, $Res Function(AccountEvent) then) =
+  factory $AccountEventCopyWith(AccountEvent value, $Res Function(AccountEvent) then) =
       _$AccountEventCopyWithImpl<$Res, AccountEvent>;
 }
 
 /// @nodoc
-class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent>
-    implements $AccountEventCopyWith<$Res> {
+class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent> implements $AccountEventCopyWith<$Res> {
   _$AccountEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -111,8 +105,7 @@ class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent>
 /// @nodoc
 abstract class _$$_AccountEventFirstNameChangedCopyWith<$Res> {
   factory _$$_AccountEventFirstNameChangedCopyWith(
-          _$_AccountEventFirstNameChanged value,
-          $Res Function(_$_AccountEventFirstNameChanged) then) =
+          _$_AccountEventFirstNameChanged value, $Res Function(_$_AccountEventFirstNameChanged) then) =
       __$$_AccountEventFirstNameChangedCopyWithImpl<$Res>;
   @useResult
   $Res call({AccountUserFirstName firstName});
@@ -123,8 +116,7 @@ class __$$_AccountEventFirstNameChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventFirstNameChanged>
     implements _$$_AccountEventFirstNameChangedCopyWith<$Res> {
   __$$_AccountEventFirstNameChangedCopyWithImpl(
-      _$_AccountEventFirstNameChanged _value,
-      $Res Function(_$_AccountEventFirstNameChanged) _then)
+      _$_AccountEventFirstNameChanged _value, $Res Function(_$_AccountEventFirstNameChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -159,8 +151,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AccountEventFirstNameChanged &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName));
+            (identical(other.firstName, firstName) || other.firstName == firstName));
   }
 
   @override
@@ -169,9 +160,8 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged>
-      get copyWith => __$$_AccountEventFirstNameChangedCopyWithImpl<
-          _$_AccountEventFirstNameChanged>(this, _$identity);
+  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged> get copyWith =>
+      __$$_AccountEventFirstNameChangedCopyWithImpl<_$_AccountEventFirstNameChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -222,17 +212,13 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) {
     return firstNameChanged(this);
   }
@@ -271,21 +257,19 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
 }
 
 abstract class _AccountEventFirstNameChanged implements AccountEvent {
-  const factory _AccountEventFirstNameChanged(
-          {required final AccountUserFirstName firstName}) =
+  const factory _AccountEventFirstNameChanged({required final AccountUserFirstName firstName}) =
       _$_AccountEventFirstNameChanged;
 
   AccountUserFirstName get firstName;
   @JsonKey(ignore: true)
-  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AccountEventSecondNameChangedCopyWith<$Res> {
   factory _$$_AccountEventSecondNameChangedCopyWith(
-          _$_AccountEventSecondNameChanged value,
-          $Res Function(_$_AccountEventSecondNameChanged) then) =
+          _$_AccountEventSecondNameChanged value, $Res Function(_$_AccountEventSecondNameChanged) then) =
       __$$_AccountEventSecondNameChangedCopyWithImpl<$Res>;
 }
 
@@ -294,15 +278,13 @@ class __$$_AccountEventSecondNameChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventSecondNameChanged>
     implements _$$_AccountEventSecondNameChangedCopyWith<$Res> {
   __$$_AccountEventSecondNameChangedCopyWithImpl(
-      _$_AccountEventSecondNameChanged _value,
-      $Res Function(_$_AccountEventSecondNameChanged) _then)
+      _$_AccountEventSecondNameChanged _value, $Res Function(_$_AccountEventSecondNameChanged) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AccountEventSecondNameChanged
-    implements _AccountEventSecondNameChanged {
+class _$_AccountEventSecondNameChanged implements _AccountEventSecondNameChanged {
   const _$_AccountEventSecondNameChanged();
 
   @override
@@ -312,9 +294,7 @@ class _$_AccountEventSecondNameChanged
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AccountEventSecondNameChanged);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventSecondNameChanged);
   }
 
   @override
@@ -369,17 +349,13 @@ class _$_AccountEventSecondNameChanged
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) {
     return secondNameChanged(this);
   }
@@ -418,15 +394,13 @@ class _$_AccountEventSecondNameChanged
 }
 
 abstract class _AccountEventSecondNameChanged implements AccountEvent {
-  const factory _AccountEventSecondNameChanged() =
-      _$_AccountEventSecondNameChanged;
+  const factory _AccountEventSecondNameChanged() = _$_AccountEventSecondNameChanged;
 }
 
 /// @nodoc
 abstract class _$$_AccountEventBirthdayChangedCopyWith<$Res> {
   factory _$$_AccountEventBirthdayChangedCopyWith(
-          _$_AccountEventBirthdayChanged value,
-          $Res Function(_$_AccountEventBirthdayChanged) then) =
+          _$_AccountEventBirthdayChanged value, $Res Function(_$_AccountEventBirthdayChanged) then) =
       __$$_AccountEventBirthdayChangedCopyWithImpl<$Res>;
 }
 
@@ -435,8 +409,7 @@ class __$$_AccountEventBirthdayChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventBirthdayChanged>
     implements _$$_AccountEventBirthdayChangedCopyWith<$Res> {
   __$$_AccountEventBirthdayChangedCopyWithImpl(
-      _$_AccountEventBirthdayChanged _value,
-      $Res Function(_$_AccountEventBirthdayChanged) _then)
+      _$_AccountEventBirthdayChanged _value, $Res Function(_$_AccountEventBirthdayChanged) _then)
       : super(_value, _then);
 }
 
@@ -452,9 +425,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AccountEventBirthdayChanged);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventBirthdayChanged);
   }
 
   @override
@@ -509,17 +480,13 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) {
     return birthdayChanged(this);
   }
@@ -564,8 +531,7 @@ abstract class _AccountEventBirthdayChanged implements AccountEvent {
 /// @nodoc
 abstract class _$$_AccountEventEmailChangedCopyWith<$Res> {
   factory _$$_AccountEventEmailChangedCopyWith(
-          _$_AccountEventEmailChanged value,
-          $Res Function(_$_AccountEventEmailChanged) then) =
+          _$_AccountEventEmailChanged value, $Res Function(_$_AccountEventEmailChanged) then) =
       __$$_AccountEventEmailChangedCopyWithImpl<$Res>;
 }
 
@@ -573,8 +539,8 @@ abstract class _$$_AccountEventEmailChangedCopyWith<$Res> {
 class __$$_AccountEventEmailChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventEmailChanged>
     implements _$$_AccountEventEmailChangedCopyWith<$Res> {
-  __$$_AccountEventEmailChangedCopyWithImpl(_$_AccountEventEmailChanged _value,
-      $Res Function(_$_AccountEventEmailChanged) _then)
+  __$$_AccountEventEmailChangedCopyWithImpl(
+      _$_AccountEventEmailChanged _value, $Res Function(_$_AccountEventEmailChanged) _then)
       : super(_value, _then);
 }
 
@@ -590,9 +556,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AccountEventEmailChanged);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventEmailChanged);
   }
 
   @override
@@ -647,17 +611,13 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) {
     return emailChanged(this);
   }
@@ -702,8 +662,7 @@ abstract class _AccountEventEmailChanged implements AccountEvent {
 /// @nodoc
 abstract class _$$_AccountEventGenderChangedCopyWith<$Res> {
   factory _$$_AccountEventGenderChangedCopyWith(
-          _$_AccountEventGenderChanged value,
-          $Res Function(_$_AccountEventGenderChanged) then) =
+          _$_AccountEventGenderChanged value, $Res Function(_$_AccountEventGenderChanged) then) =
       __$$_AccountEventGenderChangedCopyWithImpl<$Res>;
 }
 
@@ -712,8 +671,7 @@ class __$$_AccountEventGenderChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventGenderChanged>
     implements _$$_AccountEventGenderChangedCopyWith<$Res> {
   __$$_AccountEventGenderChangedCopyWithImpl(
-      _$_AccountEventGenderChanged _value,
-      $Res Function(_$_AccountEventGenderChanged) _then)
+      _$_AccountEventGenderChanged _value, $Res Function(_$_AccountEventGenderChanged) _then)
       : super(_value, _then);
 }
 
@@ -729,9 +687,7 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AccountEventGenderChanged);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventGenderChanged);
   }
 
   @override
@@ -786,17 +742,13 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) {
     return genderChanged(this);
   }
@@ -841,8 +793,7 @@ abstract class _AccountEventGenderChanged implements AccountEvent {
 /// @nodoc
 abstract class _$$_AccountEventAvatarChangedCopyWith<$Res> {
   factory _$$_AccountEventAvatarChangedCopyWith(
-          _$_AccountEventAvatarChanged value,
-          $Res Function(_$_AccountEventAvatarChanged) then) =
+          _$_AccountEventAvatarChanged value, $Res Function(_$_AccountEventAvatarChanged) then) =
       __$$_AccountEventAvatarChangedCopyWithImpl<$Res>;
 }
 
@@ -851,8 +802,7 @@ class __$$_AccountEventAvatarChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventAvatarChanged>
     implements _$$_AccountEventAvatarChangedCopyWith<$Res> {
   __$$_AccountEventAvatarChangedCopyWithImpl(
-      _$_AccountEventAvatarChanged _value,
-      $Res Function(_$_AccountEventAvatarChanged) _then)
+      _$_AccountEventAvatarChanged _value, $Res Function(_$_AccountEventAvatarChanged) _then)
       : super(_value, _then);
 }
 
@@ -868,9 +818,7 @@ class _$_AccountEventAvatarChanged implements _AccountEventAvatarChanged {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AccountEventAvatarChanged);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventAvatarChanged);
   }
 
   @override
@@ -925,17 +873,13 @@ class _$_AccountEventAvatarChanged implements _AccountEventAvatarChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) {
     return avatarChanged(this);
   }
@@ -980,8 +924,7 @@ abstract class _AccountEventAvatarChanged implements AccountEvent {
 /// @nodoc
 abstract class _$$_AccountEventAccountSubmittedCopyWith<$Res> {
   factory _$$_AccountEventAccountSubmittedCopyWith(
-          _$_AccountEventAccountSubmitted value,
-          $Res Function(_$_AccountEventAccountSubmitted) then) =
+          _$_AccountEventAccountSubmitted value, $Res Function(_$_AccountEventAccountSubmitted) then) =
       __$$_AccountEventAccountSubmittedCopyWithImpl<$Res>;
 }
 
@@ -990,8 +933,7 @@ class __$$_AccountEventAccountSubmittedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventAccountSubmitted>
     implements _$$_AccountEventAccountSubmittedCopyWith<$Res> {
   __$$_AccountEventAccountSubmittedCopyWithImpl(
-      _$_AccountEventAccountSubmitted _value,
-      $Res Function(_$_AccountEventAccountSubmitted) _then)
+      _$_AccountEventAccountSubmitted _value, $Res Function(_$_AccountEventAccountSubmitted) _then)
       : super(_value, _then);
 }
 
@@ -1007,9 +949,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AccountEventAccountSubmitted);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventAccountSubmitted);
   }
 
   @override
@@ -1064,17 +1004,13 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value)
-        firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value)
-        secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value)
-        birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
     required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value)
-        accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
   }) {
     return accountSubmitted(this);
   }
@@ -1113,8 +1049,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
 }
 
 abstract class _AccountEventAccountSubmitted implements AccountEvent {
-  const factory _AccountEventAccountSubmitted() =
-      _$_AccountEventAccountSubmitted;
+  const factory _AccountEventAccountSubmitted() = _$_AccountEventAccountSubmitted;
 }
 
 /// @nodoc
@@ -1155,14 +1090,12 @@ mixin _$AccountState {
 
 /// @nodoc
 abstract class $AccountStateCopyWith<$Res> {
-  factory $AccountStateCopyWith(
-          AccountState value, $Res Function(AccountState) then) =
+  factory $AccountStateCopyWith(AccountState value, $Res Function(AccountState) then) =
       _$AccountStateCopyWithImpl<$Res, AccountState>;
 }
 
 /// @nodoc
-class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
-    implements $AccountStateCopyWith<$Res> {
+class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState> implements $AccountStateCopyWith<$Res> {
   _$AccountStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -1173,17 +1106,13 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) = __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -1198,8 +1127,7 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override

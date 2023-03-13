@@ -5,6 +5,5 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.authenticationStatusChanged({
     required AuthenticationStatusEnum authenticationStatusEnum,
   }) = _AuthEventAuthenticationStatusChanged;
-  const factory AuthEvent.authenticationLogoutRequested() =
-      _AuthEventAuthenticationLogoutRequested;
+  const factory AuthEvent.authenticationLogoutRequested() = _AuthEventAuthenticationLogoutRequested;
 }

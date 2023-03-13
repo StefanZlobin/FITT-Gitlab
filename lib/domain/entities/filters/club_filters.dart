@@ -20,6 +20,5 @@ class ClubFilters with _$ClubFilters {
     @JsonKey(name: 'only_favorite') bool? favorite,
   }) = _ClubFilters;
 
-  factory ClubFilters.fromJson(Map<String, dynamic> json) =>
-      _$ClubFiltersFromJson(json);
+  factory ClubFilters.fromJson(Map<String, dynamic> json) => _$ClubFiltersFromJson(json);
 }

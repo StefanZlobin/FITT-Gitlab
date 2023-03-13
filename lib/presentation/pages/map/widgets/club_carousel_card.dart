@@ -116,14 +116,12 @@ class ClubCarouselCard extends StatelessWidget {
                   Text(
                     partnerClub.label!,
                     maxLines: 1,
-                    style:
-                        AppTypography.kH18.apply(color: AppColors.kBaseWhite),
+                    style: AppTypography.kH18.apply(color: AppColors.kBaseWhite),
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     partnerClub.address!.shortAddress,
-                    style: AppTypography.kBody14
-                        .apply(color: AppColors.kBaseWhite),
+                    style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
@@ -148,8 +146,7 @@ class ClubCarouselCard extends StatelessWidget {
                 ),
                 child: Text(
                   'от ${partnerClub.minPrice} \u20BD',
-                  style:
-                      AppTypography.kBody12.apply(color: AppColors.kBaseWhite),
+                  style: AppTypography.kBody12.apply(color: AppColors.kBaseWhite),
                 ),
               ),
             ),
@@ -172,8 +169,7 @@ class ClubCarouselCard extends StatelessWidget {
                 ),
                 child: Text(
                   'от ${partnerClub.minPrice} \u20BD',
-                  style:
-                      AppTypography.kBody12.apply(color: AppColors.kBaseWhite),
+                  style: AppTypography.kBody12.apply(color: AppColors.kBaseWhite),
                 ),
               ),
             ),

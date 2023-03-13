@@ -101,11 +101,9 @@ class NetworkExceptions with _$NetworkExceptions {
         return const NetworkExceptions.unexpectedError();
       }
     } else {
-      if (error.toString().contains('is not a subtype of')) {
-        return const NetworkExceptions.unableToProcess();
-      } else {
-        return const NetworkExceptions.unexpectedError();
-      }
+      return error.toString().contains('is not a subtype of')
+          ? const NetworkExceptions.unableToProcess()
+          : const NetworkExceptions.unexpectedError();
     }
   }
 

@@ -36,10 +36,8 @@ class _ClubCarouselState extends State<ClubCarousel> {
               loaded: (mapPoints, visibleRegion, _, filters) {
                 getIt<PartnerClubsCubit>().getPartnerClubs(
                   clubFilters: filters,
-                  northeast: LatLng(visibleRegion.northeast.latitude,
-                      visibleRegion.northeast.longitude),
-                  southwest: LatLng(visibleRegion.southwest.latitude,
-                      visibleRegion.southwest.longitude),
+                  northeast: LatLng(visibleRegion.northeast.latitude, visibleRegion.northeast.longitude),
+                  southwest: LatLng(visibleRegion.southwest.latitude, visibleRegion.southwest.longitude),
                 );
               },
             );
@@ -99,8 +97,7 @@ class _ClubCarouselState extends State<ClubCarousel> {
             return ClubCarouselCard(partnerClub: partnerClubs[index]);
           },
           onItemFocus: (index) {
-            getIt<MapBloc>()
-                .add(MapEvent.carouselCardFocused(partnerClubs[index].uuid!));
+            getIt<MapBloc>().add(MapEvent.carouselCardFocused(partnerClubs[index].uuid!));
           },
         ),
       ),

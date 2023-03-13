@@ -95,6 +95,5 @@ class AppIcons {
 }
 
 class QleverIconsetIconData extends IconData {
-  const QleverIconsetIconData(int codePoint)
-      : super(codePoint, fontFamily: 'storm iconset');
+  const QleverIconsetIconData(int codePoint) : super(codePoint, fontFamily: 'storm iconset');
 }

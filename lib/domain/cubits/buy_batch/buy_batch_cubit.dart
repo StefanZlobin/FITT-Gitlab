@@ -19,8 +19,7 @@ class BuyBatchCubit extends Cubit<BuyBatchState> {
     emit(const BuyBatchState.initial());
 
     try {
-      final response = await paymentUseCase.buyBatch(
-          clubUuid: clubUuid, batchUuid: batchUuid);
+      final response = await paymentUseCase.buyBatch(clubUuid: clubUuid, batchUuid: batchUuid);
       emit(BuyBatchState.loaded(response: response));
     } on NetworkExceptions catch (e) {
       emit(BuyBatchState.error(error: NetworkExceptions.getErrorMessage(e)));

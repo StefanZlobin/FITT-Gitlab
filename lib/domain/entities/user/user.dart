@@ -29,11 +29,9 @@ class User with _$User {
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   bool get hasFullData =>
-      string_utils.StringUtils.isNotEmpty(firstName) &&
-      string_utils.StringUtils.isNotEmpty(lastName);
+      string_utils.StringUtils.isNotEmpty(firstName) && string_utils.StringUtils.isNotEmpty(lastName);
 
-  String get userId =>
-      (phoneNumber != null) ? phoneNumber!.substring(8, 12) : '';
+  String get userId => (phoneNumber != null) ? phoneNumber!.substring(8, 12) : '';
 
   //TODO удалить после сделанного блока аунтетификации
   bool get isLoggedIn => this is! AnonymousUser;

@@ -6,31 +6,18 @@ part of 'admin_workouts_filters_body.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AdminWorkoutsFiltersRequestBody _$AdminWorkoutsFiltersRequestBodyFromJson(
-        Map<String, dynamic> json) =>
+AdminWorkoutsFiltersRequestBody _$AdminWorkoutsFiltersRequestBodyFromJson(Map<String, dynamic> json) =>
     AdminWorkoutsFiltersRequestBody(
-      clubIds: (json['club_ids'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      startDateFrom: json['start_time_gte'] == null
-          ? null
-          : DateTime.parse(json['start_time_gte'] as String),
-      startDateTo: json['start_time_lte'] == null
-          ? null
-          : DateTime.parse(json['start_time_lte'] as String),
-      endDateFrom: json['end_time_gte'] == null
-          ? null
-          : DateTime.parse(json['end_time_gte'] as String),
-      endDateTo: json['end_time_lte'] == null
-          ? null
-          : DateTime.parse(json['end_time_lte'] as String),
+      clubIds: (json['club_ids'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      startDateFrom: json['start_time_gte'] == null ? null : DateTime.parse(json['start_time_gte'] as String),
+      startDateTo: json['start_time_lte'] == null ? null : DateTime.parse(json['start_time_lte'] as String),
+      endDateFrom: json['end_time_gte'] == null ? null : DateTime.parse(json['end_time_gte'] as String),
+      endDateTo: json['end_time_lte'] == null ? null : DateTime.parse(json['end_time_lte'] as String),
       phase: $enumDecodeNullable(_$WorkoutPhaseEnumEnumMap, json['phases']),
-      sortBy: $enumDecodeNullable(
-          _$AdminWorkoutSortingEnumEnumMap, json['ordering']),
+      sortBy: $enumDecodeNullable(_$AdminWorkoutSortingEnumEnumMap, json['ordering']),
     );
 
-Map<String, dynamic> _$AdminWorkoutsFiltersRequestBodyToJson(
-        AdminWorkoutsFiltersRequestBody instance) =>
+Map<String, dynamic> _$AdminWorkoutsFiltersRequestBodyToJson(AdminWorkoutsFiltersRequestBody instance) =>
     <String, dynamic>{
       'club_ids': instance.clubIds,
       'start_time_gte': instance.startDateFrom?.toIso8601String(),

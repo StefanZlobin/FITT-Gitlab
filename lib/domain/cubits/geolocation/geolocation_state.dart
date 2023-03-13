@@ -4,8 +4,7 @@ part of 'geolocation_cubit.dart';
 class GeolocationState with _$GeolocationState {
   const factory GeolocationState.initial() = _GeolocationStateInitial;
   const factory GeolocationState.loading() = _GeolocationStateLoading;
-  const factory GeolocationState.locationDetected(
-      {required Position position}) = _GeolocationStatelocationDetected;
-  const factory GeolocationState.locationDetectingError(
-      {required String error}) = _GeolocationStateLocationDetectingError;
+  const factory GeolocationState.locationDetected({required Position position}) = _GeolocationStatelocationDetected;
+  const factory GeolocationState.locationDetectingError({required String error}) =
+      _GeolocationStateLocationDetectingError;
 }

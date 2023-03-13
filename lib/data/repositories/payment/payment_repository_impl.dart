@@ -12,8 +12,7 @@ import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/payment/payment_repository.dart';
 
 class PaymentRepositoryImpl implements PaymentRepository {
-  PaymentRepositoryImpl(this.dio, {this.baseUrl})
-      : _apiClient = PaymentApiClient(dio, baseUrl: baseUrl);
+  PaymentRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = PaymentApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;
@@ -26,7 +25,9 @@ class PaymentRepositoryImpl implements PaymentRepository {
   }) async {
     try {
       final response = await _apiClient.buyBatchOffers(
-          clubUuid, BuyBatchRequestBody(batchUuid));
+        clubUuid,
+        BuyBatchRequestBody(batchUuid),
+      );
       return response;
     } on DioError catch (e) {
       throw NetworkExceptions.getDioException(e);
@@ -57,8 +58,7 @@ class PaymentRepositoryImpl implements PaymentRepository {
     required String activityUuid,
   }) async {
     try {
-      final response =
-          await _apiClient.buyWorkoutByBatch(BuyWorkoutByBatchRequestBody(
+      final response = await _apiClient.buyWorkoutByBatch(BuyWorkoutByBatchRequestBody(
         activity: activityUuid,
         startTime: slot.startTime.toString(),
         endTime: slot.startTime.add(slot.duration).toString(),

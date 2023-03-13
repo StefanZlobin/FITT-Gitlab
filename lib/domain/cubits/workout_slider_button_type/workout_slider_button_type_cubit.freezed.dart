@@ -43,12 +43,10 @@ mixin _$WorkoutSliderButtonTypeState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutSliderButtonTypeStateInitial value)
-        initial,
+    required TResult Function(_WorkoutSliderButtonTypeStateInitial value) initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
-    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
-        confirmation,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value) confirmation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,8 +54,7 @@ mixin _$WorkoutSliderButtonTypeState {
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,8 +62,7 @@ mixin _$WorkoutSliderButtonTypeState {
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,15 +71,12 @@ mixin _$WorkoutSliderButtonTypeState {
 /// @nodoc
 abstract class $WorkoutSliderButtonTypeStateCopyWith<$Res> {
   factory $WorkoutSliderButtonTypeStateCopyWith(
-          WorkoutSliderButtonTypeState value,
-          $Res Function(WorkoutSliderButtonTypeState) then) =
-      _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
-          WorkoutSliderButtonTypeState>;
+          WorkoutSliderButtonTypeState value, $Res Function(WorkoutSliderButtonTypeState) then) =
+      _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res, WorkoutSliderButtonTypeState>;
 }
 
 /// @nodoc
-class _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
-        $Val extends WorkoutSliderButtonTypeState>
+class _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res, $Val extends WorkoutSliderButtonTypeState>
     implements $WorkoutSliderButtonTypeStateCopyWith<$Res> {
   _$WorkoutSliderButtonTypeStateCopyWithImpl(this._value, this._then);
 
@@ -96,26 +89,22 @@ class _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$_WorkoutSliderButtonTypeStateInitialCopyWith<$Res> {
   factory _$$_WorkoutSliderButtonTypeStateInitialCopyWith(
-          _$_WorkoutSliderButtonTypeStateInitial value,
-          $Res Function(_$_WorkoutSliderButtonTypeStateInitial) then) =
+          _$_WorkoutSliderButtonTypeStateInitial value, $Res Function(_$_WorkoutSliderButtonTypeStateInitial) then) =
       __$$_WorkoutSliderButtonTypeStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_WorkoutSliderButtonTypeStateInitialCopyWithImpl<$Res>
-    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
-        _$_WorkoutSliderButtonTypeStateInitial>
+    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res, _$_WorkoutSliderButtonTypeStateInitial>
     implements _$$_WorkoutSliderButtonTypeStateInitialCopyWith<$Res> {
   __$$_WorkoutSliderButtonTypeStateInitialCopyWithImpl(
-      _$_WorkoutSliderButtonTypeStateInitial _value,
-      $Res Function(_$_WorkoutSliderButtonTypeStateInitial) _then)
+      _$_WorkoutSliderButtonTypeStateInitial _value, $Res Function(_$_WorkoutSliderButtonTypeStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_WorkoutSliderButtonTypeStateInitial
-    implements _WorkoutSliderButtonTypeStateInitial {
+class _$_WorkoutSliderButtonTypeStateInitial implements _WorkoutSliderButtonTypeStateInitial {
   const _$_WorkoutSliderButtonTypeStateInitial();
 
   @override
@@ -126,8 +115,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSliderButtonTypeStateInitial);
+        (other.runtimeType == runtimeType && other is _$_WorkoutSliderButtonTypeStateInitial);
   }
 
   @override
@@ -173,12 +161,10 @@ class _$_WorkoutSliderButtonTypeStateInitial
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutSliderButtonTypeStateInitial value)
-        initial,
+    required TResult Function(_WorkoutSliderButtonTypeStateInitial value) initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
-    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
-        confirmation,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value) confirmation,
   }) {
     return initial(this);
   }
@@ -189,8 +175,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
   }) {
     return initial?.call(this);
   }
@@ -201,8 +186,7 @@ class _$_WorkoutSliderButtonTypeStateInitial
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -212,17 +196,14 @@ class _$_WorkoutSliderButtonTypeStateInitial
   }
 }
 
-abstract class _WorkoutSliderButtonTypeStateInitial
-    implements WorkoutSliderButtonTypeState {
-  const factory _WorkoutSliderButtonTypeStateInitial() =
-      _$_WorkoutSliderButtonTypeStateInitial;
+abstract class _WorkoutSliderButtonTypeStateInitial implements WorkoutSliderButtonTypeState {
+  const factory _WorkoutSliderButtonTypeStateInitial() = _$_WorkoutSliderButtonTypeStateInitial;
 }
 
 /// @nodoc
 abstract class _$$_WorkoutSliderButtonTypeStateStartCopyWith<$Res> {
   factory _$$_WorkoutSliderButtonTypeStateStartCopyWith(
-          _$_WorkoutSliderButtonTypeStateStart value,
-          $Res Function(_$_WorkoutSliderButtonTypeStateStart) then) =
+          _$_WorkoutSliderButtonTypeStateStart value, $Res Function(_$_WorkoutSliderButtonTypeStateStart) then) =
       __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<$Res>;
   @useResult
   $Res call({bool showBeforeCanStart});
@@ -230,12 +211,10 @@ abstract class _$$_WorkoutSliderButtonTypeStateStartCopyWith<$Res> {
 
 /// @nodoc
 class __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<$Res>
-    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
-        _$_WorkoutSliderButtonTypeStateStart>
+    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res, _$_WorkoutSliderButtonTypeStateStart>
     implements _$$_WorkoutSliderButtonTypeStateStartCopyWith<$Res> {
   __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl(
-      _$_WorkoutSliderButtonTypeStateStart _value,
-      $Res Function(_$_WorkoutSliderButtonTypeStateStart) _then)
+      _$_WorkoutSliderButtonTypeStateStart _value, $Res Function(_$_WorkoutSliderButtonTypeStateStart) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -254,10 +233,8 @@ class __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutSliderButtonTypeStateStart
-    implements _WorkoutSliderButtonTypeStateStart {
-  const _$_WorkoutSliderButtonTypeStateStart(
-      {required this.showBeforeCanStart});
+class _$_WorkoutSliderButtonTypeStateStart implements _WorkoutSliderButtonTypeStateStart {
+  const _$_WorkoutSliderButtonTypeStateStart({required this.showBeforeCanStart});
 
   @override
   final bool showBeforeCanStart;
@@ -282,10 +259,8 @@ class _$_WorkoutSliderButtonTypeStateStart
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutSliderButtonTypeStateStartCopyWith<
-          _$_WorkoutSliderButtonTypeStateStart>
-      get copyWith => __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<
-          _$_WorkoutSliderButtonTypeStateStart>(this, _$identity);
+  _$$_WorkoutSliderButtonTypeStateStartCopyWith<_$_WorkoutSliderButtonTypeStateStart> get copyWith =>
+      __$$_WorkoutSliderButtonTypeStateStartCopyWithImpl<_$_WorkoutSliderButtonTypeStateStart>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -327,12 +302,10 @@ class _$_WorkoutSliderButtonTypeStateStart
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutSliderButtonTypeStateInitial value)
-        initial,
+    required TResult Function(_WorkoutSliderButtonTypeStateInitial value) initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
-    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
-        confirmation,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value) confirmation,
   }) {
     return start(this);
   }
@@ -343,8 +316,7 @@ class _$_WorkoutSliderButtonTypeStateStart
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
   }) {
     return start?.call(this);
   }
@@ -355,8 +327,7 @@ class _$_WorkoutSliderButtonTypeStateStart
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -366,42 +337,35 @@ class _$_WorkoutSliderButtonTypeStateStart
   }
 }
 
-abstract class _WorkoutSliderButtonTypeStateStart
-    implements WorkoutSliderButtonTypeState {
-  const factory _WorkoutSliderButtonTypeStateStart(
-          {required final bool showBeforeCanStart}) =
+abstract class _WorkoutSliderButtonTypeStateStart implements WorkoutSliderButtonTypeState {
+  const factory _WorkoutSliderButtonTypeStateStart({required final bool showBeforeCanStart}) =
       _$_WorkoutSliderButtonTypeStateStart;
 
   bool get showBeforeCanStart;
   @JsonKey(ignore: true)
-  _$$_WorkoutSliderButtonTypeStateStartCopyWith<
-          _$_WorkoutSliderButtonTypeStateStart>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkoutSliderButtonTypeStateStartCopyWith<_$_WorkoutSliderButtonTypeStateStart> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_WorkoutSliderButtonTypeStateFinishCopyWith<$Res> {
   factory _$$_WorkoutSliderButtonTypeStateFinishCopyWith(
-          _$_WorkoutSliderButtonTypeStateFinish value,
-          $Res Function(_$_WorkoutSliderButtonTypeStateFinish) then) =
+          _$_WorkoutSliderButtonTypeStateFinish value, $Res Function(_$_WorkoutSliderButtonTypeStateFinish) then) =
       __$$_WorkoutSliderButtonTypeStateFinishCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_WorkoutSliderButtonTypeStateFinishCopyWithImpl<$Res>
-    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
-        _$_WorkoutSliderButtonTypeStateFinish>
+    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res, _$_WorkoutSliderButtonTypeStateFinish>
     implements _$$_WorkoutSliderButtonTypeStateFinishCopyWith<$Res> {
   __$$_WorkoutSliderButtonTypeStateFinishCopyWithImpl(
-      _$_WorkoutSliderButtonTypeStateFinish _value,
-      $Res Function(_$_WorkoutSliderButtonTypeStateFinish) _then)
+      _$_WorkoutSliderButtonTypeStateFinish _value, $Res Function(_$_WorkoutSliderButtonTypeStateFinish) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_WorkoutSliderButtonTypeStateFinish
-    implements _WorkoutSliderButtonTypeStateFinish {
+class _$_WorkoutSliderButtonTypeStateFinish implements _WorkoutSliderButtonTypeStateFinish {
   const _$_WorkoutSliderButtonTypeStateFinish();
 
   @override
@@ -412,8 +376,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSliderButtonTypeStateFinish);
+        (other.runtimeType == runtimeType && other is _$_WorkoutSliderButtonTypeStateFinish);
   }
 
   @override
@@ -459,12 +422,10 @@ class _$_WorkoutSliderButtonTypeStateFinish
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutSliderButtonTypeStateInitial value)
-        initial,
+    required TResult Function(_WorkoutSliderButtonTypeStateInitial value) initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
-    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
-        confirmation,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value) confirmation,
   }) {
     return finish(this);
   }
@@ -475,8 +436,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
   }) {
     return finish?.call(this);
   }
@@ -487,8 +447,7 @@ class _$_WorkoutSliderButtonTypeStateFinish
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
     required TResult orElse(),
   }) {
     if (finish != null) {
@@ -498,35 +457,29 @@ class _$_WorkoutSliderButtonTypeStateFinish
   }
 }
 
-abstract class _WorkoutSliderButtonTypeStateFinish
-    implements WorkoutSliderButtonTypeState {
-  const factory _WorkoutSliderButtonTypeStateFinish() =
-      _$_WorkoutSliderButtonTypeStateFinish;
+abstract class _WorkoutSliderButtonTypeStateFinish implements WorkoutSliderButtonTypeState {
+  const factory _WorkoutSliderButtonTypeStateFinish() = _$_WorkoutSliderButtonTypeStateFinish;
 }
 
 /// @nodoc
 abstract class _$$_WorkoutSliderButtonTypeStateConfirmationCopyWith<$Res> {
-  factory _$$_WorkoutSliderButtonTypeStateConfirmationCopyWith(
-          _$_WorkoutSliderButtonTypeStateConfirmation value,
+  factory _$$_WorkoutSliderButtonTypeStateConfirmationCopyWith(_$_WorkoutSliderButtonTypeStateConfirmation value,
           $Res Function(_$_WorkoutSliderButtonTypeStateConfirmation) then) =
       __$$_WorkoutSliderButtonTypeStateConfirmationCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_WorkoutSliderButtonTypeStateConfirmationCopyWithImpl<$Res>
-    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res,
-        _$_WorkoutSliderButtonTypeStateConfirmation>
+    extends _$WorkoutSliderButtonTypeStateCopyWithImpl<$Res, _$_WorkoutSliderButtonTypeStateConfirmation>
     implements _$$_WorkoutSliderButtonTypeStateConfirmationCopyWith<$Res> {
-  __$$_WorkoutSliderButtonTypeStateConfirmationCopyWithImpl(
-      _$_WorkoutSliderButtonTypeStateConfirmation _value,
+  __$$_WorkoutSliderButtonTypeStateConfirmationCopyWithImpl(_$_WorkoutSliderButtonTypeStateConfirmation _value,
       $Res Function(_$_WorkoutSliderButtonTypeStateConfirmation) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_WorkoutSliderButtonTypeStateConfirmation
-    implements _WorkoutSliderButtonTypeStateConfirmation {
+class _$_WorkoutSliderButtonTypeStateConfirmation implements _WorkoutSliderButtonTypeStateConfirmation {
   const _$_WorkoutSliderButtonTypeStateConfirmation();
 
   @override
@@ -537,8 +490,7 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSliderButtonTypeStateConfirmation);
+        (other.runtimeType == runtimeType && other is _$_WorkoutSliderButtonTypeStateConfirmation);
   }
 
   @override
@@ -584,12 +536,10 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutSliderButtonTypeStateInitial value)
-        initial,
+    required TResult Function(_WorkoutSliderButtonTypeStateInitial value) initial,
     required TResult Function(_WorkoutSliderButtonTypeStateStart value) start,
     required TResult Function(_WorkoutSliderButtonTypeStateFinish value) finish,
-    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)
-        confirmation,
+    required TResult Function(_WorkoutSliderButtonTypeStateConfirmation value) confirmation,
   }) {
     return confirmation(this);
   }
@@ -600,8 +550,7 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
     TResult? Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult? Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult? Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult? Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
   }) {
     return confirmation?.call(this);
   }
@@ -612,8 +561,7 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
     TResult Function(_WorkoutSliderButtonTypeStateInitial value)? initial,
     TResult Function(_WorkoutSliderButtonTypeStateStart value)? start,
     TResult Function(_WorkoutSliderButtonTypeStateFinish value)? finish,
-    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)?
-        confirmation,
+    TResult Function(_WorkoutSliderButtonTypeStateConfirmation value)? confirmation,
     required TResult orElse(),
   }) {
     if (confirmation != null) {
@@ -623,8 +571,6 @@ class _$_WorkoutSliderButtonTypeStateConfirmation
   }
 }
 
-abstract class _WorkoutSliderButtonTypeStateConfirmation
-    implements WorkoutSliderButtonTypeState {
-  const factory _WorkoutSliderButtonTypeStateConfirmation() =
-      _$_WorkoutSliderButtonTypeStateConfirmation;
+abstract class _WorkoutSliderButtonTypeStateConfirmation implements WorkoutSliderButtonTypeState {
+  const factory _WorkoutSliderButtonTypeStateConfirmation() = _$_WorkoutSliderButtonTypeStateConfirmation;
 }

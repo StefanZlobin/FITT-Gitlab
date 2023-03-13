@@ -9,8 +9,7 @@ part 'admin_workout_timer_bloc.freezed.dart';
 part 'admin_workout_timer_event.dart';
 part 'admin_workout_timer_state.dart';
 
-class AdminWorkoutTimerBloc
-    extends Bloc<AdminWorkoutTimerEvent, AdminWorkoutTimerState> {
+class AdminWorkoutTimerBloc extends Bloc<AdminWorkoutTimerEvent, AdminWorkoutTimerState> {
   final Ticker _ticker;
   StreamSubscription<int>? _tickerSubscription;
 
@@ -27,14 +26,12 @@ class AdminWorkoutTimerBloc
     Emitter<AdminWorkoutTimerState> emit,
   ) {
     event.duration.isNegative
-        ? emit(
-            _AdminWorkoutTimerStateTimerRunInDanger(duration: event.duration))
-        : emit(_AdminWorkoutTimerStateTimerRunInProgress(
-            duration: event.duration));
+        ? emit(_AdminWorkoutTimerStateTimerRunInDanger(duration: event.duration))
+        : emit(_AdminWorkoutTimerStateTimerRunInProgress(duration: event.duration));
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker.tick(ticks: event.duration.inSeconds).listen(
-          (duration) => add(_AdminWorkoutTimerEventTimerTicked(
-              duration: Duration(seconds: duration), workout: event.workout)),
+          (duration) =>
+              add(_AdminWorkoutTimerEventTimerTicked(duration: Duration(seconds: duration), workout: event.workout)),
         );
   }
 

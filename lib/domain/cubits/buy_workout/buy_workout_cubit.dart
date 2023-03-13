@@ -19,8 +19,7 @@ class BuyWorkoutCubit extends Cubit<BuyWorkoutState> {
   }) async {
     emit(const BuyWorkoutState.initial());
     try {
-      final workout = await paymentUseCase.buyWorkout(
-          slot: slot, activityUuid: activityUuid);
+      final workout = await paymentUseCase.buyWorkout(slot: slot, activityUuid: activityUuid);
       emit(BuyWorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {
       emit(BuyWorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
@@ -34,8 +33,7 @@ class BuyWorkoutCubit extends Cubit<BuyWorkoutState> {
     emit(const BuyWorkoutState.initial());
 
     try {
-      final workout = await paymentUseCase.buyWorkoutByBatch(
-          slot: slot, activityUuid: activityUuid);
+      final workout = await paymentUseCase.buyWorkoutByBatch(slot: slot, activityUuid: activityUuid);
       emit(BuyWorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {
       emit(BuyWorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));

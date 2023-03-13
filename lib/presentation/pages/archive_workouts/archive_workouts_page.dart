@@ -62,6 +62,7 @@ class ArchiveWorkoutsPage extends StatelessWidget {
           listener: (context, state) {
             state.whenOrNull(
               loaded: (archiveWorkouts) {
+                // ignore: no-empty-block
                 if (archiveWorkouts.isEmpty) {}
               },
             );
@@ -94,10 +95,18 @@ class ArchiveWorkoutsPage extends StatelessWidget {
                       return const Center(child: CircularProgressIndicator());
                     }
                     return _buildWorkoutsCardWidget(
-                        context, archiveWorkouts, scrollController, true);
+                      context,
+                      archiveWorkouts,
+                      scrollController,
+                      true,
+                    );
                   },
                   loaded: (workouts) => _buildWorkoutsCardWidget(
-                      context, workouts, scrollController, false),
+                    context,
+                    workouts,
+                    scrollController,
+                    false,
+                  ),
                   error: (error) => const SizedBox(),
                 );
               },

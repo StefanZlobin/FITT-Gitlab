@@ -189,7 +189,8 @@ class ClubCubit extends Cubit<ClubState> {
   void selectDateSlot(DateTime date) {
     if (_clubState.dateSlots!.hasEnabledChildren &&
         date.isAtSameMomentAs(
-            _clubState.dateSlots!.enabledChildren.single.details)) {
+          _clubState.dateSlots!.enabledChildren.single.details,
+        )) {
       return;
     }
 
@@ -218,7 +219,8 @@ class ClubCubit extends Cubit<ClubState> {
   void selectTimeSlot(DateTime time) {
     if (_clubState.timeSlots!.hasEnabledChildren &&
         time.isAtSameMomentAs(
-            _clubState.timeSlots!.enabledChildren.single.details)) {
+          _clubState.timeSlots!.enabledChildren.single.details,
+        )) {
       return;
     }
 
@@ -231,11 +233,7 @@ class ClubCubit extends Cubit<ClubState> {
 
     _clubState = newState;
 
-    if (selectedSlot?.id != null) {
-      slotUuid = selectedSlot!.id;
-    } else {
-      slotUuid = flatSlots.first.id;
-    }
+    slotUuid = selectedSlot?.id != null ? selectedSlot!.id : flatSlots.first.id;
 
     emit(_ClubStateLoaded(
       club: _clubState.club,

@@ -32,8 +32,7 @@ class EmptyStateWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Text(
                     mainText,
-                    style:
-                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                     textAlign: TextAlign.center,
                   ),
                 ),

@@ -19,8 +19,7 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
   }
 
   // TODO: remove extent
-  final SnapScrollListController _listScrollController =
-      SnapScrollListController(itemExtent: 256);
+  final SnapScrollListController _listScrollController = SnapScrollListController(itemExtent: 256);
   SnapScrollListController get scrollController => _listScrollController;
 
   Completer<List<PartnerClub>>? _partnerClubsCompleter;

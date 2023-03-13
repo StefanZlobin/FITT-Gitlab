@@ -124,8 +124,14 @@ class _SearchFieldState extends State<SearchField> {
                   return state.when(
                     initial: () => const SizedBox(),
                     error: (error) => const SizedBox(),
-                    loaded: (filters, selectedFacilities, _, __, isPriceUpdate,
-                        activeFacilitiesList) {
+                    loaded: (
+                      filters,
+                      selectedFacilities,
+                      _,
+                      __,
+                      isPriceUpdate,
+                      activeFacilitiesList,
+                    ) {
                       final countActiveFacilities =
                           activeFacilitiesList?.length ?? 0;
                       final countActiveFilters =
@@ -174,6 +180,7 @@ class _SearchFieldState extends State<SearchField> {
       borderRadius: superellipseRadius(7),
       onFocusChanged: (isFocused) {
         if (isFocused) {
+          // ignore: no-empty-block
           setState(() {});
         }
       },

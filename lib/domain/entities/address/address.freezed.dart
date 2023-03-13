@@ -34,8 +34,7 @@ mixin _$Address {
 
 /// @nodoc
 abstract class $AddressCopyWith<$Res> {
-  factory $AddressCopyWith(Address value, $Res Function(Address) then) =
-      _$AddressCopyWithImpl<$Res, Address>;
+  factory $AddressCopyWith(Address value, $Res Function(Address) then) = _$AddressCopyWithImpl<$Res, Address>;
   @useResult
   $Res call(
       {@JsonKey(name: 'short_address') String shortAddress,
@@ -44,8 +43,7 @@ abstract class $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddressCopyWithImpl<$Res, $Val extends Address>
-    implements $AddressCopyWith<$Res> {
+class _$AddressCopyWithImpl<$Res, $Val extends Address> implements $AddressCopyWith<$Res> {
   _$AddressCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -79,9 +77,7 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
 
 /// @nodoc
 abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
-  factory _$$_AddressCopyWith(
-          _$_Address value, $Res Function(_$_Address) then) =
-      __$$_AddressCopyWithImpl<$Res>;
+  factory _$$_AddressCopyWith(_$_Address value, $Res Function(_$_Address) then) = __$$_AddressCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -91,11 +87,9 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddressCopyWithImpl<$Res>
-    extends _$AddressCopyWithImpl<$Res, _$_Address>
+class __$$_AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res, _$_Address>
     implements _$$_AddressCopyWith<$Res> {
-  __$$_AddressCopyWithImpl(_$_Address _value, $Res Function(_$_Address) _then)
-      : super(_value, _then);
+  __$$_AddressCopyWithImpl(_$_Address _value, $Res Function(_$_Address) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -129,8 +123,7 @@ class _$_Address implements _Address {
       @JsonKey(name: 'coordinates') required this.coordinates,
       @JsonKey(name: 'detail_path') this.detailPath});
 
-  factory _$_Address.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressFromJson(json);
+  factory _$_Address.fromJson(Map<String, dynamic> json) => _$$_AddressFromJson(json);
 
   @override
   @JsonKey(name: 'short_address')
@@ -152,24 +145,19 @@ class _$_Address implements _Address {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Address &&
-            (identical(other.shortAddress, shortAddress) ||
-                other.shortAddress == shortAddress) &&
-            (identical(other.coordinates, coordinates) ||
-                other.coordinates == coordinates) &&
-            (identical(other.detailPath, detailPath) ||
-                other.detailPath == detailPath));
+            (identical(other.shortAddress, shortAddress) || other.shortAddress == shortAddress) &&
+            (identical(other.coordinates, coordinates) || other.coordinates == coordinates) &&
+            (identical(other.detailPath, detailPath) || other.detailPath == detailPath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, shortAddress, coordinates, detailPath);
+  int get hashCode => Object.hash(runtimeType, shortAddress, coordinates, detailPath);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddressCopyWith<_$_Address> get copyWith =>
-      __$$_AddressCopyWithImpl<_$_Address>(this, _$identity);
+  _$$_AddressCopyWith<_$_Address> get copyWith => __$$_AddressCopyWithImpl<_$_Address>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -198,6 +186,5 @@ abstract class _Address implements Address {
   String? get detailPath;
   @override
   @JsonKey(ignore: true)
-  _$$_AddressCopyWith<_$_Address> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AddressCopyWith<_$_Address> get copyWith => throw _privateConstructorUsedError;
 }

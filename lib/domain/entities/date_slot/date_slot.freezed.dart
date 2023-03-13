@@ -26,22 +26,18 @@ mixin _$DateSlot {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DateSlotCopyWith<DateSlot> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DateSlotCopyWith<DateSlot> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DateSlotCopyWith<$Res> {
-  factory $DateSlotCopyWith(DateSlot value, $Res Function(DateSlot) then) =
-      _$DateSlotCopyWithImpl<$Res, DateSlot>;
+  factory $DateSlotCopyWith(DateSlot value, $Res Function(DateSlot) then) = _$DateSlotCopyWithImpl<$Res, DateSlot>;
   @useResult
-  $Res call(
-      {DateTime date, @JsonKey(name: 'time_slots') List<TimeSlot>? timeSlots});
+  $Res call({DateTime date, @JsonKey(name: 'time_slots') List<TimeSlot>? timeSlots});
 }
 
 /// @nodoc
-class _$DateSlotCopyWithImpl<$Res, $Val extends DateSlot>
-    implements $DateSlotCopyWith<$Res> {
+class _$DateSlotCopyWithImpl<$Res, $Val extends DateSlot> implements $DateSlotCopyWith<$Res> {
   _$DateSlotCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -70,22 +66,16 @@ class _$DateSlotCopyWithImpl<$Res, $Val extends DateSlot>
 
 /// @nodoc
 abstract class _$$_DateSlotCopyWith<$Res> implements $DateSlotCopyWith<$Res> {
-  factory _$$_DateSlotCopyWith(
-          _$_DateSlot value, $Res Function(_$_DateSlot) then) =
-      __$$_DateSlotCopyWithImpl<$Res>;
+  factory _$$_DateSlotCopyWith(_$_DateSlot value, $Res Function(_$_DateSlot) then) = __$$_DateSlotCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DateTime date, @JsonKey(name: 'time_slots') List<TimeSlot>? timeSlots});
+  $Res call({DateTime date, @JsonKey(name: 'time_slots') List<TimeSlot>? timeSlots});
 }
 
 /// @nodoc
-class __$$_DateSlotCopyWithImpl<$Res>
-    extends _$DateSlotCopyWithImpl<$Res, _$_DateSlot>
+class __$$_DateSlotCopyWithImpl<$Res> extends _$DateSlotCopyWithImpl<$Res, _$_DateSlot>
     implements _$$_DateSlotCopyWith<$Res> {
-  __$$_DateSlotCopyWithImpl(
-      _$_DateSlot _value, $Res Function(_$_DateSlot) _then)
-      : super(_value, _then);
+  __$$_DateSlotCopyWithImpl(_$_DateSlot _value, $Res Function(_$_DateSlot) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -109,13 +99,10 @@ class __$$_DateSlotCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DateSlot implements _DateSlot {
-  _$_DateSlot(
-      {required this.date,
-      @JsonKey(name: 'time_slots') required final List<TimeSlot>? timeSlots})
+  _$_DateSlot({required this.date, @JsonKey(name: 'time_slots') required final List<TimeSlot>? timeSlots})
       : _timeSlots = timeSlots;
 
-  factory _$_DateSlot.fromJson(Map<String, dynamic> json) =>
-      _$$_DateSlotFromJson(json);
+  factory _$_DateSlot.fromJson(Map<String, dynamic> json) => _$$_DateSlotFromJson(json);
 
   @override
   final DateTime date;
@@ -141,20 +128,17 @@ class _$_DateSlot implements _DateSlot {
         (other.runtimeType == runtimeType &&
             other is _$_DateSlot &&
             (identical(other.date, date) || other.date == date) &&
-            const DeepCollectionEquality()
-                .equals(other._timeSlots, _timeSlots));
+            const DeepCollectionEquality().equals(other._timeSlots, _timeSlots));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, date, const DeepCollectionEquality().hash(_timeSlots));
+  int get hashCode => Object.hash(runtimeType, date, const DeepCollectionEquality().hash(_timeSlots));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DateSlotCopyWith<_$_DateSlot> get copyWith =>
-      __$$_DateSlotCopyWithImpl<_$_DateSlot>(this, _$identity);
+  _$$_DateSlotCopyWith<_$_DateSlot> get copyWith => __$$_DateSlotCopyWithImpl<_$_DateSlot>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -167,8 +151,7 @@ class _$_DateSlot implements _DateSlot {
 abstract class _DateSlot implements DateSlot {
   factory _DateSlot(
       {required final DateTime date,
-      @JsonKey(name: 'time_slots')
-          required final List<TimeSlot>? timeSlots}) = _$_DateSlot;
+      @JsonKey(name: 'time_slots') required final List<TimeSlot>? timeSlots}) = _$_DateSlot;
 
   factory _DateSlot.fromJson(Map<String, dynamic> json) = _$_DateSlot.fromJson;
 
@@ -179,6 +162,5 @@ abstract class _DateSlot implements DateSlot {
   List<TimeSlot>? get timeSlots;
   @override
   @JsonKey(ignore: true)
-  _$$_DateSlotCopyWith<_$_DateSlot> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_DateSlotCopyWith<_$_DateSlot> get copyWith => throw _privateConstructorUsedError;
 }

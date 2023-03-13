@@ -57,22 +57,19 @@ mixin _$ClubPhotoSliderState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ClubPhotoSliderStateCopyWith<ClubPhotoSliderState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ClubPhotoSliderStateCopyWith<ClubPhotoSliderState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ClubPhotoSliderStateCopyWith<$Res> {
-  factory $ClubPhotoSliderStateCopyWith(ClubPhotoSliderState value,
-          $Res Function(ClubPhotoSliderState) then) =
+  factory $ClubPhotoSliderStateCopyWith(ClubPhotoSliderState value, $Res Function(ClubPhotoSliderState) then) =
       _$ClubPhotoSliderStateCopyWithImpl<$Res, ClubPhotoSliderState>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class _$ClubPhotoSliderStateCopyWithImpl<$Res,
-        $Val extends ClubPhotoSliderState>
+class _$ClubPhotoSliderStateCopyWithImpl<$Res, $Val extends ClubPhotoSliderState>
     implements $ClubPhotoSliderStateCopyWith<$Res> {
   _$ClubPhotoSliderStateCopyWithImpl(this._value, this._then);
 
@@ -96,11 +93,9 @@ class _$ClubPhotoSliderStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClubPhotoSliderStateInitialCopyWith<$Res>
-    implements $ClubPhotoSliderStateCopyWith<$Res> {
+abstract class _$$_ClubPhotoSliderStateInitialCopyWith<$Res> implements $ClubPhotoSliderStateCopyWith<$Res> {
   factory _$$_ClubPhotoSliderStateInitialCopyWith(
-          _$_ClubPhotoSliderStateInitial value,
-          $Res Function(_$_ClubPhotoSliderStateInitial) then) =
+          _$_ClubPhotoSliderStateInitial value, $Res Function(_$_ClubPhotoSliderStateInitial) then) =
       __$$_ClubPhotoSliderStateInitialCopyWithImpl<$Res>;
   @override
   @useResult
@@ -109,12 +104,10 @@ abstract class _$$_ClubPhotoSliderStateInitialCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClubPhotoSliderStateInitialCopyWithImpl<$Res>
-    extends _$ClubPhotoSliderStateCopyWithImpl<$Res,
-        _$_ClubPhotoSliderStateInitial>
+    extends _$ClubPhotoSliderStateCopyWithImpl<$Res, _$_ClubPhotoSliderStateInitial>
     implements _$$_ClubPhotoSliderStateInitialCopyWith<$Res> {
   __$$_ClubPhotoSliderStateInitialCopyWithImpl(
-      _$_ClubPhotoSliderStateInitial _value,
-      $Res Function(_$_ClubPhotoSliderStateInitial) _then)
+      _$_ClubPhotoSliderStateInitial _value, $Res Function(_$_ClubPhotoSliderStateInitial) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -158,9 +151,8 @@ class _$_ClubPhotoSliderStateInitial implements _ClubPhotoSliderStateInitial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubPhotoSliderStateInitialCopyWith<_$_ClubPhotoSliderStateInitial>
-      get copyWith => __$$_ClubPhotoSliderStateInitialCopyWithImpl<
-          _$_ClubPhotoSliderStateInitial>(this, _$identity);
+  _$$_ClubPhotoSliderStateInitialCopyWith<_$_ClubPhotoSliderStateInitial> get copyWith =>
+      __$$_ClubPhotoSliderStateInitialCopyWithImpl<_$_ClubPhotoSliderStateInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -226,23 +218,20 @@ class _$_ClubPhotoSliderStateInitial implements _ClubPhotoSliderStateInitial {
 }
 
 abstract class _ClubPhotoSliderStateInitial implements ClubPhotoSliderState {
-  const factory _ClubPhotoSliderStateInitial({required final int index}) =
-      _$_ClubPhotoSliderStateInitial;
+  const factory _ClubPhotoSliderStateInitial({required final int index}) = _$_ClubPhotoSliderStateInitial;
 
   @override
   int get index;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubPhotoSliderStateInitialCopyWith<_$_ClubPhotoSliderStateInitial>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_ClubPhotoSliderStateInitialCopyWith<_$_ClubPhotoSliderStateInitial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClubPhotoSliderStateLoadedCopyWith<$Res>
-    implements $ClubPhotoSliderStateCopyWith<$Res> {
+abstract class _$$_ClubPhotoSliderStateLoadedCopyWith<$Res> implements $ClubPhotoSliderStateCopyWith<$Res> {
   factory _$$_ClubPhotoSliderStateLoadedCopyWith(
-          _$_ClubPhotoSliderStateLoaded value,
-          $Res Function(_$_ClubPhotoSliderStateLoaded) then) =
+          _$_ClubPhotoSliderStateLoaded value, $Res Function(_$_ClubPhotoSliderStateLoaded) then) =
       __$$_ClubPhotoSliderStateLoadedCopyWithImpl<$Res>;
   @override
   @useResult
@@ -251,12 +240,10 @@ abstract class _$$_ClubPhotoSliderStateLoadedCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClubPhotoSliderStateLoadedCopyWithImpl<$Res>
-    extends _$ClubPhotoSliderStateCopyWithImpl<$Res,
-        _$_ClubPhotoSliderStateLoaded>
+    extends _$ClubPhotoSliderStateCopyWithImpl<$Res, _$_ClubPhotoSliderStateLoaded>
     implements _$$_ClubPhotoSliderStateLoadedCopyWith<$Res> {
   __$$_ClubPhotoSliderStateLoadedCopyWithImpl(
-      _$_ClubPhotoSliderStateLoaded _value,
-      $Res Function(_$_ClubPhotoSliderStateLoaded) _then)
+      _$_ClubPhotoSliderStateLoaded _value, $Res Function(_$_ClubPhotoSliderStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -300,9 +287,8 @@ class _$_ClubPhotoSliderStateLoaded implements _ClubPhotoSliderStateLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubPhotoSliderStateLoadedCopyWith<_$_ClubPhotoSliderStateLoaded>
-      get copyWith => __$$_ClubPhotoSliderStateLoadedCopyWithImpl<
-          _$_ClubPhotoSliderStateLoaded>(this, _$identity);
+  _$$_ClubPhotoSliderStateLoadedCopyWith<_$_ClubPhotoSliderStateLoaded> get copyWith =>
+      __$$_ClubPhotoSliderStateLoadedCopyWithImpl<_$_ClubPhotoSliderStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -368,13 +354,12 @@ class _$_ClubPhotoSliderStateLoaded implements _ClubPhotoSliderStateLoaded {
 }
 
 abstract class _ClubPhotoSliderStateLoaded implements ClubPhotoSliderState {
-  const factory _ClubPhotoSliderStateLoaded({required final int index}) =
-      _$_ClubPhotoSliderStateLoaded;
+  const factory _ClubPhotoSliderStateLoaded({required final int index}) = _$_ClubPhotoSliderStateLoaded;
 
   @override
   int get index;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubPhotoSliderStateLoadedCopyWith<_$_ClubPhotoSliderStateLoaded>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_ClubPhotoSliderStateLoadedCopyWith<_$_ClubPhotoSliderStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -62,8 +62,7 @@ class MenuButton extends StatelessWidget {
                       child: Center(
                         child: Text(
                           '$countWorkout',
-                          style: AppTypography.kBody10
-                              .apply(color: AppColors.kBaseWhite),
+                          style: AppTypography.kBody10.apply(color: AppColors.kBaseWhite),
                         ),
                       ),
                     ),

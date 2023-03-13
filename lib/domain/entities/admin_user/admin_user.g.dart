@@ -13,8 +13,7 @@ _$_AdminUser _$$_AdminUserFromJson(Map<String, dynamic> json) => _$_AdminUser(
       userId: json['check_num'] as String?,
     );
 
-Map<String, dynamic> _$$_AdminUserToJson(_$_AdminUser instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_AdminUserToJson(_$_AdminUser instance) => <String, dynamic>{
       'fullname': instance.fullname,
       'age': instance.age,
       'gender': _$UserGenderEnumEnumMap[instance.gender],

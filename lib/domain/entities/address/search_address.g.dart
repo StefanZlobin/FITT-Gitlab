@@ -6,8 +6,7 @@ part of 'search_address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SearchAddress _$$_SearchAddressFromJson(Map<String, dynamic> json) =>
-    _$_SearchAddress(
+_$_SearchAddress _$$_SearchAddressFromJson(Map<String, dynamic> json) => _$_SearchAddress(
       country: json['country'] as String,
       shortAddress: json['short_address'] as String,
       suggestionAddress: json['suggestion_address'] as String,
@@ -22,8 +21,7 @@ _$_SearchAddress _$$_SearchAddressFromJson(Map<String, dynamic> json) =>
       longitude: (json['geo_lon'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_SearchAddressToJson(_$_SearchAddress instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_SearchAddressToJson(_$_SearchAddress instance) => <String, dynamic>{
       'country': instance.country,
       'short_address': instance.shortAddress,
       'suggestion_address': instance.suggestionAddress,

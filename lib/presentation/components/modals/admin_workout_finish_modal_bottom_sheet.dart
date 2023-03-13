@@ -38,8 +38,7 @@ class AdminWorkoutFinishModalBottomSheet extends StatelessWidget {
             initial: () => _buildFinishedWorkoutPullup(),
             inputLockerNumber: (_) => const SizedBox(),
             forceFinish: (showCommentForm, reason, comment) =>
-                _buildForceFinishWorkoutPullup(
-                    showCommentForm, reason, comment, context),
+                _buildForceFinishWorkoutPullup(showCommentForm, reason, comment, context),
           ),
         );
       },
@@ -128,14 +127,12 @@ class AdminWorkoutFinishModalBottomSheet extends StatelessWidget {
         AppElevatedButton(
           marginButton: const EdgeInsets.fromLTRB(24, 24, 24, 24),
           textButton: const Text('Готово'),
-          isDisable:
-              reason == null || reason == AdminWorkoutFinishReasonEnum.none,
+          isDisable: reason == null || reason == AdminWorkoutFinishReasonEnum.none,
           onPressedAsync: () async {
             await getIt<AdminWorkoutCubit>()
                 .forceFinishUserWorkout(
                   adminWorkoutUuid: adminWorkoutUuid,
-                  adminWorkoutFinishReasonEnum:
-                      reason ?? AdminWorkoutFinishReasonEnum.none,
+                  adminWorkoutFinishReasonEnum: reason ?? AdminWorkoutFinishReasonEnum.none,
                   comment: comment,
                 )
                 .then((value) => context.pop());

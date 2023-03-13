@@ -118,8 +118,7 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
                 style: AppTypography.kH14.apply(color: AppColors.kOxford40),
               ),
             ),
-            _buildPickTimeWidget(
-                timeSlots, dateSlots, lastAvailableDateSelected),
+            _buildPickTimeWidget(timeSlots, dateSlots, lastAvailableDateSelected),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
               child: Text(
@@ -181,12 +180,9 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
   ) {
     return AppElevatedButton(
       isDisable: !club.payAvailable!,
-      errorText:
-          club.payAvailable! ? null : const Text('Подключаем Банк к клубу'),
+      errorText: club.payAvailable! ? null : const Text('Подключаем Банк к клубу'),
       onPressedAsync: () async {
-        if (!userController.hasValue ||
-            userController == null ||
-            userSnapshot == null) {
+        if (!userController.hasValue || userController == null || userSnapshot == null) {
           context.push(AppRoute.inputPhoneNumber.routeToPath);
         } else if (!userSnapshot!.hasFullData) {
           context.pushNamed(
@@ -252,8 +248,7 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
     );
   }
 
-  Widget _buildPickDurationWidget(
-      FilterGroup<bool, ToggledFilter<Duration>> durationSlots) {
+  Widget _buildPickDurationWidget(FilterGroup<bool, ToggledFilter<Duration>> durationSlots) {
     return SizedBox(
       height: 40,
       child: ListView(
@@ -266,8 +261,7 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
               selectedSlot: '${durationSlot.details.inMinutes} м',
               isActive: durationSlot.value,
               isBig: true,
-              onPressed: () =>
-                  getIt<ClubCubit>().selectDurationSlot(durationSlot.details),
+              onPressed: () => getIt<ClubCubit>().selectDurationSlot(durationSlot.details),
             ),
           ),
         ],
@@ -292,8 +286,7 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
               selectedSlot: DateTimeUtils.timeFormat.format(timeSlot.details),
               isActive: timeSlot.value,
               isBig: false,
-              onPressed: () =>
-                  getIt<ClubCubit>().selectTimeSlot(timeSlot.details),
+              onPressed: () => getIt<ClubCubit>().selectTimeSlot(timeSlot.details),
             ),
           ),
           if (!lastAvailableDateSelected) _buildNextDayButton(dateSlots),
@@ -302,13 +295,10 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
     );
   }
 
-  Widget _buildNextDayButton(
-      FilterGroup<bool, ToggledFilter<DateTime>> dateSlots) {
+  Widget _buildNextDayButton(FilterGroup<bool, ToggledFilter<DateTime>> dateSlots) {
     return GestureDetector(
-      onTap: () => getIt<ClubCubit>().selectDateSlot(dateSlots
-          .children[
-              dateSlots.children.indexOf(dateSlots.enabledChildren.single) + 1]
-          .details),
+      onTap: () => getIt<ClubCubit>()
+          .selectDateSlot(dateSlots.children[dateSlots.children.indexOf(dateSlots.enabledChildren.single) + 1].details),
       child: Container(
         height: 40,
         width: 106,
@@ -328,11 +318,8 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
           children: [
             const SizedBox(width: 16),
             Text(
-              DateFormat.MMMMd().format(dateSlots
-                  .children[dateSlots.children
-                          .indexOf(dateSlots.enabledChildren.single) +
-                      1]
-                  .details),
+              DateFormat.MMMMd()
+                  .format(dateSlots.children[dateSlots.children.indexOf(dateSlots.enabledChildren.single) + 1].details),
               style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
             ),
             const SizedBox(width: 8),
@@ -347,8 +334,7 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
     );
   }
 
-  Widget _buildPickDateWidget(
-      FilterGroup<bool, ToggledFilter<DateTime>> dateSlots) {
+  Widget _buildPickDateWidget(FilterGroup<bool, ToggledFilter<DateTime>> dateSlots) {
     return Container(
       height: 144,
       margin: const EdgeInsets.only(top: 24),
@@ -361,12 +347,10 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
             (dateSlot) => DayTile(
               dateSlot: dateSlot.details,
               active: dateSlot.value,
-              onPressed: () =>
-                  getIt<ClubCubit>().selectDateSlot(dateSlot.details),
+              onPressed: () => getIt<ClubCubit>().selectDateSlot(dateSlot.details),
             ),
           ),
-          const DayTilePlaceholder(
-              whenAvailable: 'Бронь будет доступна завтра'),
+          const DayTilePlaceholder(whenAvailable: 'Бронь будет доступна завтра'),
         ],
       ),
     );

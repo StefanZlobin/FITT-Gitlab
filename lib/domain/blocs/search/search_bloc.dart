@@ -29,12 +29,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   final searchUseCase = SearchUseCase();
 
-  Future<void> _onSearch(
-      _SearchEventSearch event, Emitter<SearchState> emit) async {
+  Future<void> _onSearch(_SearchEventSearch event, Emitter<SearchState> emit) async {
     if (event.query.length < 3) return;
     try {
-      final addressSuggestions =
-          await searchUseCase.getAddressSuggestions(query: event.query);
+      final addressSuggestions = await searchUseCase.getAddressSuggestions(query: event.query);
       emit(SearchState.loaded(searchAddress: addressSuggestions));
     } on Exception catch (e) {
       emit(SearchState.error(error: e.toString()));

@@ -2,8 +2,7 @@ import 'package:formz/formz.dart';
 
 enum AccountUserFirstNameValidationError { empty }
 
-class AccountUserFirstName
-    extends FormzInput<String, AccountUserFirstNameValidationError> {
+class AccountUserFirstName extends FormzInput<String, AccountUserFirstNameValidationError> {
   const AccountUserFirstName.pure() : super.pure('');
   const AccountUserFirstName.dirty([super.value = '']) : super.dirty();
 

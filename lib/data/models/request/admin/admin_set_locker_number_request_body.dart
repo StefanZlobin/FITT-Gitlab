@@ -13,6 +13,5 @@ class AdminSetLockerNumberRequestBody {
 
   factory AdminSetLockerNumberRequestBody.fromJson(Map<String, dynamic> json) =>
       _$AdminSetLockerNumberRequestBodyFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$AdminSetLockerNumberRequestBodyToJson(this);
+  Map<String, dynamic> toJson() => _$AdminSetLockerNumberRequestBodyToJson(this);
 }

@@ -47,14 +47,18 @@ class _CompactMapState extends State<CompactMap> {
             Marker(
               markerId: MarkerId('club${widget.clubCoordinates}'),
               icon: marker,
-              position: LatLng(widget.clubCoordinates.latitude,
-                  widget.clubCoordinates.longitude),
-            )
+              position: LatLng(
+                widget.clubCoordinates.latitude,
+                widget.clubCoordinates.longitude,
+              ),
+            ),
           },
           initialCameraPosition: CameraPosition(
             zoom: 16,
-            target: LatLng(widget.clubCoordinates.latitude,
-                widget.clubCoordinates.longitude),
+            target: LatLng(
+              widget.clubCoordinates.latitude,
+              widget.clubCoordinates.longitude,
+            ),
           ),
         ),
       ),

@@ -14,9 +14,7 @@ class HeaderRoundedContainerLine extends StatelessWidget {
     return Container(
       width: 56,
       height: 5,
-      margin: bigPadding
-          ? const EdgeInsets.only(top: 16, bottom: 51)
-          : const EdgeInsets.only(top: 16, bottom: 19),
+      margin: bigPadding ? const EdgeInsets.only(top: 16, bottom: 51) : const EdgeInsets.only(top: 16, bottom: 19),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: AppColors.kOxford20,

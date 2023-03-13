@@ -64,14 +64,12 @@ mixin _$BuyWorkoutState {
 
 /// @nodoc
 abstract class $BuyWorkoutStateCopyWith<$Res> {
-  factory $BuyWorkoutStateCopyWith(
-          BuyWorkoutState value, $Res Function(BuyWorkoutState) then) =
+  factory $BuyWorkoutStateCopyWith(BuyWorkoutState value, $Res Function(BuyWorkoutState) then) =
       _$BuyWorkoutStateCopyWithImpl<$Res, BuyWorkoutState>;
 }
 
 /// @nodoc
-class _$BuyWorkoutStateCopyWithImpl<$Res, $Val extends BuyWorkoutState>
-    implements $BuyWorkoutStateCopyWith<$Res> {
+class _$BuyWorkoutStateCopyWithImpl<$Res, $Val extends BuyWorkoutState> implements $BuyWorkoutStateCopyWith<$Res> {
   _$BuyWorkoutStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -82,8 +80,8 @@ class _$BuyWorkoutStateCopyWithImpl<$Res, $Val extends BuyWorkoutState>
 
 /// @nodoc
 abstract class _$$_BuyWorkoutStateInitialCopyWith<$Res> {
-  factory _$$_BuyWorkoutStateInitialCopyWith(_$_BuyWorkoutStateInitial value,
-          $Res Function(_$_BuyWorkoutStateInitial) then) =
+  factory _$$_BuyWorkoutStateInitialCopyWith(
+          _$_BuyWorkoutStateInitial value, $Res Function(_$_BuyWorkoutStateInitial) then) =
       __$$_BuyWorkoutStateInitialCopyWithImpl<$Res>;
 }
 
@@ -91,8 +89,8 @@ abstract class _$$_BuyWorkoutStateInitialCopyWith<$Res> {
 class __$$_BuyWorkoutStateInitialCopyWithImpl<$Res>
     extends _$BuyWorkoutStateCopyWithImpl<$Res, _$_BuyWorkoutStateInitial>
     implements _$$_BuyWorkoutStateInitialCopyWith<$Res> {
-  __$$_BuyWorkoutStateInitialCopyWithImpl(_$_BuyWorkoutStateInitial _value,
-      $Res Function(_$_BuyWorkoutStateInitial) _then)
+  __$$_BuyWorkoutStateInitialCopyWithImpl(
+      _$_BuyWorkoutStateInitial _value, $Res Function(_$_BuyWorkoutStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -108,9 +106,7 @@ class _$_BuyWorkoutStateInitial implements _BuyWorkoutStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_BuyWorkoutStateInitial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_BuyWorkoutStateInitial);
   }
 
   @override
@@ -191,8 +187,8 @@ abstract class _BuyWorkoutStateInitial implements BuyWorkoutState {
 
 /// @nodoc
 abstract class _$$_BuyWorkoutStateLoadedCopyWith<$Res> {
-  factory _$$_BuyWorkoutStateLoadedCopyWith(_$_BuyWorkoutStateLoaded value,
-          $Res Function(_$_BuyWorkoutStateLoaded) then) =
+  factory _$$_BuyWorkoutStateLoadedCopyWith(
+          _$_BuyWorkoutStateLoaded value, $Res Function(_$_BuyWorkoutStateLoaded) then) =
       __$$_BuyWorkoutStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({Workout workout});
@@ -201,11 +197,9 @@ abstract class _$$_BuyWorkoutStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_BuyWorkoutStateLoadedCopyWithImpl<$Res>
-    extends _$BuyWorkoutStateCopyWithImpl<$Res, _$_BuyWorkoutStateLoaded>
+class __$$_BuyWorkoutStateLoadedCopyWithImpl<$Res> extends _$BuyWorkoutStateCopyWithImpl<$Res, _$_BuyWorkoutStateLoaded>
     implements _$$_BuyWorkoutStateLoadedCopyWith<$Res> {
-  __$$_BuyWorkoutStateLoadedCopyWithImpl(_$_BuyWorkoutStateLoaded _value,
-      $Res Function(_$_BuyWorkoutStateLoaded) _then)
+  __$$_BuyWorkoutStateLoadedCopyWithImpl(_$_BuyWorkoutStateLoaded _value, $Res Function(_$_BuyWorkoutStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -258,8 +252,7 @@ class _$_BuyWorkoutStateLoaded implements _BuyWorkoutStateLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$_BuyWorkoutStateLoadedCopyWith<_$_BuyWorkoutStateLoaded> get copyWith =>
-      __$$_BuyWorkoutStateLoadedCopyWithImpl<_$_BuyWorkoutStateLoaded>(
-          this, _$identity);
+      __$$_BuyWorkoutStateLoadedCopyWithImpl<_$_BuyWorkoutStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -331,30 +324,25 @@ class _$_BuyWorkoutStateLoaded implements _BuyWorkoutStateLoaded {
 }
 
 abstract class _BuyWorkoutStateLoaded implements BuyWorkoutState {
-  const factory _BuyWorkoutStateLoaded({required final Workout workout}) =
-      _$_BuyWorkoutStateLoaded;
+  const factory _BuyWorkoutStateLoaded({required final Workout workout}) = _$_BuyWorkoutStateLoaded;
 
   Workout get workout;
   @JsonKey(ignore: true)
-  _$$_BuyWorkoutStateLoadedCopyWith<_$_BuyWorkoutStateLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_BuyWorkoutStateLoadedCopyWith<_$_BuyWorkoutStateLoaded> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_BuyWorkoutStateErrorCopyWith<$Res> {
-  factory _$$_BuyWorkoutStateErrorCopyWith(_$_BuyWorkoutStateError value,
-          $Res Function(_$_BuyWorkoutStateError) then) =
+  factory _$$_BuyWorkoutStateErrorCopyWith(_$_BuyWorkoutStateError value, $Res Function(_$_BuyWorkoutStateError) then) =
       __$$_BuyWorkoutStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_BuyWorkoutStateErrorCopyWithImpl<$Res>
-    extends _$BuyWorkoutStateCopyWithImpl<$Res, _$_BuyWorkoutStateError>
+class __$$_BuyWorkoutStateErrorCopyWithImpl<$Res> extends _$BuyWorkoutStateCopyWithImpl<$Res, _$_BuyWorkoutStateError>
     implements _$$_BuyWorkoutStateErrorCopyWith<$Res> {
-  __$$_BuyWorkoutStateErrorCopyWithImpl(_$_BuyWorkoutStateError _value,
-      $Res Function(_$_BuyWorkoutStateError) _then)
+  __$$_BuyWorkoutStateErrorCopyWithImpl(_$_BuyWorkoutStateError _value, $Res Function(_$_BuyWorkoutStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -399,8 +387,7 @@ class _$_BuyWorkoutStateError implements _BuyWorkoutStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_BuyWorkoutStateErrorCopyWith<_$_BuyWorkoutStateError> get copyWith =>
-      __$$_BuyWorkoutStateErrorCopyWithImpl<_$_BuyWorkoutStateError>(
-          this, _$identity);
+      __$$_BuyWorkoutStateErrorCopyWithImpl<_$_BuyWorkoutStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -472,11 +459,9 @@ class _$_BuyWorkoutStateError implements _BuyWorkoutStateError {
 }
 
 abstract class _BuyWorkoutStateError implements BuyWorkoutState {
-  const factory _BuyWorkoutStateError({required final String error}) =
-      _$_BuyWorkoutStateError;
+  const factory _BuyWorkoutStateError({required final String error}) = _$_BuyWorkoutStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_BuyWorkoutStateErrorCopyWith<_$_BuyWorkoutStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_BuyWorkoutStateErrorCopyWith<_$_BuyWorkoutStateError> get copyWith => throw _privateConstructorUsedError;
 }

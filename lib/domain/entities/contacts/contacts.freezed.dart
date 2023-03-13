@@ -29,14 +29,12 @@ mixin _$Contacts {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ContactsCopyWith<Contacts> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ContactsCopyWith<Contacts> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ContactsCopyWith<$Res> {
-  factory $ContactsCopyWith(Contacts value, $Res Function(Contacts) then) =
-      _$ContactsCopyWithImpl<$Res, Contacts>;
+  factory $ContactsCopyWith(Contacts value, $Res Function(Contacts) then) = _$ContactsCopyWithImpl<$Res, Contacts>;
   @useResult
   $Res call(
       {@JsonKey(name: 'owner_str') String owner,
@@ -45,8 +43,7 @@ abstract class $ContactsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ContactsCopyWithImpl<$Res, $Val extends Contacts>
-    implements $ContactsCopyWith<$Res> {
+class _$ContactsCopyWithImpl<$Res, $Val extends Contacts> implements $ContactsCopyWith<$Res> {
   _$ContactsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -80,9 +77,7 @@ class _$ContactsCopyWithImpl<$Res, $Val extends Contacts>
 
 /// @nodoc
 abstract class _$$_ContactsCopyWith<$Res> implements $ContactsCopyWith<$Res> {
-  factory _$$_ContactsCopyWith(
-          _$_Contacts value, $Res Function(_$_Contacts) then) =
-      __$$_ContactsCopyWithImpl<$Res>;
+  factory _$$_ContactsCopyWith(_$_Contacts value, $Res Function(_$_Contacts) then) = __$$_ContactsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -92,12 +87,9 @@ abstract class _$$_ContactsCopyWith<$Res> implements $ContactsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ContactsCopyWithImpl<$Res>
-    extends _$ContactsCopyWithImpl<$Res, _$_Contacts>
+class __$$_ContactsCopyWithImpl<$Res> extends _$ContactsCopyWithImpl<$Res, _$_Contacts>
     implements _$$_ContactsCopyWith<$Res> {
-  __$$_ContactsCopyWithImpl(
-      _$_Contacts _value, $Res Function(_$_Contacts) _then)
-      : super(_value, _then);
+  __$$_ContactsCopyWithImpl(_$_Contacts _value, $Res Function(_$_Contacts) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -127,18 +119,14 @@ class __$$_ContactsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Contacts extends _Contacts {
   _$_Contacts(
-      {@JsonKey(name: 'owner_str')
-          required this.owner,
-      @JsonKey(name: 'phone_numbers')
-          required final List<PhoneNumber> phoneNumbers,
-      @JsonKey(name: 'emails')
-          required final List<Email> emails})
+      {@JsonKey(name: 'owner_str') required this.owner,
+      @JsonKey(name: 'phone_numbers') required final List<PhoneNumber> phoneNumbers,
+      @JsonKey(name: 'emails') required final List<Email> emails})
       : _phoneNumbers = phoneNumbers,
         _emails = emails,
         super._();
 
-  factory _$_Contacts.fromJson(Map<String, dynamic> json) =>
-      _$$_ContactsFromJson(json);
+  factory _$_Contacts.fromJson(Map<String, dynamic> json) => _$$_ContactsFromJson(json);
 
   @override
   @JsonKey(name: 'owner_str')
@@ -172,24 +160,19 @@ class _$_Contacts extends _Contacts {
         (other.runtimeType == runtimeType &&
             other is _$_Contacts &&
             (identical(other.owner, owner) || other.owner == owner) &&
-            const DeepCollectionEquality()
-                .equals(other._phoneNumbers, _phoneNumbers) &&
+            const DeepCollectionEquality().equals(other._phoneNumbers, _phoneNumbers) &&
             const DeepCollectionEquality().equals(other._emails, _emails));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      owner,
-      const DeepCollectionEquality().hash(_phoneNumbers),
+  int get hashCode => Object.hash(runtimeType, owner, const DeepCollectionEquality().hash(_phoneNumbers),
       const DeepCollectionEquality().hash(_emails));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContactsCopyWith<_$_Contacts> get copyWith =>
-      __$$_ContactsCopyWithImpl<_$_Contacts>(this, _$identity);
+  _$$_ContactsCopyWith<_$_Contacts> get copyWith => __$$_ContactsCopyWithImpl<_$_Contacts>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -201,12 +184,9 @@ class _$_Contacts extends _Contacts {
 
 abstract class _Contacts extends Contacts {
   factory _Contacts(
-      {@JsonKey(name: 'owner_str')
-          required final String owner,
-      @JsonKey(name: 'phone_numbers')
-          required final List<PhoneNumber> phoneNumbers,
-      @JsonKey(name: 'emails')
-          required final List<Email> emails}) = _$_Contacts;
+      {@JsonKey(name: 'owner_str') required final String owner,
+      @JsonKey(name: 'phone_numbers') required final List<PhoneNumber> phoneNumbers,
+      @JsonKey(name: 'emails') required final List<Email> emails}) = _$_Contacts;
   _Contacts._() : super._();
 
   factory _Contacts.fromJson(Map<String, dynamic> json) = _$_Contacts.fromJson;
@@ -222,6 +202,5 @@ abstract class _Contacts extends Contacts {
   List<Email> get emails;
   @override
   @JsonKey(ignore: true)
-  _$$_ContactsCopyWith<_$_Contacts> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ContactsCopyWith<_$_Contacts> get copyWith => throw _privateConstructorUsedError;
 }

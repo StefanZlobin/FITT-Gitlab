@@ -13,8 +13,7 @@ _$_MapPoint _$$_MapPointFromJson(Map<String, dynamic> json) => _$_MapPoint(
       data: MapPointData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MapPointToJson(_$_MapPoint instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_MapPointToJson(_$_MapPoint instance) => <String, dynamic>{
       'type': _$MapPointsEnumEnumMap[instance.type]!,
       'coordinates': instance.coordinates,
       'id': instance.id,

@@ -47,8 +47,7 @@ class UserDetected extends StatelessWidget {
                 loaded: (adminClubs) {
                   return AdminMenuTile(
                     onPressed: () {
-                      getIt<AdminClubCubit>()
-                          .getAdminClub(adminClubUuid: adminClubs.first.uuid!);
+                      getIt<AdminClubCubit>().getAdminClub(adminClubUuid: adminClubs.first.uuid!);
                       context.push(AppRoute.adminWorkoutList.routeToPath);
                     },
                     title: Text(adminClubs.first.label),
@@ -85,8 +84,7 @@ class UserDetected extends StatelessWidget {
                       workout.startTime.isBefore(DateTime.now())) {
                     closestWorkoutText = 'Начните тренировку';
                   } else {
-                    closestWorkoutText =
-                        'Ближайшая через ${DateTimeUtils.nextWorkoutSession(workout.startTime)}';
+                    closestWorkoutText = 'Ближайшая через ${DateTimeUtils.nextWorkoutSession(workout.startTime)}';
                   }
                   return Text(closestWorkoutText);
                 },
@@ -114,8 +112,7 @@ class UserDetected extends StatelessWidget {
                     child: Center(
                       child: Text(
                         '$countWorkout',
-                        style: AppTypography.kBody12
-                            .apply(color: AppColors.kBaseWhite),
+                        style: AppTypography.kBody12.apply(color: AppColors.kBaseWhite),
                       ),
                     ),
                   );
@@ -161,8 +158,7 @@ class UserDetected extends StatelessWidget {
             style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
           ),
           onPressed: () {
-            getIt<AuthBloc>()
-                .add(const AuthEvent.authenticationLogoutRequested());
+            getIt<AuthBloc>().add(const AuthEvent.authenticationLogoutRequested());
           },
         ),
       ],

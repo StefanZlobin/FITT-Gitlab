@@ -46,33 +46,22 @@ mixin _$Batch {
 
 /// @nodoc
 abstract class $BatchCopyWith<$Res> {
-  factory $BatchCopyWith(Batch value, $Res Function(Batch) then) =
-      _$BatchCopyWithImpl<$Res, Batch>;
+  factory $BatchCopyWith(Batch value, $Res Function(Batch) then) = _$BatchCopyWithImpl<$Res, Batch>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id')
-          int uuid,
-      @JsonKey(name: 'club_id')
-          String clubUuid,
-      @JsonKey(name: 'expire_at')
-          DateTime? expireAt,
-      @JsonKey(name: 'hours')
-          int? hours,
-      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent)
-          int fullPrice,
-      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent)
-          int factPrice,
-      @JsonKey(name: 'duration')
-          String? duration,
-      @JsonKey(name: 'sale')
-          int? sale,
-      @JsonKey(name: 'marks')
-          List<BatchMark>? marks});
+      {@JsonKey(name: 'id') int uuid,
+      @JsonKey(name: 'club_id') String clubUuid,
+      @JsonKey(name: 'expire_at') DateTime? expireAt,
+      @JsonKey(name: 'hours') int? hours,
+      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent) int fullPrice,
+      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent) int factPrice,
+      @JsonKey(name: 'duration') String? duration,
+      @JsonKey(name: 'sale') int? sale,
+      @JsonKey(name: 'marks') List<BatchMark>? marks});
 }
 
 /// @nodoc
-class _$BatchCopyWithImpl<$Res, $Val extends Batch>
-    implements $BatchCopyWith<$Res> {
+class _$BatchCopyWithImpl<$Res, $Val extends Batch> implements $BatchCopyWith<$Res> {
   _$BatchCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -136,36 +125,24 @@ class _$BatchCopyWithImpl<$Res, $Val extends Batch>
 
 /// @nodoc
 abstract class _$$_BatchCopyWith<$Res> implements $BatchCopyWith<$Res> {
-  factory _$$_BatchCopyWith(_$_Batch value, $Res Function(_$_Batch) then) =
-      __$$_BatchCopyWithImpl<$Res>;
+  factory _$$_BatchCopyWith(_$_Batch value, $Res Function(_$_Batch) then) = __$$_BatchCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id')
-          int uuid,
-      @JsonKey(name: 'club_id')
-          String clubUuid,
-      @JsonKey(name: 'expire_at')
-          DateTime? expireAt,
-      @JsonKey(name: 'hours')
-          int? hours,
-      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent)
-          int fullPrice,
-      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent)
-          int factPrice,
-      @JsonKey(name: 'duration')
-          String? duration,
-      @JsonKey(name: 'sale')
-          int? sale,
-      @JsonKey(name: 'marks')
-          List<BatchMark>? marks});
+      {@JsonKey(name: 'id') int uuid,
+      @JsonKey(name: 'club_id') String clubUuid,
+      @JsonKey(name: 'expire_at') DateTime? expireAt,
+      @JsonKey(name: 'hours') int? hours,
+      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent) int fullPrice,
+      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent) int factPrice,
+      @JsonKey(name: 'duration') String? duration,
+      @JsonKey(name: 'sale') int? sale,
+      @JsonKey(name: 'marks') List<BatchMark>? marks});
 }
 
 /// @nodoc
-class __$$_BatchCopyWithImpl<$Res> extends _$BatchCopyWithImpl<$Res, _$_Batch>
-    implements _$$_BatchCopyWith<$Res> {
-  __$$_BatchCopyWithImpl(_$_Batch _value, $Res Function(_$_Batch) _then)
-      : super(_value, _then);
+class __$$_BatchCopyWithImpl<$Res> extends _$BatchCopyWithImpl<$Res, _$_Batch> implements _$$_BatchCopyWith<$Res> {
+  __$$_BatchCopyWithImpl(_$_Batch _value, $Res Function(_$_Batch) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -225,29 +202,19 @@ class __$$_BatchCopyWithImpl<$Res> extends _$BatchCopyWithImpl<$Res, _$_Batch>
 @JsonSerializable()
 class _$_Batch extends _Batch {
   _$_Batch(
-      {@JsonKey(name: 'id')
-          required this.uuid,
-      @JsonKey(name: 'club_id')
-          required this.clubUuid,
-      @JsonKey(name: 'expire_at')
-          this.expireAt,
-      @JsonKey(name: 'hours')
-          this.hours,
-      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent)
-          required this.fullPrice,
-      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent)
-          required this.factPrice,
-      @JsonKey(name: 'duration')
-          this.duration,
-      @JsonKey(name: 'sale')
-          this.sale,
-      @JsonKey(name: 'marks')
-          final List<BatchMark>? marks})
+      {@JsonKey(name: 'id') required this.uuid,
+      @JsonKey(name: 'club_id') required this.clubUuid,
+      @JsonKey(name: 'expire_at') this.expireAt,
+      @JsonKey(name: 'hours') this.hours,
+      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent) required this.fullPrice,
+      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent) required this.factPrice,
+      @JsonKey(name: 'duration') this.duration,
+      @JsonKey(name: 'sale') this.sale,
+      @JsonKey(name: 'marks') final List<BatchMark>? marks})
       : _marks = marks,
         super._();
 
-  factory _$_Batch.fromJson(Map<String, dynamic> json) =>
-      _$$_BatchFromJson(json);
+  factory _$_Batch.fromJson(Map<String, dynamic> json) => _$$_BatchFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -295,40 +262,25 @@ class _$_Batch extends _Batch {
         (other.runtimeType == runtimeType &&
             other is _$_Batch &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
-            (identical(other.clubUuid, clubUuid) ||
-                other.clubUuid == clubUuid) &&
-            (identical(other.expireAt, expireAt) ||
-                other.expireAt == expireAt) &&
+            (identical(other.clubUuid, clubUuid) || other.clubUuid == clubUuid) &&
+            (identical(other.expireAt, expireAt) || other.expireAt == expireAt) &&
             (identical(other.hours, hours) || other.hours == hours) &&
-            (identical(other.fullPrice, fullPrice) ||
-                other.fullPrice == fullPrice) &&
-            (identical(other.factPrice, factPrice) ||
-                other.factPrice == factPrice) &&
-            (identical(other.duration, duration) ||
-                other.duration == duration) &&
+            (identical(other.fullPrice, fullPrice) || other.fullPrice == fullPrice) &&
+            (identical(other.factPrice, factPrice) || other.factPrice == factPrice) &&
+            (identical(other.duration, duration) || other.duration == duration) &&
             (identical(other.sale, sale) || other.sale == sale) &&
             const DeepCollectionEquality().equals(other._marks, _marks));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      uuid,
-      clubUuid,
-      expireAt,
-      hours,
-      fullPrice,
-      factPrice,
-      duration,
-      sale,
+  int get hashCode => Object.hash(runtimeType, uuid, clubUuid, expireAt, hours, fullPrice, factPrice, duration, sale,
       const DeepCollectionEquality().hash(_marks));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BatchCopyWith<_$_Batch> get copyWith =>
-      __$$_BatchCopyWithImpl<_$_Batch>(this, _$identity);
+  _$$_BatchCopyWith<_$_Batch> get copyWith => __$$_BatchCopyWithImpl<_$_Batch>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -340,24 +292,15 @@ class _$_Batch extends _Batch {
 
 abstract class _Batch extends Batch {
   factory _Batch(
-      {@JsonKey(name: 'id')
-          required final int uuid,
-      @JsonKey(name: 'club_id')
-          required final String clubUuid,
-      @JsonKey(name: 'expire_at')
-          final DateTime? expireAt,
-      @JsonKey(name: 'hours')
-          final int? hours,
-      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent)
-          required final int fullPrice,
-      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent)
-          required final int factPrice,
-      @JsonKey(name: 'duration')
-          final String? duration,
-      @JsonKey(name: 'sale')
-          final int? sale,
-      @JsonKey(name: 'marks')
-          final List<BatchMark>? marks}) = _$_Batch;
+      {@JsonKey(name: 'id') required final int uuid,
+      @JsonKey(name: 'club_id') required final String clubUuid,
+      @JsonKey(name: 'expire_at') final DateTime? expireAt,
+      @JsonKey(name: 'hours') final int? hours,
+      @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent) required final int fullPrice,
+      @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent) required final int factPrice,
+      @JsonKey(name: 'duration') final String? duration,
+      @JsonKey(name: 'sale') final int? sale,
+      @JsonKey(name: 'marks') final List<BatchMark>? marks}) = _$_Batch;
   _Batch._() : super._();
 
   factory _Batch.fromJson(Map<String, dynamic> json) = _$_Batch.fromJson;
@@ -391,6 +334,5 @@ abstract class _Batch extends Batch {
   List<BatchMark>? get marks;
   @override
   @JsonKey(ignore: true)
-  _$$_BatchCopyWith<_$_Batch> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_BatchCopyWith<_$_Batch> get copyWith => throw _privateConstructorUsedError;
 }

@@ -71,8 +71,7 @@ class AdminPlannedWorkouts extends StatelessWidget {
           bloc: notificationsBloc,
           listener: (context, state) {
             state.whenOrNull(
-              workoutStatusRS: () =>
-                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusRS: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.planned,
@@ -83,8 +82,7 @@ class AdminPlannedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
-              workoutStatusPlanned: () =>
-                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusPlanned: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.planned,
@@ -95,8 +93,7 @@ class AdminPlannedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
-              workoutStatusStarted: () =>
-                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusStarted: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.planned,

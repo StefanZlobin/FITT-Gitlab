@@ -12,6 +12,5 @@ class Document with _$Document {
     @JsonKey(name: 'url') required String fileUrl,
   }) = _Document;
 
-  factory Document.fromJson(Map<String, dynamic> json) =>
-      _$DocumentFromJson(json);
+  factory Document.fromJson(Map<String, dynamic> json) => _$DocumentFromJson(json);
 }

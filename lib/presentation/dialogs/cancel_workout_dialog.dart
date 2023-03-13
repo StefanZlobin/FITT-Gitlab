@@ -44,8 +44,7 @@ class CancelWorkoutDialog extends StatelessWidget {
                   onPressed: () => context.pop(),
                   child: Text(
                     'Вернуться',
-                    style:
-                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                   ),
                 ),
               ),
@@ -58,15 +57,11 @@ class CancelWorkoutDialog extends StatelessWidget {
                 child: AppElevatedButton(
                   isHeight: false,
                   onPressedAsync: () async {
-                    await getIt<WorkoutCubit>()
-                        .cancelWorkout(w: workout)
-                        .then((value) {
-                      getIt<LocalNotificationsService>()
-                          .deleteLocalNotification(
+                    await getIt<WorkoutCubit>().cancelWorkout(w: workout).then((value) {
+                      getIt<LocalNotificationsService>().deleteLocalNotification(
                         id: workout.workoutHashCode,
                       );
-                      getIt<LocalNotificationsService>()
-                          .deleteLocalNotification(
+                      getIt<LocalNotificationsService>().deleteLocalNotification(
                         id: workout.workoutHashCode - 2,
                       );
                       getIt<WorkoutsCubit>().getWorkouts();
@@ -81,9 +76,8 @@ class CancelWorkoutDialog extends StatelessWidget {
                     });
                   },
                   marginButton: const EdgeInsets.all(0),
-                  textButton: Text('Отменить тренировку',
-                      style: AppTypography.kBody14
-                          .apply(color: AppColors.kBaseWhite)),
+                  textButton:
+                      Text('Отменить тренировку', style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite)),
                 ),
               ),
             ),

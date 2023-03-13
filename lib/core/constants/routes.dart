@@ -89,8 +89,7 @@ class Routes {
     GoRoute(
       path: AppRoute.inputPhoneNumber.routeToPath,
       name: AppRoute.inputPhoneNumber.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: InputPhoneNumberPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: InputPhoneNumberPage()),
     ),
     GoRoute(
       path: AppRoute.inputSecureCode.routeToPath,
@@ -124,8 +123,7 @@ class Routes {
     GoRoute(
       path: AppRoute.account.routeToPath,
       name: AppRoute.account.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: AccountPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: AccountPage()),
     ),
     GoRoute(
       path: AppRoute.personalData.routeToPath,
@@ -152,8 +150,7 @@ class Routes {
     GoRoute(
       path: AppRoute.workoutList.routeToPath,
       name: AppRoute.workoutList.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: WorkoutsPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: WorkoutsPage()),
     ),
     GoRoute(
       path: AppRoute.workoutArchiveList.routeToPath,
@@ -167,14 +164,12 @@ class Routes {
     GoRoute(
       path: AppRoute.clubInformation.routeToPath,
       name: AppRoute.clubInformation.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: ClubInformationPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: ClubInformationPage()),
     ),
     GoRoute(
       path: AppRoute.clubBatchList.routeToPath,
       name: AppRoute.clubBatchList.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: ClubBatchesPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: ClubBatchesPage()),
     ),
     GoRoute(
       path: AppRoute.clubBatch.routeToPath,
@@ -188,8 +183,7 @@ class Routes {
     GoRoute(
       path: AppRoute.clubBuyWorkout.routeToPath,
       name: AppRoute.clubBuyWorkout.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: ClubBuyWorkoutPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: ClubBuyWorkoutPage()),
     ),
     GoRoute(
       path: AppRoute.paymentWebview.routeToPath,
@@ -199,8 +193,7 @@ class Routes {
     GoRoute(
       path: AppRoute.paymentLoading.routeToPath,
       name: AppRoute.paymentLoading.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: PaymentLoadingPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: PaymentLoadingPage()),
     ),
     GoRoute(
       path: AppRoute.paymentReject.routeToPath,
@@ -227,26 +220,22 @@ class Routes {
     GoRoute(
       path: AppRoute.paymentSuccess.routeToPath,
       name: AppRoute.paymentSuccess.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: PaymentSuccessPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: PaymentSuccessPage()),
     ),
     GoRoute(
       path: AppRoute.clubListFavourite.routeToPath,
       name: AppRoute.clubListFavourite.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: FavoriteClubsPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: FavoriteClubsPage()),
     ),
     GoRoute(
       path: AppRoute.information.routeToPath,
       name: AppRoute.information.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: InformrationPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: InformrationPage()),
     ),
     GoRoute(
       path: AppRoute.feedback.routeToPath,
       name: AppRoute.feedback.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: FeedbackPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: FeedbackPage()),
     ),
   ];
 
@@ -254,8 +243,7 @@ class Routes {
     GoRoute(
       path: AppRoute.adminWorkoutList.routeToPath,
       name: AppRoute.adminWorkoutList.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: AdminWorkoutsPage()),
+      builder: (context, state) => const ShakeFeedbackWrapper(child: AdminWorkoutsPage()),
     ),
     GoRoute(
       path: AppRoute.adminWorkout.routeToPath,

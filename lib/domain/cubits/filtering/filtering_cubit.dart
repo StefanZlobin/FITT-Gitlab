@@ -25,8 +25,7 @@ class FilteringCubit extends Cubit<FilteringState> {
           selectedFacilities[facility] = false;
         }
       }
-      selectedFacilities
-          .removeWhere((key, value) => !filters.facilities!.contains(key));
+      selectedFacilities.removeWhere((key, value) => !filters.facilities!.contains(key));
     }
 
     _filteringState = _FilteringStateLoaded(
@@ -56,17 +55,11 @@ class FilteringCubit extends Cubit<FilteringState> {
       selectedFacilities: selectedFacilities,
     );
 
-    activeFavilitiesIndex = selectedFacilities.entries
-        .where((element) => element.value)
-        .map((e) => e.key)
-        .map((e) => e)
-        .toList();
+    activeFavilitiesIndex =
+        selectedFacilities.entries.where((element) => element.value).map((e) => e.key).map((e) => e).toList();
 
-    final activeFacilitiesList = selectedFacilities.entries
-        .where((element) => element.value)
-        .map((e) => e.key)
-        .map((e) => e)
-        .toList();
+    final activeFacilitiesList =
+        selectedFacilities.entries.where((element) => element.value).map((e) => e.key).map((e) => e).toList();
 
     emit(
       _FilteringStateLoaded(
@@ -80,11 +73,8 @@ class FilteringCubit extends Cubit<FilteringState> {
   }
 
   void updatePrice({required RangeValues price}) {
-    final activeFacilitiesList = selectedFacilities.entries
-        .where((element) => element.value)
-        .map((e) => e.key)
-        .map((e) => e)
-        .toList();
+    final activeFacilitiesList =
+        selectedFacilities.entries.where((element) => element.value).map((e) => e.key).map((e) => e).toList();
 
     final newState = _filteringState.copyWith(
       filters: _filteringState.filters.copyWith(
@@ -98,7 +88,7 @@ class FilteringCubit extends Cubit<FilteringState> {
 
     emit(
       _FilteringStateLoaded(
-        filters: newState.filters,    
+        filters: newState.filters,
         minPriceStart: newState.minPriceStart,
         maxPriceEnd: newState.maxPriceEnd,
         selectedFacilities: newState.selectedFacilities,

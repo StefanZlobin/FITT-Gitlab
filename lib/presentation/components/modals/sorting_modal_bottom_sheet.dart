@@ -18,12 +18,10 @@ class SortingModalBottomSheet extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           workoutSorting: (_) async {
-            await Future<void>.delayed(const Duration(milliseconds: 300))
-                .then((value) => context.pop());
+            await Future<void>.delayed(const Duration(milliseconds: 300)).then((value) => context.pop());
           },
           clubSorting: (_) async {
-            await Future<void>.delayed(const Duration(milliseconds: 300))
-                .then((value) => context.pop());
+            await Future<void>.delayed(const Duration(milliseconds: 300)).then((value) => context.pop());
           },
         );
       },
@@ -53,14 +51,12 @@ class SortingModalBottomSheet extends StatelessWidget {
                         itemCount: WorkoutSortingEnum.values.length,
                         itemBuilder: (context, index) {
                           return AppRadioButton<WorkoutSortingEnum>(
-                            sortingValue: WorkoutSortingEnum.values[index]
-                                .sortingToString(
-                                    WorkoutSortingEnum.values[index]),
+                            sortingValue:
+                                WorkoutSortingEnum.values[index].sortingToString(WorkoutSortingEnum.values[index]),
                             value: WorkoutSortingEnum.values[index],
                             groupValue: sortingValue,
-                            onChanged: (value) => getIt<SortingCubit>()
-                                .setWorkoutSortingEnum(
-                                    workoutSortingEnum: value),
+                            onChanged: (value) =>
+                                getIt<SortingCubit>().setWorkoutSortingEnum(workoutSortingEnum: value),
                           );
                         },
                       ),
@@ -73,12 +69,10 @@ class SortingModalBottomSheet extends StatelessWidget {
                         itemCount: ClubSortingEnum.values.length,
                         itemBuilder: (context, index) {
                           return AppRadioButton<ClubSortingEnum>(
-                            sortingValue: ClubSortingEnum.values[index]
-                                .sortingToString(ClubSortingEnum.values[index]),
+                            sortingValue: ClubSortingEnum.values[index].sortingToString(ClubSortingEnum.values[index]),
                             value: ClubSortingEnum.values[index],
                             groupValue: sortingValue,
-                            onChanged: (value) => getIt<SortingCubit>()
-                                .setClubSortingEnum(clubSortingEnum: value),
+                            onChanged: (value) => getIt<SortingCubit>().setClubSortingEnum(clubSortingEnum: value),
                           );
                         },
                       ),

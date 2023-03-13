@@ -4,8 +4,7 @@ import 'package:fitt/domain/entities/address/search_address.dart';
 import 'package:fitt/domain/repositories/search/search_repository.dart';
 
 class SearchRepositoryImpl implements SearchRepository {
-  SearchRepositoryImpl(this.dio, {this.baseUrl})
-      : _apiClient = SearchApiClient(dio, baseUrl: baseUrl);
+  SearchRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = SearchApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;

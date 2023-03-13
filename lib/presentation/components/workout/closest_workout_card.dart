@@ -53,16 +53,13 @@ class ClosestWorkoutCard extends StatelessWidget {
     );
   }
 
-  Widget _buildClosestWorkoutWidget(
-      Workout closestWorkout, BuildContext context) {
+  Widget _buildClosestWorkoutWidget(Workout closestWorkout, BuildContext context) {
     return GestureDetector(
       onTap: () {
-        getIt<WorkoutCubit>()
-            .getWorkout(workoutUuid: closestWorkout.uuid)
-            .then((value) => context.pushNamed(
-                  AppRoute.workout.routeToPath,
-                  extra: false,
-                ));
+        getIt<WorkoutCubit>().getWorkout(workoutUuid: closestWorkout.uuid).then((value) => context.pushNamed(
+              AppRoute.workout.routeToPath,
+              extra: false,
+            ));
       },
       child: Container(
         padding: const EdgeInsets.all(8),
@@ -101,13 +98,11 @@ class ClosestWorkoutCard extends StatelessWidget {
                     text: closestWorkout.status != WorkoutStatusEnum.started
                         ? 'Следующая тренировка\n'
                         : 'Текущая тренировка\n',
-                    style:
-                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                     children: [
                       TextSpan(
                         text: '${closestWorkout.club.label}',
-                        style: AppTypography.kBody14
-                            .apply(color: AppColors.kOxford40),
+                        style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
                       ),
                     ],
                   ),

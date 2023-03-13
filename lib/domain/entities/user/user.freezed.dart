@@ -26,10 +26,7 @@ mixin _$User {
   String? get patronomicName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
   String? get lastName => throw _privateConstructorUsedError;
-  @JsonKey(
-      name: 'birthday',
-      toJson: dateToStringNullable,
-      fromJson: dateFromStringNullable)
+  @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable)
   DateTime? get birthday => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
@@ -49,33 +46,22 @@ mixin _$User {
 
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+  factory $UserCopyWith(User value, $Res Function(User) then) = _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name')
-          String? firstName,
-      @JsonKey(name: 'patronymic')
-          String? patronomicName,
-      @JsonKey(name: 'last_name')
-          String? lastName,
-      @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable)
-          DateTime? birthday,
-      @JsonKey(name: 'email')
-          String? email,
-      @JsonKey(name: 'role')
-          UserRoleEnum? role,
-      @JsonKey(name: 'gender')
-          UserGenderEnum? gender,
-      @JsonKey(name: 'phone_number')
-          String? phoneNumber,
-      @JsonKey(name: 'avatar')
-          String? avatar});
+      {@JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'patronymic') String? patronomicName,
+      @JsonKey(name: 'last_name') String? lastName,
+      @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable) DateTime? birthday,
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'role') UserRoleEnum? role,
+      @JsonKey(name: 'gender') UserGenderEnum? gender,
+      @JsonKey(name: 'phone_number') String? phoneNumber,
+      @JsonKey(name: 'avatar') String? avatar});
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
+class _$UserCopyWithImpl<$Res, $Val extends User> implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -139,36 +125,24 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 
 /// @nodoc
 abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
-      __$$_UserCopyWithImpl<$Res>;
+  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) = __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'first_name')
-          String? firstName,
-      @JsonKey(name: 'patronymic')
-          String? patronomicName,
-      @JsonKey(name: 'last_name')
-          String? lastName,
-      @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable)
-          DateTime? birthday,
-      @JsonKey(name: 'email')
-          String? email,
-      @JsonKey(name: 'role')
-          UserRoleEnum? role,
-      @JsonKey(name: 'gender')
-          UserGenderEnum? gender,
-      @JsonKey(name: 'phone_number')
-          String? phoneNumber,
-      @JsonKey(name: 'avatar')
-          String? avatar});
+      {@JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'patronymic') String? patronomicName,
+      @JsonKey(name: 'last_name') String? lastName,
+      @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable) DateTime? birthday,
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'role') UserRoleEnum? role,
+      @JsonKey(name: 'gender') UserGenderEnum? gender,
+      @JsonKey(name: 'phone_number') String? phoneNumber,
+      @JsonKey(name: 'avatar') String? avatar});
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
-    implements _$$_UserCopyWith<$Res> {
-  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
-      : super(_value, _then);
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User> implements _$$_UserCopyWith<$Res> {
+  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -228,24 +202,15 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable()
 class _$_User extends _User {
   _$_User(
-      {@JsonKey(name: 'first_name')
-          required this.firstName,
-      @JsonKey(name: 'patronymic')
-          required this.patronomicName,
-      @JsonKey(name: 'last_name')
-          required this.lastName,
-      @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable)
-          required this.birthday,
-      @JsonKey(name: 'email')
-          required this.email,
-      @JsonKey(name: 'role')
-          required this.role,
-      @JsonKey(name: 'gender')
-          required this.gender,
-      @JsonKey(name: 'phone_number')
-          required this.phoneNumber,
-      @JsonKey(name: 'avatar')
-          required this.avatar})
+      {@JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'patronymic') required this.patronomicName,
+      @JsonKey(name: 'last_name') required this.lastName,
+      @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable) required this.birthday,
+      @JsonKey(name: 'email') required this.email,
+      @JsonKey(name: 'role') required this.role,
+      @JsonKey(name: 'gender') required this.gender,
+      @JsonKey(name: 'phone_number') required this.phoneNumber,
+      @JsonKey(name: 'avatar') required this.avatar})
       : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -260,10 +225,7 @@ class _$_User extends _User {
   @JsonKey(name: 'last_name')
   final String? lastName;
   @override
-  @JsonKey(
-      name: 'birthday',
-      toJson: dateToStringNullable,
-      fromJson: dateFromStringNullable)
+  @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable)
   final DateTime? birthday;
   @override
   @JsonKey(name: 'email')
@@ -291,32 +253,26 @@ class _$_User extends _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.patronomicName, patronomicName) ||
-                other.patronomicName == patronomicName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.birthday, birthday) ||
-                other.birthday == birthday) &&
+            (identical(other.firstName, firstName) || other.firstName == firstName) &&
+            (identical(other.patronomicName, patronomicName) || other.patronomicName == patronomicName) &&
+            (identical(other.lastName, lastName) || other.lastName == lastName) &&
+            (identical(other.birthday, birthday) || other.birthday == birthday) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
+            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber) &&
             (identical(other.avatar, avatar) || other.avatar == avatar));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, patronomicName,
-      lastName, birthday, email, role, gender, phoneNumber, avatar);
+  int get hashCode =>
+      Object.hash(runtimeType, firstName, patronomicName, lastName, birthday, email, role, gender, phoneNumber, avatar);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserCopyWith<_$_User> get copyWith =>
-      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+  _$$_UserCopyWith<_$_User> get copyWith => __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -360,10 +316,7 @@ abstract class _User extends User {
   @JsonKey(name: 'last_name')
   String? get lastName;
   @override
-  @JsonKey(
-      name: 'birthday',
-      toJson: dateToStringNullable,
-      fromJson: dateFromStringNullable)
+  @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable)
   DateTime? get birthday;
   @override
   @JsonKey(name: 'email')

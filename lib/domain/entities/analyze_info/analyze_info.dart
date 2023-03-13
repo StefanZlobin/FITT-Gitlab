@@ -11,6 +11,5 @@ class AnalyzeInfo with _$AnalyzeInfo {
     @JsonKey(name: 'success_visits') required int successVisits,
   }) = _AnalyzeInfo;
 
-  factory AnalyzeInfo.fromJson(Map<String, dynamic> json) =>
-      _$AnalyzeInfoFromJson(json);
+  factory AnalyzeInfo.fromJson(Map<String, dynamic> json) => _$AnalyzeInfoFromJson(json);
 }

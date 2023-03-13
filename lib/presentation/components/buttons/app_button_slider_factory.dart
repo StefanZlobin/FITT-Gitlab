@@ -16,8 +16,8 @@ abstract class AppButtonSliderFactory {
       iconColor: const Color(0xFF63B412),
       swipedBackgroundColor: const Color(0xFFA1D271),
       enabled: enabled,
-      inactiveText: warningText ??
-          'Регистрация станет доступна\n${DateTimeUtils.fullDateTimeFormat.format(regAvailableTime)}',
+      inactiveText:
+          warningText ?? 'Регистрация станет доступна\n${DateTimeUtils.fullDateTimeFormat.format(regAvailableTime)}',
       activeText: 'Начать тренировку',
       action: action,
     );

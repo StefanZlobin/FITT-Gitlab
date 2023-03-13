@@ -64,14 +64,12 @@ mixin _$FeedbackState {
 
 /// @nodoc
 abstract class $FeedbackStateCopyWith<$Res> {
-  factory $FeedbackStateCopyWith(
-          FeedbackState value, $Res Function(FeedbackState) then) =
+  factory $FeedbackStateCopyWith(FeedbackState value, $Res Function(FeedbackState) then) =
       _$FeedbackStateCopyWithImpl<$Res, FeedbackState>;
 }
 
 /// @nodoc
-class _$FeedbackStateCopyWithImpl<$Res, $Val extends FeedbackState>
-    implements $FeedbackStateCopyWith<$Res> {
+class _$FeedbackStateCopyWithImpl<$Res, $Val extends FeedbackState> implements $FeedbackStateCopyWith<$Res> {
   _$FeedbackStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -82,17 +80,14 @@ class _$FeedbackStateCopyWithImpl<$Res, $Val extends FeedbackState>
 
 /// @nodoc
 abstract class _$$_FeedbackStateInitialCopyWith<$Res> {
-  factory _$$_FeedbackStateInitialCopyWith(_$_FeedbackStateInitial value,
-          $Res Function(_$_FeedbackStateInitial) then) =
+  factory _$$_FeedbackStateInitialCopyWith(_$_FeedbackStateInitial value, $Res Function(_$_FeedbackStateInitial) then) =
       __$$_FeedbackStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FeedbackStateInitialCopyWithImpl<$Res>
-    extends _$FeedbackStateCopyWithImpl<$Res, _$_FeedbackStateInitial>
+class __$$_FeedbackStateInitialCopyWithImpl<$Res> extends _$FeedbackStateCopyWithImpl<$Res, _$_FeedbackStateInitial>
     implements _$$_FeedbackStateInitialCopyWith<$Res> {
-  __$$_FeedbackStateInitialCopyWithImpl(_$_FeedbackStateInitial _value,
-      $Res Function(_$_FeedbackStateInitial) _then)
+  __$$_FeedbackStateInitialCopyWithImpl(_$_FeedbackStateInitial _value, $Res Function(_$_FeedbackStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -108,8 +103,7 @@ class _$_FeedbackStateInitial implements _FeedbackStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FeedbackStateInitial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_FeedbackStateInitial);
   }
 
   @override
@@ -190,17 +184,14 @@ abstract class _FeedbackStateInitial implements FeedbackState {
 
 /// @nodoc
 abstract class _$$_FeedbackStateLoadedCopyWith<$Res> {
-  factory _$$_FeedbackStateLoadedCopyWith(_$_FeedbackStateLoaded value,
-          $Res Function(_$_FeedbackStateLoaded) then) =
+  factory _$$_FeedbackStateLoadedCopyWith(_$_FeedbackStateLoaded value, $Res Function(_$_FeedbackStateLoaded) then) =
       __$$_FeedbackStateLoadedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FeedbackStateLoadedCopyWithImpl<$Res>
-    extends _$FeedbackStateCopyWithImpl<$Res, _$_FeedbackStateLoaded>
+class __$$_FeedbackStateLoadedCopyWithImpl<$Res> extends _$FeedbackStateCopyWithImpl<$Res, _$_FeedbackStateLoaded>
     implements _$$_FeedbackStateLoadedCopyWith<$Res> {
-  __$$_FeedbackStateLoadedCopyWithImpl(_$_FeedbackStateLoaded _value,
-      $Res Function(_$_FeedbackStateLoaded) _then)
+  __$$_FeedbackStateLoadedCopyWithImpl(_$_FeedbackStateLoaded _value, $Res Function(_$_FeedbackStateLoaded) _then)
       : super(_value, _then);
 }
 
@@ -216,8 +207,7 @@ class _$_FeedbackStateLoaded implements _FeedbackStateLoaded {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FeedbackStateLoaded);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_FeedbackStateLoaded);
   }
 
   @override
@@ -298,19 +288,16 @@ abstract class _FeedbackStateLoaded implements FeedbackState {
 
 /// @nodoc
 abstract class _$$_FeedbackStateErrorCopyWith<$Res> {
-  factory _$$_FeedbackStateErrorCopyWith(_$_FeedbackStateError value,
-          $Res Function(_$_FeedbackStateError) then) =
+  factory _$$_FeedbackStateErrorCopyWith(_$_FeedbackStateError value, $Res Function(_$_FeedbackStateError) then) =
       __$$_FeedbackStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_FeedbackStateErrorCopyWithImpl<$Res>
-    extends _$FeedbackStateCopyWithImpl<$Res, _$_FeedbackStateError>
+class __$$_FeedbackStateErrorCopyWithImpl<$Res> extends _$FeedbackStateCopyWithImpl<$Res, _$_FeedbackStateError>
     implements _$$_FeedbackStateErrorCopyWith<$Res> {
-  __$$_FeedbackStateErrorCopyWithImpl(
-      _$_FeedbackStateError _value, $Res Function(_$_FeedbackStateError) _then)
+  __$$_FeedbackStateErrorCopyWithImpl(_$_FeedbackStateError _value, $Res Function(_$_FeedbackStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -355,8 +342,7 @@ class _$_FeedbackStateError implements _FeedbackStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_FeedbackStateErrorCopyWith<_$_FeedbackStateError> get copyWith =>
-      __$$_FeedbackStateErrorCopyWithImpl<_$_FeedbackStateError>(
-          this, _$identity);
+      __$$_FeedbackStateErrorCopyWithImpl<_$_FeedbackStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -428,11 +414,9 @@ class _$_FeedbackStateError implements _FeedbackStateError {
 }
 
 abstract class _FeedbackStateError implements FeedbackState {
-  const factory _FeedbackStateError({required final String error}) =
-      _$_FeedbackStateError;
+  const factory _FeedbackStateError({required final String error}) = _$_FeedbackStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_FeedbackStateErrorCopyWith<_$_FeedbackStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FeedbackStateErrorCopyWith<_$_FeedbackStateError> get copyWith => throw _privateConstructorUsedError;
 }

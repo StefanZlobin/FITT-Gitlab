@@ -64,14 +64,12 @@ mixin _$ResourceState {
 
 /// @nodoc
 abstract class $ResourceStateCopyWith<$Res> {
-  factory $ResourceStateCopyWith(
-          ResourceState value, $Res Function(ResourceState) then) =
+  factory $ResourceStateCopyWith(ResourceState value, $Res Function(ResourceState) then) =
       _$ResourceStateCopyWithImpl<$Res, ResourceState>;
 }
 
 /// @nodoc
-class _$ResourceStateCopyWithImpl<$Res, $Val extends ResourceState>
-    implements $ResourceStateCopyWith<$Res> {
+class _$ResourceStateCopyWithImpl<$Res, $Val extends ResourceState> implements $ResourceStateCopyWith<$Res> {
   _$ResourceStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -82,17 +80,14 @@ class _$ResourceStateCopyWithImpl<$Res, $Val extends ResourceState>
 
 /// @nodoc
 abstract class _$$_ResourceStateInitialCopyWith<$Res> {
-  factory _$$_ResourceStateInitialCopyWith(_$_ResourceStateInitial value,
-          $Res Function(_$_ResourceStateInitial) then) =
+  factory _$$_ResourceStateInitialCopyWith(_$_ResourceStateInitial value, $Res Function(_$_ResourceStateInitial) then) =
       __$$_ResourceStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ResourceStateInitialCopyWithImpl<$Res>
-    extends _$ResourceStateCopyWithImpl<$Res, _$_ResourceStateInitial>
+class __$$_ResourceStateInitialCopyWithImpl<$Res> extends _$ResourceStateCopyWithImpl<$Res, _$_ResourceStateInitial>
     implements _$$_ResourceStateInitialCopyWith<$Res> {
-  __$$_ResourceStateInitialCopyWithImpl(_$_ResourceStateInitial _value,
-      $Res Function(_$_ResourceStateInitial) _then)
+  __$$_ResourceStateInitialCopyWithImpl(_$_ResourceStateInitial _value, $Res Function(_$_ResourceStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -108,8 +103,7 @@ class _$_ResourceStateInitial implements _ResourceStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ResourceStateInitial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_ResourceStateInitial);
   }
 
   @override
@@ -190,8 +184,7 @@ abstract class _ResourceStateInitial implements ResourceState {
 
 /// @nodoc
 abstract class _$$_ResourceStateLoadedCopyWith<$Res> {
-  factory _$$_ResourceStateLoadedCopyWith(_$_ResourceStateLoaded value,
-          $Res Function(_$_ResourceStateLoaded) then) =
+  factory _$$_ResourceStateLoadedCopyWith(_$_ResourceStateLoaded value, $Res Function(_$_ResourceStateLoaded) then) =
       __$$_ResourceStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({ClubFilters filters});
@@ -200,11 +193,9 @@ abstract class _$$_ResourceStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ResourceStateLoadedCopyWithImpl<$Res>
-    extends _$ResourceStateCopyWithImpl<$Res, _$_ResourceStateLoaded>
+class __$$_ResourceStateLoadedCopyWithImpl<$Res> extends _$ResourceStateCopyWithImpl<$Res, _$_ResourceStateLoaded>
     implements _$$_ResourceStateLoadedCopyWith<$Res> {
-  __$$_ResourceStateLoadedCopyWithImpl(_$_ResourceStateLoaded _value,
-      $Res Function(_$_ResourceStateLoaded) _then)
+  __$$_ResourceStateLoadedCopyWithImpl(_$_ResourceStateLoaded _value, $Res Function(_$_ResourceStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -257,8 +248,7 @@ class _$_ResourceStateLoaded implements _ResourceStateLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$_ResourceStateLoadedCopyWith<_$_ResourceStateLoaded> get copyWith =>
-      __$$_ResourceStateLoadedCopyWithImpl<_$_ResourceStateLoaded>(
-          this, _$identity);
+      __$$_ResourceStateLoadedCopyWithImpl<_$_ResourceStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -330,30 +320,25 @@ class _$_ResourceStateLoaded implements _ResourceStateLoaded {
 }
 
 abstract class _ResourceStateLoaded implements ResourceState {
-  const factory _ResourceStateLoaded({required final ClubFilters filters}) =
-      _$_ResourceStateLoaded;
+  const factory _ResourceStateLoaded({required final ClubFilters filters}) = _$_ResourceStateLoaded;
 
   ClubFilters get filters;
   @JsonKey(ignore: true)
-  _$$_ResourceStateLoadedCopyWith<_$_ResourceStateLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ResourceStateLoadedCopyWith<_$_ResourceStateLoaded> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_ResourceStateErrorCopyWith<$Res> {
-  factory _$$_ResourceStateErrorCopyWith(_$_ResourceStateError value,
-          $Res Function(_$_ResourceStateError) then) =
+  factory _$$_ResourceStateErrorCopyWith(_$_ResourceStateError value, $Res Function(_$_ResourceStateError) then) =
       __$$_ResourceStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ResourceStateErrorCopyWithImpl<$Res>
-    extends _$ResourceStateCopyWithImpl<$Res, _$_ResourceStateError>
+class __$$_ResourceStateErrorCopyWithImpl<$Res> extends _$ResourceStateCopyWithImpl<$Res, _$_ResourceStateError>
     implements _$$_ResourceStateErrorCopyWith<$Res> {
-  __$$_ResourceStateErrorCopyWithImpl(
-      _$_ResourceStateError _value, $Res Function(_$_ResourceStateError) _then)
+  __$$_ResourceStateErrorCopyWithImpl(_$_ResourceStateError _value, $Res Function(_$_ResourceStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -398,8 +383,7 @@ class _$_ResourceStateError implements _ResourceStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_ResourceStateErrorCopyWith<_$_ResourceStateError> get copyWith =>
-      __$$_ResourceStateErrorCopyWithImpl<_$_ResourceStateError>(
-          this, _$identity);
+      __$$_ResourceStateErrorCopyWithImpl<_$_ResourceStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -471,11 +455,9 @@ class _$_ResourceStateError implements _ResourceStateError {
 }
 
 abstract class _ResourceStateError implements ResourceState {
-  const factory _ResourceStateError({required final String error}) =
-      _$_ResourceStateError;
+  const factory _ResourceStateError({required final String error}) = _$_ResourceStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ResourceStateErrorCopyWith<_$_ResourceStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ResourceStateErrorCopyWith<_$_ResourceStateError> get copyWith => throw _privateConstructorUsedError;
 }

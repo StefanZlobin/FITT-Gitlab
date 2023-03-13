@@ -22,8 +22,7 @@ abstract class PartnerClubRepository {
   Future<List<Batch>> getClubBatches({required String clubUuid});
 
   /// Getting calculated price workout by [slotUuid].
-  Future<List<CalculatePrice>> getCalculatedPriceWorkout(
-      {required String slotUuid});
+  Future<List<CalculatePrice>> getCalculatedPriceWorkout({required String slotUuid});
 
   /// Adds partner club [clubUuid] to favorites.
   Future<PartnerClub> addClubToFavorites(String clubUuid);

@@ -8,8 +8,7 @@ class SearchUseCase {
   Future<List<SearchAddress>> getAddressSuggestions({
     required String query,
   }) async {
-    final addressSuggestions =
-        await searchRepository.getAddressSuggestions(query: query);
+    final addressSuggestions = await searchRepository.getAddressSuggestions(query: query);
     return addressSuggestions;
   }
 }

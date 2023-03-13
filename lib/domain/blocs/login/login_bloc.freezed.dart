@@ -21,77 +21,61 @@ mixin _$LoginEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumber) requestVerificationCode,
-    required TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)
-        requestCodeVerification,
+    required TResult Function(String verificationCode, String phoneNumber, String fcmToken) requestCodeVerification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumber)? requestVerificationCode,
-    TResult? Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult? Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumber)? requestVerificationCode,
-    TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginEventPhoneNumberChanged value)
-        phoneNumberChanged,
-    required TResult Function(_LoginEventRequestVerificationCode value)
-        requestVerificationCode,
-    required TResult Function(_LoginEventRequestCodeVerification value)
-        requestCodeVerification,
+    required TResult Function(_LoginEventPhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_LoginEventRequestVerificationCode value) requestVerificationCode,
+    required TResult Function(_LoginEventRequestCodeVerification value) requestCodeVerification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult? Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult? Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult? Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginEventCopyWith<LoginEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  $LoginEventCopyWith<LoginEvent> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LoginEventCopyWith<$Res> {
-  factory $LoginEventCopyWith(
-          LoginEvent value, $Res Function(LoginEvent) then) =
+  factory $LoginEventCopyWith(LoginEvent value, $Res Function(LoginEvent) then) =
       _$LoginEventCopyWithImpl<$Res, LoginEvent>;
   @useResult
   $Res call({String phoneNumber});
 }
 
 /// @nodoc
-class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
-    implements $LoginEventCopyWith<$Res> {
+class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent> implements $LoginEventCopyWith<$Res> {
   _$LoginEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -114,11 +98,9 @@ class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
 }
 
 /// @nodoc
-abstract class _$$_LoginEventPhoneNumberChangedCopyWith<$Res>
-    implements $LoginEventCopyWith<$Res> {
+abstract class _$$_LoginEventPhoneNumberChangedCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
   factory _$$_LoginEventPhoneNumberChangedCopyWith(
-          _$_LoginEventPhoneNumberChanged value,
-          $Res Function(_$_LoginEventPhoneNumberChanged) then) =
+          _$_LoginEventPhoneNumberChanged value, $Res Function(_$_LoginEventPhoneNumberChanged) then) =
       __$$_LoginEventPhoneNumberChangedCopyWithImpl<$Res>;
   @override
   @useResult
@@ -130,8 +112,7 @@ class __$$_LoginEventPhoneNumberChangedCopyWithImpl<$Res>
     extends _$LoginEventCopyWithImpl<$Res, _$_LoginEventPhoneNumberChanged>
     implements _$$_LoginEventPhoneNumberChangedCopyWith<$Res> {
   __$$_LoginEventPhoneNumberChangedCopyWithImpl(
-      _$_LoginEventPhoneNumberChanged _value,
-      $Res Function(_$_LoginEventPhoneNumberChanged) _then)
+      _$_LoginEventPhoneNumberChanged _value, $Res Function(_$_LoginEventPhoneNumberChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -166,8 +147,7 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginEventPhoneNumberChanged &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
   }
 
   @override
@@ -176,18 +156,15 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginEventPhoneNumberChangedCopyWith<_$_LoginEventPhoneNumberChanged>
-      get copyWith => __$$_LoginEventPhoneNumberChangedCopyWithImpl<
-          _$_LoginEventPhoneNumberChanged>(this, _$identity);
+  _$$_LoginEventPhoneNumberChangedCopyWith<_$_LoginEventPhoneNumberChanged> get copyWith =>
+      __$$_LoginEventPhoneNumberChangedCopyWithImpl<_$_LoginEventPhoneNumberChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumber) requestVerificationCode,
-    required TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)
-        requestCodeVerification,
+    required TResult Function(String verificationCode, String phoneNumber, String fcmToken) requestCodeVerification,
   }) {
     return phoneNumberChanged(phoneNumber);
   }
@@ -197,9 +174,7 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumber)? requestVerificationCode,
-    TResult? Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult? Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
   }) {
     return phoneNumberChanged?.call(phoneNumber);
   }
@@ -209,9 +184,7 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumber)? requestVerificationCode,
-    TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
     required TResult orElse(),
   }) {
     if (phoneNumberChanged != null) {
@@ -223,12 +196,9 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginEventPhoneNumberChanged value)
-        phoneNumberChanged,
-    required TResult Function(_LoginEventRequestVerificationCode value)
-        requestVerificationCode,
-    required TResult Function(_LoginEventRequestCodeVerification value)
-        requestCodeVerification,
+    required TResult Function(_LoginEventPhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_LoginEventRequestVerificationCode value) requestVerificationCode,
+    required TResult Function(_LoginEventRequestCodeVerification value) requestCodeVerification,
   }) {
     return phoneNumberChanged(this);
   }
@@ -237,10 +207,8 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult? Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult? Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult? Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
   }) {
     return phoneNumberChanged?.call(this);
   }
@@ -249,10 +217,8 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
     required TResult orElse(),
   }) {
     if (phoneNumberChanged != null) {
@@ -263,23 +229,20 @@ class _$_LoginEventPhoneNumberChanged implements _LoginEventPhoneNumberChanged {
 }
 
 abstract class _LoginEventPhoneNumberChanged implements LoginEvent {
-  const factory _LoginEventPhoneNumberChanged(
-      {required final String phoneNumber}) = _$_LoginEventPhoneNumberChanged;
+  const factory _LoginEventPhoneNumberChanged({required final String phoneNumber}) = _$_LoginEventPhoneNumberChanged;
 
   @override
   String get phoneNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginEventPhoneNumberChangedCopyWith<_$_LoginEventPhoneNumberChanged>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_LoginEventPhoneNumberChangedCopyWith<_$_LoginEventPhoneNumberChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoginEventRequestVerificationCodeCopyWith<$Res>
-    implements $LoginEventCopyWith<$Res> {
+abstract class _$$_LoginEventRequestVerificationCodeCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
   factory _$$_LoginEventRequestVerificationCodeCopyWith(
-          _$_LoginEventRequestVerificationCode value,
-          $Res Function(_$_LoginEventRequestVerificationCode) then) =
+          _$_LoginEventRequestVerificationCode value, $Res Function(_$_LoginEventRequestVerificationCode) then) =
       __$$_LoginEventRequestVerificationCodeCopyWithImpl<$Res>;
   @override
   @useResult
@@ -291,8 +254,7 @@ class __$$_LoginEventRequestVerificationCodeCopyWithImpl<$Res>
     extends _$LoginEventCopyWithImpl<$Res, _$_LoginEventRequestVerificationCode>
     implements _$$_LoginEventRequestVerificationCodeCopyWith<$Res> {
   __$$_LoginEventRequestVerificationCodeCopyWithImpl(
-      _$_LoginEventRequestVerificationCode _value,
-      $Res Function(_$_LoginEventRequestVerificationCode) _then)
+      _$_LoginEventRequestVerificationCode _value, $Res Function(_$_LoginEventRequestVerificationCode) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -311,8 +273,7 @@ class __$$_LoginEventRequestVerificationCodeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoginEventRequestVerificationCode
-    implements _LoginEventRequestVerificationCode {
+class _$_LoginEventRequestVerificationCode implements _LoginEventRequestVerificationCode {
   const _$_LoginEventRequestVerificationCode({required this.phoneNumber});
 
   @override
@@ -328,8 +289,7 @@ class _$_LoginEventRequestVerificationCode
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginEventRequestVerificationCode &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
   }
 
   @override
@@ -338,19 +298,15 @@ class _$_LoginEventRequestVerificationCode
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginEventRequestVerificationCodeCopyWith<
-          _$_LoginEventRequestVerificationCode>
-      get copyWith => __$$_LoginEventRequestVerificationCodeCopyWithImpl<
-          _$_LoginEventRequestVerificationCode>(this, _$identity);
+  _$$_LoginEventRequestVerificationCodeCopyWith<_$_LoginEventRequestVerificationCode> get copyWith =>
+      __$$_LoginEventRequestVerificationCodeCopyWithImpl<_$_LoginEventRequestVerificationCode>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumber) requestVerificationCode,
-    required TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)
-        requestCodeVerification,
+    required TResult Function(String verificationCode, String phoneNumber, String fcmToken) requestCodeVerification,
   }) {
     return requestVerificationCode(phoneNumber);
   }
@@ -360,9 +316,7 @@ class _$_LoginEventRequestVerificationCode
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumber)? requestVerificationCode,
-    TResult? Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult? Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
   }) {
     return requestVerificationCode?.call(phoneNumber);
   }
@@ -372,9 +326,7 @@ class _$_LoginEventRequestVerificationCode
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumber)? requestVerificationCode,
-    TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
     required TResult orElse(),
   }) {
     if (requestVerificationCode != null) {
@@ -386,12 +338,9 @@ class _$_LoginEventRequestVerificationCode
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginEventPhoneNumberChanged value)
-        phoneNumberChanged,
-    required TResult Function(_LoginEventRequestVerificationCode value)
-        requestVerificationCode,
-    required TResult Function(_LoginEventRequestCodeVerification value)
-        requestCodeVerification,
+    required TResult Function(_LoginEventPhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_LoginEventRequestVerificationCode value) requestVerificationCode,
+    required TResult Function(_LoginEventRequestCodeVerification value) requestCodeVerification,
   }) {
     return requestVerificationCode(this);
   }
@@ -400,10 +349,8 @@ class _$_LoginEventRequestVerificationCode
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult? Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult? Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult? Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
   }) {
     return requestVerificationCode?.call(this);
   }
@@ -412,10 +359,8 @@ class _$_LoginEventRequestVerificationCode
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
     required TResult orElse(),
   }) {
     if (requestVerificationCode != null) {
@@ -426,25 +371,21 @@ class _$_LoginEventRequestVerificationCode
 }
 
 abstract class _LoginEventRequestVerificationCode implements LoginEvent {
-  const factory _LoginEventRequestVerificationCode(
-          {required final String phoneNumber}) =
+  const factory _LoginEventRequestVerificationCode({required final String phoneNumber}) =
       _$_LoginEventRequestVerificationCode;
 
   @override
   String get phoneNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginEventRequestVerificationCodeCopyWith<
-          _$_LoginEventRequestVerificationCode>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_LoginEventRequestVerificationCodeCopyWith<_$_LoginEventRequestVerificationCode> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoginEventRequestCodeVerificationCopyWith<$Res>
-    implements $LoginEventCopyWith<$Res> {
+abstract class _$$_LoginEventRequestCodeVerificationCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
   factory _$$_LoginEventRequestCodeVerificationCopyWith(
-          _$_LoginEventRequestCodeVerification value,
-          $Res Function(_$_LoginEventRequestCodeVerification) then) =
+          _$_LoginEventRequestCodeVerification value, $Res Function(_$_LoginEventRequestCodeVerification) then) =
       __$$_LoginEventRequestCodeVerificationCopyWithImpl<$Res>;
   @override
   @useResult
@@ -456,8 +397,7 @@ class __$$_LoginEventRequestCodeVerificationCopyWithImpl<$Res>
     extends _$LoginEventCopyWithImpl<$Res, _$_LoginEventRequestCodeVerification>
     implements _$$_LoginEventRequestCodeVerificationCopyWith<$Res> {
   __$$_LoginEventRequestCodeVerificationCopyWithImpl(
-      _$_LoginEventRequestCodeVerification _value,
-      $Res Function(_$_LoginEventRequestCodeVerification) _then)
+      _$_LoginEventRequestCodeVerification _value, $Res Function(_$_LoginEventRequestCodeVerification) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -486,12 +426,9 @@ class __$$_LoginEventRequestCodeVerificationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoginEventRequestCodeVerification
-    implements _LoginEventRequestCodeVerification {
+class _$_LoginEventRequestCodeVerification implements _LoginEventRequestCodeVerification {
   const _$_LoginEventRequestCodeVerification(
-      {required this.verificationCode,
-      required this.phoneNumber,
-      required this.fcmToken});
+      {required this.verificationCode, required this.phoneNumber, required this.fcmToken});
 
   @override
   final String verificationCode;
@@ -510,34 +447,26 @@ class _$_LoginEventRequestCodeVerification
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginEventRequestCodeVerification &&
-            (identical(other.verificationCode, verificationCode) ||
-                other.verificationCode == verificationCode) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken));
+            (identical(other.verificationCode, verificationCode) || other.verificationCode == verificationCode) &&
+            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber) &&
+            (identical(other.fcmToken, fcmToken) || other.fcmToken == fcmToken));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, verificationCode, phoneNumber, fcmToken);
+  int get hashCode => Object.hash(runtimeType, verificationCode, phoneNumber, fcmToken);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginEventRequestCodeVerificationCopyWith<
-          _$_LoginEventRequestCodeVerification>
-      get copyWith => __$$_LoginEventRequestCodeVerificationCopyWithImpl<
-          _$_LoginEventRequestCodeVerification>(this, _$identity);
+  _$$_LoginEventRequestCodeVerificationCopyWith<_$_LoginEventRequestCodeVerification> get copyWith =>
+      __$$_LoginEventRequestCodeVerificationCopyWithImpl<_$_LoginEventRequestCodeVerification>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumber) requestVerificationCode,
-    required TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)
-        requestCodeVerification,
+    required TResult Function(String verificationCode, String phoneNumber, String fcmToken) requestCodeVerification,
   }) {
     return requestCodeVerification(verificationCode, phoneNumber, fcmToken);
   }
@@ -547,12 +476,9 @@ class _$_LoginEventRequestCodeVerification
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumber)? requestVerificationCode,
-    TResult? Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult? Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
   }) {
-    return requestCodeVerification?.call(
-        verificationCode, phoneNumber, fcmToken);
+    return requestCodeVerification?.call(verificationCode, phoneNumber, fcmToken);
   }
 
   @override
@@ -560,9 +486,7 @@ class _$_LoginEventRequestCodeVerification
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumber)? requestVerificationCode,
-    TResult Function(
-            String verificationCode, String phoneNumber, String fcmToken)?
-        requestCodeVerification,
+    TResult Function(String verificationCode, String phoneNumber, String fcmToken)? requestCodeVerification,
     required TResult orElse(),
   }) {
     if (requestCodeVerification != null) {
@@ -574,12 +498,9 @@ class _$_LoginEventRequestCodeVerification
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginEventPhoneNumberChanged value)
-        phoneNumberChanged,
-    required TResult Function(_LoginEventRequestVerificationCode value)
-        requestVerificationCode,
-    required TResult Function(_LoginEventRequestCodeVerification value)
-        requestCodeVerification,
+    required TResult Function(_LoginEventPhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_LoginEventRequestVerificationCode value) requestVerificationCode,
+    required TResult Function(_LoginEventRequestCodeVerification value) requestCodeVerification,
   }) {
     return requestCodeVerification(this);
   }
@@ -588,10 +509,8 @@ class _$_LoginEventRequestCodeVerification
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult? Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult? Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult? Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
   }) {
     return requestCodeVerification?.call(this);
   }
@@ -600,10 +519,8 @@ class _$_LoginEventRequestCodeVerification
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginEventPhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_LoginEventRequestVerificationCode value)?
-        requestVerificationCode,
-    TResult Function(_LoginEventRequestCodeVerification value)?
-        requestCodeVerification,
+    TResult Function(_LoginEventRequestVerificationCode value)? requestVerificationCode,
+    TResult Function(_LoginEventRequestCodeVerification value)? requestCodeVerification,
     required TResult orElse(),
   }) {
     if (requestCodeVerification != null) {
@@ -625,9 +542,8 @@ abstract class _LoginEventRequestCodeVerification implements LoginEvent {
   String get fcmToken;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginEventRequestCodeVerificationCopyWith<
-          _$_LoginEventRequestCodeVerification>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_LoginEventRequestCodeVerificationCopyWith<_$_LoginEventRequestCodeVerification> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -636,11 +552,8 @@ mixin _$LoginState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String phoneNumber, String verifiationCode)
-        loaded,
-    required TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)
-        error,
+    required TResult Function(String phoneNumber, String verifiationCode) loaded,
+    required TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -648,9 +561,7 @@ mixin _$LoginState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult? Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult? Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -658,9 +569,7 @@ mixin _$LoginState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -693,14 +602,12 @@ mixin _$LoginState {
 
 /// @nodoc
 abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
+  factory $LoginStateCopyWith(LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
+class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState> implements $LoginStateCopyWith<$Res> {
   _$LoginStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -711,17 +618,14 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
 
 /// @nodoc
 abstract class _$$_LoginStateInitialCopyWith<$Res> {
-  factory _$$_LoginStateInitialCopyWith(_$_LoginStateInitial value,
-          $Res Function(_$_LoginStateInitial) then) =
+  factory _$$_LoginStateInitialCopyWith(_$_LoginStateInitial value, $Res Function(_$_LoginStateInitial) then) =
       __$$_LoginStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoginStateInitialCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateInitial>
+class __$$_LoginStateInitialCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateInitial>
     implements _$$_LoginStateInitialCopyWith<$Res> {
-  __$$_LoginStateInitialCopyWithImpl(
-      _$_LoginStateInitial _value, $Res Function(_$_LoginStateInitial) _then)
+  __$$_LoginStateInitialCopyWithImpl(_$_LoginStateInitial _value, $Res Function(_$_LoginStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -737,8 +641,7 @@ class _$_LoginStateInitial implements _LoginStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoginStateInitial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoginStateInitial);
   }
 
   @override
@@ -749,11 +652,8 @@ class _$_LoginStateInitial implements _LoginStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String phoneNumber, String verifiationCode)
-        loaded,
-    required TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)
-        error,
+    required TResult Function(String phoneNumber, String verifiationCode) loaded,
+    required TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber) error,
   }) {
     return initial();
   }
@@ -764,9 +664,7 @@ class _$_LoginStateInitial implements _LoginStateInitial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult? Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult? Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
   }) {
     return initial?.call();
   }
@@ -777,9 +675,7 @@ class _$_LoginStateInitial implements _LoginStateInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -832,17 +728,14 @@ abstract class _LoginStateInitial implements LoginState {
 
 /// @nodoc
 abstract class _$$_LoginStateLoadingCopyWith<$Res> {
-  factory _$$_LoginStateLoadingCopyWith(_$_LoginStateLoading value,
-          $Res Function(_$_LoginStateLoading) then) =
+  factory _$$_LoginStateLoadingCopyWith(_$_LoginStateLoading value, $Res Function(_$_LoginStateLoading) then) =
       __$$_LoginStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoginStateLoadingCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateLoading>
+class __$$_LoginStateLoadingCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateLoading>
     implements _$$_LoginStateLoadingCopyWith<$Res> {
-  __$$_LoginStateLoadingCopyWithImpl(
-      _$_LoginStateLoading _value, $Res Function(_$_LoginStateLoading) _then)
+  __$$_LoginStateLoadingCopyWithImpl(_$_LoginStateLoading _value, $Res Function(_$_LoginStateLoading) _then)
       : super(_value, _then);
 }
 
@@ -858,8 +751,7 @@ class _$_LoginStateLoading implements _LoginStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoginStateLoading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_LoginStateLoading);
   }
 
   @override
@@ -870,11 +762,8 @@ class _$_LoginStateLoading implements _LoginStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String phoneNumber, String verifiationCode)
-        loaded,
-    required TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)
-        error,
+    required TResult Function(String phoneNumber, String verifiationCode) loaded,
+    required TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber) error,
   }) {
     return loading();
   }
@@ -885,9 +774,7 @@ class _$_LoginStateLoading implements _LoginStateLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult? Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult? Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
   }) {
     return loading?.call();
   }
@@ -898,9 +785,7 @@ class _$_LoginStateLoading implements _LoginStateLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -953,19 +838,16 @@ abstract class _LoginStateLoading implements LoginState {
 
 /// @nodoc
 abstract class _$$_LoginStateLoadedCopyWith<$Res> {
-  factory _$$_LoginStateLoadedCopyWith(
-          _$_LoginStateLoaded value, $Res Function(_$_LoginStateLoaded) then) =
+  factory _$$_LoginStateLoadedCopyWith(_$_LoginStateLoaded value, $Res Function(_$_LoginStateLoaded) then) =
       __$$_LoginStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({String phoneNumber, String verifiationCode});
 }
 
 /// @nodoc
-class __$$_LoginStateLoadedCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateLoaded>
+class __$$_LoginStateLoadedCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateLoaded>
     implements _$$_LoginStateLoadedCopyWith<$Res> {
-  __$$_LoginStateLoadedCopyWithImpl(
-      _$_LoginStateLoaded _value, $Res Function(_$_LoginStateLoaded) _then)
+  __$$_LoginStateLoadedCopyWithImpl(_$_LoginStateLoaded _value, $Res Function(_$_LoginStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1009,10 +891,8 @@ class _$_LoginStateLoaded implements _LoginStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginStateLoaded &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.verifiationCode, verifiationCode) ||
-                other.verifiationCode == verifiationCode));
+            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber) &&
+            (identical(other.verifiationCode, verifiationCode) || other.verifiationCode == verifiationCode));
   }
 
   @override
@@ -1029,11 +909,8 @@ class _$_LoginStateLoaded implements _LoginStateLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String phoneNumber, String verifiationCode)
-        loaded,
-    required TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)
-        error,
+    required TResult Function(String phoneNumber, String verifiationCode) loaded,
+    required TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber) error,
   }) {
     return loaded(phoneNumber, verifiationCode);
   }
@@ -1044,9 +921,7 @@ class _$_LoginStateLoaded implements _LoginStateLoaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult? Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult? Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
   }) {
     return loaded?.call(phoneNumber, verifiationCode);
   }
@@ -1057,9 +932,7 @@ class _$_LoginStateLoaded implements _LoginStateLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1107,33 +980,26 @@ class _$_LoginStateLoaded implements _LoginStateLoaded {
 }
 
 abstract class _LoginStateLoaded implements LoginState {
-  const factory _LoginStateLoaded(
-      {final String phoneNumber,
-      final String verifiationCode}) = _$_LoginStateLoaded;
+  const factory _LoginStateLoaded({final String phoneNumber, final String verifiationCode}) = _$_LoginStateLoaded;
 
   String get phoneNumber;
   String get verifiationCode;
   @JsonKey(ignore: true)
-  _$$_LoginStateLoadedCopyWith<_$_LoginStateLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_LoginStateLoadedCopyWith<_$_LoginStateLoaded> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_LoginStateErrorCopyWith<$Res> {
-  factory _$$_LoginStateErrorCopyWith(
-          _$_LoginStateError value, $Res Function(_$_LoginStateError) then) =
+  factory _$$_LoginStateErrorCopyWith(_$_LoginStateError value, $Res Function(_$_LoginStateError) then) =
       __$$_LoginStateErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String error, int countSecureCodeEntryAttempts, String phoneNumber});
+  $Res call({String error, int countSecureCodeEntryAttempts, String phoneNumber});
 }
 
 /// @nodoc
-class __$$_LoginStateErrorCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateError>
+class __$$_LoginStateErrorCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res, _$_LoginStateError>
     implements _$$_LoginStateErrorCopyWith<$Res> {
-  __$$_LoginStateErrorCopyWithImpl(
-      _$_LoginStateError _value, $Res Function(_$_LoginStateError) _then)
+  __$$_LoginStateErrorCopyWithImpl(_$_LoginStateError _value, $Res Function(_$_LoginStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1163,10 +1029,7 @@ class __$$_LoginStateErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoginStateError implements _LoginStateError {
-  const _$_LoginStateError(
-      {required this.error,
-      this.countSecureCodeEntryAttempts = 5,
-      this.phoneNumber = ''});
+  const _$_LoginStateError({required this.error, this.countSecureCodeEntryAttempts = 5, this.phoneNumber = ''});
 
   @override
   final String error;
@@ -1188,17 +1051,13 @@ class _$_LoginStateError implements _LoginStateError {
         (other.runtimeType == runtimeType &&
             other is _$_LoginStateError &&
             (identical(other.error, error) || other.error == error) &&
-            (identical(other.countSecureCodeEntryAttempts,
-                    countSecureCodeEntryAttempts) ||
-                other.countSecureCodeEntryAttempts ==
-                    countSecureCodeEntryAttempts) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            (identical(other.countSecureCodeEntryAttempts, countSecureCodeEntryAttempts) ||
+                other.countSecureCodeEntryAttempts == countSecureCodeEntryAttempts) &&
+            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, error, countSecureCodeEntryAttempts, phoneNumber);
+  int get hashCode => Object.hash(runtimeType, error, countSecureCodeEntryAttempts, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -1211,11 +1070,8 @@ class _$_LoginStateError implements _LoginStateError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String phoneNumber, String verifiationCode)
-        loaded,
-    required TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)
-        error,
+    required TResult Function(String phoneNumber, String verifiationCode) loaded,
+    required TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber) error,
   }) {
     return error(this.error, countSecureCodeEntryAttempts, phoneNumber);
   }
@@ -1226,9 +1082,7 @@ class _$_LoginStateError implements _LoginStateError {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult? Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult? Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
   }) {
     return error?.call(this.error, countSecureCodeEntryAttempts, phoneNumber);
   }
@@ -1239,9 +1093,7 @@ class _$_LoginStateError implements _LoginStateError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber, String verifiationCode)? loaded,
-    TResult Function(
-            String error, int countSecureCodeEntryAttempts, String phoneNumber)?
-        error,
+    TResult Function(String error, int countSecureCodeEntryAttempts, String phoneNumber)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1298,6 +1150,5 @@ abstract class _LoginStateError implements LoginState {
   int get countSecureCodeEntryAttempts;
   String get phoneNumber;
   @JsonKey(ignore: true)
-  _$$_LoginStateErrorCopyWith<_$_LoginStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_LoginStateErrorCopyWith<_$_LoginStateError> get copyWith => throw _privateConstructorUsedError;
 }

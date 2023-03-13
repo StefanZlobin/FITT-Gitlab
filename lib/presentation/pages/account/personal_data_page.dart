@@ -53,8 +53,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
                     child: Text(
                       'Введите свои личные данные\nДля идентификации пользователя клуб вправе потребовать удостоверение личности',
-                      style: AppTypography.kBody14
-                          .apply(color: AppColors.kPrimaryRed),
+                      style: AppTypography.kBody14.apply(color: AppColors.kPrimaryRed),
                     ),
                   ),
                   AppTextFormField(
@@ -63,10 +62,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     validator: (v) => nameValidator.getValidationErrorName(v),
                     initialValue: userSnapshot?.firstName,
                     onChanged: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(firstName: value)));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
+                      getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(firstName: value)));
+                      getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                     },
                   ),
                   AppTextFormField(
@@ -76,10 +73,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     validator: (v) => nameValidator.getValidationErrorName(v),
                     initialValue: userSnapshot?.lastName,
                     onChanged: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(lastName: value)));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
+                      getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(lastName: value)));
+                      getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                     },
                   ),
                   AppDateForm(
@@ -97,10 +92,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                       );
                     },
                     onDateSelected: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(birthday: value)));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
+                      getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(birthday: value)));
+                      getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                     },
                   ),
                   AppTextFormField(
@@ -111,10 +104,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     initialValue: userSnapshot?.email,
                     validator: (v) => emailValidator.getValidationError(v),
                     onChanged: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(email: value)));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
+                      getIt<UserBloc>().add(UserEvent.updateUserData(user: user!.copyWith(email: value)));
+                      getIt<AccountSaveButtonCubit>().disableButton(isDisabled: false);
                     },
                   ),
                   const AppGenderFormField(
@@ -160,8 +151,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               textButton: const Text('Сохранить'),
               isDisable: isDisabled,
               onPressed: () {
-                getIt<UserBloc>().add(UserEvent.updateUserData(
-                    user: user.copyWith(gender: genderGroup)));
+                getIt<UserBloc>().add(UserEvent.updateUserData(user: user.copyWith(gender: genderGroup)));
                 if (!afterSignin) {
                   context.pop();
                 } else {

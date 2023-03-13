@@ -47,14 +47,12 @@ mixin _$SearchAddress {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SearchAddressCopyWith<SearchAddress> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SearchAddressCopyWith<SearchAddress> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SearchAddressCopyWith<$Res> {
-  factory $SearchAddressCopyWith(
-          SearchAddress value, $Res Function(SearchAddress) then) =
+  factory $SearchAddressCopyWith(SearchAddress value, $Res Function(SearchAddress) then) =
       _$SearchAddressCopyWithImpl<$Res, SearchAddress>;
   @useResult
   $Res call(
@@ -73,8 +71,7 @@ abstract class $SearchAddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchAddressCopyWithImpl<$Res, $Val extends SearchAddress>
-    implements $SearchAddressCopyWith<$Res> {
+class _$SearchAddressCopyWithImpl<$Res, $Val extends SearchAddress> implements $SearchAddressCopyWith<$Res> {
   _$SearchAddressCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -152,10 +149,8 @@ class _$SearchAddressCopyWithImpl<$Res, $Val extends SearchAddress>
 }
 
 /// @nodoc
-abstract class _$$_SearchAddressCopyWith<$Res>
-    implements $SearchAddressCopyWith<$Res> {
-  factory _$$_SearchAddressCopyWith(
-          _$_SearchAddress value, $Res Function(_$_SearchAddress) then) =
+abstract class _$$_SearchAddressCopyWith<$Res> implements $SearchAddressCopyWith<$Res> {
+  factory _$$_SearchAddressCopyWith(_$_SearchAddress value, $Res Function(_$_SearchAddress) then) =
       __$$_SearchAddressCopyWithImpl<$Res>;
   @override
   @useResult
@@ -175,12 +170,9 @@ abstract class _$$_SearchAddressCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SearchAddressCopyWithImpl<$Res>
-    extends _$SearchAddressCopyWithImpl<$Res, _$_SearchAddress>
+class __$$_SearchAddressCopyWithImpl<$Res> extends _$SearchAddressCopyWithImpl<$Res, _$_SearchAddress>
     implements _$$_SearchAddressCopyWith<$Res> {
-  __$$_SearchAddressCopyWithImpl(
-      _$_SearchAddress _value, $Res Function(_$_SearchAddress) _then)
-      : super(_value, _then);
+  __$$_SearchAddressCopyWithImpl(_$_SearchAddress _value, $Res Function(_$_SearchAddress) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -268,8 +260,7 @@ class _$_SearchAddress implements _SearchAddress {
       @JsonKey(name: 'geo_lat') required this.latitude,
       @JsonKey(name: 'geo_lon') required this.longitude});
 
-  factory _$_SearchAddress.fromJson(Map<String, dynamic> json) =>
-      _$$_SearchAddressFromJson(json);
+  factory _$_SearchAddress.fromJson(Map<String, dynamic> json) => _$$_SearchAddressFromJson(json);
 
   @override
   @JsonKey(name: 'country')
@@ -319,41 +310,23 @@ class _$_SearchAddress implements _SearchAddress {
         (other.runtimeType == runtimeType &&
             other is _$_SearchAddress &&
             (identical(other.country, country) || other.country == country) &&
-            (identical(other.shortAddress, shortAddress) ||
-                other.shortAddress == shortAddress) &&
-            (identical(other.suggestionAddress, suggestionAddress) ||
-                other.suggestionAddress == suggestionAddress) &&
+            (identical(other.shortAddress, shortAddress) || other.shortAddress == shortAddress) &&
+            (identical(other.suggestionAddress, suggestionAddress) || other.suggestionAddress == suggestionAddress) &&
             (identical(other.region, region) || other.region == region) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.street, street) || other.street == street) &&
             (identical(other.house, house) || other.house == house) &&
             (identical(other.block, block) || other.block == block) &&
-            (identical(other.postalCode, postalCode) ||
-                other.postalCode == postalCode) &&
-            (identical(other.fiasLevel, fiasLevel) ||
-                other.fiasLevel == fiasLevel) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+            (identical(other.postalCode, postalCode) || other.postalCode == postalCode) &&
+            (identical(other.fiasLevel, fiasLevel) || other.fiasLevel == fiasLevel) &&
+            (identical(other.latitude, latitude) || other.latitude == latitude) &&
+            (identical(other.longitude, longitude) || other.longitude == longitude));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      country,
-      shortAddress,
-      suggestionAddress,
-      region,
-      city,
-      street,
-      house,
-      block,
-      postalCode,
-      fiasLevel,
-      latitude,
-      longitude);
+  int get hashCode => Object.hash(runtimeType, country, shortAddress, suggestionAddress, region, city, street, house,
+      block, postalCode, fiasLevel, latitude, longitude);
 
   @JsonKey(ignore: true)
   @override
@@ -371,33 +344,20 @@ class _$_SearchAddress implements _SearchAddress {
 
 abstract class _SearchAddress implements SearchAddress {
   const factory _SearchAddress(
-      {@JsonKey(name: 'country')
-          required final String country,
-      @JsonKey(name: 'short_address')
-          required final String shortAddress,
-      @JsonKey(name: 'suggestion_address')
-          required final String suggestionAddress,
-      @JsonKey(name: 'region')
-          final String? region,
-      @JsonKey(name: 'city')
-          final String? city,
-      @JsonKey(name: 'street')
-          final String? street,
-      @JsonKey(name: 'house')
-          final String? house,
-      @JsonKey(name: 'block')
-          final String? block,
-      @JsonKey(name: 'postal_code')
-          final String? postalCode,
-      @JsonKey(name: 'fias_level')
-          final int? fiasLevel,
-      @JsonKey(name: 'geo_lat')
-          required final double latitude,
-      @JsonKey(name: 'geo_lon')
-          required final double longitude}) = _$_SearchAddress;
+      {@JsonKey(name: 'country') required final String country,
+      @JsonKey(name: 'short_address') required final String shortAddress,
+      @JsonKey(name: 'suggestion_address') required final String suggestionAddress,
+      @JsonKey(name: 'region') final String? region,
+      @JsonKey(name: 'city') final String? city,
+      @JsonKey(name: 'street') final String? street,
+      @JsonKey(name: 'house') final String? house,
+      @JsonKey(name: 'block') final String? block,
+      @JsonKey(name: 'postal_code') final String? postalCode,
+      @JsonKey(name: 'fias_level') final int? fiasLevel,
+      @JsonKey(name: 'geo_lat') required final double latitude,
+      @JsonKey(name: 'geo_lon') required final double longitude}) = _$_SearchAddress;
 
-  factory _SearchAddress.fromJson(Map<String, dynamic> json) =
-      _$_SearchAddress.fromJson;
+  factory _SearchAddress.fromJson(Map<String, dynamic> json) = _$_SearchAddress.fromJson;
 
   @override
   @JsonKey(name: 'country')
@@ -437,6 +397,5 @@ abstract class _SearchAddress implements SearchAddress {
   double get longitude;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchAddressCopyWith<_$_SearchAddress> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SearchAddressCopyWith<_$_SearchAddress> get copyWith => throw _privateConstructorUsedError;
 }

@@ -64,8 +64,7 @@ mixin _$AdminWorkoutsState {
 
 /// @nodoc
 abstract class $AdminWorkoutsStateCopyWith<$Res> {
-  factory $AdminWorkoutsStateCopyWith(
-          AdminWorkoutsState value, $Res Function(AdminWorkoutsState) then) =
+  factory $AdminWorkoutsStateCopyWith(AdminWorkoutsState value, $Res Function(AdminWorkoutsState) then) =
       _$AdminWorkoutsStateCopyWithImpl<$Res, AdminWorkoutsState>;
 }
 
@@ -83,8 +82,7 @@ class _$AdminWorkoutsStateCopyWithImpl<$Res, $Val extends AdminWorkoutsState>
 /// @nodoc
 abstract class _$$_AdminWorkoutsStateInitialCopyWith<$Res> {
   factory _$$_AdminWorkoutsStateInitialCopyWith(
-          _$_AdminWorkoutsStateInitial value,
-          $Res Function(_$_AdminWorkoutsStateInitial) then) =
+          _$_AdminWorkoutsStateInitial value, $Res Function(_$_AdminWorkoutsStateInitial) then) =
       __$$_AdminWorkoutsStateInitialCopyWithImpl<$Res>;
 }
 
@@ -93,8 +91,7 @@ class __$$_AdminWorkoutsStateInitialCopyWithImpl<$Res>
     extends _$AdminWorkoutsStateCopyWithImpl<$Res, _$_AdminWorkoutsStateInitial>
     implements _$$_AdminWorkoutsStateInitialCopyWith<$Res> {
   __$$_AdminWorkoutsStateInitialCopyWithImpl(
-      _$_AdminWorkoutsStateInitial _value,
-      $Res Function(_$_AdminWorkoutsStateInitial) _then)
+      _$_AdminWorkoutsStateInitial _value, $Res Function(_$_AdminWorkoutsStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -110,9 +107,7 @@ class _$_AdminWorkoutsStateInitial implements _AdminWorkoutsStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AdminWorkoutsStateInitial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AdminWorkoutsStateInitial);
   }
 
   @override
@@ -194,8 +189,7 @@ abstract class _AdminWorkoutsStateInitial implements AdminWorkoutsState {
 /// @nodoc
 abstract class _$$_AdminWorkoutsStateLoadedCopyWith<$Res> {
   factory _$$_AdminWorkoutsStateLoadedCopyWith(
-          _$_AdminWorkoutsStateLoaded value,
-          $Res Function(_$_AdminWorkoutsStateLoaded) then) =
+          _$_AdminWorkoutsStateLoaded value, $Res Function(_$_AdminWorkoutsStateLoaded) then) =
       __$$_AdminWorkoutsStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<AdminWorkout> adminWorkouts});
@@ -205,8 +199,8 @@ abstract class _$$_AdminWorkoutsStateLoadedCopyWith<$Res> {
 class __$$_AdminWorkoutsStateLoadedCopyWithImpl<$Res>
     extends _$AdminWorkoutsStateCopyWithImpl<$Res, _$_AdminWorkoutsStateLoaded>
     implements _$$_AdminWorkoutsStateLoadedCopyWith<$Res> {
-  __$$_AdminWorkoutsStateLoadedCopyWithImpl(_$_AdminWorkoutsStateLoaded _value,
-      $Res Function(_$_AdminWorkoutsStateLoaded) _then)
+  __$$_AdminWorkoutsStateLoadedCopyWithImpl(
+      _$_AdminWorkoutsStateLoaded _value, $Res Function(_$_AdminWorkoutsStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -226,9 +220,7 @@ class __$$_AdminWorkoutsStateLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AdminWorkoutsStateLoaded implements _AdminWorkoutsStateLoaded {
-  const _$_AdminWorkoutsStateLoaded(
-      {required final List<AdminWorkout> adminWorkouts})
-      : _adminWorkouts = adminWorkouts;
+  const _$_AdminWorkoutsStateLoaded({required final List<AdminWorkout> adminWorkouts}) : _adminWorkouts = adminWorkouts;
 
   final List<AdminWorkout> _adminWorkouts;
   @override
@@ -248,20 +240,17 @@ class _$_AdminWorkoutsStateLoaded implements _AdminWorkoutsStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdminWorkoutsStateLoaded &&
-            const DeepCollectionEquality()
-                .equals(other._adminWorkouts, _adminWorkouts));
+            const DeepCollectionEquality().equals(other._adminWorkouts, _adminWorkouts));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_adminWorkouts));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_adminWorkouts));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminWorkoutsStateLoadedCopyWith<_$_AdminWorkoutsStateLoaded>
-      get copyWith => __$$_AdminWorkoutsStateLoadedCopyWithImpl<
-          _$_AdminWorkoutsStateLoaded>(this, _$identity);
+  _$$_AdminWorkoutsStateLoadedCopyWith<_$_AdminWorkoutsStateLoaded> get copyWith =>
+      __$$_AdminWorkoutsStateLoadedCopyWithImpl<_$_AdminWorkoutsStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -333,20 +322,18 @@ class _$_AdminWorkoutsStateLoaded implements _AdminWorkoutsStateLoaded {
 }
 
 abstract class _AdminWorkoutsStateLoaded implements AdminWorkoutsState {
-  const factory _AdminWorkoutsStateLoaded(
-          {required final List<AdminWorkout> adminWorkouts}) =
+  const factory _AdminWorkoutsStateLoaded({required final List<AdminWorkout> adminWorkouts}) =
       _$_AdminWorkoutsStateLoaded;
 
   List<AdminWorkout> get adminWorkouts;
   @JsonKey(ignore: true)
-  _$$_AdminWorkoutsStateLoadedCopyWith<_$_AdminWorkoutsStateLoaded>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminWorkoutsStateLoadedCopyWith<_$_AdminWorkoutsStateLoaded> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AdminWorkoutsStateErrorCopyWith<$Res> {
-  factory _$$_AdminWorkoutsStateErrorCopyWith(_$_AdminWorkoutsStateError value,
-          $Res Function(_$_AdminWorkoutsStateError) then) =
+  factory _$$_AdminWorkoutsStateErrorCopyWith(
+          _$_AdminWorkoutsStateError value, $Res Function(_$_AdminWorkoutsStateError) then) =
       __$$_AdminWorkoutsStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
@@ -356,8 +343,8 @@ abstract class _$$_AdminWorkoutsStateErrorCopyWith<$Res> {
 class __$$_AdminWorkoutsStateErrorCopyWithImpl<$Res>
     extends _$AdminWorkoutsStateCopyWithImpl<$Res, _$_AdminWorkoutsStateError>
     implements _$$_AdminWorkoutsStateErrorCopyWith<$Res> {
-  __$$_AdminWorkoutsStateErrorCopyWithImpl(_$_AdminWorkoutsStateError _value,
-      $Res Function(_$_AdminWorkoutsStateError) _then)
+  __$$_AdminWorkoutsStateErrorCopyWithImpl(
+      _$_AdminWorkoutsStateError _value, $Res Function(_$_AdminWorkoutsStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -401,10 +388,8 @@ class _$_AdminWorkoutsStateError implements _AdminWorkoutsStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminWorkoutsStateErrorCopyWith<_$_AdminWorkoutsStateError>
-      get copyWith =>
-          __$$_AdminWorkoutsStateErrorCopyWithImpl<_$_AdminWorkoutsStateError>(
-              this, _$identity);
+  _$$_AdminWorkoutsStateErrorCopyWith<_$_AdminWorkoutsStateError> get copyWith =>
+      __$$_AdminWorkoutsStateErrorCopyWithImpl<_$_AdminWorkoutsStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -476,11 +461,9 @@ class _$_AdminWorkoutsStateError implements _AdminWorkoutsStateError {
 }
 
 abstract class _AdminWorkoutsStateError implements AdminWorkoutsState {
-  const factory _AdminWorkoutsStateError({required final String error}) =
-      _$_AdminWorkoutsStateError;
+  const factory _AdminWorkoutsStateError({required final String error}) = _$_AdminWorkoutsStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_AdminWorkoutsStateErrorCopyWith<_$_AdminWorkoutsStateError>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminWorkoutsStateErrorCopyWith<_$_AdminWorkoutsStateError> get copyWith => throw _privateConstructorUsedError;
 }

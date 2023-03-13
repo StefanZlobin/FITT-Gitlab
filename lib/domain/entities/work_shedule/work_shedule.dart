@@ -18,13 +18,9 @@ class WorkSchedule with _$WorkSchedule {
     @JsonKey(name: 'is_special', defaultValue: false) required bool isSpecial,
   }) = _WorkSchedule;
 
-  factory WorkSchedule.fromJson(Map<String, dynamic> json) =>
-      _$WorkScheduleFromJson(json);
+  factory WorkSchedule.fromJson(Map<String, dynamic> json) => _$WorkScheduleFromJson(json);
 
   bool get isWeekend => startTime == null;
-  DateTime? get startDateTime => startTime == null
-      ? null
-      : DateTimeUtils.fromDateAndTime(date!, startTime!);
-  DateTime? get endDateTime =>
-      endTime == null ? null : DateTimeUtils.fromDateAndTime(date!, endTime!);
+  DateTime? get startDateTime => startTime == null ? null : DateTimeUtils.fromDateAndTime(date!, startTime!);
+  DateTime? get endDateTime => endTime == null ? null : DateTimeUtils.fromDateAndTime(date!, endTime!);
 }

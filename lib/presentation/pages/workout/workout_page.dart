@@ -89,7 +89,10 @@ class WorkoutPage extends StatelessWidget {
                   '',
                 ),
                 _buildInformationText(
-                    'Клуб', workout.club.address!.shortAddress, ''),
+                  'Клуб',
+                  workout.club.address!.shortAddress,
+                  '',
+                ),
                 const SizedBox(height: 40),
                 if (workout.isMissed && !isArchivePage) ...[
                   TextButton(
@@ -104,8 +107,7 @@ class WorkoutPage extends StatelessWidget {
                     },
                     child: Text(
                       'Отменить тренировку',
-                      style: AppTypography.kH14
-                          .apply(color: AppColors.kPrimaryBlue),
+                      style: AppTypography.kH14.apply(color: AppColors.kPrimaryBlue),
                     ),
                   ),
                   const SizedBox(height: 40),

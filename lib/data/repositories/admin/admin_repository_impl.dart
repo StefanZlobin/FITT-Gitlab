@@ -13,8 +13,7 @@ import 'package:fitt/domain/repositories/admin/admin_repository.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class AdminRepositoryImpl implements AdminRepository {
-  AdminRepositoryImpl(this.dio, {this.baseUrl})
-      : _apiClient = AdminApiClient(dio, baseUrl: baseUrl);
+  AdminRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = AdminApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;
@@ -68,8 +67,7 @@ class AdminRepositoryImpl implements AdminRepository {
     required String adminWorkoutUuid,
   }) async {
     try {
-      final adminWorkout =
-          await _apiClient.adminWorkoutConfirmFinish(adminWorkoutUuid);
+      final adminWorkout = await _apiClient.adminWorkoutConfirmFinish(adminWorkoutUuid);
       return adminWorkout;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
@@ -85,8 +83,7 @@ class AdminRepositoryImpl implements AdminRepository {
     required String adminWorkoutUuid,
   }) async {
     try {
-      final adminWorkout =
-          await _apiClient.adminWorkoutConfirmStart(adminWorkoutUuid);
+      final adminWorkout = await _apiClient.adminWorkoutConfirmStart(adminWorkoutUuid);
       return adminWorkout;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(

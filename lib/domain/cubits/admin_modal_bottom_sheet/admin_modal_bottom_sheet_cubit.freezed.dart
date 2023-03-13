@@ -21,9 +21,7 @@ mixin _$AdminModalBottomSheetState {
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)
         forceFinish,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,9 +30,7 @@ mixin _$AdminModalBottomSheetState {
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,10 +38,7 @@ mixin _$AdminModalBottomSheetState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+    TResult Function(bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
     required TResult orElse(),
   }) =>
@@ -53,27 +46,21 @@ mixin _$AdminModalBottomSheetState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(
-            _AdminModalBottomSheetStateInputLockerNumber value)
-        inputLockerNumber,
-    required TResult Function(_AdminModalBottomSheetStateForceFinish value)
-        forceFinish,
+    required TResult Function(_AdminModalBottomSheetStateInputLockerNumber value) inputLockerNumber,
+    required TResult Function(_AdminModalBottomSheetStateForceFinish value) forceFinish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
-    TResult? Function(_AdminModalBottomSheetStateForceFinish value)?
-        forceFinish,
+    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
+    TResult? Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
+    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
     TResult Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
     required TResult orElse(),
   }) =>
@@ -82,15 +69,13 @@ mixin _$AdminModalBottomSheetState {
 
 /// @nodoc
 abstract class $AdminModalBottomSheetStateCopyWith<$Res> {
-  factory $AdminModalBottomSheetStateCopyWith(AdminModalBottomSheetState value,
-          $Res Function(AdminModalBottomSheetState) then) =
-      _$AdminModalBottomSheetStateCopyWithImpl<$Res,
-          AdminModalBottomSheetState>;
+  factory $AdminModalBottomSheetStateCopyWith(
+          AdminModalBottomSheetState value, $Res Function(AdminModalBottomSheetState) then) =
+      _$AdminModalBottomSheetStateCopyWithImpl<$Res, AdminModalBottomSheetState>;
 }
 
 /// @nodoc
-class _$AdminModalBottomSheetStateCopyWithImpl<$Res,
-        $Val extends AdminModalBottomSheetState>
+class _$AdminModalBottomSheetStateCopyWithImpl<$Res, $Val extends AdminModalBottomSheetState>
     implements $AdminModalBottomSheetStateCopyWith<$Res> {
   _$AdminModalBottomSheetStateCopyWithImpl(this._value, this._then);
 
@@ -102,17 +87,13 @@ class _$AdminModalBottomSheetStateCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) = __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AdminModalBottomSheetStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$AdminModalBottomSheetStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then) : super(_value, _then);
 }
 
 /// @nodoc
@@ -127,8 +108,7 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -140,9 +120,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)
         forceFinish,
   }) {
     return initial();
@@ -154,9 +132,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
   }) {
     return initial?.call();
@@ -167,10 +143,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+    TResult Function(bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
     required TResult orElse(),
   }) {
@@ -184,11 +157,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(
-            _AdminModalBottomSheetStateInputLockerNumber value)
-        inputLockerNumber,
-    required TResult Function(_AdminModalBottomSheetStateForceFinish value)
-        forceFinish,
+    required TResult Function(_AdminModalBottomSheetStateInputLockerNumber value) inputLockerNumber,
+    required TResult Function(_AdminModalBottomSheetStateForceFinish value) forceFinish,
   }) {
     return initial(this);
   }
@@ -197,10 +167,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
-    TResult? Function(_AdminModalBottomSheetStateForceFinish value)?
-        forceFinish,
+    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
+    TResult? Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
   }) {
     return initial?.call(this);
   }
@@ -209,8 +177,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
+    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
     TResult Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
     required TResult orElse(),
   }) {
@@ -227,8 +194,7 @@ abstract class _Initial implements AdminModalBottomSheetState {
 
 /// @nodoc
 abstract class _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith<$Res> {
-  factory _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith(
-          _$_AdminModalBottomSheetStateInputLockerNumber value,
+  factory _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith(_$_AdminModalBottomSheetStateInputLockerNumber value,
           $Res Function(_$_AdminModalBottomSheetStateInputLockerNumber) then) =
       __$$_AdminModalBottomSheetStateInputLockerNumberCopyWithImpl<$Res>;
   @useResult
@@ -237,11 +203,9 @@ abstract class _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith<$Res> {
 
 /// @nodoc
 class __$$_AdminModalBottomSheetStateInputLockerNumberCopyWithImpl<$Res>
-    extends _$AdminModalBottomSheetStateCopyWithImpl<$Res,
-        _$_AdminModalBottomSheetStateInputLockerNumber>
+    extends _$AdminModalBottomSheetStateCopyWithImpl<$Res, _$_AdminModalBottomSheetStateInputLockerNumber>
     implements _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith<$Res> {
-  __$$_AdminModalBottomSheetStateInputLockerNumberCopyWithImpl(
-      _$_AdminModalBottomSheetStateInputLockerNumber _value,
+  __$$_AdminModalBottomSheetStateInputLockerNumberCopyWithImpl(_$_AdminModalBottomSheetStateInputLockerNumber _value,
       $Res Function(_$_AdminModalBottomSheetStateInputLockerNumber) _then)
       : super(_value, _then);
 
@@ -261,8 +225,7 @@ class __$$_AdminModalBottomSheetStateInputLockerNumberCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AdminModalBottomSheetStateInputLockerNumber
-    implements _AdminModalBottomSheetStateInputLockerNumber {
+class _$_AdminModalBottomSheetStateInputLockerNumber implements _AdminModalBottomSheetStateInputLockerNumber {
   const _$_AdminModalBottomSheetStateInputLockerNumber({this.lockerNumber});
 
   @override
@@ -278,8 +241,7 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdminModalBottomSheetStateInputLockerNumber &&
-            (identical(other.lockerNumber, lockerNumber) ||
-                other.lockerNumber == lockerNumber));
+            (identical(other.lockerNumber, lockerNumber) || other.lockerNumber == lockerNumber));
   }
 
   @override
@@ -288,11 +250,10 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith<
-          _$_AdminModalBottomSheetStateInputLockerNumber>
+  _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith<_$_AdminModalBottomSheetStateInputLockerNumber>
       get copyWith =>
-          __$$_AdminModalBottomSheetStateInputLockerNumberCopyWithImpl<
-              _$_AdminModalBottomSheetStateInputLockerNumber>(this, _$identity);
+          __$$_AdminModalBottomSheetStateInputLockerNumberCopyWithImpl<_$_AdminModalBottomSheetStateInputLockerNumber>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -300,9 +261,7 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)
         forceFinish,
   }) {
     return inputLockerNumber(lockerNumber);
@@ -314,9 +273,7 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
   }) {
     return inputLockerNumber?.call(lockerNumber);
@@ -327,10 +284,7 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+    TResult Function(bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
     required TResult orElse(),
   }) {
@@ -344,11 +298,8 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(
-            _AdminModalBottomSheetStateInputLockerNumber value)
-        inputLockerNumber,
-    required TResult Function(_AdminModalBottomSheetStateForceFinish value)
-        forceFinish,
+    required TResult Function(_AdminModalBottomSheetStateInputLockerNumber value) inputLockerNumber,
+    required TResult Function(_AdminModalBottomSheetStateForceFinish value) forceFinish,
   }) {
     return inputLockerNumber(this);
   }
@@ -357,10 +308,8 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
-    TResult? Function(_AdminModalBottomSheetStateForceFinish value)?
-        forceFinish,
+    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
+    TResult? Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
   }) {
     return inputLockerNumber?.call(this);
   }
@@ -369,8 +318,7 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
+    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
     TResult Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
     required TResult orElse(),
   }) {
@@ -381,40 +329,31 @@ class _$_AdminModalBottomSheetStateInputLockerNumber
   }
 }
 
-abstract class _AdminModalBottomSheetStateInputLockerNumber
-    implements AdminModalBottomSheetState {
-  const factory _AdminModalBottomSheetStateInputLockerNumber(
-          {final String? lockerNumber}) =
+abstract class _AdminModalBottomSheetStateInputLockerNumber implements AdminModalBottomSheetState {
+  const factory _AdminModalBottomSheetStateInputLockerNumber({final String? lockerNumber}) =
       _$_AdminModalBottomSheetStateInputLockerNumber;
 
   String? get lockerNumber;
   @JsonKey(ignore: true)
-  _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith<
-          _$_AdminModalBottomSheetStateInputLockerNumber>
+  _$$_AdminModalBottomSheetStateInputLockerNumberCopyWith<_$_AdminModalBottomSheetStateInputLockerNumber>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AdminModalBottomSheetStateForceFinishCopyWith<$Res> {
-  factory _$$_AdminModalBottomSheetStateForceFinishCopyWith(
-          _$_AdminModalBottomSheetStateForceFinish value,
+  factory _$$_AdminModalBottomSheetStateForceFinishCopyWith(_$_AdminModalBottomSheetStateForceFinish value,
           $Res Function(_$_AdminModalBottomSheetStateForceFinish) then) =
       __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {bool showCommentFrom,
-      AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-      String? comment});
+  $Res call({bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment});
 }
 
 /// @nodoc
 class __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<$Res>
-    extends _$AdminModalBottomSheetStateCopyWithImpl<$Res,
-        _$_AdminModalBottomSheetStateForceFinish>
+    extends _$AdminModalBottomSheetStateCopyWithImpl<$Res, _$_AdminModalBottomSheetStateForceFinish>
     implements _$$_AdminModalBottomSheetStateForceFinishCopyWith<$Res> {
   __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl(
-      _$_AdminModalBottomSheetStateForceFinish _value,
-      $Res Function(_$_AdminModalBottomSheetStateForceFinish) _then)
+      _$_AdminModalBottomSheetStateForceFinish _value, $Res Function(_$_AdminModalBottomSheetStateForceFinish) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -443,12 +382,9 @@ class __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AdminModalBottomSheetStateForceFinish
-    implements _AdminModalBottomSheetStateForceFinish {
+class _$_AdminModalBottomSheetStateForceFinish implements _AdminModalBottomSheetStateForceFinish {
   const _$_AdminModalBottomSheetStateForceFinish(
-      {this.showCommentFrom = false,
-      this.adminWorkoutFinishReasonEnum,
-      this.comment});
+      {this.showCommentFrom = false, this.adminWorkoutFinishReasonEnum, this.comment});
 
   @override
   @JsonKey()
@@ -468,26 +404,21 @@ class _$_AdminModalBottomSheetStateForceFinish
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdminModalBottomSheetStateForceFinish &&
-            (identical(other.showCommentFrom, showCommentFrom) ||
-                other.showCommentFrom == showCommentFrom) &&
-            (identical(other.adminWorkoutFinishReasonEnum,
-                    adminWorkoutFinishReasonEnum) ||
-                other.adminWorkoutFinishReasonEnum ==
-                    adminWorkoutFinishReasonEnum) &&
+            (identical(other.showCommentFrom, showCommentFrom) || other.showCommentFrom == showCommentFrom) &&
+            (identical(other.adminWorkoutFinishReasonEnum, adminWorkoutFinishReasonEnum) ||
+                other.adminWorkoutFinishReasonEnum == adminWorkoutFinishReasonEnum) &&
             (identical(other.comment, comment) || other.comment == comment));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, showCommentFrom, adminWorkoutFinishReasonEnum, comment);
+  int get hashCode => Object.hash(runtimeType, showCommentFrom, adminWorkoutFinishReasonEnum, comment);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminModalBottomSheetStateForceFinishCopyWith<
-          _$_AdminModalBottomSheetStateForceFinish>
-      get copyWith => __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<
-          _$_AdminModalBottomSheetStateForceFinish>(this, _$identity);
+  _$$_AdminModalBottomSheetStateForceFinishCopyWith<_$_AdminModalBottomSheetStateForceFinish> get copyWith =>
+      __$$_AdminModalBottomSheetStateForceFinishCopyWithImpl<_$_AdminModalBottomSheetStateForceFinish>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -495,9 +426,7 @@ class _$_AdminModalBottomSheetStateForceFinish
     required TResult Function() initial,
     required TResult Function(String? lockerNumber) inputLockerNumber,
     required TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)
         forceFinish,
   }) {
     return forceFinish(showCommentFrom, adminWorkoutFinishReasonEnum, comment);
@@ -509,13 +438,10 @@ class _$_AdminModalBottomSheetStateForceFinish
     TResult? Function()? initial,
     TResult? Function(String? lockerNumber)? inputLockerNumber,
     TResult? Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+            bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
   }) {
-    return forceFinish?.call(
-        showCommentFrom, adminWorkoutFinishReasonEnum, comment);
+    return forceFinish?.call(showCommentFrom, adminWorkoutFinishReasonEnum, comment);
   }
 
   @override
@@ -523,16 +449,12 @@ class _$_AdminModalBottomSheetStateForceFinish
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String? lockerNumber)? inputLockerNumber,
-    TResult Function(
-            bool showCommentFrom,
-            AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
-            String? comment)?
+    TResult Function(bool showCommentFrom, AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum, String? comment)?
         forceFinish,
     required TResult orElse(),
   }) {
     if (forceFinish != null) {
-      return forceFinish(
-          showCommentFrom, adminWorkoutFinishReasonEnum, comment);
+      return forceFinish(showCommentFrom, adminWorkoutFinishReasonEnum, comment);
     }
     return orElse();
   }
@@ -541,11 +463,8 @@ class _$_AdminModalBottomSheetStateForceFinish
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(
-            _AdminModalBottomSheetStateInputLockerNumber value)
-        inputLockerNumber,
-    required TResult Function(_AdminModalBottomSheetStateForceFinish value)
-        forceFinish,
+    required TResult Function(_AdminModalBottomSheetStateInputLockerNumber value) inputLockerNumber,
+    required TResult Function(_AdminModalBottomSheetStateForceFinish value) forceFinish,
   }) {
     return forceFinish(this);
   }
@@ -554,10 +473,8 @@ class _$_AdminModalBottomSheetStateForceFinish
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
-    TResult? Function(_AdminModalBottomSheetStateForceFinish value)?
-        forceFinish,
+    TResult? Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
+    TResult? Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
   }) {
     return forceFinish?.call(this);
   }
@@ -566,8 +483,7 @@ class _$_AdminModalBottomSheetStateForceFinish
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)?
-        inputLockerNumber,
+    TResult Function(_AdminModalBottomSheetStateInputLockerNumber value)? inputLockerNumber,
     TResult Function(_AdminModalBottomSheetStateForceFinish value)? forceFinish,
     required TResult orElse(),
   }) {
@@ -578,8 +494,7 @@ class _$_AdminModalBottomSheetStateForceFinish
   }
 }
 
-abstract class _AdminModalBottomSheetStateForceFinish
-    implements AdminModalBottomSheetState {
+abstract class _AdminModalBottomSheetStateForceFinish implements AdminModalBottomSheetState {
   const factory _AdminModalBottomSheetStateForceFinish(
       {final bool showCommentFrom,
       final AdminWorkoutFinishReasonEnum? adminWorkoutFinishReasonEnum,
@@ -589,7 +504,6 @@ abstract class _AdminModalBottomSheetStateForceFinish
   AdminWorkoutFinishReasonEnum? get adminWorkoutFinishReasonEnum;
   String? get comment;
   @JsonKey(ignore: true)
-  _$$_AdminModalBottomSheetStateForceFinishCopyWith<
-          _$_AdminModalBottomSheetStateForceFinish>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminModalBottomSheetStateForceFinishCopyWith<_$_AdminModalBottomSheetStateForceFinish> get copyWith =>
+      throw _privateConstructorUsedError;
 }

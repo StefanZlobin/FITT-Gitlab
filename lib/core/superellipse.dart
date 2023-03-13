@@ -16,7 +16,11 @@ BorderRadius superellipseRadius(
   final bl = Radius.circular(bottomLeft ? value : 0);
   final br = Radius.circular(bottomRight ? value : 0);
   return BorderRadius.only(
-      topLeft: tl, topRight: tr, bottomLeft: bl, bottomRight: br);
+    topLeft: tl,
+    topRight: tr,
+    bottomLeft: bl,
+    bottomRight: br,
+  );
 }
 
 BorderRadius superellipseRadiusOnly(

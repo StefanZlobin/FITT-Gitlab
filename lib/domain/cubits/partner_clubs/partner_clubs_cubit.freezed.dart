@@ -64,8 +64,7 @@ mixin _$PartnerClubsState {
 
 /// @nodoc
 abstract class $PartnerClubsStateCopyWith<$Res> {
-  factory $PartnerClubsStateCopyWith(
-          PartnerClubsState value, $Res Function(PartnerClubsState) then) =
+  factory $PartnerClubsStateCopyWith(PartnerClubsState value, $Res Function(PartnerClubsState) then) =
       _$PartnerClubsStateCopyWithImpl<$Res, PartnerClubsState>;
 }
 
@@ -83,8 +82,7 @@ class _$PartnerClubsStateCopyWithImpl<$Res, $Val extends PartnerClubsState>
 /// @nodoc
 abstract class _$$_PartnerClubsStateLoadingCopyWith<$Res> {
   factory _$$_PartnerClubsStateLoadingCopyWith(
-          _$_PartnerClubsStateLoading value,
-          $Res Function(_$_PartnerClubsStateLoading) then) =
+          _$_PartnerClubsStateLoading value, $Res Function(_$_PartnerClubsStateLoading) then) =
       __$$_PartnerClubsStateLoadingCopyWithImpl<$Res>;
 }
 
@@ -92,8 +90,8 @@ abstract class _$$_PartnerClubsStateLoadingCopyWith<$Res> {
 class __$$_PartnerClubsStateLoadingCopyWithImpl<$Res>
     extends _$PartnerClubsStateCopyWithImpl<$Res, _$_PartnerClubsStateLoading>
     implements _$$_PartnerClubsStateLoadingCopyWith<$Res> {
-  __$$_PartnerClubsStateLoadingCopyWithImpl(_$_PartnerClubsStateLoading _value,
-      $Res Function(_$_PartnerClubsStateLoading) _then)
+  __$$_PartnerClubsStateLoadingCopyWithImpl(
+      _$_PartnerClubsStateLoading _value, $Res Function(_$_PartnerClubsStateLoading) _then)
       : super(_value, _then);
 }
 
@@ -109,9 +107,7 @@ class _$_PartnerClubsStateLoading implements _PartnerClubsStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PartnerClubsStateLoading);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_PartnerClubsStateLoading);
   }
 
   @override
@@ -192,8 +188,8 @@ abstract class _PartnerClubsStateLoading implements PartnerClubsState {
 
 /// @nodoc
 abstract class _$$_PartnerClubsStateLoadedCopyWith<$Res> {
-  factory _$$_PartnerClubsStateLoadedCopyWith(_$_PartnerClubsStateLoaded value,
-          $Res Function(_$_PartnerClubsStateLoaded) then) =
+  factory _$$_PartnerClubsStateLoadedCopyWith(
+          _$_PartnerClubsStateLoaded value, $Res Function(_$_PartnerClubsStateLoaded) then) =
       __$$_PartnerClubsStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PartnerClub> partnerClubs});
@@ -203,8 +199,8 @@ abstract class _$$_PartnerClubsStateLoadedCopyWith<$Res> {
 class __$$_PartnerClubsStateLoadedCopyWithImpl<$Res>
     extends _$PartnerClubsStateCopyWithImpl<$Res, _$_PartnerClubsStateLoaded>
     implements _$$_PartnerClubsStateLoadedCopyWith<$Res> {
-  __$$_PartnerClubsStateLoadedCopyWithImpl(_$_PartnerClubsStateLoaded _value,
-      $Res Function(_$_PartnerClubsStateLoaded) _then)
+  __$$_PartnerClubsStateLoadedCopyWithImpl(
+      _$_PartnerClubsStateLoaded _value, $Res Function(_$_PartnerClubsStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -224,9 +220,7 @@ class __$$_PartnerClubsStateLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PartnerClubsStateLoaded implements _PartnerClubsStateLoaded {
-  const _$_PartnerClubsStateLoaded(
-      {required final List<PartnerClub> partnerClubs})
-      : _partnerClubs = partnerClubs;
+  const _$_PartnerClubsStateLoaded({required final List<PartnerClub> partnerClubs}) : _partnerClubs = partnerClubs;
 
   final List<PartnerClub> _partnerClubs;
   @override
@@ -246,21 +240,17 @@ class _$_PartnerClubsStateLoaded implements _PartnerClubsStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PartnerClubsStateLoaded &&
-            const DeepCollectionEquality()
-                .equals(other._partnerClubs, _partnerClubs));
+            const DeepCollectionEquality().equals(other._partnerClubs, _partnerClubs));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_partnerClubs));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_partnerClubs));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PartnerClubsStateLoadedCopyWith<_$_PartnerClubsStateLoaded>
-      get copyWith =>
-          __$$_PartnerClubsStateLoadedCopyWithImpl<_$_PartnerClubsStateLoaded>(
-              this, _$identity);
+  _$$_PartnerClubsStateLoadedCopyWith<_$_PartnerClubsStateLoaded> get copyWith =>
+      __$$_PartnerClubsStateLoadedCopyWithImpl<_$_PartnerClubsStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -332,20 +322,17 @@ class _$_PartnerClubsStateLoaded implements _PartnerClubsStateLoaded {
 }
 
 abstract class _PartnerClubsStateLoaded implements PartnerClubsState {
-  const factory _PartnerClubsStateLoaded(
-          {required final List<PartnerClub> partnerClubs}) =
-      _$_PartnerClubsStateLoaded;
+  const factory _PartnerClubsStateLoaded({required final List<PartnerClub> partnerClubs}) = _$_PartnerClubsStateLoaded;
 
   List<PartnerClub> get partnerClubs;
   @JsonKey(ignore: true)
-  _$$_PartnerClubsStateLoadedCopyWith<_$_PartnerClubsStateLoaded>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_PartnerClubsStateLoadedCopyWith<_$_PartnerClubsStateLoaded> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_PartnerClubsStateErrorCopyWith<$Res> {
-  factory _$$_PartnerClubsStateErrorCopyWith(_$_PartnerClubsStateError value,
-          $Res Function(_$_PartnerClubsStateError) then) =
+  factory _$$_PartnerClubsStateErrorCopyWith(
+          _$_PartnerClubsStateError value, $Res Function(_$_PartnerClubsStateError) then) =
       __$$_PartnerClubsStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
@@ -355,8 +342,8 @@ abstract class _$$_PartnerClubsStateErrorCopyWith<$Res> {
 class __$$_PartnerClubsStateErrorCopyWithImpl<$Res>
     extends _$PartnerClubsStateCopyWithImpl<$Res, _$_PartnerClubsStateError>
     implements _$$_PartnerClubsStateErrorCopyWith<$Res> {
-  __$$_PartnerClubsStateErrorCopyWithImpl(_$_PartnerClubsStateError _value,
-      $Res Function(_$_PartnerClubsStateError) _then)
+  __$$_PartnerClubsStateErrorCopyWithImpl(
+      _$_PartnerClubsStateError _value, $Res Function(_$_PartnerClubsStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -401,8 +388,7 @@ class _$_PartnerClubsStateError implements _PartnerClubsStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_PartnerClubsStateErrorCopyWith<_$_PartnerClubsStateError> get copyWith =>
-      __$$_PartnerClubsStateErrorCopyWithImpl<_$_PartnerClubsStateError>(
-          this, _$identity);
+      __$$_PartnerClubsStateErrorCopyWithImpl<_$_PartnerClubsStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -474,11 +460,9 @@ class _$_PartnerClubsStateError implements _PartnerClubsStateError {
 }
 
 abstract class _PartnerClubsStateError implements PartnerClubsState {
-  const factory _PartnerClubsStateError({required final String error}) =
-      _$_PartnerClubsStateError;
+  const factory _PartnerClubsStateError({required final String error}) = _$_PartnerClubsStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_PartnerClubsStateErrorCopyWith<_$_PartnerClubsStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_PartnerClubsStateErrorCopyWith<_$_PartnerClubsStateError> get copyWith => throw _privateConstructorUsedError;
 }

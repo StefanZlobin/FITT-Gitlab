@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/map/map_style.dart';
 import 'package:fitt/domain/blocs/map/map_bloc.dart';
 import 'package:fitt/domain/blocs/search/search_bloc.dart';
 import 'package:fitt/domain/cubits/filtering/filtering_cubit.dart';
@@ -26,6 +27,7 @@ class _MapWidgetState extends State<MapWidget> {
   Future<void> _onMapCreated(GoogleMapController controller) async {
     _mapBloc.add(MapEvent.mapCreated(controller));
     _controller.complete(controller);
+    await controller.setMapStyle(MapStyle.mapStyle);
     await getIt<GeolocationService>().getCurrentPosition();
   }
 
@@ -43,7 +45,9 @@ class _MapWidgetState extends State<MapWidget> {
                   CameraUpdate.newCameraPosition(
                     CameraPosition(
                       target: LatLng(
-                          searchAddress.latitude, searchAddress.longitude),
+                        searchAddress.latitude,
+                        searchAddress.longitude,
+                      ),
                       zoom: 16,
                     ),
                   ),
@@ -56,14 +60,23 @@ class _MapWidgetState extends State<MapWidget> {
           bloc: getIt<FilteringCubit>(),
           listener: (context, state) {
             state.whenOrNull(
-              loaded: (filters, selectedFacilities, _, __, ___,
-                  activeFacilitiesList) {
-                _mapBloc.add(MapEvent.filtersDetected(
+              loaded: (
+                filters,
+                selectedFacilities,
+                _,
+                __,
+                ___,
+                activeFacilitiesList,
+              ) {
+                _mapBloc.add(
+                  MapEvent.filtersDetected(
                     filters: ClubFilters(
-                  facilities: activeFacilitiesList,
-                  maxPrice: filters.maxPrice,
-                  minPrice: filters.minPrice,
-                )));
+                      facilities: activeFacilitiesList,
+                      maxPrice: filters.maxPrice,
+                      minPrice: filters.minPrice,
+                    ),
+                  ),
+                );
               },
             );
           },

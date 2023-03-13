@@ -169,31 +169,40 @@ void _registerRepositories() {
 
 void _regusterServices() {
   getIt.registerLazySingleton<GeolocationService>(
-      () => GeolocationServiceImpl());
+    () => GeolocationServiceImpl(),
+  );
   getIt.registerLazySingleton<LocalNotificationsService>(
-      () => LocalNotificationsServiceImpl());
+    () => LocalNotificationsServiceImpl(),
+  );
 }
 
 void _registerBlocs() {
   getIt.registerLazySingleton<WorkoutCubit>(() => WorkoutCubit());
   getIt.registerFactory<WorkoutTimerBloc>(
-      () => WorkoutTimerBloc(ticker: const Ticker()));
+    () => WorkoutTimerBloc(ticker: const Ticker()),
+  );
   getIt.registerLazySingleton<AdminWorkoutTimerBloc>(
-      () => AdminWorkoutTimerBloc(ticker: const Ticker()));
+    () => AdminWorkoutTimerBloc(ticker: const Ticker()),
+  );
   getIt.registerFactory<WorkoutSliderButtonTypeCubit>(
-      () => WorkoutSliderButtonTypeCubit());
+    () => WorkoutSliderButtonTypeCubit(),
+  );
 
   getIt.registerFactory<AdminWorkoutActionButtonCubit>(
-      () => AdminWorkoutActionButtonCubit());
+    () => AdminWorkoutActionButtonCubit(),
+  );
   getIt.registerLazySingleton<AdminModalBottomSheetCubit>(
-      () => AdminModalBottomSheetCubit());
+    () => AdminModalBottomSheetCubit(),
+  );
   getIt.registerLazySingleton<ModalBottomSheetCubit>(
-      () => ModalBottomSheetCubit());
+    () => ModalBottomSheetCubit(),
+  );
   getIt.registerLazySingleton<WorkoutsCubit>(() => WorkoutsCubit());
   getIt.registerLazySingleton<GeolocationCubit>(() => GeolocationCubit());
   getIt.registerLazySingleton<SearchBloc>(() => SearchBloc());
   getIt.registerLazySingleton<ArchiveWorkoutsCubit>(
-      () => ArchiveWorkoutsCubit());
+    () => ArchiveWorkoutsCubit(),
+  );
   getIt.registerLazySingleton<MapBloc>(() => MapBloc());
   getIt.registerLazySingleton<CarouselBloc>(() => CarouselBloc());
   getIt.registerLazySingleton<AuthBloc>(() => AuthBloc());
@@ -205,17 +214,22 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AdminClubCubit>(() => AdminClubCubit());
   getIt.registerLazySingleton<PartnerClubsCubit>(() => PartnerClubsCubit());
   getIt.registerLazySingleton<PartnerClubsFavoriteCubit>(
-      () => PartnerClubsFavoriteCubit());
+    () => PartnerClubsFavoriteCubit(),
+  );
   getIt.registerLazySingleton<ClubCubit>(() => ClubCubit());
   getIt.registerLazySingleton<AuthenticationErrorTimerBloc>(
-      () => AuthenticationErrorTimerBloc(ticker: const Ticker()));
+    () => AuthenticationErrorTimerBloc(ticker: const Ticker()),
+  );
   getIt.registerLazySingleton<AuthenticationErrorTimerBloc>(
-      instanceName: 'inputPhonePage',
-      () => AuthenticationErrorTimerBloc(ticker: const Ticker()));
+    instanceName: 'inputPhonePage',
+    () => AuthenticationErrorTimerBloc(ticker: const Ticker()),
+  );
   getIt.registerLazySingleton<ClubPhotoSliderCubit>(
-      () => ClubPhotoSliderCubit());
+    () => ClubPhotoSliderCubit(),
+  );
   getIt.registerLazySingleton<CalculateWorkoutPriceCubit>(
-      () => CalculateWorkoutPriceCubit());
+    () => CalculateWorkoutPriceCubit(),
+  );
   getIt.registerLazySingleton<BuyBatchCubit>(() => BuyBatchCubit());
   getIt.registerLazySingleton<BuyWorkoutCubit>(() => BuyWorkoutCubit());
   getIt.registerLazySingleton<NotificationsBloc>(() => NotificationsBloc());
@@ -232,5 +246,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<SortingCubit>(() => SortingCubit());
   getIt.registerLazySingleton<FeedbackCubit>(() => FeedbackCubit());
   getIt.registerLazySingleton<AccountSaveButtonCubit>(
-      () => AccountSaveButtonCubit());
+    () => AccountSaveButtonCubit(),
+  );
 }

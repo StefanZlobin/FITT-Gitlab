@@ -10,12 +10,10 @@ part 'partner_club_api_client.g.dart';
 
 @RestApi()
 abstract class PartnerClubApiClient {
-  factory PartnerClubApiClient(Dio dio, {String? baseUrl}) =
-      _PartnerClubApiClient;
+  factory PartnerClubApiClient(Dio dio, {String? baseUrl}) = _PartnerClubApiClient;
 
   @GET('user/slots/{slot_id}')
-  Future<List<CalculatePrice>> getCalculatedPriceWorkout(
-      @Path('slot_id') String slotUuid);
+  Future<List<CalculatePrice>> getCalculatedPriceWorkout(@Path('slot_id') String slotUuid);
 
   @POST('user/clubs/{uuid}/favorite/')
   Future<PartnerClub> addClubToFavorites(@Path('uuid') String uuid);

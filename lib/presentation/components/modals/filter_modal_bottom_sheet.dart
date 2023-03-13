@@ -44,8 +44,9 @@ class FilterModalBottomSheet extends StatelessWidget {
               bloc: getIt<ResourceCubit>(),
               listener: (context, state) {
                 state.whenOrNull(
-                    loaded: (filters) =>
-                        getIt<FilteringCubit>().setFilters(filters: filters));
+                  loaded: (filters) =>
+                      getIt<FilteringCubit>().setFilters(filters: filters),
+                );
               },
               child: BlocBuilder<FilteringCubit, FilteringState>(
                 bloc: getIt<FilteringCubit>(),
@@ -53,8 +54,14 @@ class FilterModalBottomSheet extends StatelessWidget {
                   return state.when(
                     initial: () =>
                         const Center(child: CircularProgressIndicator()),
-                    loaded: (filters, selectedFacilities, minPrice, maxPrice, _,
-                        __) {
+                    loaded: (
+                      filters,
+                      selectedFacilities,
+                      minPrice,
+                      maxPrice,
+                      _,
+                      __,
+                    ) {
                       return ListView(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         children: [
@@ -81,8 +88,14 @@ class FilterModalBottomSheet extends StatelessWidget {
                 return state.when(
                   initial: () => const SizedBox(),
                   error: (error) => const SizedBox(),
-                  loaded: (filters, selectedFacilities, _, __, isPriceUpdate,
-                      activeFacilitiesList) {
+                  loaded: (
+                    filters,
+                    selectedFacilities,
+                    _,
+                    __,
+                    isPriceUpdate,
+                    activeFacilitiesList,
+                  ) {
                     final countActiveFacilities =
                         activeFacilitiesList?.length ?? 0;
                     final countActiveFilters =
@@ -225,7 +238,7 @@ class FilterModalBottomSheet extends StatelessWidget {
         15,
         15,
         10,
-        10
+        10,
       ],
       onChanged: (value) {
         getIt<FilteringCubit>().updatePrice(price: value);

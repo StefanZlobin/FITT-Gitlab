@@ -30,28 +30,22 @@ mixin _$TimeSlot {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TimeSlotCopyWith<TimeSlot> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TimeSlotCopyWith<TimeSlot> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TimeSlotCopyWith<$Res> {
-  factory $TimeSlotCopyWith(TimeSlot value, $Res Function(TimeSlot) then) =
-      _$TimeSlotCopyWithImpl<$Res, TimeSlot>;
+  factory $TimeSlotCopyWith(TimeSlot value, $Res Function(TimeSlot) then) = _$TimeSlotCopyWithImpl<$Res, TimeSlot>;
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString)
-          DateTime startTime,
-      @DurationConverter()
-          Duration duration,
-      @JsonKey(fromJson: toRubles, toJson: toCent)
-          int price});
+      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString) DateTime startTime,
+      @DurationConverter() Duration duration,
+      @JsonKey(fromJson: toRubles, toJson: toCent) int price});
 }
 
 /// @nodoc
-class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
-    implements $TimeSlotCopyWith<$Res> {
+class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot> implements $TimeSlotCopyWith<$Res> {
   _$TimeSlotCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -90,28 +84,20 @@ class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
 
 /// @nodoc
 abstract class _$$_TimeSlotCopyWith<$Res> implements $TimeSlotCopyWith<$Res> {
-  factory _$$_TimeSlotCopyWith(
-          _$_TimeSlot value, $Res Function(_$_TimeSlot) then) =
-      __$$_TimeSlotCopyWithImpl<$Res>;
+  factory _$$_TimeSlotCopyWith(_$_TimeSlot value, $Res Function(_$_TimeSlot) then) = __$$_TimeSlotCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString)
-          DateTime startTime,
-      @DurationConverter()
-          Duration duration,
-      @JsonKey(fromJson: toRubles, toJson: toCent)
-          int price});
+      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString) DateTime startTime,
+      @DurationConverter() Duration duration,
+      @JsonKey(fromJson: toRubles, toJson: toCent) int price});
 }
 
 /// @nodoc
-class __$$_TimeSlotCopyWithImpl<$Res>
-    extends _$TimeSlotCopyWithImpl<$Res, _$_TimeSlot>
+class __$$_TimeSlotCopyWithImpl<$Res> extends _$TimeSlotCopyWithImpl<$Res, _$_TimeSlot>
     implements _$$_TimeSlotCopyWith<$Res> {
-  __$$_TimeSlotCopyWithImpl(
-      _$_TimeSlot _value, $Res Function(_$_TimeSlot) _then)
-      : super(_value, _then);
+  __$$_TimeSlotCopyWithImpl(_$_TimeSlot _value, $Res Function(_$_TimeSlot) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -147,16 +133,12 @@ class __$$_TimeSlotCopyWithImpl<$Res>
 class _$_TimeSlot extends _TimeSlot {
   _$_TimeSlot(
       {required this.id,
-      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString)
-          required this.startTime,
-      @DurationConverter()
-          required this.duration,
-      @JsonKey(fromJson: toRubles, toJson: toCent)
-          required this.price})
+      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString) required this.startTime,
+      @DurationConverter() required this.duration,
+      @JsonKey(fromJson: toRubles, toJson: toCent) required this.price})
       : super._();
 
-  factory _$_TimeSlot.fromJson(Map<String, dynamic> json) =>
-      _$$_TimeSlotFromJson(json);
+  factory _$_TimeSlot.fromJson(Map<String, dynamic> json) => _$$_TimeSlotFromJson(json);
 
   @override
   final String id;
@@ -181,10 +163,8 @@ class _$_TimeSlot extends _TimeSlot {
         (other.runtimeType == runtimeType &&
             other is _$_TimeSlot &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
-            (identical(other.duration, duration) ||
-                other.duration == duration) &&
+            (identical(other.startTime, startTime) || other.startTime == startTime) &&
+            (identical(other.duration, duration) || other.duration == duration) &&
             (identical(other.price, price) || other.price == price));
   }
 
@@ -195,8 +175,7 @@ class _$_TimeSlot extends _TimeSlot {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimeSlotCopyWith<_$_TimeSlot> get copyWith =>
-      __$$_TimeSlotCopyWithImpl<_$_TimeSlot>(this, _$identity);
+  _$$_TimeSlotCopyWith<_$_TimeSlot> get copyWith => __$$_TimeSlotCopyWithImpl<_$_TimeSlot>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -209,12 +188,9 @@ class _$_TimeSlot extends _TimeSlot {
 abstract class _TimeSlot extends TimeSlot {
   factory _TimeSlot(
       {required final String id,
-      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString)
-          required final DateTime startTime,
-      @DurationConverter()
-          required final Duration duration,
-      @JsonKey(fromJson: toRubles, toJson: toCent)
-          required final int price}) = _$_TimeSlot;
+      @JsonKey(name: 'start_time', fromJson: timeFromString, toJson: timeToString) required final DateTime startTime,
+      @DurationConverter() required final Duration duration,
+      @JsonKey(fromJson: toRubles, toJson: toCent) required final int price}) = _$_TimeSlot;
   _TimeSlot._() : super._();
 
   factory _TimeSlot.fromJson(Map<String, dynamic> json) = _$_TimeSlot.fromJson;
@@ -232,6 +208,5 @@ abstract class _TimeSlot extends TimeSlot {
   int get price;
   @override
   @JsonKey(ignore: true)
-  _$$_TimeSlotCopyWith<_$_TimeSlot> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TimeSlotCopyWith<_$_TimeSlot> get copyWith => throw _privateConstructorUsedError;
 }

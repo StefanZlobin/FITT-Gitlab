@@ -12,8 +12,7 @@ class TokenPair with Serializable {
   @JsonKey(name: 'refresh')
   final String? refresh;
 
-  factory TokenPair.fromJson(Map json) =>
-      _$TokenPairFromJson(json as Map<String, dynamic>);
+  factory TokenPair.fromJson(Map json) => _$TokenPairFromJson(json as Map<String, dynamic>);
   @override
   Map<String, dynamic> toJson() => _$TokenPairToJson(this);
 }

@@ -35,13 +35,10 @@ class CollapsedScheduleWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            if (nowOpen || willCloseAt != null)
-              const Text('•', style: TextStyle(color: AppColors.kOxford20)),
+            if (nowOpen || willCloseAt != null) const Text('•', style: TextStyle(color: AppColors.kOxford20)),
             const SizedBox(width: 16),
             Text(
-              nowOpen
-                  ? 'Закроется в ${willCloseAt ?? DateTime.now()}'
-                  : 'Откроется в ${willOpenAt ?? DateTime.now()}',
+              nowOpen ? 'Закроется в ${willCloseAt ?? DateTime.now()}' : 'Откроется в ${willOpenAt ?? DateTime.now()}',
               style: AppTypography.kBody14.apply(color: AppColors.kOxford),
             ),
             Expanded(child: Container()),

@@ -34,8 +34,7 @@ class _SubmitRatingState extends State<SubmitRating> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: index < _currentRating
-                ? const Icon(AppIcons.star_big,
-                    color: AppColors.kPrimaryBlue, size: 24)
+                ? const Icon(AppIcons.star_big, color: AppColors.kPrimaryBlue, size: 24)
                 : const Icon(
                     AppIcons.star_big,
                     color: AppColors.kOxford20,

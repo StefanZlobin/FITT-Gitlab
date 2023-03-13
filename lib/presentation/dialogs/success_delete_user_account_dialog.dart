@@ -18,8 +18,7 @@ class SuccessDeleteUserAccountDialog extends StatelessWidget {
       titleTextStyle: AppTypography.kH18.apply(color: AppColors.kBaseBlack),
       title: const Text('Аккаунт успешно удален'),
       contentPadding: const EdgeInsets.fromLTRB(24, 16, 16, 16),
-      contentTextStyle:
-          AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
+      contentTextStyle: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
       content: const Text(
         'Ваш аккаунт и история тренировок удалены из сервиса FITT',
       ),

@@ -84,8 +84,7 @@ class AdminWorkoutStartModalBottomSheet extends StatelessWidget {
             placeholder: 'Ввести номер',
             validator: (v) => nameValidator.getValidationErrorName(v),
             onChanged: (value) {
-              getIt<AdminModalBottomSheetCubit>()
-                  .setLockerNumber(lockerNumber: value);
+              getIt<AdminModalBottomSheetCubit>().setLockerNumber(lockerNumber: value);
             },
           ),
         ),

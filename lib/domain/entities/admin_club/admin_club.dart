@@ -13,10 +13,8 @@ class AdminClub with _$AdminClub {
     @JsonKey(name: 'id') String? uuid,
     @JsonKey(name: 'permission_type') String? permissionType,
     @JsonKey(name: 'analyze_info') AnalyzeInfo? analyzeInfo,
-    @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable)
-        DateTime? created,
-    @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable)
-        DateTime? modified,
+    @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable) DateTime? created,
+    @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable) DateTime? modified,
     @JsonKey(name: 'timezone') String? timezone,
     @JsonKey(name: 'label') required String label,
     @JsonKey(name: 'description') required String description,
@@ -30,6 +28,5 @@ class AdminClub with _$AdminClub {
     @JsonKey(name: 'facilities') List<int>? facilities,
   }) = _AdminClub;
 
-  factory AdminClub.fromJson(Map<String, dynamic> json) =>
-      _$AdminClubFromJson(json);
+  factory AdminClub.fromJson(Map<String, dynamic> json) => _$AdminClubFromJson(json);
 }

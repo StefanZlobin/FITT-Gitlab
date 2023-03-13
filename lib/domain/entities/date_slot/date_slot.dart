@@ -13,6 +13,5 @@ class DateSlot with _$DateSlot {
     @JsonKey(name: 'time_slots') required List<TimeSlot>? timeSlots,
   }) = _DateSlot;
 
-  factory DateSlot.fromJson(Map<String, dynamic> json) =>
-      _$DateSlotFromJson(json);
+  factory DateSlot.fromJson(Map<String, dynamic> json) => _$DateSlotFromJson(json);
 }

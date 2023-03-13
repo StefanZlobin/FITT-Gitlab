@@ -16,7 +16,9 @@ abstract class AdminApiClient {
 
   @GET('staff/clubs/')
   Future<AdminClubSlice> getAdminClubs(
-      @Query('limit') int limit, @Query('offset') int offset);
+    @Query('limit') int limit,
+    @Query('offset') int offset,
+  );
 
   @GET('staff/clubs/{id}/')
   Future<AdminClub> getAdminClub(@Path('id') String uuid);

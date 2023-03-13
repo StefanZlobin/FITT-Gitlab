@@ -36,8 +36,14 @@ class FavoriteClubsPage extends StatelessWidget {
           bloc: getIt<FilteringCubit>(instanceName: 'favorite'),
           listener: (context, state) {
             state.whenOrNull(
-              loaded: (filters, selectedFacilities, __, ___, ____,
-                  activeFacilitiesList) {
+              loaded: (
+                filters,
+                selectedFacilities,
+                __,
+                ___,
+                ____,
+                activeFacilitiesList,
+              ) {
                 final filters = ClubFilters(
                   facilities: activeFacilitiesList,
                   favorite: true,
@@ -62,9 +68,10 @@ class FavoriteClubsPage extends StatelessWidget {
           bloc: getIt<ResourceCubit>(instanceName: 'favorite'),
           listener: (context, state) {
             state.whenOrNull(
-                loaded: (filters) => getIt<FilteringCubit>(
-                      instanceName: 'favorite',
-                    ).setFilters(filters: filters));
+              loaded: (filters) => getIt<FilteringCubit>(
+                instanceName: 'favorite',
+              ).setFilters(filters: filters),
+            );
           },
         ),
       ],
@@ -151,10 +158,11 @@ class FavoriteClubsPage extends StatelessWidget {
                               forPurchasedBatchPage: false,
                               isFavorite: clubs[index].isFavorite!,
                               onCardPressed: () => context.pushNamed(
-                                  AppRoute.club.routeToPath,
-                                  params: {
-                                    'clubUuid': clubs[index].uuid!,
-                                  }),
+                                AppRoute.club.routeToPath,
+                                params: {
+                                  'clubUuid': clubs[index].uuid!,
+                                },
+                              ),
                               onFavoriteButtonPressed: () {
                                 getIt<PartnerClubsFavoriteCubit>().setFavorite(
                                   index: index,
@@ -165,7 +173,8 @@ class FavoriteClubsPage extends StatelessWidget {
                             );
                           },
                           separatorBuilder: (_, __) => const Separator(
-                              margin: EdgeInsets.symmetric(vertical: 24)),
+                            margin: EdgeInsets.symmetric(vertical: 24),
+                          ),
                           itemCount: clubs.length,
                         ),
                       ),
@@ -234,8 +243,14 @@ class FavoriteClubsPage extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox(),
-          loaded: (filters, selectedFacilities, _, __, isPriceUpdated,
-              activeFacilities) {
+          loaded: (
+            filters,
+            selectedFacilities,
+            _,
+            __,
+            isPriceUpdated,
+            activeFacilities,
+          ) {
             return Container(
               height: 48,
               margin: const EdgeInsets.only(top: 24, bottom: 36),
@@ -279,7 +294,10 @@ class FavoriteClubsPage extends StatelessWidget {
   }
 
   Widget _buildFacilityButton(
-      Facility facility, ClubFilters filters, bool isFacilityActive) {
+    Facility facility,
+    ClubFilters filters,
+    bool isFacilityActive,
+  ) {
     return GestureDetector(
       onTap: () {
         getIt<FilteringCubit>(instanceName: 'favorite').selectFacility(

@@ -16,6 +16,5 @@ class Activity with _$Activity {
     @JsonKey(name: 'date_slots') required List<DateSlot> dateSlots,
   }) = _Activity;
 
-  factory Activity.fromJson(Map<String, dynamic> json) =>
-      _$ActivityFromJson(json);
+  factory Activity.fromJson(Map<String, dynamic> json) => _$ActivityFromJson(json);
 }

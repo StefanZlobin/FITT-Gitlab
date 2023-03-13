@@ -200,10 +200,12 @@ class InputPhoneNumberForm extends StatelessWidget {
                 inputFormatters: [phoneNumberFormatter],
                 style: AppTypography.kH24.apply(color: AppColors.kBaseBlack),
                 decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: placeholder,
-                    hintStyle:
-                        AppTypography.kH24.apply(color: AppColors.kBaseBlack)),
+                  border: InputBorder.none,
+                  hintText: placeholder,
+                  hintStyle: AppTypography.kH24.apply(
+                    color: AppColors.kBaseBlack,
+                  ),
+                ),
                 keyboardType: TextInputType.phone,
                 onChanged: (_) {
                   if (phoneNumberFormatter.isFill()) {

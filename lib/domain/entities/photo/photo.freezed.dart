@@ -33,20 +33,13 @@ mixin _$Photo {
 
 /// @nodoc
 abstract class $PhotoCopyWith<$Res> {
-  factory $PhotoCopyWith(Photo value, $Res Function(Photo) then) =
-      _$PhotoCopyWithImpl<$Res, Photo>;
+  factory $PhotoCopyWith(Photo value, $Res Function(Photo) then) = _$PhotoCopyWithImpl<$Res, Photo>;
   @useResult
-  $Res call(
-      {String original,
-      String thumbnail,
-      String small,
-      String medium,
-      String large});
+  $Res call({String original, String thumbnail, String small, String medium, String large});
 }
 
 /// @nodoc
-class _$PhotoCopyWithImpl<$Res, $Val extends Photo>
-    implements $PhotoCopyWith<$Res> {
+class _$PhotoCopyWithImpl<$Res, $Val extends Photo> implements $PhotoCopyWith<$Res> {
   _$PhotoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -90,23 +83,15 @@ class _$PhotoCopyWithImpl<$Res, $Val extends Photo>
 
 /// @nodoc
 abstract class _$$_PhotoCopyWith<$Res> implements $PhotoCopyWith<$Res> {
-  factory _$$_PhotoCopyWith(_$_Photo value, $Res Function(_$_Photo) then) =
-      __$$_PhotoCopyWithImpl<$Res>;
+  factory _$$_PhotoCopyWith(_$_Photo value, $Res Function(_$_Photo) then) = __$$_PhotoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String original,
-      String thumbnail,
-      String small,
-      String medium,
-      String large});
+  $Res call({String original, String thumbnail, String small, String medium, String large});
 }
 
 /// @nodoc
-class __$$_PhotoCopyWithImpl<$Res> extends _$PhotoCopyWithImpl<$Res, _$_Photo>
-    implements _$$_PhotoCopyWith<$Res> {
-  __$$_PhotoCopyWithImpl(_$_Photo _value, $Res Function(_$_Photo) _then)
-      : super(_value, _then);
+class __$$_PhotoCopyWithImpl<$Res> extends _$PhotoCopyWithImpl<$Res, _$_Photo> implements _$$_PhotoCopyWith<$Res> {
+  __$$_PhotoCopyWithImpl(_$_Photo _value, $Res Function(_$_Photo) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -146,15 +131,10 @@ class __$$_PhotoCopyWithImpl<$Res> extends _$PhotoCopyWithImpl<$Res, _$_Photo>
 @JsonSerializable()
 class _$_Photo extends _Photo {
   _$_Photo(
-      {required this.original,
-      required this.thumbnail,
-      required this.small,
-      required this.medium,
-      required this.large})
+      {required this.original, required this.thumbnail, required this.small, required this.medium, required this.large})
       : super._();
 
-  factory _$_Photo.fromJson(Map<String, dynamic> json) =>
-      _$$_PhotoFromJson(json);
+  factory _$_Photo.fromJson(Map<String, dynamic> json) => _$$_PhotoFromJson(json);
 
   @override
   final String original;
@@ -177,10 +157,8 @@ class _$_Photo extends _Photo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Photo &&
-            (identical(other.original, original) ||
-                other.original == original) &&
-            (identical(other.thumbnail, thumbnail) ||
-                other.thumbnail == thumbnail) &&
+            (identical(other.original, original) || other.original == original) &&
+            (identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail) &&
             (identical(other.small, small) || other.small == small) &&
             (identical(other.medium, medium) || other.medium == medium) &&
             (identical(other.large, large) || other.large == large));
@@ -188,14 +166,12 @@ class _$_Photo extends _Photo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, original, thumbnail, small, medium, large);
+  int get hashCode => Object.hash(runtimeType, original, thumbnail, small, medium, large);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhotoCopyWith<_$_Photo> get copyWith =>
-      __$$_PhotoCopyWithImpl<_$_Photo>(this, _$identity);
+  _$$_PhotoCopyWith<_$_Photo> get copyWith => __$$_PhotoCopyWithImpl<_$_Photo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -228,6 +204,5 @@ abstract class _Photo extends Photo {
   String get large;
   @override
   @JsonKey(ignore: true)
-  _$$_PhotoCopyWith<_$_Photo> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_PhotoCopyWith<_$_Photo> get copyWith => throw _privateConstructorUsedError;
 }

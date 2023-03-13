@@ -67,6 +67,7 @@ class ArchiveWorkoutCard extends StatelessWidget {
               )
             else
               TextButton(
+                // ignore: no-empty-block
                 onPressed: () {},
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.all(0),

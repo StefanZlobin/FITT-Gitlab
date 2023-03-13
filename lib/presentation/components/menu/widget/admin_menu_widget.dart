@@ -19,6 +19,7 @@ class AdminMenuWidget extends StatelessWidget {
         const UserAvatar(isAdminPage: true),
         const Separator(),
         AdminMenuTile(
+          // ignore: no-empty-block
           onPressed: () {},
           title: Text(adminClub.label),
           subtitle: const Text('Администратор'),

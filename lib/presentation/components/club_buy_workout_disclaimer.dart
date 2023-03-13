@@ -39,11 +39,10 @@ class ClubBuyWorkoutDisclaimer extends StatelessWidget {
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  context.pushNamed(AppRoute.webview.routeToPath,
-                      queryParams: <String, String>{
-                        'url': FittLinks.kUserTermsLinkDoc,
-                        'pageTitle': 'Пользовательского соглашение',
-                      });
+                  context.pushNamed(AppRoute.webview.routeToPath, queryParams: <String, String>{
+                    'url': FittLinks.kUserTermsLinkDoc,
+                    'pageTitle': 'Пользовательского соглашение',
+                  });
                 },
             ),
             const TextSpan(text: 'и подтверждаете, что вам больше 18 лет'),

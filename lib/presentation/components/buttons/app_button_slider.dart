@@ -38,11 +38,9 @@ class AppButtonSlider extends StatelessWidget {
   /// Otherwise slider returns to it's initial position.
   final Future<bool?> Function() action;
 
-  Widget _buildBackground(BuildContext context, Animation<double> moveAnimation,
-      SlideDirection moveDirection) {
-    final colorAnimation =
-        ColorTween(begin: AppColors.kOxford10, end: swipedBackgroundColor) //
-            .animate(moveAnimation);
+  Widget _buildBackground(BuildContext context, Animation<double> moveAnimation, SlideDirection moveDirection) {
+    final colorAnimation = ColorTween(begin: AppColors.kOxford10, end: swipedBackgroundColor) //
+        .animate(moveAnimation);
 
     final backgroundText = enabled ? activeText : inactiveText ?? '';
 
@@ -78,8 +76,7 @@ class AppButtonSlider extends StatelessWidget {
     );
   }
 
-  Widget _buildChild(BuildContext context, Animation<double> moveAnimation,
-      SlideDirection moveDirection) {
+  Widget _buildChild(BuildContext context, Animation<double> moveAnimation, SlideDirection moveDirection) {
     return SizedBox(
       width: double.infinity,
       child: CenterLeft(
@@ -104,8 +101,7 @@ class AppButtonSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!enabled) {
-      return _buildBackground(context, const AlwaysStoppedAnimation(0.0),
-          SlideDirection.startToEnd);
+      return _buildBackground(context, const AlwaysStoppedAnimation(0.0), SlideDirection.startToEnd);
     }
 
     return _Slidable(
@@ -149,8 +145,7 @@ typedef SlideDirectionCallback = void Function(SlideDirection direction);
 /// confirm or veto a dismiss gesture.
 ///
 /// Used by [_Slidable.confirmCollapse].
-typedef ConfirmCActionCallback = Future<bool?> Function(
-    SlideDirection direction);
+typedef ConfirmCActionCallback = Future<bool?> Function(SlideDirection direction);
 
 typedef SlidableAnimatedBuilder = Widget Function(
   BuildContext context,
@@ -323,14 +318,12 @@ class _Slidable extends StatefulWidget {
 
 enum _FlingGestureKind { none, forward, reverse }
 
-class _SlidableState extends State<_Slidable>
-    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+class _SlidableState extends State<_Slidable> with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
-    _moveController =
-        AnimationController(duration: widget.movementDuration, vsync: this)
-          ..addStatusListener(_handleSlideStatusChanged);
+    _moveController = AnimationController(duration: widget.movementDuration, vsync: this)
+      ..addStatusListener(_handleSlideStatusChanged);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _updateMoveAnimation();
     });
@@ -356,8 +349,7 @@ class _SlidableState extends State<_Slidable>
     super.dispose();
   }
 
-  double get _childSize =>
-      _directionIsXAxis ? widget.childSize.width : widget.childSize.height;
+  double get _childSize => _directionIsXAxis ? widget.childSize.width : widget.childSize.height;
 
   bool get _directionIsXAxis {
     return widget.direction == SlideDirection.horizontal ||
@@ -370,13 +362,9 @@ class _SlidableState extends State<_Slidable>
     if (_directionIsXAxis) {
       switch (Directionality.of(context)) {
         case TextDirection.rtl:
-          return extent < 0
-              ? SlideDirection.startToEnd
-              : SlideDirection.endToStart;
+          return extent < 0 ? SlideDirection.startToEnd : SlideDirection.endToStart;
         case TextDirection.ltr:
-          return extent > 0
-              ? SlideDirection.startToEnd
-              : SlideDirection.endToStart;
+          return extent > 0 ? SlideDirection.startToEnd : SlideDirection.endToStart;
       }
     }
     return extent > 0 ? SlideDirection.down : SlideDirection.up;
@@ -392,8 +380,7 @@ class _SlidableState extends State<_Slidable>
   double get _overallDragAxisExtent {
     if (_overallDragAxisExtentCache == null) {
       final Size size = context.size!;
-      _overallDragAxisExtentCache =
-          _directionIsXAxis ? size.width : size.height;
+      _overallDragAxisExtentCache = _directionIsXAxis ? size.width : size.height;
     }
     return _overallDragAxisExtentCache!;
   }
@@ -401,8 +388,7 @@ class _SlidableState extends State<_Slidable>
   void _handleDragStart(DragStartDetails details) {
     _dragUnderway = true;
     if (_moveController!.isAnimating) {
-      _dragExtent =
-          _moveController!.value * _overallDragAxisExtent * _dragExtent.sign;
+      _dragExtent = _moveController!.value * _overallDragAxisExtent * _dragExtent.sign;
       _moveController!.stop();
     } else {
       _dragExtent = 0.0;
@@ -464,20 +450,16 @@ class _SlidableState extends State<_Slidable>
       });
     }
     if (!_moveController!.isAnimating) {
-      _moveController!.value =
-          _dragExtent.abs() / (_overallDragAxisExtent - _childSize);
+      _moveController!.value = _dragExtent.abs() / (_overallDragAxisExtent - _childSize);
     }
   }
 
   void _updateMoveAnimation() {
-    final double end =
-        (1 - _childSize / _overallDragAxisExtent) * _dragExtent.sign;
+    final double end = (1 - _childSize / _overallDragAxisExtent) * _dragExtent.sign;
     _moveAnimation = _moveController!.drive(
       Tween<Offset>(
         begin: Offset.zero,
-        end: _directionIsXAxis
-            ? Offset(end, widget.crossAxisEndOffset)
-            : Offset(widget.crossAxisEndOffset, end),
+        end: _directionIsXAxis ? Offset(end, widget.crossAxisEndOffset) : Offset(widget.crossAxisEndOffset, end),
       ),
     );
   }
@@ -496,13 +478,11 @@ class _SlidableState extends State<_Slidable>
     SlideDirection flingDirection;
     // Verify that the fling is in the generally right direction and fast enough.
     if (_directionIsXAxis) {
-      if (vx.abs() - vy.abs() < _kMinFlingVelocityDelta ||
-          vx.abs() < _kMinFlingVelocity) return _FlingGestureKind.none;
+      if (vx.abs() - vy.abs() < _kMinFlingVelocityDelta || vx.abs() < _kMinFlingVelocity) return _FlingGestureKind.none;
       assert(vx != 0.0);
       flingDirection = _extentToDirection(vx);
     } else {
-      if (vy.abs() - vx.abs() < _kMinFlingVelocityDelta ||
-          vy.abs() < _kMinFlingVelocity) return _FlingGestureKind.none;
+      if (vy.abs() - vx.abs() < _kMinFlingVelocityDelta || vy.abs() < _kMinFlingVelocity) return _FlingGestureKind.none;
       assert(vy != 0.0);
       flingDirection = _extentToDirection(vy);
     }
@@ -516,33 +496,28 @@ class _SlidableState extends State<_Slidable>
 
     if (_moveController!.isCompleted) return;
 
-    final double flingVelocity = _directionIsXAxis
-        ? details.velocity.pixelsPerSecond.dx
-        : details.velocity.pixelsPerSecond.dy;
+    final double flingVelocity =
+        _directionIsXAxis ? details.velocity.pixelsPerSecond.dx : details.velocity.pixelsPerSecond.dy;
     switch (_describeFlingGesture(details.velocity)) {
       case _FlingGestureKind.forward:
         assert(_dragExtent != 0.0);
         assert(!_moveController!.isDismissed);
-        if ((widget.slideThresholds[_dismissDirection] ?? _kSlideThreshold) >=
-            1.0) {
+        if ((widget.slideThresholds[_dismissDirection] ?? _kSlideThreshold) >= 1.0) {
           _unawaited = _moveController!.reverse();
           break;
         }
         _dragExtent = flingVelocity.sign;
-        _unawaited = _moveController!
-            .fling(velocity: flingVelocity.abs() * _kFlingVelocityScale);
+        _unawaited = _moveController!.fling(velocity: flingVelocity.abs() * _kFlingVelocityScale);
         break;
       case _FlingGestureKind.reverse:
         assert(_dragExtent != 0.0);
         assert(!_moveController!.isDismissed);
         _dragExtent = flingVelocity.sign;
-        _unawaited = _moveController!
-            .fling(velocity: -flingVelocity.abs() * _kFlingVelocityScale);
+        _unawaited = _moveController!.fling(velocity: -flingVelocity.abs() * _kFlingVelocityScale);
         break;
       case _FlingGestureKind.none:
         if (!_moveController!.isDismissed) {
-          if (_moveController!.value <
-              (widget.slideThresholds[_dismissDirection] ?? _kSlideThreshold)) {
+          if (_moveController!.value < (widget.slideThresholds[_dismissDirection] ?? _kSlideThreshold)) {
             _unawaited = _moveController!.reverse();
           } else if (_moveController!.value < 1.0) {
             _unawaited = _moveController!.forward();
@@ -555,8 +530,7 @@ class _SlidableState extends State<_Slidable>
   Future<void> _handleSlideStatusChanged(AnimationStatus status) async {
     if (status == AnimationStatus.completed) {
       final SlideDirection direction = _dismissDirection;
-      final shouldReturn =
-          !((await widget.confirmSlideEnd?.call(direction)) ?? false);
+      final shouldReturn = !((await widget.confirmSlideEnd?.call(direction)) ?? false);
       if (!shouldReturn) {
         setState(() => _complete = true);
       } else {
@@ -574,14 +548,11 @@ class _SlidableState extends State<_Slidable>
 
     final Animation<double> move = _moveController!;
 
-    Widget? background =
-        widget.background?.call(context, move, _dismissDirection);
+    Widget? background = widget.background?.call(context, move, _dismissDirection);
     if (widget.secondaryBackground != null) {
       final SlideDirection direction = _dismissDirection;
-      if (direction == SlideDirection.endToStart ||
-          direction == SlideDirection.up) {
-        background =
-            widget.secondaryBackground?.call(context, move, _dismissDirection);
+      if (direction == SlideDirection.endToStart || direction == SlideDirection.up) {
+        background = widget.secondaryBackground?.call(context, move, _dismissDirection);
       }
     }
 

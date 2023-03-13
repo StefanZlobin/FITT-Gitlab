@@ -123,8 +123,6 @@ dependencies:
       url: https://github.com/Svet-00/scroll_snap_list.git
       ref: master
 
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -136,6 +134,8 @@ dev_dependencies:
   hive_generator: ^2.0.0
   retrofit_generator: ^4.2.0
   flutter_gen_runner: any
+  #Code metrics
+  dart_code_metrics: ^5.6.0
 
 flutter_gen:
   output: lib/gen/ # Optional (default: lib/gen/)

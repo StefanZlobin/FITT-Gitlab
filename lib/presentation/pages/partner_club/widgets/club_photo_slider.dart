@@ -35,9 +35,8 @@ class ClubPhotoSlider extends StatelessWidget {
             height: 210,
             autoPlay: clubUrlImages.isEmpty ? false : true,
             enableInfiniteScroll: clubUrlImages.isEmpty ? false : true,
-            scrollPhysics: clubUrlImages.isEmpty
-                ? const NeverScrollableScrollPhysics()
-                : const AlwaysScrollableScrollPhysics(),
+            scrollPhysics:
+                clubUrlImages.isEmpty ? const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
             viewportFraction: 1,
             onPageChanged: (index, reason) {
               getIt<ClubPhotoSliderCubit>().updateActivePhoto(index: index);

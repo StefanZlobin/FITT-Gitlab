@@ -34,15 +34,13 @@ class ChipFilter extends StatelessWidget {
               bottomRight: Radius.circular(24),
               topLeft: Radius.circular(24),
             ),
-            side: BorderSide(
-                color: isActive ? AppColors.kPrimaryBlue : AppColors.kOxford20),
+            side: BorderSide(color: isActive ? AppColors.kPrimaryBlue : AppColors.kOxford20),
           ),
         ),
         child: Center(
           child: Text(
             selectedSlot,
-            style: AppTypography.kBody14.apply(
-                color: isActive ? AppColors.kBaseWhite : AppColors.kOxford60),
+            style: AppTypography.kBody14.apply(color: isActive ? AppColors.kBaseWhite : AppColors.kOxford60),
           ),
         ),
       ),

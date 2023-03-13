@@ -63,24 +63,21 @@ mixin _$AuthenticationErrorTimerEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AuthenticationErrorTimerEventCopyWith<AuthenticationErrorTimerEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  $AuthenticationErrorTimerEventCopyWith<AuthenticationErrorTimerEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AuthenticationErrorTimerEventCopyWith<$Res> {
   factory $AuthenticationErrorTimerEventCopyWith(
-          AuthenticationErrorTimerEvent value,
-          $Res Function(AuthenticationErrorTimerEvent) then) =
-      _$AuthenticationErrorTimerEventCopyWithImpl<$Res,
-          AuthenticationErrorTimerEvent>;
+          AuthenticationErrorTimerEvent value, $Res Function(AuthenticationErrorTimerEvent) then) =
+      _$AuthenticationErrorTimerEventCopyWithImpl<$Res, AuthenticationErrorTimerEvent>;
   @useResult
   $Res call({Duration duration});
 }
 
 /// @nodoc
-class _$AuthenticationErrorTimerEventCopyWithImpl<$Res,
-        $Val extends AuthenticationErrorTimerEvent>
+class _$AuthenticationErrorTimerEventCopyWithImpl<$Res, $Val extends AuthenticationErrorTimerEvent>
     implements $AuthenticationErrorTimerEventCopyWith<$Res> {
   _$AuthenticationErrorTimerEventCopyWithImpl(this._value, this._then);
 
@@ -104,10 +101,8 @@ class _$AuthenticationErrorTimerEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SetTimerInitialCopyWith<$Res>
-    implements $AuthenticationErrorTimerEventCopyWith<$Res> {
-  factory _$$_SetTimerInitialCopyWith(
-          _$_SetTimerInitial value, $Res Function(_$_SetTimerInitial) then) =
+abstract class _$$_SetTimerInitialCopyWith<$Res> implements $AuthenticationErrorTimerEventCopyWith<$Res> {
+  factory _$$_SetTimerInitialCopyWith(_$_SetTimerInitial value, $Res Function(_$_SetTimerInitial) then) =
       __$$_SetTimerInitialCopyWithImpl<$Res>;
   @override
   @useResult
@@ -116,10 +111,9 @@ abstract class _$$_SetTimerInitialCopyWith<$Res>
 
 /// @nodoc
 class __$$_SetTimerInitialCopyWithImpl<$Res>
-    extends _$AuthenticationErrorTimerEventCopyWithImpl<$Res,
-        _$_SetTimerInitial> implements _$$_SetTimerInitialCopyWith<$Res> {
-  __$$_SetTimerInitialCopyWithImpl(
-      _$_SetTimerInitial _value, $Res Function(_$_SetTimerInitial) _then)
+    extends _$AuthenticationErrorTimerEventCopyWithImpl<$Res, _$_SetTimerInitial>
+    implements _$$_SetTimerInitialCopyWith<$Res> {
+  __$$_SetTimerInitialCopyWithImpl(_$_SetTimerInitial _value, $Res Function(_$_SetTimerInitial) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -154,8 +148,7 @@ class _$_SetTimerInitial implements _SetTimerInitial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SetTimerInitial &&
-            (identical(other.duration, duration) ||
-                other.duration == duration));
+            (identical(other.duration, duration) || other.duration == duration));
   }
 
   @override
@@ -237,22 +230,18 @@ class _$_SetTimerInitial implements _SetTimerInitial {
 }
 
 abstract class _SetTimerInitial implements AuthenticationErrorTimerEvent {
-  const factory _SetTimerInitial({required final Duration duration}) =
-      _$_SetTimerInitial;
+  const factory _SetTimerInitial({required final Duration duration}) = _$_SetTimerInitial;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_SetTimerInitialCopyWith<_$_SetTimerInitial> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SetTimerInitialCopyWith<_$_SetTimerInitial> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TimerStartedCopyWith<$Res>
-    implements $AuthenticationErrorTimerEventCopyWith<$Res> {
-  factory _$$_TimerStartedCopyWith(
-          _$_TimerStarted value, $Res Function(_$_TimerStarted) then) =
+abstract class _$$_TimerStartedCopyWith<$Res> implements $AuthenticationErrorTimerEventCopyWith<$Res> {
+  factory _$$_TimerStartedCopyWith(_$_TimerStarted value, $Res Function(_$_TimerStarted) then) =
       __$$_TimerStartedCopyWithImpl<$Res>;
   @override
   @useResult
@@ -260,12 +249,9 @@ abstract class _$$_TimerStartedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TimerStartedCopyWithImpl<$Res>
-    extends _$AuthenticationErrorTimerEventCopyWithImpl<$Res, _$_TimerStarted>
+class __$$_TimerStartedCopyWithImpl<$Res> extends _$AuthenticationErrorTimerEventCopyWithImpl<$Res, _$_TimerStarted>
     implements _$$_TimerStartedCopyWith<$Res> {
-  __$$_TimerStartedCopyWithImpl(
-      _$_TimerStarted _value, $Res Function(_$_TimerStarted) _then)
-      : super(_value, _then);
+  __$$_TimerStartedCopyWithImpl(_$_TimerStarted _value, $Res Function(_$_TimerStarted) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -299,8 +285,7 @@ class _$_TimerStarted implements _TimerStarted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimerStarted &&
-            (identical(other.duration, duration) ||
-                other.duration == duration));
+            (identical(other.duration, duration) || other.duration == duration));
   }
 
   @override
@@ -382,22 +367,18 @@ class _$_TimerStarted implements _TimerStarted {
 }
 
 abstract class _TimerStarted implements AuthenticationErrorTimerEvent {
-  const factory _TimerStarted({required final Duration duration}) =
-      _$_TimerStarted;
+  const factory _TimerStarted({required final Duration duration}) = _$_TimerStarted;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_TimerStartedCopyWith<_$_TimerStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TimerStartedCopyWith<_$_TimerStarted> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TimerTickedCopyWith<$Res>
-    implements $AuthenticationErrorTimerEventCopyWith<$Res> {
-  factory _$$_TimerTickedCopyWith(
-          _$_TimerTicked value, $Res Function(_$_TimerTicked) then) =
+abstract class _$$_TimerTickedCopyWith<$Res> implements $AuthenticationErrorTimerEventCopyWith<$Res> {
+  factory _$$_TimerTickedCopyWith(_$_TimerTicked value, $Res Function(_$_TimerTicked) then) =
       __$$_TimerTickedCopyWithImpl<$Res>;
   @override
   @useResult
@@ -405,12 +386,9 @@ abstract class _$$_TimerTickedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TimerTickedCopyWithImpl<$Res>
-    extends _$AuthenticationErrorTimerEventCopyWithImpl<$Res, _$_TimerTicked>
+class __$$_TimerTickedCopyWithImpl<$Res> extends _$AuthenticationErrorTimerEventCopyWithImpl<$Res, _$_TimerTicked>
     implements _$$_TimerTickedCopyWith<$Res> {
-  __$$_TimerTickedCopyWithImpl(
-      _$_TimerTicked _value, $Res Function(_$_TimerTicked) _then)
-      : super(_value, _then);
+  __$$_TimerTickedCopyWithImpl(_$_TimerTicked _value, $Res Function(_$_TimerTicked) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -444,8 +422,7 @@ class _$_TimerTicked implements _TimerTicked {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimerTicked &&
-            (identical(other.duration, duration) ||
-                other.duration == duration));
+            (identical(other.duration, duration) || other.duration == duration));
   }
 
   @override
@@ -527,15 +504,13 @@ class _$_TimerTicked implements _TimerTicked {
 }
 
 abstract class _TimerTicked implements AuthenticationErrorTimerEvent {
-  const factory _TimerTicked({required final Duration duration}) =
-      _$_TimerTicked;
+  const factory _TimerTicked({required final Duration duration}) = _$_TimerTicked;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_TimerTickedCopyWith<_$_TimerTicked> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TimerTickedCopyWith<_$_TimerTicked> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -589,15 +564,12 @@ mixin _$AuthenticationErrorTimerState {
 /// @nodoc
 abstract class $AuthenticationErrorTimerStateCopyWith<$Res> {
   factory $AuthenticationErrorTimerStateCopyWith(
-          AuthenticationErrorTimerState value,
-          $Res Function(AuthenticationErrorTimerState) then) =
-      _$AuthenticationErrorTimerStateCopyWithImpl<$Res,
-          AuthenticationErrorTimerState>;
+          AuthenticationErrorTimerState value, $Res Function(AuthenticationErrorTimerState) then) =
+      _$AuthenticationErrorTimerStateCopyWithImpl<$Res, AuthenticationErrorTimerState>;
 }
 
 /// @nodoc
-class _$AuthenticationErrorTimerStateCopyWithImpl<$Res,
-        $Val extends AuthenticationErrorTimerState>
+class _$AuthenticationErrorTimerStateCopyWithImpl<$Res, $Val extends AuthenticationErrorTimerState>
     implements $AuthenticationErrorTimerStateCopyWith<$Res> {
   _$AuthenticationErrorTimerStateCopyWithImpl(this._value, this._then);
 
@@ -609,20 +581,16 @@ class _$AuthenticationErrorTimerStateCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$_TimerInitialCopyWith<$Res> {
-  factory _$$_TimerInitialCopyWith(
-          _$_TimerInitial value, $Res Function(_$_TimerInitial) then) =
+  factory _$$_TimerInitialCopyWith(_$_TimerInitial value, $Res Function(_$_TimerInitial) then) =
       __$$_TimerInitialCopyWithImpl<$Res>;
   @useResult
   $Res call({Duration duration});
 }
 
 /// @nodoc
-class __$$_TimerInitialCopyWithImpl<$Res>
-    extends _$AuthenticationErrorTimerStateCopyWithImpl<$Res, _$_TimerInitial>
+class __$$_TimerInitialCopyWithImpl<$Res> extends _$AuthenticationErrorTimerStateCopyWithImpl<$Res, _$_TimerInitial>
     implements _$$_TimerInitialCopyWith<$Res> {
-  __$$_TimerInitialCopyWithImpl(
-      _$_TimerInitial _value, $Res Function(_$_TimerInitial) _then)
-      : super(_value, _then);
+  __$$_TimerInitialCopyWithImpl(_$_TimerInitial _value, $Res Function(_$_TimerInitial) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -656,8 +624,7 @@ class _$_TimerInitial implements _TimerInitial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimerInitial &&
-            (identical(other.duration, duration) ||
-                other.duration == duration));
+            (identical(other.duration, duration) || other.duration == duration));
   }
 
   @override
@@ -739,19 +706,16 @@ class _$_TimerInitial implements _TimerInitial {
 }
 
 abstract class _TimerInitial implements AuthenticationErrorTimerState {
-  const factory _TimerInitial({required final Duration duration}) =
-      _$_TimerInitial;
+  const factory _TimerInitial({required final Duration duration}) = _$_TimerInitial;
 
   Duration get duration;
   @JsonKey(ignore: true)
-  _$$_TimerInitialCopyWith<_$_TimerInitial> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TimerInitialCopyWith<_$_TimerInitial> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_TimerRunInProgressCopyWith<$Res> {
-  factory _$$_TimerRunInProgressCopyWith(_$_TimerRunInProgress value,
-          $Res Function(_$_TimerRunInProgress) then) =
+  factory _$$_TimerRunInProgressCopyWith(_$_TimerRunInProgress value, $Res Function(_$_TimerRunInProgress) then) =
       __$$_TimerRunInProgressCopyWithImpl<$Res>;
   @useResult
   $Res call({Duration duration});
@@ -759,10 +723,9 @@ abstract class _$$_TimerRunInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TimerRunInProgressCopyWithImpl<$Res>
-    extends _$AuthenticationErrorTimerStateCopyWithImpl<$Res,
-        _$_TimerRunInProgress> implements _$$_TimerRunInProgressCopyWith<$Res> {
-  __$$_TimerRunInProgressCopyWithImpl(
-      _$_TimerRunInProgress _value, $Res Function(_$_TimerRunInProgress) _then)
+    extends _$AuthenticationErrorTimerStateCopyWithImpl<$Res, _$_TimerRunInProgress>
+    implements _$$_TimerRunInProgressCopyWith<$Res> {
+  __$$_TimerRunInProgressCopyWithImpl(_$_TimerRunInProgress _value, $Res Function(_$_TimerRunInProgress) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -797,8 +760,7 @@ class _$_TimerRunInProgress implements _TimerRunInProgress {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimerRunInProgress &&
-            (identical(other.duration, duration) ||
-                other.duration == duration));
+            (identical(other.duration, duration) || other.duration == duration));
   }
 
   @override
@@ -808,8 +770,7 @@ class _$_TimerRunInProgress implements _TimerRunInProgress {
   @override
   @pragma('vm:prefer-inline')
   _$$_TimerRunInProgressCopyWith<_$_TimerRunInProgress> get copyWith =>
-      __$$_TimerRunInProgressCopyWithImpl<_$_TimerRunInProgress>(
-          this, _$identity);
+      __$$_TimerRunInProgressCopyWithImpl<_$_TimerRunInProgress>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -881,19 +842,16 @@ class _$_TimerRunInProgress implements _TimerRunInProgress {
 }
 
 abstract class _TimerRunInProgress implements AuthenticationErrorTimerState {
-  const factory _TimerRunInProgress({required final Duration duration}) =
-      _$_TimerRunInProgress;
+  const factory _TimerRunInProgress({required final Duration duration}) = _$_TimerRunInProgress;
 
   Duration get duration;
   @JsonKey(ignore: true)
-  _$$_TimerRunInProgressCopyWith<_$_TimerRunInProgress> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TimerRunInProgressCopyWith<_$_TimerRunInProgress> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_TimerRunCompleteCopyWith<$Res> {
-  factory _$$_TimerRunCompleteCopyWith(
-          _$_TimerRunComplete value, $Res Function(_$_TimerRunComplete) then) =
+  factory _$$_TimerRunCompleteCopyWith(_$_TimerRunComplete value, $Res Function(_$_TimerRunComplete) then) =
       __$$_TimerRunCompleteCopyWithImpl<$Res>;
   @useResult
   $Res call({int countTimerEnd});
@@ -901,10 +859,9 @@ abstract class _$$_TimerRunCompleteCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TimerRunCompleteCopyWithImpl<$Res>
-    extends _$AuthenticationErrorTimerStateCopyWithImpl<$Res,
-        _$_TimerRunComplete> implements _$$_TimerRunCompleteCopyWith<$Res> {
-  __$$_TimerRunCompleteCopyWithImpl(
-      _$_TimerRunComplete _value, $Res Function(_$_TimerRunComplete) _then)
+    extends _$AuthenticationErrorTimerStateCopyWithImpl<$Res, _$_TimerRunComplete>
+    implements _$$_TimerRunCompleteCopyWith<$Res> {
+  __$$_TimerRunCompleteCopyWithImpl(_$_TimerRunComplete _value, $Res Function(_$_TimerRunComplete) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -939,8 +896,7 @@ class _$_TimerRunComplete implements _TimerRunComplete {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimerRunComplete &&
-            (identical(other.countTimerEnd, countTimerEnd) ||
-                other.countTimerEnd == countTimerEnd));
+            (identical(other.countTimerEnd, countTimerEnd) || other.countTimerEnd == countTimerEnd));
   }
 
   @override
@@ -1022,11 +978,9 @@ class _$_TimerRunComplete implements _TimerRunComplete {
 }
 
 abstract class _TimerRunComplete implements AuthenticationErrorTimerState {
-  const factory _TimerRunComplete({required final int countTimerEnd}) =
-      _$_TimerRunComplete;
+  const factory _TimerRunComplete({required final int countTimerEnd}) = _$_TimerRunComplete;
 
   int get countTimerEnd;
   @JsonKey(ignore: true)
-  _$$_TimerRunCompleteCopyWith<_$_TimerRunComplete> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TimerRunCompleteCopyWith<_$_TimerRunComplete> get copyWith => throw _privateConstructorUsedError;
 }

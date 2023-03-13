@@ -20,8 +20,7 @@ MapPointData _$MapPointDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapPointData {
-  @JsonKey(
-      name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
+  @JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
   int? get price => throw _privateConstructorUsedError;
   int? get count => throw _privateConstructorUsedError;
   @JsonKey(name: 'available_hours')
@@ -29,27 +28,22 @@ mixin _$MapPointData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MapPointDataCopyWith<MapPointData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapPointDataCopyWith<MapPointData> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapPointDataCopyWith<$Res> {
-  factory $MapPointDataCopyWith(
-          MapPointData value, $Res Function(MapPointData) then) =
+  factory $MapPointDataCopyWith(MapPointData value, $Res Function(MapPointData) then) =
       _$MapPointDataCopyWithImpl<$Res, MapPointData>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
-          int? price,
+      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable) int? price,
       int? count,
-      @JsonKey(name: 'available_hours')
-          double? batchHours});
+      @JsonKey(name: 'available_hours') double? batchHours});
 }
 
 /// @nodoc
-class _$MapPointDataCopyWithImpl<$Res, $Val extends MapPointData>
-    implements $MapPointDataCopyWith<$Res> {
+class _$MapPointDataCopyWithImpl<$Res, $Val extends MapPointData> implements $MapPointDataCopyWith<$Res> {
   _$MapPointDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -82,28 +76,21 @@ class _$MapPointDataCopyWithImpl<$Res, $Val extends MapPointData>
 }
 
 /// @nodoc
-abstract class _$$_MapPointDataCopyWith<$Res>
-    implements $MapPointDataCopyWith<$Res> {
-  factory _$$_MapPointDataCopyWith(
-          _$_MapPointData value, $Res Function(_$_MapPointData) then) =
+abstract class _$$_MapPointDataCopyWith<$Res> implements $MapPointDataCopyWith<$Res> {
+  factory _$$_MapPointDataCopyWith(_$_MapPointData value, $Res Function(_$_MapPointData) then) =
       __$$_MapPointDataCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
-          int? price,
+      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable) int? price,
       int? count,
-      @JsonKey(name: 'available_hours')
-          double? batchHours});
+      @JsonKey(name: 'available_hours') double? batchHours});
 }
 
 /// @nodoc
-class __$$_MapPointDataCopyWithImpl<$Res>
-    extends _$MapPointDataCopyWithImpl<$Res, _$_MapPointData>
+class __$$_MapPointDataCopyWithImpl<$Res> extends _$MapPointDataCopyWithImpl<$Res, _$_MapPointData>
     implements _$$_MapPointDataCopyWith<$Res> {
-  __$$_MapPointDataCopyWithImpl(
-      _$_MapPointData _value, $Res Function(_$_MapPointData) _then)
-      : super(_value, _then);
+  __$$_MapPointDataCopyWithImpl(_$_MapPointData _value, $Res Function(_$_MapPointData) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -133,18 +120,14 @@ class __$$_MapPointDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MapPointData implements _MapPointData {
   _$_MapPointData(
-      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
-          required this.price,
+      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable) required this.price,
       required this.count,
-      @JsonKey(name: 'available_hours')
-          required this.batchHours});
+      @JsonKey(name: 'available_hours') required this.batchHours});
 
-  factory _$_MapPointData.fromJson(Map<String, dynamic> json) =>
-      _$$_MapPointDataFromJson(json);
+  factory _$_MapPointData.fromJson(Map<String, dynamic> json) => _$$_MapPointDataFromJson(json);
 
   @override
-  @JsonKey(
-      name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
+  @JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
   final int? price;
   @override
   final int? count;
@@ -164,8 +147,7 @@ class _$_MapPointData implements _MapPointData {
             other is _$_MapPointData &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.count, count) || other.count == count) &&
-            (identical(other.batchHours, batchHours) ||
-                other.batchHours == batchHours));
+            (identical(other.batchHours, batchHours) || other.batchHours == batchHours));
   }
 
   @JsonKey(ignore: true)
@@ -188,18 +170,14 @@ class _$_MapPointData implements _MapPointData {
 
 abstract class _MapPointData implements MapPointData {
   factory _MapPointData(
-      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
-          required final int? price,
+      {@JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable) required final int? price,
       required final int? count,
-      @JsonKey(name: 'available_hours')
-          required final double? batchHours}) = _$_MapPointData;
+      @JsonKey(name: 'available_hours') required final double? batchHours}) = _$_MapPointData;
 
-  factory _MapPointData.fromJson(Map<String, dynamic> json) =
-      _$_MapPointData.fromJson;
+  factory _MapPointData.fromJson(Map<String, dynamic> json) = _$_MapPointData.fromJson;
 
   @override
-  @JsonKey(
-      name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
+  @JsonKey(name: 'min_price', fromJson: toRublesNullable, toJson: toCentNullable)
   int? get price;
   @override
   int? get count;
@@ -208,6 +186,5 @@ abstract class _MapPointData implements MapPointData {
   double? get batchHours;
   @override
   @JsonKey(ignore: true)
-  _$$_MapPointDataCopyWith<_$_MapPointData> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_MapPointDataCopyWith<_$_MapPointData> get copyWith => throw _privateConstructorUsedError;
 }

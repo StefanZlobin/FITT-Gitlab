@@ -16,8 +16,7 @@ import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class WorkoutRepositoryImpl implements WorkoutRepository {
-  WorkoutRepositoryImpl(this.dio, {this.baseUrl})
-      : _apiClient = WorkoutApiClient(dio, baseUrl: baseUrl);
+  WorkoutRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = WorkoutApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;
@@ -48,8 +47,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
   }) async {
     late String xPosition;
     try {
-      final geolocation =
-          await getIt<GeolocationService>().getCurrentPosition();
+      final geolocation = await getIt<GeolocationService>().getCurrentPosition();
       xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
     } on Exception {
       xPosition = '';
