@@ -20,7 +20,8 @@ mixin _$WorkoutsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Workout> workouts, Workout? closestWorkout) loaded,
+    required TResult Function(List<Workout> workouts, Workout? closestWorkout)
+        loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -70,12 +71,14 @@ mixin _$WorkoutsState {
 
 /// @nodoc
 abstract class $WorkoutsStateCopyWith<$Res> {
-  factory $WorkoutsStateCopyWith(WorkoutsState value, $Res Function(WorkoutsState) then) =
+  factory $WorkoutsStateCopyWith(
+          WorkoutsState value, $Res Function(WorkoutsState) then) =
       _$WorkoutsStateCopyWithImpl<$Res, WorkoutsState>;
 }
 
 /// @nodoc
-class _$WorkoutsStateCopyWithImpl<$Res, $Val extends WorkoutsState> implements $WorkoutsStateCopyWith<$Res> {
+class _$WorkoutsStateCopyWithImpl<$Res, $Val extends WorkoutsState>
+    implements $WorkoutsStateCopyWith<$Res> {
   _$WorkoutsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -86,14 +89,17 @@ class _$WorkoutsStateCopyWithImpl<$Res, $Val extends WorkoutsState> implements $
 
 /// @nodoc
 abstract class _$$_WorkoutsStateInitialCopyWith<$Res> {
-  factory _$$_WorkoutsStateInitialCopyWith(_$_WorkoutsStateInitial value, $Res Function(_$_WorkoutsStateInitial) then) =
+  factory _$$_WorkoutsStateInitialCopyWith(_$_WorkoutsStateInitial value,
+          $Res Function(_$_WorkoutsStateInitial) then) =
       __$$_WorkoutsStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WorkoutsStateInitialCopyWithImpl<$Res> extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateInitial>
+class __$$_WorkoutsStateInitialCopyWithImpl<$Res>
+    extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateInitial>
     implements _$$_WorkoutsStateInitialCopyWith<$Res> {
-  __$$_WorkoutsStateInitialCopyWithImpl(_$_WorkoutsStateInitial _value, $Res Function(_$_WorkoutsStateInitial) _then)
+  __$$_WorkoutsStateInitialCopyWithImpl(_$_WorkoutsStateInitial _value,
+      $Res Function(_$_WorkoutsStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -109,7 +115,8 @@ class _$_WorkoutsStateInitial implements _WorkoutsStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutsStateInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutsStateInitial);
   }
 
   @override
@@ -120,7 +127,8 @@ class _$_WorkoutsStateInitial implements _WorkoutsStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Workout> workouts, Workout? closestWorkout) loaded,
+    required TResult Function(List<Workout> workouts, Workout? closestWorkout)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -196,14 +204,17 @@ abstract class _WorkoutsStateInitial implements WorkoutsState {
 
 /// @nodoc
 abstract class _$$_WorkoutsStateLoadingCopyWith<$Res> {
-  factory _$$_WorkoutsStateLoadingCopyWith(_$_WorkoutsStateLoading value, $Res Function(_$_WorkoutsStateLoading) then) =
+  factory _$$_WorkoutsStateLoadingCopyWith(_$_WorkoutsStateLoading value,
+          $Res Function(_$_WorkoutsStateLoading) then) =
       __$$_WorkoutsStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WorkoutsStateLoadingCopyWithImpl<$Res> extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateLoading>
+class __$$_WorkoutsStateLoadingCopyWithImpl<$Res>
+    extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateLoading>
     implements _$$_WorkoutsStateLoadingCopyWith<$Res> {
-  __$$_WorkoutsStateLoadingCopyWithImpl(_$_WorkoutsStateLoading _value, $Res Function(_$_WorkoutsStateLoading) _then)
+  __$$_WorkoutsStateLoadingCopyWithImpl(_$_WorkoutsStateLoading _value,
+      $Res Function(_$_WorkoutsStateLoading) _then)
       : super(_value, _then);
 }
 
@@ -219,7 +230,8 @@ class _$_WorkoutsStateLoading implements _WorkoutsStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutsStateLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutsStateLoading);
   }
 
   @override
@@ -230,7 +242,8 @@ class _$_WorkoutsStateLoading implements _WorkoutsStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Workout> workouts, Workout? closestWorkout) loaded,
+    required TResult Function(List<Workout> workouts, Workout? closestWorkout)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -306,7 +319,8 @@ abstract class _WorkoutsStateLoading implements WorkoutsState {
 
 /// @nodoc
 abstract class _$$_WorkoutsStateLoadedCopyWith<$Res> {
-  factory _$$_WorkoutsStateLoadedCopyWith(_$_WorkoutsStateLoaded value, $Res Function(_$_WorkoutsStateLoaded) then) =
+  factory _$$_WorkoutsStateLoadedCopyWith(_$_WorkoutsStateLoaded value,
+          $Res Function(_$_WorkoutsStateLoaded) then) =
       __$$_WorkoutsStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Workout> workouts, Workout? closestWorkout});
@@ -315,9 +329,11 @@ abstract class _$$_WorkoutsStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WorkoutsStateLoadedCopyWithImpl<$Res> extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateLoaded>
+class __$$_WorkoutsStateLoadedCopyWithImpl<$Res>
+    extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateLoaded>
     implements _$$_WorkoutsStateLoadedCopyWith<$Res> {
-  __$$_WorkoutsStateLoadedCopyWithImpl(_$_WorkoutsStateLoaded _value, $Res Function(_$_WorkoutsStateLoaded) _then)
+  __$$_WorkoutsStateLoadedCopyWithImpl(_$_WorkoutsStateLoaded _value,
+      $Res Function(_$_WorkoutsStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -354,7 +370,9 @@ class __$$_WorkoutsStateLoadedCopyWithImpl<$Res> extends _$WorkoutsStateCopyWith
 /// @nodoc
 
 class _$_WorkoutsStateLoaded implements _WorkoutsStateLoaded {
-  const _$_WorkoutsStateLoaded({required final List<Workout> workouts, this.closestWorkout}) : _workouts = workouts;
+  const _$_WorkoutsStateLoaded(
+      {required final List<Workout> workouts, this.closestWorkout})
+      : _workouts = workouts;
 
   final List<Workout> _workouts;
   @override
@@ -378,24 +396,28 @@ class _$_WorkoutsStateLoaded implements _WorkoutsStateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutsStateLoaded &&
             const DeepCollectionEquality().equals(other._workouts, _workouts) &&
-            (identical(other.closestWorkout, closestWorkout) || other.closestWorkout == closestWorkout));
+            (identical(other.closestWorkout, closestWorkout) ||
+                other.closestWorkout == closestWorkout));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_workouts), closestWorkout);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_workouts), closestWorkout);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_WorkoutsStateLoadedCopyWith<_$_WorkoutsStateLoaded> get copyWith =>
-      __$$_WorkoutsStateLoadedCopyWithImpl<_$_WorkoutsStateLoaded>(this, _$identity);
+      __$$_WorkoutsStateLoadedCopyWithImpl<_$_WorkoutsStateLoaded>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Workout> workouts, Workout? closestWorkout) loaded,
+    required TResult Function(List<Workout> workouts, Workout? closestWorkout)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return loaded(workouts, closestWorkout);
@@ -466,27 +488,32 @@ class _$_WorkoutsStateLoaded implements _WorkoutsStateLoaded {
 }
 
 abstract class _WorkoutsStateLoaded implements WorkoutsState {
-  const factory _WorkoutsStateLoaded({required final List<Workout> workouts, final Workout? closestWorkout}) =
-      _$_WorkoutsStateLoaded;
+  const factory _WorkoutsStateLoaded(
+      {required final List<Workout> workouts,
+      final Workout? closestWorkout}) = _$_WorkoutsStateLoaded;
 
   List<Workout> get workouts;
   Workout? get closestWorkout;
   @JsonKey(ignore: true)
-  _$$_WorkoutsStateLoadedCopyWith<_$_WorkoutsStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkoutsStateLoadedCopyWith<_$_WorkoutsStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_WorkoutsStateErrorCopyWith<$Res> {
-  factory _$$_WorkoutsStateErrorCopyWith(_$_WorkoutsStateError value, $Res Function(_$_WorkoutsStateError) then) =
+  factory _$$_WorkoutsStateErrorCopyWith(_$_WorkoutsStateError value,
+          $Res Function(_$_WorkoutsStateError) then) =
       __$$_WorkoutsStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_WorkoutsStateErrorCopyWithImpl<$Res> extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateError>
+class __$$_WorkoutsStateErrorCopyWithImpl<$Res>
+    extends _$WorkoutsStateCopyWithImpl<$Res, _$_WorkoutsStateError>
     implements _$$_WorkoutsStateErrorCopyWith<$Res> {
-  __$$_WorkoutsStateErrorCopyWithImpl(_$_WorkoutsStateError _value, $Res Function(_$_WorkoutsStateError) _then)
+  __$$_WorkoutsStateErrorCopyWithImpl(
+      _$_WorkoutsStateError _value, $Res Function(_$_WorkoutsStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -531,14 +558,16 @@ class _$_WorkoutsStateError implements _WorkoutsStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_WorkoutsStateErrorCopyWith<_$_WorkoutsStateError> get copyWith =>
-      __$$_WorkoutsStateErrorCopyWithImpl<_$_WorkoutsStateError>(this, _$identity);
+      __$$_WorkoutsStateErrorCopyWithImpl<_$_WorkoutsStateError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Workout> workouts, Workout? closestWorkout) loaded,
+    required TResult Function(List<Workout> workouts, Workout? closestWorkout)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -609,9 +638,11 @@ class _$_WorkoutsStateError implements _WorkoutsStateError {
 }
 
 abstract class _WorkoutsStateError implements WorkoutsState {
-  const factory _WorkoutsStateError({required final String error}) = _$_WorkoutsStateError;
+  const factory _WorkoutsStateError({required final String error}) =
+      _$_WorkoutsStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_WorkoutsStateErrorCopyWith<_$_WorkoutsStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkoutsStateErrorCopyWith<_$_WorkoutsStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -32,13 +32,17 @@ mixin _$Rating {
 
 /// @nodoc
 abstract class $RatingCopyWith<$Res> {
-  factory $RatingCopyWith(Rating value, $Res Function(Rating) then) = _$RatingCopyWithImpl<$Res, Rating>;
+  factory $RatingCopyWith(Rating value, $Res Function(Rating) then) =
+      _$RatingCopyWithImpl<$Res, Rating>;
   @useResult
-  $Res call({@JsonKey(name: 'score') double score, @JsonKey(name: 'review_count') int reviewCount});
+  $Res call(
+      {@JsonKey(name: 'score') double score,
+      @JsonKey(name: 'review_count') int reviewCount});
 }
 
 /// @nodoc
-class _$RatingCopyWithImpl<$Res, $Val extends Rating> implements $RatingCopyWith<$Res> {
+class _$RatingCopyWithImpl<$Res, $Val extends Rating>
+    implements $RatingCopyWith<$Res> {
   _$RatingCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -67,15 +71,21 @@ class _$RatingCopyWithImpl<$Res, $Val extends Rating> implements $RatingCopyWith
 
 /// @nodoc
 abstract class _$$_RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
-  factory _$$_RatingCopyWith(_$_Rating value, $Res Function(_$_Rating) then) = __$$_RatingCopyWithImpl<$Res>;
+  factory _$$_RatingCopyWith(_$_Rating value, $Res Function(_$_Rating) then) =
+      __$$_RatingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'score') double score, @JsonKey(name: 'review_count') int reviewCount});
+  $Res call(
+      {@JsonKey(name: 'score') double score,
+      @JsonKey(name: 'review_count') int reviewCount});
 }
 
 /// @nodoc
-class __$$_RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res, _$_Rating> implements _$$_RatingCopyWith<$Res> {
-  __$$_RatingCopyWithImpl(_$_Rating _value, $Res Function(_$_Rating) _then) : super(_value, _then);
+class __$$_RatingCopyWithImpl<$Res>
+    extends _$RatingCopyWithImpl<$Res, _$_Rating>
+    implements _$$_RatingCopyWith<$Res> {
+  __$$_RatingCopyWithImpl(_$_Rating _value, $Res Function(_$_Rating) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -99,9 +109,12 @@ class __$$_RatingCopyWithImpl<$Res> extends _$RatingCopyWithImpl<$Res, _$_Rating
 /// @nodoc
 @JsonSerializable()
 class _$_Rating implements _Rating {
-  _$_Rating({@JsonKey(name: 'score') required this.score, @JsonKey(name: 'review_count') required this.reviewCount});
+  _$_Rating(
+      {@JsonKey(name: 'score') required this.score,
+      @JsonKey(name: 'review_count') required this.reviewCount});
 
-  factory _$_Rating.fromJson(Map<String, dynamic> json) => _$$_RatingFromJson(json);
+  factory _$_Rating.fromJson(Map<String, dynamic> json) =>
+      _$$_RatingFromJson(json);
 
   @override
   @JsonKey(name: 'score')
@@ -121,7 +134,8 @@ class _$_Rating implements _Rating {
         (other.runtimeType == runtimeType &&
             other is _$_Rating &&
             (identical(other.score, score) || other.score == score) &&
-            (identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount));
+            (identical(other.reviewCount, reviewCount) ||
+                other.reviewCount == reviewCount));
   }
 
   @JsonKey(ignore: true)
@@ -131,7 +145,8 @@ class _$_Rating implements _Rating {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RatingCopyWith<_$_Rating> get copyWith => __$$_RatingCopyWithImpl<_$_Rating>(this, _$identity);
+  _$$_RatingCopyWith<_$_Rating> get copyWith =>
+      __$$_RatingCopyWithImpl<_$_Rating>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -143,8 +158,9 @@ class _$_Rating implements _Rating {
 
 abstract class _Rating implements Rating {
   factory _Rating(
-      {@JsonKey(name: 'score') required final double score,
-      @JsonKey(name: 'review_count') required final int reviewCount}) = _$_Rating;
+          {@JsonKey(name: 'score') required final double score,
+          @JsonKey(name: 'review_count') required final int reviewCount}) =
+      _$_Rating;
 
   factory _Rating.fromJson(Map<String, dynamic> json) = _$_Rating.fromJson;
 
@@ -156,5 +172,6 @@ abstract class _Rating implements Rating {
   int get reviewCount;
   @override
   @JsonKey(ignore: true)
-  _$$_RatingCopyWith<_$_Rating> get copyWith => throw _privateConstructorUsedError;
+  _$$_RatingCopyWith<_$_Rating> get copyWith =>
+      throw _privateConstructorUsedError;
 }

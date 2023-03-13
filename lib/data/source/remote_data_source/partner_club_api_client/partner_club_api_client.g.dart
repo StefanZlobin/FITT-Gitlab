@@ -24,19 +24,22 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<CalculatePrice>>(Options(
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<CalculatePrice>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'user/slots/${slotUuid}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => CalculatePrice.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              'user/slots/${slotUuid}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => CalculatePrice.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -46,18 +49,19 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<PartnerClub>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PartnerClub>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'user/clubs/${uuid}/favorite/',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .compose(
+              _dio.options,
+              'user/clubs/${uuid}/favorite/',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PartnerClub.fromJson(_result.data!);
     return value;
   }
@@ -68,18 +72,19 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<PartnerClub>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PartnerClub>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'user/clubs/${uuid}/favorite/',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .compose(
+              _dio.options,
+              'user/clubs/${uuid}/favorite/',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PartnerClub.fromJson(_result.data!);
     return value;
   }
@@ -90,18 +95,19 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<PartnerClub>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PartnerClub>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'user/clubs/${uuid}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .compose(
+              _dio.options,
+              'user/clubs/${uuid}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PartnerClub.fromJson(_result.data!);
     return value;
   }
@@ -112,19 +118,22 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Batch>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Batch>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'user/clubs/${uuid}/batch-offers/',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => Batch.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              'user/clubs/${uuid}/batch-offers/',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Batch.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -139,25 +148,27 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
     final _headers = <String, dynamic>{r'X-Position': geolocation};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<PartnerClubSlice>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PartnerClubSlice>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'user/clubs',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+            .compose(
+              _dio.options,
+              'user/clubs',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PartnerClubSlice.fromJson(_result.data!);
     return value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
+        !(requestOptions.responseType == ResponseType.bytes ||
+            requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {

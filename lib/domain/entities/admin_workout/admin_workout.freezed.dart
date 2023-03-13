@@ -26,13 +26,25 @@ mixin _$AdminWorkout {
   AdminUser get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'price', fromJson: toRubles, toJson: toCent)
   int get price => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_start_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringRemoveUTC,
+      toJson: dateTimeToString,
+      name: 'plan_start_time')
   DateTime get planStartTime => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_end_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringRemoveUTC,
+      toJson: dateTimeToString,
+      name: 'plan_end_time')
   DateTime get planEndTime => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: dateTimeFromStringNullableRemoveUTC, toJson: dateTimeToStringNullable, name: 'fact_start_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringNullableRemoveUTC,
+      toJson: dateTimeToStringNullable,
+      name: 'fact_start_time')
   DateTime? get factStartTime => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: dateTimeFromStringNullableRemoveUTC, toJson: dateTimeToStringNullable, name: 'fact_end_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringNullableRemoveUTC,
+      toJson: dateTimeToStringNullable,
+      name: 'fact_end_time')
   DateTime? get factEndTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
   WorkoutStatusEnum? get status => throw _privateConstructorUsedError;
@@ -43,12 +55,14 @@ mixin _$AdminWorkout {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AdminWorkoutCopyWith<AdminWorkout> get copyWith => throw _privateConstructorUsedError;
+  $AdminWorkoutCopyWith<AdminWorkout> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AdminWorkoutCopyWith<$Res> {
-  factory $AdminWorkoutCopyWith(AdminWorkout value, $Res Function(AdminWorkout) then) =
+  factory $AdminWorkoutCopyWith(
+          AdminWorkout value, $Res Function(AdminWorkout) then) =
       _$AdminWorkoutCopyWithImpl<$Res, AdminWorkout>;
   @useResult
   $Res call(
@@ -77,7 +91,8 @@ abstract class $AdminWorkoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AdminWorkoutCopyWithImpl<$Res, $Val extends AdminWorkout> implements $AdminWorkoutCopyWith<$Res> {
+class _$AdminWorkoutCopyWithImpl<$Res, $Val extends AdminWorkout>
+    implements $AdminWorkoutCopyWith<$Res> {
   _$AdminWorkoutCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -153,8 +168,10 @@ class _$AdminWorkoutCopyWithImpl<$Res, $Val extends AdminWorkout> implements $Ad
 }
 
 /// @nodoc
-abstract class _$$_AdminWorkoutCopyWith<$Res> implements $AdminWorkoutCopyWith<$Res> {
-  factory _$$_AdminWorkoutCopyWith(_$_AdminWorkout value, $Res Function(_$_AdminWorkout) then) =
+abstract class _$$_AdminWorkoutCopyWith<$Res>
+    implements $AdminWorkoutCopyWith<$Res> {
+  factory _$$_AdminWorkoutCopyWith(
+          _$_AdminWorkout value, $Res Function(_$_AdminWorkout) then) =
       __$$_AdminWorkoutCopyWithImpl<$Res>;
   @override
   @useResult
@@ -185,9 +202,12 @@ abstract class _$$_AdminWorkoutCopyWith<$Res> implements $AdminWorkoutCopyWith<$
 }
 
 /// @nodoc
-class __$$_AdminWorkoutCopyWithImpl<$Res> extends _$AdminWorkoutCopyWithImpl<$Res, _$_AdminWorkout>
+class __$$_AdminWorkoutCopyWithImpl<$Res>
+    extends _$AdminWorkoutCopyWithImpl<$Res, _$_AdminWorkout>
     implements _$$_AdminWorkoutCopyWith<$Res> {
-  __$$_AdminWorkoutCopyWithImpl(_$_AdminWorkout _value, $Res Function(_$_AdminWorkout) _then) : super(_value, _then);
+  __$$_AdminWorkoutCopyWithImpl(
+      _$_AdminWorkout _value, $Res Function(_$_AdminWorkout) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -274,7 +294,8 @@ class _$_AdminWorkout extends _AdminWorkout {
           this.key})
       : super._();
 
-  factory _$_AdminWorkout.fromJson(Map<String, dynamic> json) => _$$_AdminWorkoutFromJson(json);
+  factory _$_AdminWorkout.fromJson(Map<String, dynamic> json) =>
+      _$$_AdminWorkoutFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -286,16 +307,28 @@ class _$_AdminWorkout extends _AdminWorkout {
   @JsonKey(name: 'price', fromJson: toRubles, toJson: toCent)
   final int price;
   @override
-  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_start_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringRemoveUTC,
+      toJson: dateTimeToString,
+      name: 'plan_start_time')
   final DateTime planStartTime;
   @override
-  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_end_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringRemoveUTC,
+      toJson: dateTimeToString,
+      name: 'plan_end_time')
   final DateTime planEndTime;
   @override
-  @JsonKey(fromJson: dateTimeFromStringNullableRemoveUTC, toJson: dateTimeToStringNullable, name: 'fact_start_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringNullableRemoveUTC,
+      toJson: dateTimeToStringNullable,
+      name: 'fact_start_time')
   final DateTime? factStartTime;
   @override
-  @JsonKey(fromJson: dateTimeFromStringNullableRemoveUTC, toJson: dateTimeToStringNullable, name: 'fact_end_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringNullableRemoveUTC,
+      toJson: dateTimeToStringNullable,
+      name: 'fact_end_time')
   final DateTime? factEndTime;
   @override
   @JsonKey(name: 'status')
@@ -320,19 +353,24 @@ class _$_AdminWorkout extends _AdminWorkout {
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.planStartTime, planStartTime) || other.planStartTime == planStartTime) &&
-            (identical(other.planEndTime, planEndTime) || other.planEndTime == planEndTime) &&
-            (identical(other.factStartTime, factStartTime) || other.factStartTime == factStartTime) &&
-            (identical(other.factEndTime, factEndTime) || other.factEndTime == factEndTime) &&
+            (identical(other.planStartTime, planStartTime) ||
+                other.planStartTime == planStartTime) &&
+            (identical(other.planEndTime, planEndTime) ||
+                other.planEndTime == planEndTime) &&
+            (identical(other.factStartTime, factStartTime) ||
+                other.factStartTime == factStartTime) &&
+            (identical(other.factEndTime, factEndTime) ||
+                other.factEndTime == factEndTime) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.isOverdue, isOverdue) || other.isOverdue == isOverdue) &&
+            (identical(other.isOverdue, isOverdue) ||
+                other.isOverdue == isOverdue) &&
             (identical(other.key, key) || other.key == key));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, uuid, user, price, planStartTime, planEndTime, factStartTime, factEndTime, status, isOverdue, key);
+  int get hashCode => Object.hash(runtimeType, uuid, user, price, planStartTime,
+      planEndTime, factStartTime, factEndTime, status, isOverdue, key);
 
   @JsonKey(ignore: true)
   @override
@@ -372,7 +410,8 @@ abstract class _AdminWorkout extends AdminWorkout {
           final String? key}) = _$_AdminWorkout;
   const _AdminWorkout._() : super._();
 
-  factory _AdminWorkout.fromJson(Map<String, dynamic> json) = _$_AdminWorkout.fromJson;
+  factory _AdminWorkout.fromJson(Map<String, dynamic> json) =
+      _$_AdminWorkout.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -384,16 +423,28 @@ abstract class _AdminWorkout extends AdminWorkout {
   @JsonKey(name: 'price', fromJson: toRubles, toJson: toCent)
   int get price;
   @override
-  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_start_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringRemoveUTC,
+      toJson: dateTimeToString,
+      name: 'plan_start_time')
   DateTime get planStartTime;
   @override
-  @JsonKey(fromJson: dateTimeFromStringRemoveUTC, toJson: dateTimeToString, name: 'plan_end_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringRemoveUTC,
+      toJson: dateTimeToString,
+      name: 'plan_end_time')
   DateTime get planEndTime;
   @override
-  @JsonKey(fromJson: dateTimeFromStringNullableRemoveUTC, toJson: dateTimeToStringNullable, name: 'fact_start_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringNullableRemoveUTC,
+      toJson: dateTimeToStringNullable,
+      name: 'fact_start_time')
   DateTime? get factStartTime;
   @override
-  @JsonKey(fromJson: dateTimeFromStringNullableRemoveUTC, toJson: dateTimeToStringNullable, name: 'fact_end_time')
+  @JsonKey(
+      fromJson: dateTimeFromStringNullableRemoveUTC,
+      toJson: dateTimeToStringNullable,
+      name: 'fact_end_time')
   DateTime? get factEndTime;
   @override
   @JsonKey(name: 'status')
@@ -406,5 +457,6 @@ abstract class _AdminWorkout extends AdminWorkout {
   String? get key;
   @override
   @JsonKey(ignore: true)
-  _$$_AdminWorkoutCopyWith<_$_AdminWorkout> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminWorkoutCopyWith<_$_AdminWorkout> get copyWith =>
+      throw _privateConstructorUsedError;
 }

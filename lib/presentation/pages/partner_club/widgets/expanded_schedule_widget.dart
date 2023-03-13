@@ -26,7 +26,8 @@ class ExpandedScheduleWidget extends StatelessWidget {
           ...schedules.map(
             (schedule) => _buildWorkScheduleRow(
               context: context,
-              dayOfWeek: DateFormat.EEEE().format(schedule.startDateTime ?? DateTime.now()),
+              dayOfWeek: DateFormat.EEEE()
+                  .format(schedule.startDateTime ?? DateTime.now()),
               concreteDay: schedule.isSpecial,
               open: schedule.startDateTime,
               close: schedule.endDateTime,
@@ -47,7 +48,8 @@ Widget _buildWorkScheduleRow({
   required DateTime? close,
   required bool isWeekend,
 }) {
-  final coral = DefaultTextStyle.of(context).style.apply(color: AppColors.kPrimaryBlue);
+  final coral =
+      DefaultTextStyle.of(context).style.apply(color: AppColors.kPrimaryBlue);
 
   final time = <Widget>[];
   const space = Text(' ');
@@ -73,7 +75,9 @@ Widget _buildWorkScheduleRow({
 
   if (_open == null) return const SizedBox();
 
-  final dayPostfix = isWeekend ? ' (${DateTimeUtils.dateFormatWithoutYear.format(_open)})' : '';
+  final dayPostfix = isWeekend
+      ? ' (${DateTimeUtils.dateFormatWithoutYear.format(_open)})'
+      : '';
 
   return Container(
     margin: const EdgeInsets.only(bottom: 8),
@@ -85,7 +89,8 @@ Widget _buildWorkScheduleRow({
           style: AppTypography.kBody14.apply(color: AppColors.kPrimaryRed),
         ),
         space,
-        if (concreteDay) Text('(${DateFormat.Md().format(_open)})', style: coral),
+        if (concreteDay)
+          Text('(${DateFormat.Md().format(_open)})', style: coral),
         Expanded(child: Container()),
         ...time,
       ],

@@ -18,39 +18,48 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatusEnum authenticationStatusEnum) authenticationStatusChanged,
+    required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
+        authenticationStatusChanged,
     required TResult Function() authenticationLogoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)? authenticationStatusChanged,
+    TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
+        authenticationStatusChanged,
     TResult? Function()? authenticationLogoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatusEnum authenticationStatusEnum)? authenticationStatusChanged,
+    TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
+        authenticationStatusChanged,
     TResult Function()? authenticationLogoutRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthEventAuthenticationStatusChanged value) authenticationStatusChanged,
-    required TResult Function(_AuthEventAuthenticationLogoutRequested value) authenticationLogoutRequested,
+    required TResult Function(_AuthEventAuthenticationStatusChanged value)
+        authenticationStatusChanged,
+    required TResult Function(_AuthEventAuthenticationLogoutRequested value)
+        authenticationLogoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthEventAuthenticationStatusChanged value)? authenticationStatusChanged,
-    TResult? Function(_AuthEventAuthenticationLogoutRequested value)? authenticationLogoutRequested,
+    TResult? Function(_AuthEventAuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult? Function(_AuthEventAuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthEventAuthenticationStatusChanged value)? authenticationStatusChanged,
-    TResult Function(_AuthEventAuthenticationLogoutRequested value)? authenticationLogoutRequested,
+    TResult Function(_AuthEventAuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_AuthEventAuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,11 +67,13 @@ mixin _$AuthEvent {
 
 /// @nodoc
 abstract class $AuthEventCopyWith<$Res> {
-  factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) = _$AuthEventCopyWithImpl<$Res, AuthEvent>;
+  factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) =
+      _$AuthEventCopyWithImpl<$Res, AuthEvent>;
 }
 
 /// @nodoc
-class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent> implements $AuthEventCopyWith<$Res> {
+class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
+    implements $AuthEventCopyWith<$Res> {
   _$AuthEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -74,7 +85,8 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent> implements $AuthEven
 /// @nodoc
 abstract class _$$_AuthEventAuthenticationStatusChangedCopyWith<$Res> {
   factory _$$_AuthEventAuthenticationStatusChangedCopyWith(
-          _$_AuthEventAuthenticationStatusChanged value, $Res Function(_$_AuthEventAuthenticationStatusChanged) then) =
+          _$_AuthEventAuthenticationStatusChanged value,
+          $Res Function(_$_AuthEventAuthenticationStatusChanged) then) =
       __$$_AuthEventAuthenticationStatusChangedCopyWithImpl<$Res>;
   @useResult
   $Res call({AuthenticationStatusEnum authenticationStatusEnum});
@@ -82,10 +94,12 @@ abstract class _$$_AuthEventAuthenticationStatusChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_AuthEventAuthenticationStatusChangedCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_AuthEventAuthenticationStatusChanged>
+    extends _$AuthEventCopyWithImpl<$Res,
+        _$_AuthEventAuthenticationStatusChanged>
     implements _$$_AuthEventAuthenticationStatusChangedCopyWith<$Res> {
   __$$_AuthEventAuthenticationStatusChangedCopyWithImpl(
-      _$_AuthEventAuthenticationStatusChanged _value, $Res Function(_$_AuthEventAuthenticationStatusChanged) _then)
+      _$_AuthEventAuthenticationStatusChanged _value,
+      $Res Function(_$_AuthEventAuthenticationStatusChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,8 +118,10 @@ class __$$_AuthEventAuthenticationStatusChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticationStatusChanged {
-  const _$_AuthEventAuthenticationStatusChanged({required this.authenticationStatusEnum});
+class _$_AuthEventAuthenticationStatusChanged
+    implements _AuthEventAuthenticationStatusChanged {
+  const _$_AuthEventAuthenticationStatusChanged(
+      {required this.authenticationStatusEnum});
 
   @override
   final AuthenticationStatusEnum authenticationStatusEnum;
@@ -120,7 +136,8 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthEventAuthenticationStatusChanged &&
-            (identical(other.authenticationStatusEnum, authenticationStatusEnum) ||
+            (identical(
+                    other.authenticationStatusEnum, authenticationStatusEnum) ||
                 other.authenticationStatusEnum == authenticationStatusEnum));
   }
 
@@ -130,13 +147,16 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthEventAuthenticationStatusChangedCopyWith<_$_AuthEventAuthenticationStatusChanged> get copyWith =>
-      __$$_AuthEventAuthenticationStatusChangedCopyWithImpl<_$_AuthEventAuthenticationStatusChanged>(this, _$identity);
+  _$$_AuthEventAuthenticationStatusChangedCopyWith<
+          _$_AuthEventAuthenticationStatusChanged>
+      get copyWith => __$$_AuthEventAuthenticationStatusChangedCopyWithImpl<
+          _$_AuthEventAuthenticationStatusChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatusEnum authenticationStatusEnum) authenticationStatusChanged,
+    required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
+        authenticationStatusChanged,
     required TResult Function() authenticationLogoutRequested,
   }) {
     return authenticationStatusChanged(authenticationStatusEnum);
@@ -145,7 +165,8 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)? authenticationStatusChanged,
+    TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
+        authenticationStatusChanged,
     TResult? Function()? authenticationLogoutRequested,
   }) {
     return authenticationStatusChanged?.call(authenticationStatusEnum);
@@ -154,7 +175,8 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatusEnum authenticationStatusEnum)? authenticationStatusChanged,
+    TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
+        authenticationStatusChanged,
     TResult Function()? authenticationLogoutRequested,
     required TResult orElse(),
   }) {
@@ -167,8 +189,10 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthEventAuthenticationStatusChanged value) authenticationStatusChanged,
-    required TResult Function(_AuthEventAuthenticationLogoutRequested value) authenticationLogoutRequested,
+    required TResult Function(_AuthEventAuthenticationStatusChanged value)
+        authenticationStatusChanged,
+    required TResult Function(_AuthEventAuthenticationLogoutRequested value)
+        authenticationLogoutRequested,
   }) {
     return authenticationStatusChanged(this);
   }
@@ -176,8 +200,10 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthEventAuthenticationStatusChanged value)? authenticationStatusChanged,
-    TResult? Function(_AuthEventAuthenticationLogoutRequested value)? authenticationLogoutRequested,
+    TResult? Function(_AuthEventAuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult? Function(_AuthEventAuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
   }) {
     return authenticationStatusChanged?.call(this);
   }
@@ -185,8 +211,10 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthEventAuthenticationStatusChanged value)? authenticationStatusChanged,
-    TResult Function(_AuthEventAuthenticationLogoutRequested value)? authenticationLogoutRequested,
+    TResult Function(_AuthEventAuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_AuthEventAuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
     required TResult orElse(),
   }) {
     if (authenticationStatusChanged != null) {
@@ -198,33 +226,39 @@ class _$_AuthEventAuthenticationStatusChanged implements _AuthEventAuthenticatio
 
 abstract class _AuthEventAuthenticationStatusChanged implements AuthEvent {
   const factory _AuthEventAuthenticationStatusChanged(
-      {required final AuthenticationStatusEnum authenticationStatusEnum}) = _$_AuthEventAuthenticationStatusChanged;
+          {required final AuthenticationStatusEnum authenticationStatusEnum}) =
+      _$_AuthEventAuthenticationStatusChanged;
 
   AuthenticationStatusEnum get authenticationStatusEnum;
   @JsonKey(ignore: true)
-  _$$_AuthEventAuthenticationStatusChangedCopyWith<_$_AuthEventAuthenticationStatusChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AuthEventAuthenticationStatusChangedCopyWith<
+          _$_AuthEventAuthenticationStatusChanged>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AuthEventAuthenticationLogoutRequestedCopyWith<$Res> {
-  factory _$$_AuthEventAuthenticationLogoutRequestedCopyWith(_$_AuthEventAuthenticationLogoutRequested value,
+  factory _$$_AuthEventAuthenticationLogoutRequestedCopyWith(
+          _$_AuthEventAuthenticationLogoutRequested value,
           $Res Function(_$_AuthEventAuthenticationLogoutRequested) then) =
       __$$_AuthEventAuthenticationLogoutRequestedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_AuthEventAuthenticationLogoutRequestedCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$_AuthEventAuthenticationLogoutRequested>
+    extends _$AuthEventCopyWithImpl<$Res,
+        _$_AuthEventAuthenticationLogoutRequested>
     implements _$$_AuthEventAuthenticationLogoutRequestedCopyWith<$Res> {
   __$$_AuthEventAuthenticationLogoutRequestedCopyWithImpl(
-      _$_AuthEventAuthenticationLogoutRequested _value, $Res Function(_$_AuthEventAuthenticationLogoutRequested) _then)
+      _$_AuthEventAuthenticationLogoutRequested _value,
+      $Res Function(_$_AuthEventAuthenticationLogoutRequested) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticationLogoutRequested {
+class _$_AuthEventAuthenticationLogoutRequested
+    implements _AuthEventAuthenticationLogoutRequested {
   const _$_AuthEventAuthenticationLogoutRequested();
 
   @override
@@ -235,7 +269,8 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AuthEventAuthenticationLogoutRequested);
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthEventAuthenticationLogoutRequested);
   }
 
   @override
@@ -244,7 +279,8 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatusEnum authenticationStatusEnum) authenticationStatusChanged,
+    required TResult Function(AuthenticationStatusEnum authenticationStatusEnum)
+        authenticationStatusChanged,
     required TResult Function() authenticationLogoutRequested,
   }) {
     return authenticationLogoutRequested();
@@ -253,7 +289,8 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)? authenticationStatusChanged,
+    TResult? Function(AuthenticationStatusEnum authenticationStatusEnum)?
+        authenticationStatusChanged,
     TResult? Function()? authenticationLogoutRequested,
   }) {
     return authenticationLogoutRequested?.call();
@@ -262,7 +299,8 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatusEnum authenticationStatusEnum)? authenticationStatusChanged,
+    TResult Function(AuthenticationStatusEnum authenticationStatusEnum)?
+        authenticationStatusChanged,
     TResult Function()? authenticationLogoutRequested,
     required TResult orElse(),
   }) {
@@ -275,8 +313,10 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthEventAuthenticationStatusChanged value) authenticationStatusChanged,
-    required TResult Function(_AuthEventAuthenticationLogoutRequested value) authenticationLogoutRequested,
+    required TResult Function(_AuthEventAuthenticationStatusChanged value)
+        authenticationStatusChanged,
+    required TResult Function(_AuthEventAuthenticationLogoutRequested value)
+        authenticationLogoutRequested,
   }) {
     return authenticationLogoutRequested(this);
   }
@@ -284,8 +324,10 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthEventAuthenticationStatusChanged value)? authenticationStatusChanged,
-    TResult? Function(_AuthEventAuthenticationLogoutRequested value)? authenticationLogoutRequested,
+    TResult? Function(_AuthEventAuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult? Function(_AuthEventAuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
   }) {
     return authenticationLogoutRequested?.call(this);
   }
@@ -293,8 +335,10 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthEventAuthenticationStatusChanged value)? authenticationStatusChanged,
-    TResult Function(_AuthEventAuthenticationLogoutRequested value)? authenticationLogoutRequested,
+    TResult Function(_AuthEventAuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_AuthEventAuthenticationLogoutRequested value)?
+        authenticationLogoutRequested,
     required TResult orElse(),
   }) {
     if (authenticationLogoutRequested != null) {
@@ -305,7 +349,8 @@ class _$_AuthEventAuthenticationLogoutRequested implements _AuthEventAuthenticat
 }
 
 abstract class _AuthEventAuthenticationLogoutRequested implements AuthEvent {
-  const factory _AuthEventAuthenticationLogoutRequested() = _$_AuthEventAuthenticationLogoutRequested;
+  const factory _AuthEventAuthenticationLogoutRequested() =
+      _$_AuthEventAuthenticationLogoutRequested;
 }
 
 /// @nodoc
@@ -364,11 +409,13 @@ mixin _$AuthState {
 
 /// @nodoc
 abstract class $AuthStateCopyWith<$Res> {
-  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) = _$AuthStateCopyWithImpl<$Res, AuthState>;
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
 }
 
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState> implements $AuthStateCopyWith<$Res> {
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
   _$AuthStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -379,14 +426,17 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState> implements $AuthStat
 
 /// @nodoc
 abstract class _$$_AuthStateUnknownCopyWith<$Res> {
-  factory _$$_AuthStateUnknownCopyWith(_$_AuthStateUnknown value, $Res Function(_$_AuthStateUnknown) then) =
+  factory _$$_AuthStateUnknownCopyWith(
+          _$_AuthStateUnknown value, $Res Function(_$_AuthStateUnknown) then) =
       __$$_AuthStateUnknownCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthStateUnknownCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateUnknown>
+class __$$_AuthStateUnknownCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateUnknown>
     implements _$$_AuthStateUnknownCopyWith<$Res> {
-  __$$_AuthStateUnknownCopyWithImpl(_$_AuthStateUnknown _value, $Res Function(_$_AuthStateUnknown) _then)
+  __$$_AuthStateUnknownCopyWithImpl(
+      _$_AuthStateUnknown _value, $Res Function(_$_AuthStateUnknown) _then)
       : super(_value, _then);
 }
 
@@ -402,7 +452,8 @@ class _$_AuthStateUnknown implements _AuthStateUnknown {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AuthStateUnknown);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_AuthStateUnknown);
   }
 
   @override
@@ -489,16 +540,17 @@ abstract class _AuthStateUnknown implements AuthState {
 
 /// @nodoc
 abstract class _$$_AuthStateAuthenticatedCopyWith<$Res> {
-  factory _$$_AuthStateAuthenticatedCopyWith(
-          _$_AuthStateAuthenticated value, $Res Function(_$_AuthStateAuthenticated) then) =
+  factory _$$_AuthStateAuthenticatedCopyWith(_$_AuthStateAuthenticated value,
+          $Res Function(_$_AuthStateAuthenticated) then) =
       __$$_AuthStateAuthenticatedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthStateAuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateAuthenticated>
+class __$$_AuthStateAuthenticatedCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateAuthenticated>
     implements _$$_AuthStateAuthenticatedCopyWith<$Res> {
-  __$$_AuthStateAuthenticatedCopyWithImpl(
-      _$_AuthStateAuthenticated _value, $Res Function(_$_AuthStateAuthenticated) _then)
+  __$$_AuthStateAuthenticatedCopyWithImpl(_$_AuthStateAuthenticated _value,
+      $Res Function(_$_AuthStateAuthenticated) _then)
       : super(_value, _then);
 }
 
@@ -514,7 +566,9 @@ class _$_AuthStateAuthenticated implements _AuthStateAuthenticated {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AuthStateAuthenticated);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthStateAuthenticated);
   }
 
   @override
@@ -602,15 +656,17 @@ abstract class _AuthStateAuthenticated implements AuthState {
 /// @nodoc
 abstract class _$$_AuthStateUnauthenticatedCopyWith<$Res> {
   factory _$$_AuthStateUnauthenticatedCopyWith(
-          _$_AuthStateUnauthenticated value, $Res Function(_$_AuthStateUnauthenticated) then) =
+          _$_AuthStateUnauthenticated value,
+          $Res Function(_$_AuthStateUnauthenticated) then) =
       __$$_AuthStateUnauthenticatedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AuthStateUnauthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateUnauthenticated>
+class __$$_AuthStateUnauthenticatedCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateUnauthenticated>
     implements _$$_AuthStateUnauthenticatedCopyWith<$Res> {
-  __$$_AuthStateUnauthenticatedCopyWithImpl(
-      _$_AuthStateUnauthenticated _value, $Res Function(_$_AuthStateUnauthenticated) _then)
+  __$$_AuthStateUnauthenticatedCopyWithImpl(_$_AuthStateUnauthenticated _value,
+      $Res Function(_$_AuthStateUnauthenticated) _then)
       : super(_value, _then);
 }
 
@@ -626,7 +682,9 @@ class _$_AuthStateUnauthenticated implements _AuthStateUnauthenticated {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AuthStateUnauthenticated);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthStateUnauthenticated);
   }
 
   @override
@@ -713,16 +771,19 @@ abstract class _AuthStateUnauthenticated implements AuthState {
 
 /// @nodoc
 abstract class _$$_AuthStateErrorCopyWith<$Res> {
-  factory _$$_AuthStateErrorCopyWith(_$_AuthStateError value, $Res Function(_$_AuthStateError) then) =
+  factory _$$_AuthStateErrorCopyWith(
+          _$_AuthStateError value, $Res Function(_$_AuthStateError) then) =
       __$$_AuthStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_AuthStateErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateError>
+class __$$_AuthStateErrorCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthStateError>
     implements _$$_AuthStateErrorCopyWith<$Res> {
-  __$$_AuthStateErrorCopyWithImpl(_$_AuthStateError _value, $Res Function(_$_AuthStateError) _then)
+  __$$_AuthStateErrorCopyWithImpl(
+      _$_AuthStateError _value, $Res Function(_$_AuthStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -845,9 +906,11 @@ class _$_AuthStateError implements _AuthStateError {
 }
 
 abstract class _AuthStateError implements AuthState {
-  const factory _AuthStateError({required final String error}) = _$_AuthStateError;
+  const factory _AuthStateError({required final String error}) =
+      _$_AuthStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_AuthStateErrorCopyWith<_$_AuthStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_AuthStateErrorCopyWith<_$_AuthStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

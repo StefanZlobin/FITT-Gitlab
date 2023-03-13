@@ -61,12 +61,14 @@ mixin _$PartnerClub {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PartnerClubCopyWith<PartnerClub> get copyWith => throw _privateConstructorUsedError;
+  $PartnerClubCopyWith<PartnerClub> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PartnerClubCopyWith<$Res> {
-  factory $PartnerClubCopyWith(PartnerClub value, $Res Function(PartnerClub) then) =
+  factory $PartnerClubCopyWith(
+          PartnerClub value, $Res Function(PartnerClub) then) =
       _$PartnerClubCopyWithImpl<$Res, PartnerClub>;
   @useResult
   $Res call(
@@ -96,7 +98,8 @@ abstract class $PartnerClubCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub> implements $PartnerClubCopyWith<$Res> {
+class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub>
+    implements $PartnerClubCopyWith<$Res> {
   _$PartnerClubCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -245,8 +248,10 @@ class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub> implements $Part
 }
 
 /// @nodoc
-abstract class _$$_PartnerClubCopyWith<$Res> implements $PartnerClubCopyWith<$Res> {
-  factory _$$_PartnerClubCopyWith(_$_PartnerClub value, $Res Function(_$_PartnerClub) then) =
+abstract class _$$_PartnerClubCopyWith<$Res>
+    implements $PartnerClubCopyWith<$Res> {
+  factory _$$_PartnerClubCopyWith(
+          _$_PartnerClub value, $Res Function(_$_PartnerClub) then) =
       __$$_PartnerClubCopyWithImpl<$Res>;
   @override
   @useResult
@@ -280,9 +285,12 @@ abstract class _$$_PartnerClubCopyWith<$Res> implements $PartnerClubCopyWith<$Re
 }
 
 /// @nodoc
-class __$$_PartnerClubCopyWithImpl<$Res> extends _$PartnerClubCopyWithImpl<$Res, _$_PartnerClub>
+class __$$_PartnerClubCopyWithImpl<$Res>
+    extends _$PartnerClubCopyWithImpl<$Res, _$_PartnerClub>
     implements _$$_PartnerClubCopyWith<$Res> {
-  __$$_PartnerClubCopyWithImpl(_$_PartnerClub _value, $Res Function(_$_PartnerClub) _then) : super(_value, _then);
+  __$$_PartnerClubCopyWithImpl(
+      _$_PartnerClub _value, $Res Function(_$_PartnerClub) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -392,32 +400,52 @@ class __$$_PartnerClubCopyWithImpl<$Res> extends _$PartnerClubCopyWithImpl<$Res,
 @JsonSerializable()
 class _$_PartnerClub implements _PartnerClub {
   const _$_PartnerClub(
-      {@JsonKey(name: 'id') required this.uuid,
-      @JsonKey(name: 'min_price', fromJson: toRublesNullable) required this.minPrice,
-      @JsonKey(name: 'address') required this.address,
-      @JsonKey(name: 'distance') required this.distance,
-      @JsonKey(name: 'label') required this.label,
-      @JsonKey(name: 'rating') required this.rating,
-      @JsonKey(name: 'photos') required final List<Photo>? photos,
-      @JsonKey(name: 'facilities') required final List<Facility>? facilities,
-      @JsonKey(name: 'batch_hours_available') required this.batchHoursAvailable,
-      @JsonKey(name: 'is_favorite') required this.isFavorite,
-      @JsonKey(name: 'work_schedule') required final List<WorkSchedule>? workSchedule,
-      @JsonKey(name: 'activities') required final List<Activity>? activities,
-      @JsonKey(name: 'organization') required this.organization,
-      @JsonKey(name: 'documents') required final List<Document>? documents,
-      @JsonKey(name: 'timezone') required this.timezone,
-      @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'email') required this.email,
-      @JsonKey(name: 'phone') required this.phoneNumber,
-      @JsonKey(name: 'pay_available') required this.payAvailable})
+      {@JsonKey(name: 'id')
+          required this.uuid,
+      @JsonKey(name: 'min_price', fromJson: toRublesNullable)
+          required this.minPrice,
+      @JsonKey(name: 'address')
+          required this.address,
+      @JsonKey(name: 'distance')
+          required this.distance,
+      @JsonKey(name: 'label')
+          required this.label,
+      @JsonKey(name: 'rating')
+          required this.rating,
+      @JsonKey(name: 'photos')
+          required final List<Photo>? photos,
+      @JsonKey(name: 'facilities')
+          required final List<Facility>? facilities,
+      @JsonKey(name: 'batch_hours_available')
+          required this.batchHoursAvailable,
+      @JsonKey(name: 'is_favorite')
+          required this.isFavorite,
+      @JsonKey(name: 'work_schedule')
+          required final List<WorkSchedule>? workSchedule,
+      @JsonKey(name: 'activities')
+          required final List<Activity>? activities,
+      @JsonKey(name: 'organization')
+          required this.organization,
+      @JsonKey(name: 'documents')
+          required final List<Document>? documents,
+      @JsonKey(name: 'timezone')
+          required this.timezone,
+      @JsonKey(name: 'description')
+          required this.description,
+      @JsonKey(name: 'email')
+          required this.email,
+      @JsonKey(name: 'phone')
+          required this.phoneNumber,
+      @JsonKey(name: 'pay_available')
+          required this.payAvailable})
       : _photos = photos,
         _facilities = facilities,
         _workSchedule = workSchedule,
         _activities = activities,
         _documents = documents;
 
-  factory _$_PartnerClub.fromJson(Map<String, dynamic> json) => _$$_PartnerClubFromJson(json);
+  factory _$_PartnerClub.fromJson(Map<String, dynamic> json) =>
+      _$$_PartnerClubFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -528,25 +556,37 @@ class _$_PartnerClub implements _PartnerClub {
         (other.runtimeType == runtimeType &&
             other is _$_PartnerClub &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
-            (identical(other.minPrice, minPrice) || other.minPrice == minPrice) &&
+            (identical(other.minPrice, minPrice) ||
+                other.minPrice == minPrice) &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.distance, distance) || other.distance == distance) &&
+            (identical(other.distance, distance) ||
+                other.distance == distance) &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             const DeepCollectionEquality().equals(other._photos, _photos) &&
-            const DeepCollectionEquality().equals(other._facilities, _facilities) &&
+            const DeepCollectionEquality()
+                .equals(other._facilities, _facilities) &&
             (identical(other.batchHoursAvailable, batchHoursAvailable) ||
                 other.batchHoursAvailable == batchHoursAvailable) &&
-            (identical(other.isFavorite, isFavorite) || other.isFavorite == isFavorite) &&
-            const DeepCollectionEquality().equals(other._workSchedule, _workSchedule) &&
-            const DeepCollectionEquality().equals(other._activities, _activities) &&
-            (identical(other.organization, organization) || other.organization == organization) &&
-            const DeepCollectionEquality().equals(other._documents, _documents) &&
-            (identical(other.timezone, timezone) || other.timezone == timezone) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
+            const DeepCollectionEquality()
+                .equals(other._workSchedule, _workSchedule) &&
+            const DeepCollectionEquality()
+                .equals(other._activities, _activities) &&
+            (identical(other.organization, organization) ||
+                other.organization == organization) &&
+            const DeepCollectionEquality()
+                .equals(other._documents, _documents) &&
+            (identical(other.timezone, timezone) ||
+                other.timezone == timezone) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber) &&
-            (identical(other.payAvailable, payAvailable) || other.payAvailable == payAvailable));
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.payAvailable, payAvailable) ||
+                other.payAvailable == payAvailable));
   }
 
   @JsonKey(ignore: true)
@@ -590,27 +630,47 @@ class _$_PartnerClub implements _PartnerClub {
 
 abstract class _PartnerClub implements PartnerClub {
   const factory _PartnerClub(
-      {@JsonKey(name: 'id') required final String? uuid,
-      @JsonKey(name: 'min_price', fromJson: toRublesNullable) required final int? minPrice,
-      @JsonKey(name: 'address') required final Address? address,
-      @JsonKey(name: 'distance') required final double? distance,
-      @JsonKey(name: 'label') required final String? label,
-      @JsonKey(name: 'rating') required final Rating? rating,
-      @JsonKey(name: 'photos') required final List<Photo>? photos,
-      @JsonKey(name: 'facilities') required final List<Facility>? facilities,
-      @JsonKey(name: 'batch_hours_available') required final double? batchHoursAvailable,
-      @JsonKey(name: 'is_favorite') required final bool? isFavorite,
-      @JsonKey(name: 'work_schedule') required final List<WorkSchedule>? workSchedule,
-      @JsonKey(name: 'activities') required final List<Activity>? activities,
-      @JsonKey(name: 'organization') required final Organization? organization,
-      @JsonKey(name: 'documents') required final List<Document>? documents,
-      @JsonKey(name: 'timezone') required final String? timezone,
-      @JsonKey(name: 'description') required final String? description,
-      @JsonKey(name: 'email') required final String? email,
-      @JsonKey(name: 'phone') required final String? phoneNumber,
-      @JsonKey(name: 'pay_available') required final bool? payAvailable}) = _$_PartnerClub;
+      {@JsonKey(name: 'id')
+          required final String? uuid,
+      @JsonKey(name: 'min_price', fromJson: toRublesNullable)
+          required final int? minPrice,
+      @JsonKey(name: 'address')
+          required final Address? address,
+      @JsonKey(name: 'distance')
+          required final double? distance,
+      @JsonKey(name: 'label')
+          required final String? label,
+      @JsonKey(name: 'rating')
+          required final Rating? rating,
+      @JsonKey(name: 'photos')
+          required final List<Photo>? photos,
+      @JsonKey(name: 'facilities')
+          required final List<Facility>? facilities,
+      @JsonKey(name: 'batch_hours_available')
+          required final double? batchHoursAvailable,
+      @JsonKey(name: 'is_favorite')
+          required final bool? isFavorite,
+      @JsonKey(name: 'work_schedule')
+          required final List<WorkSchedule>? workSchedule,
+      @JsonKey(name: 'activities')
+          required final List<Activity>? activities,
+      @JsonKey(name: 'organization')
+          required final Organization? organization,
+      @JsonKey(name: 'documents')
+          required final List<Document>? documents,
+      @JsonKey(name: 'timezone')
+          required final String? timezone,
+      @JsonKey(name: 'description')
+          required final String? description,
+      @JsonKey(name: 'email')
+          required final String? email,
+      @JsonKey(name: 'phone')
+          required final String? phoneNumber,
+      @JsonKey(name: 'pay_available')
+          required final bool? payAvailable}) = _$_PartnerClub;
 
-  factory _PartnerClub.fromJson(Map<String, dynamic> json) = _$_PartnerClub.fromJson;
+  factory _PartnerClub.fromJson(Map<String, dynamic> json) =
+      _$_PartnerClub.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -671,5 +731,6 @@ abstract class _PartnerClub implements PartnerClub {
   bool? get payAvailable;
   @override
   @JsonKey(ignore: true)
-  _$$_PartnerClubCopyWith<_$_PartnerClub> get copyWith => throw _privateConstructorUsedError;
+  _$$_PartnerClubCopyWith<_$_PartnerClub> get copyWith =>
+      throw _privateConstructorUsedError;
 }

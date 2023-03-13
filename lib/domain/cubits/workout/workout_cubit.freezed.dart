@@ -64,12 +64,14 @@ mixin _$WorkoutState {
 
 /// @nodoc
 abstract class $WorkoutStateCopyWith<$Res> {
-  factory $WorkoutStateCopyWith(WorkoutState value, $Res Function(WorkoutState) then) =
+  factory $WorkoutStateCopyWith(
+          WorkoutState value, $Res Function(WorkoutState) then) =
       _$WorkoutStateCopyWithImpl<$Res, WorkoutState>;
 }
 
 /// @nodoc
-class _$WorkoutStateCopyWithImpl<$Res, $Val extends WorkoutState> implements $WorkoutStateCopyWith<$Res> {
+class _$WorkoutStateCopyWithImpl<$Res, $Val extends WorkoutState>
+    implements $WorkoutStateCopyWith<$Res> {
   _$WorkoutStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -80,14 +82,17 @@ class _$WorkoutStateCopyWithImpl<$Res, $Val extends WorkoutState> implements $Wo
 
 /// @nodoc
 abstract class _$$_WorkoutStateInitialCopyWith<$Res> {
-  factory _$$_WorkoutStateInitialCopyWith(_$_WorkoutStateInitial value, $Res Function(_$_WorkoutStateInitial) then) =
+  factory _$$_WorkoutStateInitialCopyWith(_$_WorkoutStateInitial value,
+          $Res Function(_$_WorkoutStateInitial) then) =
       __$$_WorkoutStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WorkoutStateInitialCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res, _$_WorkoutStateInitial>
+class __$$_WorkoutStateInitialCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res, _$_WorkoutStateInitial>
     implements _$$_WorkoutStateInitialCopyWith<$Res> {
-  __$$_WorkoutStateInitialCopyWithImpl(_$_WorkoutStateInitial _value, $Res Function(_$_WorkoutStateInitial) _then)
+  __$$_WorkoutStateInitialCopyWithImpl(_$_WorkoutStateInitial _value,
+      $Res Function(_$_WorkoutStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -103,7 +108,8 @@ class _$_WorkoutStateInitial implements _WorkoutStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStateInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStateInitial);
   }
 
   @override
@@ -184,7 +190,8 @@ abstract class _WorkoutStateInitial implements WorkoutState {
 
 /// @nodoc
 abstract class _$$_WorkoutStateLoadedCopyWith<$Res> {
-  factory _$$_WorkoutStateLoadedCopyWith(_$_WorkoutStateLoaded value, $Res Function(_$_WorkoutStateLoaded) then) =
+  factory _$$_WorkoutStateLoadedCopyWith(_$_WorkoutStateLoaded value,
+          $Res Function(_$_WorkoutStateLoaded) then) =
       __$$_WorkoutStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({Workout workout});
@@ -193,9 +200,11 @@ abstract class _$$_WorkoutStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WorkoutStateLoadedCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res, _$_WorkoutStateLoaded>
+class __$$_WorkoutStateLoadedCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res, _$_WorkoutStateLoaded>
     implements _$$_WorkoutStateLoadedCopyWith<$Res> {
-  __$$_WorkoutStateLoadedCopyWithImpl(_$_WorkoutStateLoaded _value, $Res Function(_$_WorkoutStateLoaded) _then)
+  __$$_WorkoutStateLoadedCopyWithImpl(
+      _$_WorkoutStateLoaded _value, $Res Function(_$_WorkoutStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -248,7 +257,8 @@ class _$_WorkoutStateLoaded implements _WorkoutStateLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$_WorkoutStateLoadedCopyWith<_$_WorkoutStateLoaded> get copyWith =>
-      __$$_WorkoutStateLoadedCopyWithImpl<_$_WorkoutStateLoaded>(this, _$identity);
+      __$$_WorkoutStateLoadedCopyWithImpl<_$_WorkoutStateLoaded>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -320,25 +330,30 @@ class _$_WorkoutStateLoaded implements _WorkoutStateLoaded {
 }
 
 abstract class _WorkoutStateLoaded implements WorkoutState {
-  const factory _WorkoutStateLoaded({required final Workout workout}) = _$_WorkoutStateLoaded;
+  const factory _WorkoutStateLoaded({required final Workout workout}) =
+      _$_WorkoutStateLoaded;
 
   Workout get workout;
   @JsonKey(ignore: true)
-  _$$_WorkoutStateLoadedCopyWith<_$_WorkoutStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkoutStateLoadedCopyWith<_$_WorkoutStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_WorkoutStateErrorCopyWith<$Res> {
-  factory _$$_WorkoutStateErrorCopyWith(_$_WorkoutStateError value, $Res Function(_$_WorkoutStateError) then) =
+  factory _$$_WorkoutStateErrorCopyWith(_$_WorkoutStateError value,
+          $Res Function(_$_WorkoutStateError) then) =
       __$$_WorkoutStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_WorkoutStateErrorCopyWithImpl<$Res> extends _$WorkoutStateCopyWithImpl<$Res, _$_WorkoutStateError>
+class __$$_WorkoutStateErrorCopyWithImpl<$Res>
+    extends _$WorkoutStateCopyWithImpl<$Res, _$_WorkoutStateError>
     implements _$$_WorkoutStateErrorCopyWith<$Res> {
-  __$$_WorkoutStateErrorCopyWithImpl(_$_WorkoutStateError _value, $Res Function(_$_WorkoutStateError) _then)
+  __$$_WorkoutStateErrorCopyWithImpl(
+      _$_WorkoutStateError _value, $Res Function(_$_WorkoutStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -383,7 +398,8 @@ class _$_WorkoutStateError implements _WorkoutStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_WorkoutStateErrorCopyWith<_$_WorkoutStateError> get copyWith =>
-      __$$_WorkoutStateErrorCopyWithImpl<_$_WorkoutStateError>(this, _$identity);
+      __$$_WorkoutStateErrorCopyWithImpl<_$_WorkoutStateError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -455,9 +471,11 @@ class _$_WorkoutStateError implements _WorkoutStateError {
 }
 
 abstract class _WorkoutStateError implements WorkoutState {
-  const factory _WorkoutStateError({required final String error}) = _$_WorkoutStateError;
+  const factory _WorkoutStateError({required final String error}) =
+      _$_WorkoutStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_WorkoutStateErrorCopyWith<_$_WorkoutStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_WorkoutStateErrorCopyWith<_$_WorkoutStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

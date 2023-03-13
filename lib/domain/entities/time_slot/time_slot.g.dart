@@ -13,7 +13,8 @@ _$_TimeSlot _$$_TimeSlotFromJson(Map<String, dynamic> json) => _$_TimeSlot(
       price: toRubles(json['price'] as int),
     );
 
-Map<String, dynamic> _$$_TimeSlotToJson(_$_TimeSlot instance) => <String, dynamic>{
+Map<String, dynamic> _$$_TimeSlotToJson(_$_TimeSlot instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'start_time': timeToString(instance.startTime),
       'duration': const DurationConverter().toJson(instance.duration),

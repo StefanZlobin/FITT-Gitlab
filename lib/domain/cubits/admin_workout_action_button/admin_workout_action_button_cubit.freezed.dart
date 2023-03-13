@@ -43,9 +43,11 @@ mixin _$AdminWorkoutActionButtonState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AdminWorkoutActionButtonStateInitial value) initial,
+    required TResult Function(_AdminWorkoutActionButtonStateInitial value)
+        initial,
     required TResult Function(_AdminWorkoutActionButtonStateStart value) start,
-    required TResult Function(_AdminWorkoutActionButtonStateFinish value) finish,
+    required TResult Function(_AdminWorkoutActionButtonStateFinish value)
+        finish,
     required TResult Function(_AdminWorkoutActionButtonStateDone value) done,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,12 +73,15 @@ mixin _$AdminWorkoutActionButtonState {
 /// @nodoc
 abstract class $AdminWorkoutActionButtonStateCopyWith<$Res> {
   factory $AdminWorkoutActionButtonStateCopyWith(
-          AdminWorkoutActionButtonState value, $Res Function(AdminWorkoutActionButtonState) then) =
-      _$AdminWorkoutActionButtonStateCopyWithImpl<$Res, AdminWorkoutActionButtonState>;
+          AdminWorkoutActionButtonState value,
+          $Res Function(AdminWorkoutActionButtonState) then) =
+      _$AdminWorkoutActionButtonStateCopyWithImpl<$Res,
+          AdminWorkoutActionButtonState>;
 }
 
 /// @nodoc
-class _$AdminWorkoutActionButtonStateCopyWithImpl<$Res, $Val extends AdminWorkoutActionButtonState>
+class _$AdminWorkoutActionButtonStateCopyWithImpl<$Res,
+        $Val extends AdminWorkoutActionButtonState>
     implements $AdminWorkoutActionButtonStateCopyWith<$Res> {
   _$AdminWorkoutActionButtonStateCopyWithImpl(this._value, this._then);
 
@@ -89,22 +94,26 @@ class _$AdminWorkoutActionButtonStateCopyWithImpl<$Res, $Val extends AdminWorkou
 /// @nodoc
 abstract class _$$_AdminWorkoutActionButtonStateInitialCopyWith<$Res> {
   factory _$$_AdminWorkoutActionButtonStateInitialCopyWith(
-          _$_AdminWorkoutActionButtonStateInitial value, $Res Function(_$_AdminWorkoutActionButtonStateInitial) then) =
+          _$_AdminWorkoutActionButtonStateInitial value,
+          $Res Function(_$_AdminWorkoutActionButtonStateInitial) then) =
       __$$_AdminWorkoutActionButtonStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_AdminWorkoutActionButtonStateInitialCopyWithImpl<$Res>
-    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res, _$_AdminWorkoutActionButtonStateInitial>
+    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res,
+        _$_AdminWorkoutActionButtonStateInitial>
     implements _$$_AdminWorkoutActionButtonStateInitialCopyWith<$Res> {
   __$$_AdminWorkoutActionButtonStateInitialCopyWithImpl(
-      _$_AdminWorkoutActionButtonStateInitial _value, $Res Function(_$_AdminWorkoutActionButtonStateInitial) _then)
+      _$_AdminWorkoutActionButtonStateInitial _value,
+      $Res Function(_$_AdminWorkoutActionButtonStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AdminWorkoutActionButtonStateInitial implements _AdminWorkoutActionButtonStateInitial {
+class _$_AdminWorkoutActionButtonStateInitial
+    implements _AdminWorkoutActionButtonStateInitial {
   const _$_AdminWorkoutActionButtonStateInitial();
 
   @override
@@ -115,7 +124,8 @@ class _$_AdminWorkoutActionButtonStateInitial implements _AdminWorkoutActionButt
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AdminWorkoutActionButtonStateInitial);
+        (other.runtimeType == runtimeType &&
+            other is _$_AdminWorkoutActionButtonStateInitial);
   }
 
   @override
@@ -161,9 +171,11 @@ class _$_AdminWorkoutActionButtonStateInitial implements _AdminWorkoutActionButt
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AdminWorkoutActionButtonStateInitial value) initial,
+    required TResult Function(_AdminWorkoutActionButtonStateInitial value)
+        initial,
     required TResult Function(_AdminWorkoutActionButtonStateStart value) start,
-    required TResult Function(_AdminWorkoutActionButtonStateFinish value) finish,
+    required TResult Function(_AdminWorkoutActionButtonStateFinish value)
+        finish,
     required TResult Function(_AdminWorkoutActionButtonStateDone value) done,
   }) {
     return initial(this);
@@ -196,29 +208,35 @@ class _$_AdminWorkoutActionButtonStateInitial implements _AdminWorkoutActionButt
   }
 }
 
-abstract class _AdminWorkoutActionButtonStateInitial implements AdminWorkoutActionButtonState {
-  const factory _AdminWorkoutActionButtonStateInitial() = _$_AdminWorkoutActionButtonStateInitial;
+abstract class _AdminWorkoutActionButtonStateInitial
+    implements AdminWorkoutActionButtonState {
+  const factory _AdminWorkoutActionButtonStateInitial() =
+      _$_AdminWorkoutActionButtonStateInitial;
 }
 
 /// @nodoc
 abstract class _$$_AdminWorkoutActionButtonStateStartCopyWith<$Res> {
   factory _$$_AdminWorkoutActionButtonStateStartCopyWith(
-          _$_AdminWorkoutActionButtonStateStart value, $Res Function(_$_AdminWorkoutActionButtonStateStart) then) =
+          _$_AdminWorkoutActionButtonStateStart value,
+          $Res Function(_$_AdminWorkoutActionButtonStateStart) then) =
       __$$_AdminWorkoutActionButtonStateStartCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_AdminWorkoutActionButtonStateStartCopyWithImpl<$Res>
-    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res, _$_AdminWorkoutActionButtonStateStart>
+    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res,
+        _$_AdminWorkoutActionButtonStateStart>
     implements _$$_AdminWorkoutActionButtonStateStartCopyWith<$Res> {
   __$$_AdminWorkoutActionButtonStateStartCopyWithImpl(
-      _$_AdminWorkoutActionButtonStateStart _value, $Res Function(_$_AdminWorkoutActionButtonStateStart) _then)
+      _$_AdminWorkoutActionButtonStateStart _value,
+      $Res Function(_$_AdminWorkoutActionButtonStateStart) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AdminWorkoutActionButtonStateStart implements _AdminWorkoutActionButtonStateStart {
+class _$_AdminWorkoutActionButtonStateStart
+    implements _AdminWorkoutActionButtonStateStart {
   const _$_AdminWorkoutActionButtonStateStart();
 
   @override
@@ -229,7 +247,8 @@ class _$_AdminWorkoutActionButtonStateStart implements _AdminWorkoutActionButton
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AdminWorkoutActionButtonStateStart);
+        (other.runtimeType == runtimeType &&
+            other is _$_AdminWorkoutActionButtonStateStart);
   }
 
   @override
@@ -275,9 +294,11 @@ class _$_AdminWorkoutActionButtonStateStart implements _AdminWorkoutActionButton
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AdminWorkoutActionButtonStateInitial value) initial,
+    required TResult Function(_AdminWorkoutActionButtonStateInitial value)
+        initial,
     required TResult Function(_AdminWorkoutActionButtonStateStart value) start,
-    required TResult Function(_AdminWorkoutActionButtonStateFinish value) finish,
+    required TResult Function(_AdminWorkoutActionButtonStateFinish value)
+        finish,
     required TResult Function(_AdminWorkoutActionButtonStateDone value) done,
   }) {
     return start(this);
@@ -310,29 +331,35 @@ class _$_AdminWorkoutActionButtonStateStart implements _AdminWorkoutActionButton
   }
 }
 
-abstract class _AdminWorkoutActionButtonStateStart implements AdminWorkoutActionButtonState {
-  const factory _AdminWorkoutActionButtonStateStart() = _$_AdminWorkoutActionButtonStateStart;
+abstract class _AdminWorkoutActionButtonStateStart
+    implements AdminWorkoutActionButtonState {
+  const factory _AdminWorkoutActionButtonStateStart() =
+      _$_AdminWorkoutActionButtonStateStart;
 }
 
 /// @nodoc
 abstract class _$$_AdminWorkoutActionButtonStateFinishCopyWith<$Res> {
   factory _$$_AdminWorkoutActionButtonStateFinishCopyWith(
-          _$_AdminWorkoutActionButtonStateFinish value, $Res Function(_$_AdminWorkoutActionButtonStateFinish) then) =
+          _$_AdminWorkoutActionButtonStateFinish value,
+          $Res Function(_$_AdminWorkoutActionButtonStateFinish) then) =
       __$$_AdminWorkoutActionButtonStateFinishCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_AdminWorkoutActionButtonStateFinishCopyWithImpl<$Res>
-    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res, _$_AdminWorkoutActionButtonStateFinish>
+    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res,
+        _$_AdminWorkoutActionButtonStateFinish>
     implements _$$_AdminWorkoutActionButtonStateFinishCopyWith<$Res> {
   __$$_AdminWorkoutActionButtonStateFinishCopyWithImpl(
-      _$_AdminWorkoutActionButtonStateFinish _value, $Res Function(_$_AdminWorkoutActionButtonStateFinish) _then)
+      _$_AdminWorkoutActionButtonStateFinish _value,
+      $Res Function(_$_AdminWorkoutActionButtonStateFinish) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AdminWorkoutActionButtonStateFinish implements _AdminWorkoutActionButtonStateFinish {
+class _$_AdminWorkoutActionButtonStateFinish
+    implements _AdminWorkoutActionButtonStateFinish {
   const _$_AdminWorkoutActionButtonStateFinish();
 
   @override
@@ -343,7 +370,8 @@ class _$_AdminWorkoutActionButtonStateFinish implements _AdminWorkoutActionButto
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AdminWorkoutActionButtonStateFinish);
+        (other.runtimeType == runtimeType &&
+            other is _$_AdminWorkoutActionButtonStateFinish);
   }
 
   @override
@@ -389,9 +417,11 @@ class _$_AdminWorkoutActionButtonStateFinish implements _AdminWorkoutActionButto
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AdminWorkoutActionButtonStateInitial value) initial,
+    required TResult Function(_AdminWorkoutActionButtonStateInitial value)
+        initial,
     required TResult Function(_AdminWorkoutActionButtonStateStart value) start,
-    required TResult Function(_AdminWorkoutActionButtonStateFinish value) finish,
+    required TResult Function(_AdminWorkoutActionButtonStateFinish value)
+        finish,
     required TResult Function(_AdminWorkoutActionButtonStateDone value) done,
   }) {
     return finish(this);
@@ -424,29 +454,35 @@ class _$_AdminWorkoutActionButtonStateFinish implements _AdminWorkoutActionButto
   }
 }
 
-abstract class _AdminWorkoutActionButtonStateFinish implements AdminWorkoutActionButtonState {
-  const factory _AdminWorkoutActionButtonStateFinish() = _$_AdminWorkoutActionButtonStateFinish;
+abstract class _AdminWorkoutActionButtonStateFinish
+    implements AdminWorkoutActionButtonState {
+  const factory _AdminWorkoutActionButtonStateFinish() =
+      _$_AdminWorkoutActionButtonStateFinish;
 }
 
 /// @nodoc
 abstract class _$$_AdminWorkoutActionButtonStateDoneCopyWith<$Res> {
   factory _$$_AdminWorkoutActionButtonStateDoneCopyWith(
-          _$_AdminWorkoutActionButtonStateDone value, $Res Function(_$_AdminWorkoutActionButtonStateDone) then) =
+          _$_AdminWorkoutActionButtonStateDone value,
+          $Res Function(_$_AdminWorkoutActionButtonStateDone) then) =
       __$$_AdminWorkoutActionButtonStateDoneCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_AdminWorkoutActionButtonStateDoneCopyWithImpl<$Res>
-    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res, _$_AdminWorkoutActionButtonStateDone>
+    extends _$AdminWorkoutActionButtonStateCopyWithImpl<$Res,
+        _$_AdminWorkoutActionButtonStateDone>
     implements _$$_AdminWorkoutActionButtonStateDoneCopyWith<$Res> {
   __$$_AdminWorkoutActionButtonStateDoneCopyWithImpl(
-      _$_AdminWorkoutActionButtonStateDone _value, $Res Function(_$_AdminWorkoutActionButtonStateDone) _then)
+      _$_AdminWorkoutActionButtonStateDone _value,
+      $Res Function(_$_AdminWorkoutActionButtonStateDone) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AdminWorkoutActionButtonStateDone implements _AdminWorkoutActionButtonStateDone {
+class _$_AdminWorkoutActionButtonStateDone
+    implements _AdminWorkoutActionButtonStateDone {
   const _$_AdminWorkoutActionButtonStateDone();
 
   @override
@@ -457,7 +493,8 @@ class _$_AdminWorkoutActionButtonStateDone implements _AdminWorkoutActionButtonS
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AdminWorkoutActionButtonStateDone);
+        (other.runtimeType == runtimeType &&
+            other is _$_AdminWorkoutActionButtonStateDone);
   }
 
   @override
@@ -503,9 +540,11 @@ class _$_AdminWorkoutActionButtonStateDone implements _AdminWorkoutActionButtonS
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AdminWorkoutActionButtonStateInitial value) initial,
+    required TResult Function(_AdminWorkoutActionButtonStateInitial value)
+        initial,
     required TResult Function(_AdminWorkoutActionButtonStateStart value) start,
-    required TResult Function(_AdminWorkoutActionButtonStateFinish value) finish,
+    required TResult Function(_AdminWorkoutActionButtonStateFinish value)
+        finish,
     required TResult Function(_AdminWorkoutActionButtonStateDone value) done,
   }) {
     return done(this);
@@ -538,6 +577,8 @@ class _$_AdminWorkoutActionButtonStateDone implements _AdminWorkoutActionButtonS
   }
 }
 
-abstract class _AdminWorkoutActionButtonStateDone implements AdminWorkoutActionButtonState {
-  const factory _AdminWorkoutActionButtonStateDone() = _$_AdminWorkoutActionButtonStateDone;
+abstract class _AdminWorkoutActionButtonStateDone
+    implements AdminWorkoutActionButtonState {
+  const factory _AdminWorkoutActionButtonStateDone() =
+      _$_AdminWorkoutActionButtonStateDone;
 }

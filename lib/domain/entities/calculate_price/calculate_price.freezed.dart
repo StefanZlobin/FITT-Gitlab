@@ -22,29 +22,39 @@ CalculatePrice _$CalculatePriceFromJson(Map<String, dynamic> json) {
 mixin _$CalculatePrice {
   @JsonKey(name: 'price', fromJson: toRubles)
   int get price => throw _privateConstructorUsedError;
-  @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+  @JsonKey(
+      name: 'start_time',
+      fromJson: dateTimeFromString,
+      toJson: dateTimeToString)
   DateTime get startTime => throw _privateConstructorUsedError;
-  @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+  @JsonKey(
+      name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
   DateTime get endTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CalculatePriceCopyWith<CalculatePrice> get copyWith => throw _privateConstructorUsedError;
+  $CalculatePriceCopyWith<CalculatePrice> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CalculatePriceCopyWith<$Res> {
-  factory $CalculatePriceCopyWith(CalculatePrice value, $Res Function(CalculatePrice) then) =
+  factory $CalculatePriceCopyWith(
+          CalculatePrice value, $Res Function(CalculatePrice) then) =
       _$CalculatePriceCopyWithImpl<$Res, CalculatePrice>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'price', fromJson: toRubles) int price,
-      @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString) DateTime startTime,
-      @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString) DateTime endTime});
+      {@JsonKey(name: 'price', fromJson: toRubles)
+          int price,
+      @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+          DateTime startTime,
+      @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+          DateTime endTime});
 }
 
 /// @nodoc
-class _$CalculatePriceCopyWithImpl<$Res, $Val extends CalculatePrice> implements $CalculatePriceCopyWith<$Res> {
+class _$CalculatePriceCopyWithImpl<$Res, $Val extends CalculatePrice>
+    implements $CalculatePriceCopyWith<$Res> {
   _$CalculatePriceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -77,21 +87,28 @@ class _$CalculatePriceCopyWithImpl<$Res, $Val extends CalculatePrice> implements
 }
 
 /// @nodoc
-abstract class _$$_CalculatePriceCopyWith<$Res> implements $CalculatePriceCopyWith<$Res> {
-  factory _$$_CalculatePriceCopyWith(_$_CalculatePrice value, $Res Function(_$_CalculatePrice) then) =
+abstract class _$$_CalculatePriceCopyWith<$Res>
+    implements $CalculatePriceCopyWith<$Res> {
+  factory _$$_CalculatePriceCopyWith(
+          _$_CalculatePrice value, $Res Function(_$_CalculatePrice) then) =
       __$$_CalculatePriceCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'price', fromJson: toRubles) int price,
-      @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString) DateTime startTime,
-      @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString) DateTime endTime});
+      {@JsonKey(name: 'price', fromJson: toRubles)
+          int price,
+      @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+          DateTime startTime,
+      @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+          DateTime endTime});
 }
 
 /// @nodoc
-class __$$_CalculatePriceCopyWithImpl<$Res> extends _$CalculatePriceCopyWithImpl<$Res, _$_CalculatePrice>
+class __$$_CalculatePriceCopyWithImpl<$Res>
+    extends _$CalculatePriceCopyWithImpl<$Res, _$_CalculatePrice>
     implements _$$_CalculatePriceCopyWith<$Res> {
-  __$$_CalculatePriceCopyWithImpl(_$_CalculatePrice _value, $Res Function(_$_CalculatePrice) _then)
+  __$$_CalculatePriceCopyWithImpl(
+      _$_CalculatePrice _value, $Res Function(_$_CalculatePrice) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,20 +139,28 @@ class __$$_CalculatePriceCopyWithImpl<$Res> extends _$CalculatePriceCopyWithImpl
 @JsonSerializable()
 class _$_CalculatePrice implements _CalculatePrice {
   _$_CalculatePrice(
-      {@JsonKey(name: 'price', fromJson: toRubles) required this.price,
-      @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString) required this.startTime,
-      @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString) required this.endTime});
+      {@JsonKey(name: 'price', fromJson: toRubles)
+          required this.price,
+      @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+          required this.startTime,
+      @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+          required this.endTime});
 
-  factory _$_CalculatePrice.fromJson(Map<String, dynamic> json) => _$$_CalculatePriceFromJson(json);
+  factory _$_CalculatePrice.fromJson(Map<String, dynamic> json) =>
+      _$$_CalculatePriceFromJson(json);
 
   @override
   @JsonKey(name: 'price', fromJson: toRubles)
   final int price;
   @override
-  @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+  @JsonKey(
+      name: 'start_time',
+      fromJson: dateTimeFromString,
+      toJson: dateTimeToString)
   final DateTime startTime;
   @override
-  @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+  @JsonKey(
+      name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
   final DateTime endTime;
 
   @override
@@ -149,7 +174,8 @@ class _$_CalculatePrice implements _CalculatePrice {
         (other.runtimeType == runtimeType &&
             other is _$_CalculatePrice &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.startTime, startTime) || other.startTime == startTime) &&
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime));
   }
 
@@ -180,18 +206,24 @@ abstract class _CalculatePrice implements CalculatePrice {
       @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
           required final DateTime endTime}) = _$_CalculatePrice;
 
-  factory _CalculatePrice.fromJson(Map<String, dynamic> json) = _$_CalculatePrice.fromJson;
+  factory _CalculatePrice.fromJson(Map<String, dynamic> json) =
+      _$_CalculatePrice.fromJson;
 
   @override
   @JsonKey(name: 'price', fromJson: toRubles)
   int get price;
   @override
-  @JsonKey(name: 'start_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+  @JsonKey(
+      name: 'start_time',
+      fromJson: dateTimeFromString,
+      toJson: dateTimeToString)
   DateTime get startTime;
   @override
-  @JsonKey(name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
+  @JsonKey(
+      name: 'end_time', fromJson: dateTimeFromString, toJson: dateTimeToString)
   DateTime get endTime;
   @override
   @JsonKey(ignore: true)
-  _$$_CalculatePriceCopyWith<_$_CalculatePrice> get copyWith => throw _privateConstructorUsedError;
+  _$$_CalculatePriceCopyWith<_$_CalculatePrice> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -64,12 +64,14 @@ mixin _$AdminClubsState {
 
 /// @nodoc
 abstract class $AdminClubsStateCopyWith<$Res> {
-  factory $AdminClubsStateCopyWith(AdminClubsState value, $Res Function(AdminClubsState) then) =
+  factory $AdminClubsStateCopyWith(
+          AdminClubsState value, $Res Function(AdminClubsState) then) =
       _$AdminClubsStateCopyWithImpl<$Res, AdminClubsState>;
 }
 
 /// @nodoc
-class _$AdminClubsStateCopyWithImpl<$Res, $Val extends AdminClubsState> implements $AdminClubsStateCopyWith<$Res> {
+class _$AdminClubsStateCopyWithImpl<$Res, $Val extends AdminClubsState>
+    implements $AdminClubsStateCopyWith<$Res> {
   _$AdminClubsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -80,8 +82,8 @@ class _$AdminClubsStateCopyWithImpl<$Res, $Val extends AdminClubsState> implemen
 
 /// @nodoc
 abstract class _$$_AdminClubsStateInitialCopyWith<$Res> {
-  factory _$$_AdminClubsStateInitialCopyWith(
-          _$_AdminClubsStateInitial value, $Res Function(_$_AdminClubsStateInitial) then) =
+  factory _$$_AdminClubsStateInitialCopyWith(_$_AdminClubsStateInitial value,
+          $Res Function(_$_AdminClubsStateInitial) then) =
       __$$_AdminClubsStateInitialCopyWithImpl<$Res>;
 }
 
@@ -89,8 +91,8 @@ abstract class _$$_AdminClubsStateInitialCopyWith<$Res> {
 class __$$_AdminClubsStateInitialCopyWithImpl<$Res>
     extends _$AdminClubsStateCopyWithImpl<$Res, _$_AdminClubsStateInitial>
     implements _$$_AdminClubsStateInitialCopyWith<$Res> {
-  __$$_AdminClubsStateInitialCopyWithImpl(
-      _$_AdminClubsStateInitial _value, $Res Function(_$_AdminClubsStateInitial) _then)
+  __$$_AdminClubsStateInitialCopyWithImpl(_$_AdminClubsStateInitial _value,
+      $Res Function(_$_AdminClubsStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -106,7 +108,9 @@ class _$_AdminClubsStateInitial implements _AdminClubsStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AdminClubsStateInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AdminClubsStateInitial);
   }
 
   @override
@@ -187,17 +191,19 @@ abstract class _AdminClubsStateInitial implements AdminClubsState {
 
 /// @nodoc
 abstract class _$$_AdminClubsStateLoadedCopyWith<$Res> {
-  factory _$$_AdminClubsStateLoadedCopyWith(
-          _$_AdminClubsStateLoaded value, $Res Function(_$_AdminClubsStateLoaded) then) =
+  factory _$$_AdminClubsStateLoadedCopyWith(_$_AdminClubsStateLoaded value,
+          $Res Function(_$_AdminClubsStateLoaded) then) =
       __$$_AdminClubsStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<AdminClub> adminClubs});
 }
 
 /// @nodoc
-class __$$_AdminClubsStateLoadedCopyWithImpl<$Res> extends _$AdminClubsStateCopyWithImpl<$Res, _$_AdminClubsStateLoaded>
+class __$$_AdminClubsStateLoadedCopyWithImpl<$Res>
+    extends _$AdminClubsStateCopyWithImpl<$Res, _$_AdminClubsStateLoaded>
     implements _$$_AdminClubsStateLoadedCopyWith<$Res> {
-  __$$_AdminClubsStateLoadedCopyWithImpl(_$_AdminClubsStateLoaded _value, $Res Function(_$_AdminClubsStateLoaded) _then)
+  __$$_AdminClubsStateLoadedCopyWithImpl(_$_AdminClubsStateLoaded _value,
+      $Res Function(_$_AdminClubsStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -217,7 +223,8 @@ class __$$_AdminClubsStateLoadedCopyWithImpl<$Res> extends _$AdminClubsStateCopy
 /// @nodoc
 
 class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
-  const _$_AdminClubsStateLoaded({required final List<AdminClub> adminClubs}) : _adminClubs = adminClubs;
+  const _$_AdminClubsStateLoaded({required final List<AdminClub> adminClubs})
+      : _adminClubs = adminClubs;
 
   final List<AdminClub> _adminClubs;
   @override
@@ -237,17 +244,20 @@ class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdminClubsStateLoaded &&
-            const DeepCollectionEquality().equals(other._adminClubs, _adminClubs));
+            const DeepCollectionEquality()
+                .equals(other._adminClubs, _adminClubs));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_adminClubs));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_adminClubs));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_AdminClubsStateLoadedCopyWith<_$_AdminClubsStateLoaded> get copyWith =>
-      __$$_AdminClubsStateLoadedCopyWithImpl<_$_AdminClubsStateLoaded>(this, _$identity);
+      __$$_AdminClubsStateLoadedCopyWithImpl<_$_AdminClubsStateLoaded>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -319,25 +329,30 @@ class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
 }
 
 abstract class _AdminClubsStateLoaded implements AdminClubsState {
-  const factory _AdminClubsStateLoaded({required final List<AdminClub> adminClubs}) = _$_AdminClubsStateLoaded;
+  const factory _AdminClubsStateLoaded(
+      {required final List<AdminClub> adminClubs}) = _$_AdminClubsStateLoaded;
 
   List<AdminClub> get adminClubs;
   @JsonKey(ignore: true)
-  _$$_AdminClubsStateLoadedCopyWith<_$_AdminClubsStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminClubsStateLoadedCopyWith<_$_AdminClubsStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AdminClubsStateErrorCopyWith<$Res> {
-  factory _$$_AdminClubsStateErrorCopyWith(_$_AdminClubsStateError value, $Res Function(_$_AdminClubsStateError) then) =
+  factory _$$_AdminClubsStateErrorCopyWith(_$_AdminClubsStateError value,
+          $Res Function(_$_AdminClubsStateError) then) =
       __$$_AdminClubsStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_AdminClubsStateErrorCopyWithImpl<$Res> extends _$AdminClubsStateCopyWithImpl<$Res, _$_AdminClubsStateError>
+class __$$_AdminClubsStateErrorCopyWithImpl<$Res>
+    extends _$AdminClubsStateCopyWithImpl<$Res, _$_AdminClubsStateError>
     implements _$$_AdminClubsStateErrorCopyWith<$Res> {
-  __$$_AdminClubsStateErrorCopyWithImpl(_$_AdminClubsStateError _value, $Res Function(_$_AdminClubsStateError) _then)
+  __$$_AdminClubsStateErrorCopyWithImpl(_$_AdminClubsStateError _value,
+      $Res Function(_$_AdminClubsStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -382,7 +397,8 @@ class _$_AdminClubsStateError implements _AdminClubsStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_AdminClubsStateErrorCopyWith<_$_AdminClubsStateError> get copyWith =>
-      __$$_AdminClubsStateErrorCopyWithImpl<_$_AdminClubsStateError>(this, _$identity);
+      __$$_AdminClubsStateErrorCopyWithImpl<_$_AdminClubsStateError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -454,9 +470,11 @@ class _$_AdminClubsStateError implements _AdminClubsStateError {
 }
 
 abstract class _AdminClubsStateError implements AdminClubsState {
-  const factory _AdminClubsStateError({required final String error}) = _$_AdminClubsStateError;
+  const factory _AdminClubsStateError({required final String error}) =
+      _$_AdminClubsStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_AdminClubsStateErrorCopyWith<_$_AdminClubsStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminClubsStateErrorCopyWith<_$_AdminClubsStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

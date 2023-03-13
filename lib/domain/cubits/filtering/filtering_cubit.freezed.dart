@@ -19,8 +19,13 @@ mixin _$FilteringState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart,
-            int? maxPriceEnd, bool isPriceUpdate, List<Facility>? activeFacilitiesList)
+    required TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)
         loaded,
     required TResult Function(String error) error,
   }) =>
@@ -28,8 +33,13 @@ mixin _$FilteringState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult? Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult? Function(String error)? error,
   }) =>
@@ -37,8 +47,13 @@ mixin _$FilteringState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -70,12 +85,14 @@ mixin _$FilteringState {
 
 /// @nodoc
 abstract class $FilteringStateCopyWith<$Res> {
-  factory $FilteringStateCopyWith(FilteringState value, $Res Function(FilteringState) then) =
+  factory $FilteringStateCopyWith(
+          FilteringState value, $Res Function(FilteringState) then) =
       _$FilteringStateCopyWithImpl<$Res, FilteringState>;
 }
 
 /// @nodoc
-class _$FilteringStateCopyWithImpl<$Res, $Val extends FilteringState> implements $FilteringStateCopyWith<$Res> {
+class _$FilteringStateCopyWithImpl<$Res, $Val extends FilteringState>
+    implements $FilteringStateCopyWith<$Res> {
   _$FilteringStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -86,15 +103,17 @@ class _$FilteringStateCopyWithImpl<$Res, $Val extends FilteringState> implements
 
 /// @nodoc
 abstract class _$$_FilteringStateInitialCopyWith<$Res> {
-  factory _$$_FilteringStateInitialCopyWith(
-          _$_FilteringStateInitial value, $Res Function(_$_FilteringStateInitial) then) =
+  factory _$$_FilteringStateInitialCopyWith(_$_FilteringStateInitial value,
+          $Res Function(_$_FilteringStateInitial) then) =
       __$$_FilteringStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FilteringStateInitialCopyWithImpl<$Res> extends _$FilteringStateCopyWithImpl<$Res, _$_FilteringStateInitial>
+class __$$_FilteringStateInitialCopyWithImpl<$Res>
+    extends _$FilteringStateCopyWithImpl<$Res, _$_FilteringStateInitial>
     implements _$$_FilteringStateInitialCopyWith<$Res> {
-  __$$_FilteringStateInitialCopyWithImpl(_$_FilteringStateInitial _value, $Res Function(_$_FilteringStateInitial) _then)
+  __$$_FilteringStateInitialCopyWithImpl(_$_FilteringStateInitial _value,
+      $Res Function(_$_FilteringStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -112,8 +131,13 @@ class _$_FilteringStateInitial implements _FilteringStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart,
-            int? maxPriceEnd, bool isPriceUpdate, List<Facility>? activeFacilitiesList)
+    required TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)
         loaded,
     required TResult Function(String error) error,
   }) {
@@ -124,8 +148,13 @@ class _$_FilteringStateInitial implements _FilteringStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult? Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult? Function(String error)? error,
   }) {
@@ -136,8 +165,13 @@ class _$_FilteringStateInitial implements _FilteringStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -189,7 +223,8 @@ abstract class _FilteringStateInitial implements FilteringState {
 
 /// @nodoc
 abstract class _$$_FilteringStateLoadedCopyWith<$Res> {
-  factory _$$_FilteringStateLoadedCopyWith(_$_FilteringStateLoaded value, $Res Function(_$_FilteringStateLoaded) then) =
+  factory _$$_FilteringStateLoadedCopyWith(_$_FilteringStateLoaded value,
+          $Res Function(_$_FilteringStateLoaded) then) =
       __$$_FilteringStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call(
@@ -204,9 +239,11 @@ abstract class _$$_FilteringStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FilteringStateLoadedCopyWithImpl<$Res> extends _$FilteringStateCopyWithImpl<$Res, _$_FilteringStateLoaded>
+class __$$_FilteringStateLoadedCopyWithImpl<$Res>
+    extends _$FilteringStateCopyWithImpl<$Res, _$_FilteringStateLoaded>
     implements _$$_FilteringStateLoadedCopyWith<$Res> {
-  __$$_FilteringStateLoadedCopyWithImpl(_$_FilteringStateLoaded _value, $Res Function(_$_FilteringStateLoaded) _then)
+  __$$_FilteringStateLoadedCopyWithImpl(_$_FilteringStateLoaded _value,
+      $Res Function(_$_FilteringStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -274,7 +311,8 @@ class _$_FilteringStateLoaded implements _FilteringStateLoaded {
   final Map<Facility, bool> _selectedFacilities;
   @override
   Map<Facility, bool> get selectedFacilities {
-    if (_selectedFacilities is EqualUnmodifiableMapView) return _selectedFacilities;
+    if (_selectedFacilities is EqualUnmodifiableMapView)
+      return _selectedFacilities;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_selectedFacilities);
   }
@@ -293,7 +331,8 @@ class _$_FilteringStateLoaded implements _FilteringStateLoaded {
   List<Facility>? get activeFacilitiesList {
     final value = _activeFacilitiesList;
     if (value == null) return null;
-    if (_activeFacilitiesList is EqualUnmodifiableListView) return _activeFacilitiesList;
+    if (_activeFacilitiesList is EqualUnmodifiableListView)
+      return _activeFacilitiesList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -307,44 +346,63 @@ class _$_FilteringStateLoaded implements _FilteringStateLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$_FilteringStateLoadedCopyWith<_$_FilteringStateLoaded> get copyWith =>
-      __$$_FilteringStateLoadedCopyWithImpl<_$_FilteringStateLoaded>(this, _$identity);
+      __$$_FilteringStateLoadedCopyWithImpl<_$_FilteringStateLoaded>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart,
-            int? maxPriceEnd, bool isPriceUpdate, List<Facility>? activeFacilitiesList)
+    required TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)
         loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(filters, selectedFacilities, minPriceStart, maxPriceEnd, isPriceUpdate, activeFacilitiesList);
+    return loaded(filters, selectedFacilities, minPriceStart, maxPriceEnd,
+        isPriceUpdate, activeFacilitiesList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult? Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(filters, selectedFacilities, minPriceStart, maxPriceEnd, isPriceUpdate, activeFacilitiesList);
+    return loaded?.call(filters, selectedFacilities, minPriceStart, maxPriceEnd,
+        isPriceUpdate, activeFacilitiesList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(filters, selectedFacilities, minPriceStart, maxPriceEnd, isPriceUpdate, activeFacilitiesList);
+      return loaded(filters, selectedFacilities, minPriceStart, maxPriceEnd,
+          isPriceUpdate, activeFacilitiesList);
     }
     return orElse();
   }
@@ -400,21 +458,25 @@ abstract class _FilteringStateLoaded implements FilteringState {
   bool get isPriceUpdate;
   List<Facility>? get activeFacilitiesList;
   @JsonKey(ignore: true)
-  _$$_FilteringStateLoadedCopyWith<_$_FilteringStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_FilteringStateLoadedCopyWith<_$_FilteringStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_FilteringStateErrorCopyWith<$Res> {
-  factory _$$_FilteringStateErrorCopyWith(_$_FilteringStateError value, $Res Function(_$_FilteringStateError) then) =
+  factory _$$_FilteringStateErrorCopyWith(_$_FilteringStateError value,
+          $Res Function(_$_FilteringStateError) then) =
       __$$_FilteringStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_FilteringStateErrorCopyWithImpl<$Res> extends _$FilteringStateCopyWithImpl<$Res, _$_FilteringStateError>
+class __$$_FilteringStateErrorCopyWithImpl<$Res>
+    extends _$FilteringStateCopyWithImpl<$Res, _$_FilteringStateError>
     implements _$$_FilteringStateErrorCopyWith<$Res> {
-  __$$_FilteringStateErrorCopyWithImpl(_$_FilteringStateError _value, $Res Function(_$_FilteringStateError) _then)
+  __$$_FilteringStateErrorCopyWithImpl(_$_FilteringStateError _value,
+      $Res Function(_$_FilteringStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -448,14 +510,20 @@ class _$_FilteringStateError implements _FilteringStateError {
   @override
   @pragma('vm:prefer-inline')
   _$$_FilteringStateErrorCopyWith<_$_FilteringStateError> get copyWith =>
-      __$$_FilteringStateErrorCopyWithImpl<_$_FilteringStateError>(this, _$identity);
+      __$$_FilteringStateErrorCopyWithImpl<_$_FilteringStateError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart,
-            int? maxPriceEnd, bool isPriceUpdate, List<Facility>? activeFacilitiesList)
+    required TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)
         loaded,
     required TResult Function(String error) error,
   }) {
@@ -466,8 +534,13 @@ class _$_FilteringStateError implements _FilteringStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult? Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult? Function(String error)? error,
   }) {
@@ -478,8 +551,13 @@ class _$_FilteringStateError implements _FilteringStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ClubFilters filters, Map<Facility, bool> selectedFacilities, int? minPriceStart, int? maxPriceEnd,
-            bool isPriceUpdate, List<Facility>? activeFacilitiesList)?
+    TResult Function(
+            ClubFilters filters,
+            Map<Facility, bool> selectedFacilities,
+            int? minPriceStart,
+            int? maxPriceEnd,
+            bool isPriceUpdate,
+            List<Facility>? activeFacilitiesList)?
         loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -526,9 +604,11 @@ class _$_FilteringStateError implements _FilteringStateError {
 }
 
 abstract class _FilteringStateError implements FilteringState {
-  const factory _FilteringStateError({required final String error}) = _$_FilteringStateError;
+  const factory _FilteringStateError({required final String error}) =
+      _$_FilteringStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_FilteringStateErrorCopyWith<_$_FilteringStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_FilteringStateErrorCopyWith<_$_FilteringStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

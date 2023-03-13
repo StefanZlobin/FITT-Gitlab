@@ -50,9 +50,11 @@ mixin _$UserEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UserEventCheckUser value) checkUser,
-    required TResult Function(_UserEventGetUserFromNetwork value) getUserFromNetwork,
+    required TResult Function(_UserEventGetUserFromNetwork value)
+        getUserFromNetwork,
     required TResult Function(_UserEventUpdateUserData value) updateUserData,
-    required TResult Function(_UserEventUpdateUserAvatar value) updateUserAvatar,
+    required TResult Function(_UserEventUpdateUserAvatar value)
+        updateUserAvatar,
     required TResult Function(_UserEventLogout value) logout,
     required TResult Function(_UserEventDeleteAccount value) deleteAccount,
   }) =>
@@ -82,11 +84,13 @@ mixin _$UserEvent {
 
 /// @nodoc
 abstract class $UserEventCopyWith<$Res> {
-  factory $UserEventCopyWith(UserEvent value, $Res Function(UserEvent) then) = _$UserEventCopyWithImpl<$Res, UserEvent>;
+  factory $UserEventCopyWith(UserEvent value, $Res Function(UserEvent) then) =
+      _$UserEventCopyWithImpl<$Res, UserEvent>;
 }
 
 /// @nodoc
-class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent> implements $UserEventCopyWith<$Res> {
+class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
+    implements $UserEventCopyWith<$Res> {
   _$UserEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -97,14 +101,17 @@ class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent> implements $UserEven
 
 /// @nodoc
 abstract class _$$_UserEventCheckUserCopyWith<$Res> {
-  factory _$$_UserEventCheckUserCopyWith(_$_UserEventCheckUser value, $Res Function(_$_UserEventCheckUser) then) =
+  factory _$$_UserEventCheckUserCopyWith(_$_UserEventCheckUser value,
+          $Res Function(_$_UserEventCheckUser) then) =
       __$$_UserEventCheckUserCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserEventCheckUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res, _$_UserEventCheckUser>
+class __$$_UserEventCheckUserCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_UserEventCheckUser>
     implements _$$_UserEventCheckUserCopyWith<$Res> {
-  __$$_UserEventCheckUserCopyWithImpl(_$_UserEventCheckUser _value, $Res Function(_$_UserEventCheckUser) _then)
+  __$$_UserEventCheckUserCopyWithImpl(
+      _$_UserEventCheckUser _value, $Res Function(_$_UserEventCheckUser) _then)
       : super(_value, _then);
 }
 
@@ -120,7 +127,8 @@ class _$_UserEventCheckUser implements _UserEventCheckUser {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UserEventCheckUser);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UserEventCheckUser);
   }
 
   @override
@@ -173,9 +181,11 @@ class _$_UserEventCheckUser implements _UserEventCheckUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UserEventCheckUser value) checkUser,
-    required TResult Function(_UserEventGetUserFromNetwork value) getUserFromNetwork,
+    required TResult Function(_UserEventGetUserFromNetwork value)
+        getUserFromNetwork,
     required TResult Function(_UserEventUpdateUserData value) updateUserData,
-    required TResult Function(_UserEventUpdateUserAvatar value) updateUserAvatar,
+    required TResult Function(_UserEventUpdateUserAvatar value)
+        updateUserAvatar,
     required TResult Function(_UserEventLogout value) logout,
     required TResult Function(_UserEventDeleteAccount value) deleteAccount,
   }) {
@@ -220,7 +230,8 @@ abstract class _UserEventCheckUser implements UserEvent {
 /// @nodoc
 abstract class _$$_UserEventGetUserFromNetworkCopyWith<$Res> {
   factory _$$_UserEventGetUserFromNetworkCopyWith(
-          _$_UserEventGetUserFromNetwork value, $Res Function(_$_UserEventGetUserFromNetwork) then) =
+          _$_UserEventGetUserFromNetwork value,
+          $Res Function(_$_UserEventGetUserFromNetwork) then) =
       __$$_UserEventGetUserFromNetworkCopyWithImpl<$Res>;
 }
 
@@ -229,7 +240,8 @@ class __$$_UserEventGetUserFromNetworkCopyWithImpl<$Res>
     extends _$UserEventCopyWithImpl<$Res, _$_UserEventGetUserFromNetwork>
     implements _$$_UserEventGetUserFromNetworkCopyWith<$Res> {
   __$$_UserEventGetUserFromNetworkCopyWithImpl(
-      _$_UserEventGetUserFromNetwork _value, $Res Function(_$_UserEventGetUserFromNetwork) _then)
+      _$_UserEventGetUserFromNetwork _value,
+      $Res Function(_$_UserEventGetUserFromNetwork) _then)
       : super(_value, _then);
 }
 
@@ -245,7 +257,9 @@ class _$_UserEventGetUserFromNetwork implements _UserEventGetUserFromNetwork {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UserEventGetUserFromNetwork);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserEventGetUserFromNetwork);
   }
 
   @override
@@ -298,9 +312,11 @@ class _$_UserEventGetUserFromNetwork implements _UserEventGetUserFromNetwork {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UserEventCheckUser value) checkUser,
-    required TResult Function(_UserEventGetUserFromNetwork value) getUserFromNetwork,
+    required TResult Function(_UserEventGetUserFromNetwork value)
+        getUserFromNetwork,
     required TResult Function(_UserEventUpdateUserData value) updateUserData,
-    required TResult Function(_UserEventUpdateUserAvatar value) updateUserAvatar,
+    required TResult Function(_UserEventUpdateUserAvatar value)
+        updateUserAvatar,
     required TResult Function(_UserEventLogout value) logout,
     required TResult Function(_UserEventDeleteAccount value) deleteAccount,
   }) {
@@ -344,8 +360,8 @@ abstract class _UserEventGetUserFromNetwork implements UserEvent {
 
 /// @nodoc
 abstract class _$$_UserEventUpdateUserDataCopyWith<$Res> {
-  factory _$$_UserEventUpdateUserDataCopyWith(
-          _$_UserEventUpdateUserData value, $Res Function(_$_UserEventUpdateUserData) then) =
+  factory _$$_UserEventUpdateUserDataCopyWith(_$_UserEventUpdateUserData value,
+          $Res Function(_$_UserEventUpdateUserData) then) =
       __$$_UserEventUpdateUserDataCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
@@ -354,10 +370,11 @@ abstract class _$$_UserEventUpdateUserDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserEventUpdateUserDataCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res, _$_UserEventUpdateUserData>
+class __$$_UserEventUpdateUserDataCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_UserEventUpdateUserData>
     implements _$$_UserEventUpdateUserDataCopyWith<$Res> {
-  __$$_UserEventUpdateUserDataCopyWithImpl(
-      _$_UserEventUpdateUserData _value, $Res Function(_$_UserEventUpdateUserData) _then)
+  __$$_UserEventUpdateUserDataCopyWithImpl(_$_UserEventUpdateUserData _value,
+      $Res Function(_$_UserEventUpdateUserData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -409,8 +426,10 @@ class _$_UserEventUpdateUserData implements _UserEventUpdateUserData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserEventUpdateUserDataCopyWith<_$_UserEventUpdateUserData> get copyWith =>
-      __$$_UserEventUpdateUserDataCopyWithImpl<_$_UserEventUpdateUserData>(this, _$identity);
+  _$$_UserEventUpdateUserDataCopyWith<_$_UserEventUpdateUserData>
+      get copyWith =>
+          __$$_UserEventUpdateUserDataCopyWithImpl<_$_UserEventUpdateUserData>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -459,9 +478,11 @@ class _$_UserEventUpdateUserData implements _UserEventUpdateUserData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UserEventCheckUser value) checkUser,
-    required TResult Function(_UserEventGetUserFromNetwork value) getUserFromNetwork,
+    required TResult Function(_UserEventGetUserFromNetwork value)
+        getUserFromNetwork,
     required TResult Function(_UserEventUpdateUserData value) updateUserData,
-    required TResult Function(_UserEventUpdateUserAvatar value) updateUserAvatar,
+    required TResult Function(_UserEventUpdateUserAvatar value)
+        updateUserAvatar,
     required TResult Function(_UserEventLogout value) logout,
     required TResult Function(_UserEventDeleteAccount value) deleteAccount,
   }) {
@@ -500,17 +521,20 @@ class _$_UserEventUpdateUserData implements _UserEventUpdateUserData {
 }
 
 abstract class _UserEventUpdateUserData implements UserEvent {
-  const factory _UserEventUpdateUserData({required final User user}) = _$_UserEventUpdateUserData;
+  const factory _UserEventUpdateUserData({required final User user}) =
+      _$_UserEventUpdateUserData;
 
   User get user;
   @JsonKey(ignore: true)
-  _$$_UserEventUpdateUserDataCopyWith<_$_UserEventUpdateUserData> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserEventUpdateUserDataCopyWith<_$_UserEventUpdateUserData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_UserEventUpdateUserAvatarCopyWith<$Res> {
   factory _$$_UserEventUpdateUserAvatarCopyWith(
-          _$_UserEventUpdateUserAvatar value, $Res Function(_$_UserEventUpdateUserAvatar) then) =
+          _$_UserEventUpdateUserAvatar value,
+          $Res Function(_$_UserEventUpdateUserAvatar) then) =
       __$$_UserEventUpdateUserAvatarCopyWithImpl<$Res>;
   @useResult
   $Res call({File avatar});
@@ -521,7 +545,8 @@ class __$$_UserEventUpdateUserAvatarCopyWithImpl<$Res>
     extends _$UserEventCopyWithImpl<$Res, _$_UserEventUpdateUserAvatar>
     implements _$$_UserEventUpdateUserAvatarCopyWith<$Res> {
   __$$_UserEventUpdateUserAvatarCopyWithImpl(
-      _$_UserEventUpdateUserAvatar _value, $Res Function(_$_UserEventUpdateUserAvatar) _then)
+      _$_UserEventUpdateUserAvatar _value,
+      $Res Function(_$_UserEventUpdateUserAvatar) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -565,8 +590,9 @@ class _$_UserEventUpdateUserAvatar implements _UserEventUpdateUserAvatar {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserEventUpdateUserAvatarCopyWith<_$_UserEventUpdateUserAvatar> get copyWith =>
-      __$$_UserEventUpdateUserAvatarCopyWithImpl<_$_UserEventUpdateUserAvatar>(this, _$identity);
+  _$$_UserEventUpdateUserAvatarCopyWith<_$_UserEventUpdateUserAvatar>
+      get copyWith => __$$_UserEventUpdateUserAvatarCopyWithImpl<
+          _$_UserEventUpdateUserAvatar>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -615,9 +641,11 @@ class _$_UserEventUpdateUserAvatar implements _UserEventUpdateUserAvatar {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UserEventCheckUser value) checkUser,
-    required TResult Function(_UserEventGetUserFromNetwork value) getUserFromNetwork,
+    required TResult Function(_UserEventGetUserFromNetwork value)
+        getUserFromNetwork,
     required TResult Function(_UserEventUpdateUserData value) updateUserData,
-    required TResult Function(_UserEventUpdateUserAvatar value) updateUserAvatar,
+    required TResult Function(_UserEventUpdateUserAvatar value)
+        updateUserAvatar,
     required TResult Function(_UserEventLogout value) logout,
     required TResult Function(_UserEventDeleteAccount value) deleteAccount,
   }) {
@@ -656,17 +684,19 @@ class _$_UserEventUpdateUserAvatar implements _UserEventUpdateUserAvatar {
 }
 
 abstract class _UserEventUpdateUserAvatar implements UserEvent {
-  const factory _UserEventUpdateUserAvatar({required final File avatar}) = _$_UserEventUpdateUserAvatar;
+  const factory _UserEventUpdateUserAvatar({required final File avatar}) =
+      _$_UserEventUpdateUserAvatar;
 
   File get avatar;
   @JsonKey(ignore: true)
-  _$$_UserEventUpdateUserAvatarCopyWith<_$_UserEventUpdateUserAvatar> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UserEventUpdateUserAvatarCopyWith<_$_UserEventUpdateUserAvatar>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_UserEventLogoutCopyWith<$Res> {
-  factory _$$_UserEventLogoutCopyWith(_$_UserEventLogout value, $Res Function(_$_UserEventLogout) then) =
+  factory _$$_UserEventLogoutCopyWith(
+          _$_UserEventLogout value, $Res Function(_$_UserEventLogout) then) =
       __$$_UserEventLogoutCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
@@ -675,9 +705,11 @@ abstract class _$$_UserEventLogoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserEventLogoutCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res, _$_UserEventLogout>
+class __$$_UserEventLogoutCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_UserEventLogout>
     implements _$$_UserEventLogoutCopyWith<$Res> {
-  __$$_UserEventLogoutCopyWithImpl(_$_UserEventLogout _value, $Res Function(_$_UserEventLogout) _then)
+  __$$_UserEventLogoutCopyWithImpl(
+      _$_UserEventLogout _value, $Res Function(_$_UserEventLogout) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -779,9 +811,11 @@ class _$_UserEventLogout implements _UserEventLogout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UserEventCheckUser value) checkUser,
-    required TResult Function(_UserEventGetUserFromNetwork value) getUserFromNetwork,
+    required TResult Function(_UserEventGetUserFromNetwork value)
+        getUserFromNetwork,
     required TResult Function(_UserEventUpdateUserData value) updateUserData,
-    required TResult Function(_UserEventUpdateUserAvatar value) updateUserAvatar,
+    required TResult Function(_UserEventUpdateUserAvatar value)
+        updateUserAvatar,
     required TResult Function(_UserEventLogout value) logout,
     required TResult Function(_UserEventDeleteAccount value) deleteAccount,
   }) {
@@ -820,25 +854,28 @@ class _$_UserEventLogout implements _UserEventLogout {
 }
 
 abstract class _UserEventLogout implements UserEvent {
-  const factory _UserEventLogout({required final User user}) = _$_UserEventLogout;
+  const factory _UserEventLogout({required final User user}) =
+      _$_UserEventLogout;
 
   User get user;
   @JsonKey(ignore: true)
-  _$$_UserEventLogoutCopyWith<_$_UserEventLogout> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserEventLogoutCopyWith<_$_UserEventLogout> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_UserEventDeleteAccountCopyWith<$Res> {
-  factory _$$_UserEventDeleteAccountCopyWith(
-          _$_UserEventDeleteAccount value, $Res Function(_$_UserEventDeleteAccount) then) =
+  factory _$$_UserEventDeleteAccountCopyWith(_$_UserEventDeleteAccount value,
+          $Res Function(_$_UserEventDeleteAccount) then) =
       __$$_UserEventDeleteAccountCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserEventDeleteAccountCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res, _$_UserEventDeleteAccount>
+class __$$_UserEventDeleteAccountCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$_UserEventDeleteAccount>
     implements _$$_UserEventDeleteAccountCopyWith<$Res> {
-  __$$_UserEventDeleteAccountCopyWithImpl(
-      _$_UserEventDeleteAccount _value, $Res Function(_$_UserEventDeleteAccount) _then)
+  __$$_UserEventDeleteAccountCopyWithImpl(_$_UserEventDeleteAccount _value,
+      $Res Function(_$_UserEventDeleteAccount) _then)
       : super(_value, _then);
 }
 
@@ -854,7 +891,9 @@ class _$_UserEventDeleteAccount implements _UserEventDeleteAccount {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UserEventDeleteAccount);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserEventDeleteAccount);
   }
 
   @override
@@ -907,9 +946,11 @@ class _$_UserEventDeleteAccount implements _UserEventDeleteAccount {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UserEventCheckUser value) checkUser,
-    required TResult Function(_UserEventGetUserFromNetwork value) getUserFromNetwork,
+    required TResult Function(_UserEventGetUserFromNetwork value)
+        getUserFromNetwork,
     required TResult Function(_UserEventUpdateUserData value) updateUserData,
-    required TResult Function(_UserEventUpdateUserAvatar value) updateUserAvatar,
+    required TResult Function(_UserEventUpdateUserAvatar value)
+        updateUserAvatar,
     required TResult Function(_UserEventLogout value) logout,
     required TResult Function(_UserEventDeleteAccount value) deleteAccount,
   }) {
@@ -982,7 +1023,8 @@ mixin _$UserState {
   TResult map<TResult extends Object?>({
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateLoaded value) loaded,
-    required TResult Function(_UserStateLoadedWithNoUser value) loadedWithNoUser,
+    required TResult Function(_UserStateLoadedWithNoUser value)
+        loadedWithNoUser,
     required TResult Function(_UserStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -1007,11 +1049,13 @@ mixin _$UserState {
 
 /// @nodoc
 abstract class $UserStateCopyWith<$Res> {
-  factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) = _$UserStateCopyWithImpl<$Res, UserState>;
+  factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
+      _$UserStateCopyWithImpl<$Res, UserState>;
 }
 
 /// @nodoc
-class _$UserStateCopyWithImpl<$Res, $Val extends UserState> implements $UserStateCopyWith<$Res> {
+class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
+    implements $UserStateCopyWith<$Res> {
   _$UserStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -1022,14 +1066,17 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState> implements $UserStat
 
 /// @nodoc
 abstract class _$$_UserStateLoadingCopyWith<$Res> {
-  factory _$$_UserStateLoadingCopyWith(_$_UserStateLoading value, $Res Function(_$_UserStateLoading) then) =
+  factory _$$_UserStateLoadingCopyWith(
+          _$_UserStateLoading value, $Res Function(_$_UserStateLoading) then) =
       __$$_UserStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserStateLoadingCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res, _$_UserStateLoading>
+class __$$_UserStateLoadingCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$_UserStateLoading>
     implements _$$_UserStateLoadingCopyWith<$Res> {
-  __$$_UserStateLoadingCopyWithImpl(_$_UserStateLoading _value, $Res Function(_$_UserStateLoading) _then)
+  __$$_UserStateLoadingCopyWithImpl(
+      _$_UserStateLoading _value, $Res Function(_$_UserStateLoading) _then)
       : super(_value, _then);
 }
 
@@ -1045,7 +1092,8 @@ class _$_UserStateLoading implements _UserStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_UserStateLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UserStateLoading);
   }
 
   @override
@@ -1093,7 +1141,8 @@ class _$_UserStateLoading implements _UserStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateLoaded value) loaded,
-    required TResult Function(_UserStateLoadedWithNoUser value) loadedWithNoUser,
+    required TResult Function(_UserStateLoadedWithNoUser value)
+        loadedWithNoUser,
     required TResult Function(_UserStateError value) error,
   }) {
     return loading(this);
@@ -1132,7 +1181,8 @@ abstract class _UserStateLoading implements UserState {
 
 /// @nodoc
 abstract class _$$_UserStateLoadedCopyWith<$Res> {
-  factory _$$_UserStateLoadedCopyWith(_$_UserStateLoaded value, $Res Function(_$_UserStateLoaded) then) =
+  factory _$$_UserStateLoadedCopyWith(
+          _$_UserStateLoaded value, $Res Function(_$_UserStateLoaded) then) =
       __$$_UserStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({User? user});
@@ -1141,9 +1191,11 @@ abstract class _$$_UserStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserStateLoadedCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res, _$_UserStateLoaded>
+class __$$_UserStateLoadedCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$_UserStateLoaded>
     implements _$$_UserStateLoadedCopyWith<$Res> {
-  __$$_UserStateLoadedCopyWithImpl(_$_UserStateLoaded _value, $Res Function(_$_UserStateLoaded) _then)
+  __$$_UserStateLoadedCopyWithImpl(
+      _$_UserStateLoaded _value, $Res Function(_$_UserStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1244,7 +1296,8 @@ class _$_UserStateLoaded implements _UserStateLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateLoaded value) loaded,
-    required TResult Function(_UserStateLoadedWithNoUser value) loadedWithNoUser,
+    required TResult Function(_UserStateLoadedWithNoUser value)
+        loadedWithNoUser,
     required TResult Function(_UserStateError value) error,
   }) {
     return loaded(this);
@@ -1282,13 +1335,15 @@ abstract class _UserStateLoaded implements UserState {
 
   User? get user;
   @JsonKey(ignore: true)
-  _$$_UserStateLoadedCopyWith<_$_UserStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserStateLoadedCopyWith<_$_UserStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_UserStateLoadedWithNoUserCopyWith<$Res> {
   factory _$$_UserStateLoadedWithNoUserCopyWith(
-          _$_UserStateLoadedWithNoUser value, $Res Function(_$_UserStateLoadedWithNoUser) then) =
+          _$_UserStateLoadedWithNoUser value,
+          $Res Function(_$_UserStateLoadedWithNoUser) then) =
       __$$_UserStateLoadedWithNoUserCopyWithImpl<$Res>;
   @useResult
   $Res call({User? user});
@@ -1301,7 +1356,8 @@ class __$$_UserStateLoadedWithNoUserCopyWithImpl<$Res>
     extends _$UserStateCopyWithImpl<$Res, _$_UserStateLoadedWithNoUser>
     implements _$$_UserStateLoadedWithNoUserCopyWith<$Res> {
   __$$_UserStateLoadedWithNoUserCopyWithImpl(
-      _$_UserStateLoadedWithNoUser _value, $Res Function(_$_UserStateLoadedWithNoUser) _then)
+      _$_UserStateLoadedWithNoUser _value,
+      $Res Function(_$_UserStateLoadedWithNoUser) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1357,8 +1413,9 @@ class _$_UserStateLoadedWithNoUser implements _UserStateLoadedWithNoUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserStateLoadedWithNoUserCopyWith<_$_UserStateLoadedWithNoUser> get copyWith =>
-      __$$_UserStateLoadedWithNoUserCopyWithImpl<_$_UserStateLoadedWithNoUser>(this, _$identity);
+  _$$_UserStateLoadedWithNoUserCopyWith<_$_UserStateLoadedWithNoUser>
+      get copyWith => __$$_UserStateLoadedWithNoUserCopyWithImpl<
+          _$_UserStateLoadedWithNoUser>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1402,7 +1459,8 @@ class _$_UserStateLoadedWithNoUser implements _UserStateLoadedWithNoUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateLoaded value) loaded,
-    required TResult Function(_UserStateLoadedWithNoUser value) loadedWithNoUser,
+    required TResult Function(_UserStateLoadedWithNoUser value)
+        loadedWithNoUser,
     required TResult Function(_UserStateError value) error,
   }) {
     return loadedWithNoUser(this);
@@ -1436,26 +1494,30 @@ class _$_UserStateLoadedWithNoUser implements _UserStateLoadedWithNoUser {
 }
 
 abstract class _UserStateLoadedWithNoUser implements UserState {
-  const factory _UserStateLoadedWithNoUser({final User? user}) = _$_UserStateLoadedWithNoUser;
+  const factory _UserStateLoadedWithNoUser({final User? user}) =
+      _$_UserStateLoadedWithNoUser;
 
   User? get user;
   @JsonKey(ignore: true)
-  _$$_UserStateLoadedWithNoUserCopyWith<_$_UserStateLoadedWithNoUser> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UserStateLoadedWithNoUserCopyWith<_$_UserStateLoadedWithNoUser>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_UserStateErrorCopyWith<$Res> {
-  factory _$$_UserStateErrorCopyWith(_$_UserStateError value, $Res Function(_$_UserStateError) then) =
+  factory _$$_UserStateErrorCopyWith(
+          _$_UserStateError value, $Res Function(_$_UserStateError) then) =
       __$$_UserStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_UserStateErrorCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res, _$_UserStateError>
+class __$$_UserStateErrorCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$_UserStateError>
     implements _$$_UserStateErrorCopyWith<$Res> {
-  __$$_UserStateErrorCopyWithImpl(_$_UserStateError _value, $Res Function(_$_UserStateError) _then)
+  __$$_UserStateErrorCopyWithImpl(
+      _$_UserStateError _value, $Res Function(_$_UserStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1544,7 +1606,8 @@ class _$_UserStateError implements _UserStateError {
   TResult map<TResult extends Object?>({
     required TResult Function(_UserStateLoading value) loading,
     required TResult Function(_UserStateLoaded value) loaded,
-    required TResult Function(_UserStateLoadedWithNoUser value) loadedWithNoUser,
+    required TResult Function(_UserStateLoadedWithNoUser value)
+        loadedWithNoUser,
     required TResult Function(_UserStateError value) error,
   }) {
     return error(this);
@@ -1578,9 +1641,11 @@ class _$_UserStateError implements _UserStateError {
 }
 
 abstract class _UserStateError implements UserState {
-  const factory _UserStateError({required final String error}) = _$_UserStateError;
+  const factory _UserStateError({required final String error}) =
+      _$_UserStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_UserStateErrorCopyWith<_$_UserStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserStateErrorCopyWith<_$_UserStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

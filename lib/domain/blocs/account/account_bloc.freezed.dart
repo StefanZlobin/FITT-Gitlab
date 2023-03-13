@@ -19,46 +19,43 @@ mixin _$AccountEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
+    required TResult Function(AccountUserSecondName secondName)
+        secondNameChanged,
+    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
+    required TResult Function(AccountUserEmail email) emailChanged,
     required TResult Function() accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
+    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult? Function(AccountUserEmail email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
+    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult Function(AccountUserEmail email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,8 +64,6 @@ mixin _$AccountEvent {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,8 +73,6 @@ mixin _$AccountEvent {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) =>
@@ -88,12 +81,14 @@ mixin _$AccountEvent {
 
 /// @nodoc
 abstract class $AccountEventCopyWith<$Res> {
-  factory $AccountEventCopyWith(AccountEvent value, $Res Function(AccountEvent) then) =
+  factory $AccountEventCopyWith(
+          AccountEvent value, $Res Function(AccountEvent) then) =
       _$AccountEventCopyWithImpl<$Res, AccountEvent>;
 }
 
 /// @nodoc
-class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent> implements $AccountEventCopyWith<$Res> {
+class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent>
+    implements $AccountEventCopyWith<$Res> {
   _$AccountEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -105,7 +100,8 @@ class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent> implements $Ac
 /// @nodoc
 abstract class _$$_AccountEventFirstNameChangedCopyWith<$Res> {
   factory _$$_AccountEventFirstNameChangedCopyWith(
-          _$_AccountEventFirstNameChanged value, $Res Function(_$_AccountEventFirstNameChanged) then) =
+          _$_AccountEventFirstNameChanged value,
+          $Res Function(_$_AccountEventFirstNameChanged) then) =
       __$$_AccountEventFirstNameChangedCopyWithImpl<$Res>;
   @useResult
   $Res call({AccountUserFirstName firstName});
@@ -116,7 +112,8 @@ class __$$_AccountEventFirstNameChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventFirstNameChanged>
     implements _$$_AccountEventFirstNameChangedCopyWith<$Res> {
   __$$_AccountEventFirstNameChangedCopyWithImpl(
-      _$_AccountEventFirstNameChanged _value, $Res Function(_$_AccountEventFirstNameChanged) _then)
+      _$_AccountEventFirstNameChanged _value,
+      $Res Function(_$_AccountEventFirstNameChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,7 +148,8 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AccountEventFirstNameChanged &&
-            (identical(other.firstName, firstName) || other.firstName == firstName));
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName));
   }
 
   @override
@@ -160,18 +158,18 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged> get copyWith =>
-      __$$_AccountEventFirstNameChangedCopyWithImpl<_$_AccountEventFirstNameChanged>(this, _$identity);
+  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged>
+      get copyWith => __$$_AccountEventFirstNameChangedCopyWithImpl<
+          _$_AccountEventFirstNameChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
+    required TResult Function(AccountUserSecondName secondName)
+        secondNameChanged,
+    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
+    required TResult Function(AccountUserEmail email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
     return firstNameChanged(firstName);
@@ -181,11 +179,9 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
+    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult? Function(AccountUserEmail email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return firstNameChanged?.call(firstName);
@@ -195,11 +191,9 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
+    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult Function(AccountUserEmail email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -212,13 +206,15 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
   }) {
     return firstNameChanged(this);
   }
@@ -230,8 +226,6 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return firstNameChanged?.call(this);
@@ -244,8 +238,6 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -257,20 +249,24 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
 }
 
 abstract class _AccountEventFirstNameChanged implements AccountEvent {
-  const factory _AccountEventFirstNameChanged({required final AccountUserFirstName firstName}) =
+  const factory _AccountEventFirstNameChanged(
+          {required final AccountUserFirstName firstName}) =
       _$_AccountEventFirstNameChanged;
 
   AccountUserFirstName get firstName;
   @JsonKey(ignore: true)
-  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AccountEventSecondNameChangedCopyWith<$Res> {
   factory _$$_AccountEventSecondNameChangedCopyWith(
-          _$_AccountEventSecondNameChanged value, $Res Function(_$_AccountEventSecondNameChanged) then) =
+          _$_AccountEventSecondNameChanged value,
+          $Res Function(_$_AccountEventSecondNameChanged) then) =
       __$$_AccountEventSecondNameChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AccountUserSecondName secondName});
 }
 
 /// @nodoc
@@ -278,70 +274,94 @@ class __$$_AccountEventSecondNameChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventSecondNameChanged>
     implements _$$_AccountEventSecondNameChangedCopyWith<$Res> {
   __$$_AccountEventSecondNameChangedCopyWithImpl(
-      _$_AccountEventSecondNameChanged _value, $Res Function(_$_AccountEventSecondNameChanged) _then)
+      _$_AccountEventSecondNameChanged _value,
+      $Res Function(_$_AccountEventSecondNameChanged) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? secondName = null,
+  }) {
+    return _then(_$_AccountEventSecondNameChanged(
+      secondName: null == secondName
+          ? _value.secondName
+          : secondName // ignore: cast_nullable_to_non_nullable
+              as AccountUserSecondName,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_AccountEventSecondNameChanged implements _AccountEventSecondNameChanged {
-  const _$_AccountEventSecondNameChanged();
+class _$_AccountEventSecondNameChanged
+    implements _AccountEventSecondNameChanged {
+  const _$_AccountEventSecondNameChanged({required this.secondName});
+
+  @override
+  final AccountUserSecondName secondName;
 
   @override
   String toString() {
-    return 'AccountEvent.secondNameChanged()';
+    return 'AccountEvent.secondNameChanged(secondName: $secondName)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventSecondNameChanged);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountEventSecondNameChanged &&
+            (identical(other.secondName, secondName) ||
+                other.secondName == secondName));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, secondName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AccountEventSecondNameChangedCopyWith<_$_AccountEventSecondNameChanged>
+      get copyWith => __$$_AccountEventSecondNameChangedCopyWithImpl<
+          _$_AccountEventSecondNameChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
+    required TResult Function(AccountUserSecondName secondName)
+        secondNameChanged,
+    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
+    required TResult Function(AccountUserEmail email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
-    return secondNameChanged();
+    return secondNameChanged(secondName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
+    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult? Function(AccountUserEmail email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
-    return secondNameChanged?.call();
+    return secondNameChanged?.call(secondName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
+    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult Function(AccountUserEmail email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
     if (secondNameChanged != null) {
-      return secondNameChanged();
+      return secondNameChanged(secondName);
     }
     return orElse();
   }
@@ -349,13 +369,15 @@ class _$_AccountEventSecondNameChanged implements _AccountEventSecondNameChanged
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
   }) {
     return secondNameChanged(this);
   }
@@ -367,8 +389,6 @@ class _$_AccountEventSecondNameChanged implements _AccountEventSecondNameChanged
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return secondNameChanged?.call(this);
@@ -381,8 +401,6 @@ class _$_AccountEventSecondNameChanged implements _AccountEventSecondNameChanged
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -394,14 +412,24 @@ class _$_AccountEventSecondNameChanged implements _AccountEventSecondNameChanged
 }
 
 abstract class _AccountEventSecondNameChanged implements AccountEvent {
-  const factory _AccountEventSecondNameChanged() = _$_AccountEventSecondNameChanged;
+  const factory _AccountEventSecondNameChanged(
+          {required final AccountUserSecondName secondName}) =
+      _$_AccountEventSecondNameChanged;
+
+  AccountUserSecondName get secondName;
+  @JsonKey(ignore: true)
+  _$$_AccountEventSecondNameChangedCopyWith<_$_AccountEventSecondNameChanged>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AccountEventBirthdayChangedCopyWith<$Res> {
   factory _$$_AccountEventBirthdayChangedCopyWith(
-          _$_AccountEventBirthdayChanged value, $Res Function(_$_AccountEventBirthdayChanged) then) =
+          _$_AccountEventBirthdayChanged value,
+          $Res Function(_$_AccountEventBirthdayChanged) then) =
       __$$_AccountEventBirthdayChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AccountUserBirthday birthday});
 }
 
 /// @nodoc
@@ -409,70 +437,93 @@ class __$$_AccountEventBirthdayChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventBirthdayChanged>
     implements _$$_AccountEventBirthdayChangedCopyWith<$Res> {
   __$$_AccountEventBirthdayChangedCopyWithImpl(
-      _$_AccountEventBirthdayChanged _value, $Res Function(_$_AccountEventBirthdayChanged) _then)
+      _$_AccountEventBirthdayChanged _value,
+      $Res Function(_$_AccountEventBirthdayChanged) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? birthday = null,
+  }) {
+    return _then(_$_AccountEventBirthdayChanged(
+      birthday: null == birthday
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as AccountUserBirthday,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
-  const _$_AccountEventBirthdayChanged();
+  const _$_AccountEventBirthdayChanged({required this.birthday});
+
+  @override
+  final AccountUserBirthday birthday;
 
   @override
   String toString() {
-    return 'AccountEvent.birthdayChanged()';
+    return 'AccountEvent.birthdayChanged(birthday: $birthday)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventBirthdayChanged);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountEventBirthdayChanged &&
+            (identical(other.birthday, birthday) ||
+                other.birthday == birthday));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, birthday);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AccountEventBirthdayChangedCopyWith<_$_AccountEventBirthdayChanged>
+      get copyWith => __$$_AccountEventBirthdayChangedCopyWithImpl<
+          _$_AccountEventBirthdayChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
+    required TResult Function(AccountUserSecondName secondName)
+        secondNameChanged,
+    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
+    required TResult Function(AccountUserEmail email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
-    return birthdayChanged();
+    return birthdayChanged(birthday);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
+    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult? Function(AccountUserEmail email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
-    return birthdayChanged?.call();
+    return birthdayChanged?.call(birthday);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
+    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult Function(AccountUserEmail email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
     if (birthdayChanged != null) {
-      return birthdayChanged();
+      return birthdayChanged(birthday);
     }
     return orElse();
   }
@@ -480,13 +531,15 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
   }) {
     return birthdayChanged(this);
   }
@@ -498,8 +551,6 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return birthdayChanged?.call(this);
@@ -512,8 +563,6 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -525,85 +574,116 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
 }
 
 abstract class _AccountEventBirthdayChanged implements AccountEvent {
-  const factory _AccountEventBirthdayChanged() = _$_AccountEventBirthdayChanged;
+  const factory _AccountEventBirthdayChanged(
+          {required final AccountUserBirthday birthday}) =
+      _$_AccountEventBirthdayChanged;
+
+  AccountUserBirthday get birthday;
+  @JsonKey(ignore: true)
+  _$$_AccountEventBirthdayChangedCopyWith<_$_AccountEventBirthdayChanged>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AccountEventEmailChangedCopyWith<$Res> {
   factory _$$_AccountEventEmailChangedCopyWith(
-          _$_AccountEventEmailChanged value, $Res Function(_$_AccountEventEmailChanged) then) =
+          _$_AccountEventEmailChanged value,
+          $Res Function(_$_AccountEventEmailChanged) then) =
       __$$_AccountEventEmailChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AccountUserEmail email});
 }
 
 /// @nodoc
 class __$$_AccountEventEmailChangedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventEmailChanged>
     implements _$$_AccountEventEmailChangedCopyWith<$Res> {
-  __$$_AccountEventEmailChangedCopyWithImpl(
-      _$_AccountEventEmailChanged _value, $Res Function(_$_AccountEventEmailChanged) _then)
+  __$$_AccountEventEmailChangedCopyWithImpl(_$_AccountEventEmailChanged _value,
+      $Res Function(_$_AccountEventEmailChanged) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+  }) {
+    return _then(_$_AccountEventEmailChanged(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as AccountUserEmail,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
-  const _$_AccountEventEmailChanged();
+  const _$_AccountEventEmailChanged({required this.email});
+
+  @override
+  final AccountUserEmail email;
 
   @override
   String toString() {
-    return 'AccountEvent.emailChanged()';
+    return 'AccountEvent.emailChanged(email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventEmailChanged);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountEventEmailChanged &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, email);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AccountEventEmailChangedCopyWith<_$_AccountEventEmailChanged>
+      get copyWith => __$$_AccountEventEmailChangedCopyWithImpl<
+          _$_AccountEventEmailChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
+    required TResult Function(AccountUserSecondName secondName)
+        secondNameChanged,
+    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
+    required TResult Function(AccountUserEmail email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
-    return emailChanged();
+    return emailChanged(email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
+    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult? Function(AccountUserEmail email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
-    return emailChanged?.call();
+    return emailChanged?.call(email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
+    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult Function(AccountUserEmail email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
-      return emailChanged();
+      return emailChanged(email);
     }
     return orElse();
   }
@@ -611,13 +691,15 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
   }) {
     return emailChanged(this);
   }
@@ -629,8 +711,6 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return emailChanged?.call(this);
@@ -643,8 +723,6 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -656,275 +734,20 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
 }
 
 abstract class _AccountEventEmailChanged implements AccountEvent {
-  const factory _AccountEventEmailChanged() = _$_AccountEventEmailChanged;
-}
+  const factory _AccountEventEmailChanged(
+      {required final AccountUserEmail email}) = _$_AccountEventEmailChanged;
 
-/// @nodoc
-abstract class _$$_AccountEventGenderChangedCopyWith<$Res> {
-  factory _$$_AccountEventGenderChangedCopyWith(
-          _$_AccountEventGenderChanged value, $Res Function(_$_AccountEventGenderChanged) then) =
-      __$$_AccountEventGenderChangedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_AccountEventGenderChangedCopyWithImpl<$Res>
-    extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventGenderChanged>
-    implements _$$_AccountEventGenderChangedCopyWith<$Res> {
-  __$$_AccountEventGenderChangedCopyWithImpl(
-      _$_AccountEventGenderChanged _value, $Res Function(_$_AccountEventGenderChanged) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
-  const _$_AccountEventGenderChanged();
-
-  @override
-  String toString() {
-    return 'AccountEvent.genderChanged()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventGenderChanged);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
-    required TResult Function() accountSubmitted,
-  }) {
-    return genderChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
-    TResult? Function()? accountSubmitted,
-  }) {
-    return genderChanged?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
-    TResult Function()? accountSubmitted,
-    required TResult orElse(),
-  }) {
-    if (genderChanged != null) {
-      return genderChanged();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
-    required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
-  }) {
-    return genderChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AccountEventFirstNameChanged value)? firstNameChanged,
-    TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
-    TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
-    TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
-    TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
-  }) {
-    return genderChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AccountEventFirstNameChanged value)? firstNameChanged,
-    TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
-    TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
-    TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
-    TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
-    required TResult orElse(),
-  }) {
-    if (genderChanged != null) {
-      return genderChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AccountEventGenderChanged implements AccountEvent {
-  const factory _AccountEventGenderChanged() = _$_AccountEventGenderChanged;
-}
-
-/// @nodoc
-abstract class _$$_AccountEventAvatarChangedCopyWith<$Res> {
-  factory _$$_AccountEventAvatarChangedCopyWith(
-          _$_AccountEventAvatarChanged value, $Res Function(_$_AccountEventAvatarChanged) then) =
-      __$$_AccountEventAvatarChangedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_AccountEventAvatarChangedCopyWithImpl<$Res>
-    extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventAvatarChanged>
-    implements _$$_AccountEventAvatarChangedCopyWith<$Res> {
-  __$$_AccountEventAvatarChangedCopyWithImpl(
-      _$_AccountEventAvatarChanged _value, $Res Function(_$_AccountEventAvatarChanged) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_AccountEventAvatarChanged implements _AccountEventAvatarChanged {
-  const _$_AccountEventAvatarChanged();
-
-  @override
-  String toString() {
-    return 'AccountEvent.avatarChanged()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventAvatarChanged);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
-    required TResult Function() accountSubmitted,
-  }) {
-    return avatarChanged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
-    TResult? Function()? accountSubmitted,
-  }) {
-    return avatarChanged?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
-    TResult Function()? accountSubmitted,
-    required TResult orElse(),
-  }) {
-    if (avatarChanged != null) {
-      return avatarChanged();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
-    required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
-  }) {
-    return avatarChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AccountEventFirstNameChanged value)? firstNameChanged,
-    TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
-    TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
-    TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
-    TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
-  }) {
-    return avatarChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AccountEventFirstNameChanged value)? firstNameChanged,
-    TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
-    TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
-    TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
-    TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
-    required TResult orElse(),
-  }) {
-    if (avatarChanged != null) {
-      return avatarChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AccountEventAvatarChanged implements AccountEvent {
-  const factory _AccountEventAvatarChanged() = _$_AccountEventAvatarChanged;
+  AccountUserEmail get email;
+  @JsonKey(ignore: true)
+  _$$_AccountEventEmailChangedCopyWith<_$_AccountEventEmailChanged>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_AccountEventAccountSubmittedCopyWith<$Res> {
   factory _$$_AccountEventAccountSubmittedCopyWith(
-          _$_AccountEventAccountSubmitted value, $Res Function(_$_AccountEventAccountSubmitted) then) =
+          _$_AccountEventAccountSubmitted value,
+          $Res Function(_$_AccountEventAccountSubmitted) then) =
       __$$_AccountEventAccountSubmittedCopyWithImpl<$Res>;
 }
 
@@ -933,7 +756,8 @@ class __$$_AccountEventAccountSubmittedCopyWithImpl<$Res>
     extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventAccountSubmitted>
     implements _$$_AccountEventAccountSubmittedCopyWith<$Res> {
   __$$_AccountEventAccountSubmittedCopyWithImpl(
-      _$_AccountEventAccountSubmitted _value, $Res Function(_$_AccountEventAccountSubmitted) _then)
+      _$_AccountEventAccountSubmitted _value,
+      $Res Function(_$_AccountEventAccountSubmitted) _then)
       : super(_value, _then);
 }
 
@@ -949,7 +773,9 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountEventAccountSubmitted);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountEventAccountSubmitted);
   }
 
   @override
@@ -959,11 +785,10 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function() secondNameChanged,
-    required TResult Function() birthdayChanged,
-    required TResult Function() emailChanged,
-    required TResult Function() genderChanged,
-    required TResult Function() avatarChanged,
+    required TResult Function(AccountUserSecondName secondName)
+        secondNameChanged,
+    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
+    required TResult Function(AccountUserEmail email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
     return accountSubmitted();
@@ -973,11 +798,9 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function()? secondNameChanged,
-    TResult? Function()? birthdayChanged,
-    TResult? Function()? emailChanged,
-    TResult? Function()? genderChanged,
-    TResult? Function()? avatarChanged,
+    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult? Function(AccountUserEmail email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return accountSubmitted?.call();
@@ -987,11 +810,9 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function()? secondNameChanged,
-    TResult Function()? birthdayChanged,
-    TResult Function()? emailChanged,
-    TResult Function()? genderChanged,
-    TResult Function()? avatarChanged,
+    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
+    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
+    TResult Function(AccountUserEmail email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -1004,13 +825,15 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AccountEventFirstNameChanged value) firstNameChanged,
-    required TResult Function(_AccountEventSecondNameChanged value) secondNameChanged,
-    required TResult Function(_AccountEventBirthdayChanged value) birthdayChanged,
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
-    required TResult Function(_AccountEventGenderChanged value) genderChanged,
-    required TResult Function(_AccountEventAvatarChanged value) avatarChanged,
-    required TResult Function(_AccountEventAccountSubmitted value) accountSubmitted,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
   }) {
     return accountSubmitted(this);
   }
@@ -1022,8 +845,6 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult? Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return accountSubmitted?.call(this);
@@ -1036,8 +857,6 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
-    TResult Function(_AccountEventGenderChanged value)? genderChanged,
-    TResult Function(_AccountEventAvatarChanged value)? avatarChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -1049,7 +868,8 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
 }
 
 abstract class _AccountEventAccountSubmitted implements AccountEvent {
-  const factory _AccountEventAccountSubmitted() = _$_AccountEventAccountSubmitted;
+  const factory _AccountEventAccountSubmitted() =
+      _$_AccountEventAccountSubmitted;
 }
 
 /// @nodoc
@@ -1090,12 +910,14 @@ mixin _$AccountState {
 
 /// @nodoc
 abstract class $AccountStateCopyWith<$Res> {
-  factory $AccountStateCopyWith(AccountState value, $Res Function(AccountState) then) =
+  factory $AccountStateCopyWith(
+          AccountState value, $Res Function(AccountState) then) =
       _$AccountStateCopyWithImpl<$Res, AccountState>;
 }
 
 /// @nodoc
-class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState> implements $AccountStateCopyWith<$Res> {
+class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
+    implements $AccountStateCopyWith<$Res> {
   _$AccountStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -1106,13 +928,17 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState> implements $Ac
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) = __$$_InitialCopyWithImpl<$Res>;
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$AccountStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then) : super(_value, _then);
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1127,7 +953,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override

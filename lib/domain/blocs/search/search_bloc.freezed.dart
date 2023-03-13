@@ -58,12 +58,14 @@ mixin _$SearchEvent {
 
 /// @nodoc
 abstract class $SearchEventCopyWith<$Res> {
-  factory $SearchEventCopyWith(SearchEvent value, $Res Function(SearchEvent) then) =
+  factory $SearchEventCopyWith(
+          SearchEvent value, $Res Function(SearchEvent) then) =
       _$SearchEventCopyWithImpl<$Res, SearchEvent>;
 }
 
 /// @nodoc
-class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent> implements $SearchEventCopyWith<$Res> {
+class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
+    implements $SearchEventCopyWith<$Res> {
   _$SearchEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -74,16 +76,19 @@ class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent> implements $Sear
 
 /// @nodoc
 abstract class _$$_SearchEventSearchCopyWith<$Res> {
-  factory _$$_SearchEventSearchCopyWith(_$_SearchEventSearch value, $Res Function(_$_SearchEventSearch) then) =
+  factory _$$_SearchEventSearchCopyWith(_$_SearchEventSearch value,
+          $Res Function(_$_SearchEventSearch) then) =
       __$$_SearchEventSearchCopyWithImpl<$Res>;
   @useResult
   $Res call({String query});
 }
 
 /// @nodoc
-class __$$_SearchEventSearchCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res, _$_SearchEventSearch>
+class __$$_SearchEventSearchCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$_SearchEventSearch>
     implements _$$_SearchEventSearchCopyWith<$Res> {
-  __$$_SearchEventSearchCopyWithImpl(_$_SearchEventSearch _value, $Res Function(_$_SearchEventSearch) _then)
+  __$$_SearchEventSearchCopyWithImpl(
+      _$_SearchEventSearch _value, $Res Function(_$_SearchEventSearch) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +133,8 @@ class _$_SearchEventSearch implements _SearchEventSearch {
   @override
   @pragma('vm:prefer-inline')
   _$$_SearchEventSearchCopyWith<_$_SearchEventSearch> get copyWith =>
-      __$$_SearchEventSearchCopyWithImpl<_$_SearchEventSearch>(this, _$identity);
+      __$$_SearchEventSearchCopyWithImpl<_$_SearchEventSearch>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -194,17 +200,20 @@ class _$_SearchEventSearch implements _SearchEventSearch {
 }
 
 abstract class _SearchEventSearch implements SearchEvent {
-  const factory _SearchEventSearch({required final String query}) = _$_SearchEventSearch;
+  const factory _SearchEventSearch({required final String query}) =
+      _$_SearchEventSearch;
 
   String get query;
   @JsonKey(ignore: true)
-  _$$_SearchEventSearchCopyWith<_$_SearchEventSearch> get copyWith => throw _privateConstructorUsedError;
+  _$$_SearchEventSearchCopyWith<_$_SearchEventSearch> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_SearchEventSuggestionTapCopyWith<$Res> {
   factory _$$_SearchEventSuggestionTapCopyWith(
-          _$_SearchEventSuggestionTap value, $Res Function(_$_SearchEventSuggestionTap) then) =
+          _$_SearchEventSuggestionTap value,
+          $Res Function(_$_SearchEventSuggestionTap) then) =
       __$$_SearchEventSuggestionTapCopyWithImpl<$Res>;
   @useResult
   $Res call({SearchAddress searchAddress});
@@ -216,8 +225,8 @@ abstract class _$$_SearchEventSuggestionTapCopyWith<$Res> {
 class __$$_SearchEventSuggestionTapCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res, _$_SearchEventSuggestionTap>
     implements _$$_SearchEventSuggestionTapCopyWith<$Res> {
-  __$$_SearchEventSuggestionTapCopyWithImpl(
-      _$_SearchEventSuggestionTap _value, $Res Function(_$_SearchEventSuggestionTap) _then)
+  __$$_SearchEventSuggestionTapCopyWithImpl(_$_SearchEventSuggestionTap _value,
+      $Res Function(_$_SearchEventSuggestionTap) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -260,7 +269,8 @@ class _$_SearchEventSuggestionTap implements _SearchEventSuggestionTap {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchEventSuggestionTap &&
-            (identical(other.searchAddress, searchAddress) || other.searchAddress == searchAddress));
+            (identical(other.searchAddress, searchAddress) ||
+                other.searchAddress == searchAddress));
   }
 
   @override
@@ -269,8 +279,9 @@ class _$_SearchEventSuggestionTap implements _SearchEventSuggestionTap {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchEventSuggestionTapCopyWith<_$_SearchEventSuggestionTap> get copyWith =>
-      __$$_SearchEventSuggestionTapCopyWithImpl<_$_SearchEventSuggestionTap>(this, _$identity);
+  _$$_SearchEventSuggestionTapCopyWith<_$_SearchEventSuggestionTap>
+      get copyWith => __$$_SearchEventSuggestionTapCopyWithImpl<
+          _$_SearchEventSuggestionTap>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -336,11 +347,14 @@ class _$_SearchEventSuggestionTap implements _SearchEventSuggestionTap {
 }
 
 abstract class _SearchEventSuggestionTap implements SearchEvent {
-  const factory _SearchEventSuggestionTap({required final SearchAddress searchAddress}) = _$_SearchEventSuggestionTap;
+  const factory _SearchEventSuggestionTap(
+          {required final SearchAddress searchAddress}) =
+      _$_SearchEventSuggestionTap;
 
   SearchAddress get searchAddress;
   @JsonKey(ignore: true)
-  _$$_SearchEventSuggestionTapCopyWith<_$_SearchEventSuggestionTap> get copyWith => throw _privateConstructorUsedError;
+  _$$_SearchEventSuggestionTapCopyWith<_$_SearchEventSuggestionTap>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -374,7 +388,8 @@ mixin _$SearchState {
   TResult map<TResult extends Object?>({
     required TResult Function(_SearchStateInitial value) initial,
     required TResult Function(_SearchStateLoaded value) loaded,
-    required TResult Function(_SearchStateSuggesstionTapped value) suggesstionTapped,
+    required TResult Function(_SearchStateSuggesstionTapped value)
+        suggesstionTapped,
     required TResult Function(_SearchStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -399,12 +414,14 @@ mixin _$SearchState {
 
 /// @nodoc
 abstract class $SearchStateCopyWith<$Res> {
-  factory $SearchStateCopyWith(SearchState value, $Res Function(SearchState) then) =
+  factory $SearchStateCopyWith(
+          SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res, SearchState>;
 }
 
 /// @nodoc
-class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState> implements $SearchStateCopyWith<$Res> {
+class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
+    implements $SearchStateCopyWith<$Res> {
   _$SearchStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -415,14 +432,17 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState> implements $Sear
 
 /// @nodoc
 abstract class _$$_SearchStateInitialCopyWith<$Res> {
-  factory _$$_SearchStateInitialCopyWith(_$_SearchStateInitial value, $Res Function(_$_SearchStateInitial) then) =
+  factory _$$_SearchStateInitialCopyWith(_$_SearchStateInitial value,
+          $Res Function(_$_SearchStateInitial) then) =
       __$$_SearchStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SearchStateInitialCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_SearchStateInitial>
+class __$$_SearchStateInitialCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$_SearchStateInitial>
     implements _$$_SearchStateInitialCopyWith<$Res> {
-  __$$_SearchStateInitialCopyWithImpl(_$_SearchStateInitial _value, $Res Function(_$_SearchStateInitial) _then)
+  __$$_SearchStateInitialCopyWithImpl(
+      _$_SearchStateInitial _value, $Res Function(_$_SearchStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -438,7 +458,8 @@ class _$_SearchStateInitial implements _SearchStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_SearchStateInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SearchStateInitial);
   }
 
   @override
@@ -486,7 +507,8 @@ class _$_SearchStateInitial implements _SearchStateInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(_SearchStateInitial value) initial,
     required TResult Function(_SearchStateLoaded value) loaded,
-    required TResult Function(_SearchStateSuggesstionTapped value) suggesstionTapped,
+    required TResult Function(_SearchStateSuggesstionTapped value)
+        suggesstionTapped,
     required TResult Function(_SearchStateError value) error,
   }) {
     return initial(this);
@@ -525,16 +547,19 @@ abstract class _SearchStateInitial implements SearchState {
 
 /// @nodoc
 abstract class _$$_SearchStateLoadedCopyWith<$Res> {
-  factory _$$_SearchStateLoadedCopyWith(_$_SearchStateLoaded value, $Res Function(_$_SearchStateLoaded) then) =
+  factory _$$_SearchStateLoadedCopyWith(_$_SearchStateLoaded value,
+          $Res Function(_$_SearchStateLoaded) then) =
       __$$_SearchStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SearchAddress> searchAddress});
 }
 
 /// @nodoc
-class __$$_SearchStateLoadedCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_SearchStateLoaded>
+class __$$_SearchStateLoadedCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$_SearchStateLoaded>
     implements _$$_SearchStateLoadedCopyWith<$Res> {
-  __$$_SearchStateLoadedCopyWithImpl(_$_SearchStateLoaded _value, $Res Function(_$_SearchStateLoaded) _then)
+  __$$_SearchStateLoadedCopyWithImpl(
+      _$_SearchStateLoaded _value, $Res Function(_$_SearchStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -554,7 +579,8 @@ class __$$_SearchStateLoadedCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl
 /// @nodoc
 
 class _$_SearchStateLoaded implements _SearchStateLoaded {
-  const _$_SearchStateLoaded({required final List<SearchAddress> searchAddress}) : _searchAddress = searchAddress;
+  const _$_SearchStateLoaded({required final List<SearchAddress> searchAddress})
+      : _searchAddress = searchAddress;
 
   final List<SearchAddress> _searchAddress;
   @override
@@ -574,17 +600,20 @@ class _$_SearchStateLoaded implements _SearchStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchStateLoaded &&
-            const DeepCollectionEquality().equals(other._searchAddress, _searchAddress));
+            const DeepCollectionEquality()
+                .equals(other._searchAddress, _searchAddress));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_searchAddress));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_searchAddress));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_SearchStateLoadedCopyWith<_$_SearchStateLoaded> get copyWith =>
-      __$$_SearchStateLoadedCopyWithImpl<_$_SearchStateLoaded>(this, _$identity);
+      __$$_SearchStateLoadedCopyWithImpl<_$_SearchStateLoaded>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -628,7 +657,8 @@ class _$_SearchStateLoaded implements _SearchStateLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_SearchStateInitial value) initial,
     required TResult Function(_SearchStateLoaded value) loaded,
-    required TResult Function(_SearchStateSuggesstionTapped value) suggesstionTapped,
+    required TResult Function(_SearchStateSuggesstionTapped value)
+        suggesstionTapped,
     required TResult Function(_SearchStateError value) error,
   }) {
     return loaded(this);
@@ -662,17 +692,21 @@ class _$_SearchStateLoaded implements _SearchStateLoaded {
 }
 
 abstract class _SearchStateLoaded implements SearchState {
-  const factory _SearchStateLoaded({required final List<SearchAddress> searchAddress}) = _$_SearchStateLoaded;
+  const factory _SearchStateLoaded(
+          {required final List<SearchAddress> searchAddress}) =
+      _$_SearchStateLoaded;
 
   List<SearchAddress> get searchAddress;
   @JsonKey(ignore: true)
-  _$$_SearchStateLoadedCopyWith<_$_SearchStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_SearchStateLoadedCopyWith<_$_SearchStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_SearchStateSuggesstionTappedCopyWith<$Res> {
   factory _$$_SearchStateSuggesstionTappedCopyWith(
-          _$_SearchStateSuggesstionTapped value, $Res Function(_$_SearchStateSuggesstionTapped) then) =
+          _$_SearchStateSuggesstionTapped value,
+          $Res Function(_$_SearchStateSuggesstionTapped) then) =
       __$$_SearchStateSuggesstionTappedCopyWithImpl<$Res>;
   @useResult
   $Res call({SearchAddress searchAddress});
@@ -685,7 +719,8 @@ class __$$_SearchStateSuggesstionTappedCopyWithImpl<$Res>
     extends _$SearchStateCopyWithImpl<$Res, _$_SearchStateSuggesstionTapped>
     implements _$$_SearchStateSuggesstionTappedCopyWith<$Res> {
   __$$_SearchStateSuggesstionTappedCopyWithImpl(
-      _$_SearchStateSuggesstionTapped _value, $Res Function(_$_SearchStateSuggesstionTapped) _then)
+      _$_SearchStateSuggesstionTapped _value,
+      $Res Function(_$_SearchStateSuggesstionTapped) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -728,7 +763,8 @@ class _$_SearchStateSuggesstionTapped implements _SearchStateSuggesstionTapped {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchStateSuggesstionTapped &&
-            (identical(other.searchAddress, searchAddress) || other.searchAddress == searchAddress));
+            (identical(other.searchAddress, searchAddress) ||
+                other.searchAddress == searchAddress));
   }
 
   @override
@@ -737,8 +773,9 @@ class _$_SearchStateSuggesstionTapped implements _SearchStateSuggesstionTapped {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchStateSuggesstionTappedCopyWith<_$_SearchStateSuggesstionTapped> get copyWith =>
-      __$$_SearchStateSuggesstionTappedCopyWithImpl<_$_SearchStateSuggesstionTapped>(this, _$identity);
+  _$$_SearchStateSuggesstionTappedCopyWith<_$_SearchStateSuggesstionTapped>
+      get copyWith => __$$_SearchStateSuggesstionTappedCopyWithImpl<
+          _$_SearchStateSuggesstionTapped>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -782,7 +819,8 @@ class _$_SearchStateSuggesstionTapped implements _SearchStateSuggesstionTapped {
   TResult map<TResult extends Object?>({
     required TResult Function(_SearchStateInitial value) initial,
     required TResult Function(_SearchStateLoaded value) loaded,
-    required TResult Function(_SearchStateSuggesstionTapped value) suggesstionTapped,
+    required TResult Function(_SearchStateSuggesstionTapped value)
+        suggesstionTapped,
     required TResult Function(_SearchStateError value) error,
   }) {
     return suggesstionTapped(this);
@@ -816,27 +854,31 @@ class _$_SearchStateSuggesstionTapped implements _SearchStateSuggesstionTapped {
 }
 
 abstract class _SearchStateSuggesstionTapped implements SearchState {
-  const factory _SearchStateSuggesstionTapped({required final SearchAddress searchAddress}) =
+  const factory _SearchStateSuggesstionTapped(
+          {required final SearchAddress searchAddress}) =
       _$_SearchStateSuggesstionTapped;
 
   SearchAddress get searchAddress;
   @JsonKey(ignore: true)
-  _$$_SearchStateSuggesstionTappedCopyWith<_$_SearchStateSuggesstionTapped> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SearchStateSuggesstionTappedCopyWith<_$_SearchStateSuggesstionTapped>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_SearchStateErrorCopyWith<$Res> {
-  factory _$$_SearchStateErrorCopyWith(_$_SearchStateError value, $Res Function(_$_SearchStateError) then) =
+  factory _$$_SearchStateErrorCopyWith(
+          _$_SearchStateError value, $Res Function(_$_SearchStateError) then) =
       __$$_SearchStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_SearchStateErrorCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res, _$_SearchStateError>
+class __$$_SearchStateErrorCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$_SearchStateError>
     implements _$$_SearchStateErrorCopyWith<$Res> {
-  __$$_SearchStateErrorCopyWithImpl(_$_SearchStateError _value, $Res Function(_$_SearchStateError) _then)
+  __$$_SearchStateErrorCopyWithImpl(
+      _$_SearchStateError _value, $Res Function(_$_SearchStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -925,7 +967,8 @@ class _$_SearchStateError implements _SearchStateError {
   TResult map<TResult extends Object?>({
     required TResult Function(_SearchStateInitial value) initial,
     required TResult Function(_SearchStateLoaded value) loaded,
-    required TResult Function(_SearchStateSuggesstionTapped value) suggesstionTapped,
+    required TResult Function(_SearchStateSuggesstionTapped value)
+        suggesstionTapped,
     required TResult Function(_SearchStateError value) error,
   }) {
     return error(this);
@@ -959,9 +1002,11 @@ class _$_SearchStateError implements _SearchStateError {
 }
 
 abstract class _SearchStateError implements SearchState {
-  const factory _SearchStateError({required final String error}) = _$_SearchStateError;
+  const factory _SearchStateError({required final String error}) =
+      _$_SearchStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_SearchStateErrorCopyWith<_$_SearchStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_SearchStateErrorCopyWith<_$_SearchStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -30,13 +30,15 @@ mixin _$Email {
 
 /// @nodoc
 abstract class $EmailCopyWith<$Res> {
-  factory $EmailCopyWith(Email value, $Res Function(Email) then) = _$EmailCopyWithImpl<$Res, Email>;
+  factory $EmailCopyWith(Email value, $Res Function(Email) then) =
+      _$EmailCopyWithImpl<$Res, Email>;
   @useResult
   $Res call({@JsonKey(name: 'email') String email});
 }
 
 /// @nodoc
-class _$EmailCopyWithImpl<$Res, $Val extends Email> implements $EmailCopyWith<$Res> {
+class _$EmailCopyWithImpl<$Res, $Val extends Email>
+    implements $EmailCopyWith<$Res> {
   _$EmailCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -60,15 +62,18 @@ class _$EmailCopyWithImpl<$Res, $Val extends Email> implements $EmailCopyWith<$R
 
 /// @nodoc
 abstract class _$$_EmailCopyWith<$Res> implements $EmailCopyWith<$Res> {
-  factory _$$_EmailCopyWith(_$_Email value, $Res Function(_$_Email) then) = __$$_EmailCopyWithImpl<$Res>;
+  factory _$$_EmailCopyWith(_$_Email value, $Res Function(_$_Email) then) =
+      __$$_EmailCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'email') String email});
 }
 
 /// @nodoc
-class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email> implements _$$_EmailCopyWith<$Res> {
-  __$$_EmailCopyWithImpl(_$_Email _value, $Res Function(_$_Email) _then) : super(_value, _then);
+class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email>
+    implements _$$_EmailCopyWith<$Res> {
+  __$$_EmailCopyWithImpl(_$_Email _value, $Res Function(_$_Email) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -89,7 +94,8 @@ class __$$_EmailCopyWithImpl<$Res> extends _$EmailCopyWithImpl<$Res, _$_Email> i
 class _$_Email implements _Email {
   _$_Email({@JsonKey(name: 'email') required this.email});
 
-  factory _$_Email.fromJson(Map<String, dynamic> json) => _$$_EmailFromJson(json);
+  factory _$_Email.fromJson(Map<String, dynamic> json) =>
+      _$$_EmailFromJson(json);
 
   @override
   @JsonKey(name: 'email')
@@ -115,7 +121,8 @@ class _$_Email implements _Email {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailCopyWith<_$_Email> get copyWith => __$$_EmailCopyWithImpl<_$_Email>(this, _$identity);
+  _$$_EmailCopyWith<_$_Email> get copyWith =>
+      __$$_EmailCopyWithImpl<_$_Email>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -126,7 +133,8 @@ class _$_Email implements _Email {
 }
 
 abstract class _Email implements Email {
-  factory _Email({@JsonKey(name: 'email') required final String email}) = _$_Email;
+  factory _Email({@JsonKey(name: 'email') required final String email}) =
+      _$_Email;
 
   factory _Email.fromJson(Map<String, dynamic> json) = _$_Email.fromJson;
 
@@ -135,5 +143,6 @@ abstract class _Email implements Email {
   String get email;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailCopyWith<_$_Email> get copyWith => throw _privateConstructorUsedError;
+  _$$_EmailCopyWith<_$_Email> get copyWith =>
+      throw _privateConstructorUsedError;
 }

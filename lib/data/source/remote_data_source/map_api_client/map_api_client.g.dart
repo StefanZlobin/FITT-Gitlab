@@ -25,25 +25,29 @@ class _MapApiClient implements MapApiClient {
     queryParameters.addAll(request.toJson());
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<MapPoint>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<MapPoint>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'user/search',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => MapPoint.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              'user/search',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => MapPoint.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
+        !(requestOptions.responseType == ResponseType.bytes ||
+            requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {

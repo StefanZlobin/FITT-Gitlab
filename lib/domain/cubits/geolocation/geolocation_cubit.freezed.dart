@@ -45,16 +45,20 @@ mixin _$GeolocationState {
   TResult map<TResult extends Object?>({
     required TResult Function(_GeolocationStateInitial value) initial,
     required TResult Function(_GeolocationStateLoading value) loading,
-    required TResult Function(_GeolocationStatelocationDetected value) locationDetected,
-    required TResult Function(_GeolocationStateLocationDetectingError value) locationDetectingError,
+    required TResult Function(_GeolocationStatelocationDetected value)
+        locationDetected,
+    required TResult Function(_GeolocationStateLocationDetectingError value)
+        locationDetectingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GeolocationStateInitial value)? initial,
     TResult? Function(_GeolocationStateLoading value)? loading,
-    TResult? Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult? Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult? Function(_GeolocationStatelocationDetected value)?
+        locationDetected,
+    TResult? Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +66,8 @@ mixin _$GeolocationState {
     TResult Function(_GeolocationStateInitial value)? initial,
     TResult Function(_GeolocationStateLoading value)? loading,
     TResult Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,12 +75,14 @@ mixin _$GeolocationState {
 
 /// @nodoc
 abstract class $GeolocationStateCopyWith<$Res> {
-  factory $GeolocationStateCopyWith(GeolocationState value, $Res Function(GeolocationState) then) =
+  factory $GeolocationStateCopyWith(
+          GeolocationState value, $Res Function(GeolocationState) then) =
       _$GeolocationStateCopyWithImpl<$Res, GeolocationState>;
 }
 
 /// @nodoc
-class _$GeolocationStateCopyWithImpl<$Res, $Val extends GeolocationState> implements $GeolocationStateCopyWith<$Res> {
+class _$GeolocationStateCopyWithImpl<$Res, $Val extends GeolocationState>
+    implements $GeolocationStateCopyWith<$Res> {
   _$GeolocationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -86,8 +93,8 @@ class _$GeolocationStateCopyWithImpl<$Res, $Val extends GeolocationState> implem
 
 /// @nodoc
 abstract class _$$_GeolocationStateInitialCopyWith<$Res> {
-  factory _$$_GeolocationStateInitialCopyWith(
-          _$_GeolocationStateInitial value, $Res Function(_$_GeolocationStateInitial) then) =
+  factory _$$_GeolocationStateInitialCopyWith(_$_GeolocationStateInitial value,
+          $Res Function(_$_GeolocationStateInitial) then) =
       __$$_GeolocationStateInitialCopyWithImpl<$Res>;
 }
 
@@ -95,8 +102,8 @@ abstract class _$$_GeolocationStateInitialCopyWith<$Res> {
 class __$$_GeolocationStateInitialCopyWithImpl<$Res>
     extends _$GeolocationStateCopyWithImpl<$Res, _$_GeolocationStateInitial>
     implements _$$_GeolocationStateInitialCopyWith<$Res> {
-  __$$_GeolocationStateInitialCopyWithImpl(
-      _$_GeolocationStateInitial _value, $Res Function(_$_GeolocationStateInitial) _then)
+  __$$_GeolocationStateInitialCopyWithImpl(_$_GeolocationStateInitial _value,
+      $Res Function(_$_GeolocationStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -152,8 +159,10 @@ class _$_GeolocationStateInitial implements _GeolocationStateInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(_GeolocationStateInitial value) initial,
     required TResult Function(_GeolocationStateLoading value) loading,
-    required TResult Function(_GeolocationStatelocationDetected value) locationDetected,
-    required TResult Function(_GeolocationStateLocationDetectingError value) locationDetectingError,
+    required TResult Function(_GeolocationStatelocationDetected value)
+        locationDetected,
+    required TResult Function(_GeolocationStateLocationDetectingError value)
+        locationDetectingError,
   }) {
     return initial(this);
   }
@@ -163,8 +172,10 @@ class _$_GeolocationStateInitial implements _GeolocationStateInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GeolocationStateInitial value)? initial,
     TResult? Function(_GeolocationStateLoading value)? loading,
-    TResult? Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult? Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult? Function(_GeolocationStatelocationDetected value)?
+        locationDetected,
+    TResult? Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
   }) {
     return initial?.call(this);
   }
@@ -175,7 +186,8 @@ class _$_GeolocationStateInitial implements _GeolocationStateInitial {
     TResult Function(_GeolocationStateInitial value)? initial,
     TResult Function(_GeolocationStateLoading value)? loading,
     TResult Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -191,8 +203,8 @@ abstract class _GeolocationStateInitial implements GeolocationState {
 
 /// @nodoc
 abstract class _$$_GeolocationStateLoadingCopyWith<$Res> {
-  factory _$$_GeolocationStateLoadingCopyWith(
-          _$_GeolocationStateLoading value, $Res Function(_$_GeolocationStateLoading) then) =
+  factory _$$_GeolocationStateLoadingCopyWith(_$_GeolocationStateLoading value,
+          $Res Function(_$_GeolocationStateLoading) then) =
       __$$_GeolocationStateLoadingCopyWithImpl<$Res>;
 }
 
@@ -200,8 +212,8 @@ abstract class _$$_GeolocationStateLoadingCopyWith<$Res> {
 class __$$_GeolocationStateLoadingCopyWithImpl<$Res>
     extends _$GeolocationStateCopyWithImpl<$Res, _$_GeolocationStateLoading>
     implements _$$_GeolocationStateLoadingCopyWith<$Res> {
-  __$$_GeolocationStateLoadingCopyWithImpl(
-      _$_GeolocationStateLoading _value, $Res Function(_$_GeolocationStateLoading) _then)
+  __$$_GeolocationStateLoadingCopyWithImpl(_$_GeolocationStateLoading _value,
+      $Res Function(_$_GeolocationStateLoading) _then)
       : super(_value, _then);
 }
 
@@ -257,8 +269,10 @@ class _$_GeolocationStateLoading implements _GeolocationStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_GeolocationStateInitial value) initial,
     required TResult Function(_GeolocationStateLoading value) loading,
-    required TResult Function(_GeolocationStatelocationDetected value) locationDetected,
-    required TResult Function(_GeolocationStateLocationDetectingError value) locationDetectingError,
+    required TResult Function(_GeolocationStatelocationDetected value)
+        locationDetected,
+    required TResult Function(_GeolocationStateLocationDetectingError value)
+        locationDetectingError,
   }) {
     return loading(this);
   }
@@ -268,8 +282,10 @@ class _$_GeolocationStateLoading implements _GeolocationStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GeolocationStateInitial value)? initial,
     TResult? Function(_GeolocationStateLoading value)? loading,
-    TResult? Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult? Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult? Function(_GeolocationStatelocationDetected value)?
+        locationDetected,
+    TResult? Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
   }) {
     return loading?.call(this);
   }
@@ -280,7 +296,8 @@ class _$_GeolocationStateLoading implements _GeolocationStateLoading {
     TResult Function(_GeolocationStateInitial value)? initial,
     TResult Function(_GeolocationStateLoading value)? loading,
     TResult Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -297,7 +314,8 @@ abstract class _GeolocationStateLoading implements GeolocationState {
 /// @nodoc
 abstract class _$$_GeolocationStatelocationDetectedCopyWith<$Res> {
   factory _$$_GeolocationStatelocationDetectedCopyWith(
-          _$_GeolocationStatelocationDetected value, $Res Function(_$_GeolocationStatelocationDetected) then) =
+          _$_GeolocationStatelocationDetected value,
+          $Res Function(_$_GeolocationStatelocationDetected) then) =
       __$$_GeolocationStatelocationDetectedCopyWithImpl<$Res>;
   @useResult
   $Res call({Position position});
@@ -305,10 +323,12 @@ abstract class _$$_GeolocationStatelocationDetectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_GeolocationStatelocationDetectedCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_GeolocationStatelocationDetected>
+    extends _$GeolocationStateCopyWithImpl<$Res,
+        _$_GeolocationStatelocationDetected>
     implements _$$_GeolocationStatelocationDetectedCopyWith<$Res> {
   __$$_GeolocationStatelocationDetectedCopyWithImpl(
-      _$_GeolocationStatelocationDetected _value, $Res Function(_$_GeolocationStatelocationDetected) _then)
+      _$_GeolocationStatelocationDetected _value,
+      $Res Function(_$_GeolocationStatelocationDetected) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -327,7 +347,8 @@ class __$$_GeolocationStatelocationDetectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GeolocationStatelocationDetected implements _GeolocationStatelocationDetected {
+class _$_GeolocationStatelocationDetected
+    implements _GeolocationStatelocationDetected {
   const _$_GeolocationStatelocationDetected({required this.position});
 
   @override
@@ -341,8 +362,10 @@ class _$_GeolocationStatelocationDetected implements _GeolocationStatelocationDe
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GeolocationStatelocationDetectedCopyWith<_$_GeolocationStatelocationDetected> get copyWith =>
-      __$$_GeolocationStatelocationDetectedCopyWithImpl<_$_GeolocationStatelocationDetected>(this, _$identity);
+  _$$_GeolocationStatelocationDetectedCopyWith<
+          _$_GeolocationStatelocationDetected>
+      get copyWith => __$$_GeolocationStatelocationDetectedCopyWithImpl<
+          _$_GeolocationStatelocationDetected>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -386,8 +409,10 @@ class _$_GeolocationStatelocationDetected implements _GeolocationStatelocationDe
   TResult map<TResult extends Object?>({
     required TResult Function(_GeolocationStateInitial value) initial,
     required TResult Function(_GeolocationStateLoading value) loading,
-    required TResult Function(_GeolocationStatelocationDetected value) locationDetected,
-    required TResult Function(_GeolocationStateLocationDetectingError value) locationDetectingError,
+    required TResult Function(_GeolocationStatelocationDetected value)
+        locationDetected,
+    required TResult Function(_GeolocationStateLocationDetectingError value)
+        locationDetectingError,
   }) {
     return locationDetected(this);
   }
@@ -397,8 +422,10 @@ class _$_GeolocationStatelocationDetected implements _GeolocationStatelocationDe
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GeolocationStateInitial value)? initial,
     TResult? Function(_GeolocationStateLoading value)? loading,
-    TResult? Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult? Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult? Function(_GeolocationStatelocationDetected value)?
+        locationDetected,
+    TResult? Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
   }) {
     return locationDetected?.call(this);
   }
@@ -409,7 +436,8 @@ class _$_GeolocationStatelocationDetected implements _GeolocationStatelocationDe
     TResult Function(_GeolocationStateInitial value)? initial,
     TResult Function(_GeolocationStateLoading value)? loading,
     TResult Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
     required TResult orElse(),
   }) {
     if (locationDetected != null) {
@@ -420,18 +448,20 @@ class _$_GeolocationStatelocationDetected implements _GeolocationStatelocationDe
 }
 
 abstract class _GeolocationStatelocationDetected implements GeolocationState {
-  const factory _GeolocationStatelocationDetected({required final Position position}) =
-      _$_GeolocationStatelocationDetected;
+  const factory _GeolocationStatelocationDetected(
+      {required final Position position}) = _$_GeolocationStatelocationDetected;
 
   Position get position;
   @JsonKey(ignore: true)
-  _$$_GeolocationStatelocationDetectedCopyWith<_$_GeolocationStatelocationDetected> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_GeolocationStatelocationDetectedCopyWith<
+          _$_GeolocationStatelocationDetected>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_GeolocationStateLocationDetectingErrorCopyWith<$Res> {
-  factory _$$_GeolocationStateLocationDetectingErrorCopyWith(_$_GeolocationStateLocationDetectingError value,
+  factory _$$_GeolocationStateLocationDetectingErrorCopyWith(
+          _$_GeolocationStateLocationDetectingError value,
           $Res Function(_$_GeolocationStateLocationDetectingError) then) =
       __$$_GeolocationStateLocationDetectingErrorCopyWithImpl<$Res>;
   @useResult
@@ -440,10 +470,12 @@ abstract class _$$_GeolocationStateLocationDetectingErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_GeolocationStateLocationDetectingErrorCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_GeolocationStateLocationDetectingError>
+    extends _$GeolocationStateCopyWithImpl<$Res,
+        _$_GeolocationStateLocationDetectingError>
     implements _$$_GeolocationStateLocationDetectingErrorCopyWith<$Res> {
   __$$_GeolocationStateLocationDetectingErrorCopyWithImpl(
-      _$_GeolocationStateLocationDetectingError _value, $Res Function(_$_GeolocationStateLocationDetectingError) _then)
+      _$_GeolocationStateLocationDetectingError _value,
+      $Res Function(_$_GeolocationStateLocationDetectingError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -462,7 +494,8 @@ class __$$_GeolocationStateLocationDetectingErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GeolocationStateLocationDetectingError implements _GeolocationStateLocationDetectingError {
+class _$_GeolocationStateLocationDetectingError
+    implements _GeolocationStateLocationDetectingError {
   const _$_GeolocationStateLocationDetectingError({required this.error});
 
   @override
@@ -476,9 +509,10 @@ class _$_GeolocationStateLocationDetectingError implements _GeolocationStateLoca
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GeolocationStateLocationDetectingErrorCopyWith<_$_GeolocationStateLocationDetectingError> get copyWith =>
-      __$$_GeolocationStateLocationDetectingErrorCopyWithImpl<_$_GeolocationStateLocationDetectingError>(
-          this, _$identity);
+  _$$_GeolocationStateLocationDetectingErrorCopyWith<
+          _$_GeolocationStateLocationDetectingError>
+      get copyWith => __$$_GeolocationStateLocationDetectingErrorCopyWithImpl<
+          _$_GeolocationStateLocationDetectingError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -522,8 +556,10 @@ class _$_GeolocationStateLocationDetectingError implements _GeolocationStateLoca
   TResult map<TResult extends Object?>({
     required TResult Function(_GeolocationStateInitial value) initial,
     required TResult Function(_GeolocationStateLoading value) loading,
-    required TResult Function(_GeolocationStatelocationDetected value) locationDetected,
-    required TResult Function(_GeolocationStateLocationDetectingError value) locationDetectingError,
+    required TResult Function(_GeolocationStatelocationDetected value)
+        locationDetected,
+    required TResult Function(_GeolocationStateLocationDetectingError value)
+        locationDetectingError,
   }) {
     return locationDetectingError(this);
   }
@@ -533,8 +569,10 @@ class _$_GeolocationStateLocationDetectingError implements _GeolocationStateLoca
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GeolocationStateInitial value)? initial,
     TResult? Function(_GeolocationStateLoading value)? loading,
-    TResult? Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult? Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult? Function(_GeolocationStatelocationDetected value)?
+        locationDetected,
+    TResult? Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
   }) {
     return locationDetectingError?.call(this);
   }
@@ -545,7 +583,8 @@ class _$_GeolocationStateLocationDetectingError implements _GeolocationStateLoca
     TResult Function(_GeolocationStateInitial value)? initial,
     TResult Function(_GeolocationStateLoading value)? loading,
     TResult Function(_GeolocationStatelocationDetected value)? locationDetected,
-    TResult Function(_GeolocationStateLocationDetectingError value)? locationDetectingError,
+    TResult Function(_GeolocationStateLocationDetectingError value)?
+        locationDetectingError,
     required TResult orElse(),
   }) {
     if (locationDetectingError != null) {
@@ -555,12 +594,15 @@ class _$_GeolocationStateLocationDetectingError implements _GeolocationStateLoca
   }
 }
 
-abstract class _GeolocationStateLocationDetectingError implements GeolocationState {
-  const factory _GeolocationStateLocationDetectingError({required final String error}) =
+abstract class _GeolocationStateLocationDetectingError
+    implements GeolocationState {
+  const factory _GeolocationStateLocationDetectingError(
+          {required final String error}) =
       _$_GeolocationStateLocationDetectingError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_GeolocationStateLocationDetectingErrorCopyWith<_$_GeolocationStateLocationDetectingError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_GeolocationStateLocationDetectingErrorCopyWith<
+          _$_GeolocationStateLocationDetectingError>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -19,8 +19,10 @@ mixin _$NotificationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message) onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onChangeWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onPaymentWorkoutNotification,
     required TResult Function(RemoteMessage message) onPaymentBatchNotification,
   }) =>
       throw _privateConstructorUsedError;
@@ -44,25 +46,34 @@ mixin _$NotificationsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_OnChangeWorkoutNotification value) onChangeWorkoutNotification,
-    required TResult Function(_OnPaymentWorkoutNotification value) onPaymentWorkoutNotification,
-    required TResult Function(_OnPaymentBatchNotification value) onPaymentBatchNotification,
+    required TResult Function(_OnChangeWorkoutNotification value)
+        onChangeWorkoutNotification,
+    required TResult Function(_OnPaymentWorkoutNotification value)
+        onPaymentWorkoutNotification,
+    required TResult Function(_OnPaymentBatchNotification value)
+        onPaymentBatchNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult? Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult? Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult? Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult? Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult? Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,7 +81,8 @@ mixin _$NotificationsEvent {
 
 /// @nodoc
 abstract class $NotificationsEventCopyWith<$Res> {
-  factory $NotificationsEventCopyWith(NotificationsEvent value, $Res Function(NotificationsEvent) then) =
+  factory $NotificationsEventCopyWith(
+          NotificationsEvent value, $Res Function(NotificationsEvent) then) =
       _$NotificationsEventCopyWithImpl<$Res, NotificationsEvent>;
 }
 
@@ -87,13 +99,17 @@ class _$NotificationsEventCopyWithImpl<$Res, $Val extends NotificationsEvent>
 
 /// @nodoc
 abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(_$_Started value, $Res Function(_$_Started) then) = __$$_StartedCopyWithImpl<$Res>;
+  factory _$$_StartedCopyWith(
+          _$_Started value, $Res Function(_$_Started) then) =
+      __$$_StartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res> extends _$NotificationsEventCopyWithImpl<$Res, _$_Started>
+class __$$_StartedCopyWithImpl<$Res>
+    extends _$NotificationsEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then) : super(_value, _then);
+  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -108,7 +124,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Started);
   }
 
   @override
@@ -118,8 +135,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message) onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onChangeWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onPaymentWorkoutNotification,
     required TResult Function(RemoteMessage message) onPaymentBatchNotification,
   }) {
     return started();
@@ -155,9 +174,12 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_OnChangeWorkoutNotification value) onChangeWorkoutNotification,
-    required TResult Function(_OnPaymentWorkoutNotification value) onPaymentWorkoutNotification,
-    required TResult Function(_OnPaymentBatchNotification value) onPaymentBatchNotification,
+    required TResult Function(_OnChangeWorkoutNotification value)
+        onChangeWorkoutNotification,
+    required TResult Function(_OnPaymentWorkoutNotification value)
+        onPaymentWorkoutNotification,
+    required TResult Function(_OnPaymentBatchNotification value)
+        onPaymentBatchNotification,
   }) {
     return started(this);
   }
@@ -166,9 +188,12 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult? Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult? Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult? Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult? Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult? Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
   }) {
     return started?.call(this);
   }
@@ -177,9 +202,12 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -196,7 +224,8 @@ abstract class _Started implements NotificationsEvent {
 /// @nodoc
 abstract class _$$_OnChangeWorkoutNotificationCopyWith<$Res> {
   factory _$$_OnChangeWorkoutNotificationCopyWith(
-          _$_OnChangeWorkoutNotification value, $Res Function(_$_OnChangeWorkoutNotification) then) =
+          _$_OnChangeWorkoutNotification value,
+          $Res Function(_$_OnChangeWorkoutNotification) then) =
       __$$_OnChangeWorkoutNotificationCopyWithImpl<$Res>;
   @useResult
   $Res call({RemoteMessage message});
@@ -204,10 +233,12 @@ abstract class _$$_OnChangeWorkoutNotificationCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnChangeWorkoutNotificationCopyWithImpl<$Res>
-    extends _$NotificationsEventCopyWithImpl<$Res, _$_OnChangeWorkoutNotification>
+    extends _$NotificationsEventCopyWithImpl<$Res,
+        _$_OnChangeWorkoutNotification>
     implements _$$_OnChangeWorkoutNotificationCopyWith<$Res> {
   __$$_OnChangeWorkoutNotificationCopyWithImpl(
-      _$_OnChangeWorkoutNotification _value, $Res Function(_$_OnChangeWorkoutNotification) _then)
+      _$_OnChangeWorkoutNotification _value,
+      $Res Function(_$_OnChangeWorkoutNotification) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -251,15 +282,18 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnChangeWorkoutNotificationCopyWith<_$_OnChangeWorkoutNotification> get copyWith =>
-      __$$_OnChangeWorkoutNotificationCopyWithImpl<_$_OnChangeWorkoutNotification>(this, _$identity);
+  _$$_OnChangeWorkoutNotificationCopyWith<_$_OnChangeWorkoutNotification>
+      get copyWith => __$$_OnChangeWorkoutNotificationCopyWithImpl<
+          _$_OnChangeWorkoutNotification>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message) onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onChangeWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onPaymentWorkoutNotification,
     required TResult Function(RemoteMessage message) onPaymentBatchNotification,
   }) {
     return onChangeWorkoutNotification(message);
@@ -295,9 +329,12 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_OnChangeWorkoutNotification value) onChangeWorkoutNotification,
-    required TResult Function(_OnPaymentWorkoutNotification value) onPaymentWorkoutNotification,
-    required TResult Function(_OnPaymentBatchNotification value) onPaymentBatchNotification,
+    required TResult Function(_OnChangeWorkoutNotification value)
+        onChangeWorkoutNotification,
+    required TResult Function(_OnPaymentWorkoutNotification value)
+        onPaymentWorkoutNotification,
+    required TResult Function(_OnPaymentBatchNotification value)
+        onPaymentBatchNotification,
   }) {
     return onChangeWorkoutNotification(this);
   }
@@ -306,9 +343,12 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult? Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult? Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult? Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult? Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult? Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
   }) {
     return onChangeWorkoutNotification?.call(this);
   }
@@ -317,9 +357,12 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (onChangeWorkoutNotification != null) {
@@ -330,18 +373,20 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
 }
 
 abstract class _OnChangeWorkoutNotification implements NotificationsEvent {
-  const factory _OnChangeWorkoutNotification({required final RemoteMessage message}) = _$_OnChangeWorkoutNotification;
+  const factory _OnChangeWorkoutNotification(
+      {required final RemoteMessage message}) = _$_OnChangeWorkoutNotification;
 
   RemoteMessage get message;
   @JsonKey(ignore: true)
-  _$$_OnChangeWorkoutNotificationCopyWith<_$_OnChangeWorkoutNotification> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_OnChangeWorkoutNotificationCopyWith<_$_OnChangeWorkoutNotification>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_OnPaymentWorkoutNotificationCopyWith<$Res> {
   factory _$$_OnPaymentWorkoutNotificationCopyWith(
-          _$_OnPaymentWorkoutNotification value, $Res Function(_$_OnPaymentWorkoutNotification) then) =
+          _$_OnPaymentWorkoutNotification value,
+          $Res Function(_$_OnPaymentWorkoutNotification) then) =
       __$$_OnPaymentWorkoutNotificationCopyWithImpl<$Res>;
   @useResult
   $Res call({RemoteMessage message});
@@ -349,10 +394,12 @@ abstract class _$$_OnPaymentWorkoutNotificationCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnPaymentWorkoutNotificationCopyWithImpl<$Res>
-    extends _$NotificationsEventCopyWithImpl<$Res, _$_OnPaymentWorkoutNotification>
+    extends _$NotificationsEventCopyWithImpl<$Res,
+        _$_OnPaymentWorkoutNotification>
     implements _$$_OnPaymentWorkoutNotificationCopyWith<$Res> {
   __$$_OnPaymentWorkoutNotificationCopyWithImpl(
-      _$_OnPaymentWorkoutNotification _value, $Res Function(_$_OnPaymentWorkoutNotification) _then)
+      _$_OnPaymentWorkoutNotification _value,
+      $Res Function(_$_OnPaymentWorkoutNotification) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -396,15 +443,18 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnPaymentWorkoutNotificationCopyWith<_$_OnPaymentWorkoutNotification> get copyWith =>
-      __$$_OnPaymentWorkoutNotificationCopyWithImpl<_$_OnPaymentWorkoutNotification>(this, _$identity);
+  _$$_OnPaymentWorkoutNotificationCopyWith<_$_OnPaymentWorkoutNotification>
+      get copyWith => __$$_OnPaymentWorkoutNotificationCopyWithImpl<
+          _$_OnPaymentWorkoutNotification>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message) onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onChangeWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onPaymentWorkoutNotification,
     required TResult Function(RemoteMessage message) onPaymentBatchNotification,
   }) {
     return onPaymentWorkoutNotification(message);
@@ -440,9 +490,12 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_OnChangeWorkoutNotification value) onChangeWorkoutNotification,
-    required TResult Function(_OnPaymentWorkoutNotification value) onPaymentWorkoutNotification,
-    required TResult Function(_OnPaymentBatchNotification value) onPaymentBatchNotification,
+    required TResult Function(_OnChangeWorkoutNotification value)
+        onChangeWorkoutNotification,
+    required TResult Function(_OnPaymentWorkoutNotification value)
+        onPaymentWorkoutNotification,
+    required TResult Function(_OnPaymentBatchNotification value)
+        onPaymentBatchNotification,
   }) {
     return onPaymentWorkoutNotification(this);
   }
@@ -451,9 +504,12 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult? Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult? Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult? Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult? Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult? Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
   }) {
     return onPaymentWorkoutNotification?.call(this);
   }
@@ -462,9 +518,12 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (onPaymentWorkoutNotification != null) {
@@ -475,18 +534,20 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
 }
 
 abstract class _OnPaymentWorkoutNotification implements NotificationsEvent {
-  const factory _OnPaymentWorkoutNotification({required final RemoteMessage message}) = _$_OnPaymentWorkoutNotification;
+  const factory _OnPaymentWorkoutNotification(
+      {required final RemoteMessage message}) = _$_OnPaymentWorkoutNotification;
 
   RemoteMessage get message;
   @JsonKey(ignore: true)
-  _$$_OnPaymentWorkoutNotificationCopyWith<_$_OnPaymentWorkoutNotification> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_OnPaymentWorkoutNotificationCopyWith<_$_OnPaymentWorkoutNotification>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_OnPaymentBatchNotificationCopyWith<$Res> {
   factory _$$_OnPaymentBatchNotificationCopyWith(
-          _$_OnPaymentBatchNotification value, $Res Function(_$_OnPaymentBatchNotification) then) =
+          _$_OnPaymentBatchNotification value,
+          $Res Function(_$_OnPaymentBatchNotification) then) =
       __$$_OnPaymentBatchNotificationCopyWithImpl<$Res>;
   @useResult
   $Res call({RemoteMessage message});
@@ -494,10 +555,12 @@ abstract class _$$_OnPaymentBatchNotificationCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnPaymentBatchNotificationCopyWithImpl<$Res>
-    extends _$NotificationsEventCopyWithImpl<$Res, _$_OnPaymentBatchNotification>
+    extends _$NotificationsEventCopyWithImpl<$Res,
+        _$_OnPaymentBatchNotification>
     implements _$$_OnPaymentBatchNotificationCopyWith<$Res> {
   __$$_OnPaymentBatchNotificationCopyWithImpl(
-      _$_OnPaymentBatchNotification _value, $Res Function(_$_OnPaymentBatchNotification) _then)
+      _$_OnPaymentBatchNotification _value,
+      $Res Function(_$_OnPaymentBatchNotification) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -541,15 +604,18 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnPaymentBatchNotificationCopyWith<_$_OnPaymentBatchNotification> get copyWith =>
-      __$$_OnPaymentBatchNotificationCopyWithImpl<_$_OnPaymentBatchNotification>(this, _$identity);
+  _$$_OnPaymentBatchNotificationCopyWith<_$_OnPaymentBatchNotification>
+      get copyWith => __$$_OnPaymentBatchNotificationCopyWithImpl<
+          _$_OnPaymentBatchNotification>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message) onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onChangeWorkoutNotification,
+    required TResult Function(RemoteMessage message)
+        onPaymentWorkoutNotification,
     required TResult Function(RemoteMessage message) onPaymentBatchNotification,
   }) {
     return onPaymentBatchNotification(message);
@@ -585,9 +651,12 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_OnChangeWorkoutNotification value) onChangeWorkoutNotification,
-    required TResult Function(_OnPaymentWorkoutNotification value) onPaymentWorkoutNotification,
-    required TResult Function(_OnPaymentBatchNotification value) onPaymentBatchNotification,
+    required TResult Function(_OnChangeWorkoutNotification value)
+        onChangeWorkoutNotification,
+    required TResult Function(_OnPaymentWorkoutNotification value)
+        onPaymentWorkoutNotification,
+    required TResult Function(_OnPaymentBatchNotification value)
+        onPaymentBatchNotification,
   }) {
     return onPaymentBatchNotification(this);
   }
@@ -596,9 +665,12 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult? Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult? Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult? Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult? Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult? Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
   }) {
     return onPaymentBatchNotification?.call(this);
   }
@@ -607,9 +679,12 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_OnChangeWorkoutNotification value)? onChangeWorkoutNotification,
-    TResult Function(_OnPaymentWorkoutNotification value)? onPaymentWorkoutNotification,
-    TResult Function(_OnPaymentBatchNotification value)? onPaymentBatchNotification,
+    TResult Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (onPaymentBatchNotification != null) {
@@ -620,12 +695,13 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
 }
 
 abstract class _OnPaymentBatchNotification implements NotificationsEvent {
-  const factory _OnPaymentBatchNotification({required final RemoteMessage message}) = _$_OnPaymentBatchNotification;
+  const factory _OnPaymentBatchNotification(
+      {required final RemoteMessage message}) = _$_OnPaymentBatchNotification;
 
   RemoteMessage get message;
   @JsonKey(ignore: true)
-  _$$_OnPaymentBatchNotificationCopyWith<_$_OnPaymentBatchNotification> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_OnPaymentBatchNotificationCopyWith<_$_OnPaymentBatchNotification>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -687,13 +763,15 @@ mixin _$NotificationsState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -738,7 +816,8 @@ mixin _$NotificationsState {
 
 /// @nodoc
 abstract class $NotificationsStateCopyWith<$Res> {
-  factory $NotificationsStateCopyWith(NotificationsState value, $Res Function(NotificationsState) then) =
+  factory $NotificationsStateCopyWith(
+          NotificationsState value, $Res Function(NotificationsState) then) =
       _$NotificationsStateCopyWithImpl<$Res, NotificationsState>;
 }
 
@@ -755,13 +834,17 @@ class _$NotificationsStateCopyWithImpl<$Res, $Val extends NotificationsState>
 
 /// @nodoc
 abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(_$_Initial value, $Res Function(_$_Initial) then) = __$$_InitialCopyWithImpl<$Res>;
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then) : super(_value, _then);
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -776,7 +859,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -852,13 +936,15 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -917,14 +1003,17 @@ abstract class _Initial implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_PaymentBatchSuccessCopyWith<$Res> {
-  factory _$$_PaymentBatchSuccessCopyWith(_$_PaymentBatchSuccess value, $Res Function(_$_PaymentBatchSuccess) then) =
+  factory _$$_PaymentBatchSuccessCopyWith(_$_PaymentBatchSuccess value,
+          $Res Function(_$_PaymentBatchSuccess) then) =
       __$$_PaymentBatchSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PaymentBatchSuccessCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentBatchSuccess>
+class __$$_PaymentBatchSuccessCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentBatchSuccess>
     implements _$$_PaymentBatchSuccessCopyWith<$Res> {
-  __$$_PaymentBatchSuccessCopyWithImpl(_$_PaymentBatchSuccess _value, $Res Function(_$_PaymentBatchSuccess) _then)
+  __$$_PaymentBatchSuccessCopyWithImpl(_$_PaymentBatchSuccess _value,
+      $Res Function(_$_PaymentBatchSuccess) _then)
       : super(_value, _then);
 }
 
@@ -940,7 +1029,8 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_PaymentBatchSuccess);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PaymentBatchSuccess);
   }
 
   @override
@@ -1016,13 +1106,15 @@ class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -1081,14 +1173,17 @@ abstract class _PaymentBatchSuccess implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_PaymentBatchRejectCopyWith<$Res> {
-  factory _$$_PaymentBatchRejectCopyWith(_$_PaymentBatchReject value, $Res Function(_$_PaymentBatchReject) then) =
+  factory _$$_PaymentBatchRejectCopyWith(_$_PaymentBatchReject value,
+          $Res Function(_$_PaymentBatchReject) then) =
       __$$_PaymentBatchRejectCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PaymentBatchRejectCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentBatchReject>
+class __$$_PaymentBatchRejectCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentBatchReject>
     implements _$$_PaymentBatchRejectCopyWith<$Res> {
-  __$$_PaymentBatchRejectCopyWithImpl(_$_PaymentBatchReject _value, $Res Function(_$_PaymentBatchReject) _then)
+  __$$_PaymentBatchRejectCopyWithImpl(
+      _$_PaymentBatchReject _value, $Res Function(_$_PaymentBatchReject) _then)
       : super(_value, _then);
 }
 
@@ -1104,7 +1199,8 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_PaymentBatchReject);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PaymentBatchReject);
   }
 
   @override
@@ -1180,13 +1276,15 @@ class _$_PaymentBatchReject implements _PaymentBatchReject {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -1245,8 +1343,8 @@ abstract class _PaymentBatchReject implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_PaymentWorkoutSuccessCopyWith<$Res> {
-  factory _$$_PaymentWorkoutSuccessCopyWith(
-          _$_PaymentWorkoutSuccess value, $Res Function(_$_PaymentWorkoutSuccess) then) =
+  factory _$$_PaymentWorkoutSuccessCopyWith(_$_PaymentWorkoutSuccess value,
+          $Res Function(_$_PaymentWorkoutSuccess) then) =
       __$$_PaymentWorkoutSuccessCopyWithImpl<$Res>;
 }
 
@@ -1254,7 +1352,8 @@ abstract class _$$_PaymentWorkoutSuccessCopyWith<$Res> {
 class __$$_PaymentWorkoutSuccessCopyWithImpl<$Res>
     extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentWorkoutSuccess>
     implements _$$_PaymentWorkoutSuccessCopyWith<$Res> {
-  __$$_PaymentWorkoutSuccessCopyWithImpl(_$_PaymentWorkoutSuccess _value, $Res Function(_$_PaymentWorkoutSuccess) _then)
+  __$$_PaymentWorkoutSuccessCopyWithImpl(_$_PaymentWorkoutSuccess _value,
+      $Res Function(_$_PaymentWorkoutSuccess) _then)
       : super(_value, _then);
 }
 
@@ -1270,7 +1369,8 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_PaymentWorkoutSuccess);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PaymentWorkoutSuccess);
   }
 
   @override
@@ -1346,13 +1446,15 @@ class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -1411,7 +1513,8 @@ abstract class _PaymentWorkoutSuccess implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_PaymentWorkoutRejectCopyWith<$Res> {
-  factory _$$_PaymentWorkoutRejectCopyWith(_$_PaymentWorkoutReject value, $Res Function(_$_PaymentWorkoutReject) then) =
+  factory _$$_PaymentWorkoutRejectCopyWith(_$_PaymentWorkoutReject value,
+          $Res Function(_$_PaymentWorkoutReject) then) =
       __$$_PaymentWorkoutRejectCopyWithImpl<$Res>;
 }
 
@@ -1419,7 +1522,8 @@ abstract class _$$_PaymentWorkoutRejectCopyWith<$Res> {
 class __$$_PaymentWorkoutRejectCopyWithImpl<$Res>
     extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentWorkoutReject>
     implements _$$_PaymentWorkoutRejectCopyWith<$Res> {
-  __$$_PaymentWorkoutRejectCopyWithImpl(_$_PaymentWorkoutReject _value, $Res Function(_$_PaymentWorkoutReject) _then)
+  __$$_PaymentWorkoutRejectCopyWithImpl(_$_PaymentWorkoutReject _value,
+      $Res Function(_$_PaymentWorkoutReject) _then)
       : super(_value, _then);
 }
 
@@ -1435,7 +1539,8 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_PaymentWorkoutReject);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PaymentWorkoutReject);
   }
 
   @override
@@ -1511,13 +1616,15 @@ class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -1576,7 +1683,8 @@ abstract class _PaymentWorkoutReject implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_WorkoutStatusPlannedCopyWith<$Res> {
-  factory _$$_WorkoutStatusPlannedCopyWith(_$_WorkoutStatusPlanned value, $Res Function(_$_WorkoutStatusPlanned) then) =
+  factory _$$_WorkoutStatusPlannedCopyWith(_$_WorkoutStatusPlanned value,
+          $Res Function(_$_WorkoutStatusPlanned) then) =
       __$$_WorkoutStatusPlannedCopyWithImpl<$Res>;
 }
 
@@ -1584,7 +1692,8 @@ abstract class _$$_WorkoutStatusPlannedCopyWith<$Res> {
 class __$$_WorkoutStatusPlannedCopyWithImpl<$Res>
     extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusPlanned>
     implements _$$_WorkoutStatusPlannedCopyWith<$Res> {
-  __$$_WorkoutStatusPlannedCopyWithImpl(_$_WorkoutStatusPlanned _value, $Res Function(_$_WorkoutStatusPlanned) _then)
+  __$$_WorkoutStatusPlannedCopyWithImpl(_$_WorkoutStatusPlanned _value,
+      $Res Function(_$_WorkoutStatusPlanned) _then)
       : super(_value, _then);
 }
 
@@ -1600,7 +1709,8 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStatusPlanned);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusPlanned);
   }
 
   @override
@@ -1676,13 +1786,15 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -1741,14 +1853,17 @@ abstract class _WorkoutStatusPlanned implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_WorkoutStatusRSCopyWith<$Res> {
-  factory _$$_WorkoutStatusRSCopyWith(_$_WorkoutStatusRS value, $Res Function(_$_WorkoutStatusRS) then) =
+  factory _$$_WorkoutStatusRSCopyWith(
+          _$_WorkoutStatusRS value, $Res Function(_$_WorkoutStatusRS) then) =
       __$$_WorkoutStatusRSCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WorkoutStatusRSCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusRS>
+class __$$_WorkoutStatusRSCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusRS>
     implements _$$_WorkoutStatusRSCopyWith<$Res> {
-  __$$_WorkoutStatusRSCopyWithImpl(_$_WorkoutStatusRS _value, $Res Function(_$_WorkoutStatusRS) _then)
+  __$$_WorkoutStatusRSCopyWithImpl(
+      _$_WorkoutStatusRS _value, $Res Function(_$_WorkoutStatusRS) _then)
       : super(_value, _then);
 }
 
@@ -1764,7 +1879,8 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStatusRS);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusRS);
   }
 
   @override
@@ -1840,13 +1956,15 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -1905,7 +2023,8 @@ abstract class _WorkoutStatusRS implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_WorkoutStatusStartedCopyWith<$Res> {
-  factory _$$_WorkoutStatusStartedCopyWith(_$_WorkoutStatusStarted value, $Res Function(_$_WorkoutStatusStarted) then) =
+  factory _$$_WorkoutStatusStartedCopyWith(_$_WorkoutStatusStarted value,
+          $Res Function(_$_WorkoutStatusStarted) then) =
       __$$_WorkoutStatusStartedCopyWithImpl<$Res>;
 }
 
@@ -1913,7 +2032,8 @@ abstract class _$$_WorkoutStatusStartedCopyWith<$Res> {
 class __$$_WorkoutStatusStartedCopyWithImpl<$Res>
     extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusStarted>
     implements _$$_WorkoutStatusStartedCopyWith<$Res> {
-  __$$_WorkoutStatusStartedCopyWithImpl(_$_WorkoutStatusStarted _value, $Res Function(_$_WorkoutStatusStarted) _then)
+  __$$_WorkoutStatusStartedCopyWithImpl(_$_WorkoutStatusStarted _value,
+      $Res Function(_$_WorkoutStatusStarted) _then)
       : super(_value, _then);
 }
 
@@ -1929,7 +2049,8 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStatusStarted);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusStarted);
   }
 
   @override
@@ -2005,13 +2126,15 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -2070,14 +2193,17 @@ abstract class _WorkoutStatusStarted implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_WorkoutStatusRFCopyWith<$Res> {
-  factory _$$_WorkoutStatusRFCopyWith(_$_WorkoutStatusRF value, $Res Function(_$_WorkoutStatusRF) then) =
+  factory _$$_WorkoutStatusRFCopyWith(
+          _$_WorkoutStatusRF value, $Res Function(_$_WorkoutStatusRF) then) =
       __$$_WorkoutStatusRFCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WorkoutStatusRFCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusRF>
+class __$$_WorkoutStatusRFCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusRF>
     implements _$$_WorkoutStatusRFCopyWith<$Res> {
-  __$$_WorkoutStatusRFCopyWithImpl(_$_WorkoutStatusRF _value, $Res Function(_$_WorkoutStatusRF) _then)
+  __$$_WorkoutStatusRFCopyWithImpl(
+      _$_WorkoutStatusRF _value, $Res Function(_$_WorkoutStatusRF) _then)
       : super(_value, _then);
 }
 
@@ -2093,7 +2219,8 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStatusRF);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusRF);
   }
 
   @override
@@ -2169,13 +2296,15 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -2234,8 +2363,8 @@ abstract class _WorkoutStatusRF implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_WorkoutStatusFinishedCopyWith<$Res> {
-  factory _$$_WorkoutStatusFinishedCopyWith(
-          _$_WorkoutStatusFinished value, $Res Function(_$_WorkoutStatusFinished) then) =
+  factory _$$_WorkoutStatusFinishedCopyWith(_$_WorkoutStatusFinished value,
+          $Res Function(_$_WorkoutStatusFinished) then) =
       __$$_WorkoutStatusFinishedCopyWithImpl<$Res>;
 }
 
@@ -2243,7 +2372,8 @@ abstract class _$$_WorkoutStatusFinishedCopyWith<$Res> {
 class __$$_WorkoutStatusFinishedCopyWithImpl<$Res>
     extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusFinished>
     implements _$$_WorkoutStatusFinishedCopyWith<$Res> {
-  __$$_WorkoutStatusFinishedCopyWithImpl(_$_WorkoutStatusFinished _value, $Res Function(_$_WorkoutStatusFinished) _then)
+  __$$_WorkoutStatusFinishedCopyWithImpl(_$_WorkoutStatusFinished _value,
+      $Res Function(_$_WorkoutStatusFinished) _then)
       : super(_value, _then);
 }
 
@@ -2259,7 +2389,8 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStatusFinished);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusFinished);
   }
 
   @override
@@ -2335,13 +2466,15 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -2400,14 +2533,17 @@ abstract class _WorkoutStatusFinished implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_WorkoutStatusFFCopyWith<$Res> {
-  factory _$$_WorkoutStatusFFCopyWith(_$_WorkoutStatusFF value, $Res Function(_$_WorkoutStatusFF) then) =
+  factory _$$_WorkoutStatusFFCopyWith(
+          _$_WorkoutStatusFF value, $Res Function(_$_WorkoutStatusFF) then) =
       __$$_WorkoutStatusFFCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WorkoutStatusFFCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusFF>
+class __$$_WorkoutStatusFFCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusFF>
     implements _$$_WorkoutStatusFFCopyWith<$Res> {
-  __$$_WorkoutStatusFFCopyWithImpl(_$_WorkoutStatusFF _value, $Res Function(_$_WorkoutStatusFF) _then)
+  __$$_WorkoutStatusFFCopyWithImpl(
+      _$_WorkoutStatusFF _value, $Res Function(_$_WorkoutStatusFF) _then)
       : super(_value, _then);
 }
 
@@ -2423,7 +2559,8 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStatusFF);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusFF);
   }
 
   @override
@@ -2499,13 +2636,15 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -2564,14 +2703,17 @@ abstract class _WorkoutStatusFF implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_WorkoutStatusMissedCopyWith<$Res> {
-  factory _$$_WorkoutStatusMissedCopyWith(_$_WorkoutStatusMissed value, $Res Function(_$_WorkoutStatusMissed) then) =
+  factory _$$_WorkoutStatusMissedCopyWith(_$_WorkoutStatusMissed value,
+          $Res Function(_$_WorkoutStatusMissed) then) =
       __$$_WorkoutStatusMissedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WorkoutStatusMissedCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusMissed>
+class __$$_WorkoutStatusMissedCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_WorkoutStatusMissed>
     implements _$$_WorkoutStatusMissedCopyWith<$Res> {
-  __$$_WorkoutStatusMissedCopyWithImpl(_$_WorkoutStatusMissed _value, $Res Function(_$_WorkoutStatusMissed) _then)
+  __$$_WorkoutStatusMissedCopyWithImpl(_$_WorkoutStatusMissed _value,
+      $Res Function(_$_WorkoutStatusMissed) _then)
       : super(_value, _then);
 }
 
@@ -2587,7 +2729,8 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_WorkoutStatusMissed);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WorkoutStatusMissed);
   }
 
   @override
@@ -2663,13 +2806,15 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -2728,15 +2873,18 @@ abstract class _WorkoutStatusMissed implements NotificationsState {
 
 /// @nodoc
 abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) = __$$_ErrorCopyWithImpl<$Res>;
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$NotificationsStateCopyWithImpl<$Res, _$_Error>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$NotificationsStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then) : super(_value, _then);
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -2779,7 +2927,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith => __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2851,13 +3000,15 @@ class _$_Error implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
     required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value) paymentWorkoutSuccess,
+    required TResult Function(_PaymentWorkoutSuccess value)
+        paymentWorkoutSuccess,
     required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
     required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value) workoutStatusFinished,
+    required TResult Function(_WorkoutStatusFinished value)
+        workoutStatusFinished,
     required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
     required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
     required TResult Function(_Error value) error,
@@ -2915,5 +3066,6 @@ abstract class _Error implements NotificationsState {
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }

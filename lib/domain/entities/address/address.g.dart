@@ -12,7 +12,8 @@ _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       detailPath: json['detail_path'] as String?,
     );
 
-Map<String, dynamic> _$$_AddressToJson(_$_Address instance) => <String, dynamic>{
+Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
+    <String, dynamic>{
       'short_address': instance.shortAddress,
       'coordinates': instance.coordinates,
       'detail_path': instance.detailPath,

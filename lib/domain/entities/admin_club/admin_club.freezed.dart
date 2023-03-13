@@ -55,36 +55,55 @@ mixin _$AdminClub {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AdminClubCopyWith<AdminClub> get copyWith => throw _privateConstructorUsedError;
+  $AdminClubCopyWith<AdminClub> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AdminClubCopyWith<$Res> {
-  factory $AdminClubCopyWith(AdminClub value, $Res Function(AdminClub) then) = _$AdminClubCopyWithImpl<$Res, AdminClub>;
+  factory $AdminClubCopyWith(AdminClub value, $Res Function(AdminClub) then) =
+      _$AdminClubCopyWithImpl<$Res, AdminClub>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String? uuid,
-      @JsonKey(name: 'permission_type') String? permissionType,
-      @JsonKey(name: 'analyze_info') AnalyzeInfo? analyzeInfo,
-      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable) DateTime? created,
-      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable) DateTime? modified,
-      @JsonKey(name: 'timezone') String? timezone,
-      @JsonKey(name: 'label') String label,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'rating') double? rating,
-      @JsonKey(name: 'dependencies') String dependencies,
-      @JsonKey(name: 'status') String status,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'phone') String phone,
-      @JsonKey(name: 'organization') String organization,
-      @JsonKey(name: 'address') String? address,
-      @JsonKey(name: 'facilities') List<int>? facilities});
+      {@JsonKey(name: 'id')
+          String? uuid,
+      @JsonKey(name: 'permission_type')
+          String? permissionType,
+      @JsonKey(name: 'analyze_info')
+          AnalyzeInfo? analyzeInfo,
+      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable)
+          DateTime? created,
+      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable)
+          DateTime? modified,
+      @JsonKey(name: 'timezone')
+          String? timezone,
+      @JsonKey(name: 'label')
+          String label,
+      @JsonKey(name: 'description')
+          String description,
+      @JsonKey(name: 'rating')
+          double? rating,
+      @JsonKey(name: 'dependencies')
+          String dependencies,
+      @JsonKey(name: 'status')
+          String status,
+      @JsonKey(name: 'email')
+          String? email,
+      @JsonKey(name: 'phone')
+          String phone,
+      @JsonKey(name: 'organization')
+          String organization,
+      @JsonKey(name: 'address')
+          String? address,
+      @JsonKey(name: 'facilities')
+          List<int>? facilities});
 
   $AnalyzeInfoCopyWith<$Res>? get analyzeInfo;
 }
 
 /// @nodoc
-class _$AdminClubCopyWithImpl<$Res, $Val extends AdminClub> implements $AdminClubCopyWith<$Res> {
+class _$AdminClubCopyWithImpl<$Res, $Val extends AdminClub>
+    implements $AdminClubCopyWith<$Res> {
   _$AdminClubCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -195,36 +214,56 @@ class _$AdminClubCopyWithImpl<$Res, $Val extends AdminClub> implements $AdminClu
 
 /// @nodoc
 abstract class _$$_AdminClubCopyWith<$Res> implements $AdminClubCopyWith<$Res> {
-  factory _$$_AdminClubCopyWith(_$_AdminClub value, $Res Function(_$_AdminClub) then) =
+  factory _$$_AdminClubCopyWith(
+          _$_AdminClub value, $Res Function(_$_AdminClub) then) =
       __$$_AdminClubCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String? uuid,
-      @JsonKey(name: 'permission_type') String? permissionType,
-      @JsonKey(name: 'analyze_info') AnalyzeInfo? analyzeInfo,
-      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable) DateTime? created,
-      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable) DateTime? modified,
-      @JsonKey(name: 'timezone') String? timezone,
-      @JsonKey(name: 'label') String label,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'rating') double? rating,
-      @JsonKey(name: 'dependencies') String dependencies,
-      @JsonKey(name: 'status') String status,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'phone') String phone,
-      @JsonKey(name: 'organization') String organization,
-      @JsonKey(name: 'address') String? address,
-      @JsonKey(name: 'facilities') List<int>? facilities});
+      {@JsonKey(name: 'id')
+          String? uuid,
+      @JsonKey(name: 'permission_type')
+          String? permissionType,
+      @JsonKey(name: 'analyze_info')
+          AnalyzeInfo? analyzeInfo,
+      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable)
+          DateTime? created,
+      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable)
+          DateTime? modified,
+      @JsonKey(name: 'timezone')
+          String? timezone,
+      @JsonKey(name: 'label')
+          String label,
+      @JsonKey(name: 'description')
+          String description,
+      @JsonKey(name: 'rating')
+          double? rating,
+      @JsonKey(name: 'dependencies')
+          String dependencies,
+      @JsonKey(name: 'status')
+          String status,
+      @JsonKey(name: 'email')
+          String? email,
+      @JsonKey(name: 'phone')
+          String phone,
+      @JsonKey(name: 'organization')
+          String organization,
+      @JsonKey(name: 'address')
+          String? address,
+      @JsonKey(name: 'facilities')
+          List<int>? facilities});
 
   @override
   $AnalyzeInfoCopyWith<$Res>? get analyzeInfo;
 }
 
 /// @nodoc
-class __$$_AdminClubCopyWithImpl<$Res> extends _$AdminClubCopyWithImpl<$Res, _$_AdminClub>
+class __$$_AdminClubCopyWithImpl<$Res>
+    extends _$AdminClubCopyWithImpl<$Res, _$_AdminClub>
     implements _$$_AdminClubCopyWith<$Res> {
-  __$$_AdminClubCopyWithImpl(_$_AdminClub _value, $Res Function(_$_AdminClub) _then) : super(_value, _then);
+  __$$_AdminClubCopyWithImpl(
+      _$_AdminClub _value, $Res Function(_$_AdminClub) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -319,25 +358,42 @@ class __$$_AdminClubCopyWithImpl<$Res> extends _$AdminClubCopyWithImpl<$Res, _$_
 @JsonSerializable()
 class _$_AdminClub implements _AdminClub {
   const _$_AdminClub(
-      {@JsonKey(name: 'id') this.uuid,
-      @JsonKey(name: 'permission_type') this.permissionType,
-      @JsonKey(name: 'analyze_info') this.analyzeInfo,
-      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable) this.created,
-      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable) this.modified,
-      @JsonKey(name: 'timezone') this.timezone,
-      @JsonKey(name: 'label') required this.label,
-      @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'rating') this.rating,
-      @JsonKey(name: 'dependencies') required this.dependencies,
-      @JsonKey(name: 'status') required this.status,
-      @JsonKey(name: 'email') this.email,
-      @JsonKey(name: 'phone') required this.phone,
-      @JsonKey(name: 'organization') required this.organization,
-      @JsonKey(name: 'address') this.address,
-      @JsonKey(name: 'facilities') final List<int>? facilities})
+      {@JsonKey(name: 'id')
+          this.uuid,
+      @JsonKey(name: 'permission_type')
+          this.permissionType,
+      @JsonKey(name: 'analyze_info')
+          this.analyzeInfo,
+      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable)
+          this.created,
+      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable)
+          this.modified,
+      @JsonKey(name: 'timezone')
+          this.timezone,
+      @JsonKey(name: 'label')
+          required this.label,
+      @JsonKey(name: 'description')
+          required this.description,
+      @JsonKey(name: 'rating')
+          this.rating,
+      @JsonKey(name: 'dependencies')
+          required this.dependencies,
+      @JsonKey(name: 'status')
+          required this.status,
+      @JsonKey(name: 'email')
+          this.email,
+      @JsonKey(name: 'phone')
+          required this.phone,
+      @JsonKey(name: 'organization')
+          required this.organization,
+      @JsonKey(name: 'address')
+          this.address,
+      @JsonKey(name: 'facilities')
+          final List<int>? facilities})
       : _facilities = facilities;
 
-  factory _$_AdminClub.fromJson(Map<String, dynamic> json) => _$$_AdminClubFromJson(json);
+  factory _$_AdminClub.fromJson(Map<String, dynamic> json) =>
+      _$$_AdminClubFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -406,21 +462,29 @@ class _$_AdminClub implements _AdminClub {
         (other.runtimeType == runtimeType &&
             other is _$_AdminClub &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
-            (identical(other.permissionType, permissionType) || other.permissionType == permissionType) &&
-            (identical(other.analyzeInfo, analyzeInfo) || other.analyzeInfo == analyzeInfo) &&
+            (identical(other.permissionType, permissionType) ||
+                other.permissionType == permissionType) &&
+            (identical(other.analyzeInfo, analyzeInfo) ||
+                other.analyzeInfo == analyzeInfo) &&
             (identical(other.created, created) || other.created == created) &&
-            (identical(other.modified, modified) || other.modified == modified) &&
-            (identical(other.timezone, timezone) || other.timezone == timezone) &&
+            (identical(other.modified, modified) ||
+                other.modified == modified) &&
+            (identical(other.timezone, timezone) ||
+                other.timezone == timezone) &&
             (identical(other.label, label) || other.label == label) &&
-            (identical(other.description, description) || other.description == description) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.dependencies, dependencies) || other.dependencies == dependencies) &&
+            (identical(other.dependencies, dependencies) ||
+                other.dependencies == dependencies) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.organization, organization) || other.organization == organization) &&
+            (identical(other.organization, organization) ||
+                other.organization == organization) &&
             (identical(other.address, address) || other.address == address) &&
-            const DeepCollectionEquality().equals(other._facilities, _facilities));
+            const DeepCollectionEquality()
+                .equals(other._facilities, _facilities));
   }
 
   @JsonKey(ignore: true)
@@ -447,7 +511,8 @@ class _$_AdminClub implements _AdminClub {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminClubCopyWith<_$_AdminClub> get copyWith => __$$_AdminClubCopyWithImpl<_$_AdminClub>(this, _$identity);
+  _$$_AdminClubCopyWith<_$_AdminClub> get copyWith =>
+      __$$_AdminClubCopyWithImpl<_$_AdminClub>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -459,24 +524,41 @@ class _$_AdminClub implements _AdminClub {
 
 abstract class _AdminClub implements AdminClub {
   const factory _AdminClub(
-      {@JsonKey(name: 'id') final String? uuid,
-      @JsonKey(name: 'permission_type') final String? permissionType,
-      @JsonKey(name: 'analyze_info') final AnalyzeInfo? analyzeInfo,
-      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable) final DateTime? created,
-      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable) final DateTime? modified,
-      @JsonKey(name: 'timezone') final String? timezone,
-      @JsonKey(name: 'label') required final String label,
-      @JsonKey(name: 'description') required final String description,
-      @JsonKey(name: 'rating') final double? rating,
-      @JsonKey(name: 'dependencies') required final String dependencies,
-      @JsonKey(name: 'status') required final String status,
-      @JsonKey(name: 'email') final String? email,
-      @JsonKey(name: 'phone') required final String phone,
-      @JsonKey(name: 'organization') required final String organization,
-      @JsonKey(name: 'address') final String? address,
-      @JsonKey(name: 'facilities') final List<int>? facilities}) = _$_AdminClub;
+      {@JsonKey(name: 'id')
+          final String? uuid,
+      @JsonKey(name: 'permission_type')
+          final String? permissionType,
+      @JsonKey(name: 'analyze_info')
+          final AnalyzeInfo? analyzeInfo,
+      @JsonKey(name: 'created', fromJson: dateTimeFromStringNullable)
+          final DateTime? created,
+      @JsonKey(name: 'modified', fromJson: dateTimeFromStringNullable)
+          final DateTime? modified,
+      @JsonKey(name: 'timezone')
+          final String? timezone,
+      @JsonKey(name: 'label')
+          required final String label,
+      @JsonKey(name: 'description')
+          required final String description,
+      @JsonKey(name: 'rating')
+          final double? rating,
+      @JsonKey(name: 'dependencies')
+          required final String dependencies,
+      @JsonKey(name: 'status')
+          required final String status,
+      @JsonKey(name: 'email')
+          final String? email,
+      @JsonKey(name: 'phone')
+          required final String phone,
+      @JsonKey(name: 'organization')
+          required final String organization,
+      @JsonKey(name: 'address')
+          final String? address,
+      @JsonKey(name: 'facilities')
+          final List<int>? facilities}) = _$_AdminClub;
 
-  factory _AdminClub.fromJson(Map<String, dynamic> json) = _$_AdminClub.fromJson;
+  factory _AdminClub.fromJson(Map<String, dynamic> json) =
+      _$_AdminClub.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -528,5 +610,6 @@ abstract class _AdminClub implements AdminClub {
   List<int>? get facilities;
   @override
   @JsonKey(ignore: true)
-  _$$_AdminClubCopyWith<_$_AdminClub> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminClubCopyWith<_$_AdminClub> get copyWith =>
+      throw _privateConstructorUsedError;
 }

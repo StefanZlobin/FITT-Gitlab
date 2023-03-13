@@ -27,18 +27,21 @@ mixin _$Facility {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FacilityCopyWith<Facility> get copyWith => throw _privateConstructorUsedError;
+  $FacilityCopyWith<Facility> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FacilityCopyWith<$Res> {
-  factory $FacilityCopyWith(Facility value, $Res Function(Facility) then) = _$FacilityCopyWithImpl<$Res, Facility>;
+  factory $FacilityCopyWith(Facility value, $Res Function(Facility) then) =
+      _$FacilityCopyWithImpl<$Res, Facility>;
   @useResult
   $Res call({int id, String title, @JsonKey(name: 'icon') String? iconUrl});
 }
 
 /// @nodoc
-class _$FacilityCopyWithImpl<$Res, $Val extends Facility> implements $FacilityCopyWith<$Res> {
+class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
+    implements $FacilityCopyWith<$Res> {
   _$FacilityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -72,16 +75,21 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility> implements $FacilityCo
 
 /// @nodoc
 abstract class _$$_FacilityCopyWith<$Res> implements $FacilityCopyWith<$Res> {
-  factory _$$_FacilityCopyWith(_$_Facility value, $Res Function(_$_Facility) then) = __$$_FacilityCopyWithImpl<$Res>;
+  factory _$$_FacilityCopyWith(
+          _$_Facility value, $Res Function(_$_Facility) then) =
+      __$$_FacilityCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String title, @JsonKey(name: 'icon') String? iconUrl});
 }
 
 /// @nodoc
-class __$$_FacilityCopyWithImpl<$Res> extends _$FacilityCopyWithImpl<$Res, _$_Facility>
+class __$$_FacilityCopyWithImpl<$Res>
+    extends _$FacilityCopyWithImpl<$Res, _$_Facility>
     implements _$$_FacilityCopyWith<$Res> {
-  __$$_FacilityCopyWithImpl(_$_Facility _value, $Res Function(_$_Facility) _then) : super(_value, _then);
+  __$$_FacilityCopyWithImpl(
+      _$_Facility _value, $Res Function(_$_Facility) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -110,9 +118,13 @@ class __$$_FacilityCopyWithImpl<$Res> extends _$FacilityCopyWithImpl<$Res, _$_Fa
 /// @nodoc
 @JsonSerializable()
 class _$_Facility implements _Facility {
-  _$_Facility({required this.id, required this.title, @JsonKey(name: 'icon') this.iconUrl});
+  _$_Facility(
+      {required this.id,
+      required this.title,
+      @JsonKey(name: 'icon') this.iconUrl});
 
-  factory _$_Facility.fromJson(Map<String, dynamic> json) => _$$_FacilityFromJson(json);
+  factory _$_Facility.fromJson(Map<String, dynamic> json) =>
+      _$$_FacilityFromJson(json);
 
   @override
   final int id;
@@ -144,7 +156,8 @@ class _$_Facility implements _Facility {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FacilityCopyWith<_$_Facility> get copyWith => __$$_FacilityCopyWithImpl<_$_Facility>(this, _$identity);
+  _$$_FacilityCopyWith<_$_Facility> get copyWith =>
+      __$$_FacilityCopyWithImpl<_$_Facility>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -156,7 +169,9 @@ class _$_Facility implements _Facility {
 
 abstract class _Facility implements Facility {
   factory _Facility(
-      {required final int id, required final String title, @JsonKey(name: 'icon') final String? iconUrl}) = _$_Facility;
+      {required final int id,
+      required final String title,
+      @JsonKey(name: 'icon') final String? iconUrl}) = _$_Facility;
 
   factory _Facility.fromJson(Map<String, dynamic> json) = _$_Facility.fromJson;
 
@@ -169,5 +184,6 @@ abstract class _Facility implements Facility {
   String? get iconUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_FacilityCopyWith<_$_Facility> get copyWith => throw _privateConstructorUsedError;
+  _$$_FacilityCopyWith<_$_Facility> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -11,7 +11,8 @@ _$_Document _$$_DocumentFromJson(Map<String, dynamic> json) => _$_Document(
       fileUrl: json['url'] as String,
     );
 
-Map<String, dynamic> _$$_DocumentToJson(_$_Document instance) => <String, dynamic>{
+Map<String, dynamic> _$$_DocumentToJson(_$_Document instance) =>
+    <String, dynamic>{
       'name': instance.documentLabel,
       'url': instance.fileUrl,
     };

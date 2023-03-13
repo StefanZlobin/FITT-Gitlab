@@ -32,15 +32,19 @@ mixin _$Price {
 
 /// @nodoc
 abstract class $PriceCopyWith<$Res> {
-  factory $PriceCopyWith(Price value, $Res Function(Price) then) = _$PriceCopyWithImpl<$Res, Price>;
+  factory $PriceCopyWith(Price value, $Res Function(Price) then) =
+      _$PriceCopyWithImpl<$Res, Price>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable) int? minPrice,
-      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable) int? maxPrice});
+      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable)
+          int? minPrice,
+      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable)
+          int? maxPrice});
 }
 
 /// @nodoc
-class _$PriceCopyWithImpl<$Res, $Val extends Price> implements $PriceCopyWith<$Res> {
+class _$PriceCopyWithImpl<$Res, $Val extends Price>
+    implements $PriceCopyWith<$Res> {
   _$PriceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -69,17 +73,22 @@ class _$PriceCopyWithImpl<$Res, $Val extends Price> implements $PriceCopyWith<$R
 
 /// @nodoc
 abstract class _$$_PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
-  factory _$$_PriceCopyWith(_$_Price value, $Res Function(_$_Price) then) = __$$_PriceCopyWithImpl<$Res>;
+  factory _$$_PriceCopyWith(_$_Price value, $Res Function(_$_Price) then) =
+      __$$_PriceCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable) int? minPrice,
-      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable) int? maxPrice});
+      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable)
+          int? minPrice,
+      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable)
+          int? maxPrice});
 }
 
 /// @nodoc
-class __$$_PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res, _$_Price> implements _$$_PriceCopyWith<$Res> {
-  __$$_PriceCopyWithImpl(_$_Price _value, $Res Function(_$_Price) _then) : super(_value, _then);
+class __$$_PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res, _$_Price>
+    implements _$$_PriceCopyWith<$Res> {
+  __$$_PriceCopyWithImpl(_$_Price _value, $Res Function(_$_Price) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -104,10 +113,13 @@ class __$$_PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res, _$_Price> i
 @JsonSerializable()
 class _$_Price implements _Price {
   _$_Price(
-      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable) this.minPrice = 0,
-      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable) this.maxPrice = 0});
+      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable)
+          this.minPrice = 0,
+      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable)
+          this.maxPrice = 0});
 
-  factory _$_Price.fromJson(Map<String, dynamic> json) => _$$_PriceFromJson(json);
+  factory _$_Price.fromJson(Map<String, dynamic> json) =>
+      _$$_PriceFromJson(json);
 
   @override
   @JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable)
@@ -126,8 +138,10 @@ class _$_Price implements _Price {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Price &&
-            (identical(other.minPrice, minPrice) || other.minPrice == minPrice) &&
-            (identical(other.maxPrice, maxPrice) || other.maxPrice == maxPrice));
+            (identical(other.minPrice, minPrice) ||
+                other.minPrice == minPrice) &&
+            (identical(other.maxPrice, maxPrice) ||
+                other.maxPrice == maxPrice));
   }
 
   @JsonKey(ignore: true)
@@ -137,7 +151,8 @@ class _$_Price implements _Price {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PriceCopyWith<_$_Price> get copyWith => __$$_PriceCopyWithImpl<_$_Price>(this, _$identity);
+  _$$_PriceCopyWith<_$_Price> get copyWith =>
+      __$$_PriceCopyWithImpl<_$_Price>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -149,8 +164,10 @@ class _$_Price implements _Price {
 
 abstract class _Price implements Price {
   factory _Price(
-      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable) final int? minPrice,
-      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable) final int? maxPrice}) = _$_Price;
+      {@JsonKey(name: 'min', fromJson: toRublesNullable, toJson: toCentNullable)
+          final int? minPrice,
+      @JsonKey(name: 'max', fromJson: toRublesNullable, toJson: toCentNullable)
+          final int? maxPrice}) = _$_Price;
 
   factory _Price.fromJson(Map<String, dynamic> json) = _$_Price.fromJson;
 
@@ -162,5 +179,6 @@ abstract class _Price implements Price {
   int? get maxPrice;
   @override
   @JsonKey(ignore: true)
-  _$$_PriceCopyWith<_$_Price> get copyWith => throw _privateConstructorUsedError;
+  _$$_PriceCopyWith<_$_Price> get copyWith =>
+      throw _privateConstructorUsedError;
 }

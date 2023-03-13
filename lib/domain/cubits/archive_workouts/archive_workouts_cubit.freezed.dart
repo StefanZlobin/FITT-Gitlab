@@ -19,7 +19,9 @@ mixin _$ArchiveWorkoutsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch) loading,
+    required TResult Function(
+            List<Workout> oldArchiveWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> archiveWorkouts) loaded,
     required TResult Function(String error) error,
   }) =>
@@ -27,7 +29,8 @@ mixin _$ArchiveWorkoutsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult? Function(List<Workout> archiveWorkouts)? loaded,
     TResult? Function(String error)? error,
   }) =>
@@ -35,7 +38,8 @@ mixin _$ArchiveWorkoutsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult Function(List<Workout> archiveWorkouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -70,12 +74,14 @@ mixin _$ArchiveWorkoutsState {
 
 /// @nodoc
 abstract class $ArchiveWorkoutsStateCopyWith<$Res> {
-  factory $ArchiveWorkoutsStateCopyWith(ArchiveWorkoutsState value, $Res Function(ArchiveWorkoutsState) then) =
+  factory $ArchiveWorkoutsStateCopyWith(ArchiveWorkoutsState value,
+          $Res Function(ArchiveWorkoutsState) then) =
       _$ArchiveWorkoutsStateCopyWithImpl<$Res, ArchiveWorkoutsState>;
 }
 
 /// @nodoc
-class _$ArchiveWorkoutsStateCopyWithImpl<$Res, $Val extends ArchiveWorkoutsState>
+class _$ArchiveWorkoutsStateCopyWithImpl<$Res,
+        $Val extends ArchiveWorkoutsState>
     implements $ArchiveWorkoutsStateCopyWith<$Res> {
   _$ArchiveWorkoutsStateCopyWithImpl(this._value, this._then);
 
@@ -88,16 +94,19 @@ class _$ArchiveWorkoutsStateCopyWithImpl<$Res, $Val extends ArchiveWorkoutsState
 /// @nodoc
 abstract class _$$_ArchiveWorkoutsStateInitialCopyWith<$Res> {
   factory _$$_ArchiveWorkoutsStateInitialCopyWith(
-          _$_ArchiveWorkoutsStateInitial value, $Res Function(_$_ArchiveWorkoutsStateInitial) then) =
+          _$_ArchiveWorkoutsStateInitial value,
+          $Res Function(_$_ArchiveWorkoutsStateInitial) then) =
       __$$_ArchiveWorkoutsStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_ArchiveWorkoutsStateInitialCopyWithImpl<$Res>
-    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res, _$_ArchiveWorkoutsStateInitial>
+    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res,
+        _$_ArchiveWorkoutsStateInitial>
     implements _$$_ArchiveWorkoutsStateInitialCopyWith<$Res> {
   __$$_ArchiveWorkoutsStateInitialCopyWithImpl(
-      _$_ArchiveWorkoutsStateInitial _value, $Res Function(_$_ArchiveWorkoutsStateInitial) _then)
+      _$_ArchiveWorkoutsStateInitial _value,
+      $Res Function(_$_ArchiveWorkoutsStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -113,7 +122,9 @@ class _$_ArchiveWorkoutsStateInitial implements _ArchiveWorkoutsStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_ArchiveWorkoutsStateInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ArchiveWorkoutsStateInitial);
   }
 
   @override
@@ -123,7 +134,9 @@ class _$_ArchiveWorkoutsStateInitial implements _ArchiveWorkoutsStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch) loading,
+    required TResult Function(
+            List<Workout> oldArchiveWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> archiveWorkouts) loaded,
     required TResult Function(String error) error,
   }) {
@@ -134,7 +147,8 @@ class _$_ArchiveWorkoutsStateInitial implements _ArchiveWorkoutsStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult? Function(List<Workout> archiveWorkouts)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -145,7 +159,8 @@ class _$_ArchiveWorkoutsStateInitial implements _ArchiveWorkoutsStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult Function(List<Workout> archiveWorkouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -201,7 +216,8 @@ abstract class _ArchiveWorkoutsStateInitial implements ArchiveWorkoutsState {
 /// @nodoc
 abstract class _$$_ArchiveWorkoutsStateLoadingCopyWith<$Res> {
   factory _$$_ArchiveWorkoutsStateLoadingCopyWith(
-          _$_ArchiveWorkoutsStateLoading value, $Res Function(_$_ArchiveWorkoutsStateLoading) then) =
+          _$_ArchiveWorkoutsStateLoading value,
+          $Res Function(_$_ArchiveWorkoutsStateLoading) then) =
       __$$_ArchiveWorkoutsStateLoadingCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Workout> oldArchiveWorkouts, bool isFirstFetch});
@@ -209,10 +225,12 @@ abstract class _$$_ArchiveWorkoutsStateLoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ArchiveWorkoutsStateLoadingCopyWithImpl<$Res>
-    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res, _$_ArchiveWorkoutsStateLoading>
+    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res,
+        _$_ArchiveWorkoutsStateLoading>
     implements _$$_ArchiveWorkoutsStateLoadingCopyWith<$Res> {
   __$$_ArchiveWorkoutsStateLoadingCopyWithImpl(
-      _$_ArchiveWorkoutsStateLoading _value, $Res Function(_$_ArchiveWorkoutsStateLoading) _then)
+      _$_ArchiveWorkoutsStateLoading _value,
+      $Res Function(_$_ArchiveWorkoutsStateLoading) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -237,7 +255,8 @@ class __$$_ArchiveWorkoutsStateLoadingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ArchiveWorkoutsStateLoading implements _ArchiveWorkoutsStateLoading {
-  const _$_ArchiveWorkoutsStateLoading({required this.oldArchiveWorkouts, required this.isFirstFetch});
+  const _$_ArchiveWorkoutsStateLoading(
+      {required this.oldArchiveWorkouts, required this.isFirstFetch});
 
   @override
   final List<Workout> oldArchiveWorkouts;
@@ -254,24 +273,30 @@ class _$_ArchiveWorkoutsStateLoading implements _ArchiveWorkoutsStateLoading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArchiveWorkoutsStateLoading &&
-            const DeepCollectionEquality().equals(other.oldArchiveWorkouts, oldArchiveWorkouts) &&
-            (identical(other.isFirstFetch, isFirstFetch) || other.isFirstFetch == isFirstFetch));
+            const DeepCollectionEquality()
+                .equals(other.oldArchiveWorkouts, oldArchiveWorkouts) &&
+            (identical(other.isFirstFetch, isFirstFetch) ||
+                other.isFirstFetch == isFirstFetch));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(oldArchiveWorkouts), isFirstFetch);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(oldArchiveWorkouts), isFirstFetch);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArchiveWorkoutsStateLoadingCopyWith<_$_ArchiveWorkoutsStateLoading> get copyWith =>
-      __$$_ArchiveWorkoutsStateLoadingCopyWithImpl<_$_ArchiveWorkoutsStateLoading>(this, _$identity);
+  _$$_ArchiveWorkoutsStateLoadingCopyWith<_$_ArchiveWorkoutsStateLoading>
+      get copyWith => __$$_ArchiveWorkoutsStateLoadingCopyWithImpl<
+          _$_ArchiveWorkoutsStateLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch) loading,
+    required TResult Function(
+            List<Workout> oldArchiveWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> archiveWorkouts) loaded,
     required TResult Function(String error) error,
   }) {
@@ -282,7 +307,8 @@ class _$_ArchiveWorkoutsStateLoading implements _ArchiveWorkoutsStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult? Function(List<Workout> archiveWorkouts)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -293,7 +319,8 @@ class _$_ArchiveWorkoutsStateLoading implements _ArchiveWorkoutsStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult Function(List<Workout> archiveWorkouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -350,14 +377,15 @@ abstract class _ArchiveWorkoutsStateLoading implements ArchiveWorkoutsState {
   List<Workout> get oldArchiveWorkouts;
   bool get isFirstFetch;
   @JsonKey(ignore: true)
-  _$$_ArchiveWorkoutsStateLoadingCopyWith<_$_ArchiveWorkoutsStateLoading> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ArchiveWorkoutsStateLoadingCopyWith<_$_ArchiveWorkoutsStateLoading>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_ArchiveWorkoutsStateLoadedCopyWith<$Res> {
   factory _$$_ArchiveWorkoutsStateLoadedCopyWith(
-          _$_ArchiveWorkoutsStateLoaded value, $Res Function(_$_ArchiveWorkoutsStateLoaded) then) =
+          _$_ArchiveWorkoutsStateLoaded value,
+          $Res Function(_$_ArchiveWorkoutsStateLoaded) then) =
       __$$_ArchiveWorkoutsStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Workout> archiveWorkouts});
@@ -365,10 +393,12 @@ abstract class _$$_ArchiveWorkoutsStateLoadedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ArchiveWorkoutsStateLoadedCopyWithImpl<$Res>
-    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res, _$_ArchiveWorkoutsStateLoaded>
+    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res,
+        _$_ArchiveWorkoutsStateLoaded>
     implements _$$_ArchiveWorkoutsStateLoadedCopyWith<$Res> {
   __$$_ArchiveWorkoutsStateLoadedCopyWithImpl(
-      _$_ArchiveWorkoutsStateLoaded _value, $Res Function(_$_ArchiveWorkoutsStateLoaded) _then)
+      _$_ArchiveWorkoutsStateLoaded _value,
+      $Res Function(_$_ArchiveWorkoutsStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -403,23 +433,28 @@ class _$_ArchiveWorkoutsStateLoaded implements _ArchiveWorkoutsStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArchiveWorkoutsStateLoaded &&
-            const DeepCollectionEquality().equals(other.archiveWorkouts, archiveWorkouts));
+            const DeepCollectionEquality()
+                .equals(other.archiveWorkouts, archiveWorkouts));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(archiveWorkouts));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(archiveWorkouts));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArchiveWorkoutsStateLoadedCopyWith<_$_ArchiveWorkoutsStateLoaded> get copyWith =>
-      __$$_ArchiveWorkoutsStateLoadedCopyWithImpl<_$_ArchiveWorkoutsStateLoaded>(this, _$identity);
+  _$$_ArchiveWorkoutsStateLoadedCopyWith<_$_ArchiveWorkoutsStateLoaded>
+      get copyWith => __$$_ArchiveWorkoutsStateLoadedCopyWithImpl<
+          _$_ArchiveWorkoutsStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch) loading,
+    required TResult Function(
+            List<Workout> oldArchiveWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> archiveWorkouts) loaded,
     required TResult Function(String error) error,
   }) {
@@ -430,7 +465,8 @@ class _$_ArchiveWorkoutsStateLoaded implements _ArchiveWorkoutsStateLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult? Function(List<Workout> archiveWorkouts)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -441,7 +477,8 @@ class _$_ArchiveWorkoutsStateLoaded implements _ArchiveWorkoutsStateLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult Function(List<Workout> archiveWorkouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -491,19 +528,21 @@ class _$_ArchiveWorkoutsStateLoaded implements _ArchiveWorkoutsStateLoaded {
 }
 
 abstract class _ArchiveWorkoutsStateLoaded implements ArchiveWorkoutsState {
-  const factory _ArchiveWorkoutsStateLoaded({required final List<Workout> archiveWorkouts}) =
+  const factory _ArchiveWorkoutsStateLoaded(
+          {required final List<Workout> archiveWorkouts}) =
       _$_ArchiveWorkoutsStateLoaded;
 
   List<Workout> get archiveWorkouts;
   @JsonKey(ignore: true)
-  _$$_ArchiveWorkoutsStateLoadedCopyWith<_$_ArchiveWorkoutsStateLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ArchiveWorkoutsStateLoadedCopyWith<_$_ArchiveWorkoutsStateLoaded>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_ArchiveWorkoutsStateErrorCopyWith<$Res> {
   factory _$$_ArchiveWorkoutsStateErrorCopyWith(
-          _$_ArchiveWorkoutsStateError value, $Res Function(_$_ArchiveWorkoutsStateError) then) =
+          _$_ArchiveWorkoutsStateError value,
+          $Res Function(_$_ArchiveWorkoutsStateError) then) =
       __$$_ArchiveWorkoutsStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
@@ -511,10 +550,12 @@ abstract class _$$_ArchiveWorkoutsStateErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ArchiveWorkoutsStateErrorCopyWithImpl<$Res>
-    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res, _$_ArchiveWorkoutsStateError>
+    extends _$ArchiveWorkoutsStateCopyWithImpl<$Res,
+        _$_ArchiveWorkoutsStateError>
     implements _$$_ArchiveWorkoutsStateErrorCopyWith<$Res> {
   __$$_ArchiveWorkoutsStateErrorCopyWithImpl(
-      _$_ArchiveWorkoutsStateError _value, $Res Function(_$_ArchiveWorkoutsStateError) _then)
+      _$_ArchiveWorkoutsStateError _value,
+      $Res Function(_$_ArchiveWorkoutsStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -558,14 +599,17 @@ class _$_ArchiveWorkoutsStateError implements _ArchiveWorkoutsStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArchiveWorkoutsStateErrorCopyWith<_$_ArchiveWorkoutsStateError> get copyWith =>
-      __$$_ArchiveWorkoutsStateErrorCopyWithImpl<_$_ArchiveWorkoutsStateError>(this, _$identity);
+  _$$_ArchiveWorkoutsStateErrorCopyWith<_$_ArchiveWorkoutsStateError>
+      get copyWith => __$$_ArchiveWorkoutsStateErrorCopyWithImpl<
+          _$_ArchiveWorkoutsStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch) loading,
+    required TResult Function(
+            List<Workout> oldArchiveWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> archiveWorkouts) loaded,
     required TResult Function(String error) error,
   }) {
@@ -576,7 +620,8 @@ class _$_ArchiveWorkoutsStateError implements _ArchiveWorkoutsStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult? Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult? Function(List<Workout> archiveWorkouts)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -587,7 +632,8 @@ class _$_ArchiveWorkoutsStateError implements _ArchiveWorkoutsStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)? loading,
+    TResult Function(List<Workout> oldArchiveWorkouts, bool isFirstFetch)?
+        loading,
     TResult Function(List<Workout> archiveWorkouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -637,10 +683,11 @@ class _$_ArchiveWorkoutsStateError implements _ArchiveWorkoutsStateError {
 }
 
 abstract class _ArchiveWorkoutsStateError implements ArchiveWorkoutsState {
-  const factory _ArchiveWorkoutsStateError({required final String error}) = _$_ArchiveWorkoutsStateError;
+  const factory _ArchiveWorkoutsStateError({required final String error}) =
+      _$_ArchiveWorkoutsStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ArchiveWorkoutsStateErrorCopyWith<_$_ArchiveWorkoutsStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ArchiveWorkoutsStateErrorCopyWith<_$_ArchiveWorkoutsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -19,7 +19,8 @@ mixin _$PartnerClubsFavoriteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated) loaded,
+    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated)
+        loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,13 +65,14 @@ mixin _$PartnerClubsFavoriteState {
 
 /// @nodoc
 abstract class $PartnerClubsFavoriteStateCopyWith<$Res> {
-  factory $PartnerClubsFavoriteStateCopyWith(
-          PartnerClubsFavoriteState value, $Res Function(PartnerClubsFavoriteState) then) =
+  factory $PartnerClubsFavoriteStateCopyWith(PartnerClubsFavoriteState value,
+          $Res Function(PartnerClubsFavoriteState) then) =
       _$PartnerClubsFavoriteStateCopyWithImpl<$Res, PartnerClubsFavoriteState>;
 }
 
 /// @nodoc
-class _$PartnerClubsFavoriteStateCopyWithImpl<$Res, $Val extends PartnerClubsFavoriteState>
+class _$PartnerClubsFavoriteStateCopyWithImpl<$Res,
+        $Val extends PartnerClubsFavoriteState>
     implements $PartnerClubsFavoriteStateCopyWith<$Res> {
   _$PartnerClubsFavoriteStateCopyWithImpl(this._value, this._then);
 
@@ -83,22 +85,26 @@ class _$PartnerClubsFavoriteStateCopyWithImpl<$Res, $Val extends PartnerClubsFav
 /// @nodoc
 abstract class _$$_PartnerClubsFavoriteStateInitialCopyWith<$Res> {
   factory _$$_PartnerClubsFavoriteStateInitialCopyWith(
-          _$_PartnerClubsFavoriteStateInitial value, $Res Function(_$_PartnerClubsFavoriteStateInitial) then) =
+          _$_PartnerClubsFavoriteStateInitial value,
+          $Res Function(_$_PartnerClubsFavoriteStateInitial) then) =
       __$$_PartnerClubsFavoriteStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_PartnerClubsFavoriteStateInitialCopyWithImpl<$Res>
-    extends _$PartnerClubsFavoriteStateCopyWithImpl<$Res, _$_PartnerClubsFavoriteStateInitial>
+    extends _$PartnerClubsFavoriteStateCopyWithImpl<$Res,
+        _$_PartnerClubsFavoriteStateInitial>
     implements _$$_PartnerClubsFavoriteStateInitialCopyWith<$Res> {
   __$$_PartnerClubsFavoriteStateInitialCopyWithImpl(
-      _$_PartnerClubsFavoriteStateInitial _value, $Res Function(_$_PartnerClubsFavoriteStateInitial) _then)
+      _$_PartnerClubsFavoriteStateInitial _value,
+      $Res Function(_$_PartnerClubsFavoriteStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PartnerClubsFavoriteStateInitial implements _PartnerClubsFavoriteStateInitial {
+class _$_PartnerClubsFavoriteStateInitial
+    implements _PartnerClubsFavoriteStateInitial {
   const _$_PartnerClubsFavoriteStateInitial();
 
   @override
@@ -110,7 +116,8 @@ class _$_PartnerClubsFavoriteStateInitial implements _PartnerClubsFavoriteStateI
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated) loaded,
+    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -175,14 +182,17 @@ class _$_PartnerClubsFavoriteStateInitial implements _PartnerClubsFavoriteStateI
   }
 }
 
-abstract class _PartnerClubsFavoriteStateInitial implements PartnerClubsFavoriteState {
-  const factory _PartnerClubsFavoriteStateInitial() = _$_PartnerClubsFavoriteStateInitial;
+abstract class _PartnerClubsFavoriteStateInitial
+    implements PartnerClubsFavoriteState {
+  const factory _PartnerClubsFavoriteStateInitial() =
+      _$_PartnerClubsFavoriteStateInitial;
 }
 
 /// @nodoc
 abstract class _$$_PartnerClubsFavoriteStateLoadedCopyWith<$Res> {
   factory _$$_PartnerClubsFavoriteStateLoadedCopyWith(
-          _$_PartnerClubsFavoriteStateLoaded value, $Res Function(_$_PartnerClubsFavoriteStateLoaded) then) =
+          _$_PartnerClubsFavoriteStateLoaded value,
+          $Res Function(_$_PartnerClubsFavoriteStateLoaded) then) =
       __$$_PartnerClubsFavoriteStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PartnerClub> clubs, bool isFiltersUpdated});
@@ -190,10 +200,12 @@ abstract class _$$_PartnerClubsFavoriteStateLoadedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PartnerClubsFavoriteStateLoadedCopyWithImpl<$Res>
-    extends _$PartnerClubsFavoriteStateCopyWithImpl<$Res, _$_PartnerClubsFavoriteStateLoaded>
+    extends _$PartnerClubsFavoriteStateCopyWithImpl<$Res,
+        _$_PartnerClubsFavoriteStateLoaded>
     implements _$$_PartnerClubsFavoriteStateLoadedCopyWith<$Res> {
   __$$_PartnerClubsFavoriteStateLoadedCopyWithImpl(
-      _$_PartnerClubsFavoriteStateLoaded _value, $Res Function(_$_PartnerClubsFavoriteStateLoaded) _then)
+      _$_PartnerClubsFavoriteStateLoaded _value,
+      $Res Function(_$_PartnerClubsFavoriteStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -217,8 +229,10 @@ class __$$_PartnerClubsFavoriteStateLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PartnerClubsFavoriteStateLoaded implements _PartnerClubsFavoriteStateLoaded {
-  const _$_PartnerClubsFavoriteStateLoaded({required this.clubs, this.isFiltersUpdated = false});
+class _$_PartnerClubsFavoriteStateLoaded
+    implements _PartnerClubsFavoriteStateLoaded {
+  const _$_PartnerClubsFavoriteStateLoaded(
+      {required this.clubs, this.isFiltersUpdated = false});
 
   @override
   final List<PartnerClub> clubs;
@@ -234,14 +248,17 @@ class _$_PartnerClubsFavoriteStateLoaded implements _PartnerClubsFavoriteStateLo
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PartnerClubsFavoriteStateLoadedCopyWith<_$_PartnerClubsFavoriteStateLoaded> get copyWith =>
-      __$$_PartnerClubsFavoriteStateLoadedCopyWithImpl<_$_PartnerClubsFavoriteStateLoaded>(this, _$identity);
+  _$$_PartnerClubsFavoriteStateLoadedCopyWith<
+          _$_PartnerClubsFavoriteStateLoaded>
+      get copyWith => __$$_PartnerClubsFavoriteStateLoadedCopyWithImpl<
+          _$_PartnerClubsFavoriteStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated) loaded,
+    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return loaded(clubs, isFiltersUpdated);
@@ -306,21 +323,25 @@ class _$_PartnerClubsFavoriteStateLoaded implements _PartnerClubsFavoriteStateLo
   }
 }
 
-abstract class _PartnerClubsFavoriteStateLoaded implements PartnerClubsFavoriteState {
+abstract class _PartnerClubsFavoriteStateLoaded
+    implements PartnerClubsFavoriteState {
   const factory _PartnerClubsFavoriteStateLoaded(
-      {required final List<PartnerClub> clubs, final bool isFiltersUpdated}) = _$_PartnerClubsFavoriteStateLoaded;
+      {required final List<PartnerClub> clubs,
+      final bool isFiltersUpdated}) = _$_PartnerClubsFavoriteStateLoaded;
 
   List<PartnerClub> get clubs;
   bool get isFiltersUpdated;
   @JsonKey(ignore: true)
-  _$$_PartnerClubsFavoriteStateLoadedCopyWith<_$_PartnerClubsFavoriteStateLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_PartnerClubsFavoriteStateLoadedCopyWith<
+          _$_PartnerClubsFavoriteStateLoaded>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_PartnerClubsFavoriteStateErrorCopyWith<$Res> {
   factory _$$_PartnerClubsFavoriteStateErrorCopyWith(
-          _$_PartnerClubsFavoriteStateError value, $Res Function(_$_PartnerClubsFavoriteStateError) then) =
+          _$_PartnerClubsFavoriteStateError value,
+          $Res Function(_$_PartnerClubsFavoriteStateError) then) =
       __$$_PartnerClubsFavoriteStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
@@ -328,10 +349,12 @@ abstract class _$$_PartnerClubsFavoriteStateErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PartnerClubsFavoriteStateErrorCopyWithImpl<$Res>
-    extends _$PartnerClubsFavoriteStateCopyWithImpl<$Res, _$_PartnerClubsFavoriteStateError>
+    extends _$PartnerClubsFavoriteStateCopyWithImpl<$Res,
+        _$_PartnerClubsFavoriteStateError>
     implements _$$_PartnerClubsFavoriteStateErrorCopyWith<$Res> {
   __$$_PartnerClubsFavoriteStateErrorCopyWithImpl(
-      _$_PartnerClubsFavoriteStateError _value, $Res Function(_$_PartnerClubsFavoriteStateError) _then)
+      _$_PartnerClubsFavoriteStateError _value,
+      $Res Function(_$_PartnerClubsFavoriteStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -350,7 +373,8 @@ class __$$_PartnerClubsFavoriteStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PartnerClubsFavoriteStateError implements _PartnerClubsFavoriteStateError {
+class _$_PartnerClubsFavoriteStateError
+    implements _PartnerClubsFavoriteStateError {
   const _$_PartnerClubsFavoriteStateError({required this.error});
 
   @override
@@ -364,14 +388,16 @@ class _$_PartnerClubsFavoriteStateError implements _PartnerClubsFavoriteStateErr
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PartnerClubsFavoriteStateErrorCopyWith<_$_PartnerClubsFavoriteStateError> get copyWith =>
-      __$$_PartnerClubsFavoriteStateErrorCopyWithImpl<_$_PartnerClubsFavoriteStateError>(this, _$identity);
+  _$$_PartnerClubsFavoriteStateErrorCopyWith<_$_PartnerClubsFavoriteStateError>
+      get copyWith => __$$_PartnerClubsFavoriteStateErrorCopyWithImpl<
+          _$_PartnerClubsFavoriteStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated) loaded,
+    required TResult Function(List<PartnerClub> clubs, bool isFiltersUpdated)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -436,11 +462,13 @@ class _$_PartnerClubsFavoriteStateError implements _PartnerClubsFavoriteStateErr
   }
 }
 
-abstract class _PartnerClubsFavoriteStateError implements PartnerClubsFavoriteState {
-  const factory _PartnerClubsFavoriteStateError({required final String error}) = _$_PartnerClubsFavoriteStateError;
+abstract class _PartnerClubsFavoriteStateError
+    implements PartnerClubsFavoriteState {
+  const factory _PartnerClubsFavoriteStateError({required final String error}) =
+      _$_PartnerClubsFavoriteStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_PartnerClubsFavoriteStateErrorCopyWith<_$_PartnerClubsFavoriteStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_PartnerClubsFavoriteStateErrorCopyWith<_$_PartnerClubsFavoriteStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }

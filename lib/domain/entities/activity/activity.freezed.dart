@@ -29,12 +29,14 @@ mixin _$Activity {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ActivityCopyWith<Activity> get copyWith => throw _privateConstructorUsedError;
+  $ActivityCopyWith<Activity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ActivityCopyWith<$Res> {
-  factory $ActivityCopyWith(Activity value, $Res Function(Activity) then) = _$ActivityCopyWithImpl<$Res, Activity>;
+  factory $ActivityCopyWith(Activity value, $Res Function(Activity) then) =
+      _$ActivityCopyWithImpl<$Res, Activity>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String uuid,
@@ -44,7 +46,8 @@ abstract class $ActivityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ActivityCopyWithImpl<$Res, $Val extends Activity> implements $ActivityCopyWith<$Res> {
+class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
+    implements $ActivityCopyWith<$Res> {
   _$ActivityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -83,7 +86,9 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity> implements $ActivityCo
 
 /// @nodoc
 abstract class _$$_ActivityCopyWith<$Res> implements $ActivityCopyWith<$Res> {
-  factory _$$_ActivityCopyWith(_$_Activity value, $Res Function(_$_Activity) then) = __$$_ActivityCopyWithImpl<$Res>;
+  factory _$$_ActivityCopyWith(
+          _$_Activity value, $Res Function(_$_Activity) then) =
+      __$$_ActivityCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,9 +99,12 @@ abstract class _$$_ActivityCopyWith<$Res> implements $ActivityCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActivityCopyWithImpl<$Res> extends _$ActivityCopyWithImpl<$Res, _$_Activity>
+class __$$_ActivityCopyWithImpl<$Res>
+    extends _$ActivityCopyWithImpl<$Res, _$_Activity>
     implements _$$_ActivityCopyWith<$Res> {
-  __$$_ActivityCopyWithImpl(_$_Activity _value, $Res Function(_$_Activity) _then) : super(_value, _then);
+  __$$_ActivityCopyWithImpl(
+      _$_Activity _value, $Res Function(_$_Activity) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -137,7 +145,8 @@ class _$_Activity implements _Activity {
       @JsonKey(name: 'date_slots') required final List<DateSlot> dateSlots})
       : _dateSlots = dateSlots;
 
-  factory _$_Activity.fromJson(Map<String, dynamic> json) => _$$_ActivityFromJson(json);
+  factory _$_Activity.fromJson(Map<String, dynamic> json) =>
+      _$$_ActivityFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -167,19 +176,22 @@ class _$_Activity implements _Activity {
             other is _$_Activity &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.description, description) || other.description == description) &&
-            const DeepCollectionEquality().equals(other._dateSlots, _dateSlots));
+            (identical(other.description, description) ||
+                other.description == description) &&
+            const DeepCollectionEquality()
+                .equals(other._dateSlots, _dateSlots));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uuid, type, description, const DeepCollectionEquality().hash(_dateSlots));
+  int get hashCode => Object.hash(runtimeType, uuid, type, description,
+      const DeepCollectionEquality().hash(_dateSlots));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActivityCopyWith<_$_Activity> get copyWith => __$$_ActivityCopyWithImpl<_$_Activity>(this, _$identity);
+  _$$_ActivityCopyWith<_$_Activity> get copyWith =>
+      __$$_ActivityCopyWithImpl<_$_Activity>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -191,10 +203,12 @@ class _$_Activity implements _Activity {
 
 abstract class _Activity implements Activity {
   factory _Activity(
-      {@JsonKey(name: 'id') required final String uuid,
+      {@JsonKey(name: 'id')
+          required final String uuid,
       required final ActivityTypeEnum type,
       required final String description,
-      @JsonKey(name: 'date_slots') required final List<DateSlot> dateSlots}) = _$_Activity;
+      @JsonKey(name: 'date_slots')
+          required final List<DateSlot> dateSlots}) = _$_Activity;
 
   factory _Activity.fromJson(Map<String, dynamic> json) = _$_Activity.fromJson;
 
@@ -210,5 +224,6 @@ abstract class _Activity implements Activity {
   List<DateSlot> get dateSlots;
   @override
   @JsonKey(ignore: true)
-  _$$_ActivityCopyWith<_$_Activity> get copyWith => throw _privateConstructorUsedError;
+  _$$_ActivityCopyWith<_$_Activity> get copyWith =>
+      throw _privateConstructorUsedError;
 }

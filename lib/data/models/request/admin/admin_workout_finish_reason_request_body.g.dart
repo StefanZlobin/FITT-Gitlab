@@ -6,16 +6,20 @@ part of 'admin_workout_finish_reason_request_body.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AdminWorkoutFinishReasonRequestBody _$AdminWorkoutFinishReasonRequestBodyFromJson(Map<String, dynamic> json) =>
-    AdminWorkoutFinishReasonRequestBody(
-      adminWorkoutFinishReasonEnum: $enumDecodeNullable(_$AdminWorkoutFinishReasonEnumEnumMap, json['cause_type']) ??
-          AdminWorkoutFinishReasonEnum.none,
-      comment: json['comment'] as String? ?? 'none',
-    );
+AdminWorkoutFinishReasonRequestBody
+    _$AdminWorkoutFinishReasonRequestBodyFromJson(Map<String, dynamic> json) =>
+        AdminWorkoutFinishReasonRequestBody(
+          adminWorkoutFinishReasonEnum: $enumDecodeNullable(
+                  _$AdminWorkoutFinishReasonEnumEnumMap, json['cause_type']) ??
+              AdminWorkoutFinishReasonEnum.none,
+          comment: json['comment'] as String? ?? 'none',
+        );
 
-Map<String, dynamic> _$AdminWorkoutFinishReasonRequestBodyToJson(AdminWorkoutFinishReasonRequestBody instance) =>
+Map<String, dynamic> _$AdminWorkoutFinishReasonRequestBodyToJson(
+        AdminWorkoutFinishReasonRequestBody instance) =>
     <String, dynamic>{
-      'cause_type': _$AdminWorkoutFinishReasonEnumEnumMap[instance.adminWorkoutFinishReasonEnum]!,
+      'cause_type': _$AdminWorkoutFinishReasonEnumEnumMap[
+          instance.adminWorkoutFinishReasonEnum]!,
       'comment': instance.comment,
     };
 

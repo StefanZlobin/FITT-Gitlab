@@ -88,11 +88,13 @@ mixin _$ClubState {
 
 /// @nodoc
 abstract class $ClubStateCopyWith<$Res> {
-  factory $ClubStateCopyWith(ClubState value, $Res Function(ClubState) then) = _$ClubStateCopyWithImpl<$Res, ClubState>;
+  factory $ClubStateCopyWith(ClubState value, $Res Function(ClubState) then) =
+      _$ClubStateCopyWithImpl<$Res, ClubState>;
 }
 
 /// @nodoc
-class _$ClubStateCopyWithImpl<$Res, $Val extends ClubState> implements $ClubStateCopyWith<$Res> {
+class _$ClubStateCopyWithImpl<$Res, $Val extends ClubState>
+    implements $ClubStateCopyWith<$Res> {
   _$ClubStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -103,20 +105,24 @@ class _$ClubStateCopyWithImpl<$Res, $Val extends ClubState> implements $ClubStat
 
 /// @nodoc
 abstract class _$$_ClubStateLoadingCopyWith<$Res> {
-  factory _$$_ClubStateLoadingCopyWith(_$_ClubStateLoading value, $Res Function(_$_ClubStateLoading) then) =
+  factory _$$_ClubStateLoadingCopyWith(
+          _$_ClubStateLoading value, $Res Function(_$_ClubStateLoading) then) =
       __$$_ClubStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ClubStateLoadingCopyWithImpl<$Res> extends _$ClubStateCopyWithImpl<$Res, _$_ClubStateLoading>
+class __$$_ClubStateLoadingCopyWithImpl<$Res>
+    extends _$ClubStateCopyWithImpl<$Res, _$_ClubStateLoading>
     implements _$$_ClubStateLoadingCopyWith<$Res> {
-  __$$_ClubStateLoadingCopyWithImpl(_$_ClubStateLoading _value, $Res Function(_$_ClubStateLoading) _then)
+  __$$_ClubStateLoadingCopyWithImpl(
+      _$_ClubStateLoading _value, $Res Function(_$_ClubStateLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ClubStateLoading extends _ClubStateLoading with DiagnosticableTreeMixin {
+class _$_ClubStateLoading extends _ClubStateLoading
+    with DiagnosticableTreeMixin {
   const _$_ClubStateLoading() : super._();
 
   @override
@@ -230,7 +236,8 @@ abstract class _ClubStateLoading extends ClubState {
 
 /// @nodoc
 abstract class _$$_ClubStateLoadedCopyWith<$Res> {
-  factory _$$_ClubStateLoadedCopyWith(_$_ClubStateLoaded value, $Res Function(_$_ClubStateLoaded) then) =
+  factory _$$_ClubStateLoadedCopyWith(
+          _$_ClubStateLoaded value, $Res Function(_$_ClubStateLoaded) then) =
       __$$_ClubStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call(
@@ -247,9 +254,11 @@ abstract class _$$_ClubStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ClubStateLoadedCopyWithImpl<$Res> extends _$ClubStateCopyWithImpl<$Res, _$_ClubStateLoaded>
+class __$$_ClubStateLoadedCopyWithImpl<$Res>
+    extends _$ClubStateCopyWithImpl<$Res, _$_ClubStateLoaded>
     implements _$$_ClubStateLoadedCopyWith<$Res> {
-  __$$_ClubStateLoadedCopyWithImpl(_$_ClubStateLoaded _value, $Res Function(_$_ClubStateLoaded) _then)
+  __$$_ClubStateLoadedCopyWithImpl(
+      _$_ClubStateLoaded _value, $Res Function(_$_ClubStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -355,7 +364,8 @@ class _$_ClubStateLoaded extends _ClubStateLoaded with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'ClubState.loaded'))
       ..add(DiagnosticsProperty('club', club))
-      ..add(DiagnosticsProperty('lastAvailableDateSelected', lastAvailableDateSelected))
+      ..add(DiagnosticsProperty(
+          'lastAvailableDateSelected', lastAvailableDateSelected))
       ..add(DiagnosticsProperty('selectedActivity', selectedActivity))
       ..add(DiagnosticsProperty('dateSlots', dateSlots))
       ..add(DiagnosticsProperty('timeSlots', timeSlots))
@@ -384,7 +394,8 @@ class _$_ClubStateLoaded extends _ClubStateLoaded with DiagnosticableTreeMixin {
         loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(club, lastAvailableDateSelected, selectedActivity, dateSlots, timeSlots, durationSlots, batches);
+    return loaded(club, lastAvailableDateSelected, selectedActivity, dateSlots,
+        timeSlots, durationSlots, batches);
   }
 
   @override
@@ -402,8 +413,8 @@ class _$_ClubStateLoaded extends _ClubStateLoaded with DiagnosticableTreeMixin {
         loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(
-        club, lastAvailableDateSelected, selectedActivity, dateSlots, timeSlots, durationSlots, batches);
+    return loaded?.call(club, lastAvailableDateSelected, selectedActivity,
+        dateSlots, timeSlots, durationSlots, batches);
   }
 
   @override
@@ -423,7 +434,8 @@ class _$_ClubStateLoaded extends _ClubStateLoaded with DiagnosticableTreeMixin {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(club, lastAvailableDateSelected, selectedActivity, dateSlots, timeSlots, durationSlots, batches);
+      return loaded(club, lastAvailableDateSelected, selectedActivity,
+          dateSlots, timeSlots, durationSlots, batches);
     }
     return orElse();
   }
@@ -482,21 +494,25 @@ abstract class _ClubStateLoaded extends ClubState {
   FilterGroup<bool, ToggledFilter<Duration>>? get durationSlots;
   List<Batch>? get batches;
   @JsonKey(ignore: true)
-  _$$_ClubStateLoadedCopyWith<_$_ClubStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_ClubStateLoadedCopyWith<_$_ClubStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_ClubStateErrorCopyWith<$Res> {
-  factory _$$_ClubStateErrorCopyWith(_$_ClubStateError value, $Res Function(_$_ClubStateError) then) =
+  factory _$$_ClubStateErrorCopyWith(
+          _$_ClubStateError value, $Res Function(_$_ClubStateError) then) =
       __$$_ClubStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ClubStateErrorCopyWithImpl<$Res> extends _$ClubStateCopyWithImpl<$Res, _$_ClubStateError>
+class __$$_ClubStateErrorCopyWithImpl<$Res>
+    extends _$ClubStateCopyWithImpl<$Res, _$_ClubStateError>
     implements _$$_ClubStateErrorCopyWith<$Res> {
-  __$$_ClubStateErrorCopyWithImpl(_$_ClubStateError _value, $Res Function(_$_ClubStateError) _then)
+  __$$_ClubStateErrorCopyWithImpl(
+      _$_ClubStateError _value, $Res Function(_$_ClubStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -634,10 +650,12 @@ class _$_ClubStateError extends _ClubStateError with DiagnosticableTreeMixin {
 }
 
 abstract class _ClubStateError extends ClubState {
-  const factory _ClubStateError({required final String error}) = _$_ClubStateError;
+  const factory _ClubStateError({required final String error}) =
+      _$_ClubStateError;
   const _ClubStateError._() : super._();
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ClubStateErrorCopyWith<_$_ClubStateError> get copyWith => throw _privateConstructorUsedError;
+  _$$_ClubStateErrorCopyWith<_$_ClubStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

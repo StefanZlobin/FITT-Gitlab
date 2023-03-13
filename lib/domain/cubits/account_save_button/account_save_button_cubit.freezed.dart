@@ -38,7 +38,8 @@ mixin _$AccountSaveButtonState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AccountSaveButtonStateInitial value) initial,
-    required TResult Function(_AccountSaveButtonStateIsDisabled value) isDisabled,
+    required TResult Function(_AccountSaveButtonStateIsDisabled value)
+        isDisabled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,12 +59,14 @@ mixin _$AccountSaveButtonState {
 
 /// @nodoc
 abstract class $AccountSaveButtonStateCopyWith<$Res> {
-  factory $AccountSaveButtonStateCopyWith(AccountSaveButtonState value, $Res Function(AccountSaveButtonState) then) =
+  factory $AccountSaveButtonStateCopyWith(AccountSaveButtonState value,
+          $Res Function(AccountSaveButtonState) then) =
       _$AccountSaveButtonStateCopyWithImpl<$Res, AccountSaveButtonState>;
 }
 
 /// @nodoc
-class _$AccountSaveButtonStateCopyWithImpl<$Res, $Val extends AccountSaveButtonState>
+class _$AccountSaveButtonStateCopyWithImpl<$Res,
+        $Val extends AccountSaveButtonState>
     implements $AccountSaveButtonStateCopyWith<$Res> {
   _$AccountSaveButtonStateCopyWithImpl(this._value, this._then);
 
@@ -76,22 +79,26 @@ class _$AccountSaveButtonStateCopyWithImpl<$Res, $Val extends AccountSaveButtonS
 /// @nodoc
 abstract class _$$_AccountSaveButtonStateInitialCopyWith<$Res> {
   factory _$$_AccountSaveButtonStateInitialCopyWith(
-          _$_AccountSaveButtonStateInitial value, $Res Function(_$_AccountSaveButtonStateInitial) then) =
+          _$_AccountSaveButtonStateInitial value,
+          $Res Function(_$_AccountSaveButtonStateInitial) then) =
       __$$_AccountSaveButtonStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$_AccountSaveButtonStateInitialCopyWithImpl<$Res>
-    extends _$AccountSaveButtonStateCopyWithImpl<$Res, _$_AccountSaveButtonStateInitial>
+    extends _$AccountSaveButtonStateCopyWithImpl<$Res,
+        _$_AccountSaveButtonStateInitial>
     implements _$$_AccountSaveButtonStateInitialCopyWith<$Res> {
   __$$_AccountSaveButtonStateInitialCopyWithImpl(
-      _$_AccountSaveButtonStateInitial _value, $Res Function(_$_AccountSaveButtonStateInitial) _then)
+      _$_AccountSaveButtonStateInitial _value,
+      $Res Function(_$_AccountSaveButtonStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AccountSaveButtonStateInitial implements _AccountSaveButtonStateInitial {
+class _$_AccountSaveButtonStateInitial
+    implements _AccountSaveButtonStateInitial {
   const _$_AccountSaveButtonStateInitial();
 
   @override
@@ -101,7 +108,9 @@ class _$_AccountSaveButtonStateInitial implements _AccountSaveButtonStateInitial
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_AccountSaveButtonStateInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountSaveButtonStateInitial);
   }
 
   @override
@@ -142,7 +151,8 @@ class _$_AccountSaveButtonStateInitial implements _AccountSaveButtonStateInitial
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AccountSaveButtonStateInitial value) initial,
-    required TResult Function(_AccountSaveButtonStateIsDisabled value) isDisabled,
+    required TResult Function(_AccountSaveButtonStateIsDisabled value)
+        isDisabled,
   }) {
     return initial(this);
   }
@@ -170,14 +180,17 @@ class _$_AccountSaveButtonStateInitial implements _AccountSaveButtonStateInitial
   }
 }
 
-abstract class _AccountSaveButtonStateInitial implements AccountSaveButtonState {
-  const factory _AccountSaveButtonStateInitial() = _$_AccountSaveButtonStateInitial;
+abstract class _AccountSaveButtonStateInitial
+    implements AccountSaveButtonState {
+  const factory _AccountSaveButtonStateInitial() =
+      _$_AccountSaveButtonStateInitial;
 }
 
 /// @nodoc
 abstract class _$$_AccountSaveButtonStateIsDisabledCopyWith<$Res> {
   factory _$$_AccountSaveButtonStateIsDisabledCopyWith(
-          _$_AccountSaveButtonStateIsDisabled value, $Res Function(_$_AccountSaveButtonStateIsDisabled) then) =
+          _$_AccountSaveButtonStateIsDisabled value,
+          $Res Function(_$_AccountSaveButtonStateIsDisabled) then) =
       __$$_AccountSaveButtonStateIsDisabledCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isDisabled});
@@ -185,10 +198,12 @@ abstract class _$$_AccountSaveButtonStateIsDisabledCopyWith<$Res> {
 
 /// @nodoc
 class __$$_AccountSaveButtonStateIsDisabledCopyWithImpl<$Res>
-    extends _$AccountSaveButtonStateCopyWithImpl<$Res, _$_AccountSaveButtonStateIsDisabled>
+    extends _$AccountSaveButtonStateCopyWithImpl<$Res,
+        _$_AccountSaveButtonStateIsDisabled>
     implements _$$_AccountSaveButtonStateIsDisabledCopyWith<$Res> {
   __$$_AccountSaveButtonStateIsDisabledCopyWithImpl(
-      _$_AccountSaveButtonStateIsDisabled _value, $Res Function(_$_AccountSaveButtonStateIsDisabled) _then)
+      _$_AccountSaveButtonStateIsDisabled _value,
+      $Res Function(_$_AccountSaveButtonStateIsDisabled) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -207,7 +222,8 @@ class __$$_AccountSaveButtonStateIsDisabledCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AccountSaveButtonStateIsDisabled implements _AccountSaveButtonStateIsDisabled {
+class _$_AccountSaveButtonStateIsDisabled
+    implements _AccountSaveButtonStateIsDisabled {
   const _$_AccountSaveButtonStateIsDisabled({this.isDisabled = true});
 
   @override
@@ -224,7 +240,8 @@ class _$_AccountSaveButtonStateIsDisabled implements _AccountSaveButtonStateIsDi
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AccountSaveButtonStateIsDisabled &&
-            (identical(other.isDisabled, isDisabled) || other.isDisabled == isDisabled));
+            (identical(other.isDisabled, isDisabled) ||
+                other.isDisabled == isDisabled));
   }
 
   @override
@@ -233,8 +250,10 @@ class _$_AccountSaveButtonStateIsDisabled implements _AccountSaveButtonStateIsDi
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AccountSaveButtonStateIsDisabledCopyWith<_$_AccountSaveButtonStateIsDisabled> get copyWith =>
-      __$$_AccountSaveButtonStateIsDisabledCopyWithImpl<_$_AccountSaveButtonStateIsDisabled>(this, _$identity);
+  _$$_AccountSaveButtonStateIsDisabledCopyWith<
+          _$_AccountSaveButtonStateIsDisabled>
+      get copyWith => __$$_AccountSaveButtonStateIsDisabledCopyWithImpl<
+          _$_AccountSaveButtonStateIsDisabled>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -271,7 +290,8 @@ class _$_AccountSaveButtonStateIsDisabled implements _AccountSaveButtonStateIsDi
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AccountSaveButtonStateInitial value) initial,
-    required TResult Function(_AccountSaveButtonStateIsDisabled value) isDisabled,
+    required TResult Function(_AccountSaveButtonStateIsDisabled value)
+        isDisabled,
   }) {
     return isDisabled(this);
   }
@@ -299,11 +319,14 @@ class _$_AccountSaveButtonStateIsDisabled implements _AccountSaveButtonStateIsDi
   }
 }
 
-abstract class _AccountSaveButtonStateIsDisabled implements AccountSaveButtonState {
-  const factory _AccountSaveButtonStateIsDisabled({final bool isDisabled}) = _$_AccountSaveButtonStateIsDisabled;
+abstract class _AccountSaveButtonStateIsDisabled
+    implements AccountSaveButtonState {
+  const factory _AccountSaveButtonStateIsDisabled({final bool isDisabled}) =
+      _$_AccountSaveButtonStateIsDisabled;
 
   bool get isDisabled;
   @JsonKey(ignore: true)
-  _$$_AccountSaveButtonStateIsDisabledCopyWith<_$_AccountSaveButtonStateIsDisabled> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AccountSaveButtonStateIsDisabledCopyWith<
+          _$_AccountSaveButtonStateIsDisabled>
+      get copyWith => throw _privateConstructorUsedError;
 }

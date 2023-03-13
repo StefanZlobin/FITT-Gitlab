@@ -41,9 +41,11 @@ mixin _$WorkoutTimerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerEventTimerStarted value) timerStarted,
+    required TResult Function(_WorkoutTimerEventTimerStarted value)
+        timerStarted,
     required TResult Function(_WorkoutTimerEventTimerTicked value) timerTicked,
-    required TResult Function(_WorkoutTimerEventTimerComplete value) timerComplete,
+    required TResult Function(_WorkoutTimerEventTimerComplete value)
+        timerComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,12 +65,14 @@ mixin _$WorkoutTimerEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WorkoutTimerEventCopyWith<WorkoutTimerEvent> get copyWith => throw _privateConstructorUsedError;
+  $WorkoutTimerEventCopyWith<WorkoutTimerEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WorkoutTimerEventCopyWith<$Res> {
-  factory $WorkoutTimerEventCopyWith(WorkoutTimerEvent value, $Res Function(WorkoutTimerEvent) then) =
+  factory $WorkoutTimerEventCopyWith(
+          WorkoutTimerEvent value, $Res Function(WorkoutTimerEvent) then) =
       _$WorkoutTimerEventCopyWithImpl<$Res, WorkoutTimerEvent>;
   @useResult
   $Res call({Duration duration});
@@ -99,9 +103,11 @@ class _$WorkoutTimerEventCopyWithImpl<$Res, $Val extends WorkoutTimerEvent>
 }
 
 /// @nodoc
-abstract class _$$_WorkoutTimerEventTimerStartedCopyWith<$Res> implements $WorkoutTimerEventCopyWith<$Res> {
+abstract class _$$_WorkoutTimerEventTimerStartedCopyWith<$Res>
+    implements $WorkoutTimerEventCopyWith<$Res> {
   factory _$$_WorkoutTimerEventTimerStartedCopyWith(
-          _$_WorkoutTimerEventTimerStarted value, $Res Function(_$_WorkoutTimerEventTimerStarted) then) =
+          _$_WorkoutTimerEventTimerStarted value,
+          $Res Function(_$_WorkoutTimerEventTimerStarted) then) =
       __$$_WorkoutTimerEventTimerStartedCopyWithImpl<$Res>;
   @override
   @useResult
@@ -112,10 +118,12 @@ abstract class _$$_WorkoutTimerEventTimerStartedCopyWith<$Res> implements $Worko
 
 /// @nodoc
 class __$$_WorkoutTimerEventTimerStartedCopyWithImpl<$Res>
-    extends _$WorkoutTimerEventCopyWithImpl<$Res, _$_WorkoutTimerEventTimerStarted>
+    extends _$WorkoutTimerEventCopyWithImpl<$Res,
+        _$_WorkoutTimerEventTimerStarted>
     implements _$$_WorkoutTimerEventTimerStartedCopyWith<$Res> {
   __$$_WorkoutTimerEventTimerStartedCopyWithImpl(
-      _$_WorkoutTimerEventTimerStarted _value, $Res Function(_$_WorkoutTimerEventTimerStarted) _then)
+      _$_WorkoutTimerEventTimerStarted _value,
+      $Res Function(_$_WorkoutTimerEventTimerStarted) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -147,8 +155,10 @@ class __$$_WorkoutTimerEventTimerStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutTimerEventTimerStarted implements _WorkoutTimerEventTimerStarted {
-  const _$_WorkoutTimerEventTimerStarted({this.duration = const Duration(seconds: 60), required this.workout});
+class _$_WorkoutTimerEventTimerStarted
+    implements _WorkoutTimerEventTimerStarted {
+  const _$_WorkoutTimerEventTimerStarted(
+      {this.duration = const Duration(seconds: 60), required this.workout});
 
   @override
   @JsonKey()
@@ -166,7 +176,8 @@ class _$_WorkoutTimerEventTimerStarted implements _WorkoutTimerEventTimerStarted
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutTimerEventTimerStarted &&
-            (identical(other.duration, duration) || other.duration == duration) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
             (identical(other.workout, workout) || other.workout == workout));
   }
 
@@ -176,8 +187,9 @@ class _$_WorkoutTimerEventTimerStarted implements _WorkoutTimerEventTimerStarted
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutTimerEventTimerStartedCopyWith<_$_WorkoutTimerEventTimerStarted> get copyWith =>
-      __$$_WorkoutTimerEventTimerStartedCopyWithImpl<_$_WorkoutTimerEventTimerStarted>(this, _$identity);
+  _$$_WorkoutTimerEventTimerStartedCopyWith<_$_WorkoutTimerEventTimerStarted>
+      get copyWith => __$$_WorkoutTimerEventTimerStartedCopyWithImpl<
+          _$_WorkoutTimerEventTimerStarted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -216,9 +228,11 @@ class _$_WorkoutTimerEventTimerStarted implements _WorkoutTimerEventTimerStarted
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerEventTimerStarted value) timerStarted,
+    required TResult Function(_WorkoutTimerEventTimerStarted value)
+        timerStarted,
     required TResult Function(_WorkoutTimerEventTimerTicked value) timerTicked,
-    required TResult Function(_WorkoutTimerEventTimerComplete value) timerComplete,
+    required TResult Function(_WorkoutTimerEventTimerComplete value)
+        timerComplete,
   }) {
     return timerStarted(this);
   }
@@ -249,22 +263,25 @@ class _$_WorkoutTimerEventTimerStarted implements _WorkoutTimerEventTimerStarted
 }
 
 abstract class _WorkoutTimerEventTimerStarted implements WorkoutTimerEvent {
-  const factory _WorkoutTimerEventTimerStarted({final Duration duration, required final Workout workout}) =
-      _$_WorkoutTimerEventTimerStarted;
+  const factory _WorkoutTimerEventTimerStarted(
+      {final Duration duration,
+      required final Workout workout}) = _$_WorkoutTimerEventTimerStarted;
 
   @override
   Duration get duration;
   Workout get workout;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutTimerEventTimerStartedCopyWith<_$_WorkoutTimerEventTimerStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutTimerEventTimerStartedCopyWith<_$_WorkoutTimerEventTimerStarted>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WorkoutTimerEventTimerTickedCopyWith<$Res> implements $WorkoutTimerEventCopyWith<$Res> {
+abstract class _$$_WorkoutTimerEventTimerTickedCopyWith<$Res>
+    implements $WorkoutTimerEventCopyWith<$Res> {
   factory _$$_WorkoutTimerEventTimerTickedCopyWith(
-          _$_WorkoutTimerEventTimerTicked value, $Res Function(_$_WorkoutTimerEventTimerTicked) then) =
+          _$_WorkoutTimerEventTimerTicked value,
+          $Res Function(_$_WorkoutTimerEventTimerTicked) then) =
       __$$_WorkoutTimerEventTimerTickedCopyWithImpl<$Res>;
   @override
   @useResult
@@ -275,10 +292,12 @@ abstract class _$$_WorkoutTimerEventTimerTickedCopyWith<$Res> implements $Workou
 
 /// @nodoc
 class __$$_WorkoutTimerEventTimerTickedCopyWithImpl<$Res>
-    extends _$WorkoutTimerEventCopyWithImpl<$Res, _$_WorkoutTimerEventTimerTicked>
+    extends _$WorkoutTimerEventCopyWithImpl<$Res,
+        _$_WorkoutTimerEventTimerTicked>
     implements _$$_WorkoutTimerEventTimerTickedCopyWith<$Res> {
   __$$_WorkoutTimerEventTimerTickedCopyWithImpl(
-      _$_WorkoutTimerEventTimerTicked _value, $Res Function(_$_WorkoutTimerEventTimerTicked) _then)
+      _$_WorkoutTimerEventTimerTicked _value,
+      $Res Function(_$_WorkoutTimerEventTimerTicked) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -311,7 +330,8 @@ class __$$_WorkoutTimerEventTimerTickedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_WorkoutTimerEventTimerTicked implements _WorkoutTimerEventTimerTicked {
-  const _$_WorkoutTimerEventTimerTicked({this.duration = const Duration(seconds: 60), required this.workout});
+  const _$_WorkoutTimerEventTimerTicked(
+      {this.duration = const Duration(seconds: 60), required this.workout});
 
   @override
   @JsonKey()
@@ -329,7 +349,8 @@ class _$_WorkoutTimerEventTimerTicked implements _WorkoutTimerEventTimerTicked {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutTimerEventTimerTicked &&
-            (identical(other.duration, duration) || other.duration == duration) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
             (identical(other.workout, workout) || other.workout == workout));
   }
 
@@ -339,8 +360,9 @@ class _$_WorkoutTimerEventTimerTicked implements _WorkoutTimerEventTimerTicked {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutTimerEventTimerTickedCopyWith<_$_WorkoutTimerEventTimerTicked> get copyWith =>
-      __$$_WorkoutTimerEventTimerTickedCopyWithImpl<_$_WorkoutTimerEventTimerTicked>(this, _$identity);
+  _$$_WorkoutTimerEventTimerTickedCopyWith<_$_WorkoutTimerEventTimerTicked>
+      get copyWith => __$$_WorkoutTimerEventTimerTickedCopyWithImpl<
+          _$_WorkoutTimerEventTimerTicked>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -379,9 +401,11 @@ class _$_WorkoutTimerEventTimerTicked implements _WorkoutTimerEventTimerTicked {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerEventTimerStarted value) timerStarted,
+    required TResult Function(_WorkoutTimerEventTimerStarted value)
+        timerStarted,
     required TResult Function(_WorkoutTimerEventTimerTicked value) timerTicked,
-    required TResult Function(_WorkoutTimerEventTimerComplete value) timerComplete,
+    required TResult Function(_WorkoutTimerEventTimerComplete value)
+        timerComplete,
   }) {
     return timerTicked(this);
   }
@@ -412,22 +436,25 @@ class _$_WorkoutTimerEventTimerTicked implements _WorkoutTimerEventTimerTicked {
 }
 
 abstract class _WorkoutTimerEventTimerTicked implements WorkoutTimerEvent {
-  const factory _WorkoutTimerEventTimerTicked({final Duration duration, required final Workout workout}) =
-      _$_WorkoutTimerEventTimerTicked;
+  const factory _WorkoutTimerEventTimerTicked(
+      {final Duration duration,
+      required final Workout workout}) = _$_WorkoutTimerEventTimerTicked;
 
   @override
   Duration get duration;
   Workout get workout;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutTimerEventTimerTickedCopyWith<_$_WorkoutTimerEventTimerTicked> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutTimerEventTimerTickedCopyWith<_$_WorkoutTimerEventTimerTicked>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WorkoutTimerEventTimerCompleteCopyWith<$Res> implements $WorkoutTimerEventCopyWith<$Res> {
+abstract class _$$_WorkoutTimerEventTimerCompleteCopyWith<$Res>
+    implements $WorkoutTimerEventCopyWith<$Res> {
   factory _$$_WorkoutTimerEventTimerCompleteCopyWith(
-          _$_WorkoutTimerEventTimerComplete value, $Res Function(_$_WorkoutTimerEventTimerComplete) then) =
+          _$_WorkoutTimerEventTimerComplete value,
+          $Res Function(_$_WorkoutTimerEventTimerComplete) then) =
       __$$_WorkoutTimerEventTimerCompleteCopyWithImpl<$Res>;
   @override
   @useResult
@@ -436,10 +463,12 @@ abstract class _$$_WorkoutTimerEventTimerCompleteCopyWith<$Res> implements $Work
 
 /// @nodoc
 class __$$_WorkoutTimerEventTimerCompleteCopyWithImpl<$Res>
-    extends _$WorkoutTimerEventCopyWithImpl<$Res, _$_WorkoutTimerEventTimerComplete>
+    extends _$WorkoutTimerEventCopyWithImpl<$Res,
+        _$_WorkoutTimerEventTimerComplete>
     implements _$$_WorkoutTimerEventTimerCompleteCopyWith<$Res> {
   __$$_WorkoutTimerEventTimerCompleteCopyWithImpl(
-      _$_WorkoutTimerEventTimerComplete _value, $Res Function(_$_WorkoutTimerEventTimerComplete) _then)
+      _$_WorkoutTimerEventTimerComplete _value,
+      $Res Function(_$_WorkoutTimerEventTimerComplete) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -458,8 +487,10 @@ class __$$_WorkoutTimerEventTimerCompleteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutTimerEventTimerComplete implements _WorkoutTimerEventTimerComplete {
-  const _$_WorkoutTimerEventTimerComplete({this.duration = const Duration(seconds: 60)});
+class _$_WorkoutTimerEventTimerComplete
+    implements _WorkoutTimerEventTimerComplete {
+  const _$_WorkoutTimerEventTimerComplete(
+      {this.duration = const Duration(seconds: 60)});
 
   @override
   @JsonKey()
@@ -475,7 +506,8 @@ class _$_WorkoutTimerEventTimerComplete implements _WorkoutTimerEventTimerComple
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutTimerEventTimerComplete &&
-            (identical(other.duration, duration) || other.duration == duration));
+            (identical(other.duration, duration) ||
+                other.duration == duration));
   }
 
   @override
@@ -484,8 +516,9 @@ class _$_WorkoutTimerEventTimerComplete implements _WorkoutTimerEventTimerComple
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutTimerEventTimerCompleteCopyWith<_$_WorkoutTimerEventTimerComplete> get copyWith =>
-      __$$_WorkoutTimerEventTimerCompleteCopyWithImpl<_$_WorkoutTimerEventTimerComplete>(this, _$identity);
+  _$$_WorkoutTimerEventTimerCompleteCopyWith<_$_WorkoutTimerEventTimerComplete>
+      get copyWith => __$$_WorkoutTimerEventTimerCompleteCopyWithImpl<
+          _$_WorkoutTimerEventTimerComplete>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -524,9 +557,11 @@ class _$_WorkoutTimerEventTimerComplete implements _WorkoutTimerEventTimerComple
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerEventTimerStarted value) timerStarted,
+    required TResult Function(_WorkoutTimerEventTimerStarted value)
+        timerStarted,
     required TResult Function(_WorkoutTimerEventTimerTicked value) timerTicked,
-    required TResult Function(_WorkoutTimerEventTimerComplete value) timerComplete,
+    required TResult Function(_WorkoutTimerEventTimerComplete value)
+        timerComplete,
   }) {
     return timerComplete(this);
   }
@@ -557,14 +592,15 @@ class _$_WorkoutTimerEventTimerComplete implements _WorkoutTimerEventTimerComple
 }
 
 abstract class _WorkoutTimerEventTimerComplete implements WorkoutTimerEvent {
-  const factory _WorkoutTimerEventTimerComplete({final Duration duration}) = _$_WorkoutTimerEventTimerComplete;
+  const factory _WorkoutTimerEventTimerComplete({final Duration duration}) =
+      _$_WorkoutTimerEventTimerComplete;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutTimerEventTimerCompleteCopyWith<_$_WorkoutTimerEventTimerComplete> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutTimerEventTimerCompleteCopyWith<_$_WorkoutTimerEventTimerComplete>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -597,37 +633,49 @@ mixin _$WorkoutTimerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerStateTimerInitial value) timerInitial,
-    required TResult Function(_WorkoutTimerStateTimerRunInProgress value) timerRunInProgress,
-    required TResult Function(_WorkoutTimerStateTimerRunInDanger value) timerRunInDanger,
-    required TResult Function(_WorkoutTimerStateTimerRunComplete value) timerRunComplete,
+    required TResult Function(_WorkoutTimerStateTimerInitial value)
+        timerInitial,
+    required TResult Function(_WorkoutTimerStateTimerRunInProgress value)
+        timerRunInProgress,
+    required TResult Function(_WorkoutTimerStateTimerRunInDanger value)
+        timerRunInDanger,
+    required TResult Function(_WorkoutTimerStateTimerRunComplete value)
+        timerRunComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult? Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult? Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WorkoutTimerStateCopyWith<WorkoutTimerState> get copyWith => throw _privateConstructorUsedError;
+  $WorkoutTimerStateCopyWith<WorkoutTimerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $WorkoutTimerStateCopyWith<$Res> {
-  factory $WorkoutTimerStateCopyWith(WorkoutTimerState value, $Res Function(WorkoutTimerState) then) =
+  factory $WorkoutTimerStateCopyWith(
+          WorkoutTimerState value, $Res Function(WorkoutTimerState) then) =
       _$WorkoutTimerStateCopyWithImpl<$Res, WorkoutTimerState>;
   @useResult
   $Res call({Duration duration});
@@ -658,9 +706,11 @@ class _$WorkoutTimerStateCopyWithImpl<$Res, $Val extends WorkoutTimerState>
 }
 
 /// @nodoc
-abstract class _$$_WorkoutTimerStateTimerInitialCopyWith<$Res> implements $WorkoutTimerStateCopyWith<$Res> {
+abstract class _$$_WorkoutTimerStateTimerInitialCopyWith<$Res>
+    implements $WorkoutTimerStateCopyWith<$Res> {
   factory _$$_WorkoutTimerStateTimerInitialCopyWith(
-          _$_WorkoutTimerStateTimerInitial value, $Res Function(_$_WorkoutTimerStateTimerInitial) then) =
+          _$_WorkoutTimerStateTimerInitial value,
+          $Res Function(_$_WorkoutTimerStateTimerInitial) then) =
       __$$_WorkoutTimerStateTimerInitialCopyWithImpl<$Res>;
   @override
   @useResult
@@ -669,10 +719,12 @@ abstract class _$$_WorkoutTimerStateTimerInitialCopyWith<$Res> implements $Worko
 
 /// @nodoc
 class __$$_WorkoutTimerStateTimerInitialCopyWithImpl<$Res>
-    extends _$WorkoutTimerStateCopyWithImpl<$Res, _$_WorkoutTimerStateTimerInitial>
+    extends _$WorkoutTimerStateCopyWithImpl<$Res,
+        _$_WorkoutTimerStateTimerInitial>
     implements _$$_WorkoutTimerStateTimerInitialCopyWith<$Res> {
   __$$_WorkoutTimerStateTimerInitialCopyWithImpl(
-      _$_WorkoutTimerStateTimerInitial _value, $Res Function(_$_WorkoutTimerStateTimerInitial) _then)
+      _$_WorkoutTimerStateTimerInitial _value,
+      $Res Function(_$_WorkoutTimerStateTimerInitial) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -691,8 +743,10 @@ class __$$_WorkoutTimerStateTimerInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutTimerStateTimerInitial implements _WorkoutTimerStateTimerInitial {
-  const _$_WorkoutTimerStateTimerInitial({this.duration = const Duration(seconds: 60)});
+class _$_WorkoutTimerStateTimerInitial
+    implements _WorkoutTimerStateTimerInitial {
+  const _$_WorkoutTimerStateTimerInitial(
+      {this.duration = const Duration(seconds: 60)});
 
   @override
   @JsonKey()
@@ -708,7 +762,8 @@ class _$_WorkoutTimerStateTimerInitial implements _WorkoutTimerStateTimerInitial
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutTimerStateTimerInitial &&
-            (identical(other.duration, duration) || other.duration == duration));
+            (identical(other.duration, duration) ||
+                other.duration == duration));
   }
 
   @override
@@ -717,8 +772,9 @@ class _$_WorkoutTimerStateTimerInitial implements _WorkoutTimerStateTimerInitial
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutTimerStateTimerInitialCopyWith<_$_WorkoutTimerStateTimerInitial> get copyWith =>
-      __$$_WorkoutTimerStateTimerInitialCopyWithImpl<_$_WorkoutTimerStateTimerInitial>(this, _$identity);
+  _$$_WorkoutTimerStateTimerInitialCopyWith<_$_WorkoutTimerStateTimerInitial>
+      get copyWith => __$$_WorkoutTimerStateTimerInitialCopyWithImpl<
+          _$_WorkoutTimerStateTimerInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -760,10 +816,14 @@ class _$_WorkoutTimerStateTimerInitial implements _WorkoutTimerStateTimerInitial
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerStateTimerInitial value) timerInitial,
-    required TResult Function(_WorkoutTimerStateTimerRunInProgress value) timerRunInProgress,
-    required TResult Function(_WorkoutTimerStateTimerRunInDanger value) timerRunInDanger,
-    required TResult Function(_WorkoutTimerStateTimerRunComplete value) timerRunComplete,
+    required TResult Function(_WorkoutTimerStateTimerInitial value)
+        timerInitial,
+    required TResult Function(_WorkoutTimerStateTimerRunInProgress value)
+        timerRunInProgress,
+    required TResult Function(_WorkoutTimerStateTimerRunInDanger value)
+        timerRunInDanger,
+    required TResult Function(_WorkoutTimerStateTimerRunComplete value)
+        timerRunComplete,
   }) {
     return timerInitial(this);
   }
@@ -772,9 +832,12 @@ class _$_WorkoutTimerStateTimerInitial implements _WorkoutTimerStateTimerInitial
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult? Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult? Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
   }) {
     return timerInitial?.call(this);
   }
@@ -783,9 +846,12 @@ class _$_WorkoutTimerStateTimerInitial implements _WorkoutTimerStateTimerInitial
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
     required TResult orElse(),
   }) {
     if (timerInitial != null) {
@@ -796,20 +862,23 @@ class _$_WorkoutTimerStateTimerInitial implements _WorkoutTimerStateTimerInitial
 }
 
 abstract class _WorkoutTimerStateTimerInitial implements WorkoutTimerState {
-  const factory _WorkoutTimerStateTimerInitial({final Duration duration}) = _$_WorkoutTimerStateTimerInitial;
+  const factory _WorkoutTimerStateTimerInitial({final Duration duration}) =
+      _$_WorkoutTimerStateTimerInitial;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutTimerStateTimerInitialCopyWith<_$_WorkoutTimerStateTimerInitial> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutTimerStateTimerInitialCopyWith<_$_WorkoutTimerStateTimerInitial>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WorkoutTimerStateTimerRunInProgressCopyWith<$Res> implements $WorkoutTimerStateCopyWith<$Res> {
+abstract class _$$_WorkoutTimerStateTimerRunInProgressCopyWith<$Res>
+    implements $WorkoutTimerStateCopyWith<$Res> {
   factory _$$_WorkoutTimerStateTimerRunInProgressCopyWith(
-          _$_WorkoutTimerStateTimerRunInProgress value, $Res Function(_$_WorkoutTimerStateTimerRunInProgress) then) =
+          _$_WorkoutTimerStateTimerRunInProgress value,
+          $Res Function(_$_WorkoutTimerStateTimerRunInProgress) then) =
       __$$_WorkoutTimerStateTimerRunInProgressCopyWithImpl<$Res>;
   @override
   @useResult
@@ -818,10 +887,12 @@ abstract class _$$_WorkoutTimerStateTimerRunInProgressCopyWith<$Res> implements 
 
 /// @nodoc
 class __$$_WorkoutTimerStateTimerRunInProgressCopyWithImpl<$Res>
-    extends _$WorkoutTimerStateCopyWithImpl<$Res, _$_WorkoutTimerStateTimerRunInProgress>
+    extends _$WorkoutTimerStateCopyWithImpl<$Res,
+        _$_WorkoutTimerStateTimerRunInProgress>
     implements _$$_WorkoutTimerStateTimerRunInProgressCopyWith<$Res> {
   __$$_WorkoutTimerStateTimerRunInProgressCopyWithImpl(
-      _$_WorkoutTimerStateTimerRunInProgress _value, $Res Function(_$_WorkoutTimerStateTimerRunInProgress) _then)
+      _$_WorkoutTimerStateTimerRunInProgress _value,
+      $Res Function(_$_WorkoutTimerStateTimerRunInProgress) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -840,8 +911,10 @@ class __$$_WorkoutTimerStateTimerRunInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutTimerStateTimerRunInProgress implements _WorkoutTimerStateTimerRunInProgress {
-  const _$_WorkoutTimerStateTimerRunInProgress({this.duration = const Duration(seconds: 60)});
+class _$_WorkoutTimerStateTimerRunInProgress
+    implements _WorkoutTimerStateTimerRunInProgress {
+  const _$_WorkoutTimerStateTimerRunInProgress(
+      {this.duration = const Duration(seconds: 60)});
 
   @override
   @JsonKey()
@@ -857,7 +930,8 @@ class _$_WorkoutTimerStateTimerRunInProgress implements _WorkoutTimerStateTimerR
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutTimerStateTimerRunInProgress &&
-            (identical(other.duration, duration) || other.duration == duration));
+            (identical(other.duration, duration) ||
+                other.duration == duration));
   }
 
   @override
@@ -866,8 +940,10 @@ class _$_WorkoutTimerStateTimerRunInProgress implements _WorkoutTimerStateTimerR
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutTimerStateTimerRunInProgressCopyWith<_$_WorkoutTimerStateTimerRunInProgress> get copyWith =>
-      __$$_WorkoutTimerStateTimerRunInProgressCopyWithImpl<_$_WorkoutTimerStateTimerRunInProgress>(this, _$identity);
+  _$$_WorkoutTimerStateTimerRunInProgressCopyWith<
+          _$_WorkoutTimerStateTimerRunInProgress>
+      get copyWith => __$$_WorkoutTimerStateTimerRunInProgressCopyWithImpl<
+          _$_WorkoutTimerStateTimerRunInProgress>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -909,10 +985,14 @@ class _$_WorkoutTimerStateTimerRunInProgress implements _WorkoutTimerStateTimerR
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerStateTimerInitial value) timerInitial,
-    required TResult Function(_WorkoutTimerStateTimerRunInProgress value) timerRunInProgress,
-    required TResult Function(_WorkoutTimerStateTimerRunInDanger value) timerRunInDanger,
-    required TResult Function(_WorkoutTimerStateTimerRunComplete value) timerRunComplete,
+    required TResult Function(_WorkoutTimerStateTimerInitial value)
+        timerInitial,
+    required TResult Function(_WorkoutTimerStateTimerRunInProgress value)
+        timerRunInProgress,
+    required TResult Function(_WorkoutTimerStateTimerRunInDanger value)
+        timerRunInDanger,
+    required TResult Function(_WorkoutTimerStateTimerRunComplete value)
+        timerRunComplete,
   }) {
     return timerRunInProgress(this);
   }
@@ -921,9 +1001,12 @@ class _$_WorkoutTimerStateTimerRunInProgress implements _WorkoutTimerStateTimerR
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult? Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult? Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
   }) {
     return timerRunInProgress?.call(this);
   }
@@ -932,9 +1015,12 @@ class _$_WorkoutTimerStateTimerRunInProgress implements _WorkoutTimerStateTimerR
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
     required TResult orElse(),
   }) {
     if (timerRunInProgress != null) {
@@ -944,22 +1030,26 @@ class _$_WorkoutTimerStateTimerRunInProgress implements _WorkoutTimerStateTimerR
   }
 }
 
-abstract class _WorkoutTimerStateTimerRunInProgress implements WorkoutTimerState {
-  const factory _WorkoutTimerStateTimerRunInProgress({final Duration duration}) =
-      _$_WorkoutTimerStateTimerRunInProgress;
+abstract class _WorkoutTimerStateTimerRunInProgress
+    implements WorkoutTimerState {
+  const factory _WorkoutTimerStateTimerRunInProgress(
+      {final Duration duration}) = _$_WorkoutTimerStateTimerRunInProgress;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutTimerStateTimerRunInProgressCopyWith<_$_WorkoutTimerStateTimerRunInProgress> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutTimerStateTimerRunInProgressCopyWith<
+          _$_WorkoutTimerStateTimerRunInProgress>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WorkoutTimerStateTimerRunInDangerCopyWith<$Res> implements $WorkoutTimerStateCopyWith<$Res> {
+abstract class _$$_WorkoutTimerStateTimerRunInDangerCopyWith<$Res>
+    implements $WorkoutTimerStateCopyWith<$Res> {
   factory _$$_WorkoutTimerStateTimerRunInDangerCopyWith(
-          _$_WorkoutTimerStateTimerRunInDanger value, $Res Function(_$_WorkoutTimerStateTimerRunInDanger) then) =
+          _$_WorkoutTimerStateTimerRunInDanger value,
+          $Res Function(_$_WorkoutTimerStateTimerRunInDanger) then) =
       __$$_WorkoutTimerStateTimerRunInDangerCopyWithImpl<$Res>;
   @override
   @useResult
@@ -968,10 +1058,12 @@ abstract class _$$_WorkoutTimerStateTimerRunInDangerCopyWith<$Res> implements $W
 
 /// @nodoc
 class __$$_WorkoutTimerStateTimerRunInDangerCopyWithImpl<$Res>
-    extends _$WorkoutTimerStateCopyWithImpl<$Res, _$_WorkoutTimerStateTimerRunInDanger>
+    extends _$WorkoutTimerStateCopyWithImpl<$Res,
+        _$_WorkoutTimerStateTimerRunInDanger>
     implements _$$_WorkoutTimerStateTimerRunInDangerCopyWith<$Res> {
   __$$_WorkoutTimerStateTimerRunInDangerCopyWithImpl(
-      _$_WorkoutTimerStateTimerRunInDanger _value, $Res Function(_$_WorkoutTimerStateTimerRunInDanger) _then)
+      _$_WorkoutTimerStateTimerRunInDanger _value,
+      $Res Function(_$_WorkoutTimerStateTimerRunInDanger) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -990,8 +1082,10 @@ class __$$_WorkoutTimerStateTimerRunInDangerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutTimerStateTimerRunInDanger implements _WorkoutTimerStateTimerRunInDanger {
-  const _$_WorkoutTimerStateTimerRunInDanger({this.duration = const Duration(seconds: 60)});
+class _$_WorkoutTimerStateTimerRunInDanger
+    implements _WorkoutTimerStateTimerRunInDanger {
+  const _$_WorkoutTimerStateTimerRunInDanger(
+      {this.duration = const Duration(seconds: 60)});
 
   @override
   @JsonKey()
@@ -1007,7 +1101,8 @@ class _$_WorkoutTimerStateTimerRunInDanger implements _WorkoutTimerStateTimerRun
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutTimerStateTimerRunInDanger &&
-            (identical(other.duration, duration) || other.duration == duration));
+            (identical(other.duration, duration) ||
+                other.duration == duration));
   }
 
   @override
@@ -1016,8 +1111,10 @@ class _$_WorkoutTimerStateTimerRunInDanger implements _WorkoutTimerStateTimerRun
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutTimerStateTimerRunInDangerCopyWith<_$_WorkoutTimerStateTimerRunInDanger> get copyWith =>
-      __$$_WorkoutTimerStateTimerRunInDangerCopyWithImpl<_$_WorkoutTimerStateTimerRunInDanger>(this, _$identity);
+  _$$_WorkoutTimerStateTimerRunInDangerCopyWith<
+          _$_WorkoutTimerStateTimerRunInDanger>
+      get copyWith => __$$_WorkoutTimerStateTimerRunInDangerCopyWithImpl<
+          _$_WorkoutTimerStateTimerRunInDanger>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1059,10 +1156,14 @@ class _$_WorkoutTimerStateTimerRunInDanger implements _WorkoutTimerStateTimerRun
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerStateTimerInitial value) timerInitial,
-    required TResult Function(_WorkoutTimerStateTimerRunInProgress value) timerRunInProgress,
-    required TResult Function(_WorkoutTimerStateTimerRunInDanger value) timerRunInDanger,
-    required TResult Function(_WorkoutTimerStateTimerRunComplete value) timerRunComplete,
+    required TResult Function(_WorkoutTimerStateTimerInitial value)
+        timerInitial,
+    required TResult Function(_WorkoutTimerStateTimerRunInProgress value)
+        timerRunInProgress,
+    required TResult Function(_WorkoutTimerStateTimerRunInDanger value)
+        timerRunInDanger,
+    required TResult Function(_WorkoutTimerStateTimerRunComplete value)
+        timerRunComplete,
   }) {
     return timerRunInDanger(this);
   }
@@ -1071,9 +1172,12 @@ class _$_WorkoutTimerStateTimerRunInDanger implements _WorkoutTimerStateTimerRun
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult? Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult? Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
   }) {
     return timerRunInDanger?.call(this);
   }
@@ -1082,9 +1186,12 @@ class _$_WorkoutTimerStateTimerRunInDanger implements _WorkoutTimerStateTimerRun
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
     required TResult orElse(),
   }) {
     if (timerRunInDanger != null) {
@@ -1095,20 +1202,24 @@ class _$_WorkoutTimerStateTimerRunInDanger implements _WorkoutTimerStateTimerRun
 }
 
 abstract class _WorkoutTimerStateTimerRunInDanger implements WorkoutTimerState {
-  const factory _WorkoutTimerStateTimerRunInDanger({final Duration duration}) = _$_WorkoutTimerStateTimerRunInDanger;
+  const factory _WorkoutTimerStateTimerRunInDanger({final Duration duration}) =
+      _$_WorkoutTimerStateTimerRunInDanger;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutTimerStateTimerRunInDangerCopyWith<_$_WorkoutTimerStateTimerRunInDanger> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutTimerStateTimerRunInDangerCopyWith<
+          _$_WorkoutTimerStateTimerRunInDanger>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WorkoutTimerStateTimerRunCompleteCopyWith<$Res> implements $WorkoutTimerStateCopyWith<$Res> {
+abstract class _$$_WorkoutTimerStateTimerRunCompleteCopyWith<$Res>
+    implements $WorkoutTimerStateCopyWith<$Res> {
   factory _$$_WorkoutTimerStateTimerRunCompleteCopyWith(
-          _$_WorkoutTimerStateTimerRunComplete value, $Res Function(_$_WorkoutTimerStateTimerRunComplete) then) =
+          _$_WorkoutTimerStateTimerRunComplete value,
+          $Res Function(_$_WorkoutTimerStateTimerRunComplete) then) =
       __$$_WorkoutTimerStateTimerRunCompleteCopyWithImpl<$Res>;
   @override
   @useResult
@@ -1117,10 +1228,12 @@ abstract class _$$_WorkoutTimerStateTimerRunCompleteCopyWith<$Res> implements $W
 
 /// @nodoc
 class __$$_WorkoutTimerStateTimerRunCompleteCopyWithImpl<$Res>
-    extends _$WorkoutTimerStateCopyWithImpl<$Res, _$_WorkoutTimerStateTimerRunComplete>
+    extends _$WorkoutTimerStateCopyWithImpl<$Res,
+        _$_WorkoutTimerStateTimerRunComplete>
     implements _$$_WorkoutTimerStateTimerRunCompleteCopyWith<$Res> {
   __$$_WorkoutTimerStateTimerRunCompleteCopyWithImpl(
-      _$_WorkoutTimerStateTimerRunComplete _value, $Res Function(_$_WorkoutTimerStateTimerRunComplete) _then)
+      _$_WorkoutTimerStateTimerRunComplete _value,
+      $Res Function(_$_WorkoutTimerStateTimerRunComplete) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1139,8 +1252,10 @@ class __$$_WorkoutTimerStateTimerRunCompleteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WorkoutTimerStateTimerRunComplete implements _WorkoutTimerStateTimerRunComplete {
-  const _$_WorkoutTimerStateTimerRunComplete({this.duration = const Duration(seconds: 60)});
+class _$_WorkoutTimerStateTimerRunComplete
+    implements _WorkoutTimerStateTimerRunComplete {
+  const _$_WorkoutTimerStateTimerRunComplete(
+      {this.duration = const Duration(seconds: 60)});
 
   @override
   @JsonKey()
@@ -1156,7 +1271,8 @@ class _$_WorkoutTimerStateTimerRunComplete implements _WorkoutTimerStateTimerRun
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorkoutTimerStateTimerRunComplete &&
-            (identical(other.duration, duration) || other.duration == duration));
+            (identical(other.duration, duration) ||
+                other.duration == duration));
   }
 
   @override
@@ -1165,8 +1281,10 @@ class _$_WorkoutTimerStateTimerRunComplete implements _WorkoutTimerStateTimerRun
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WorkoutTimerStateTimerRunCompleteCopyWith<_$_WorkoutTimerStateTimerRunComplete> get copyWith =>
-      __$$_WorkoutTimerStateTimerRunCompleteCopyWithImpl<_$_WorkoutTimerStateTimerRunComplete>(this, _$identity);
+  _$$_WorkoutTimerStateTimerRunCompleteCopyWith<
+          _$_WorkoutTimerStateTimerRunComplete>
+      get copyWith => __$$_WorkoutTimerStateTimerRunCompleteCopyWithImpl<
+          _$_WorkoutTimerStateTimerRunComplete>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1208,10 +1326,14 @@ class _$_WorkoutTimerStateTimerRunComplete implements _WorkoutTimerStateTimerRun
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_WorkoutTimerStateTimerInitial value) timerInitial,
-    required TResult Function(_WorkoutTimerStateTimerRunInProgress value) timerRunInProgress,
-    required TResult Function(_WorkoutTimerStateTimerRunInDanger value) timerRunInDanger,
-    required TResult Function(_WorkoutTimerStateTimerRunComplete value) timerRunComplete,
+    required TResult Function(_WorkoutTimerStateTimerInitial value)
+        timerInitial,
+    required TResult Function(_WorkoutTimerStateTimerRunInProgress value)
+        timerRunInProgress,
+    required TResult Function(_WorkoutTimerStateTimerRunInDanger value)
+        timerRunInDanger,
+    required TResult Function(_WorkoutTimerStateTimerRunComplete value)
+        timerRunComplete,
   }) {
     return timerRunComplete(this);
   }
@@ -1220,9 +1342,12 @@ class _$_WorkoutTimerStateTimerRunComplete implements _WorkoutTimerStateTimerRun
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult? Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult? Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult? Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult? Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
   }) {
     return timerRunComplete?.call(this);
   }
@@ -1231,9 +1356,12 @@ class _$_WorkoutTimerStateTimerRunComplete implements _WorkoutTimerStateTimerRun
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutTimerStateTimerInitial value)? timerInitial,
-    TResult Function(_WorkoutTimerStateTimerRunInProgress value)? timerRunInProgress,
-    TResult Function(_WorkoutTimerStateTimerRunInDanger value)? timerRunInDanger,
-    TResult Function(_WorkoutTimerStateTimerRunComplete value)? timerRunComplete,
+    TResult Function(_WorkoutTimerStateTimerRunInProgress value)?
+        timerRunInProgress,
+    TResult Function(_WorkoutTimerStateTimerRunInDanger value)?
+        timerRunInDanger,
+    TResult Function(_WorkoutTimerStateTimerRunComplete value)?
+        timerRunComplete,
     required TResult orElse(),
   }) {
     if (timerRunComplete != null) {
@@ -1244,12 +1372,14 @@ class _$_WorkoutTimerStateTimerRunComplete implements _WorkoutTimerStateTimerRun
 }
 
 abstract class _WorkoutTimerStateTimerRunComplete implements WorkoutTimerState {
-  const factory _WorkoutTimerStateTimerRunComplete({final Duration duration}) = _$_WorkoutTimerStateTimerRunComplete;
+  const factory _WorkoutTimerStateTimerRunComplete({final Duration duration}) =
+      _$_WorkoutTimerStateTimerRunComplete;
 
   @override
   Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_WorkoutTimerStateTimerRunCompleteCopyWith<_$_WorkoutTimerStateTimerRunComplete> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_WorkoutTimerStateTimerRunCompleteCopyWith<
+          _$_WorkoutTimerStateTimerRunComplete>
+      get copyWith => throw _privateConstructorUsedError;
 }

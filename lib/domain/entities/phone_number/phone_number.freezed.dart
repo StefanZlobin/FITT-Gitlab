@@ -25,19 +25,22 @@ mixin _$PhoneNumber {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PhoneNumberCopyWith<PhoneNumber> get copyWith => throw _privateConstructorUsedError;
+  $PhoneNumberCopyWith<PhoneNumber> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PhoneNumberCopyWith<$Res> {
-  factory $PhoneNumberCopyWith(PhoneNumber value, $Res Function(PhoneNumber) then) =
+  factory $PhoneNumberCopyWith(
+          PhoneNumber value, $Res Function(PhoneNumber) then) =
       _$PhoneNumberCopyWithImpl<$Res, PhoneNumber>;
   @useResult
   $Res call({@JsonKey(name: 'phone_number') String phoneNumber});
 }
 
 /// @nodoc
-class _$PhoneNumberCopyWithImpl<$Res, $Val extends PhoneNumber> implements $PhoneNumberCopyWith<$Res> {
+class _$PhoneNumberCopyWithImpl<$Res, $Val extends PhoneNumber>
+    implements $PhoneNumberCopyWith<$Res> {
   _$PhoneNumberCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -60,8 +63,10 @@ class _$PhoneNumberCopyWithImpl<$Res, $Val extends PhoneNumber> implements $Phon
 }
 
 /// @nodoc
-abstract class _$$_PhoneNumberCopyWith<$Res> implements $PhoneNumberCopyWith<$Res> {
-  factory _$$_PhoneNumberCopyWith(_$_PhoneNumber value, $Res Function(_$_PhoneNumber) then) =
+abstract class _$$_PhoneNumberCopyWith<$Res>
+    implements $PhoneNumberCopyWith<$Res> {
+  factory _$$_PhoneNumberCopyWith(
+          _$_PhoneNumber value, $Res Function(_$_PhoneNumber) then) =
       __$$_PhoneNumberCopyWithImpl<$Res>;
   @override
   @useResult
@@ -69,9 +74,12 @@ abstract class _$$_PhoneNumberCopyWith<$Res> implements $PhoneNumberCopyWith<$Re
 }
 
 /// @nodoc
-class __$$_PhoneNumberCopyWithImpl<$Res> extends _$PhoneNumberCopyWithImpl<$Res, _$_PhoneNumber>
+class __$$_PhoneNumberCopyWithImpl<$Res>
+    extends _$PhoneNumberCopyWithImpl<$Res, _$_PhoneNumber>
     implements _$$_PhoneNumberCopyWith<$Res> {
-  __$$_PhoneNumberCopyWithImpl(_$_PhoneNumber _value, $Res Function(_$_PhoneNumber) _then) : super(_value, _then);
+  __$$_PhoneNumberCopyWithImpl(
+      _$_PhoneNumber _value, $Res Function(_$_PhoneNumber) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -90,9 +98,11 @@ class __$$_PhoneNumberCopyWithImpl<$Res> extends _$PhoneNumberCopyWithImpl<$Res,
 /// @nodoc
 @JsonSerializable()
 class _$_PhoneNumber extends _PhoneNumber {
-  _$_PhoneNumber({@JsonKey(name: 'phone_number') required this.phoneNumber}) : super._();
+  _$_PhoneNumber({@JsonKey(name: 'phone_number') required this.phoneNumber})
+      : super._();
 
-  factory _$_PhoneNumber.fromJson(Map<String, dynamic> json) => _$$_PhoneNumberFromJson(json);
+  factory _$_PhoneNumber.fromJson(Map<String, dynamic> json) =>
+      _$$_PhoneNumberFromJson(json);
 
   @override
   @JsonKey(name: 'phone_number')
@@ -108,7 +118,8 @@ class _$_PhoneNumber extends _PhoneNumber {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhoneNumber &&
-            (identical(other.phoneNumber, phoneNumber) || other.phoneNumber == phoneNumber));
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @JsonKey(ignore: true)
@@ -130,15 +141,19 @@ class _$_PhoneNumber extends _PhoneNumber {
 }
 
 abstract class _PhoneNumber extends PhoneNumber {
-  factory _PhoneNumber({@JsonKey(name: 'phone_number') required final String phoneNumber}) = _$_PhoneNumber;
+  factory _PhoneNumber(
+          {@JsonKey(name: 'phone_number') required final String phoneNumber}) =
+      _$_PhoneNumber;
   _PhoneNumber._() : super._();
 
-  factory _PhoneNumber.fromJson(Map<String, dynamic> json) = _$_PhoneNumber.fromJson;
+  factory _PhoneNumber.fromJson(Map<String, dynamic> json) =
+      _$_PhoneNumber.fromJson;
 
   @override
   @JsonKey(name: 'phone_number')
   String get phoneNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_PhoneNumberCopyWith<_$_PhoneNumber> get copyWith => throw _privateConstructorUsedError;
+  _$$_PhoneNumberCopyWith<_$_PhoneNumber> get copyWith =>
+      throw _privateConstructorUsedError;
 }

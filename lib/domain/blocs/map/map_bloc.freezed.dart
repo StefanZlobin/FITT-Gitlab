@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MapEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
+    required TResult Function(ClubFilters filters, LatLng northeast,
+            LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
     required TResult Function(MapMarker marker) markerTapped,
@@ -29,8 +29,8 @@ mixin _$MapEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
     TResult? Function(MapMarker marker)? markerTapped,
@@ -40,8 +40,8 @@ mixin _$MapEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
     TResult Function(MapMarker marker)? markerTapped,
@@ -55,7 +55,8 @@ mixin _$MapEvent {
     required TResult Function(_MapEventCameraMove value) cameraMove,
     required TResult Function(_MapEventFiltersDetected value) filtersDetected,
     required TResult Function(_MapEventMarkerTapped value) markerTapped,
-    required TResult Function(_MapEventCarouselCardFocused value) carouselCardFocused,
+    required TResult Function(_MapEventCarouselCardFocused value)
+        carouselCardFocused,
     required TResult Function(_MapEventMapCreated value) mapCreated,
   }) =>
       throw _privateConstructorUsedError;
@@ -82,11 +83,13 @@ mixin _$MapEvent {
 
 /// @nodoc
 abstract class $MapEventCopyWith<$Res> {
-  factory $MapEventCopyWith(MapEvent value, $Res Function(MapEvent) then) = _$MapEventCopyWithImpl<$Res, MapEvent>;
+  factory $MapEventCopyWith(MapEvent value, $Res Function(MapEvent) then) =
+      _$MapEventCopyWithImpl<$Res, MapEvent>;
 }
 
 /// @nodoc
-class _$MapEventCopyWithImpl<$Res, $Val extends MapEvent> implements $MapEventCopyWith<$Res> {
+class _$MapEventCopyWithImpl<$Res, $Val extends MapEvent>
+    implements $MapEventCopyWith<$Res> {
   _$MapEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -97,18 +100,26 @@ class _$MapEventCopyWithImpl<$Res, $Val extends MapEvent> implements $MapEventCo
 
 /// @nodoc
 abstract class _$$_MapEventCameraMoveCopyWith<$Res> {
-  factory _$$_MapEventCameraMoveCopyWith(_$_MapEventCameraMove value, $Res Function(_$_MapEventCameraMove) then) =
+  factory _$$_MapEventCameraMoveCopyWith(_$_MapEventCameraMove value,
+          $Res Function(_$_MapEventCameraMove) then) =
       __$$_MapEventCameraMoveCopyWithImpl<$Res>;
   @useResult
-  $Res call({ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom});
+  $Res call(
+      {ClubFilters filters,
+      LatLng northeast,
+      LatLng southwest,
+      gm.LatLngBounds visibleRegion,
+      double zoom});
 
   $ClubFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
-class __$$_MapEventCameraMoveCopyWithImpl<$Res> extends _$MapEventCopyWithImpl<$Res, _$_MapEventCameraMove>
+class __$$_MapEventCameraMoveCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_MapEventCameraMove>
     implements _$$_MapEventCameraMoveCopyWith<$Res> {
-  __$$_MapEventCameraMoveCopyWithImpl(_$_MapEventCameraMove _value, $Res Function(_$_MapEventCameraMove) _then)
+  __$$_MapEventCameraMoveCopyWithImpl(
+      _$_MapEventCameraMove _value, $Res Function(_$_MapEventCameraMove) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -186,26 +197,31 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
         (other.runtimeType == runtimeType &&
             other is _$_MapEventCameraMove &&
             (identical(other.filters, filters) || other.filters == filters) &&
-            (identical(other.northeast, northeast) || other.northeast == northeast) &&
-            (identical(other.southwest, southwest) || other.southwest == southwest) &&
-            (identical(other.visibleRegion, visibleRegion) || other.visibleRegion == visibleRegion) &&
+            (identical(other.northeast, northeast) ||
+                other.northeast == northeast) &&
+            (identical(other.southwest, southwest) ||
+                other.southwest == southwest) &&
+            (identical(other.visibleRegion, visibleRegion) ||
+                other.visibleRegion == visibleRegion) &&
             (identical(other.zoom, zoom) || other.zoom == zoom));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, filters, northeast, southwest, visibleRegion, zoom);
+  int get hashCode => Object.hash(
+      runtimeType, filters, northeast, southwest, visibleRegion, zoom);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_MapEventCameraMoveCopyWith<_$_MapEventCameraMove> get copyWith =>
-      __$$_MapEventCameraMoveCopyWithImpl<_$_MapEventCameraMove>(this, _$identity);
+      __$$_MapEventCameraMoveCopyWithImpl<_$_MapEventCameraMove>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
+    required TResult Function(ClubFilters filters, LatLng northeast,
+            LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
     required TResult Function(MapMarker marker) markerTapped,
@@ -218,8 +234,8 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
     TResult? Function(MapMarker marker)? markerTapped,
@@ -232,8 +248,8 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
     TResult Function(MapMarker marker)? markerTapped,
@@ -253,7 +269,8 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
     required TResult Function(_MapEventCameraMove value) cameraMove,
     required TResult Function(_MapEventFiltersDetected value) filtersDetected,
     required TResult Function(_MapEventMarkerTapped value) markerTapped,
-    required TResult Function(_MapEventCarouselCardFocused value) carouselCardFocused,
+    required TResult Function(_MapEventCarouselCardFocused value)
+        carouselCardFocused,
     required TResult Function(_MapEventMapCreated value) mapCreated,
   }) {
     return cameraMove(this);
@@ -302,13 +319,14 @@ abstract class _MapEventCameraMove implements MapEvent {
   gm.LatLngBounds get visibleRegion;
   double get zoom;
   @JsonKey(ignore: true)
-  _$$_MapEventCameraMoveCopyWith<_$_MapEventCameraMove> get copyWith => throw _privateConstructorUsedError;
+  _$$_MapEventCameraMoveCopyWith<_$_MapEventCameraMove> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_MapEventFiltersDetectedCopyWith<$Res> {
-  factory _$$_MapEventFiltersDetectedCopyWith(
-          _$_MapEventFiltersDetected value, $Res Function(_$_MapEventFiltersDetected) then) =
+  factory _$$_MapEventFiltersDetectedCopyWith(_$_MapEventFiltersDetected value,
+          $Res Function(_$_MapEventFiltersDetected) then) =
       __$$_MapEventFiltersDetectedCopyWithImpl<$Res>;
   @useResult
   $Res call({ClubFilters filters});
@@ -317,10 +335,11 @@ abstract class _$$_MapEventFiltersDetectedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MapEventFiltersDetectedCopyWithImpl<$Res> extends _$MapEventCopyWithImpl<$Res, _$_MapEventFiltersDetected>
+class __$$_MapEventFiltersDetectedCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_MapEventFiltersDetected>
     implements _$$_MapEventFiltersDetectedCopyWith<$Res> {
-  __$$_MapEventFiltersDetectedCopyWithImpl(
-      _$_MapEventFiltersDetected _value, $Res Function(_$_MapEventFiltersDetected) _then)
+  __$$_MapEventFiltersDetectedCopyWithImpl(_$_MapEventFiltersDetected _value,
+      $Res Function(_$_MapEventFiltersDetected) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -348,7 +367,8 @@ class __$$_MapEventFiltersDetectedCopyWithImpl<$Res> extends _$MapEventCopyWithI
 /// @nodoc
 
 class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
-  const _$_MapEventFiltersDetected({this.filters = const ClubFilters(favorite: false)});
+  const _$_MapEventFiltersDetected(
+      {this.filters = const ClubFilters(favorite: false)});
 
   @override
   @JsonKey()
@@ -373,14 +393,16 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MapEventFiltersDetectedCopyWith<_$_MapEventFiltersDetected> get copyWith =>
-      __$$_MapEventFiltersDetectedCopyWithImpl<_$_MapEventFiltersDetected>(this, _$identity);
+  _$$_MapEventFiltersDetectedCopyWith<_$_MapEventFiltersDetected>
+      get copyWith =>
+          __$$_MapEventFiltersDetectedCopyWithImpl<_$_MapEventFiltersDetected>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
+    required TResult Function(ClubFilters filters, LatLng northeast,
+            LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
     required TResult Function(MapMarker marker) markerTapped,
@@ -393,8 +415,8 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
     TResult? Function(MapMarker marker)? markerTapped,
@@ -407,8 +429,8 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
     TResult Function(MapMarker marker)? markerTapped,
@@ -428,7 +450,8 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
     required TResult Function(_MapEventCameraMove value) cameraMove,
     required TResult Function(_MapEventFiltersDetected value) filtersDetected,
     required TResult Function(_MapEventMarkerTapped value) markerTapped,
-    required TResult Function(_MapEventCarouselCardFocused value) carouselCardFocused,
+    required TResult Function(_MapEventCarouselCardFocused value)
+        carouselCardFocused,
     required TResult Function(_MapEventMapCreated value) mapCreated,
   }) {
     return filtersDetected(this);
@@ -464,16 +487,19 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
 }
 
 abstract class _MapEventFiltersDetected implements MapEvent {
-  const factory _MapEventFiltersDetected({final ClubFilters filters}) = _$_MapEventFiltersDetected;
+  const factory _MapEventFiltersDetected({final ClubFilters filters}) =
+      _$_MapEventFiltersDetected;
 
   ClubFilters get filters;
   @JsonKey(ignore: true)
-  _$$_MapEventFiltersDetectedCopyWith<_$_MapEventFiltersDetected> get copyWith => throw _privateConstructorUsedError;
+  _$$_MapEventFiltersDetectedCopyWith<_$_MapEventFiltersDetected>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_MapEventMarkerTappedCopyWith<$Res> {
-  factory _$$_MapEventMarkerTappedCopyWith(_$_MapEventMarkerTapped value, $Res Function(_$_MapEventMarkerTapped) then) =
+  factory _$$_MapEventMarkerTappedCopyWith(_$_MapEventMarkerTapped value,
+          $Res Function(_$_MapEventMarkerTapped) then) =
       __$$_MapEventMarkerTappedCopyWithImpl<$Res>;
   @useResult
   $Res call({MapMarker marker});
@@ -482,9 +508,11 @@ abstract class _$$_MapEventMarkerTappedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MapEventMarkerTappedCopyWithImpl<$Res> extends _$MapEventCopyWithImpl<$Res, _$_MapEventMarkerTapped>
+class __$$_MapEventMarkerTappedCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_MapEventMarkerTapped>
     implements _$$_MapEventMarkerTappedCopyWith<$Res> {
-  __$$_MapEventMarkerTappedCopyWithImpl(_$_MapEventMarkerTapped _value, $Res Function(_$_MapEventMarkerTapped) _then)
+  __$$_MapEventMarkerTappedCopyWithImpl(_$_MapEventMarkerTapped _value,
+      $Res Function(_$_MapEventMarkerTapped) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -537,13 +565,14 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
   @override
   @pragma('vm:prefer-inline')
   _$$_MapEventMarkerTappedCopyWith<_$_MapEventMarkerTapped> get copyWith =>
-      __$$_MapEventMarkerTappedCopyWithImpl<_$_MapEventMarkerTapped>(this, _$identity);
+      __$$_MapEventMarkerTappedCopyWithImpl<_$_MapEventMarkerTapped>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
+    required TResult Function(ClubFilters filters, LatLng northeast,
+            LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
     required TResult Function(MapMarker marker) markerTapped,
@@ -556,8 +585,8 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
     TResult? Function(MapMarker marker)? markerTapped,
@@ -570,8 +599,8 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
     TResult Function(MapMarker marker)? markerTapped,
@@ -591,7 +620,8 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
     required TResult Function(_MapEventCameraMove value) cameraMove,
     required TResult Function(_MapEventFiltersDetected value) filtersDetected,
     required TResult Function(_MapEventMarkerTapped value) markerTapped,
-    required TResult Function(_MapEventCarouselCardFocused value) carouselCardFocused,
+    required TResult Function(_MapEventCarouselCardFocused value)
+        carouselCardFocused,
     required TResult Function(_MapEventMapCreated value) mapCreated,
   }) {
     return markerTapped(this);
@@ -627,17 +657,20 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
 }
 
 abstract class _MapEventMarkerTapped implements MapEvent {
-  const factory _MapEventMarkerTapped(final MapMarker marker) = _$_MapEventMarkerTapped;
+  const factory _MapEventMarkerTapped(final MapMarker marker) =
+      _$_MapEventMarkerTapped;
 
   MapMarker get marker;
   @JsonKey(ignore: true)
-  _$$_MapEventMarkerTappedCopyWith<_$_MapEventMarkerTapped> get copyWith => throw _privateConstructorUsedError;
+  _$$_MapEventMarkerTappedCopyWith<_$_MapEventMarkerTapped> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_MapEventCarouselCardFocusedCopyWith<$Res> {
   factory _$$_MapEventCarouselCardFocusedCopyWith(
-          _$_MapEventCarouselCardFocused value, $Res Function(_$_MapEventCarouselCardFocused) then) =
+          _$_MapEventCarouselCardFocused value,
+          $Res Function(_$_MapEventCarouselCardFocused) then) =
       __$$_MapEventCarouselCardFocusedCopyWithImpl<$Res>;
   @useResult
   $Res call({String clubId});
@@ -648,7 +681,8 @@ class __$$_MapEventCarouselCardFocusedCopyWithImpl<$Res>
     extends _$MapEventCopyWithImpl<$Res, _$_MapEventCarouselCardFocused>
     implements _$$_MapEventCarouselCardFocusedCopyWith<$Res> {
   __$$_MapEventCarouselCardFocusedCopyWithImpl(
-      _$_MapEventCarouselCardFocused _value, $Res Function(_$_MapEventCarouselCardFocused) _then)
+      _$_MapEventCarouselCardFocused _value,
+      $Res Function(_$_MapEventCarouselCardFocused) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -692,14 +726,15 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MapEventCarouselCardFocusedCopyWith<_$_MapEventCarouselCardFocused> get copyWith =>
-      __$$_MapEventCarouselCardFocusedCopyWithImpl<_$_MapEventCarouselCardFocused>(this, _$identity);
+  _$$_MapEventCarouselCardFocusedCopyWith<_$_MapEventCarouselCardFocused>
+      get copyWith => __$$_MapEventCarouselCardFocusedCopyWithImpl<
+          _$_MapEventCarouselCardFocused>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
+    required TResult Function(ClubFilters filters, LatLng northeast,
+            LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
     required TResult Function(MapMarker marker) markerTapped,
@@ -712,8 +747,8 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
     TResult? Function(MapMarker marker)? markerTapped,
@@ -726,8 +761,8 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
     TResult Function(MapMarker marker)? markerTapped,
@@ -747,7 +782,8 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
     required TResult Function(_MapEventCameraMove value) cameraMove,
     required TResult Function(_MapEventFiltersDetected value) filtersDetected,
     required TResult Function(_MapEventMarkerTapped value) markerTapped,
-    required TResult Function(_MapEventCarouselCardFocused value) carouselCardFocused,
+    required TResult Function(_MapEventCarouselCardFocused value)
+        carouselCardFocused,
     required TResult Function(_MapEventMapCreated value) mapCreated,
   }) {
     return carouselCardFocused(this);
@@ -783,26 +819,30 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
 }
 
 abstract class _MapEventCarouselCardFocused implements MapEvent {
-  const factory _MapEventCarouselCardFocused(final String clubId) = _$_MapEventCarouselCardFocused;
+  const factory _MapEventCarouselCardFocused(final String clubId) =
+      _$_MapEventCarouselCardFocused;
 
   String get clubId;
   @JsonKey(ignore: true)
-  _$$_MapEventCarouselCardFocusedCopyWith<_$_MapEventCarouselCardFocused> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_MapEventCarouselCardFocusedCopyWith<_$_MapEventCarouselCardFocused>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_MapEventMapCreatedCopyWith<$Res> {
-  factory _$$_MapEventMapCreatedCopyWith(_$_MapEventMapCreated value, $Res Function(_$_MapEventMapCreated) then) =
+  factory _$$_MapEventMapCreatedCopyWith(_$_MapEventMapCreated value,
+          $Res Function(_$_MapEventMapCreated) then) =
       __$$_MapEventMapCreatedCopyWithImpl<$Res>;
   @useResult
   $Res call({gm.GoogleMapController controller});
 }
 
 /// @nodoc
-class __$$_MapEventMapCreatedCopyWithImpl<$Res> extends _$MapEventCopyWithImpl<$Res, _$_MapEventMapCreated>
+class __$$_MapEventMapCreatedCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_MapEventMapCreated>
     implements _$$_MapEventMapCreatedCopyWith<$Res> {
-  __$$_MapEventMapCreatedCopyWithImpl(_$_MapEventMapCreated _value, $Res Function(_$_MapEventMapCreated) _then)
+  __$$_MapEventMapCreatedCopyWithImpl(
+      _$_MapEventMapCreated _value, $Res Function(_$_MapEventMapCreated) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -837,7 +877,8 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapEventMapCreated &&
-            (identical(other.controller, controller) || other.controller == controller));
+            (identical(other.controller, controller) ||
+                other.controller == controller));
   }
 
   @override
@@ -847,13 +888,14 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
   @override
   @pragma('vm:prefer-inline')
   _$$_MapEventMapCreatedCopyWith<_$_MapEventMapCreated> get copyWith =>
-      __$$_MapEventMapCreatedCopyWithImpl<_$_MapEventMapCreated>(this, _$identity);
+      __$$_MapEventMapCreatedCopyWithImpl<_$_MapEventMapCreated>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
+    required TResult Function(ClubFilters filters, LatLng northeast,
+            LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
     required TResult Function(MapMarker marker) markerTapped,
@@ -866,8 +908,8 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
     TResult? Function(MapMarker marker)? markerTapped,
@@ -880,8 +922,8 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            ClubFilters filters, LatLng northeast, LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)?
+    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+            gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
     TResult Function(MapMarker marker)? markerTapped,
@@ -901,7 +943,8 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
     required TResult Function(_MapEventCameraMove value) cameraMove,
     required TResult Function(_MapEventFiltersDetected value) filtersDetected,
     required TResult Function(_MapEventMarkerTapped value) markerTapped,
-    required TResult Function(_MapEventCarouselCardFocused value) carouselCardFocused,
+    required TResult Function(_MapEventCarouselCardFocused value)
+        carouselCardFocused,
     required TResult Function(_MapEventMapCreated value) mapCreated,
   }) {
     return mapCreated(this);
@@ -937,11 +980,13 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
 }
 
 abstract class _MapEventMapCreated implements MapEvent {
-  const factory _MapEventMapCreated(final gm.GoogleMapController controller) = _$_MapEventMapCreated;
+  const factory _MapEventMapCreated(final gm.GoogleMapController controller) =
+      _$_MapEventMapCreated;
 
   gm.GoogleMapController get controller;
   @JsonKey(ignore: true)
-  _$$_MapEventMapCreatedCopyWith<_$_MapEventMapCreated> get copyWith => throw _privateConstructorUsedError;
+  _$$_MapEventMapCreatedCopyWith<_$_MapEventMapCreated> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -951,7 +996,10 @@ mixin _$MapState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)
+            List<MapPoint> mapPoints,
+            gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers,
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) =>
@@ -960,8 +1008,8 @@ mixin _$MapState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) =>
@@ -970,8 +1018,8 @@ mixin _$MapState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -1006,11 +1054,13 @@ mixin _$MapState {
 
 /// @nodoc
 abstract class $MapStateCopyWith<$Res> {
-  factory $MapStateCopyWith(MapState value, $Res Function(MapState) then) = _$MapStateCopyWithImpl<$Res, MapState>;
+  factory $MapStateCopyWith(MapState value, $Res Function(MapState) then) =
+      _$MapStateCopyWithImpl<$Res, MapState>;
 }
 
 /// @nodoc
-class _$MapStateCopyWithImpl<$Res, $Val extends MapState> implements $MapStateCopyWith<$Res> {
+class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
+    implements $MapStateCopyWith<$Res> {
   _$MapStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -1021,14 +1071,17 @@ class _$MapStateCopyWithImpl<$Res, $Val extends MapState> implements $MapStateCo
 
 /// @nodoc
 abstract class _$$_MapStateInitialCopyWith<$Res> {
-  factory _$$_MapStateInitialCopyWith(_$_MapStateInitial value, $Res Function(_$_MapStateInitial) then) =
+  factory _$$_MapStateInitialCopyWith(
+          _$_MapStateInitial value, $Res Function(_$_MapStateInitial) then) =
       __$$_MapStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MapStateInitialCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res, _$_MapStateInitial>
+class __$$_MapStateInitialCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_MapStateInitial>
     implements _$$_MapStateInitialCopyWith<$Res> {
-  __$$_MapStateInitialCopyWithImpl(_$_MapStateInitial _value, $Res Function(_$_MapStateInitial) _then)
+  __$$_MapStateInitialCopyWithImpl(
+      _$_MapStateInitial _value, $Res Function(_$_MapStateInitial) _then)
       : super(_value, _then);
 }
 
@@ -1044,7 +1097,8 @@ class _$_MapStateInitial implements _MapStateInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_MapStateInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_MapStateInitial);
   }
 
   @override
@@ -1056,7 +1110,10 @@ class _$_MapStateInitial implements _MapStateInitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)
+            List<MapPoint> mapPoints,
+            gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers,
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
@@ -1068,8 +1125,8 @@ class _$_MapStateInitial implements _MapStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -1081,8 +1138,8 @@ class _$_MapStateInitial implements _MapStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -1137,14 +1194,17 @@ abstract class _MapStateInitial implements MapState {
 
 /// @nodoc
 abstract class _$$_MapStateLoadingCopyWith<$Res> {
-  factory _$$_MapStateLoadingCopyWith(_$_MapStateLoading value, $Res Function(_$_MapStateLoading) then) =
+  factory _$$_MapStateLoadingCopyWith(
+          _$_MapStateLoading value, $Res Function(_$_MapStateLoading) then) =
       __$$_MapStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MapStateLoadingCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res, _$_MapStateLoading>
+class __$$_MapStateLoadingCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_MapStateLoading>
     implements _$$_MapStateLoadingCopyWith<$Res> {
-  __$$_MapStateLoadingCopyWithImpl(_$_MapStateLoading _value, $Res Function(_$_MapStateLoading) _then)
+  __$$_MapStateLoadingCopyWithImpl(
+      _$_MapStateLoading _value, $Res Function(_$_MapStateLoading) _then)
       : super(_value, _then);
 }
 
@@ -1160,7 +1220,8 @@ class _$_MapStateLoading implements _MapStateLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_MapStateLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_MapStateLoading);
   }
 
   @override
@@ -1172,7 +1233,10 @@ class _$_MapStateLoading implements _MapStateLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)
+            List<MapPoint> mapPoints,
+            gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers,
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
@@ -1184,8 +1248,8 @@ class _$_MapStateLoading implements _MapStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -1197,8 +1261,8 @@ class _$_MapStateLoading implements _MapStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -1253,18 +1317,25 @@ abstract class _MapStateLoading implements MapState {
 
 /// @nodoc
 abstract class _$$_MapStateLoadedCopyWith<$Res> {
-  factory _$$_MapStateLoadedCopyWith(_$_MapStateLoaded value, $Res Function(_$_MapStateLoaded) then) =
+  factory _$$_MapStateLoadedCopyWith(
+          _$_MapStateLoaded value, $Res Function(_$_MapStateLoaded) then) =
       __$$_MapStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters});
+  $Res call(
+      {List<MapPoint> mapPoints,
+      gm.LatLngBounds visibleRegion,
+      List<MapMarker> markers,
+      ClubFilters filters});
 
   $ClubFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
-class __$$_MapStateLoadedCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res, _$_MapStateLoaded>
+class __$$_MapStateLoadedCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_MapStateLoaded>
     implements _$$_MapStateLoadedCopyWith<$Res> {
-  __$$_MapStateLoadedCopyWithImpl(_$_MapStateLoaded _value, $Res Function(_$_MapStateLoaded) _then)
+  __$$_MapStateLoadedCopyWithImpl(
+      _$_MapStateLoaded _value, $Res Function(_$_MapStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1347,15 +1418,21 @@ class _$_MapStateLoaded implements _MapStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapStateLoaded &&
-            const DeepCollectionEquality().equals(other._mapPoints, _mapPoints) &&
-            (identical(other.visibleRegion, visibleRegion) || other.visibleRegion == visibleRegion) &&
+            const DeepCollectionEquality()
+                .equals(other._mapPoints, _mapPoints) &&
+            (identical(other.visibleRegion, visibleRegion) ||
+                other.visibleRegion == visibleRegion) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.filters, filters) || other.filters == filters));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_mapPoints), visibleRegion,
-      const DeepCollectionEquality().hash(_markers), filters);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_mapPoints),
+      visibleRegion,
+      const DeepCollectionEquality().hash(_markers),
+      filters);
 
   @JsonKey(ignore: true)
   @override
@@ -1369,7 +1446,10 @@ class _$_MapStateLoaded implements _MapStateLoaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)
+            List<MapPoint> mapPoints,
+            gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers,
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
@@ -1381,8 +1461,8 @@ class _$_MapStateLoaded implements _MapStateLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -1394,8 +1474,8 @@ class _$_MapStateLoaded implements _MapStateLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -1456,19 +1536,24 @@ abstract class _MapStateLoaded implements MapState {
   List<MapMarker> get markers;
   ClubFilters get filters;
   @JsonKey(ignore: true)
-  _$$_MapStateLoadedCopyWith<_$_MapStateLoaded> get copyWith => throw _privateConstructorUsedError;
+  _$$_MapStateLoadedCopyWith<_$_MapStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$_MapStateErrorCopyWith<$Res> {
-  factory _$$_MapStateErrorCopyWith(_$_MapStateError value, $Res Function(_$_MapStateError) then) =
+  factory _$$_MapStateErrorCopyWith(
+          _$_MapStateError value, $Res Function(_$_MapStateError) then) =
       __$$_MapStateErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MapStateErrorCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res, _$_MapStateError>
+class __$$_MapStateErrorCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_MapStateError>
     implements _$$_MapStateErrorCopyWith<$Res> {
-  __$$_MapStateErrorCopyWithImpl(_$_MapStateError _value, $Res Function(_$_MapStateError) _then) : super(_value, _then);
+  __$$_MapStateErrorCopyWithImpl(
+      _$_MapStateError _value, $Res Function(_$_MapStateError) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1483,7 +1568,8 @@ class _$_MapStateError implements _MapStateError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_MapStateError);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_MapStateError);
   }
 
   @override
@@ -1495,7 +1581,10 @@ class _$_MapStateError implements _MapStateError {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)
+            List<MapPoint> mapPoints,
+            gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers,
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
@@ -1507,8 +1596,8 @@ class _$_MapStateError implements _MapStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -1520,8 +1609,8 @@ class _$_MapStateError implements _MapStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion, List<MapMarker> markers, ClubFilters filters)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),

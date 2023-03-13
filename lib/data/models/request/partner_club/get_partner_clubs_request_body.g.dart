@@ -6,11 +6,15 @@ part of 'get_partner_clubs_request_body.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetPartnerClubsRequestBody _$GetPartnerClubsRequestBodyFromJson(Map<String, dynamic> json) =>
+GetPartnerClubsRequestBody _$GetPartnerClubsRequestBodyFromJson(
+        Map<String, dynamic> json) =>
     GetPartnerClubsRequestBody(
       limit: json['limit'] as int? ?? -1,
       offset: json['offset'] as int? ?? 0,
-      facilities: (json['facility_ids'] as List<dynamic>?)?.map((e) => e as int).toList() ?? const [],
+      facilities: (json['facility_ids'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList() ??
+          const [],
       maxPrice: json['price_lte'] as int?,
       minPrice: json['price_gte'] as int?,
       isFavorite: json['only_favorite'] as bool? ?? false,
@@ -18,7 +22,9 @@ GetPartnerClubsRequestBody _$GetPartnerClubsRequestBodyFromJson(Map<String, dyna
       sorting: json['ordering'] as String,
     );
 
-Map<String, dynamic> _$GetPartnerClubsRequestBodyToJson(GetPartnerClubsRequestBody instance) => <String, dynamic>{
+Map<String, dynamic> _$GetPartnerClubsRequestBodyToJson(
+        GetPartnerClubsRequestBody instance) =>
+    <String, dynamic>{
       'limit': instance.limit,
       'offset': instance.offset,
       'facility_ids': instance.facilities,

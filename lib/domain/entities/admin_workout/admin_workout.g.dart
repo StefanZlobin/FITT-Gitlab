@@ -6,20 +6,25 @@ part of 'admin_workout.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AdminWorkout _$$_AdminWorkoutFromJson(Map<String, dynamic> json) => _$_AdminWorkout(
+_$_AdminWorkout _$$_AdminWorkoutFromJson(Map<String, dynamic> json) =>
+    _$_AdminWorkout(
       uuid: json['id'] as String?,
       user: AdminUser.fromJson(json['user'] as Map<String, dynamic>),
       price: toRubles(json['price'] as int),
-      planStartTime: dateTimeFromStringRemoveUTC(json['plan_start_time'] as String),
+      planStartTime:
+          dateTimeFromStringRemoveUTC(json['plan_start_time'] as String),
       planEndTime: dateTimeFromStringRemoveUTC(json['plan_end_time'] as String),
-      factStartTime: dateTimeFromStringNullableRemoveUTC(json['fact_start_time'] as String?),
-      factEndTime: dateTimeFromStringNullableRemoveUTC(json['fact_end_time'] as String?),
+      factStartTime: dateTimeFromStringNullableRemoveUTC(
+          json['fact_start_time'] as String?),
+      factEndTime:
+          dateTimeFromStringNullableRemoveUTC(json['fact_end_time'] as String?),
       status: $enumDecodeNullable(_$WorkoutStatusEnumEnumMap, json['status']),
       isOverdue: json['is_overdue'] as bool?,
       key: json['key'] as String?,
     );
 
-Map<String, dynamic> _$$_AdminWorkoutToJson(_$_AdminWorkout instance) => <String, dynamic>{
+Map<String, dynamic> _$$_AdminWorkoutToJson(_$_AdminWorkout instance) =>
+    <String, dynamic>{
       'id': instance.uuid,
       'user': instance.user,
       'price': toCent(instance.price),

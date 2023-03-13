@@ -28,12 +28,14 @@ mixin _$MapMarker {
   List<String> get childMarkerIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MapMarkerCopyWith<MapMarker> get copyWith => throw _privateConstructorUsedError;
+  $MapMarkerCopyWith<MapMarker> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapMarkerCopyWith<$Res> {
-  factory $MapMarkerCopyWith(MapMarker value, $Res Function(MapMarker) then) = _$MapMarkerCopyWithImpl<$Res, MapMarker>;
+  factory $MapMarkerCopyWith(MapMarker value, $Res Function(MapMarker) then) =
+      _$MapMarkerCopyWithImpl<$Res, MapMarker>;
   @useResult
   $Res call(
       {String markerId,
@@ -49,7 +51,8 @@ abstract class $MapMarkerCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MapMarkerCopyWithImpl<$Res, $Val extends MapMarker> implements $MapMarkerCopyWith<$Res> {
+class _$MapMarkerCopyWithImpl<$Res, $Val extends MapMarker>
+    implements $MapMarkerCopyWith<$Res> {
   _$MapMarkerCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -118,7 +121,8 @@ class _$MapMarkerCopyWithImpl<$Res, $Val extends MapMarker> implements $MapMarke
 
 /// @nodoc
 abstract class _$$_MapMarkerCopyWith<$Res> implements $MapMarkerCopyWith<$Res> {
-  factory _$$_MapMarkerCopyWith(_$_MapMarker value, $Res Function(_$_MapMarker) then) =
+  factory _$$_MapMarkerCopyWith(
+          _$_MapMarker value, $Res Function(_$_MapMarker) then) =
       __$$_MapMarkerCopyWithImpl<$Res>;
   @override
   @useResult
@@ -136,9 +140,12 @@ abstract class _$$_MapMarkerCopyWith<$Res> implements $MapMarkerCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MapMarkerCopyWithImpl<$Res> extends _$MapMarkerCopyWithImpl<$Res, _$_MapMarker>
+class __$$_MapMarkerCopyWithImpl<$Res>
+    extends _$MapMarkerCopyWithImpl<$Res, _$_MapMarker>
     implements _$$_MapMarkerCopyWith<$Res> {
-  __$$_MapMarkerCopyWithImpl(_$_MapMarker _value, $Res Function(_$_MapMarker) _then) : super(_value, _then);
+  __$$_MapMarkerCopyWithImpl(
+      _$_MapMarker _value, $Res Function(_$_MapMarker) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -256,26 +263,45 @@ class _$_MapMarker extends _MapMarker {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapMarker &&
-            (identical(other.markerId, markerId) || other.markerId == markerId) &&
-            (identical(other.coordinates, coordinates) || other.coordinates == coordinates) &&
+            (identical(other.markerId, markerId) ||
+                other.markerId == markerId) &&
+            (identical(other.coordinates, coordinates) ||
+                other.coordinates == coordinates) &&
             (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.onPressed, onPressed) || other.onPressed == onPressed) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.isActive, isActive) || other.isActive == isActive) &&
-            (identical(other.isCluster, isCluster) || other.isCluster == isCluster) &&
-            (identical(other.clusterId, clusterId) || other.clusterId == clusterId) &&
-            (identical(other.pointsSize, pointsSize) || other.pointsSize == pointsSize) &&
-            const DeepCollectionEquality().equals(other._childMarkerIds, _childMarkerIds));
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.isCluster, isCluster) ||
+                other.isCluster == isCluster) &&
+            (identical(other.clusterId, clusterId) ||
+                other.clusterId == clusterId) &&
+            (identical(other.pointsSize, pointsSize) ||
+                other.pointsSize == pointsSize) &&
+            const DeepCollectionEquality()
+                .equals(other._childMarkerIds, _childMarkerIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, markerId, coordinates, icon, onPressed, type, isActive, isCluster,
-      clusterId, pointsSize, const DeepCollectionEquality().hash(_childMarkerIds));
+  int get hashCode => Object.hash(
+      runtimeType,
+      markerId,
+      coordinates,
+      icon,
+      onPressed,
+      type,
+      isActive,
+      isCluster,
+      clusterId,
+      pointsSize,
+      const DeepCollectionEquality().hash(_childMarkerIds));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MapMarkerCopyWith<_$_MapMarker> get copyWith => __$$_MapMarkerCopyWithImpl<_$_MapMarker>(this, _$identity);
+  _$$_MapMarkerCopyWith<_$_MapMarker> get copyWith =>
+      __$$_MapMarkerCopyWithImpl<_$_MapMarker>(this, _$identity);
 }
 
 abstract class _MapMarker extends MapMarker {
@@ -314,5 +340,6 @@ abstract class _MapMarker extends MapMarker {
   List<String> get childMarkerIds;
   @override
   @JsonKey(ignore: true)
-  _$$_MapMarkerCopyWith<_$_MapMarker> get copyWith => throw _privateConstructorUsedError;
+  _$$_MapMarkerCopyWith<_$_MapMarker> get copyWith =>
+      throw _privateConstructorUsedError;
 }

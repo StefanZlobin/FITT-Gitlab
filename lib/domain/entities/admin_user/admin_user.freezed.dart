@@ -31,12 +31,14 @@ mixin _$AdminUser {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AdminUserCopyWith<AdminUser> get copyWith => throw _privateConstructorUsedError;
+  $AdminUserCopyWith<AdminUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AdminUserCopyWith<$Res> {
-  factory $AdminUserCopyWith(AdminUser value, $Res Function(AdminUser) then) = _$AdminUserCopyWithImpl<$Res, AdminUser>;
+  factory $AdminUserCopyWith(AdminUser value, $Res Function(AdminUser) then) =
+      _$AdminUserCopyWithImpl<$Res, AdminUser>;
   @useResult
   $Res call(
       {@JsonKey(name: 'fullname') String? fullname,
@@ -46,7 +48,8 @@ abstract class $AdminUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AdminUserCopyWithImpl<$Res, $Val extends AdminUser> implements $AdminUserCopyWith<$Res> {
+class _$AdminUserCopyWithImpl<$Res, $Val extends AdminUser>
+    implements $AdminUserCopyWith<$Res> {
   _$AdminUserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -85,7 +88,8 @@ class _$AdminUserCopyWithImpl<$Res, $Val extends AdminUser> implements $AdminUse
 
 /// @nodoc
 abstract class _$$_AdminUserCopyWith<$Res> implements $AdminUserCopyWith<$Res> {
-  factory _$$_AdminUserCopyWith(_$_AdminUser value, $Res Function(_$_AdminUser) then) =
+  factory _$$_AdminUserCopyWith(
+          _$_AdminUser value, $Res Function(_$_AdminUser) then) =
       __$$_AdminUserCopyWithImpl<$Res>;
   @override
   @useResult
@@ -97,9 +101,12 @@ abstract class _$$_AdminUserCopyWith<$Res> implements $AdminUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AdminUserCopyWithImpl<$Res> extends _$AdminUserCopyWithImpl<$Res, _$_AdminUser>
+class __$$_AdminUserCopyWithImpl<$Res>
+    extends _$AdminUserCopyWithImpl<$Res, _$_AdminUser>
     implements _$$_AdminUserCopyWith<$Res> {
-  __$$_AdminUserCopyWithImpl(_$_AdminUser _value, $Res Function(_$_AdminUser) _then) : super(_value, _then);
+  __$$_AdminUserCopyWithImpl(
+      _$_AdminUser _value, $Res Function(_$_AdminUser) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -139,7 +146,8 @@ class _$_AdminUser implements _AdminUser {
       @JsonKey(name: 'gender') this.gender,
       @JsonKey(name: 'check_num') this.userId});
 
-  factory _$_AdminUser.fromJson(Map<String, dynamic> json) => _$$_AdminUserFromJson(json);
+  factory _$_AdminUser.fromJson(Map<String, dynamic> json) =>
+      _$$_AdminUserFromJson(json);
 
   @override
   @JsonKey(name: 'fullname')
@@ -164,7 +172,8 @@ class _$_AdminUser implements _AdminUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdminUser &&
-            (identical(other.fullname, fullname) || other.fullname == fullname) &&
+            (identical(other.fullname, fullname) ||
+                other.fullname == fullname) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.userId, userId) || other.userId == userId));
@@ -177,7 +186,8 @@ class _$_AdminUser implements _AdminUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminUserCopyWith<_$_AdminUser> get copyWith => __$$_AdminUserCopyWithImpl<_$_AdminUser>(this, _$identity);
+  _$$_AdminUserCopyWith<_$_AdminUser> get copyWith =>
+      __$$_AdminUserCopyWithImpl<_$_AdminUser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -194,7 +204,8 @@ abstract class _AdminUser implements AdminUser {
       @JsonKey(name: 'gender') final UserGenderEnum? gender,
       @JsonKey(name: 'check_num') final String? userId}) = _$_AdminUser;
 
-  factory _AdminUser.fromJson(Map<String, dynamic> json) = _$_AdminUser.fromJson;
+  factory _AdminUser.fromJson(Map<String, dynamic> json) =
+      _$_AdminUser.fromJson;
 
   @override
   @JsonKey(name: 'fullname')
@@ -210,5 +221,6 @@ abstract class _AdminUser implements AdminUser {
   String? get userId;
   @override
   @JsonKey(ignore: true)
-  _$$_AdminUserCopyWith<_$_AdminUser> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdminUserCopyWith<_$_AdminUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
