@@ -75,7 +75,7 @@ test:
    - flutter pub get
    - flutter pub run build_runner build --delete-conflicting-outputs
  script:
-   - echo ${KEYSTORE_BASE64} | base64 -d > /upload-keystore.jks
+   - echo ${KEYSTORE_BASE64} | base64 -d > /tmp/upload-keystore.jks
    - cp ${KEYFILE} ./android/key.properties
    - flutter build apk --debug --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION
    - mv build/app/outputs/flutter-apk/app-debug.apk app-debug.apk
