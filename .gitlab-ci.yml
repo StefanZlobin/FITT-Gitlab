@@ -20,16 +20,15 @@ versioning:
    - |
     if [[ $CI_BUILD_REF_NAME = "master" ]]
     then
-      echo "BUILD_VERSION=$(release-it --ci --release-version)" >> version.env
+      echo "BUILD_VERSION=$(release-it --ci --release-version)\nBUILD_NUMBER=1000\nCHANGELOG=\"$(release-it --ci --changelog)\"" >> version.env
     elif [[ $CI_BUILD_REF_NAME = "staging" ]]
     then
-      echo "BUILD_VERSION=$(release-it --ci --preRelease=beta --release-version)" >> version.env
+      echo "BUILD_VERSION=$(release-it --ci --preRelease=beta --release-version)\nBUILD_NUMBER=$(release-it --ci --preRelease=beta --release-version | cut -d "." -f 5)\nCHANGELOG=\"$(release-it --ci --changelog)\"" >> version.env
     else
       echo "BUILD_VERSION=$(release-it --ci --preRelease=dev --release-version)" >> version.env
     fi
   only:
     - master
-    - development
     - staging
   artifacts:
    reports:
@@ -69,7 +68,7 @@ test:
  tags:
    - docker
 
-.build-and-push-to-android:
+build-and-push-to-android:
  stage: build
  before_script:
    - flutter pub get
@@ -77,31 +76,51 @@ test:
  script:
    - echo ${KEYSTORE_BASE64} | base64 -d > /tmp/upload-keystore.jks
    - cp ${KEYFILE} ./android/key.properties
-   - flutter build apk --debug --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION
-   - mv build/app/outputs/flutter-apk/app-debug.apk app-debug.apk
+   - flutter build apk --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
+   - mv build/app/outputs/flutter-apk/app-release.apk app-release.apk
  artifacts:
    paths:
-     - app-debug.apk
+     - app-release.apk
  tags:
    - hard-work
    - docker
  needs:
    - versioning
+ only:
+   - master
+   - staging
 
-build-and-push-to-android-test:
-  extends: .build-and-push-to-android
-  environment:
-    name: test
+build-and-push-to-ios:
+  stage: build
+  before_script:
+    - flutter pub get
+    - flutter pub run build_runner build --delete-conflicting-outputs
+  script:
+    - flutter build ipa --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
+    - mv build/ios/ipa/FITT.ipa app-release.ipa
+  artifacts:
+    paths:
+      - app-release.ipa
   only:
-    - development
-  
+   - master
+   - staging
+  tags:
+   - ios
+   - raw-shell
 
-build-and-push-to-android-preprod:
-  extends: .build-and-push-to-android
-  environment:
-    name: preprod
-  only:
-    - master
+push-to-testflight:
+  stage: release
+  before_script: []
+  script:
+    - fastlane run testflight app_version:"$(BUILD_VERSION)" build_number:"$(BUILD_NUMBER)" changelog:"$(CHANGELOG)" ipa:"app-release.ipa"
+
+ 
+push-to-google_play:
+  stage: release
+  before_script: []
+  script:
+    - fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
+
 
 # build-and-push-to-ios-test:
 #   stage: build_ios
