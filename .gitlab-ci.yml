@@ -81,7 +81,7 @@ test:
    - mv build/app/outputs/flutter-apk/app-debug.apk app-debug.apk
  artifacts:
    paths:
-     - app-release.apk
+     - app-debug.apk
  tags:
    - hard-work
    - docker
