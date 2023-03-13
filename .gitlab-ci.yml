@@ -77,8 +77,8 @@ test:
  script:
    - echo ${KEYSTORE_BASE64} | base64 -d > /upload-keystore.jks
    - cp ${KEYFILE} ./android/key.properties
-   - flutter build apk --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION
-   - mv build/app/outputs/flutter-apk/app-release.apk app-release.apk
+   - flutter build apk --debug --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION
+   - mv build/app/outputs/flutter-apk/app-debug.apk app-debug.apk
  artifacts:
    paths:
      - app-release.apk
