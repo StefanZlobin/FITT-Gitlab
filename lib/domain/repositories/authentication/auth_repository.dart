@@ -1,3 +1,4 @@
+import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
 
 abstract class AuthRepository {
@@ -14,4 +15,5 @@ abstract class AuthRepository {
   Future<void> saveToken({required TokenPair token});
 
   Stream<TokenPair?> get tokens;
+  Stream<AuthenticationStatusEnum> get authenticationStatus;
 }

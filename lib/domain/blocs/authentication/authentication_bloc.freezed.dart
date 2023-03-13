@@ -23,9 +23,6 @@ mixin _$AuthenticationEvent {
             String phoneNumber, String secureCode, String fcmToken)
         checkSecureCode,
     required TResult Function() signOut,
-    required TResult Function() getToken,
-    required TResult Function(TokenPair token) saveToken,
-    required TResult Function() refreshToken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,9 +31,6 @@ mixin _$AuthenticationEvent {
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult? Function()? signOut,
-    TResult? Function()? getToken,
-    TResult? Function(TokenPair token)? saveToken,
-    TResult? Function()? refreshToken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,9 +39,6 @@ mixin _$AuthenticationEvent {
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult Function()? signOut,
-    TResult Function()? getToken,
-    TResult Function(TokenPair token)? saveToken,
-    TResult Function()? refreshToken,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,10 +48,6 @@ mixin _$AuthenticationEvent {
     required TResult Function(_AuthenticationEventCheckSecureCode value)
         checkSecureCode,
     required TResult Function(_AuthenticationEventSignOut value) signOut,
-    required TResult Function(_AuthenticationEventGetToken value) getToken,
-    required TResult Function(_AuthenticationEventSaveToken value) saveToken,
-    required TResult Function(_AuthenticationEventRefreshToken value)
-        refreshToken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,9 +56,6 @@ mixin _$AuthenticationEvent {
     TResult? Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult? Function(_AuthenticationEventSignOut value)? signOut,
-    TResult? Function(_AuthenticationEventGetToken value)? getToken,
-    TResult? Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult? Function(_AuthenticationEventRefreshToken value)? refreshToken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,9 +64,6 @@ mixin _$AuthenticationEvent {
     TResult Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult Function(_AuthenticationEventSignOut value)? signOut,
-    TResult Function(_AuthenticationEventGetToken value)? getToken,
-    TResult Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult Function(_AuthenticationEventRefreshToken value)? refreshToken,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -180,9 +161,6 @@ class _$_AuthenticationEventSignIn implements _AuthenticationEventSignIn {
             String phoneNumber, String secureCode, String fcmToken)
         checkSecureCode,
     required TResult Function() signOut,
-    required TResult Function() getToken,
-    required TResult Function(TokenPair token) saveToken,
-    required TResult Function() refreshToken,
   }) {
     return signIn(phoneNumber);
   }
@@ -194,9 +172,6 @@ class _$_AuthenticationEventSignIn implements _AuthenticationEventSignIn {
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult? Function()? signOut,
-    TResult? Function()? getToken,
-    TResult? Function(TokenPair token)? saveToken,
-    TResult? Function()? refreshToken,
   }) {
     return signIn?.call(phoneNumber);
   }
@@ -208,9 +183,6 @@ class _$_AuthenticationEventSignIn implements _AuthenticationEventSignIn {
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult Function()? signOut,
-    TResult Function()? getToken,
-    TResult Function(TokenPair token)? saveToken,
-    TResult Function()? refreshToken,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -226,10 +198,6 @@ class _$_AuthenticationEventSignIn implements _AuthenticationEventSignIn {
     required TResult Function(_AuthenticationEventCheckSecureCode value)
         checkSecureCode,
     required TResult Function(_AuthenticationEventSignOut value) signOut,
-    required TResult Function(_AuthenticationEventGetToken value) getToken,
-    required TResult Function(_AuthenticationEventSaveToken value) saveToken,
-    required TResult Function(_AuthenticationEventRefreshToken value)
-        refreshToken,
   }) {
     return signIn(this);
   }
@@ -241,9 +209,6 @@ class _$_AuthenticationEventSignIn implements _AuthenticationEventSignIn {
     TResult? Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult? Function(_AuthenticationEventSignOut value)? signOut,
-    TResult? Function(_AuthenticationEventGetToken value)? getToken,
-    TResult? Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult? Function(_AuthenticationEventRefreshToken value)? refreshToken,
   }) {
     return signIn?.call(this);
   }
@@ -255,9 +220,6 @@ class _$_AuthenticationEventSignIn implements _AuthenticationEventSignIn {
     TResult Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult Function(_AuthenticationEventSignOut value)? signOut,
-    TResult Function(_AuthenticationEventGetToken value)? getToken,
-    TResult Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult Function(_AuthenticationEventRefreshToken value)? refreshToken,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -375,9 +337,6 @@ class _$_AuthenticationEventCheckSecureCode
             String phoneNumber, String secureCode, String fcmToken)
         checkSecureCode,
     required TResult Function() signOut,
-    required TResult Function() getToken,
-    required TResult Function(TokenPair token) saveToken,
-    required TResult Function() refreshToken,
   }) {
     return checkSecureCode(phoneNumber, secureCode, fcmToken);
   }
@@ -389,9 +348,6 @@ class _$_AuthenticationEventCheckSecureCode
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult? Function()? signOut,
-    TResult? Function()? getToken,
-    TResult? Function(TokenPair token)? saveToken,
-    TResult? Function()? refreshToken,
   }) {
     return checkSecureCode?.call(phoneNumber, secureCode, fcmToken);
   }
@@ -403,9 +359,6 @@ class _$_AuthenticationEventCheckSecureCode
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult Function()? signOut,
-    TResult Function()? getToken,
-    TResult Function(TokenPair token)? saveToken,
-    TResult Function()? refreshToken,
     required TResult orElse(),
   }) {
     if (checkSecureCode != null) {
@@ -421,10 +374,6 @@ class _$_AuthenticationEventCheckSecureCode
     required TResult Function(_AuthenticationEventCheckSecureCode value)
         checkSecureCode,
     required TResult Function(_AuthenticationEventSignOut value) signOut,
-    required TResult Function(_AuthenticationEventGetToken value) getToken,
-    required TResult Function(_AuthenticationEventSaveToken value) saveToken,
-    required TResult Function(_AuthenticationEventRefreshToken value)
-        refreshToken,
   }) {
     return checkSecureCode(this);
   }
@@ -436,9 +385,6 @@ class _$_AuthenticationEventCheckSecureCode
     TResult? Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult? Function(_AuthenticationEventSignOut value)? signOut,
-    TResult? Function(_AuthenticationEventGetToken value)? getToken,
-    TResult? Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult? Function(_AuthenticationEventRefreshToken value)? refreshToken,
   }) {
     return checkSecureCode?.call(this);
   }
@@ -450,9 +396,6 @@ class _$_AuthenticationEventCheckSecureCode
     TResult Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult Function(_AuthenticationEventSignOut value)? signOut,
-    TResult Function(_AuthenticationEventGetToken value)? getToken,
-    TResult Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult Function(_AuthenticationEventRefreshToken value)? refreshToken,
     required TResult orElse(),
   }) {
     if (checkSecureCode != null) {
@@ -525,9 +468,6 @@ class _$_AuthenticationEventSignOut implements _AuthenticationEventSignOut {
             String phoneNumber, String secureCode, String fcmToken)
         checkSecureCode,
     required TResult Function() signOut,
-    required TResult Function() getToken,
-    required TResult Function(TokenPair token) saveToken,
-    required TResult Function() refreshToken,
   }) {
     return signOut();
   }
@@ -539,9 +479,6 @@ class _$_AuthenticationEventSignOut implements _AuthenticationEventSignOut {
     TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult? Function()? signOut,
-    TResult? Function()? getToken,
-    TResult? Function(TokenPair token)? saveToken,
-    TResult? Function()? refreshToken,
   }) {
     return signOut?.call();
   }
@@ -553,9 +490,6 @@ class _$_AuthenticationEventSignOut implements _AuthenticationEventSignOut {
     TResult Function(String phoneNumber, String secureCode, String fcmToken)?
         checkSecureCode,
     TResult Function()? signOut,
-    TResult Function()? getToken,
-    TResult Function(TokenPair token)? saveToken,
-    TResult Function()? refreshToken,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -571,10 +505,6 @@ class _$_AuthenticationEventSignOut implements _AuthenticationEventSignOut {
     required TResult Function(_AuthenticationEventCheckSecureCode value)
         checkSecureCode,
     required TResult Function(_AuthenticationEventSignOut value) signOut,
-    required TResult Function(_AuthenticationEventGetToken value) getToken,
-    required TResult Function(_AuthenticationEventSaveToken value) saveToken,
-    required TResult Function(_AuthenticationEventRefreshToken value)
-        refreshToken,
   }) {
     return signOut(this);
   }
@@ -586,9 +516,6 @@ class _$_AuthenticationEventSignOut implements _AuthenticationEventSignOut {
     TResult? Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult? Function(_AuthenticationEventSignOut value)? signOut,
-    TResult? Function(_AuthenticationEventGetToken value)? getToken,
-    TResult? Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult? Function(_AuthenticationEventRefreshToken value)? refreshToken,
   }) {
     return signOut?.call(this);
   }
@@ -600,9 +527,6 @@ class _$_AuthenticationEventSignOut implements _AuthenticationEventSignOut {
     TResult Function(_AuthenticationEventCheckSecureCode value)?
         checkSecureCode,
     TResult Function(_AuthenticationEventSignOut value)? signOut,
-    TResult Function(_AuthenticationEventGetToken value)? getToken,
-    TResult Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult Function(_AuthenticationEventRefreshToken value)? refreshToken,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -614,454 +538,6 @@ class _$_AuthenticationEventSignOut implements _AuthenticationEventSignOut {
 
 abstract class _AuthenticationEventSignOut implements AuthenticationEvent {
   const factory _AuthenticationEventSignOut() = _$_AuthenticationEventSignOut;
-}
-
-/// @nodoc
-abstract class _$$_AuthenticationEventGetTokenCopyWith<$Res> {
-  factory _$$_AuthenticationEventGetTokenCopyWith(
-          _$_AuthenticationEventGetToken value,
-          $Res Function(_$_AuthenticationEventGetToken) then) =
-      __$$_AuthenticationEventGetTokenCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_AuthenticationEventGetTokenCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res,
-        _$_AuthenticationEventGetToken>
-    implements _$$_AuthenticationEventGetTokenCopyWith<$Res> {
-  __$$_AuthenticationEventGetTokenCopyWithImpl(
-      _$_AuthenticationEventGetToken _value,
-      $Res Function(_$_AuthenticationEventGetToken) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_AuthenticationEventGetToken implements _AuthenticationEventGetToken {
-  const _$_AuthenticationEventGetToken();
-
-  @override
-  String toString() {
-    return 'AuthenticationEvent.getToken()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AuthenticationEventGetToken);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber) signIn,
-    required TResult Function(
-            String phoneNumber, String secureCode, String fcmToken)
-        checkSecureCode,
-    required TResult Function() signOut,
-    required TResult Function() getToken,
-    required TResult Function(TokenPair token) saveToken,
-    required TResult Function() refreshToken,
-  }) {
-    return getToken();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber)? signIn,
-    TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
-        checkSecureCode,
-    TResult? Function()? signOut,
-    TResult? Function()? getToken,
-    TResult? Function(TokenPair token)? saveToken,
-    TResult? Function()? refreshToken,
-  }) {
-    return getToken?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber)? signIn,
-    TResult Function(String phoneNumber, String secureCode, String fcmToken)?
-        checkSecureCode,
-    TResult Function()? signOut,
-    TResult Function()? getToken,
-    TResult Function(TokenPair token)? saveToken,
-    TResult Function()? refreshToken,
-    required TResult orElse(),
-  }) {
-    if (getToken != null) {
-      return getToken();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticationEventSignIn value) signIn,
-    required TResult Function(_AuthenticationEventCheckSecureCode value)
-        checkSecureCode,
-    required TResult Function(_AuthenticationEventSignOut value) signOut,
-    required TResult Function(_AuthenticationEventGetToken value) getToken,
-    required TResult Function(_AuthenticationEventSaveToken value) saveToken,
-    required TResult Function(_AuthenticationEventRefreshToken value)
-        refreshToken,
-  }) {
-    return getToken(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticationEventSignIn value)? signIn,
-    TResult? Function(_AuthenticationEventCheckSecureCode value)?
-        checkSecureCode,
-    TResult? Function(_AuthenticationEventSignOut value)? signOut,
-    TResult? Function(_AuthenticationEventGetToken value)? getToken,
-    TResult? Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult? Function(_AuthenticationEventRefreshToken value)? refreshToken,
-  }) {
-    return getToken?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticationEventSignIn value)? signIn,
-    TResult Function(_AuthenticationEventCheckSecureCode value)?
-        checkSecureCode,
-    TResult Function(_AuthenticationEventSignOut value)? signOut,
-    TResult Function(_AuthenticationEventGetToken value)? getToken,
-    TResult Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult Function(_AuthenticationEventRefreshToken value)? refreshToken,
-    required TResult orElse(),
-  }) {
-    if (getToken != null) {
-      return getToken(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthenticationEventGetToken implements AuthenticationEvent {
-  const factory _AuthenticationEventGetToken() = _$_AuthenticationEventGetToken;
-}
-
-/// @nodoc
-abstract class _$$_AuthenticationEventSaveTokenCopyWith<$Res> {
-  factory _$$_AuthenticationEventSaveTokenCopyWith(
-          _$_AuthenticationEventSaveToken value,
-          $Res Function(_$_AuthenticationEventSaveToken) then) =
-      __$$_AuthenticationEventSaveTokenCopyWithImpl<$Res>;
-  @useResult
-  $Res call({TokenPair token});
-}
-
-/// @nodoc
-class __$$_AuthenticationEventSaveTokenCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res,
-        _$_AuthenticationEventSaveToken>
-    implements _$$_AuthenticationEventSaveTokenCopyWith<$Res> {
-  __$$_AuthenticationEventSaveTokenCopyWithImpl(
-      _$_AuthenticationEventSaveToken _value,
-      $Res Function(_$_AuthenticationEventSaveToken) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = null,
-  }) {
-    return _then(_$_AuthenticationEventSaveToken(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as TokenPair,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AuthenticationEventSaveToken implements _AuthenticationEventSaveToken {
-  const _$_AuthenticationEventSaveToken({required this.token});
-
-  @override
-  final TokenPair token;
-
-  @override
-  String toString() {
-    return 'AuthenticationEvent.saveToken(token: $token)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AuthenticationEventSaveToken &&
-            (identical(other.token, token) || other.token == token));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, token);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_AuthenticationEventSaveTokenCopyWith<_$_AuthenticationEventSaveToken>
-      get copyWith => __$$_AuthenticationEventSaveTokenCopyWithImpl<
-          _$_AuthenticationEventSaveToken>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber) signIn,
-    required TResult Function(
-            String phoneNumber, String secureCode, String fcmToken)
-        checkSecureCode,
-    required TResult Function() signOut,
-    required TResult Function() getToken,
-    required TResult Function(TokenPair token) saveToken,
-    required TResult Function() refreshToken,
-  }) {
-    return saveToken(token);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber)? signIn,
-    TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
-        checkSecureCode,
-    TResult? Function()? signOut,
-    TResult? Function()? getToken,
-    TResult? Function(TokenPair token)? saveToken,
-    TResult? Function()? refreshToken,
-  }) {
-    return saveToken?.call(token);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber)? signIn,
-    TResult Function(String phoneNumber, String secureCode, String fcmToken)?
-        checkSecureCode,
-    TResult Function()? signOut,
-    TResult Function()? getToken,
-    TResult Function(TokenPair token)? saveToken,
-    TResult Function()? refreshToken,
-    required TResult orElse(),
-  }) {
-    if (saveToken != null) {
-      return saveToken(token);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticationEventSignIn value) signIn,
-    required TResult Function(_AuthenticationEventCheckSecureCode value)
-        checkSecureCode,
-    required TResult Function(_AuthenticationEventSignOut value) signOut,
-    required TResult Function(_AuthenticationEventGetToken value) getToken,
-    required TResult Function(_AuthenticationEventSaveToken value) saveToken,
-    required TResult Function(_AuthenticationEventRefreshToken value)
-        refreshToken,
-  }) {
-    return saveToken(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticationEventSignIn value)? signIn,
-    TResult? Function(_AuthenticationEventCheckSecureCode value)?
-        checkSecureCode,
-    TResult? Function(_AuthenticationEventSignOut value)? signOut,
-    TResult? Function(_AuthenticationEventGetToken value)? getToken,
-    TResult? Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult? Function(_AuthenticationEventRefreshToken value)? refreshToken,
-  }) {
-    return saveToken?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticationEventSignIn value)? signIn,
-    TResult Function(_AuthenticationEventCheckSecureCode value)?
-        checkSecureCode,
-    TResult Function(_AuthenticationEventSignOut value)? signOut,
-    TResult Function(_AuthenticationEventGetToken value)? getToken,
-    TResult Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult Function(_AuthenticationEventRefreshToken value)? refreshToken,
-    required TResult orElse(),
-  }) {
-    if (saveToken != null) {
-      return saveToken(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthenticationEventSaveToken implements AuthenticationEvent {
-  const factory _AuthenticationEventSaveToken(
-      {required final TokenPair token}) = _$_AuthenticationEventSaveToken;
-
-  TokenPair get token;
-  @JsonKey(ignore: true)
-  _$$_AuthenticationEventSaveTokenCopyWith<_$_AuthenticationEventSaveToken>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_AuthenticationEventRefreshTokenCopyWith<$Res> {
-  factory _$$_AuthenticationEventRefreshTokenCopyWith(
-          _$_AuthenticationEventRefreshToken value,
-          $Res Function(_$_AuthenticationEventRefreshToken) then) =
-      __$$_AuthenticationEventRefreshTokenCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_AuthenticationEventRefreshTokenCopyWithImpl<$Res>
-    extends _$AuthenticationEventCopyWithImpl<$Res,
-        _$_AuthenticationEventRefreshToken>
-    implements _$$_AuthenticationEventRefreshTokenCopyWith<$Res> {
-  __$$_AuthenticationEventRefreshTokenCopyWithImpl(
-      _$_AuthenticationEventRefreshToken _value,
-      $Res Function(_$_AuthenticationEventRefreshToken) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_AuthenticationEventRefreshToken
-    implements _AuthenticationEventRefreshToken {
-  const _$_AuthenticationEventRefreshToken();
-
-  @override
-  String toString() {
-    return 'AuthenticationEvent.refreshToken()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AuthenticationEventRefreshToken);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber) signIn,
-    required TResult Function(
-            String phoneNumber, String secureCode, String fcmToken)
-        checkSecureCode,
-    required TResult Function() signOut,
-    required TResult Function() getToken,
-    required TResult Function(TokenPair token) saveToken,
-    required TResult Function() refreshToken,
-  }) {
-    return refreshToken();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber)? signIn,
-    TResult? Function(String phoneNumber, String secureCode, String fcmToken)?
-        checkSecureCode,
-    TResult? Function()? signOut,
-    TResult? Function()? getToken,
-    TResult? Function(TokenPair token)? saveToken,
-    TResult? Function()? refreshToken,
-  }) {
-    return refreshToken?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber)? signIn,
-    TResult Function(String phoneNumber, String secureCode, String fcmToken)?
-        checkSecureCode,
-    TResult Function()? signOut,
-    TResult Function()? getToken,
-    TResult Function(TokenPair token)? saveToken,
-    TResult Function()? refreshToken,
-    required TResult orElse(),
-  }) {
-    if (refreshToken != null) {
-      return refreshToken();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticationEventSignIn value) signIn,
-    required TResult Function(_AuthenticationEventCheckSecureCode value)
-        checkSecureCode,
-    required TResult Function(_AuthenticationEventSignOut value) signOut,
-    required TResult Function(_AuthenticationEventGetToken value) getToken,
-    required TResult Function(_AuthenticationEventSaveToken value) saveToken,
-    required TResult Function(_AuthenticationEventRefreshToken value)
-        refreshToken,
-  }) {
-    return refreshToken(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticationEventSignIn value)? signIn,
-    TResult? Function(_AuthenticationEventCheckSecureCode value)?
-        checkSecureCode,
-    TResult? Function(_AuthenticationEventSignOut value)? signOut,
-    TResult? Function(_AuthenticationEventGetToken value)? getToken,
-    TResult? Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult? Function(_AuthenticationEventRefreshToken value)? refreshToken,
-  }) {
-    return refreshToken?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticationEventSignIn value)? signIn,
-    TResult Function(_AuthenticationEventCheckSecureCode value)?
-        checkSecureCode,
-    TResult Function(_AuthenticationEventSignOut value)? signOut,
-    TResult Function(_AuthenticationEventGetToken value)? getToken,
-    TResult Function(_AuthenticationEventSaveToken value)? saveToken,
-    TResult Function(_AuthenticationEventRefreshToken value)? refreshToken,
-    required TResult orElse(),
-  }) {
-    if (refreshToken != null) {
-      return refreshToken(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthenticationEventRefreshToken implements AuthenticationEvent {
-  const factory _AuthenticationEventRefreshToken() =
-      _$_AuthenticationEventRefreshToken;
 }
 
 /// @nodoc

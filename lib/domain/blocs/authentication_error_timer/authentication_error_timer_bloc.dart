@@ -4,24 +4,21 @@ import 'package:bloc/bloc.dart';
 import 'package:fitt/domain/ticker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'authentication_error_timer_bloc.freezed.dart';
 part 'authentication_error_timer_event.dart';
 part 'authentication_error_timer_state.dart';
-part 'authentication_error_timer_bloc.freezed.dart';
 
 class AuthenticationErrorTimerBloc
     extends Bloc<AuthenticationErrorTimerEvent, AuthenticationErrorTimerState> {
   StreamSubscription<int>? _tickerSubscription;
   final Ticker _ticker;
-  int attemptsEnterCode = 0;
+  int countTimerEnd = 0;
 
   AuthenticationErrorTimerBloc({required Ticker ticker})
       : _ticker = ticker,
-        super(const _TimerInitial()) {
+        super(const _TimerInitial(duration: Duration(minutes: 1))) {
     on<_SetTimerInitial>(_onSetInitial);
     on<_TimerStarted>(_onStarted);
-    //on<_TimerPaused>(_onPaused);
-    //on<_TimerResumed>(_onResumed);
-    //on<_TimerReset>(_onReset);
     on<_TimerTicked>(_onTicked);
   }
 
@@ -52,8 +49,8 @@ class AuthenticationErrorTimerBloc
     if (event.duration.inSeconds > 0) {
       emit(_TimerRunInProgress(duration: event.duration));
     } else {
-      attemptsEnterCode += 1;
-      emit(_TimerRunComplete(attemptsEnterCode: attemptsEnterCode));
+      countTimerEnd += 1;
+      emit(_TimerRunComplete(countTimerEnd: countTimerEnd));
     }
   }
 
