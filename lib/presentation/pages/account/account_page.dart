@@ -84,16 +84,17 @@ class _AccountPageState extends State<AccountPage> {
                       onPressed: () async {
                         final xFile = await imagePicker.pickImage(
                           source: ImageSource.gallery,
-                          //imageQuality: 5,
+                          imageQuality: 5,
                         );
                         final file = File(xFile!.path);
-
                         final size = await file.length();
                         if (size > 5242880) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text(
-                                      'Слишком большой размер изображения')));
+                            const SnackBar(
+                              content:
+                                  Text('Слишком большой размер изображения'),
+                            ),
+                          );
                           return;
                         }
                         final CroppedFile? croppedFile =
