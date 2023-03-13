@@ -180,7 +180,10 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     final markersList = await _makeClusters(newMarkers, event.zoom);
     final markers = await _ensureSingleActiveMarker(markersList);
 
-    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(markers.active)));
+    //_carouselBloc.add(CarouselEvent.clubSelected(_clubId(markers.active)));
+    _carouselBloc.add(
+      CarouselEvent.clubSelected(_carouselBloc.firstPartnerClub?.uuid ?? ''),
+    );
 
     emit(
       MapState.loaded(
