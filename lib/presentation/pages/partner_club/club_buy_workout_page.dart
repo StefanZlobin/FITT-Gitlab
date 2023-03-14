@@ -119,7 +119,10 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
               ),
             ),
             _buildPickTimeWidget(
-                timeSlots, dateSlots, lastAvailableDateSelected),
+              timeSlots,
+              dateSlots,
+              lastAvailableDateSelected,
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
               child: Text(
@@ -253,7 +256,8 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
   }
 
   Widget _buildPickDurationWidget(
-      FilterGroup<bool, ToggledFilter<Duration>> durationSlots) {
+    FilterGroup<bool, ToggledFilter<Duration>> durationSlots,
+  ) {
     return SizedBox(
       height: 40,
       child: ListView(
@@ -303,7 +307,8 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
   }
 
   Widget _buildNextDayButton(
-      FilterGroup<bool, ToggledFilter<DateTime>> dateSlots) {
+    FilterGroup<bool, ToggledFilter<DateTime>> dateSlots,
+  ) {
     return GestureDetector(
       onTap: () => getIt<ClubCubit>().selectDateSlot(dateSlots
           .children[
@@ -348,7 +353,8 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
   }
 
   Widget _buildPickDateWidget(
-      FilterGroup<bool, ToggledFilter<DateTime>> dateSlots) {
+    FilterGroup<bool, ToggledFilter<DateTime>> dateSlots,
+  ) {
     return Container(
       height: 144,
       margin: const EdgeInsets.only(top: 24),
@@ -366,7 +372,8 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
             ),
           ),
           const DayTilePlaceholder(
-              whenAvailable: 'Бронь будет доступна завтра'),
+            whenAvailable: 'Бронь будет доступна завтра',
+          ),
         ],
       ),
     );
