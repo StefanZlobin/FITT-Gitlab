@@ -6,7 +6,7 @@ enum AccountUserEmailValidationError { empty, incorrect }
 class AccountUserEmail
     extends FormzInput<String, AccountUserEmailValidationError> {
   const AccountUserEmail.pure() : super.pure('');
-  const AccountUserEmail.dirty() : super.dirty('');
+  const AccountUserEmail.dirty([super.value = '']) : super.dirty();
 
   @override
   AccountUserEmailValidationError? validator(String value) {

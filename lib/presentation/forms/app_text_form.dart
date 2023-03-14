@@ -70,6 +70,9 @@ class AppTextFormField extends StatelessWidget {
                 if (!isEmailField)
                   TextInputFormatter.withFunction(
                     (oldValue, newValue) {
+                      if (newValue.text.isEmpty) {
+                        return const TextEditingValue();
+                      }
                       return TextEditingValue(
                         text: newValue.text.capitalize(),
                         selection: newValue.selection,
@@ -85,8 +88,10 @@ class AppTextFormField extends StatelessWidget {
                 filled: readOnly,
                 enabled: !readOnly,
                 hintText: placeholder,
-                hintStyle: AppTypography.kBody14.apply(color: AppColors.kOxford40),
-                contentPadding: const EdgeInsets.symmetric(vertical: 15.5, horizontal: 16),
+                hintStyle:
+                    AppTypography.kBody14.apply(color: AppColors.kOxford40),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 15.5, horizontal: 16),
                 enabledBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   borderSide: BorderSide(color: AppColors.kOxford20),

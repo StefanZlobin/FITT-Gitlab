@@ -24,7 +24,7 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getIt<UserBloc>().add(const UserEvent.checkUser());
+    //getIt<UserBloc>().add(const UserEvent.checkUser());
 
     return BlocBuilder<UserBloc, UserState>(
       bloc: getIt<UserBloc>(),
@@ -41,13 +41,16 @@ class UserAvatar extends StatelessWidget {
 
   Widget _buildUserMenuTile(BuildContext context, User? user) {
     return GestureDetector(
-      onTap: () => isAdminPage ? context.push(AppRoute.map.routeToPath) : context.push(AppRoute.account.routeToPath),
+      onTap: () => isAdminPage
+          ? context.push(AppRoute.map.routeToPath)
+          : context.push(AppRoute.account.routeToPath),
       child: ListTile(
         contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
         leading: _setAvatarWidget(user),
         title: user?.firstName == null && user?.lastName == null
             ? Container(
-                padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: AppColors.kOxford20),
@@ -73,7 +76,8 @@ class UserAvatar extends StatelessWidget {
                     return FutureBuilder<Position>(
                       future: getIt<GeolocationService>().getCurrentPosition(),
                       builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return const AnimatedDots();
                         }
                         final position = snapshot.data;
@@ -115,7 +119,9 @@ class UserAvatar extends StatelessWidget {
   }
 
   Widget _setAvatarWidget(User? user) {
-    return user?.avatar != null ? _buildAvatar(user!) : _buildAvatarPlaceholder();
+    return user?.avatar != null
+        ? _buildAvatar(user!)
+        : _buildAvatarPlaceholder();
   }
 
   Widget _buildAvatar(User user) {

@@ -3,16 +3,16 @@ part of 'account_bloc.dart';
 @freezed
 class AccountEvent with _$AccountEvent {
   const factory AccountEvent.firstNameChanged({
-    required AccountUserFirstName firstName,
+    required String firstName,
   }) = _AccountEventFirstNameChanged;
   const factory AccountEvent.secondNameChanged({
-    required AccountUserSecondName secondName,
+    required String secondName,
   }) = _AccountEventSecondNameChanged;
   const factory AccountEvent.birthdayChanged({
-    required AccountUserBirthday birthday,
+    required String birthday,
   }) = _AccountEventBirthdayChanged;
   const factory AccountEvent.emailChanged({
-    required AccountUserEmail email,
+    required String email,
   }) = _AccountEventEmailChanged;
   const factory AccountEvent.accountSubmitted() = _AccountEventAccountSubmitted;
 }

@@ -19,6 +19,7 @@ class AppDateForm extends StatelessWidget {
     this.onSaved,
     this.onTap,
     this.validator,
+    this.errorText,
   });
 
   final Widget helper;
@@ -31,6 +32,7 @@ class AppDateForm extends StatelessWidget {
   final VoidCallback? onEditingComplete;
   final VoidCallback? onTap;
   final String? Function(DateTime? value)? validator;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +54,17 @@ class AppDateForm extends StatelessWidget {
                   initialValue: initialValue,
                   mode: DateTimeFieldPickerMode.date,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  dateTextStyle: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
+                  dateTextStyle:
+                      AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
                   dateFormat: DateTimeUtils.dateFormatDetailed,
                   decoration: InputDecoration(
                     hintText: placeholder,
-                    hintStyle: AppTypography.kBody14.apply(color: AppColors.kOxford40),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 15.5, horizontal: 16),
+                    hintStyle:
+                        AppTypography.kBody14.apply(color: AppColors.kOxford40),
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 15.5,
+                      horizontal: 16,
+                    ),
                     enabledBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                       borderSide: BorderSide(color: AppColors.kOxford20),
@@ -73,6 +80,10 @@ class AppDateForm extends StatelessWidget {
                     focusedErrorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                       borderSide: BorderSide(color: AppColors.kPrimaryRed),
+                    ),
+                    errorText: errorText,
+                    errorStyle: AppTypography.kBody14.apply(
+                      color: AppColors.kPrimaryRed,
                     ),
                     errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),

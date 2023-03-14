@@ -18,29 +18,28 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AccountEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function(AccountUserSecondName secondName)
-        secondNameChanged,
-    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
-    required TResult Function(AccountUserEmail email) emailChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function() accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult? Function(AccountUserEmail email)? emailChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult Function(AccountUserEmail email)? emailChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) =>
@@ -104,7 +103,7 @@ abstract class _$$_AccountEventFirstNameChangedCopyWith<$Res> {
           $Res Function(_$_AccountEventFirstNameChanged) then) =
       __$$_AccountEventFirstNameChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({AccountUserFirstName firstName});
+  $Res call({String firstName});
 }
 
 /// @nodoc
@@ -125,7 +124,7 @@ class __$$_AccountEventFirstNameChangedCopyWithImpl<$Res>
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as AccountUserFirstName,
+              as String,
     ));
   }
 }
@@ -136,7 +135,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   const _$_AccountEventFirstNameChanged({required this.firstName});
 
   @override
-  final AccountUserFirstName firstName;
+  final String firstName;
 
   @override
   String toString() {
@@ -165,11 +164,10 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function(AccountUserSecondName secondName)
-        secondNameChanged,
-    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
-    required TResult Function(AccountUserEmail email) emailChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
     return firstNameChanged(firstName);
@@ -178,10 +176,10 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult? Function(AccountUserEmail email)? emailChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return firstNameChanged?.call(firstName);
@@ -190,10 +188,10 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult Function(AccountUserEmail email)? emailChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -250,10 +248,9 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
 
 abstract class _AccountEventFirstNameChanged implements AccountEvent {
   const factory _AccountEventFirstNameChanged(
-          {required final AccountUserFirstName firstName}) =
-      _$_AccountEventFirstNameChanged;
+      {required final String firstName}) = _$_AccountEventFirstNameChanged;
 
-  AccountUserFirstName get firstName;
+  String get firstName;
   @JsonKey(ignore: true)
   _$$_AccountEventFirstNameChangedCopyWith<_$_AccountEventFirstNameChanged>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,7 +263,7 @@ abstract class _$$_AccountEventSecondNameChangedCopyWith<$Res> {
           $Res Function(_$_AccountEventSecondNameChanged) then) =
       __$$_AccountEventSecondNameChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({AccountUserSecondName secondName});
+  $Res call({String secondName});
 }
 
 /// @nodoc
@@ -287,7 +284,7 @@ class __$$_AccountEventSecondNameChangedCopyWithImpl<$Res>
       secondName: null == secondName
           ? _value.secondName
           : secondName // ignore: cast_nullable_to_non_nullable
-              as AccountUserSecondName,
+              as String,
     ));
   }
 }
@@ -299,7 +296,7 @@ class _$_AccountEventSecondNameChanged
   const _$_AccountEventSecondNameChanged({required this.secondName});
 
   @override
-  final AccountUserSecondName secondName;
+  final String secondName;
 
   @override
   String toString() {
@@ -328,11 +325,10 @@ class _$_AccountEventSecondNameChanged
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function(AccountUserSecondName secondName)
-        secondNameChanged,
-    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
-    required TResult Function(AccountUserEmail email) emailChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
     return secondNameChanged(secondName);
@@ -341,10 +337,10 @@ class _$_AccountEventSecondNameChanged
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult? Function(AccountUserEmail email)? emailChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return secondNameChanged?.call(secondName);
@@ -353,10 +349,10 @@ class _$_AccountEventSecondNameChanged
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult Function(AccountUserEmail email)? emailChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -413,10 +409,9 @@ class _$_AccountEventSecondNameChanged
 
 abstract class _AccountEventSecondNameChanged implements AccountEvent {
   const factory _AccountEventSecondNameChanged(
-          {required final AccountUserSecondName secondName}) =
-      _$_AccountEventSecondNameChanged;
+      {required final String secondName}) = _$_AccountEventSecondNameChanged;
 
-  AccountUserSecondName get secondName;
+  String get secondName;
   @JsonKey(ignore: true)
   _$$_AccountEventSecondNameChangedCopyWith<_$_AccountEventSecondNameChanged>
       get copyWith => throw _privateConstructorUsedError;
@@ -429,7 +424,7 @@ abstract class _$$_AccountEventBirthdayChangedCopyWith<$Res> {
           $Res Function(_$_AccountEventBirthdayChanged) then) =
       __$$_AccountEventBirthdayChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({AccountUserBirthday birthday});
+  $Res call({String birthday});
 }
 
 /// @nodoc
@@ -450,7 +445,7 @@ class __$$_AccountEventBirthdayChangedCopyWithImpl<$Res>
       birthday: null == birthday
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
-              as AccountUserBirthday,
+              as String,
     ));
   }
 }
@@ -461,7 +456,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
   const _$_AccountEventBirthdayChanged({required this.birthday});
 
   @override
-  final AccountUserBirthday birthday;
+  final String birthday;
 
   @override
   String toString() {
@@ -490,11 +485,10 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function(AccountUserSecondName secondName)
-        secondNameChanged,
-    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
-    required TResult Function(AccountUserEmail email) emailChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
     return birthdayChanged(birthday);
@@ -503,10 +497,10 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult? Function(AccountUserEmail email)? emailChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return birthdayChanged?.call(birthday);
@@ -515,10 +509,10 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult Function(AccountUserEmail email)? emailChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -574,11 +568,10 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
 }
 
 abstract class _AccountEventBirthdayChanged implements AccountEvent {
-  const factory _AccountEventBirthdayChanged(
-          {required final AccountUserBirthday birthday}) =
+  const factory _AccountEventBirthdayChanged({required final String birthday}) =
       _$_AccountEventBirthdayChanged;
 
-  AccountUserBirthday get birthday;
+  String get birthday;
   @JsonKey(ignore: true)
   _$$_AccountEventBirthdayChangedCopyWith<_$_AccountEventBirthdayChanged>
       get copyWith => throw _privateConstructorUsedError;
@@ -591,7 +584,7 @@ abstract class _$$_AccountEventEmailChangedCopyWith<$Res> {
           $Res Function(_$_AccountEventEmailChanged) then) =
       __$$_AccountEventEmailChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({AccountUserEmail email});
+  $Res call({String email});
 }
 
 /// @nodoc
@@ -611,7 +604,7 @@ class __$$_AccountEventEmailChangedCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as AccountUserEmail,
+              as String,
     ));
   }
 }
@@ -622,7 +615,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
   const _$_AccountEventEmailChanged({required this.email});
 
   @override
-  final AccountUserEmail email;
+  final String email;
 
   @override
   String toString() {
@@ -650,11 +643,10 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function(AccountUserSecondName secondName)
-        secondNameChanged,
-    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
-    required TResult Function(AccountUserEmail email) emailChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
     return emailChanged(email);
@@ -663,10 +655,10 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult? Function(AccountUserEmail email)? emailChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return emailChanged?.call(email);
@@ -675,10 +667,10 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult Function(AccountUserEmail email)? emailChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -734,10 +726,10 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
 }
 
 abstract class _AccountEventEmailChanged implements AccountEvent {
-  const factory _AccountEventEmailChanged(
-      {required final AccountUserEmail email}) = _$_AccountEventEmailChanged;
+  const factory _AccountEventEmailChanged({required final String email}) =
+      _$_AccountEventEmailChanged;
 
-  AccountUserEmail get email;
+  String get email;
   @JsonKey(ignore: true)
   _$$_AccountEventEmailChangedCopyWith<_$_AccountEventEmailChanged>
       get copyWith => throw _privateConstructorUsedError;
@@ -784,11 +776,10 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AccountUserFirstName firstName) firstNameChanged,
-    required TResult Function(AccountUserSecondName secondName)
-        secondNameChanged,
-    required TResult Function(AccountUserBirthday birthday) birthdayChanged,
-    required TResult Function(AccountUserEmail email) emailChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function() accountSubmitted,
   }) {
     return accountSubmitted();
@@ -797,10 +788,10 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult? Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult? Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult? Function(AccountUserEmail email)? emailChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return accountSubmitted?.call();
@@ -809,10 +800,10 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AccountUserFirstName firstName)? firstNameChanged,
-    TResult Function(AccountUserSecondName secondName)? secondNameChanged,
-    TResult Function(AccountUserBirthday birthday)? birthdayChanged,
-    TResult Function(AccountUserEmail email)? emailChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -876,33 +867,69 @@ abstract class _AccountEventAccountSubmitted implements AccountEvent {
 mixin _$AccountState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String firstName, String? secondName,
+            DateTime? birthday, String? email)
+        initial,
+    required TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)
+        formChanged,
+    required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult? Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_AccountStateInitial value) initial,
+    required TResult Function(_AccountStateFormChanged value) formChanged,
+    required TResult Function(_AccountStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_AccountStateInitial value)? initial,
+    TResult? Function(_AccountStateFormChanged value)? formChanged,
+    TResult? Function(_AccountStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_AccountStateInitial value)? initial,
+    TResult Function(_AccountStateFormChanged value)? formChanged,
+    TResult Function(_AccountStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -927,63 +954,160 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_AccountStateInitialCopyWith<$Res> {
+  factory _$$_AccountStateInitialCopyWith(_$_AccountStateInitial value,
+          $Res Function(_$_AccountStateInitial) then) =
+      __$$_AccountStateInitialCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String firstName,
+      String? secondName,
+      DateTime? birthday,
+      String? email});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_AccountStateInitialCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$_AccountStateInitial>
+    implements _$$_AccountStateInitialCopyWith<$Res> {
+  __$$_AccountStateInitialCopyWithImpl(_$_AccountStateInitial _value,
+      $Res Function(_$_AccountStateInitial) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = null,
+    Object? secondName = freezed,
+    Object? birthday = freezed,
+    Object? email = freezed,
+  }) {
+    return _then(_$_AccountStateInitial(
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      secondName: freezed == secondName
+          ? _value.secondName
+          : secondName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      birthday: freezed == birthday
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_AccountStateInitial implements _AccountStateInitial {
+  const _$_AccountStateInitial(
+      {this.firstName = '',
+      this.secondName = '',
+      this.birthday,
+      this.email = ''});
+
+  @override
+  @JsonKey()
+  final String firstName;
+  @override
+  @JsonKey()
+  final String? secondName;
+  @override
+  final DateTime? birthday;
+  @override
+  @JsonKey()
+  final String? email;
 
   @override
   String toString() {
-    return 'AccountState.initial()';
+    return 'AccountState.initial(firstName: $firstName, secondName: $secondName, birthday: $birthday, email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountStateInitial &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.secondName, secondName) ||
+                other.secondName == secondName) &&
+            (identical(other.birthday, birthday) ||
+                other.birthday == birthday) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, firstName, secondName, birthday, email);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AccountStateInitialCopyWith<_$_AccountStateInitial> get copyWith =>
+      __$$_AccountStateInitialCopyWithImpl<_$_AccountStateInitial>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String firstName, String? secondName,
+            DateTime? birthday, String? email)
+        initial,
+    required TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)
+        formChanged,
+    required TResult Function(String error) error,
   }) {
-    return initial();
+    return initial(firstName, secondName, birthday, email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult? Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult? Function(String error)? error,
   }) {
-    return initial?.call();
+    return initial?.call(firstName, secondName, birthday, email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(firstName, secondName, birthday, email);
     }
     return orElse();
   }
@@ -991,7 +1115,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_AccountStateInitial value) initial,
+    required TResult Function(_AccountStateFormChanged value) formChanged,
+    required TResult Function(_AccountStateError value) error,
   }) {
     return initial(this);
   }
@@ -999,7 +1125,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_AccountStateInitial value)? initial,
+    TResult? Function(_AccountStateFormChanged value)? formChanged,
+    TResult? Function(_AccountStateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -1007,7 +1135,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_AccountStateInitial value)? initial,
+    TResult Function(_AccountStateFormChanged value)? formChanged,
+    TResult Function(_AccountStateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1017,6 +1147,404 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements AccountState {
-  const factory _Initial() = _$_Initial;
+abstract class _AccountStateInitial implements AccountState {
+  const factory _AccountStateInitial(
+      {final String firstName,
+      final String? secondName,
+      final DateTime? birthday,
+      final String? email}) = _$_AccountStateInitial;
+
+  String get firstName;
+  String? get secondName;
+  DateTime? get birthday;
+  String? get email;
+  @JsonKey(ignore: true)
+  _$$_AccountStateInitialCopyWith<_$_AccountStateInitial> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AccountStateFormChangedCopyWith<$Res> {
+  factory _$$_AccountStateFormChangedCopyWith(_$_AccountStateFormChanged value,
+          $Res Function(_$_AccountStateFormChanged) then) =
+      __$$_AccountStateFormChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {AccountUserFirstName? firstName,
+      AccountUserSecondName? secondName,
+      AccountUserBirthday? birthday,
+      AccountUserEmail? email,
+      bool status});
+}
+
+/// @nodoc
+class __$$_AccountStateFormChangedCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$_AccountStateFormChanged>
+    implements _$$_AccountStateFormChangedCopyWith<$Res> {
+  __$$_AccountStateFormChangedCopyWithImpl(_$_AccountStateFormChanged _value,
+      $Res Function(_$_AccountStateFormChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firstName = freezed,
+    Object? secondName = freezed,
+    Object? birthday = freezed,
+    Object? email = freezed,
+    Object? status = null,
+  }) {
+    return _then(_$_AccountStateFormChanged(
+      firstName: freezed == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as AccountUserFirstName?,
+      secondName: freezed == secondName
+          ? _value.secondName
+          : secondName // ignore: cast_nullable_to_non_nullable
+              as AccountUserSecondName?,
+      birthday: freezed == birthday
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as AccountUserBirthday?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as AccountUserEmail?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AccountStateFormChanged implements _AccountStateFormChanged {
+  const _$_AccountStateFormChanged(
+      {this.firstName,
+      this.secondName,
+      this.birthday,
+      this.email,
+      this.status = false});
+
+  @override
+  final AccountUserFirstName? firstName;
+  @override
+  final AccountUserSecondName? secondName;
+  @override
+  final AccountUserBirthday? birthday;
+  @override
+  final AccountUserEmail? email;
+  @override
+  @JsonKey()
+  final bool status;
+
+  @override
+  String toString() {
+    return 'AccountState.formChanged(firstName: $firstName, secondName: $secondName, birthday: $birthday, email: $email, status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountStateFormChanged &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.secondName, secondName) ||
+                other.secondName == secondName) &&
+            (identical(other.birthday, birthday) ||
+                other.birthday == birthday) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, firstName, secondName, birthday, email, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AccountStateFormChangedCopyWith<_$_AccountStateFormChanged>
+      get copyWith =>
+          __$$_AccountStateFormChangedCopyWithImpl<_$_AccountStateFormChanged>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String firstName, String? secondName,
+            DateTime? birthday, String? email)
+        initial,
+    required TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)
+        formChanged,
+    required TResult Function(String error) error,
+  }) {
+    return formChanged(firstName, secondName, birthday, email, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult? Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult? Function(String error)? error,
+  }) {
+    return formChanged?.call(firstName, secondName, birthday, email, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (formChanged != null) {
+      return formChanged(firstName, secondName, birthday, email, status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AccountStateInitial value) initial,
+    required TResult Function(_AccountStateFormChanged value) formChanged,
+    required TResult Function(_AccountStateError value) error,
+  }) {
+    return formChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AccountStateInitial value)? initial,
+    TResult? Function(_AccountStateFormChanged value)? formChanged,
+    TResult? Function(_AccountStateError value)? error,
+  }) {
+    return formChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AccountStateInitial value)? initial,
+    TResult Function(_AccountStateFormChanged value)? formChanged,
+    TResult Function(_AccountStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (formChanged != null) {
+      return formChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AccountStateFormChanged implements AccountState {
+  const factory _AccountStateFormChanged(
+      {final AccountUserFirstName? firstName,
+      final AccountUserSecondName? secondName,
+      final AccountUserBirthday? birthday,
+      final AccountUserEmail? email,
+      final bool status}) = _$_AccountStateFormChanged;
+
+  AccountUserFirstName? get firstName;
+  AccountUserSecondName? get secondName;
+  AccountUserBirthday? get birthday;
+  AccountUserEmail? get email;
+  bool get status;
+  @JsonKey(ignore: true)
+  _$$_AccountStateFormChangedCopyWith<_$_AccountStateFormChanged>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AccountStateErrorCopyWith<$Res> {
+  factory _$$_AccountStateErrorCopyWith(_$_AccountStateError value,
+          $Res Function(_$_AccountStateError) then) =
+      __$$_AccountStateErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$_AccountStateErrorCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$_AccountStateError>
+    implements _$$_AccountStateErrorCopyWith<$Res> {
+  __$$_AccountStateErrorCopyWithImpl(
+      _$_AccountStateError _value, $Res Function(_$_AccountStateError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$_AccountStateError(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AccountStateError implements _AccountStateError {
+  const _$_AccountStateError({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'AccountState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountStateError &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AccountStateErrorCopyWith<_$_AccountStateError> get copyWith =>
+      __$$_AccountStateErrorCopyWithImpl<_$_AccountStateError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String firstName, String? secondName,
+            DateTime? birthday, String? email)
+        initial,
+    required TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)
+        formChanged,
+    required TResult Function(String error) error,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult? Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult? Function(String error)? error,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String firstName, String? secondName, DateTime? birthday,
+            String? email)?
+        initial,
+    TResult Function(
+            AccountUserFirstName? firstName,
+            AccountUserSecondName? secondName,
+            AccountUserBirthday? birthday,
+            AccountUserEmail? email,
+            bool status)?
+        formChanged,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AccountStateInitial value) initial,
+    required TResult Function(_AccountStateFormChanged value) formChanged,
+    required TResult Function(_AccountStateError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AccountStateInitial value)? initial,
+    TResult? Function(_AccountStateFormChanged value)? formChanged,
+    TResult? Function(_AccountStateError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AccountStateInitial value)? initial,
+    TResult Function(_AccountStateFormChanged value)? formChanged,
+    TResult Function(_AccountStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AccountStateError implements AccountState {
+  const factory _AccountStateError({required final String error}) =
+      _$_AccountStateError;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$_AccountStateErrorCopyWith<_$_AccountStateError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

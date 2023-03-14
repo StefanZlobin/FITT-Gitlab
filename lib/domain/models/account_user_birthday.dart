@@ -1,17 +1,21 @@
-import 'package:clock/clock.dart';
+import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:formz/formz.dart';
 
 enum AccountUserBirthdayValidationError { needsMoreThan18 }
 
 class AccountUserBirthday
-    extends FormzInput<DateTime, AccountUserBirthdayValidationError> {
-  AccountUserBirthday.pure() : super.pure(clock.now());
-  AccountUserBirthday.dirty() : super.dirty(clock.now());
+    extends FormzInput<String, AccountUserBirthdayValidationError> {
+  const AccountUserBirthday.pure() : super.pure('');
+  const AccountUserBirthday.dirty([super.value = '']) : super.dirty();
 
   @override
-  AccountUserBirthdayValidationError? validator(DateTime value) {
-    final maximumPossibleDate = clock.yearsFromNow(18);
-    if (value.isAfter(maximumPossibleDate)) {
+  AccountUserBirthdayValidationError? validator(String value) {
+    final date = dateFromString(value);
+    if (date.isAfter(DateTime(
+      DateTime.now().year - 18,
+      DateTime.now().month,
+      DateTime.now().day,
+    ))) {
       return AccountUserBirthdayValidationError.needsMoreThan18;
     }
     return null;
