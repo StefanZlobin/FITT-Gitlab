@@ -2,8 +2,17 @@
    "dart.normalizeFileCasing": false,
    "dart.flutterCreateOrganization": null,
 
+   "editor.formatOnSave": true,
+
+   "editor.defaultFormatter": "Dart-Code.dart-code",
    "editor.codeActionsOnSave": {
       "source.fixAll": true,
       "source.organizeImports": true,
-  }
+      "trailingComma.all" :true,
+  },
+
+  "[dart]": {
+   "editor.defaultFormatter": "Dart-Code.dart-code",
+   "editor.formatOnSave": true,
+}
 }

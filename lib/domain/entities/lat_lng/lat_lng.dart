@@ -9,8 +9,7 @@ part 'lat_lng.g.dart';
 class LatLng implements Serializable {
   const LatLng(this.latitude, this.longitude);
   factory LatLng.fromJson(List json) => const LatLngConverter().fromJson(json);
-  factory LatLng.fromGoogleMaps(gmaps.LatLng googleLatLng) =>
-      LatLng(googleLatLng.latitude, googleLatLng.longitude);
+  factory LatLng.fromGoogleMaps(gmaps.LatLng googleLatLng) => LatLng(googleLatLng.latitude, googleLatLng.longitude);
 
   final double latitude;
   final double longitude;
@@ -24,8 +23,7 @@ class LatLng implements Serializable {
     return local;
   }
 
-  Map<String, Object?> get props =>
-      toJson().asMap().map((k, v) => MapEntry(k.toString(), v));
+  Map<String, Object?> get props => toJson().asMap().map((k, v) => MapEntry(k.toString(), v));
 }
 
 class LatLngConverter implements JsonConverter<LatLng, List<double>> {

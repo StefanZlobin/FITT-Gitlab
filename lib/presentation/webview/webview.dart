@@ -45,17 +45,11 @@ class _WebviewState extends State<Webview> {
       ..setBackgroundColor(AppColors.kBaseWhite)
       ..setNavigationDelegate(
         NavigationDelegate(
-          onProgress: (int progress) {
-            // Update loading bar.
-          },
-          onPageStarted: (String url) {},
           onPageFinished: (String url) {
             if (url == 'https://fitandtech.app/') {
               context.push(AppRoute.paymentLoading.routeToPath);
             }
           },
-          onWebResourceError: (WebResourceError error) {},
-          //onNavigationRequest: (NavigationRequest request) {},
         ),
       )
       ..loadRequest(Uri.parse(widget.url));

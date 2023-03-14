@@ -96,9 +96,7 @@ class ClubCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(left: 20, bottom: 20, top: 5),
         child: Icon(
-          !isFavorite
-              ? AppIcons.favorite_outlined_rounded
-              : AppIcons.favorite_rounded,
+          !isFavorite ? AppIcons.favorite_outlined_rounded : AppIcons.favorite_rounded,
           size: 20,
           color: !isFavorite ? AppColors.kOxford60 : AppColors.kPrimaryBlue,
         ),

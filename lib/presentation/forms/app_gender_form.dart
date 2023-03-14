@@ -35,8 +35,7 @@ class _AppGenderFormFieldState extends State<AppGenderFormField> {
       setState(() {
         genderGroup = gender;
         if (widget.user != null) {
-          getIt<UserBloc>().add(UserEvent.updateUserData(
-              user: widget.user!.copyWith(gender: genderGroup)));
+          getIt<UserBloc>().add(UserEvent.updateUserData(user: widget.user!.copyWith(gender: genderGroup)));
         }
       });
     }
@@ -58,8 +57,7 @@ class _AppGenderFormFieldState extends State<AppGenderFormField> {
             children: [
               AppRadioButton<UserGenderEnum>(
                 isRadioButtonLeading: true,
-                sortingValue:
-                    UserGenderEnum.male.genderEnumToString(UserGenderEnum.male),
+                sortingValue: UserGenderEnum.male.genderEnumToString(UserGenderEnum.male),
                 value: UserGenderEnum.male,
                 groupValue: genderGroup ?? widget.userGender,
                 padding: const EdgeInsets.all(0),
@@ -68,8 +66,7 @@ class _AppGenderFormFieldState extends State<AppGenderFormField> {
               const SizedBox(width: 32),
               AppRadioButton<UserGenderEnum>(
                 isRadioButtonLeading: true,
-                sortingValue: UserGenderEnum.female
-                    .genderEnumToString(UserGenderEnum.female),
+                sortingValue: UserGenderEnum.female.genderEnumToString(UserGenderEnum.female),
                 value: UserGenderEnum.female,
                 groupValue: genderGroup ?? widget.userGender,
                 padding: const EdgeInsets.all(0),

@@ -20,6 +20,5 @@ class MapPointData with _$MapPointData {
         required double? batchHours,
   }) = _MapPointData;
 
-  factory MapPointData.fromJson(Map<String, dynamic> json) =>
-      _$MapPointDataFromJson(json);
+  factory MapPointData.fromJson(Map<String, dynamic> json) => _$MapPointDataFromJson(json);
 }

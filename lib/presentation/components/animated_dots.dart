@@ -9,8 +9,7 @@ class AnimatedDots extends StatefulWidget {
   AnimatedDotsState createState() => AnimatedDotsState();
 }
 
-class AnimatedDotsState extends State<AnimatedDots>
-    with TickerProviderStateMixin {
+class AnimatedDotsState extends State<AnimatedDots> with TickerProviderStateMixin {
   late final AnimationController controller;
   late final Animation<double> first;
   late final Animation<double> second;

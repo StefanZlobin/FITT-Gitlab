@@ -17,7 +17,6 @@ class AdminClubSlice {
   final String? next;
   final String? previous;
 
-  factory AdminClubSlice.fromJson(Map<String, dynamic> json) =>
-      _$AdminClubSliceFromJson(json);
+  factory AdminClubSlice.fromJson(Map<String, dynamic> json) => _$AdminClubSliceFromJson(json);
   Map<String, dynamic> toJson() => _$AdminClubSliceToJson(this);
 }

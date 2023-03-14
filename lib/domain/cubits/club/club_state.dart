@@ -41,8 +41,7 @@ class FilterGroup<V, T extends Filter<dynamic, V>> {
     this._children,
   );
 
-  Map<Object, dynamic> toJson() =>
-      _children.map<Object, T>((key, value) => MapEntry(key.toString(), value));
+  Map<Object, dynamic> toJson() => _children.map<Object, T>((key, value) => MapEntry(key.toString(), value));
 
   final Map<Object, T> _children;
 
@@ -76,9 +75,7 @@ class FilterGroup<V, T extends Filter<dynamic, V>> {
       return true;
     }
 
-    return other is FilterGroup<V, T> &&
-        mapEquals(other._children, _children) &&
-        other.enabledCount == enabledCount;
+    return other is FilterGroup<V, T> && mapEquals(other._children, _children) && other.enabledCount == enabledCount;
   }
 
   @override

@@ -17,15 +17,16 @@ class UserLocalClient {
 
     final userJson = _userStorage.get(0);
     if (userJson == null) return null;
-    final res = User.fromJson(userJson.map<String, dynamic>(
-        (dynamic key, dynamic value) =>
-            MapEntry<String, dynamic>(key!.toString(), value)));
+    final res = User.fromJson(
+      userJson.map<String, dynamic>(
+        (dynamic key, dynamic value) => MapEntry<String, dynamic>(key!.toString(), value),
+      ),
+    );
     return res;
   }
 
   Future<void> saveUser({required User user}) async {
     await _ensureInitialized();
-
     await _userStorage.put(0, user.toJson());
   }
 

@@ -94,8 +94,9 @@ abstract class AppThemes {
         ),
         shape: MaterialStateProperty.resolveWith((states) {
           return RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-              side: const BorderSide(color: AppColors.kBaseBlack));
+            borderRadius: BorderRadius.circular(12),
+            side: const BorderSide(color: AppColors.kBaseBlack),
+          );
         }),
         textStyle: MaterialStateProperty.resolveWith(
           (states) {
@@ -235,17 +236,20 @@ class AppSliderThumbShape extends SliderComponentShape {
   }
 
   @override
-  void paint(PaintingContext context, Offset center,
-      {required Animation<double> activationAnimation,
-      required Animation<double> enableAnimation,
-      required bool isDiscrete,
-      required TextPainter labelPainter,
-      required RenderBox parentBox,
-      required SliderThemeData sliderTheme,
-      required TextDirection textDirection,
-      required double value,
-      required double textScaleFactor,
-      required Size sizeWithOverflow}) {
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
+  }) {
     final path = Path()
       ..addOval(
         Rect.fromCircle(center: center, radius: _kThumbRadius),
@@ -364,20 +368,14 @@ class AppRangeSliderTrackShape extends RangeSliderTrackShape {
       offset.dx,
       topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding,
       offset.dx + _kBoundsVerticalMarkWidth,
-      topPadding +
-          sliderTheme.trackHeight! +
-          boundsMarkVerticalPadding +
-          _kBoundsVerticalMarkHeight,
+      topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding + _kBoundsVerticalMarkHeight,
     );
 
     final rightMarkRRect = RRect.fromLTRBAndCorners(
       parentBox.paintBounds.right - _kBoundsVerticalMarkWidth,
       topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding,
       parentBox.paintBounds.right,
-      topPadding +
-          sliderTheme.trackHeight! +
-          boundsMarkVerticalPadding +
-          _kBoundsVerticalMarkHeight,
+      topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding + _kBoundsVerticalMarkHeight,
     );
 
     context.canvas.drawRRect(leftInactiveRRect, inactivePaint);
@@ -449,20 +447,14 @@ class AppSliderTrackShape extends SliderTrackShape {
       offset.dx,
       topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding,
       offset.dx + _kBoundsVerticalMarkWidth,
-      topPadding +
-          sliderTheme.trackHeight! +
-          boundsMarkVerticalPadding +
-          _kBoundsVerticalMarkHeight,
+      topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding + _kBoundsVerticalMarkHeight,
     );
 
     final rightMarkRRect = RRect.fromLTRBAndCorners(
       parentBox.paintBounds.right - _kBoundsVerticalMarkWidth,
       topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding,
       parentBox.paintBounds.right,
-      topPadding +
-          sliderTheme.trackHeight! +
-          boundsMarkVerticalPadding +
-          _kBoundsVerticalMarkHeight,
+      topPadding + sliderTheme.trackHeight! + boundsMarkVerticalPadding + _kBoundsVerticalMarkHeight,
     );
 
     context.canvas.drawRRect(inactiveRRect, inactivePaint);

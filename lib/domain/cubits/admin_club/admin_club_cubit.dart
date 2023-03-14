@@ -13,8 +13,7 @@ class AdminClubCubit extends Cubit<AdminClubState> {
 
   Future<void> getAdminClub({required String adminClubUuid}) async {
     try {
-      final adminClub =
-          await adminUseCase.getAdminClub(adminClubUuid: adminClubUuid);
+      final adminClub = await adminUseCase.getAdminClub(adminClubUuid: adminClubUuid);
       emit(_AdminClubStateLoaded(adminClub: adminClub));
     } on Exception catch (e) {
       emit(_AdminClubStateError(error: e.toString()));

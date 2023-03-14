@@ -11,10 +11,8 @@ class ExpandableBuilder extends StatefulWidget {
     this.scrollOnCollapse = false,
   }) : super(key: key);
 
-  final Widget Function(BuildContext context, VoidCallback toggle)
-      collapsedBuilder;
-  final Widget Function(BuildContext context, VoidCallback toggle)
-      expandedBuilder;
+  final Widget Function(BuildContext context, VoidCallback toggle) collapsedBuilder;
+  final Widget Function(BuildContext context, VoidCallback toggle) expandedBuilder;
   final ExpandableThemeData? theme;
   final bool scrollOnExpand;
   final bool scrollOnCollapse;
@@ -30,7 +28,9 @@ class ExpandableBuilderState extends State<ExpandableBuilder> {
   Widget build(BuildContext context) {
     final theme = widget.theme ??
         const ExpandableThemeData(
-            crossFadePoint: 0.3, sizeCurve: Curves.easeOut);
+          crossFadePoint: 0.3,
+          sizeCurve: Curves.easeOut,
+        );
 
     return ExpandableNotifier(
       controller: _controller,

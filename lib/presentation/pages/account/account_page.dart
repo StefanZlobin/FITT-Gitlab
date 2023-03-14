@@ -7,22 +7,18 @@ import 'package:clock/clock.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/constants/border_avatar_radius.dart';
-import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
-import 'package:fitt/core/validation/date_validator.dart';
-import 'package:fitt/core/validation/email_validator.dart';
-import 'package:fitt/core/validation/name_validator.dart';
+import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
-import 'package:fitt/domain/cubits/account_save_button/account_save_button_cubit.dart';
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/dialogs/delete_user_account_dialog.dart';
 import 'package:fitt/presentation/forms/app_date_form.dart';
-import 'package:fitt/presentation/forms/app_gender_form.dart';
 import 'package:fitt/presentation/forms/app_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,32 +28,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
-class AccountPage extends StatefulWidget {
+class AccountPage extends StatelessWidget with UserMixin {
   const AccountPage({super.key});
 
   @override
-  State<AccountPage> createState() => _AccountPageState();
-}
-
-class _AccountPageState extends State<AccountPage> {
-  @override
   Widget build(BuildContext context) {
-    final formFieldKey = GlobalKey<FormFieldState>();
     final ImagePicker imagePicker = ImagePicker();
     final controller = TextEditingController();
-
-    final nameValidator = NameValidator();
-    final dateValidator = DateValidator();
-    final emailValidator = EmailValidator();
     final phoneFormatter = MaskTextInputFormatter(
       mask: '+# (###) ###-##-##',
       filter: {'#': RegExp(r'[0-9]')},
     );
-
-    String? newName;
-    String? newSurname;
-    String? newEmail;
-    DateTime? newBirthday;
 
     return Scaffold(
       appBar: AppBar(
@@ -67,184 +48,267 @@ class _AccountPageState extends State<AccountPage> {
           icon: const Icon(AppIcons.arr_big_left),
         ),
       ),
-      body: BlocBuilder<UserBloc, UserState>(
-        bloc: getIt<UserBloc>(),
-        builder: (context, state) {
-          return state.when(
-            loading: () => const Center(child: CircularProgressIndicator()),
-            loadedWithNoUser: (_) => const SizedBox(),
-            error: (error) => const Center(child: CircularProgressIndicator()),
-            loaded: (user) {
-              return Form(
-                key: formFieldKey,
-                child: ListView(
-                  children: [
-                    _buildAvatarImage(user),
-                    TextButton(
-                      onPressed: () async {
-                        final xFile = await imagePicker.pickImage(
-                          source: ImageSource.gallery,
-                          //imageQuality: 5,
-                        );
-                        final file = File(xFile!.path);
-
-                        final size = await file.length();
-                        if (size > 5242880) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text(
-                                      'Слишком большой размер изображения')));
-                          return;
-                        }
-                        final CroppedFile? croppedFile =
-                            await ImageCropper().cropImage(
-                          sourcePath: xFile.path,
-                        );
-
-                        getIt<UserBloc>().add(
-                          UserEvent.updateUserAvatar(
-                            avatar: File(croppedFile!.path),
-                          ),
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                      ),
-                      child: CenterLeft(
-                        child: Text(
-                          'Заменить изображение',
-                          style: AppTypography.kH14
-                              .apply(color: AppColors.kPrimaryBlue),
-                        ),
-                      ),
-                    ),
-                    AppTextFormField(
-                      controller: user?.firstName != null ? null : controller,
-                      title: const Text('Имя'),
-                      initialValue: user?.firstName,
-                      validator: (v) => nameValidator.getValidationErrorName(v),
-                      onChanged: (value) {
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(firstName: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
-                      },
-                    ),
-                    AppTextFormField(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      title: const Text('Фамилия'),
-                      initialValue: user?.lastName,
-                      validator: (v) => nameValidator.getValidationErrorName(v),
-                      onChanged: (value) {
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(lastName: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
-                      },
-                    ),
-                    AppDateForm(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      helper: const Text('Дата рождения'),
-                      initialValue: user?.birthday,
-                      validator: (v) => dateValidator.getValidationError(v),
-                      onTap: () async {
-                        final pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: clock.yearsAgo(18),
-                          firstDate: clock.yearsAgo(100),
-                          lastDate: clock.yearsAgo(0),
-                        );
-                        newBirthday = pickedDate;
-                      },
-                      onDateSelected: (value) {
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(birthday: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
-                      },
-                    ),
-                    AppTextFormField(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      title: const Text('Номер телефона'),
-                      initialValue:
-                          phoneFormatter.maskText(user?.phoneNumber ?? ''),
-                      readOnly: true,
-                    ),
-                    AppTextFormField(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      title: const Text('E-mail'),
-                      initialValue: user?.email,
-                      isEmailField: true,
-                      validator: (v) => emailValidator.getValidationError(v),
-                      onChanged: (value) {
-                        value.replaceAll(' ', '');
-                        getIt<UserBloc>().add(UserEvent.updateUserData(
-                            user: user!.copyWith(email: value)));
-                        getIt<AccountSaveButtonCubit>()
-                            .disableButton(isDisabled: false);
-                      },
-                    ),
-                    AppGenderFormField(
-                      helper: const Text('Пол'),
-                      user: user,
-                      userGender: user?.gender ?? UserGenderEnum.male,
-                    ),
-                    const Separator(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        showDialog<void>(
-                          useRootNavigator: false,
-                          context: context,
-                          builder: (context) {
-                            return const DeleteUserAccountDialog();
-                          },
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                      ),
-                      child: CenterLeft(
-                        child: Text(
-                          'Удалить мой аккаунт',
-                          style: AppTypography.kH14
-                              .apply(color: AppColors.kOxford40),
-                        ),
-                      ),
-                    ),
-                    _buildSaveButton(
-                      user,
-                      newName,
-                      newSurname,
-                      newBirthday,
-                      newEmail,
-                      context,
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
-        },
+      body: Form(
+        child: ListView(
+          children: [
+            _buildAvatarImage(userSnapshot),
+            _buildUpdateUserAvatarButton(imagePicker, context),
+            _buildFirstNameForm(controller),
+            _buildSecondNameForm(controller),
+            _buildBirthdayForm(context),
+            _buildPhoneNumberForm(phoneFormatter),
+            _buildEmailForm(),
+            const Separator(
+              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+            ),
+            _buildDeleteAccountButton(context),
+            _buildSaveButton(context),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildSaveButton(
-    User? user,
-    String? newName,
-    String? newSurname,
-    DateTime? newBirthday,
-    String? newEmail,
-    BuildContext context,
-  ) {
-    return BlocBuilder<AccountSaveButtonCubit, AccountSaveButtonState>(
-      bloc: getIt<AccountSaveButtonCubit>(),
+  TextButton _buildDeleteAccountButton(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        showDialog<void>(
+          useRootNavigator: false,
+          context: context,
+          builder: (context) {
+            return const DeleteUserAccountDialog();
+          },
+        );
+      },
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+      ),
+      child: CenterLeft(
+        child: Text(
+          'Удалить мой аккаунт',
+          style: AppTypography.kH14.apply(color: AppColors.kOxford40),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmailForm() {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: () {
+          initial: (firstName, secondName, birthday, email) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              title: const Text('E-mail'),
+              initialValue: userSnapshot?.email,
+              isEmailField: true,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.emailChanged(email: value));
+              },
+            );
+          },
+          formChanged: (_, __, ___, email, status) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              title: const Text('E-mail'),
+              initialValue: userSnapshot?.email,
+              isEmailField: true,
+              errorText: !status ? email?.error?.name : null,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.emailChanged(email: value));
+              },
+            );
+          },
+          error: (error) => const SizedBox(),
+        );
+      },
+    );
+  }
+
+  AppTextFormField _buildPhoneNumberForm(
+    MaskTextInputFormatter phoneFormatter,
+  ) {
+    return AppTextFormField(
+      padding: const EdgeInsets.only(left: 16, right: 16),
+      title: const Text('Номер телефона'),
+      initialValue: phoneFormatter.maskText(userSnapshot?.phoneNumber ?? ''),
+      readOnly: true,
+    );
+  }
+
+  Widget _buildFirstNameForm(TextEditingController controller) {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (firstName, secondName, birthday, email) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              controller: userSnapshot?.lastName != null ? null : controller,
+              title: const Text('Имя'),
+              initialValue: userSnapshot?.firstName,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.firstNameChanged(firstName: value));
+              },
+            );
+          },
+          formChanged: (firstName, secondName, birthday, email, status) {
+            return AppTextFormField(
+              controller: userSnapshot?.firstName != null ? null : controller,
+              title: const Text('Имя'),
+              initialValue: userSnapshot?.firstName,
+              errorText: !status ? firstName?.error?.name : null,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.firstNameChanged(firstName: value));
+              },
+            );
+          },
+          error: (error) => const SizedBox(),
+        );
+      },
+    );
+  }
+
+  Widget _buildSecondNameForm(TextEditingController controller) {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (firstName, secondName, birthday, email) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              controller: userSnapshot?.lastName != null ? null : controller,
+              title: const Text('Фамилия'),
+              initialValue: userSnapshot?.lastName,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.secondNameChanged(secondName: value));
+              },
+            );
+          },
+          formChanged: (_, secondName, __, ___, status) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              controller: userSnapshot?.lastName != null ? null : controller,
+              title: const Text('Фамилия'),
+              initialValue: userSnapshot?.lastName,
+              errorText: !status ? secondName?.error?.name : null,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.secondNameChanged(secondName: value));
+              },
+            );
+          },
+          error: (error) => const SizedBox(),
+        );
+      },
+    );
+  }
+
+  Widget _buildBirthdayForm(BuildContext context) {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (firstName, secondName, birthday, email) {
+            return AppDateForm(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              helper: const Text('Дата рождения'),
+              initialValue: userSnapshot?.birthday,
+              onTap: () async {
+                await showDatePicker(
+                  context: context,
+                  initialDate: clock.yearsAgo(18),
+                  firstDate: clock.yearsAgo(100),
+                  lastDate: clock.yearsAgo(0),
+                );
+              },
+              onDateSelected: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.emailChanged(email: value.toString()));
+              },
+            );
+          },
+          formChanged: (_, __, bitrhday, ___, status) {
+            return AppDateForm(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              helper: const Text('Дата рождения'),
+              initialValue: userSnapshot?.birthday,
+              errorText: !status ? bitrhday?.error?.name : null,
+              onTap: () async {
+                await showDatePicker(
+                  context: context,
+                  initialDate: clock.yearsAgo(18),
+                  firstDate: clock.yearsAgo(100),
+                  lastDate: clock.yearsAgo(0),
+                );
+              },
+              onDateSelected: (value) {
+                getIt<AccountBloc>().add(
+                  AccountEvent.birthdayChanged(birthday: value.toString()),
+                );
+              },
+            );
+          },
+          error: (error) => const SizedBox(),
+        );
+      },
+    );
+  }
+
+  TextButton _buildUpdateUserAvatarButton(
+    ImagePicker imagePicker,
+    BuildContext context,
+  ) {
+    return TextButton(
+      onPressed: () async {
+        final xFile = await imagePicker.pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 5,
+        );
+        final file = File(xFile!.path);
+        final size = await file.length();
+        if (size > 5242880) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Слишком большой размер изображения'),
+            ),
+          );
+          return;
+        }
+        final CroppedFile? croppedFile = await ImageCropper().cropImage(
+          sourcePath: xFile.path,
+        );
+
+        getIt<UserBloc>().add(
+          UserEvent.updateUserAvatar(
+            avatar: File(croppedFile!.path),
+          ),
+        );
+      },
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+      ),
+      child: CenterLeft(
+        child: Text(
+          'Заменить изображение',
+          style: AppTypography.kH14.apply(color: AppColors.kPrimaryBlue),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSaveButton(BuildContext context) {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (_, __, ___, ____) {
             return const AppElevatedButton(
               marginButton: EdgeInsets.only(
                 left: 16,
@@ -256,7 +320,7 @@ class _AccountPageState extends State<AccountPage> {
               isDisable: true,
             );
           },
-          isDisabled: (isDisabled) {
+          formChanged: (firstName, secondName, bitrhday, email, status) {
             return AppElevatedButton(
               marginButton: const EdgeInsets.only(
                 left: 16,
@@ -265,12 +329,14 @@ class _AccountPageState extends State<AccountPage> {
                 bottom: 24,
               ),
               textButton: const Text('Сохранить'),
-              isDisable: isDisabled,
+              isDisable: !status,
               onPressed: () {
+                getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
                 context.pop();
               },
             );
           },
+          error: (error) => const SizedBox(),
         );
       },
     );

@@ -1,6 +1,5 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
-import 'package:fitt/core/constants/fitt_links.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
@@ -41,9 +40,9 @@ class ClubBuyWorkoutDisclaimer extends StatelessWidget {
                 ..onTap = () {
                   context.pushNamed(AppRoute.webview.routeToPath,
                       queryParams: <String, String>{
-                        'url': FittLinks.kUserTermsLinkDoc,
-                        'pageTitle': 'Пользовательского соглашение',
-                      });
+                        'url': club.documents?.first.fileUrl ?? '',
+                        'pageTitle': club.documents?.first.documentLabel ?? '',
+                      },);
                 },
             ),
             const TextSpan(text: 'и подтверждаете, что вам больше 18 лет'),

@@ -14,8 +14,7 @@ class WorkoutCubit extends Cubit<WorkoutState> {
 
   Future<void> getWorkout({required String workoutUuid}) async {
     try {
-      final workout =
-          await _workoutUseCase.getWorkout(workoutUuid: workoutUuid);
+      final workout = await _workoutUseCase.getWorkout(workoutUuid: workoutUuid);
       emit(WorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {
       emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));

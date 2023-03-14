@@ -22,6 +22,5 @@ class SearchAddress with _$SearchAddress {
     @JsonKey(name: 'geo_lon') required double longitude,
   }) = _SearchAddress;
 
-  factory SearchAddress.fromJson(Map<String, dynamic> json) =>
-      _$SearchAddressFromJson(json);
+  factory SearchAddress.fromJson(Map<String, dynamic> json) => _$SearchAddressFromJson(json);
 }

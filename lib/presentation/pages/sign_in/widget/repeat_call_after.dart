@@ -26,9 +26,7 @@ class RepeatCallAfter extends StatelessWidget {
                         duration: duration,
                       ),
                     );
-                    getIt<AuthenticationErrorTimerBloc>(
-                            instanceName: 'inputPhonePage')
-                        .add(
+                    getIt<AuthenticationErrorTimerBloc>(instanceName: 'inputPhonePage').add(
                       AuthenticationErrorTimerEvent.timerStarted(
                         duration: duration,
                       ),
@@ -40,8 +38,7 @@ class RepeatCallAfter extends StatelessWidget {
           },
         ),
       ],
-      child: BlocBuilder<AuthenticationErrorTimerBloc,
-          AuthenticationErrorTimerState>(
+      child: BlocBuilder<AuthenticationErrorTimerBloc, AuthenticationErrorTimerState>(
         bloc: getIt<AuthenticationErrorTimerBloc>(),
         builder: (context, state) {
           return state.when(
@@ -57,8 +54,7 @@ class RepeatCallAfter extends StatelessWidget {
                   } else if (countTimerEnd >= 1) {
                     duration = const Duration(minutes: 5);
                   }
-                  getIt<AuthenticationErrorTimerBloc>()
-                      .add(AuthenticationErrorTimerEvent.setTimerInitial(
+                  getIt<AuthenticationErrorTimerBloc>().add(AuthenticationErrorTimerEvent.setTimerInitial(
                     duration: duration,
                   ));
                   context.pop();
@@ -66,8 +62,7 @@ class RepeatCallAfter extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'Запросить звонок повторно',
-                    style:
-                        AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
+                    style: AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
                   ),
                 ),
               );

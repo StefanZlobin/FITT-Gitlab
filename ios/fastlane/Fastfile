@@ -17,6 +17,11 @@ default_platform(:ios)
 
 platform :ios do
   desc "Description of what the lane does"
+  lane :to_testflight do
+    upload_to_testflight(
+      expire_previous_builds: true,
+    )
+  end
   lane :test do
     previous_build_number = latest_testflight_build_number
 

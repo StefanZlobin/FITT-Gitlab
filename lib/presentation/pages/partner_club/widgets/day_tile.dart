@@ -33,8 +33,7 @@ class DayTile extends StatelessWidget {
               bottomRight: Radius.circular(48),
               topLeft: Radius.circular(48),
             ),
-            side: BorderSide(
-                color: active ? AppColors.kPrimaryBlue : AppColors.kOxford20),
+            side: BorderSide(color: active ? AppColors.kPrimaryBlue : AppColors.kOxford20),
           ),
         ),
         child: Padding(
@@ -45,21 +44,17 @@ class DayTile extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 dateSlot.day.toString(),
-                style: AppTypography.kH48.apply(
-                    color: active ? AppColors.kBaseWhite : AppColors.kOxford60),
+                style: AppTypography.kH48.apply(color: active ? AppColors.kBaseWhite : AppColors.kOxford60),
               ),
               Text(
                 DateFormat.MMMMd().format(dateSlot).split(' ').last,
-                style: AppTypography.kBody14.apply(
-                    color: active
-                        ? AppColors.kBaseWhite.withOpacity(.6)
-                        : AppColors.kOxford20),
+                style: AppTypography.kBody14
+                    .apply(color: active ? AppColors.kBaseWhite.withOpacity(.6) : AppColors.kOxford20),
               ),
               const SizedBox(height: 16),
               Text(
                 DateFormat.E().format(dateSlot),
-                style: AppTypography.kBody14.apply(
-                    color: active ? AppColors.kBaseWhite : AppColors.kOxford60),
+                style: AppTypography.kBody14.apply(color: active ? AppColors.kBaseWhite : AppColors.kOxford60),
               ),
               const SizedBox(height: 8),
               Container(

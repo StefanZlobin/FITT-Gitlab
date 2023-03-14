@@ -17,8 +17,7 @@ class TokenStorage<T> extends LocalStorage<T> {
       await _encryptedStorage.write(key: name, value: base64UrlEncode(key));
     }
 
-    final encryptionKey =
-        base64Url.decode((await _encryptedStorage.read(key: name)) ?? '');
+    final encryptionKey = base64Url.decode((await _encryptedStorage.read(key: name)) ?? '');
 
     final res = await Hive.openBox<T>(
       name,

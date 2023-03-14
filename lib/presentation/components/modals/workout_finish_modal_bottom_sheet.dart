@@ -101,8 +101,7 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
         const Center(child: HeaderRoundedContainerLine(bigPadding: false)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text(
-              '${DateTimeUtils.dateWithPrefix(DateTime.now())}, ${workout.club.label}'),
+          child: Text('${DateTimeUtils.dateWithPrefix(DateTime.now())}, ${workout.club.label}'),
         ),
         const SizedBox(height: 4),
         Padding(

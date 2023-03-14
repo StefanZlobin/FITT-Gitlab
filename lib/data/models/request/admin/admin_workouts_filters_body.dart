@@ -33,6 +33,5 @@ class AdminWorkoutsFiltersRequestBody {
 
   factory AdminWorkoutsFiltersRequestBody.fromJson(Map<String, dynamic> json) =>
       _$AdminWorkoutsFiltersRequestBodyFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$AdminWorkoutsFiltersRequestBodyToJson(this);
+  Map<String, dynamic> toJson() => _$AdminWorkoutsFiltersRequestBodyToJson(this);
 }

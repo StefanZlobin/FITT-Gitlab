@@ -3,8 +3,7 @@ import 'package:fitt/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 
 abstract class PaymentRepository {
-  Future<BuyBatchResponse> buyBatch(
-      {required String clubUuid, required int batchUuid});
+  Future<BuyBatchResponse> buyBatch({required String clubUuid, required int batchUuid});
 
   Future<Workout> buyWorkout({
     required TimeSlot slot,

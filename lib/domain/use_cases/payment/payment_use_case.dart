@@ -11,8 +11,7 @@ class PaymentUseCase {
     required String clubUuid,
     required int batchUuid,
   }) async {
-    final response = await paymentRepository.buyBatch(
-        clubUuid: clubUuid, batchUuid: batchUuid);
+    final response = await paymentRepository.buyBatch(clubUuid: clubUuid, batchUuid: batchUuid);
     return response;
   }
 
@@ -20,8 +19,7 @@ class PaymentUseCase {
     required TimeSlot slot,
     required String activityUuid,
   }) async {
-    final workout = await paymentRepository.buyWorkout(
-        slot: slot, activityUuid: activityUuid);
+    final workout = await paymentRepository.buyWorkout(slot: slot, activityUuid: activityUuid);
     return workout;
   }
 
@@ -29,8 +27,7 @@ class PaymentUseCase {
     required TimeSlot slot,
     required String activityUuid,
   }) async {
-    final workout = await paymentRepository.buyWorkoutByBatch(
-        slot: slot, activityUuid: activityUuid);
+    final workout = await paymentRepository.buyWorkoutByBatch(slot: slot, activityUuid: activityUuid);
     return workout;
   }
 }

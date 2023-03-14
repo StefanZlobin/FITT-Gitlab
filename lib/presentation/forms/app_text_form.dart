@@ -70,6 +70,9 @@ class AppTextFormField extends StatelessWidget {
                 if (!isEmailField)
                   TextInputFormatter.withFunction(
                     (oldValue, newValue) {
+                      if (newValue.text.isEmpty) {
+                        return const TextEditingValue();
+                      }
                       return TextEditingValue(
                         text: newValue.text.capitalize(),
                         selection: newValue.selection,

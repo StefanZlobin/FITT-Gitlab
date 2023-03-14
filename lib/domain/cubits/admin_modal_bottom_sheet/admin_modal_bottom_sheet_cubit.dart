@@ -6,17 +6,14 @@ part 'admin_modal_bottom_sheet_cubit.freezed.dart';
 part 'admin_modal_bottom_sheet_state.dart';
 
 class AdminModalBottomSheetCubit extends Cubit<AdminModalBottomSheetState> {
-  AdminModalBottomSheetCubit()
-      : super(const AdminModalBottomSheetState.initial());
+  AdminModalBottomSheetCubit() : super(const AdminModalBottomSheetState.initial());
 
   void setInitial() {
     emit(const AdminModalBottomSheetState.initial());
   }
 
-
   void setLockerNumber({String? lockerNumber}) {
-    emit(_AdminModalBottomSheetStateInputLockerNumber(
-        lockerNumber: lockerNumber));
+    emit(_AdminModalBottomSheetStateInputLockerNumber(lockerNumber: lockerNumber));
   }
 
   void forceFinish({

@@ -14,10 +14,8 @@ class Batch with _$Batch {
     @JsonKey(name: 'club_id') required String clubUuid,
     @JsonKey(name: 'expire_at') DateTime? expireAt,
     @JsonKey(name: 'hours') int? hours,
-    @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent)
-        required int fullPrice,
-    @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent)
-        required int factPrice,
+    @JsonKey(name: 'full_price', fromJson: toRubles, toJson: toCent) required int fullPrice,
+    @JsonKey(name: 'fact_price', fromJson: toRubles, toJson: toCent) required int factPrice,
     @JsonKey(name: 'duration') String? duration,
     @JsonKey(name: 'sale') int? sale,
     @JsonKey(name: 'marks') List<BatchMark>? marks,

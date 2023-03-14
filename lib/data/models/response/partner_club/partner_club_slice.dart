@@ -17,6 +17,5 @@ class PartnerClubSlice {
   final String previous;
   final List<PartnerClub> results;
 
-  factory PartnerClubSlice.fromJson(Map<String, dynamic> json) =>
-      _$PartnerClubSliceFromJson(json);
+  factory PartnerClubSlice.fromJson(Map<String, dynamic> json) => _$PartnerClubSliceFromJson(json);
 }

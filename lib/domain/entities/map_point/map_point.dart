@@ -19,6 +19,5 @@ class MapPoint with _$MapPoint {
 
   MapPoint._();
 
-  factory MapPoint.fromJson(Map<String, dynamic> json) =>
-      _$MapPointFromJson(json);
+  factory MapPoint.fromJson(Map<String, dynamic> json) => _$MapPointFromJson(json);
 }

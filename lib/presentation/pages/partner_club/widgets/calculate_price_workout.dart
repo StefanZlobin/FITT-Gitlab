@@ -22,26 +22,22 @@ class CalculatedPriceWorkout extends StatelessWidget {
     return BlocListener<ClubCubit, ClubState>(
       bloc: getIt<ClubCubit>(),
       listener: (context, state) {
-        getIt<CalculateWorkoutPriceCubit>()
-            .getCalculatedPriceWorkout(slotUuid: getIt<ClubCubit>().slotUuid);
+        getIt<CalculateWorkoutPriceCubit>().getCalculatedPriceWorkout(slotUuid: getIt<ClubCubit>().slotUuid);
       },
-      child:
-          BlocBuilder<CalculateWorkoutPriceCubit, CalculateWorkoutPriceState>(
+      child: BlocBuilder<CalculateWorkoutPriceCubit, CalculateWorkoutPriceState>(
         bloc: getIt<CalculateWorkoutPriceCubit>(),
         builder: (context, state) {
           return state.when(
             initial: () => const Center(child: CircularProgressIndicator()),
             loaded: (calculatedPrice) {
               return Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Сумма к оплате',
-                      style:
-                          AppTypography.kH16.apply(color: AppColors.kBaseBlack),
+                      style: AppTypography.kH16.apply(color: AppColors.kBaseBlack),
                     ),
                     const SizedBox(height: 12),
                     ...calculatedPrice.map(
@@ -67,15 +63,11 @@ class CalculatedPriceWorkout extends StatelessWidget {
                               if (club.batchHoursAvailable == 0)
                                 Text(
                                   '${e.price} \u20BD',
-                                  style: AppTypography.kBody14
-                                      .apply(color: AppColors.kOxford),
+                                  style: AppTypography.kBody14.apply(color: AppColors.kOxford),
                                 )
                               else
                                 BatchAvailableHours(
-                                  hours: getIt<ClubCubit>()
-                                      .selectedSlot!
-                                      .duration
-                                      .inHours,
+                                  hours: getIt<ClubCubit>().selectedSlot!.duration.inHours,
                                   isBig: false,
                                 ),
                             ],
@@ -88,21 +80,16 @@ class CalculatedPriceWorkout extends StatelessWidget {
                       children: [
                         Text(
                           'Итого за тренировку',
-                          style: AppTypography.kH16
-                              .apply(color: AppColors.kBaseBlack),
+                          style: AppTypography.kH16.apply(color: AppColors.kBaseBlack),
                         ),
                         if (club.batchHoursAvailable == 0)
                           Text(
                             '${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
-                            style: AppTypography.kH16
-                                .apply(color: AppColors.kOxford),
+                            style: AppTypography.kH16.apply(color: AppColors.kOxford),
                           )
                         else
                           BatchAvailableHours(
-                            hours: getIt<ClubCubit>()
-                                .selectedSlot!
-                                .duration
-                                .inHours,
+                            hours: getIt<ClubCubit>().selectedSlot!.duration.inHours,
                             isBig: false,
                           ),
                       ],

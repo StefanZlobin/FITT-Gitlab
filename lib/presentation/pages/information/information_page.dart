@@ -45,26 +45,22 @@ class InformrationPage extends StatelessWidget {
             ),
           ),
           const Separator(margin: EdgeInsets.symmetric(vertical: 16)),
-          _buildTextButton(context, 'Пользовательское соглашение',
-              FittLinks.kUserTermsLinkDoc),
+          _buildTextButton(context, 'Пользовательское соглашение', FittLinks.kUserTermsLinkDoc),
           const Separator(margin: EdgeInsets.symmetric(vertical: 16)),
-          _buildTextButton(context, 'Политика конфиденциальности',
-              FittLinks.kUserPrivacyLinkDoc),
+          _buildTextButton(context, 'Политика конфиденциальности', FittLinks.kUserPrivacyLinkDoc),
         ],
       ),
     );
   }
 
-  TextButton _buildTextButton(
-      BuildContext context, String docName, String docUrl) {
+  TextButton _buildTextButton(BuildContext context, String docName, String docUrl) {
     return TextButton(
       onPressed: () {
-        context.pushNamed(AppRoute.webview.routeToPath,
-            queryParams: <String, String>{
-              'url': docUrl,
-              'pageTitle': docName,
-              'workoutUuid': '',
-            });
+        context.pushNamed(AppRoute.webview.routeToPath, queryParams: <String, String>{
+          'url': docUrl,
+          'pageTitle': docName,
+          'workoutUuid': '',
+        });
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

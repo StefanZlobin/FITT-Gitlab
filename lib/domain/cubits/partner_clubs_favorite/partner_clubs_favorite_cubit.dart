@@ -28,9 +28,10 @@ class PartnerClubsFavoriteCubit extends Cubit<PartnerClubsFavoriteState> {
     try {
       final partnerClubs = await partnerClubsUseCase.getParternClubs(
         clubFilters: clubFilters.copyWith(
-            facilities: getIt<FilteringCubit>(instanceName: 'favorite')
-                    .activeFavilitiesIndex ??
-                clubFilters.facilities),
+          facilities: getIt<FilteringCubit>(instanceName: 'favorite')
+                  .activeFavilitiesIndex ??
+              clubFilters.facilities,
+        ),
         clubSorting: getIt<SortingCubit>().clubSortingValue ?? clubSorting,
         isFavorite: clubFilters.favorite,
       );
@@ -38,20 +39,19 @@ class PartnerClubsFavoriteCubit extends Cubit<PartnerClubsFavoriteState> {
       if (getIt<FilteringCubit>(instanceName: 'favorite')
               .activeFavilitiesIndex !=
           null) {
-        if (getIt<FilteringCubit>(instanceName: 'favorite')
+        isFiltersUpdated = getIt<FilteringCubit>(instanceName: 'favorite')
             .activeFavilitiesIndex!
-            .isNotEmpty) {
-          isFiltersUpdated = true;
-        } else {
-          isFiltersUpdated = false;
-        }
+            .isNotEmpty;
       }
       _partnerClubsFavoriteStateLoaded = _PartnerClubsFavoriteStateLoaded(
-          clubs: partnerClubs, isFiltersUpdated: isFiltersUpdated);
+        clubs: partnerClubs,
+        isFiltersUpdated: isFiltersUpdated,
+      );
       emit(_partnerClubsFavoriteStateLoaded);
     } on NetworkExceptions catch (e) {
       emit(_PartnerClubsFavoriteStateError(
-          error: NetworkExceptions.getErrorMessage(e)));
+        error: NetworkExceptions.getErrorMessage(e),
+      ));
     }
   }
 
@@ -65,7 +65,8 @@ class PartnerClubsFavoriteCubit extends Cubit<PartnerClubsFavoriteState> {
           ? await partnerClubsUseCase.addClubToFavorites(clubUuid: clubUuid)
           : await partnerClubsUseCase.removeClubToFavorites(clubUuid: clubUuid);
       final partnerClubs = _partnerClubsFavoriteStateLoaded.copyWith(
-          clubs: _partnerClubsFavoriteStateLoaded.clubs);
+        clubs: _partnerClubsFavoriteStateLoaded.clubs,
+      );
       partnerClubs.clubs[index] = partnerClub;
       emit(_PartnerClubsFavoriteStateLoaded(clubs: partnerClubs.clubs));
     } on Exception catch (e) {

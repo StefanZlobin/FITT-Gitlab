@@ -210,7 +210,7 @@ class AdminWorkoutCard extends StatelessWidget {
           TextSpan(
             text: '\n${adminWorkout.user.fullname}',
             style: AppTypography.kH24B.apply(color: AppColors.kOxford),
-          )
+          ),
         ],
       ),
     );

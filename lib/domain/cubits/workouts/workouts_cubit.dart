@@ -22,17 +22,14 @@ class WorkoutsCubit extends Cubit<WorkoutsState> with UserMixin {
   }) async {
     emit(const _WorkoutsStateLoading());
     try {
-      final workouts = await workoutUseCase.getWorkouts(
-          workoutPhase: workoutPhase, workoutSorting: workoutSorting);
+      final workouts = await workoutUseCase.getWorkouts(workoutPhase: workoutPhase, workoutSorting: workoutSorting);
       if (workouts.isEmpty) {
         final startedWorkout = await _getStartedWorkout();
-        return emit(
-            _WorkoutsStateLoaded(workouts: [], closestWorkout: startedWorkout));
+        return emit(_WorkoutsStateLoaded(workouts: [], closestWorkout: startedWorkout));
       } else {
         workouts.sort((a, b) => a.canStartTime.compareTo(b.canStartTime));
         final closestWorkout = await _getStartedWorkout() ?? workouts.first;
-        emit(_WorkoutsStateLoaded(
-            workouts: workouts, closestWorkout: closestWorkout));
+        emit(_WorkoutsStateLoaded(workouts: workouts, closestWorkout: closestWorkout));
       }
     } on Exception catch (e) {
       emit(_WorkoutsStateError(error: e.toString()));
@@ -40,8 +37,7 @@ class WorkoutsCubit extends Cubit<WorkoutsState> with UserMixin {
   }
 
   Future<Workout?> _getStartedWorkout() async {
-    final startedWorkout = await workoutUseCase.getWorkouts(
-        workoutPhase: WorkoutPhaseEnum.inProcess);
+    final startedWorkout = await workoutUseCase.getWorkouts(workoutPhase: WorkoutPhaseEnum.inProcess);
     startedWorkout.removeWhere((w) => w.canEndTime.isBefore(DateTime.now()));
     startedWorkout.sort((a, b) => a.canStartTime.compareTo(b.canStartTime));
     return startedWorkout.isEmpty ? null : startedWorkout.first;

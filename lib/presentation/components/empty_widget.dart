@@ -28,8 +28,7 @@ class EmptyWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Text(
                     hintText,
-                    style:
-                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -38,8 +37,7 @@ class EmptyWidget extends StatelessWidget {
                   onPressed: onPressed,
                   child: Text(
                     buttonText,
-                    style: AppTypography.kH14
-                        .apply(color: AppColors.kPrimaryPurple),
+                    style: AppTypography.kH14.apply(color: AppColors.kPrimaryPurple),
                   ),
                 ),
               ],

@@ -19,8 +19,8 @@ class AuthLocalClient {
     return tokenJson == null
         ? null
         : TokenPair.fromJson(
-            tokenJson.map<String, dynamic>((dynamic key, dynamic value) =>
-                MapEntry<String, dynamic>(key.toString(), value)),
+            tokenJson
+                .map<String, dynamic>((dynamic key, dynamic value) => MapEntry<String, dynamic>(key.toString(), value)),
           );
   }
 

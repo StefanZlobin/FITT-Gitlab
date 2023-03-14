@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'dio_errors.freezed.dart';
 
 @freezed
-abstract class NetworkExceptions with _$NetworkExceptions {
+class NetworkExceptions with _$NetworkExceptions {
   const factory NetworkExceptions.requestCancelled() = RequestCancelled;
   const factory NetworkExceptions.unauthorisedRequest() = UnauthorisedRequest;
   const factory NetworkExceptions.badRequest() = BadRequest;
@@ -101,11 +101,9 @@ abstract class NetworkExceptions with _$NetworkExceptions {
         return const NetworkExceptions.unexpectedError();
       }
     } else {
-      if (error.toString().contains('is not a subtype of')) {
-        return const NetworkExceptions.unableToProcess();
-      } else {
-        return const NetworkExceptions.unexpectedError();
-      }
+      return error.toString().contains('is not a subtype of')
+          ? const NetworkExceptions.unableToProcess()
+          : const NetworkExceptions.unexpectedError();
     }
   }
 

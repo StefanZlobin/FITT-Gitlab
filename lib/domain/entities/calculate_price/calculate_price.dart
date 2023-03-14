@@ -25,6 +25,5 @@ class CalculatePrice with _$CalculatePrice {
         required DateTime endTime,
   }) = _CalculatePrice;
 
-  factory CalculatePrice.fromJson(Map<String, dynamic> json) =>
-      _$CalculatePriceFromJson(json);
+  factory CalculatePrice.fromJson(Map<String, dynamic> json) => _$CalculatePriceFromJson(json);
 }

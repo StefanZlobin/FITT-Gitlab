@@ -8,6 +8,5 @@ class WorkoutsState with _$WorkoutsState {
     required List<Workout> workouts,
     Workout? closestWorkout,
   }) = _WorkoutsStateLoaded;
-  const factory WorkoutsState.error({required String error}) =
-      _WorkoutsStateError;
+  const factory WorkoutsState.error({required String error}) = _WorkoutsStateError;
 }

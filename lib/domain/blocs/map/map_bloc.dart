@@ -30,11 +30,15 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   MapBloc() : super(const _MapStateInitial()) {
     on<_MapEventMapCreated>(_onMapCreated, transformer: restartable());
     on<_MapEventCameraMove>(_onCameraMoved, transformer: restartable());
-    on<_MapEventFiltersDetected>(_onFiltersDetected,
-        transformer: restartable());
+    on<_MapEventFiltersDetected>(
+      _onFiltersDetected,
+      transformer: restartable(),
+    );
     on<_MapEventMarkerTapped>(_onMarkerTapped, transformer: restartable());
-    on<_MapEventCarouselCardFocused>(_onCarouselCardFocused,
-        transformer: restartable());
+    on<_MapEventCarouselCardFocused>(
+      _onCarouselCardFocused,
+      transformer: restartable(),
+    );
   }
 
   final _mapUseCase = MapUseCase();
@@ -176,7 +180,10 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     final markersList = await _makeClusters(newMarkers, event.zoom);
     final markers = await _ensureSingleActiveMarker(markersList);
 
-    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(markers.active)));
+    //_carouselBloc.add(CarouselEvent.clubSelected(_clubId(markers.active)));
+    _carouselBloc.add(
+      CarouselEvent.clubSelected(_carouselBloc.firstPartnerClub?.uuid ?? ''),
+    );
 
     emit(
       MapState.loaded(
@@ -279,7 +286,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           else if (m.isActive)
             await _deactivateMarker(m)
           else
-            m
+            m,
       ],
     );
 
@@ -306,11 +313,11 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       markers: [
         for (final m in prevState.markers)
           if (isTargetMarker(m, event.clubId)) ...{
-            await _activateMarker(m)
+            await _activateMarker(m),
           } else if (m.isActive)
             await _deactivateMarker(m)
           else
-            m
+            m,
       ],
     );
 
@@ -319,41 +326,33 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
   Future<MapMarker> _activateMarker(MapMarker marker) async {
     final gm.BitmapDescriptor activeMarkerImage;
-    if (marker.isCluster) {
-      activeMarkerImage = await MapHelper.getActiveClusterMarker(
-        marker.pointsSize!,
-        _clusterColor,
-        AppColors.kPrimaryRed,
-        _clusterTextColor,
-        120,
-      );
-    } else {
-      if (marker.type == MapPointsEnum.partnerClubWithBatch) {
-        activeMarkerImage = await _activeMarkerWithBatchImage;
-      } else {
-        activeMarkerImage = await _activeMarkerImage;
-      }
-    }
+    activeMarkerImage = marker.isCluster
+        ? await MapHelper.getActiveClusterMarker(
+            marker.pointsSize!,
+            _clusterColor,
+            AppColors.kPrimaryRed,
+            _clusterTextColor,
+            120,
+          )
+        : marker.type == MapPointsEnum.partnerClubWithBatch
+            ? await _activeMarkerWithBatchImage
+            : await _activeMarkerImage;
 
     return marker.copyWith(isActive: true, icon: activeMarkerImage);
   }
 
   Future<MapMarker> _deactivateMarker(MapMarker marker) async {
     final gm.BitmapDescriptor inactiveMarkerImage;
-    if (marker.isCluster) {
-      inactiveMarkerImage = await MapHelper.getInactiveClusterMarker(
-        marker.pointsSize!,
-        _clusterColor,
-        _clusterTextColor,
-        120,
-      );
-    } else {
-      if (marker.type == MapPointsEnum.partnerClubWithBatch) {
-        inactiveMarkerImage = await _inactiveMarkerWithBatchImage;
-      } else {
-        inactiveMarkerImage = await _inactiveMarkerImage;
-      }
-    }
+    inactiveMarkerImage = marker.isCluster
+        ? await MapHelper.getInactiveClusterMarker(
+            marker.pointsSize!,
+            _clusterColor,
+            _clusterTextColor,
+            120,
+          )
+        : marker.type == MapPointsEnum.partnerClubWithBatch
+            ? await _inactiveMarkerWithBatchImage
+            : await _inactiveMarkerImage;
     return marker.copyWith(isActive: false, icon: inactiveMarkerImage);
   }
 

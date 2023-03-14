@@ -32,16 +32,14 @@ class PaymentRejectPage extends StatelessWidget {
                     const SizedBox(height: 32),
                     Text(
                       'Оплата отклонена',
-                      style:
-                          AppTypography.kH24.apply(color: AppColors.kBaseBlack),
+                      style: AppTypography.kH24.apply(color: AppColors.kBaseBlack),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       '${DateTimeUtils.dateFormatWithoutYear.format(DateTime.now())}, ${club.label}, ${club.address!.shortAddress}',
                       maxLines: 2,
                       softWrap: true,
-                      style: AppTypography.kBody14
-                          .apply(color: AppColors.kOxford60),
+                      style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                     ),
                     Divider(
                       color: AppColors.kPrimaryBlue,
@@ -51,8 +49,7 @@ class PaymentRejectPage extends StatelessWidget {
                     ),
                     Text(
                       'Ваш платеж был отклонен платежной системой. Попробуйте повторить платеж через некоторое время.',
-                      style:
-                          AppTypography.kH14.apply(color: AppColors.kBaseBlack),
+                      style: AppTypography.kH14.apply(color: AppColors.kBaseBlack),
                     ),
                     const SizedBox(height: 16),
                     SizedBox(
@@ -60,22 +57,15 @@ class PaymentRejectPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (isBatch) {
-                            context.pop();
-                            context.pop();
-                          } else {
-                            context.pop();
-                            context.pop();
-                          }
+                          context.pop();
+                          context.pop();
                         },
-                        style: ButtonStyle(backgroundColor:
-                            MaterialStateProperty.resolveWith((states) {
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) {
                           return AppColors.kBaseBlack;
                         })),
                         child: Text(
                           'Повторить оплату',
-                          style: AppTypography.kH14
-                              .apply(color: AppColors.kBaseWhite),
+                          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
                         ),
                       ),
                     ),
@@ -95,11 +85,8 @@ class PaymentRejectPage extends StatelessWidget {
                           }
                         },
                         child: Text(
-                          isBatch
-                              ? 'Вернуться к выбору пакета'
-                              : 'Вернуться к выбору времени тренировки',
-                          style: AppTypography.kH14
-                              .apply(color: AppColors.kBaseWhite),
+                          isBatch ? 'Вернуться к выбору пакета' : 'Вернуться к выбору времени тренировки',
+                          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
                         ),
                       ),
                     ),

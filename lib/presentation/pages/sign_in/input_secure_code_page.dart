@@ -4,9 +4,13 @@ import 'dart:async';
 
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/tokens/user_device_token.dart';
+import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/pages/sign_in/widget/repeat_call_after.dart';
@@ -16,7 +20,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class InputSecureCodePage extends StatelessWidget {
+class InputSecureCodePage extends StatelessWidget with UserMixin {
   const InputSecureCodePage({
     super.key,
     required this.phoneNumber,
@@ -26,22 +30,46 @@ class InputSecureCodePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: const Icon(AppIcons.arr_big_left),
+    return BlocListener<AuthBloc, AuthState>(
+      bloc: getIt<AuthBloc>(),
+      listener: (context, state) {
+        state.whenOrNull(
+          authenticated: () {
+            if (userSnapshot == null) {
+              context.pushNamed(
+                AppRoute.personalData.routeToPath,
+                extra: true,
+              );
+            }
+            if (userSnapshot!.hasFullData) {
+              context.pop();
+              context.pop();
+            } else {
+              context.pushNamed(
+                AppRoute.personalData.routeToPath,
+                extra: true,
+              );
+            }
+          },
+        );
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: const Icon(AppIcons.arr_big_left),
+          ),
+          title: Text(L.of(context).inputSecureCode),
         ),
-        title: Text(L.of(context).inputSecureCode),
-      ),
-      body: Column(
-        children: [
-          const InputSecureCodeHint(),
-          InputSecureCodeForm(phoneNumber: phoneNumber),
-          const Expanded(child: SizedBox()),
-          const RepeatCallAfter(),
-          const SizedBox(height: 32),
-        ],
+        body: Column(
+          children: [
+            const InputSecureCodeHint(),
+            InputSecureCodeForm(phoneNumber: phoneNumber),
+            const Expanded(child: SizedBox()),
+            const RepeatCallAfter(),
+            const SizedBox(height: 32),
+          ],
+        ),
       ),
     );
   }
@@ -106,8 +134,7 @@ class InputSecureCodeForm extends StatelessWidget {
     MaskTextInputFormatter secureCodeFormatter,
     int? countSecureCodeEntryAttempts,
   ) {
-    final isError = countSecureCodeEntryAttempts != null &&
-        countSecureCodeEntryAttempts < 5;
+    final isError = countSecureCodeEntryAttempts != null && countSecureCodeEntryAttempts < 5;
     return Column(
       children: [
         TextField(

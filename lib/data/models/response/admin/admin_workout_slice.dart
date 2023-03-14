@@ -17,7 +17,6 @@ class AdminWorkoutSlice {
   final String? next;
   final String? previous;
 
-  factory AdminWorkoutSlice.fromJson(Map<String, dynamic> json) =>
-      _$AdminWorkoutSliceFromJson(json);
+  factory AdminWorkoutSlice.fromJson(Map<String, dynamic> json) => _$AdminWorkoutSliceFromJson(json);
   Map<String, dynamic> toJson() => _$AdminWorkoutSliceToJson(this);
 }

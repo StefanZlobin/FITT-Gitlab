@@ -18,16 +18,14 @@ part 'partner_club.g.dart';
 class PartnerClub with _$PartnerClub {
   const factory PartnerClub({
     @JsonKey(name: 'id') required String? uuid,
-    @JsonKey(name: 'min_price', fromJson: toRublesNullable)
-        required int? minPrice,
+    @JsonKey(name: 'min_price', fromJson: toRublesNullable) required int? minPrice,
     @JsonKey(name: 'address') required Address? address,
     @JsonKey(name: 'distance') required double? distance,
     @JsonKey(name: 'label') required String? label,
     @JsonKey(name: 'rating') required Rating? rating,
     @JsonKey(name: 'photos') required List<Photo>? photos,
     @JsonKey(name: 'facilities') required List<Facility>? facilities,
-    @JsonKey(name: 'batch_hours_available')
-        required double? batchHoursAvailable,
+    @JsonKey(name: 'batch_hours_available') required double? batchHoursAvailable,
     @JsonKey(name: 'is_favorite') required bool? isFavorite,
     @JsonKey(name: 'work_schedule') required List<WorkSchedule>? workSchedule,
     @JsonKey(name: 'activities') required List<Activity>? activities,
@@ -40,6 +38,5 @@ class PartnerClub with _$PartnerClub {
     @JsonKey(name: 'pay_available') required bool? payAvailable,
   }) = _PartnerClub;
 
-  factory PartnerClub.fromJson(Map<String, dynamic> json) =>
-      _$PartnerClubFromJson(json);
+  factory PartnerClub.fromJson(Map<String, dynamic> json) => _$PartnerClubFromJson(json);
 }

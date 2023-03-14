@@ -17,6 +17,5 @@ class Contacts with _$Contacts {
     @JsonKey(name: 'emails') required List<Email> emails,
   }) = _Contacts;
 
-  factory Contacts.fromJson(Map<String, dynamic> json) =>
-      _$ContactsFromJson(json);
+  factory Contacts.fromJson(Map<String, dynamic> json) => _$ContactsFromJson(json);
 }

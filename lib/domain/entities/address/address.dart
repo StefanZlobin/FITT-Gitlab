@@ -14,6 +14,5 @@ class Address with _$Address {
     @JsonKey(name: 'detail_path') String? detailPath,
   }) = _Address;
 
-  factory Address.fromJson(Map<String, dynamic> json) =>
-      _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 }

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 
 abstract class GeolocationService {
-  /// 
+  ///
   Future<void> openSettings();
 
   /// Request permission to access the device's location

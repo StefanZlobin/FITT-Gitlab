@@ -28,8 +28,9 @@ class UserMenuTile extends StatelessWidget {
         child: title,
       ),
       subtitle: DefaultTextStyle(
-          style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
-          child: subtitle ?? const SizedBox()),
+        style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
+        child: subtitle ?? const SizedBox(),
+      ),
       leading: leading,
       trailing: trailing,
       onTap: onPressed,

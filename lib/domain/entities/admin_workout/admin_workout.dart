@@ -52,8 +52,7 @@ class AdminWorkout with _$AdminWorkout {
         String? key,
   }) = _AdminWorkout;
 
-  factory AdminWorkout.fromJson(Map<String, dynamic> json) =>
-      _$AdminWorkoutFromJson(json);
+  factory AdminWorkout.fromJson(Map<String, dynamic> json) => _$AdminWorkoutFromJson(json);
 
   DateTime get canStartTime => planStartTime.subtract(kWorkoutStartThreshold);
   DateTime get canEndTime => planEndTime.add(kWorkoutEndThreshold);

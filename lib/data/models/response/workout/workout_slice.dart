@@ -17,6 +17,5 @@ class WorkoutSlice {
   final String previous;
   final List<Workout> results;
 
-  factory WorkoutSlice.fromJson(Map<String, dynamic> json) =>
-      _$WorkoutSliceFromJson(json);
+  factory WorkoutSlice.fromJson(Map<String, dynamic> json) => _$WorkoutSliceFromJson(json);
 }

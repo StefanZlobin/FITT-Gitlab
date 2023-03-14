@@ -22,9 +22,7 @@ DateTime dateTimeFromStringRemoveUTC(String dateTime) {
 }
 
 DateTime? dateTimeFromStringNullableRemoveUTC(String? dateTime) {
-  return dateTime == null
-      ? null
-      : DateTime.parse(dateTime.substring(0, dateTime.length - 1)).toLocal();
+  return dateTime == null ? null : DateTime.parse(dateTime.substring(0, dateTime.length - 1)).toLocal();
 }
 
 DateTime dateTimeFromString(String dateTime) {

@@ -13,8 +13,7 @@ class PhoneNumber with _$PhoneNumber {
     @JsonKey(name: 'phone_number') required String phoneNumber,
   }) = _PhoneNumber;
 
-  factory PhoneNumber.fromJson(Map<String, dynamic> json) =>
-      _$PhoneNumberFromJson(json);
+  factory PhoneNumber.fromJson(Map<String, dynamic> json) => _$PhoneNumberFromJson(json);
 
   String get maskedPhoneNumber {
     final splitted = phoneNumber.split('');

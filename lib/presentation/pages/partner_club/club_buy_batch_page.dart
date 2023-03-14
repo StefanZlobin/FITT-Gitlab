@@ -34,9 +34,7 @@ class ClubBuyBatchPage extends StatelessWidget with UserMixin {
         state.when(
           initial: () => null,
           loaded: (response) {
-            final club = getIt<ClubCubit>()
-                .state
-                .mapOrNull(loaded: (value) => value.club);
+            final club = getIt<ClubCubit>().state.mapOrNull(loaded: (value) => value.club);
             context.pushNamed(
               AppRoute.webview.routeToPath,
               queryParams: <String, String>{
@@ -58,8 +56,7 @@ class ClubBuyBatchPage extends StatelessWidget with UserMixin {
           return Scaffold(
             appBar: state.when(
               loading: () => null,
-              loaded: (_, __, ___, ____, _____, ______, _______) =>
-                  _buildPageTitle(context),
+              loaded: (_, __, ___, ____, _____, ______, _______) => _buildPageTitle(context),
               error: (_) => null,
             ),
             body: _buildBody(state, context),
@@ -114,8 +111,7 @@ class ClubBuyBatchPage extends StatelessWidget with UserMixin {
               extra: true,
             );
           }
-          await getIt<BuyBatchCubit>()
-              .buyBatch(clubUuid: batch.clubUuid, batchUuid: batch.uuid);
+          await getIt<BuyBatchCubit>().buyBatch(clubUuid: batch.clubUuid, batchUuid: batch.uuid);
         },
         textButton: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,13 +181,10 @@ class ClubBuyBatchPage extends StatelessWidget with UserMixin {
     BuildContext context,
   ) {
     final duration = int.parse(batch.duration?.split(' ')[0] ?? '');
-    final batchExpireAt =
-        batch.duration == null || batch.duration.toString().isEmpty
-            ? 'неограничено'
-            : DateTimeUtils.dateFormatWithoutYear
-                .format(DateTime.now().add(Duration(days: duration)));
-    final batchStartAt =
-        DateTimeUtils.dateFormatWithoutYear.format(DateTime.now());
+    final batchExpireAt = batch.duration == null || batch.duration.toString().isEmpty
+        ? 'неограничено'
+        : DateTimeUtils.dateFormatWithoutYear.format(DateTime.now().add(Duration(days: duration)));
+    final batchStartAt = DateTimeUtils.dateFormatWithoutYear.format(DateTime.now());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

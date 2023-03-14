@@ -22,12 +22,14 @@ WorkSchedule _$WorkScheduleFromJson(Map<String, dynamic> json) {
 mixin _$WorkSchedule {
   @JsonKey(name: 'date', fromJson: dateFromString)
   DateTime? get date => throw _privateConstructorUsedError;
-  @JsonKey(name: 'start_time', fromJson: timeFromString)
+  @JsonKey(name: 'start_time', fromJson: timeFromStringNullable)
   DateTime? get startTime => throw _privateConstructorUsedError;
-  @JsonKey(name: 'end_time', fromJson: timeFromString)
+  @JsonKey(name: 'end_time', fromJson: timeFromStringNullable)
   DateTime? get endTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_special', defaultValue: false)
   bool get isSpecial => throw _privateConstructorUsedError;
+  @JsonKey(name: 'label')
+  String? get label => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,12 +46,14 @@ abstract class $WorkScheduleCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'date', fromJson: dateFromString)
           DateTime? date,
-      @JsonKey(name: 'start_time', fromJson: timeFromString)
+      @JsonKey(name: 'start_time', fromJson: timeFromStringNullable)
           DateTime? startTime,
-      @JsonKey(name: 'end_time', fromJson: timeFromString)
+      @JsonKey(name: 'end_time', fromJson: timeFromStringNullable)
           DateTime? endTime,
       @JsonKey(name: 'is_special', defaultValue: false)
-          bool isSpecial});
+          bool isSpecial,
+      @JsonKey(name: 'label')
+          String? label});
 }
 
 /// @nodoc
@@ -69,6 +73,7 @@ class _$WorkScheduleCopyWithImpl<$Res, $Val extends WorkSchedule>
     Object? startTime = freezed,
     Object? endTime = freezed,
     Object? isSpecial = null,
+    Object? label = freezed,
   }) {
     return _then(_value.copyWith(
       date: freezed == date
@@ -87,6 +92,10 @@ class _$WorkScheduleCopyWithImpl<$Res, $Val extends WorkSchedule>
           ? _value.isSpecial
           : isSpecial // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -102,12 +111,14 @@ abstract class _$$_WorkScheduleCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'date', fromJson: dateFromString)
           DateTime? date,
-      @JsonKey(name: 'start_time', fromJson: timeFromString)
+      @JsonKey(name: 'start_time', fromJson: timeFromStringNullable)
           DateTime? startTime,
-      @JsonKey(name: 'end_time', fromJson: timeFromString)
+      @JsonKey(name: 'end_time', fromJson: timeFromStringNullable)
           DateTime? endTime,
       @JsonKey(name: 'is_special', defaultValue: false)
-          bool isSpecial});
+          bool isSpecial,
+      @JsonKey(name: 'label')
+          String? label});
 }
 
 /// @nodoc
@@ -125,6 +136,7 @@ class __$$_WorkScheduleCopyWithImpl<$Res>
     Object? startTime = freezed,
     Object? endTime = freezed,
     Object? isSpecial = null,
+    Object? label = freezed,
   }) {
     return _then(_$_WorkSchedule(
       date: freezed == date
@@ -143,6 +155,10 @@ class __$$_WorkScheduleCopyWithImpl<$Res>
           ? _value.isSpecial
           : isSpecial // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -153,12 +169,14 @@ class _$_WorkSchedule extends _WorkSchedule {
   const _$_WorkSchedule(
       {@JsonKey(name: 'date', fromJson: dateFromString)
           this.date,
-      @JsonKey(name: 'start_time', fromJson: timeFromString)
+      @JsonKey(name: 'start_time', fromJson: timeFromStringNullable)
           this.startTime,
-      @JsonKey(name: 'end_time', fromJson: timeFromString)
+      @JsonKey(name: 'end_time', fromJson: timeFromStringNullable)
           this.endTime,
       @JsonKey(name: 'is_special', defaultValue: false)
-          required this.isSpecial})
+          required this.isSpecial,
+      @JsonKey(name: 'label')
+          required this.label})
       : super._();
 
   factory _$_WorkSchedule.fromJson(Map<String, dynamic> json) =>
@@ -168,18 +186,21 @@ class _$_WorkSchedule extends _WorkSchedule {
   @JsonKey(name: 'date', fromJson: dateFromString)
   final DateTime? date;
   @override
-  @JsonKey(name: 'start_time', fromJson: timeFromString)
+  @JsonKey(name: 'start_time', fromJson: timeFromStringNullable)
   final DateTime? startTime;
   @override
-  @JsonKey(name: 'end_time', fromJson: timeFromString)
+  @JsonKey(name: 'end_time', fromJson: timeFromStringNullable)
   final DateTime? endTime;
   @override
   @JsonKey(name: 'is_special', defaultValue: false)
   final bool isSpecial;
+  @override
+  @JsonKey(name: 'label')
+  final String? label;
 
   @override
   String toString() {
-    return 'WorkSchedule(date: $date, startTime: $startTime, endTime: $endTime, isSpecial: $isSpecial)';
+    return 'WorkSchedule(date: $date, startTime: $startTime, endTime: $endTime, isSpecial: $isSpecial, label: $label)';
   }
 
   @override
@@ -192,13 +213,14 @@ class _$_WorkSchedule extends _WorkSchedule {
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.isSpecial, isSpecial) ||
-                other.isSpecial == isSpecial));
+                other.isSpecial == isSpecial) &&
+            (identical(other.label, label) || other.label == label));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, date, startTime, endTime, isSpecial);
+      Object.hash(runtimeType, date, startTime, endTime, isSpecial, label);
 
   @JsonKey(ignore: true)
   @override
@@ -218,12 +240,14 @@ abstract class _WorkSchedule extends WorkSchedule {
   const factory _WorkSchedule(
       {@JsonKey(name: 'date', fromJson: dateFromString)
           final DateTime? date,
-      @JsonKey(name: 'start_time', fromJson: timeFromString)
+      @JsonKey(name: 'start_time', fromJson: timeFromStringNullable)
           final DateTime? startTime,
-      @JsonKey(name: 'end_time', fromJson: timeFromString)
+      @JsonKey(name: 'end_time', fromJson: timeFromStringNullable)
           final DateTime? endTime,
       @JsonKey(name: 'is_special', defaultValue: false)
-          required final bool isSpecial}) = _$_WorkSchedule;
+          required final bool isSpecial,
+      @JsonKey(name: 'label')
+          required final String? label}) = _$_WorkSchedule;
   const _WorkSchedule._() : super._();
 
   factory _WorkSchedule.fromJson(Map<String, dynamic> json) =
@@ -233,14 +257,17 @@ abstract class _WorkSchedule extends WorkSchedule {
   @JsonKey(name: 'date', fromJson: dateFromString)
   DateTime? get date;
   @override
-  @JsonKey(name: 'start_time', fromJson: timeFromString)
+  @JsonKey(name: 'start_time', fromJson: timeFromStringNullable)
   DateTime? get startTime;
   @override
-  @JsonKey(name: 'end_time', fromJson: timeFromString)
+  @JsonKey(name: 'end_time', fromJson: timeFromStringNullable)
   DateTime? get endTime;
   @override
   @JsonKey(name: 'is_special', defaultValue: false)
   bool get isSpecial;
+  @override
+  @JsonKey(name: 'label')
+  String? get label;
   @override
   @JsonKey(ignore: true)
   _$$_WorkScheduleCopyWith<_$_WorkSchedule> get copyWith =>

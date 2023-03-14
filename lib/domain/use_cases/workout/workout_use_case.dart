@@ -26,20 +26,17 @@ class WorkoutUseCase {
   }
 
   Future<Workout> cancelWorkout({required Workout workout}) async {
-    final canceledWorkout =
-        await workoutRepository.cancelWorkout(workout: workout);
+    final canceledWorkout = await workoutRepository.cancelWorkout(workout: workout);
     return canceledWorkout;
   }
 
   Future<Workout> startWorkout({required Workout workout}) async {
-    final startedWorkout =
-        await workoutRepository.startWorkout(workout: workout);
+    final startedWorkout = await workoutRepository.startWorkout(workout: workout);
     return startedWorkout;
   }
 
   Future<Workout> finishWorkout({required Workout workout}) async {
-    final finishedWorkout =
-        await workoutRepository.finishWorkout(workout: workout);
+    final finishedWorkout = await workoutRepository.finishWorkout(workout: workout);
     return finishedWorkout;
   }
 }

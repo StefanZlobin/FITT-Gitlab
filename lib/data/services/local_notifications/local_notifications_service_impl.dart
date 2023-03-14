@@ -19,16 +19,13 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
 
     tz.initializeTimeZones();
 
-    const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('ic_stat_name');
+    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('ic_stat_name');
 
-    const DarwinInitializationSettings initializationSettingsIOS =
-        DarwinInitializationSettings(
+    const DarwinInitializationSettings initializationSettingsIOS = DarwinInitializationSettings(
       defaultPresentBadge: false,
     );
 
-    const InitializationSettings initializationSettings =
-        InitializationSettings(
+    const InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsIOS,
     );
@@ -46,11 +43,7 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
   Future<bool> checkNotificationExist({required int id}) async {
     final notifications = await localNotification.pendingNotificationRequests();
     final foundNotification = notifications.firstWhereOrNull((n) => n.id == id);
-    if (foundNotification != null) {
-      return true;
-    } else {
-      return false;
-    }
+    return foundNotification != null;
   }
 
   @override
@@ -68,8 +61,7 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
         body,
         TZDateTime.now(local).add(scheduleDuration),
         platformChannelSpecifics,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
+        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true,
       );
     }

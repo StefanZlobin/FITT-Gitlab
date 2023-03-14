@@ -23,11 +23,12 @@ class OneTimeWorkoutCard extends StatelessWidget {
       bloc: getIt<ClubCubit>(),
       builder: (context, state) {
         return state.when(
-            loading: () => const SizedBox(),
-            loaded: (club, _, __, ___, ____, _____, ______) {
-              return _buildCard(club, context);
-            },
-            error: (error) => const SizedBox());
+          loading: () => const SizedBox(),
+          loaded: (club, _, __, ___, ____, _____, ______) {
+            return _buildCard(club, context);
+          },
+          error: (error) => const SizedBox(),
+        );
       },
     );
   }
@@ -54,7 +55,8 @@ class OneTimeWorkoutCard extends StatelessWidget {
             isBig: true,
             onPressed: () => context.push(AppRoute.clubBuyWorkout.routeToPath),
             workoutSlot: DateTimeUtils.dateWithoutPrefix(
-                getIt<ClubCubit>().selectedSlot!.startTime),
+              getIt<ClubCubit>().selectedSlot!.startTime,
+            ),
           ),
           const SizedBox(height: 8),
           Row(
@@ -109,7 +111,7 @@ class OneTimeWorkoutCard extends StatelessWidget {
                                 .selectedSlot!
                                 .duration
                                 .inHours,
-                          )
+                          ),
                         ],
                       ),
               ),

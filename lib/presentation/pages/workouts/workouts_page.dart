@@ -28,8 +28,7 @@ class WorkoutsPage extends StatelessWidget {
               error: (_) => Text(L.of(context).workoutListPageTitle(0)),
               initial: () => Text(L.of(context).workoutListPageTitle(0)),
               loading: () => Text(L.of(context).workoutListPageTitle(0)),
-              loaded: (workouts, _) =>
-                  Text(L.of(context).workoutListPageTitle(workouts.length)),
+              loaded: (workouts, _) => Text(L.of(context).workoutListPageTitle(workouts.length)),
             );
           },
         ),
@@ -40,8 +39,7 @@ class WorkoutsPage extends StatelessWidget {
           return state.when(
             initial: () => const SizedBox(),
             loading: () => const Center(child: CircularProgressIndicator()),
-            loaded: (workouts, _) =>
-                _buildWorkoutsCardWidget(context, workouts),
+            loaded: (workouts, _) => _buildWorkoutsCardWidget(context, workouts),
             error: (error) => const SizedBox(),
           );
         },
@@ -49,12 +47,10 @@ class WorkoutsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildWorkoutsCardWidget(
-      BuildContext context, List<Workout> workouts) {
+  Widget _buildWorkoutsCardWidget(BuildContext context, List<Workout> workouts) {
     if (workouts.isEmpty) {
       return EmptyWidget(
-        hintText:
-            'Нет актуальных тренировок. Выберите клуб и запишитесь на тренировку',
+        hintText: 'Нет актуальных тренировок. Выберите клуб и запишитесь на тренировку',
         buttonText: 'Подобрать клуб',
         onPressed: () => context.pop(),
       );

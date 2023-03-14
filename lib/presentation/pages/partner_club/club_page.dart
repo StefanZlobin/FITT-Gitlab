@@ -45,8 +45,15 @@ class ClubPage extends StatelessWidget with UserMixin {
           ),
           body: state.when(
             loading: () => const Center(child: CircularProgressIndicator()),
-            loaded: (club, lastAvailableDateSelected, activity, dateSlots,
-                    timeSlots, durationSlots, batches) =>
+            loaded: (
+              club,
+              lastAvailableDateSelected,
+              activity,
+              dateSlots,
+              timeSlots,
+              durationSlots,
+              batches,
+            ) =>
                 _buildPartnerClubPage(
               context,
               club,
@@ -92,7 +99,9 @@ class ClubPage extends StatelessWidget with UserMixin {
               GestureDetector(
                 onTap: () {
                   getIt<ClubCubit>().setFavorite(
-                      favorite: club.isFavorite ?? false, clubUuid: clubUuid);
+                    favorite: club.isFavorite ?? false,
+                    clubUuid: clubUuid,
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 16),
@@ -246,11 +255,10 @@ class ClubPage extends StatelessWidget with UserMixin {
     final DateTime? openAt = currentWorkSchedule.startDateTime;
 
     final bool isOpen;
-    if (closeAt == null || openAt == null) {
-      isOpen = false;
-    } else {
-      isOpen = now.isBefore(closeAt) && now.isAfter(openAt);
-    }
+    // ignore: avoid_bool_literals_in_conditional_expressions
+    isOpen = closeAt == null || openAt == null
+        ? false
+        : now.isBefore(closeAt) && now.isAfter(openAt);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -267,10 +275,10 @@ class ClubPage extends StatelessWidget with UserMixin {
             ),
             TextSpan(
               text: isOpen
-                  ? 'Закроется в ${DateFormat.Hm().format(closeAt ?? now)}'
+                  ? 'Закроется в ${DateFormat.Hm().format(closeAt)}'
                   : 'Откроется в ${DateFormat.Hm().format(openAt ?? DateTime.now())}',
               style: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
-            )
+            ),
           ],
         ),
       ),

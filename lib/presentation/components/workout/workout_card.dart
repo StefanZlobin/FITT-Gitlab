@@ -46,12 +46,10 @@ class WorkoutCard extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         if (!isPage) {
-          await getIt<WorkoutCubit>()
-              .getWorkout(workoutUuid: workout.uuid)
-              .then((value) => context.pushNamed(
-                    AppRoute.workout.routeToPath,
-                    extra: false,
-                  ));
+          await getIt<WorkoutCubit>().getWorkout(workoutUuid: workout.uuid).then((value) => context.pushNamed(
+                AppRoute.workout.routeToPath,
+                extra: false,
+              ));
         }
       },
       child: Container(
@@ -118,38 +116,26 @@ class WorkoutCard extends StatelessWidget {
                   return state.when(
                     timerInitial: (_) {
                       return Text(
-                        workout.status != WorkoutStatusEnum.started
-                            ? 'Начало через'
-                            : 'До окончания',
-                        style: AppTypography.kBody14
-                            .apply(color: AppColors.kOxford60),
+                        workout.status != WorkoutStatusEnum.started ? 'Начало через' : 'До окончания',
+                        style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                       );
                     },
                     timerRunInProgress: (duration) {
                       return Text(
-                        workout.status != WorkoutStatusEnum.started
-                            ? 'Начало через'
-                            : 'До окончания',
-                        style: AppTypography.kBody14
-                            .apply(color: AppColors.kOxford60),
+                        workout.status != WorkoutStatusEnum.started ? 'Начало через' : 'До окончания',
+                        style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                       );
                     },
                     timerRunInDanger: (duration) {
                       return Text(
-                        workout.status != WorkoutStatusEnum.started
-                            ? 'Тренировка идет'
-                            : 'До окончания',
-                        style: AppTypography.kBody14
-                            .apply(color: AppColors.kOxford60),
+                        workout.status != WorkoutStatusEnum.started ? 'Тренировка идет' : 'До окончания',
+                        style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                       );
                     },
                     timerRunComplete: (duration) {
                       return Text(
-                        workout.status != WorkoutStatusEnum.started
-                            ? 'Начало через'
-                            : 'До окончания',
-                        style: AppTypography.kBody14
-                            .apply(color: AppColors.kOxford60),
+                        workout.status != WorkoutStatusEnum.started ? 'Начало через' : 'До окончания',
+                        style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
                       );
                     },
                   );
@@ -168,30 +154,22 @@ class WorkoutCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              workout.status != WorkoutStatusEnum.started
-                  ? 'Начало тренировки'
-                  : 'Окончание',
+              workout.status != WorkoutStatusEnum.started ? 'Начало тренировки' : 'Окончание',
               style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
             ),
             Text(
-              DateTimeUtils.timeFormat.format(
-                  workout.status == WorkoutStatusEnum.planned
-                      ? workout.startTime
-                      : workout.endTime),
+              DateTimeUtils.timeFormat
+                  .format(workout.status == WorkoutStatusEnum.planned ? workout.startTime : workout.endTime),
               style: AppTypography.kH14.apply(color: AppColors.kOxford),
             ),
             const SizedBox(height: 4),
             Text(
-              workout.status != WorkoutStatusEnum.started
-                  ? 'Окончание'
-                  : 'Выход из клуба до',
+              workout.status != WorkoutStatusEnum.started ? 'Окончание' : 'Выход из клуба до',
               style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
             ),
             Text(
-              DateTimeUtils.timeFormat.format(
-                  workout.status == WorkoutStatusEnum.planned
-                      ? workout.endTime
-                      : workout.canEndTime),
+              DateTimeUtils.timeFormat
+                  .format(workout.status == WorkoutStatusEnum.planned ? workout.endTime : workout.canEndTime),
               style: AppTypography.kH14.apply(color: AppColors.kOxford),
             ),
           ],
@@ -204,8 +182,7 @@ class WorkoutCard extends StatelessWidget {
     return BlocBuilder<WorkoutTimerBloc, WorkoutTimerState>(
       bloc: bloc,
       builder: (context, state) {
-        if (workout.endTime.isBefore(DateTime.now()) &&
-            workout.status == WorkoutStatusEnum.planned) {
+        if (workout.endTime.isBefore(DateTime.now()) && workout.status == WorkoutStatusEnum.planned) {
           bloc.add(const WorkoutTimerEvent.timerComplete());
         }
         return state.when(
@@ -218,14 +195,10 @@ class WorkoutCard extends StatelessWidget {
           ),
           timerRunInDanger: (duration) => Text(
             TimerUtils.createTimerString(
-              workout.status == WorkoutStatusEnum.planned
-                  ? duration.abs()
-                  : duration,
+              workout.status == WorkoutStatusEnum.planned ? duration.abs() : duration,
             ),
             style: AppTypography.kNum36.apply(
-              color: workout.status == WorkoutStatusEnum.planned
-                  ? AppColors.kPrimaryBlue
-                  : AppColors.kPrimaryRed,
+              color: workout.status == WorkoutStatusEnum.planned ? AppColors.kPrimaryBlue : AppColors.kPrimaryRed,
             ),
           ),
           timerRunComplete: (duration) => Text(
@@ -249,8 +222,7 @@ class WorkoutCard extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             text: TextSpan(
-              text:
-                  '${DateTimeUtils.dateFormatWithoutYear.format(workout.startTime)}\n',
+              text: '${DateTimeUtils.dateFormatWithoutYear.format(workout.startTime)}\n',
               style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
               children: [
                 TextSpan(

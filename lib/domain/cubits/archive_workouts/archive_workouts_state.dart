@@ -10,6 +10,5 @@ class ArchiveWorkoutsState with _$ArchiveWorkoutsState {
   const factory ArchiveWorkoutsState.loaded({
     required List<Workout> archiveWorkouts,
   }) = _ArchiveWorkoutsStateLoaded;
-  const factory ArchiveWorkoutsState.error({required String error}) =
-      _ArchiveWorkoutsStateError;
+  const factory ArchiveWorkoutsState.error({required String error}) = _ArchiveWorkoutsStateError;
 }

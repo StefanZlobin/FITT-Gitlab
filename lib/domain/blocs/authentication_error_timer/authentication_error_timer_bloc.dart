@@ -8,8 +8,7 @@ part 'authentication_error_timer_bloc.freezed.dart';
 part 'authentication_error_timer_event.dart';
 part 'authentication_error_timer_state.dart';
 
-class AuthenticationErrorTimerBloc
-    extends Bloc<AuthenticationErrorTimerEvent, AuthenticationErrorTimerState> {
+class AuthenticationErrorTimerBloc extends Bloc<AuthenticationErrorTimerEvent, AuthenticationErrorTimerState> {
   StreamSubscription<int>? _tickerSubscription;
   final Ticker _ticker;
   int countTimerEnd = 0;
@@ -35,11 +34,9 @@ class AuthenticationErrorTimerBloc
   ) {
     emit(_TimerRunInProgress(duration: event.duration));
     _tickerSubscription?.cancel();
-    _tickerSubscription = _ticker
-        .tick(ticks: event.duration.inSeconds)
-        .listen((duration) => add(_TimerTicked(
-              duration: Duration(seconds: duration),
-            )));
+    _tickerSubscription = _ticker.tick(ticks: event.duration.inSeconds).listen((duration) => add(_TimerTicked(
+          duration: Duration(seconds: duration),
+        )));
   }
 
   void _onTicked(

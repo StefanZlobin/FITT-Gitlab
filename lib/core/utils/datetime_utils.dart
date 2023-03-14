@@ -13,8 +13,11 @@ class DateTimeUtils {
   }
 
   /// Compares two dates by hour and minute. Also checks that dates are in the same time zone.
-  static bool sameTime(DateTime a, DateTime b,
-      {bool compareMilliseconds = false}) {
+  static bool sameTime(
+    DateTime a,
+    DateTime b, {
+    bool compareMilliseconds = false,
+  }) {
     assert(a.timeZoneOffset == b.timeZoneOffset);
     final result = a.hour == b.hour &&
         a.minute == b.minute &&

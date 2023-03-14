@@ -15,6 +15,5 @@ class AdminUser with _$AdminUser {
     @JsonKey(name: 'check_num') String? userId,
   }) = _AdminUser;
 
-  factory AdminUser.fromJson(Map<String, dynamic> json) =>
-      _$AdminUserFromJson(json);
+  factory AdminUser.fromJson(Map<String, dynamic> json) => _$AdminUserFromJson(json);
 }

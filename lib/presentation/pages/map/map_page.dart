@@ -44,9 +44,6 @@ class MapPage extends StatelessWidget {
               loading: () => const SizedBox(),
               error: (error) => const SizedBox(),
               loaded: (clubs) {
-                if (clubs.isEmpty) {
-                  return const SizedBox();
-                }
                 return Container(
                   margin: EdgeInsets.only(
                     bottom: 144 + 16 + (Platform.isAndroid ? 32 : 0),

@@ -7,8 +7,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/blocs/authentication/authentication_bloc.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
@@ -48,8 +47,7 @@ class UserDetected extends StatelessWidget {
                 loaded: (adminClubs) {
                   return AdminMenuTile(
                     onPressed: () {
-                      getIt<AdminClubCubit>()
-                          .getAdminClub(adminClubUuid: adminClubs.first.uuid!);
+                      getIt<AdminClubCubit>().getAdminClub(adminClubUuid: adminClubs.first.uuid!);
                       context.push(AppRoute.adminWorkoutList.routeToPath);
                     },
                     title: Text(adminClubs.first.label),
@@ -86,8 +84,7 @@ class UserDetected extends StatelessWidget {
                       workout.startTime.isBefore(DateTime.now())) {
                     closestWorkoutText = 'Начните тренировку';
                   } else {
-                    closestWorkoutText =
-                        'Ближайшая через ${DateTimeUtils.nextWorkoutSession(workout.startTime)}';
+                    closestWorkoutText = 'Ближайшая через ${DateTimeUtils.nextWorkoutSession(workout.startTime)}';
                   }
                   return Text(closestWorkoutText);
                 },
@@ -115,8 +112,7 @@ class UserDetected extends StatelessWidget {
                     child: Center(
                       child: Text(
                         '$countWorkout',
-                        style: AppTypography.kBody12
-                            .apply(color: AppColors.kBaseWhite),
+                        style: AppTypography.kBody12.apply(color: AppColors.kBaseWhite),
                       ),
                     ),
                   );
@@ -162,9 +158,7 @@ class UserDetected extends StatelessWidget {
             style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
           ),
           onPressed: () {
-            getIt<UserBloc>().add(UserEvent.logout(user: user!));
-            getIt<AuthenticationBloc>()
-                .add(const AuthenticationEvent.signOut());
+            getIt<AuthBloc>().add(const AuthEvent.authenticationLogoutRequested());
           },
         ),
       ],

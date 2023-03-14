@@ -64,10 +64,7 @@ String _createClockLikeTimerAbbr(Duration duration) {
 
   final result = [
     if (hasHours) duration.inHours % 24,
-    if (hasHours)
-      _maybeAddPrefixZero(duration.inMinutes % 60)
-    else
-      duration.inMinutes % 60,
+    if (hasHours) _maybeAddPrefixZero(duration.inMinutes % 60) else duration.inMinutes % 60,
     if (!hasHours) _maybeAddPrefixZero(duration.inSeconds % 60),
   ].join(':');
   return isNegative ? '-$result' : result;

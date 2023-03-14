@@ -11,6 +11,5 @@ class FilteringState with _$FilteringState {
     @Default(false) bool isPriceUpdate,
     List<Facility>? activeFacilitiesList,
   }) = _FilteringStateLoaded;
-  const factory FilteringState.error({required String error}) =
-      _FilteringStateError;
+  const factory FilteringState.error({required String error}) = _FilteringStateError;
 }

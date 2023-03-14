@@ -47,8 +47,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     _OnPaymentBatchNotification event,
     Emitter<NotificationsState> emit,
   ) {
-    if (event.message.data['payment_status'] ==
-        PaymentStatusEnum.success.name.toUpperCase()) {
+    if (event.message.data['payment_status'] == PaymentStatusEnum.success.name.toUpperCase()) {
       emit(const _PaymentBatchSuccess());
     } else {
       emit(const _PaymentBatchReject());
@@ -59,8 +58,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     _OnPaymentWorkoutNotification event,
     Emitter<NotificationsState> emit,
   ) {
-    if (event.message.data['payment_status'] ==
-        PaymentStatusEnum.success.name.toUpperCase()) {
+    if (event.message.data['payment_status'] == PaymentStatusEnum.success.name.toUpperCase()) {
       emit(const _PaymentWorkoutSuccess());
     } else {
       emit(const _PaymentWorkoutReject());
@@ -72,8 +70,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     Emitter<NotificationsState> emit,
   ) {
     if (event.message.data['status'] == 'REQUIRED_START') {
-      if (event.message.data['user_type'] == 'ADMINISTRATOR' &&
-          Platform.isAndroid) {
+      if (event.message.data['user_type'] == 'ADMINISTRATOR' && Platform.isAndroid) {
         getIt<LocalNotificationsService>().showLocalNotification(
           id: event.message.data['id'].toString().hashCode,
           title: event.message.notification?.title ?? '',
@@ -84,8 +81,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     } else if (event.message.data['status'] == 'START') {
       emit(const NotificationsState.workoutStatusStarted());
     } else if (event.message.data['status'] == 'REQUIRED_FINISH') {
-      if (event.message.data['user_type'] == 'ADMINISTRATOR' &&
-          Platform.isAndroid) {
+      if (event.message.data['user_type'] == 'ADMINISTRATOR' && Platform.isAndroid) {
         getIt<LocalNotificationsService>().showLocalNotification(
           id: event.message.data['id'].toString().hashCode,
           title: event.message.notification?.title ?? '',

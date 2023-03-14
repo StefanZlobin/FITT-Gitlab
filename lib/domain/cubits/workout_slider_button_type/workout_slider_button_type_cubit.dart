@@ -5,8 +5,7 @@ part 'workout_slider_button_type_cubit.freezed.dart';
 part 'workout_slider_button_type_state.dart';
 
 class WorkoutSliderButtonTypeCubit extends Cubit<WorkoutSliderButtonTypeState> {
-  WorkoutSliderButtonTypeCubit()
-      : super(const WorkoutSliderButtonTypeState.initial());
+  WorkoutSliderButtonTypeCubit() : super(const WorkoutSliderButtonTypeState.initial());
 
   void setStartTypeSliderButton({required bool showBeforeCanStart}) {
     emit(_WorkoutSliderButtonTypeStateStart(

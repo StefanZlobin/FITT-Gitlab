@@ -13,6 +13,5 @@ class Facility with _$Facility {
     @JsonKey(name: 'icon') String? iconUrl,
   }) = _Facility;
 
-  factory Facility.fromJson(Map<String, dynamic> json) =>
-      _$FacilityFromJson(json);
+  factory Facility.fromJson(Map<String, dynamic> json) => _$FacilityFromJson(json);
 }

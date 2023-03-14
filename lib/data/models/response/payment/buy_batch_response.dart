@@ -20,6 +20,5 @@ class BuyBatchResponse {
   @JsonKey(name: 'pay_form')
   final String payForm;
 
-  static BuyBatchResponse fromJson(Map<String, dynamic> json) =>
-      _$BuyBatchResponseFromJson(json);
+  static BuyBatchResponse fromJson(Map<String, dynamic> json) => _$BuyBatchResponseFromJson(json);
 }
