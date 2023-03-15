@@ -121,6 +121,7 @@ push-to-testflight:
     - fastlane run testflight app_version:"$(BUILD_VERSION)" build_number:"$(BUILD_NUMBER)" changelog:"$(CHANGELOG)" ipa:"app-release.ipa"
   needs:
     - build-to-ios
+    - versioning
  
 push-to-google_play:
   stage: release
@@ -131,3 +132,4 @@ push-to-google_play:
     - fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
   needs:
     - build-to-android
+    - versioning
