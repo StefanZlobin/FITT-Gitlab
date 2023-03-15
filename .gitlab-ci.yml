@@ -100,6 +100,7 @@ build-to-ios:
     - flutter upgrade
     - flutter pub get
     - flutter pub run build_runner build --delete-conflicting-outputs
+    - pod install --repo-update
   script:
     - flutter build ipa --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
     - mv build/ios/ipa/FITT.ipa app-release.ipa
