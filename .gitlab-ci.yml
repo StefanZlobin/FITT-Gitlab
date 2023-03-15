@@ -100,7 +100,9 @@ build-to-ios:
     - flutter upgrade
     - flutter pub get
     - flutter pub run build_runner build --delete-conflicting-outputs
+    - cd ios
     - pod install --repo-update
+    - cd ..
   script:
     - flutter build ipa --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
     - mv build/ios/ipa/FITT.ipa app-release.ipa
@@ -130,11 +132,12 @@ push-to-testflight:
  
 push-to-google_play:
   stage: release
-  before_script: []
+  before_script: 
+    - cd android
+  script:
+    - bundle exec fastlane run upload_to_play_store version_name:"$BUILD_VERSION" version_code:"$BUILD_NUMBER" track:"internal" apk:"../app-release.apk"
   only:
    - development
-  script:
-    - bundle exec fastlane run upload_to_play_store version_name:"$BUILD_VERSION" version_code:"$BUILD_NUMBER" track:"internal" apk:"app-release.apk"
   needs:
     - job: build-to-android
       artifacts: true
