@@ -111,6 +111,8 @@ build-to-ios:
 push-to-testflight:
   stage: release
   before_script: []
+  only:
+   - development
   script:
     - fastlane run testflight app_version:"$(BUILD_VERSION)" build_number:"$(BUILD_NUMBER)" changelog:"$(CHANGELOG)" ipa:"app-release.ipa"
   needs:
@@ -119,6 +121,8 @@ push-to-testflight:
 push-to-google_play:
   stage: release
   before_script: []
+  only:
+   - development§
   script:
     - fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
   needs:
