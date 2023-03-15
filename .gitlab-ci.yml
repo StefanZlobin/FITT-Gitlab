@@ -3,7 +3,6 @@ image: cirrusci/flutter:3.7.1
 stages:
   - analyze
   - test
-  - code_generation
   - build
   - release
 
@@ -20,16 +19,21 @@ versioning:
    - |
     if [[ $CI_BUILD_REF_NAME = "master" ]]
     then
-      echo "BUILD_VERSION=$(release-it --ci --release-version)\nBUILD_NUMBER=1000\nCHANGELOG=\"$(release-it --ci --changelog)\"" >> version.env
+      echo "BUILD_VERSION=$(release-it --ci --release-version | cut -d "-" -f 1)" >> version.env
+      echo "BUILD_NUMBER=1000"  >> version.env
+      echo "CHANGELOG=\"$(release-it --ci --changelog)\"" >> version.env
     elif [[ $CI_BUILD_REF_NAME = "staging" ]]
     then
-      echo "BUILD_VERSION=$(release-it --ci --preRelease=beta --release-version)\nBUILD_NUMBER=$(release-it --ci --preRelease=beta --release-version | cut -d "." -f 5)\nCHANGELOG=\"$(release-it --ci --changelog)\"" >> version.env
+      echo "BUILD_VERSION=$(release-it --ci --release-version --preRelease | cut -d "-" -f 1)" >> version.env
+      echo "BUILD_NUMBER=$(release-it --ci --release-version --preRelease | cut -d "-" -f 2)"  >> version.env
+      echo "CHANGELOG=\"$(release-it --ci --changelog)\"" >> version.env
     else
-      echo "BUILD_VERSION=$(release-it --ci --preRelease=dev --release-version)" >> version.env
+      echo "BUILD_VERSION=$(release-it --ci --release-version --preRelease | cut -d "-" -f 1)" >> version.env
+      echo "BUILD_NUMBER=$(release-it --ci --release-version --preRelease | cut -d "-" -f 2)"  >> version.env
+      echo "CHANGELOG=\"$(release-it --ci --changelog)\"" >> version.env
     fi
   only:
-    - master
-    - staging
+    - development
   artifacts:
    reports:
      dotenv: version.env
@@ -122,47 +126,8 @@ push-to-google_play:
   stage: release
   before_script: []
   only:
-   - development§
+   - development
   script:
     - fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
   needs:
     - build-to-android
-
-
-# build-and-push-to-ios-test:
-#   stage: build_ios
-#   environment:
-#     name: test
-#   before_script:
-#     - flutter pub get
-#     - flutter pub run build_runner build --delete-conflicting-outputs
-#   script:
-#     - cd ios
-#     - bundle exec fastlane match appstore
-#     - pod install --repo-update
-#     - bundle exec fastlane match appstore
-#     - bundle exec fastlane test
-#   only:
-#     - development
-#   tags:
-#     - ios
-#     - raw-shell
-
-
-# build-and-push-to-ios-preprod:
-#   stage: build_ios
-#   environment:
-#     name: preprod
-#   before_script:
-#     - flutter pub get
-#     - flutter pub run build_runner build --delete-conflicting-outputs
-#   script:
-#     - cd ios
-#     - pod install --repo-update
-#     - bundle exec fastlane match appstore
-#     - bundle exec fastlane preprod
-#   only:
-#     - master
-#   tags:
-#     - ios
-#     - raw-shell
