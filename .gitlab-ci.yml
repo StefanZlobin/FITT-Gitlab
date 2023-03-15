@@ -96,8 +96,13 @@ build-to-android:
 build-to-ios:
   stage: build
   before_script:
+    - flutter channel stable
+    - flutter upgrade
     - flutter pub get
     - flutter pub run build_runner build --delete-conflicting-outputs
+    - cd ios
+    - pod install --repo-update
+    - cd ..
   script:
     - flutter build ipa --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
     - mv build/ios/ipa/FITT.ipa app-release.ipa
@@ -118,16 +123,23 @@ push-to-testflight:
   only:
    - development
   script:
-    - fastlane run testflight app_version:"$(BUILD_VERSION)" build_number:"$(BUILD_NUMBER)" changelog:"$(CHANGELOG)" ipa:"app-release.ipa"
+    - bundle exec fastlane run testflight app_version:"$BUILD_VERSION" build_number:"$BUILD_NUMBER" changelog:"$CHANGELOG" ipa:"app-release.ipa"
   needs:
-    - build-to-ios
+    - job: build-to-ios
+      artifacts: true
+    - job: versioning
+      artifacts: true
  
 push-to-google_play:
   stage: release
-  before_script: []
+  before_script: 
+    - cd android
+  script:
+    - bundle exec fastlane run upload_to_play_store version_name:"$BUILD_VERSION" version_code:"$BUILD_NUMBER" track:"internal" apk:"../app-release.apk"
   only:
    - development
-  script:
-    - fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
   needs:
-    - build-to-android
+    - job: build-to-android
+      artifacts: true
+    - job: versioning
+      artifacts: true
