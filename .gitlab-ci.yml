@@ -119,10 +119,12 @@ push-to-testflight:
   only:
    - development
   script:
-    - fastlane run testflight app_version:"$(BUILD_VERSION)" build_number:"$(BUILD_NUMBER)" changelog:"$(CHANGELOG)" ipa:"app-release.ipa"
+    - bundle exec fastlane run testflight app_version:"$(BUILD_VERSION)" build_number:"$(BUILD_NUMBER)" changelog:"$(CHANGELOG)" ipa:"app-release.ipa"
   needs:
-    - build-to-ios
-    - versioning
+    - job: build-to-ios
+      artifacts: true
+    - job: versioning
+      artifacts: true
  
 push-to-google_play:
   stage: release
@@ -130,7 +132,9 @@ push-to-google_play:
   only:
    - development
   script:
-    - fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
+    - bundle exec fastlane run upload_to_play_store version_name:"$(BUILD_VERSION)" version_code:"$(BUILD_NUMBER)" track:"internal" apk:"app-release.apk"
   needs:
-    - build-to-android
-    - versioning
+    - job: build-to-android
+      artifacts: true
+    - job: versioning
+      artifacts: true
