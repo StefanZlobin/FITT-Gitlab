@@ -15,16 +15,9 @@ import '../../../../domain/entities/club/partner_club.dart';
 import '../../../../domain/entities/lat_lng/lat_lng.dart';
 import 'club_carousel_card.dart';
 
-class ClubCarousel extends StatefulWidget {
-  const ClubCarousel({
-    super.key,
-  });
+class ClubCarousel extends StatelessWidget {
+  const ClubCarousel({super.key});
 
-  @override
-  State<ClubCarousel> createState() => _ClubCarouselState();
-}
-
-class _ClubCarouselState extends State<ClubCarousel> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocListener(
@@ -87,6 +80,9 @@ class _ClubCarouselState extends State<ClubCarousel> {
         margin: const EdgeInsets.only(bottom: 32),
         child: ScrollSnapList(
           scrollController: getIt<CarouselBloc>().scrollController,
+          initialIndex: 0,
+          callbackDuringInitialization: () => getIt<MapBloc>()
+              .add(MapEvent.carouselCardFocused(partnerClubs[0].uuid!)),
           margin: const EdgeInsets.all(0),
           padding: const EdgeInsets.all(0),
           listPadding: 8,

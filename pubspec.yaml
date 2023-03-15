@@ -117,10 +117,10 @@ dependencies:
       ref: master
 
   #Scroll snap list
-  #Carousel of clubs aka Svetozar
+  #Carousel of clubs aka Stefan (Svetozar)
   scroll_snap_list:
     git:
-      url: https://github.com/Svet-00/scroll_snap_list.git
+      url: https://github.com/StefanZlobin/scroll_snap_list.git
       ref: master
 
 dev_dependencies:
