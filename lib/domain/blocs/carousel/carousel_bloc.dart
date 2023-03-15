@@ -24,7 +24,6 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
   SnapScrollListController get scrollController => _listScrollController;
 
   Completer<List<PartnerClub>>? _partnerClubsCompleter;
-  PartnerClub? firstPartnerClub;
 
   Future<void> _onClubSelected(
     _ClubSelected event,
@@ -51,7 +50,6 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
     final completer = _partnerClubsCompleter;
     if (completer != null) {
       completer.complete(event.clubs);
-      firstPartnerClub = event.clubs.first;
       _partnerClubsCompleter = null;
     }
   }
