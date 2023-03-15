@@ -51,7 +51,7 @@ packages:
     source: hosted
     version: "2.0.1"
   appmetrica_plugin:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: appmetrica_plugin
       sha256: f2538497a8dbaafe398ad7999b2091767df18967c4fc480a9ca866aded2e2448
