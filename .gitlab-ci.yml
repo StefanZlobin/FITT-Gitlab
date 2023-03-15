@@ -134,6 +134,7 @@ push-to-google_play:
   stage: release
   before_script: 
     - cd android
+    - bundle install
   script:
     - bundle exec fastlane run upload_to_play_store version_name:"$BUILD_VERSION" version_code:"$BUILD_NUMBER" track:"internal" apk:"../app-release.apk"
   only:
