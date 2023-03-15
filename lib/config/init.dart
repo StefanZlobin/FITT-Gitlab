@@ -1,4 +1,7 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitt/config/config.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/permissions/firebase_notifications.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
@@ -13,8 +16,16 @@ Future<void> init() async {
 
   await setup();
   await Hive.initFlutter();
+
+  // Firebase
   await Firebase.initializeApp();
   await FirebaseNotificationsPermission().getFirebaseNotificationPermission();
+
+  // Yandex appmetrica
+  await AppMetrica.activate(
+    const AppMetricaConfig(Config.yandexAppMetricaApiKey),
+  );
+  await AppMetricaPush.activate();
 
   await getIt<LocalNotificationsService>().init();
   await getIt<GeolocationService>().requestPermission();

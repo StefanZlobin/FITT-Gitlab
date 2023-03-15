@@ -50,6 +50,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  appmetrica_plugin:
+    dependency: transitive
+    description:
+      name: appmetrica_plugin
+      sha256: f2538497a8dbaafe398ad7999b2091767df18967c4fc480a9ca866aded2e2448
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
+  appmetrica_push_plugin:
+    dependency: "direct main"
+    description:
+      name: appmetrica_push_plugin
+      sha256: a19580dc8d87e94519247164dd64534bae7f5236f7981f0a92a66a7085bc5f4d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   args:
     dependency: transitive
     description:
@@ -314,6 +330,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.8"
+  decimal:
+    dependency: transitive
+    description:
+      name: decimal
+      sha256: eece91944f523657c75a3a008a90ec7f7eb3986191153a78570c7d0ac8ef3d01
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
   dio:
     dependency: "direct main"
     description:
@@ -1223,6 +1247,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.2"
+  rational:
+    dependency: transitive
+    description:
+      name: rational
+      sha256: ba58e9e18df9abde280e8b10051e4bce85091e41e8e7e411b6cde2e738d357cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
   retrofit:
     dependency: "direct main"
     description:
