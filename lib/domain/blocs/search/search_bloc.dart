@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/address/search_address.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/use_cases/search/search_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stream_transform/stream_transform.dart';
@@ -29,20 +31,25 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   final searchUseCase = SearchUseCase();
 
-  Future<void> _onSearch(_SearchEventSearch event, Emitter<SearchState> emit) async {
+  Future<void> _onSearch(
+      _SearchEventSearch event, Emitter<SearchState> emit) async {
     if (event.query.length < 3) return;
     try {
-      final addressSuggestions = await searchUseCase.getAddressSuggestions(query: event.query);
+      final addressSuggestions =
+          await searchUseCase.getAddressSuggestions(query: event.query);
       emit(SearchState.loaded(searchAddress: addressSuggestions));
     } on Exception catch (e) {
       emit(SearchState.error(error: e.toString()));
     }
   }
 
-  void _onSuggesstionTap(
+  Future<void> _onSuggesstionTap(
     _SearchEventSuggestionTap event,
     Emitter<SearchState> emit,
-  ) {
+  ) async {
+    await getIt<AppMetricaService>().reportEventToAppMetrica(
+      eventName: 'Пользователь воспользовался поиском',
+    );
     try {
       emit(SearchState.suggesstionTapped(searchAddress: event.searchAddress));
     } on Exception catch (e) {

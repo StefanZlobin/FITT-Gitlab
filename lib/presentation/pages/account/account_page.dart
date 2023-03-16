@@ -15,6 +15,7 @@ import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/dialogs/delete_user_account_dialog.dart';
@@ -267,29 +268,41 @@ class AccountPage extends StatelessWidget with UserMixin {
   ) {
     return TextButton(
       onPressed: () async {
-        final xFile = await imagePicker.pickImage(
-          source: ImageSource.gallery,
-          imageQuality: 5,
-        );
-        final file = File(xFile!.path);
-        final size = await file.length();
-        if (size > 5242880) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Слишком большой размер изображения'),
+        try {
+          await getIt<AppMetricaService>().reportEventToAppMetrica(
+            eventName: 'Показан попап с запросом доступа к фото',
+          );
+          final xFile = await imagePicker.pickImage(
+            source: ImageSource.gallery,
+            imageQuality: 5,
+          );
+          await getIt<AppMetricaService>().reportEventToAppMetrica(
+            eventName: 'Подтвержден попап с запросом доступа к фото',
+          );
+          final file = File(xFile!.path);
+          final size = await file.length();
+          if (size > 5242880) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Слишком большой размер изображения'),
+              ),
+            );
+            return;
+          }
+          final CroppedFile? croppedFile = await ImageCropper().cropImage(
+            sourcePath: xFile.path,
+          );
+
+          getIt<UserBloc>().add(
+            UserEvent.updateUserAvatar(
+              avatar: File(croppedFile!.path),
             ),
           );
-          return;
+        } on Exception {
+          await getIt<AppMetricaService>().reportEventToAppMetrica(
+            eventName: 'Не подтвержден попап с запросом доступа к фото',
+          );
         }
-        final CroppedFile? croppedFile = await ImageCropper().cropImage(
-          sourcePath: xFile.path,
-        );
-
-        getIt<UserBloc>().add(
-          UserEvent.updateUserAvatar(
-            avatar: File(croppedFile!.path),
-          ),
-        );
       },
       style: TextButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16),

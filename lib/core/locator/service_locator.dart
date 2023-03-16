@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:fitt/data/services/app_metrica/app_metrica_service_impl.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
 import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../config/config.dart';
@@ -175,6 +177,7 @@ void _regusterServices() {
   getIt.registerLazySingleton<LocalNotificationsService>(
     () => LocalNotificationsServiceImpl(),
   );
+  getIt.registerLazySingleton<AppMetricaService>(() => AppMetricaServiceImpl());
 }
 
 void _registerBlocs() {

@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/enum/admin_workout_finish_reason_enum.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/admin_workout/admin_workout.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/use_cases/admin/admin_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +16,8 @@ class AdminWorkoutCubit extends Cubit<AdminWorkoutState> {
 
   Future<void> getAdminWorkout({required String adminWorkoutUuid}) async {
     try {
-      final adminWorkout = await adminUseCase.getAdminWorkout(adminWorkoutUuid: adminWorkoutUuid);
+      final adminWorkout = await adminUseCase.getAdminWorkout(
+          adminWorkoutUuid: adminWorkoutUuid);
       emit(_AdminWorkoutStateLoaded(adminWorkout: adminWorkout));
     } on Exception catch (e) {
       emit(_AdminWorkoutStateError(error: e.toString()));
@@ -28,6 +31,9 @@ class AdminWorkoutCubit extends Cubit<AdminWorkoutState> {
       final adminWorkout = await adminUseCase.adminWorkoutConfirmStart(
         adminWorkoutUuid: adminWorkoutUuid,
       );
+      await getIt<AppMetricaService>().reportEventToAppMetrica(
+        eventName: 'Администратор подтвердил начало тренировки',
+      );
       emit(_AdminWorkoutStateLoaded(adminWorkout: adminWorkout));
     } on Exception catch (e) {
       emit(_AdminWorkoutStateError(error: e.toString()));
@@ -40,6 +46,9 @@ class AdminWorkoutCubit extends Cubit<AdminWorkoutState> {
     try {
       final adminWorkout = await adminUseCase.adminWorkoutConfirmFinish(
         adminWorkoutUuid: adminWorkoutUuid,
+      );
+      await getIt<AppMetricaService>().reportEventToAppMetrica(
+        eventName: 'Администратор подтвердил завершение тренировки',
       );
       emit(_AdminWorkoutStateLoaded(adminWorkout: adminWorkout));
     } on Exception catch (e) {
@@ -57,6 +66,9 @@ class AdminWorkoutCubit extends Cubit<AdminWorkoutState> {
         adminWorkoutUuid: adminWorkoutUuid,
         adminWorkoutFinishReasonEnum: adminWorkoutFinishReasonEnum,
         comment: comment,
+      );
+      await getIt<AppMetricaService>().reportEventToAppMetrica(
+        eventName: 'Администратор вынуждено завершил тренировку',
       );
       emit(_AdminWorkoutStateLoaded(adminWorkout: adminWorkout));
     } on Exception catch (e) {

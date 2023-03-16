@@ -3,6 +3,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
 import 'package:fitt/domain/entities/facility/facility.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -25,7 +26,8 @@ class FilteringCubit extends Cubit<FilteringState> {
           selectedFacilities[facility] = false;
         }
       }
-      selectedFacilities.removeWhere((key, value) => !filters.facilities!.contains(key));
+      selectedFacilities
+          .removeWhere((key, value) => !filters.facilities!.contains(key));
     }
 
     _filteringState = _FilteringStateLoaded(
@@ -44,10 +46,14 @@ class FilteringCubit extends Cubit<FilteringState> {
     );
   }
 
-  void selectFacility({
+  Future<void> selectFacility({
     required Facility facility,
     required ClubFilters filters,
-  }) {
+  }) async {
+    await getIt<AppMetricaService>().reportEventToAppMetrica(
+      eventName: 'Пользователь воспользовался фильтрацией по удобствам',
+    );
+
     selectedFacilities[facility] = !selectedFacilities[facility]!;
 
     final newState = _filteringState.copyWith(
@@ -55,11 +61,17 @@ class FilteringCubit extends Cubit<FilteringState> {
       selectedFacilities: selectedFacilities,
     );
 
-    activeFavilitiesIndex =
-        selectedFacilities.entries.where((element) => element.value).map((e) => e.key).map((e) => e).toList();
+    activeFavilitiesIndex = selectedFacilities.entries
+        .where((element) => element.value)
+        .map((e) => e.key)
+        .map((e) => e)
+        .toList();
 
-    final activeFacilitiesList =
-        selectedFacilities.entries.where((element) => element.value).map((e) => e.key).map((e) => e).toList();
+    final activeFacilitiesList = selectedFacilities.entries
+        .where((element) => element.value)
+        .map((e) => e.key)
+        .map((e) => e)
+        .toList();
 
     emit(
       _FilteringStateLoaded(
@@ -72,9 +84,16 @@ class FilteringCubit extends Cubit<FilteringState> {
     );
   }
 
-  void updatePrice({required RangeValues price}) {
-    final activeFacilitiesList =
-        selectedFacilities.entries.where((element) => element.value).map((e) => e.key).map((e) => e).toList();
+  Future<void> updatePrice({required RangeValues price}) async {
+    await getIt<AppMetricaService>().reportEventToAppMetrica(
+      eventName: 'Пользователь воспользовался фильтрацией по ценам',
+    );
+
+    final activeFacilitiesList = selectedFacilities.entries
+        .where((element) => element.value)
+        .map((e) => e.key)
+        .map((e) => e)
+        .toList();
 
     final newState = _filteringState.copyWith(
       filters: _filteringState.filters.copyWith(
