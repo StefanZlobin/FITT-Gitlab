@@ -4,6 +4,7 @@ import 'package:fitt/presentation/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:upgrader/upgrader.dart';
 
 class L extends S {
   static S of(BuildContext context) {
@@ -22,20 +23,26 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
 
-    return MaterialApp.router(
-      title: 'FITT',
-      theme: AppThemes.lightAppTheme,
-      themeMode: ThemeMode.light,
-      darkTheme: AppThemes.lightAppTheme,
-      routerConfig: goRouter.router,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('ru', ''),
+    return UpgradeAlert(
+      upgrader: Upgrader(
+        durationUntilAlertAgain: const Duration(days: 1),
+        
+      ),
+      child: MaterialApp.router(
+        title: 'FITT',
+        theme: AppThemes.lightAppTheme,
+        themeMode: ThemeMode.light,
+        darkTheme: AppThemes.lightAppTheme,
+        routerConfig: goRouter.router,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        locale: const Locale('ru', ''),
+      ),
     );
   }
 }

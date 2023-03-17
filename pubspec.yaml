@@ -104,6 +104,8 @@ dependencies:
   #Yandex App Metrica
   appmetrica_push_plugin: ^0.2.0
   appmetrica_plugin: ^1.1.0
+  #In app udpate
+  upgrader: ^6.2.0
 
   #Cluster manager (Fluster)
   #aka Stefan
