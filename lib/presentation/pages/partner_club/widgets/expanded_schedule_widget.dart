@@ -78,9 +78,8 @@ Widget _buildWorkScheduleRow({
     assert(false, 'Both or neither of [open] and [close] should be null');
   }
 
-  final dayPostfix = isException
-      ? ' (${DateTimeUtils.dateFormatWithoutYear.format(date)})'
-      : '';
+  final dayPostfix =
+      isException ? ' (${DateTimeUtils.dateFormatShort.format(date)})' : '';
 
   return Container(
     margin: const EdgeInsets.only(bottom: 8),
