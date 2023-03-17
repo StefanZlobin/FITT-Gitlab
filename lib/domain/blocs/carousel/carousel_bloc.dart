@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -24,6 +26,8 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
   SnapScrollListController get scrollController => _listScrollController;
 
   Completer<List<PartnerClub>>? _partnerClubsCompleter;
+  List<PartnerClub> clubs = [];
+  bool forseUpdate = false;
 
   Future<void> _onClubSelected(
     _ClubSelected event,
@@ -34,19 +38,27 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
       'Not finished handling of previous select',
     );
 
-    final completer = _partnerClubsCompleter = Completer();
-    final clubs = await completer.future;
+    if (clubs.isNotEmpty && !forseUpdate) {
+      final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
+      assert(targetIndex != -1, 'Selected absent club');
 
-    final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
-    assert(targetIndex != -1, 'Selected absent club');
+      unawaited(_listScrollController.animateToIndex(targetIndex));
+    } else {
+      final completer = _partnerClubsCompleter = Completer();
+      clubs = await completer.future;
 
-    unawaited(_listScrollController.animateToIndex(targetIndex));
+      final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
+      assert(targetIndex != -1, 'Selected absent club');
+
+      unawaited(_listScrollController.animateToIndex(targetIndex));
+    }
   }
 
   Future<void> _onClubsChanged(
     _ClubsChanged event,
     Emitter<CarouselState> emit,
   ) async {
+    forseUpdate = event.clubs.length != clubs.length ? true : false;
     final completer = _partnerClubsCompleter;
     if (completer != null) {
       completer.complete(event.clubs);

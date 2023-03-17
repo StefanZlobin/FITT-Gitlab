@@ -257,6 +257,9 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     Emitter emit,
   ) async {
     final marker = event.marker;
+
+    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(marker)));
+
     final prevState = _prevLoaded;
     if (prevState == null) {
       return;
@@ -284,8 +287,6 @@ class MapBloc extends Bloc<MapEvent, MapState> {
             m,
       ],
     );
-
-    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(marker)));
 
     emit(newState);
   }
