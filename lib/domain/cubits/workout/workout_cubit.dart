@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/use_cases/workout/workout_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +16,8 @@ class WorkoutCubit extends Cubit<WorkoutState> {
 
   Future<void> getWorkout({required String workoutUuid}) async {
     try {
-      final workout = await _workoutUseCase.getWorkout(workoutUuid: workoutUuid);
+      final workout =
+          await _workoutUseCase.getWorkout(workoutUuid: workoutUuid);
       emit(WorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {
       emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
@@ -24,6 +27,9 @@ class WorkoutCubit extends Cubit<WorkoutState> {
   Future<void> startWorkout({required Workout w}) async {
     try {
       final workout = await _workoutUseCase.startWorkout(workout: w);
+      await getIt<AppMetricaService>().reportEventToAppMetrica(
+        eventName: 'Пользователь начала тренировку',
+      );
       emit(WorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {
       emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
@@ -33,6 +39,9 @@ class WorkoutCubit extends Cubit<WorkoutState> {
   Future<void> finishWorkout({required Workout w}) async {
     try {
       final workout = await _workoutUseCase.finishWorkout(workout: w);
+      await getIt<AppMetricaService>().reportEventToAppMetrica(
+        eventName: 'Пользователь закончил тренировку',
+      );
       emit(WorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {
       emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
@@ -42,6 +51,9 @@ class WorkoutCubit extends Cubit<WorkoutState> {
   Future<void> cancelWorkout({required Workout w}) async {
     try {
       final workout = await _workoutUseCase.cancelWorkout(workout: w);
+      await getIt<AppMetricaService>().reportEventToAppMetrica(
+        eventName: 'Пользователь отменил тренировку',
+      );
       emit(WorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {
       emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));

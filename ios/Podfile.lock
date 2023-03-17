@@ -1,4 +1,11 @@
 PODS:
+  - appmetrica_plugin (1.1.0):
+    - Flutter
+    - YandexMobileMetrica (~> 4.4)
+  - appmetrica_push_plugin (0.2.0):
+    - appmetrica_plugin
+    - Flutter
+    - YandexMobileMetricaPush (~> 1.3)
   - Firebase/CoreOnly (10.3.0):
     - FirebaseCore (= 10.3.0)
   - Firebase/Messaging (10.3.0):
@@ -103,8 +110,22 @@ PODS:
     - Flutter
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
+  - YandexMobileMetrica (4.4.0):
+    - YandexMobileMetrica/Static (= 4.4.0)
+  - YandexMobileMetrica/Static (4.4.0):
+    - YandexMobileMetrica/Static/Core (= 4.4.0)
+    - YandexMobileMetrica/Static/Crashes (= 4.4.0)
+  - YandexMobileMetrica/Static/Core (4.4.0)
+  - YandexMobileMetrica/Static/Crashes (4.4.0):
+    - YandexMobileMetrica/Static/Core
+  - YandexMobileMetricaPush (1.3.0):
+    - YandexMobileMetricaPush/Static (= 1.3.0)
+  - YandexMobileMetricaPush/Static (1.3.0):
+    - YandexMobileMetrica/Static/Core (~> 4.0)
 
 DEPENDENCIES:
+  - appmetrica_plugin (from `.symlinks/plugins/appmetrica_plugin/ios`)
+  - appmetrica_push_plugin (from `.symlinks/plugins/appmetrica_push_plugin/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
@@ -138,8 +159,14 @@ SPEC REPOS:
     - PromisesObjC
     - Sentry
     - TOCropViewController
+    - YandexMobileMetrica
+    - YandexMobileMetricaPush
 
 EXTERNAL SOURCES:
+  appmetrica_plugin:
+    :path: ".symlinks/plugins/appmetrica_plugin/ios"
+  appmetrica_push_plugin:
+    :path: ".symlinks/plugins/appmetrica_push_plugin/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_messaging:
@@ -176,6 +203,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  appmetrica_plugin: 4a29f127f4608f66aada648f02e1cb0054ba3f74
+  appmetrica_push_plugin: 2a59a0dd76939dd0e84869ce1d73bc58dd7ca345
   Firebase: f92fc551ead69c94168d36c2b26188263860acd9
   firebase_core: 1ae9f9aa76e6e1edc14fb181637ad466fd6c6fa4
   firebase_messaging: f8c01f8b540feb4196e8dbe45ae17534747d779d
@@ -206,6 +235,8 @@ SPEC CHECKSUMS:
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
   webview_flutter_wkwebview: 2e2d318f21a5e036e2c3f26171342e95908bd60a
+  YandexMobileMetrica: baf7cea47cb87fc9af963c4f747ce8dd7df3d7c0
+  YandexMobileMetricaPush: 1821e7b9fc6bf7ad6286aeac4e19ae9e36ada011
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 

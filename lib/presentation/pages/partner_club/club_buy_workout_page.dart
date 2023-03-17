@@ -17,6 +17,7 @@ import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/entities/activity/activity.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
 import 'package:fitt/domain/entities/time_slot/time_slot.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/gen/assets.gen.dart';
 import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
@@ -44,8 +45,14 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
             if (workout.payForm == null) {
               getIt<WorkoutsCubit>().getWorkouts(); //Remove
               getIt<WorkoutCubit>().getWorkout(workoutUuid: workout.uuid);
+              getIt<AppMetricaService>().reportEventToAppMetrica(
+                eventName: 'Пользователь купил тренировку за пакет часов',
+              );
               context.push(AppRoute.paymentSuccess.routeToPath);
             } else {
+              getIt<AppMetricaService>().reportEventToAppMetrica(
+                eventName: 'Пользователь перешел на экран оплаты тренировки',
+              );
               context.pushNamed(
                 AppRoute.webview.routeToPath,
                 queryParams: <String, String>{
