@@ -22,6 +22,7 @@ mixin _$AccountEvent {
     required TResult Function(String secondName) secondNameChanged,
     required TResult Function(String birthday) birthdayChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function() accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$AccountEvent {
     TResult? Function(String secondName)? secondNameChanged,
     TResult? Function(String birthday)? birthdayChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function()? accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +42,7 @@ mixin _$AccountEvent {
     TResult Function(String secondName)? secondNameChanged,
     TResult Function(String birthday)? birthdayChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) =>
@@ -53,6 +56,7 @@ mixin _$AccountEvent {
     required TResult Function(_AccountEventBirthdayChanged value)
         birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
   }) =>
@@ -63,6 +67,7 @@ mixin _$AccountEvent {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +77,7 @@ mixin _$AccountEvent {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) =>
@@ -168,6 +174,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     required TResult Function(String secondName) secondNameChanged,
     required TResult Function(String birthday) birthdayChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function() accountSubmitted,
   }) {
     return firstNameChanged(firstName);
@@ -180,6 +187,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult? Function(String secondName)? secondNameChanged,
     TResult? Function(String birthday)? birthdayChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return firstNameChanged?.call(firstName);
@@ -192,6 +200,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult Function(String secondName)? secondNameChanged,
     TResult Function(String birthday)? birthdayChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -211,6 +220,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     required TResult Function(_AccountEventBirthdayChanged value)
         birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
   }) {
@@ -224,6 +234,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return firstNameChanged?.call(this);
@@ -236,6 +247,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -329,6 +341,7 @@ class _$_AccountEventSecondNameChanged
     required TResult Function(String secondName) secondNameChanged,
     required TResult Function(String birthday) birthdayChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function() accountSubmitted,
   }) {
     return secondNameChanged(secondName);
@@ -341,6 +354,7 @@ class _$_AccountEventSecondNameChanged
     TResult? Function(String secondName)? secondNameChanged,
     TResult? Function(String birthday)? birthdayChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return secondNameChanged?.call(secondName);
@@ -353,6 +367,7 @@ class _$_AccountEventSecondNameChanged
     TResult Function(String secondName)? secondNameChanged,
     TResult Function(String birthday)? birthdayChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -372,6 +387,7 @@ class _$_AccountEventSecondNameChanged
     required TResult Function(_AccountEventBirthdayChanged value)
         birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
   }) {
@@ -385,6 +401,7 @@ class _$_AccountEventSecondNameChanged
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return secondNameChanged?.call(this);
@@ -397,6 +414,7 @@ class _$_AccountEventSecondNameChanged
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -489,6 +507,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     required TResult Function(String secondName) secondNameChanged,
     required TResult Function(String birthday) birthdayChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function() accountSubmitted,
   }) {
     return birthdayChanged(birthday);
@@ -501,6 +520,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult? Function(String secondName)? secondNameChanged,
     TResult? Function(String birthday)? birthdayChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return birthdayChanged?.call(birthday);
@@ -513,6 +533,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult Function(String secondName)? secondNameChanged,
     TResult Function(String birthday)? birthdayChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -532,6 +553,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     required TResult Function(_AccountEventBirthdayChanged value)
         birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
   }) {
@@ -545,6 +567,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return birthdayChanged?.call(this);
@@ -557,6 +580,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -647,6 +671,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     required TResult Function(String secondName) secondNameChanged,
     required TResult Function(String birthday) birthdayChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function() accountSubmitted,
   }) {
     return emailChanged(email);
@@ -659,6 +684,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult? Function(String secondName)? secondNameChanged,
     TResult? Function(String birthday)? birthdayChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return emailChanged?.call(email);
@@ -671,6 +697,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult Function(String secondName)? secondNameChanged,
     TResult Function(String birthday)? birthdayChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -690,6 +717,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     required TResult Function(_AccountEventBirthdayChanged value)
         birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
   }) {
@@ -703,6 +731,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return emailChanged?.call(this);
@@ -715,6 +744,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -732,6 +762,171 @@ abstract class _AccountEventEmailChanged implements AccountEvent {
   String get email;
   @JsonKey(ignore: true)
   _$$_AccountEventEmailChangedCopyWith<_$_AccountEventEmailChanged>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AccountEventGenderChangedCopyWith<$Res> {
+  factory _$$_AccountEventGenderChangedCopyWith(
+          _$_AccountEventGenderChanged value,
+          $Res Function(_$_AccountEventGenderChanged) then) =
+      __$$_AccountEventGenderChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserGenderEnum gender});
+}
+
+/// @nodoc
+class __$$_AccountEventGenderChangedCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventGenderChanged>
+    implements _$$_AccountEventGenderChangedCopyWith<$Res> {
+  __$$_AccountEventGenderChangedCopyWithImpl(
+      _$_AccountEventGenderChanged _value,
+      $Res Function(_$_AccountEventGenderChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? gender = null,
+  }) {
+    return _then(_$_AccountEventGenderChanged(
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as UserGenderEnum,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
+  const _$_AccountEventGenderChanged({required this.gender});
+
+  @override
+  final UserGenderEnum gender;
+
+  @override
+  String toString() {
+    return 'AccountEvent.genderChanged(gender: $gender)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AccountEventGenderChanged &&
+            (identical(other.gender, gender) || other.gender == gender));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, gender);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AccountEventGenderChangedCopyWith<_$_AccountEventGenderChanged>
+      get copyWith => __$$_AccountEventGenderChangedCopyWithImpl<
+          _$_AccountEventGenderChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
+    required TResult Function() accountSubmitted,
+  }) {
+    return genderChanged(gender);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
+    TResult? Function()? accountSubmitted,
+  }) {
+    return genderChanged?.call(gender);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
+    TResult Function()? accountSubmitted,
+    required TResult orElse(),
+  }) {
+    if (genderChanged != null) {
+      return genderChanged(gender);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
+    required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
+  }) {
+    return genderChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AccountEventFirstNameChanged value)? firstNameChanged,
+    TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
+    TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
+    TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
+    TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+  }) {
+    return genderChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AccountEventFirstNameChanged value)? firstNameChanged,
+    TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
+    TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
+    TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
+    TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    required TResult orElse(),
+  }) {
+    if (genderChanged != null) {
+      return genderChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AccountEventGenderChanged implements AccountEvent {
+  const factory _AccountEventGenderChanged(
+      {required final UserGenderEnum gender}) = _$_AccountEventGenderChanged;
+
+  UserGenderEnum get gender;
+  @JsonKey(ignore: true)
+  _$$_AccountEventGenderChangedCopyWith<_$_AccountEventGenderChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -780,6 +975,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     required TResult Function(String secondName) secondNameChanged,
     required TResult Function(String birthday) birthdayChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function() accountSubmitted,
   }) {
     return accountSubmitted();
@@ -792,6 +988,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult? Function(String secondName)? secondNameChanged,
     TResult? Function(String birthday)? birthdayChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function()? accountSubmitted,
   }) {
     return accountSubmitted?.call();
@@ -804,6 +1001,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult Function(String secondName)? secondNameChanged,
     TResult Function(String birthday)? birthdayChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function()? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -823,6 +1021,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     required TResult Function(_AccountEventBirthdayChanged value)
         birthdayChanged,
     required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
   }) {
@@ -836,6 +1035,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
   }) {
     return accountSubmitted?.call(this);
@@ -848,6 +1048,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
     TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
     TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
     required TResult orElse(),
   }) {
@@ -868,13 +1069,14 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String firstName, String? secondName,
-            DateTime? birthday, String? email)
+            DateTime? birthday, String? email, UserGenderEnum gender)
         initial,
     required TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)
         formChanged,
     required TResult Function(String error) error,
@@ -883,13 +1085,14 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult? Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult? Function(String error)? error,
@@ -898,13 +1101,14 @@ mixin _$AccountState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult Function(String error)? error,
@@ -963,7 +1167,8 @@ abstract class _$$_AccountStateInitialCopyWith<$Res> {
       {String firstName,
       String? secondName,
       DateTime? birthday,
-      String? email});
+      String? email,
+      UserGenderEnum gender});
 }
 
 /// @nodoc
@@ -981,6 +1186,7 @@ class __$$_AccountStateInitialCopyWithImpl<$Res>
     Object? secondName = freezed,
     Object? birthday = freezed,
     Object? email = freezed,
+    Object? gender = null,
   }) {
     return _then(_$_AccountStateInitial(
       firstName: null == firstName
@@ -999,6 +1205,10 @@ class __$$_AccountStateInitialCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as UserGenderEnum,
     ));
   }
 }
@@ -1010,7 +1220,8 @@ class _$_AccountStateInitial implements _AccountStateInitial {
       {this.firstName = '',
       this.secondName = '',
       this.birthday,
-      this.email = ''});
+      this.email = '',
+      this.gender = UserGenderEnum.other});
 
   @override
   @JsonKey()
@@ -1023,10 +1234,13 @@ class _$_AccountStateInitial implements _AccountStateInitial {
   @override
   @JsonKey()
   final String? email;
+  @override
+  @JsonKey()
+  final UserGenderEnum gender;
 
   @override
   String toString() {
-    return 'AccountState.initial(firstName: $firstName, secondName: $secondName, birthday: $birthday, email: $email)';
+    return 'AccountState.initial(firstName: $firstName, secondName: $secondName, birthday: $birthday, email: $email, gender: $gender)';
   }
 
   @override
@@ -1040,12 +1254,13 @@ class _$_AccountStateInitial implements _AccountStateInitial {
                 other.secondName == secondName) &&
             (identical(other.birthday, birthday) ||
                 other.birthday == birthday) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.gender, gender) || other.gender == gender));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, firstName, secondName, birthday, email);
+      Object.hash(runtimeType, firstName, secondName, birthday, email, gender);
 
   @JsonKey(ignore: true)
   @override
@@ -1058,56 +1273,59 @@ class _$_AccountStateInitial implements _AccountStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String firstName, String? secondName,
-            DateTime? birthday, String? email)
+            DateTime? birthday, String? email, UserGenderEnum gender)
         initial,
     required TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)
         formChanged,
     required TResult Function(String error) error,
   }) {
-    return initial(firstName, secondName, birthday, email);
+    return initial(firstName, secondName, birthday, email, gender);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult? Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult? Function(String error)? error,
   }) {
-    return initial?.call(firstName, secondName, birthday, email);
+    return initial?.call(firstName, secondName, birthday, email, gender);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(firstName, secondName, birthday, email);
+      return initial(firstName, secondName, birthday, email, gender);
     }
     return orElse();
   }
@@ -1152,12 +1370,14 @@ abstract class _AccountStateInitial implements AccountState {
       {final String firstName,
       final String? secondName,
       final DateTime? birthday,
-      final String? email}) = _$_AccountStateInitial;
+      final String? email,
+      final UserGenderEnum gender}) = _$_AccountStateInitial;
 
   String get firstName;
   String? get secondName;
   DateTime? get birthday;
   String? get email;
+  UserGenderEnum get gender;
   @JsonKey(ignore: true)
   _$$_AccountStateInitialCopyWith<_$_AccountStateInitial> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1174,6 +1394,7 @@ abstract class _$$_AccountStateFormChangedCopyWith<$Res> {
       AccountUserSecondName? secondName,
       AccountUserBirthday? birthday,
       AccountUserEmail? email,
+      AccountUserGender? gender,
       bool status});
 }
 
@@ -1192,6 +1413,7 @@ class __$$_AccountStateFormChangedCopyWithImpl<$Res>
     Object? secondName = freezed,
     Object? birthday = freezed,
     Object? email = freezed,
+    Object? gender = freezed,
     Object? status = null,
   }) {
     return _then(_$_AccountStateFormChanged(
@@ -1211,6 +1433,10 @@ class __$$_AccountStateFormChangedCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as AccountUserEmail?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as AccountUserGender?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1227,6 +1453,7 @@ class _$_AccountStateFormChanged implements _AccountStateFormChanged {
       this.secondName,
       this.birthday,
       this.email,
+      this.gender,
       this.status = false});
 
   @override
@@ -1238,12 +1465,14 @@ class _$_AccountStateFormChanged implements _AccountStateFormChanged {
   @override
   final AccountUserEmail? email;
   @override
+  final AccountUserGender? gender;
+  @override
   @JsonKey()
   final bool status;
 
   @override
   String toString() {
-    return 'AccountState.formChanged(firstName: $firstName, secondName: $secondName, birthday: $birthday, email: $email, status: $status)';
+    return 'AccountState.formChanged(firstName: $firstName, secondName: $secondName, birthday: $birthday, email: $email, gender: $gender, status: $status)';
   }
 
   @override
@@ -1258,12 +1487,13 @@ class _$_AccountStateFormChanged implements _AccountStateFormChanged {
             (identical(other.birthday, birthday) ||
                 other.birthday == birthday) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, firstName, secondName, birthday, email, status);
+  int get hashCode => Object.hash(
+      runtimeType, firstName, secondName, birthday, email, gender, status);
 
   @JsonKey(ignore: true)
   @override
@@ -1277,56 +1507,61 @@ class _$_AccountStateFormChanged implements _AccountStateFormChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String firstName, String? secondName,
-            DateTime? birthday, String? email)
+            DateTime? birthday, String? email, UserGenderEnum gender)
         initial,
     required TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)
         formChanged,
     required TResult Function(String error) error,
   }) {
-    return formChanged(firstName, secondName, birthday, email, status);
+    return formChanged(firstName, secondName, birthday, email, gender, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult? Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult? Function(String error)? error,
   }) {
-    return formChanged?.call(firstName, secondName, birthday, email, status);
+    return formChanged?.call(
+        firstName, secondName, birthday, email, gender, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (formChanged != null) {
-      return formChanged(firstName, secondName, birthday, email, status);
+      return formChanged(
+          firstName, secondName, birthday, email, gender, status);
     }
     return orElse();
   }
@@ -1372,12 +1607,14 @@ abstract class _AccountStateFormChanged implements AccountState {
       final AccountUserSecondName? secondName,
       final AccountUserBirthday? birthday,
       final AccountUserEmail? email,
+      final AccountUserGender? gender,
       final bool status}) = _$_AccountStateFormChanged;
 
   AccountUserFirstName? get firstName;
   AccountUserSecondName? get secondName;
   AccountUserBirthday? get birthday;
   AccountUserEmail? get email;
+  AccountUserGender? get gender;
   bool get status;
   @JsonKey(ignore: true)
   _$$_AccountStateFormChangedCopyWith<_$_AccountStateFormChanged>
@@ -1450,13 +1687,14 @@ class _$_AccountStateError implements _AccountStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String firstName, String? secondName,
-            DateTime? birthday, String? email)
+            DateTime? birthday, String? email, UserGenderEnum gender)
         initial,
     required TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)
         formChanged,
     required TResult Function(String error) error,
@@ -1468,13 +1706,14 @@ class _$_AccountStateError implements _AccountStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult? Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult? Function(String error)? error,
@@ -1486,13 +1725,14 @@ class _$_AccountStateError implements _AccountStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String firstName, String? secondName, DateTime? birthday,
-            String? email)?
+            String? email, UserGenderEnum gender)?
         initial,
     TResult Function(
             AccountUserFirstName? firstName,
             AccountUserSecondName? secondName,
             AccountUserBirthday? birthday,
             AccountUserEmail? email,
+            AccountUserGender? gender,
             bool status)?
         formChanged,
     TResult Function(String error)? error,

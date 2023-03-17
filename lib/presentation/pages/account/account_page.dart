@@ -98,7 +98,7 @@ class AccountPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, email) {
+          initial: (firstName, secondName, birthday, gender, email) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('E-mail'),
@@ -110,7 +110,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          formChanged: (_, __, ___, email, status) {
+          formChanged: (_, __, ___, email, gender, status) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('E-mail'),
@@ -145,7 +145,7 @@ class AccountPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, email) {
+          initial: (firstName, secondName, birthday, gender, email) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
               controller: userSnapshot?.lastName != null ? null : controller,
@@ -157,7 +157,8 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          formChanged: (firstName, secondName, birthday, email, status) {
+          formChanged:
+              (firstName, secondName, birthday, email, gender, status) {
             return AppTextFormField(
               controller: userSnapshot?.firstName != null ? null : controller,
               title: const Text('Имя'),
@@ -180,7 +181,7 @@ class AccountPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, email) {
+          initial: (firstName, secondName, birthday, email, gender) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
               controller: userSnapshot?.lastName != null ? null : controller,
@@ -192,7 +193,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          formChanged: (_, secondName, __, ___, status) {
+          formChanged: (_, secondName, __, ___, ____, status) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
               controller: userSnapshot?.lastName != null ? null : controller,
@@ -216,7 +217,7 @@ class AccountPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, email) {
+          initial: (firstName, secondName, birthday, email, gender) {
             return AppDateForm(
               padding: const EdgeInsets.only(left: 16, right: 16),
               helper: const Text('Дата рождения'),
@@ -235,7 +236,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          formChanged: (_, __, bitrhday, ___, status) {
+          formChanged: (_, __, bitrhday, ___, gender, status) {
             return AppDateForm(
               padding: const EdgeInsets.only(left: 16, right: 16),
               helper: const Text('Дата рождения'),
@@ -321,7 +322,7 @@ class AccountPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (_, __, ___, ____) {
+          initial: (_, __, ___, ____, _____) {
             return const AppElevatedButton(
               marginButton: EdgeInsets.only(
                 left: 16,
@@ -333,7 +334,8 @@ class AccountPage extends StatelessWidget with UserMixin {
               isDisable: true,
             );
           },
-          formChanged: (firstName, secondName, bitrhday, email, status) {
+          formChanged:
+              (firstName, secondName, bitrhday, email, gender, status) {
             return AppElevatedButton(
               marginButton: const EdgeInsets.only(
                 left: 16,

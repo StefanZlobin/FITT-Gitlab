@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
+import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
@@ -8,6 +11,7 @@ import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/models/account_user_birthday.dart';
 import 'package:fitt/domain/models/account_user_email.dart';
 import 'package:fitt/domain/models/account_user_first_name.dart';
+import 'package:fitt/domain/models/account_user_gender.dart';
 import 'package:fitt/domain/models/account_user_second_name.dart';
 import 'package:fitt/domain/use_cases/user/user_use_case.dart';
 import 'package:formz/formz.dart';
@@ -23,6 +27,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
     on<_AccountEventSecondNameChanged>(_onAccountEventSecondNameChanged);
     on<_AccountEventBirthdayChanged>(_onAccountEventBirthdayChanged);
     on<_AccountEventEmailChanged>(_onAccountEventEmailChanged);
+    on<_AccountEventGenderChanged>(_onAccountEventGenderChanged);
     on<_AccountEventAccountSubmitted>(_onAccountEventAccountSubmitted);
   }
 
@@ -37,6 +42,9 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
             userSnapshot?.birthday.toString() ?? '',
           ),
           email: AccountUserEmail.dirty(userSnapshot?.email ?? ''),
+          gender: AccountUserGender.dirty(
+            userSnapshot?.gender ?? UserGenderEnum.other,
+          ),
         ).copyWith,
       );
   void _onAccountEventFirstNameChanged(
@@ -51,6 +59,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
         _state.secondName!,
         _state.birthday!,
         _state.email!,
+        _state.gender!,
       ]),
     ));
   }
@@ -65,6 +74,9 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
       status: Formz.validate([
         secondUsername,
         _state.firstName!,
+        _state.email!,
+        _state.birthday!,
+        _state.gender!,
       ]),
     ));
   }
@@ -81,6 +93,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
         _state.firstName!,
         _state.secondName!,
         _state.email!,
+        _state.gender!,
       ]),
     ));
   }
@@ -97,6 +110,24 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
         _state.birthday!,
         _state.firstName!,
         _state.secondName!,
+        _state.gender!,
+      ]),
+    ));
+  }
+
+  void _onAccountEventGenderChanged(
+    _AccountEventGenderChanged event,
+    Emitter<AccountState> emit,
+  ) {
+    final gender = AccountUserGender.dirty(event.gender);
+    emit(_state.copyWith(
+      gender: gender,
+      status: Formz.validate([
+        gender,
+        _state.firstName!,
+        _state.secondName!,
+        _state.email!,
+        _state.birthday!,
       ]),
     ));
   }
@@ -114,7 +145,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
           : userSnapshot?.birthday,
       email: _state.email?.value ?? userSnapshot?.email,
       role: userSnapshot?.role,
-      gender: userSnapshot?.gender,
+      gender: _state.gender?.value ?? userSnapshot?.gender,
       phoneNumber: userSnapshot?.phoneNumber,
       avatar: userSnapshot?.avatar,
     );

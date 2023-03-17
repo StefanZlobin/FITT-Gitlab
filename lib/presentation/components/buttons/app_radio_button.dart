@@ -34,18 +34,22 @@ class AppRadioButton<T> extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Wrap(
-                textDirection: isRadioButtonLeading ? TextDirection.rtl : TextDirection.ltr,
+                textDirection: isRadioButtonLeading
+                    ? TextDirection.rtl
+                    : TextDirection.ltr,
                 spacing: isRadioButtonLeading
                     ? 8
-                    : MediaQuery.of(context).size.width - (MediaQuery.of(context).size.width - 24 - 24) - 32,
-                //: 375 - 270 - 24 - 24 - 15,
+                    : MediaQuery.of(context).size.width -
+                        (MediaQuery.of(context).size.width - 24 - 24) -
+                        32,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   SizedBox(
                     width: isRadioButtonLeading ? null : 270,
                     child: Text(
                       sortingValue,
-                      style: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
+                      style: AppTypography.kBody14
+                          .apply(color: AppColors.kBaseBlack),
                     ),
                   ),
                   Container(
@@ -55,7 +59,9 @@ class AppRadioButton<T> extends StatelessWidget {
                       color: AppColors.kBaseWhite,
                       shape: CircleBorder(
                         side: BorderSide(
-                          color: active ? AppColors.kPrimaryBlue : AppColors.kOxford20,
+                          color: active
+                              ? AppColors.kPrimaryBlue
+                              : AppColors.kOxford20,
                           width: active ? 7 : 1,
                         ),
                       ),

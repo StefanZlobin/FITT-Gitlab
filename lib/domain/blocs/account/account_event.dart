@@ -14,5 +14,8 @@ class AccountEvent with _$AccountEvent {
   const factory AccountEvent.emailChanged({
     required String email,
   }) = _AccountEventEmailChanged;
+  const factory AccountEvent.genderChanged({
+    required UserGenderEnum gender,
+  }) = _AccountEventGenderChanged;
   const factory AccountEvent.accountSubmitted() = _AccountEventAccountSubmitted;
 }

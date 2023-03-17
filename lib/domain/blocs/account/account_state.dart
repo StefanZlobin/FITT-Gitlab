@@ -7,12 +7,14 @@ class AccountState with _$AccountState {
     @Default('') String? secondName,
     DateTime? birthday,
     @Default('') String? email,
+    @Default(UserGenderEnum.other) UserGenderEnum gender,
   }) = _AccountStateInitial;
   const factory AccountState.formChanged({
     AccountUserFirstName? firstName,
     AccountUserSecondName? secondName,
     AccountUserBirthday? birthday,
     AccountUserEmail? email,
+    AccountUserGender? gender,
     @Default(false) bool status,
   }) = _AccountStateFormChanged;
   const factory AccountState.error({
