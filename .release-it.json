@@ -5,21 +5,25 @@
   },
   "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": "conventionalcommits",
-      "infile": "CHANGELOG.md",
-      "gitRawCommitsOpts": {
-        "merges": null
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "Features" },
+          { "type": "fix", "section": "Bugs fixes" },
+          { "type": "chore", "section": "Other" },
+          { "type": "docs", "section": "Other" },
+          { "type": "style", "section": "Other" },
+          { "type": "refactor", "section": "Other" },
+          { "type": "perf", "section": "Other" },
+          { "type": "test", "section": "Other" },
+          { "type": "ci", "section": "Other" }
+        ]
       },
-      "types": [
-        {"type": "feat", "section": "Features"},
-        {"type": "fix", "section": "Bug Fixes"},
-        {"type": "chore", "hidden": false},
-        {"type": "docs", "hidden": false},
-        {"type": "style", "hidden": false},
-        {"type": "refactor", "hidden": false},
-        {"type": "perf", "hidden": false},
-        {"type": "test", "hidden": false}
-      ]
+      "infile": "CHANGELOG.md",
+      "writerOpts": {
+        "commitsSort": "scope",
+        "groupBy": "type"
+      }
     }
   }
 }
