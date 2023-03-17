@@ -2,10 +2,10 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
+import 'package:fitt/gen/assets.gen.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/pages/partner_club/widgets/button_for_card.dart';
 import 'package:flutter/material.dart';
@@ -188,12 +188,12 @@ class ClubBatchCard extends StatelessWidget {
     );
   }
 
-  CenterRight _buildIcon() {
-    return const CenterRight(
-      child: Icon(
-        AppIcons.icon_pack,
+  Widget _buildIcon() {
+    return CenterRight(
+      child: Assets.images.batch.image(
         color: AppColors.kBaseWhite,
-        size: 24,
+        width: 24,
+        height: 24,
       ),
     );
   }

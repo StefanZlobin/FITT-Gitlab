@@ -27,6 +27,7 @@ class DateTimeUtils {
   }
 
   static final DateFormat dateFormat = DateFormat.yMd();
+  static final DateFormat dateFormatShort = DateFormat('dd.MM');
   static final DateFormat dateFormatDetailed = DateFormat('dd MMMM y');
   static final DateFormat dateFormatWithoutYear = DateFormat('d MMMM');
   static final DateFormat timeFormat = DateFormat.Hm();
