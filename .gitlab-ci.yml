@@ -12,6 +12,8 @@ before_script:
 versioning:
   image: node:19
   stage: analyze
+  variables:
+     GIT_DEPTH: 100
   before_script:
    - git checkout $CI_BUILD_REF_NAME
    - npm install release-it @release-it/conventional-changelog -g
