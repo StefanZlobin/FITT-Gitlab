@@ -158,7 +158,7 @@ push-to-google_play:
     - cd android
     - bundle install
   script:
-    - bundle exec fastlane run upload_to_play_store version_name:"$BUILD_VERSION" version_code:"$BUILD_NUMBER" track:"internal" aab:"../app-release.aab" json_key:"$GOOGLE_JSON_KEY"
+    - bundle exec fastlane run upload_to_play_store version_name:$BUILD_VERSION version_code:$BUILD_NUMBER track:internal aab:../app-release.aab json_key:$GOOGLE_JSON_KEY
   only:
    - development
   needs:
