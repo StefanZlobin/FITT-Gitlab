@@ -26,12 +26,14 @@ class ExpandedScheduleWidget extends StatelessWidget {
           ...schedules.map(
             (schedule) => _buildWorkScheduleRow(
               context: context,
-              dayOfWeek: DateFormat.EEEE()
-                  .format(schedule.startDateTime ?? DateTime.now()),
+              dayOfWeek: DateFormat.EEEE().format(schedule.date!),
               concreteDay: schedule.isSpecial,
               open: schedule.startDateTime,
               close: schedule.endDateTime,
               isWeekend: schedule.isWeekend,
+              isException: schedule.isSpecial,
+              date: schedule.date!,
+              label: schedule.label ?? '',
             ),
           ),
         ],
@@ -47,9 +49,12 @@ Widget _buildWorkScheduleRow({
   required DateTime? open,
   required DateTime? close,
   required bool isWeekend,
+  required bool isException,
+  required DateTime date,
+  required String label,
 }) {
   final coral =
-      DefaultTextStyle.of(context).style.apply(color: AppColors.kPrimaryBlue);
+      DefaultTextStyle.of(context).style.apply(color: AppColors.kPrimaryRed);
 
   final time = <Widget>[];
   const space = Text(' ');
@@ -67,16 +72,14 @@ Widget _buildWorkScheduleRow({
       space,
       Text(DateFormat.jm().format(_close)),
     ]);
-  } else if (isWeekend) {
-    time.add(Text('выходной', style: coral));
+  } else if (isWeekend || isException) {
+    time.add(Text(label, style: coral));
   } else {
     assert(false, 'Both or neither of [open] and [close] should be null');
   }
 
-  if (_open == null) return const SizedBox();
-
-  final dayPostfix = isWeekend
-      ? ' (${DateTimeUtils.dateFormatWithoutYear.format(_open)})'
+  final dayPostfix = isException
+      ? ' (${DateTimeUtils.dateFormatWithoutYear.format(date)})'
       : '';
 
   return Container(
@@ -89,8 +92,6 @@ Widget _buildWorkScheduleRow({
           style: AppTypography.kBody14.apply(color: AppColors.kPrimaryRed),
         ),
         space,
-        if (concreteDay)
-          Text('(${DateFormat.Md().format(_open)})', style: coral),
         Expanded(child: Container()),
         ...time,
       ],
