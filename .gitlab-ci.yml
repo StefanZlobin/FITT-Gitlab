@@ -72,7 +72,7 @@ test:
  tags:
    - docker
 
-build-to-android:
+build-to-android-apk:
  stage: build
  before_script:
    - flutter pub get
@@ -85,6 +85,27 @@ build-to-android:
  artifacts:
    paths:
      - app-release.apk
+ tags:
+   - hard-work
+   - docker
+ needs:
+   - versioning
+ only:
+   - development
+
+build-to-android-aab:
+ stage: build
+ before_script:
+   - flutter pub get
+   - flutter pub run build_runner build --delete-conflicting-outputs
+ script:
+   - echo ${KEYSTORE_BASE64} | base64 -d > /tmp/upload-keystore.jks
+   - cp ${KEYFILE} ./android/key.properties
+   - flutter build appbundle --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
+   - mv build/app/outputs/bundle/release/app-release.aab app-release.aab
+ artifacts:
+   paths:
+     - app-release.aab
  tags:
    - hard-work
    - docker
@@ -119,7 +140,8 @@ build-to-ios:
 
 push-to-testflight:
   stage: release
-  before_script: []
+  before_script: 
+    - cd ios
   only:
    - development
   script:
@@ -136,11 +158,11 @@ push-to-google_play:
     - cd android
     - bundle install
   script:
-    - bundle exec fastlane run upload_to_play_store version_name:"$BUILD_VERSION" version_code:"$BUILD_NUMBER" track:"internal" apk:"../app-release.apk"
+    - bundle exec fastlane run upload_to_play_store version_name:"$BUILD_VERSION" version_code:"$BUILD_NUMBER" track:"internal" --aab "../app-release.apk" --json_key $GOOGLE_JSON_KEY
   only:
    - development
   needs:
-    - job: build-to-android
+    - job: build-to-android-aab
       artifacts: true
     - job: versioning
       artifacts: true
