@@ -42,7 +42,7 @@ class AppDateForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DefaultTextStyle(
-            style: AppTypography.kH14.apply(color: AppColors.kBaseBlack),
+            style: AppTypography.kH16.apply(color: AppColors.kBaseBlack),
             child: helper,
           ),
           const SizedBox(height: 8),
