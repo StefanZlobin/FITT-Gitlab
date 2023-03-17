@@ -7,6 +7,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
 import 'package:fitt/domain/repositories/authentication/auth_repository.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class TokenInterceptor extends Interceptor {
   TokenInterceptor({required this.dio}) {
@@ -53,5 +54,17 @@ class TokenInterceptor extends Interceptor {
 
     options.headers['Authorization'] = _formatToken(token?.access);
     return handler.next(options);
+  }
+
+  @override
+  Future<void> onError(
+    DioError err,
+    ErrorInterceptorHandler handler,
+  ) async {
+    await Sentry.captureException(
+      err,
+      stackTrace: err.stackTrace,
+      hint: err.requestOptions,
+    );
   }
 }

@@ -88,6 +88,12 @@ void _registerDio() {
   );
 }
 
+void _addTokenInterceptor() {
+  final dio = getIt<Dio>();
+  final tokenInterceptor = TokenInterceptor(dio: dio);
+  dio.interceptors.add(tokenInterceptor);
+}
+
 void _registerRepositories() {
   getIt.registerLazySingleton(
     () => AuthLocalClient(TokenStorage(Storages.tokens)),
@@ -109,9 +115,7 @@ void _registerRepositories() {
 
   getIt.registerLazySingleton<UserRepository>(
     () {
-      final dio = getIt<Dio>();
-      final tokenInterceptor = TokenInterceptor(dio: dio);
-      dio.interceptors.add(tokenInterceptor);
+      _addTokenInterceptor();
       return UserRepositoryImpl(
         getIt<Dio>(),
         getIt<UserLocalClient>(),
@@ -121,10 +125,13 @@ void _registerRepositories() {
   );
 
   getIt.registerLazySingleton<AdminRepository>(
-    () => AdminRepositoryImpl(
-      getIt(),
-      baseUrl: Config.baseUrl,
-    ),
+    () {
+      _addTokenInterceptor();
+      return AdminRepositoryImpl(
+        getIt(),
+        baseUrl: Config.baseUrl,
+      );
+    },
   );
 
   getIt.registerLazySingleton<PaymentRepository>(
@@ -135,10 +142,14 @@ void _registerRepositories() {
   );
 
   getIt.registerLazySingleton<WorkoutRepository>(
-    () => WorkoutRepositoryImpl(
-      getIt(),
-      baseUrl: Config.baseUrl,
-    ),
+    () {
+      _addTokenInterceptor();
+      
+      return WorkoutRepositoryImpl(
+        getIt(),
+        baseUrl: Config.baseUrl,
+      );
+    },
   );
 
   getIt.registerLazySingleton<SearchRepository>(
