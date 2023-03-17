@@ -23,11 +23,15 @@ platform :android do
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    gradle(task: 'assemble', build_type: 'Release')
-    upload_to_play_store(track: 'internal', version_name:'0.6.1',version_code:56,  apk: '../build/app/outputs/apk/release/app-release.apk')
-    #upload_to_play_store_internal_app_sharing
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+    build_name = ENV['BUILD_VERSION']
+    json_key = ENV['GOOGLE_JSON_KEY']
+    aab_file = ENV['AAB_FILE']
+    previous_build_number = google_play_track_version_codes(
+      track: "internal",
+      json_key: json_key
+    )[0]
+    new_build_number = previous_build_number + 1
+    upload_to_play_store(track: 'internal', version_name:build_name, version_code:new_build_number, aab: aab_file, json_key: json_key)
   end
 
   desc "Deploy a new version to the Google Play"
