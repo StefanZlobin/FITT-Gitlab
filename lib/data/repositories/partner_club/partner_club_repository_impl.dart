@@ -17,7 +17,8 @@ import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class PartnerClubRepositoryImpl implements PartnerClubRepository {
-  PartnerClubRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = PartnerClubApiClient(dio, baseUrl: baseUrl);
+  PartnerClubRepositoryImpl(this.dio, {this.baseUrl})
+      : _apiClient = PartnerClubApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;
@@ -56,7 +57,8 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     required String slotUuid,
   }) async {
     try {
-      final calculatePrice = await _apiClient.getCalculatedPriceWorkout(slotUuid);
+      final calculatePrice =
+          await _apiClient.getCalculatedPriceWorkout(slotUuid);
       return calculatePrice;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
@@ -91,11 +93,14 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   }) async {
     late String xPosition;
     try {
-      final geolocation = await getIt<GeolocationService>().getCurrentPosition();
+      final geolocation =
+          await getIt<GeolocationService>().getCurrentPosition();
       xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
     } on Exception {
       xPosition = '';
     }
+
+    xPosition = '';
 
     try {
       final partnerClubs = await _apiClient.getPartnerClubs(

@@ -52,7 +52,11 @@ class GeolocationServiceImpl implements GeolocationService {
   @override
   Future<Position> getCurrentPosition() async {
     try {
-      final currentPosition = await _geolocatorPlatform.getCurrentPosition();
+      final currentPosition = await _geolocatorPlatform.getCurrentPosition(
+        locationSettings: const LocationSettings(
+          timeLimit: Duration(seconds: 5),
+        ),
+      );
       return currentPosition;
     } on Exception catch (e) {
       throw Exception(e);
