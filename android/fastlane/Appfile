@@ -1,1 +1,2 @@
+json_key_file("/Users/stefanzlobin/QleverSolutions/google_keys/pc-api-7871653097094944361-432-d39205b8f979.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
 package_name("com.qlever.fitt") # e.g. com.krausefx.app
