@@ -28,7 +28,7 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     try {
       final workout = await _workoutUseCase.startWorkout(workout: w);
       await getIt<AppMetricaService>().reportEventToAppMetrica(
-        eventName: 'Пользователь начала тренировку',
+        eventName: 'Пользователь начал тренировку',
       );
       emit(WorkoutState.loaded(workout: workout));
     } on NetworkExceptions catch (e) {

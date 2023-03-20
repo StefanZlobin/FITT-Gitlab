@@ -17,16 +17,16 @@ Future<void> init() async {
   await setup();
   await Hive.initFlutter();
 
-  // Firebase
-  await Firebase.initializeApp();
-  await FirebaseNotificationsPermission().getFirebaseNotificationPermission();
-
   // Yandex appmetrica
   await AppMetrica.activate(
     const AppMetricaConfig(Config.yandexAppMetricaApiKey),
   );
   await getIt<AppMetricaService>()
       .reportEventToAppMetrica(eventName: 'Session start');
+
+  // Firebase
+  await Firebase.initializeApp();
+  await FirebaseNotificationsPermission().getFirebaseNotificationPermission();
 
   await getIt<LocalNotificationsService>().init();
   await getIt<GeolocationService>().requestPermission();
