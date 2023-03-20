@@ -19,6 +19,7 @@ class MenuWidget extends StatelessWidget with UserMixin {
       bloc: getIt<AuthBloc>(),
       listener: (context, state) {
         state.whenOrNull(
+          unknown: () => getIt<UserBloc>().add(const UserEvent.checkUser()),
           authenticated: () {
             getIt<UserBloc>().add(const UserEvent.checkUser());
             if (userSnapshot?.role == UserRoleEnum.administrator) {
@@ -43,14 +44,14 @@ class MenuWidget extends StatelessWidget with UserMixin {
           ),
         ),
         child: SafeArea(
-          child: BlocBuilder<UserBloc, UserState>(
-            bloc: getIt<UserBloc>(),
+          child: BlocBuilder<AuthBloc, AuthState>(
+            bloc: getIt<AuthBloc>(),
             builder: (context, state) {
               return state.when(
-                loading: () => const SizedBox(),
-                loaded: (user) => UserDetected(user: user),
-                loadedWithNoUser: (_) => const UserNotDetected(),
-                error: (error) => const UserNotDetected(),
+                unknown: () => const UserNotDetected(),
+                authenticated: () => const UserDetected(),
+                unauthenticated: () => const UserNotDetected(),
+                error: (_) => const UserNotDetected(),
               );
             },
           ),

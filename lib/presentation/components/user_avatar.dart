@@ -24,8 +24,6 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //getIt<UserBloc>().add(const UserEvent.checkUser());
-
     return BlocBuilder<UserBloc, UserState>(
       bloc: getIt<UserBloc>(),
       builder: (context, state) {
