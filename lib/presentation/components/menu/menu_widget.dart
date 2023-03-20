@@ -1,3 +1,4 @@
+import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
@@ -15,22 +16,39 @@ class MenuWidget extends StatelessWidget with UserMixin {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      bloc: getIt<AuthBloc>(),
-      listener: (context, state) {
-        state.whenOrNull(
-          unknown: () => getIt<UserBloc>().add(const UserEvent.checkUser()),
-          authenticated: () {
-            getIt<UserBloc>().add(const UserEvent.checkUser());
-            if (userSnapshot?.role == UserRoleEnum.administrator) {
-              getIt<AdminClubsCubit>().getAdminClubs();
-            }
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AuthBloc, AuthState>(
+          bloc: getIt<AuthBloc>(),
+          listener: (context, state) {
+            state.whenOrNull(
+              unknown: () => getIt<UserBloc>().add(const UserEvent.checkUser()),
+              authenticated: () {
+                getIt<UserBloc>().add(const UserEvent.checkUser());
+                if (userSnapshot?.role == UserRoleEnum.administrator) {
+                  getIt<AdminClubsCubit>().getAdminClubs();
+                }
+              },
+              unauthenticated: () {
+                getIt<UserBloc>().add(const UserEvent.checkUser());
+              },
+            );
           },
-          unauthenticated: () {
-            getIt<UserBloc>().add(const UserEvent.checkUser());
+        ),
+        BlocListener<UserBloc, UserState>(
+          bloc: getIt<UserBloc>(),
+          listener: (context, state) {
+            state.whenOrNull(
+              loaded: (user) => getIt<AuthBloc>().add(
+                const AuthEvent.authenticationStatusChanged(
+                  authenticationStatusEnum:
+                      AuthenticationStatusEnum.authenticated,
+                ),
+              ),
+            );
           },
-        );
-      },
+        ),
+      ],
       child: Container(
         height: MediaQuery.of(context).size.height,
         width: 320,
@@ -44,13 +62,13 @@ class MenuWidget extends StatelessWidget with UserMixin {
           ),
         ),
         child: SafeArea(
-          child: BlocBuilder<AuthBloc, AuthState>(
-            bloc: getIt<AuthBloc>(),
+          child: BlocBuilder<UserBloc, UserState>(
+            bloc: getIt<UserBloc>(),
             builder: (context, state) {
               return state.when(
-                unknown: () => const UserNotDetected(),
-                authenticated: () => const UserDetected(),
-                unauthenticated: () => const UserNotDetected(),
+                loading: () => const UserNotDetected(),
+                loaded: (_) => const UserDetected(),
+                loadedWithNoUser: (_) => const UserNotDetected(),
                 error: (_) => const UserNotDetected(),
               );
             },
