@@ -19,13 +19,16 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
 
     tz.initializeTimeZones();
 
-    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('ic_stat_name');
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('ic_stat_name');
 
-    const DarwinInitializationSettings initializationSettingsIOS = DarwinInitializationSettings(
+    const DarwinInitializationSettings initializationSettingsIOS =
+        DarwinInitializationSettings(
       defaultPresentBadge: false,
     );
 
-    const InitializationSettings initializationSettings = InitializationSettings(
+    const InitializationSettings initializationSettings =
+        InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsIOS,
     );
@@ -54,14 +57,15 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
     required Duration scheduleDuration,
   }) async {
     final isExist = await checkNotificationExist(id: id);
-    if (!isExist) {
+    if (!isExist && (title.isNotEmpty && body.isNotEmpty)) {
       await localNotification.zonedSchedule(
         id,
         title,
         body,
         TZDateTime.now(local).add(scheduleDuration),
         platformChannelSpecifics,
-        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
         androidAllowWhileIdle: true,
       );
     }
@@ -73,11 +77,13 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
     required String title,
     required String body,
   }) async {
-    await localNotification.show(
-      id,
-      title,
-      body,
-      platformChannelSpecifics,
-    );
+    if (title.isNotEmpty || body.isNotEmpty) {
+      await localNotification.show(
+        id,
+        title,
+        body,
+        platformChannelSpecifics,
+      );
+    }
   }
 }
