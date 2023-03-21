@@ -8,6 +8,7 @@ import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InformrationPage extends StatelessWidget {
   const InformrationPage({super.key});
@@ -45,22 +46,30 @@ class InformrationPage extends StatelessWidget {
             ),
           ),
           const Separator(margin: EdgeInsets.symmetric(vertical: 16)),
-          _buildTextButton(context, 'Пользовательское соглашение', FittLinks.kUserTermsLinkDoc),
+          _buildTextButton(
+            context,
+            'Пользовательское соглашение',
+            FittLinks.kUserTermsLinkDoc,
+          ),
           const Separator(margin: EdgeInsets.symmetric(vertical: 16)),
-          _buildTextButton(context, 'Политика конфиденциальности', FittLinks.kUserPrivacyLinkDoc),
+          _buildTextButton(
+            context,
+            'Политика конфиденциальности',
+            FittLinks.kUserPrivacyLinkDoc,
+          ),
         ],
       ),
     );
   }
 
-  TextButton _buildTextButton(BuildContext context, String docName, String docUrl) {
+  Widget _buildTextButton(BuildContext context, String docName, String docUrl) {
     return TextButton(
-      onPressed: () {
-        context.pushNamed(AppRoute.webview.routeToPath, queryParams: <String, String>{
-          'url': docUrl,
-          'pageTitle': docName,
-          'workoutUuid': '',
-        });
+      onPressed: () async {
+        final url = Uri.parse(docUrl);
+        await launchUrl(
+          url,
+          mode: LaunchMode.externalApplication,
+        );
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
