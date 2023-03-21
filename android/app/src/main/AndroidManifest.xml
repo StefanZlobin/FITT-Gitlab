@@ -25,6 +25,7 @@
         </intent>
     </queries>
 
+    <!--Убирает com.google.android.gms.permission.AD_ID из объединенного манифеста -->
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
 
     <!--Геолокация-->
@@ -37,6 +38,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:label="FITT"
     android:name="${applicationName}"
