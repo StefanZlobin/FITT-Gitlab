@@ -27,6 +27,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 class AccountPage extends StatelessWidget with UserMixin {
@@ -269,40 +270,62 @@ class AccountPage extends StatelessWidget with UserMixin {
   ) {
     return TextButton(
       onPressed: () async {
-        try {
-          await getIt<AppMetricaService>().reportEventToAppMetrica(
-            eventName: 'Показан попап с запросом доступа к фото',
-          );
-          final xFile = await imagePicker.pickImage(
-            source: ImageSource.gallery,
-            imageQuality: 100,
-          );
-          await getIt<AppMetricaService>().reportEventToAppMetrica(
-            eventName: 'Подтвержден попап с запросом доступа к фото',
-          );
-          final file = File(xFile!.path);
-          final size = await file.length();
-          if (size > 5242880) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Слишком большой размер изображения'),
+        final PermissionStatus storageStatus =
+            await Permission.storage.request();
+        final PermissionStatus photoStatus = await Permission.photos.request();
+        if ((storageStatus == PermissionStatus.denied && Platform.isAndroid) ||
+            (photoStatus == PermissionStatus.denied && Platform.isIOS)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Чтобы изменить фотографию аккаунта требуется доступ к галерее',
               ),
-            );
-            return;
-          }
-          final CroppedFile? croppedFile = await ImageCropper().cropImage(
-            sourcePath: xFile.path,
-          );
-
-          getIt<UserBloc>().add(
-            UserEvent.updateUserAvatar(
-              avatar: File(croppedFile!.path),
             ),
           );
-        } on Exception {
-          await getIt<AppMetricaService>().reportEventToAppMetrica(
-            eventName: 'Не подтвержден попап с запросом доступа к фото',
-          );
+        }
+        if ((storageStatus == PermissionStatus.permanentlyDenied &&
+                Platform.isAndroid) ||
+            (photoStatus == PermissionStatus.permanentlyDenied &&
+                Platform.isIOS)) {
+          await openAppSettings();
+        }
+        if ((storageStatus == PermissionStatus.granted && Platform.isAndroid) ||
+            (photoStatus == PermissionStatus.granted && Platform.isIOS)) {
+          try {
+            await getIt<AppMetricaService>().reportEventToAppMetrica(
+              eventName: 'Показан попап с запросом доступа к фото',
+            );
+            final xFile = await imagePicker.pickImage(
+              source: ImageSource.gallery,
+              imageQuality: 5,
+            );
+            await getIt<AppMetricaService>().reportEventToAppMetrica(
+              eventName: 'Подтвержден попап с запросом доступа к фото',
+            );
+            final file = File(xFile!.path);
+            final size = await file.length();
+            if (size > 5242880) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Слишком большой размер изображения'),
+                ),
+              );
+              return;
+            }
+            final CroppedFile? croppedFile = await ImageCropper().cropImage(
+              sourcePath: xFile.path,
+            );
+
+            getIt<UserBloc>().add(
+              UserEvent.updateUserAvatar(
+                avatar: File(croppedFile!.path),
+              ),
+            );
+          } on Exception {
+            await getIt<AppMetricaService>().reportEventToAppMetrica(
+              eventName: 'Не подтвержден попап с запросом доступа к фото',
+            );
+          }
         }
       },
       style: TextButton.styleFrom(
