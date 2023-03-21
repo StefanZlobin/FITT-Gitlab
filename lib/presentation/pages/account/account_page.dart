@@ -275,7 +275,7 @@ class AccountPage extends StatelessWidget with UserMixin {
           );
           final xFile = await imagePicker.pickImage(
             source: ImageSource.gallery,
-            imageQuality: 5,
+            imageQuality: 100,
           );
           await getIt<AppMetricaService>().reportEventToAppMetrica(
             eventName: 'Подтвержден попап с запросом доступа к фото',
@@ -373,6 +373,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               image: DecorationImage(
                 image: imageProvider,
                 fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
               ),
             ),
           ),

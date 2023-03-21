@@ -129,6 +129,7 @@ class UserAvatar extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(avatarSize * borderRadiusFactor),
         image: DecorationImage(
+          filterQuality: FilterQuality.high,
           image: CachedNetworkImageProvider(user.avatar!),
           fit: BoxFit.cover,
         ),
