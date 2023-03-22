@@ -132,8 +132,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
     emit(_state.copyWith(
       secondName: secondUsername,
       status: Formz.validate([
-        secondUsername,
         _state.firstName!,
+        secondUsername,
         _state.email!,
         _state.birthday!,
         _state.gender!,

@@ -34,7 +34,6 @@ class AccountPage extends StatelessWidget with UserMixin {
   @override
   Widget build(BuildContext context) {
     final ImagePicker imagePicker = ImagePicker();
-    final controller = TextEditingController();
     final phoneFormatter = MaskTextInputFormatter(
       mask: '+# (###) ###-##-##',
       filter: {'#': RegExp(r'[0-9]')},
@@ -63,8 +62,8 @@ class AccountPage extends StatelessWidget with UserMixin {
             children: [
               _buildAvatarImage(userSnapshot),
               _buildUpdateUserAvatarButton(imagePicker, context),
-              _buildFirstNameForm(controller),
-              _buildSecondNameForm(controller),
+              _buildFirstNameForm(),
+              _buildSecondNameForm(),
               _buildBirthdayForm(context),
               _buildPhoneNumberForm(phoneFormatter),
               _buildEmailForm(),
@@ -127,7 +126,8 @@ class AccountPage extends StatelessWidget with UserMixin {
               title: const Text('E-mail'),
               initialValue: userSnapshot?.email,
               isEmailField: true,
-              errorText: !status ? email?.error?.name : null,
+              errorText:
+                  !status && email!.value.isNotEmpty ? email.error?.name : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.emailChanged(email: value));
@@ -267,7 +267,7 @@ class AccountPage extends StatelessWidget with UserMixin {
     );
   }
 
-  Widget _buildFirstNameForm(TextEditingController controller) {
+  Widget _buildFirstNameForm() {
     return BlocBuilder<AccountBloc, AccountState>(
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
@@ -286,10 +286,11 @@ class AccountPage extends StatelessWidget with UserMixin {
           formChanged:
               (firstName, secondName, birthday, email, gender, status) {
             return AppTextFormField(
-              controller: userSnapshot?.firstName != null ? null : controller,
               title: const Text('Имя'),
               initialValue: userSnapshot?.firstName,
-              errorText: !status ? firstName?.error?.name : null,
+              errorText: !status && firstName!.value.isNotEmpty
+                  ? firstName.error?.name
+                  : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.firstNameChanged(firstName: value));
@@ -297,7 +298,6 @@ class AccountPage extends StatelessWidget with UserMixin {
             );
           },
           error: (error) => AppTextFormField(
-            controller: userSnapshot?.firstName != null ? null : controller,
             title: const Text('Имя'),
             initialValue: userSnapshot?.firstName,
             onChanged: (value) {
@@ -310,7 +310,7 @@ class AccountPage extends StatelessWidget with UserMixin {
     );
   }
 
-  Widget _buildSecondNameForm(TextEditingController controller) {
+  Widget _buildSecondNameForm() {
     return BlocBuilder<AccountBloc, AccountState>(
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
@@ -318,7 +318,6 @@ class AccountPage extends StatelessWidget with UserMixin {
           initial: (firstName, secondName, birthday, email, gender) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
-              controller: userSnapshot?.lastName != null ? null : controller,
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
               onChanged: (value) {
@@ -330,10 +329,9 @@ class AccountPage extends StatelessWidget with UserMixin {
           formChanged: (_, secondName, __, ___, ____, status) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
-              controller: userSnapshot?.lastName != null ? null : controller,
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
-              errorText: !status ? secondName?.error?.name : null,
+              errorText: secondName!.isNotValid ? secondName.error?.name : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.secondNameChanged(secondName: value));
@@ -342,7 +340,6 @@ class AccountPage extends StatelessWidget with UserMixin {
           },
           error: (error) => AppTextFormField(
             padding: const EdgeInsets.only(left: 16, right: 16),
-            controller: userSnapshot?.lastName != null ? null : controller,
             title: const Text('Фамилия'),
             initialValue: userSnapshot?.lastName,
             onChanged: (value) {
@@ -384,7 +381,9 @@ class AccountPage extends StatelessWidget with UserMixin {
               padding: const EdgeInsets.only(left: 16, right: 16),
               helper: const Text('Дата рождения'),
               initialValue: dateFromStringNullable(bitrhday?.value),
-              errorText: !status ? bitrhday?.error?.name : null,
+              errorText: !status && bitrhday!.value.isNotEmpty
+                  ? bitrhday.error?.name
+                  : null,
               onTap: () async {
                 await showDatePicker(
                   context: context,

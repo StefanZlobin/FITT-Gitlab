@@ -1,6 +1,6 @@
 import 'package:formz/formz.dart';
 
-enum AccountUserSecondNameValidationError { empty }
+enum AccountUserSecondNameValidationError { empty, smallName }
 
 class AccountUserSecondName
     extends FormzInput<String, AccountUserSecondNameValidationError> {
@@ -10,6 +10,9 @@ class AccountUserSecondName
   @override
   AccountUserSecondNameValidationError? validator(String value) {
     if (value.isEmpty) return AccountUserSecondNameValidationError.empty;
+    if (value.length == 1) {
+      return AccountUserSecondNameValidationError.smallName;
+    }
     return null;
   }
 }
