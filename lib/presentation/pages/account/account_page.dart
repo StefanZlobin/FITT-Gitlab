@@ -273,10 +273,8 @@ class AccountPage extends StatelessWidget with UserMixin {
           await getIt<AppMetricaService>().reportEventToAppMetrica(
             eventName: 'Показан попап с запросом доступа к фото',
           );
-          final xFile = await imagePicker.pickImage(
-            source: ImageSource.gallery,
-            imageQuality: 100,
-          );
+          final xFile =
+              await imagePicker.pickImage(source: ImageSource.gallery);
           await getIt<AppMetricaService>().reportEventToAppMetrica(
             eventName: 'Подтвержден попап с запросом доступа к фото',
           );
