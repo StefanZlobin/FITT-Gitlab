@@ -102,7 +102,7 @@ dependencies:
   #Yandex App Metrica
   appmetrica_push_plugin: ^0.2.0
   appmetrica_plugin: ^1.1.0
-  #Uuid
+  #UUID
   uuid: ^3.0.7
 
   #Cluster manager (Fluster)
