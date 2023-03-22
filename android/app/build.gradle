@@ -86,9 +86,4 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     implementation 'androidx.multidex:multidex:2.0.1'
-    
-    //Убирает com.google.android.gms.permission.AD_ID из объединенного манифеста
-    implementation ("com.yandex.android:mobmetricalib:1.1.0") {
-       exclude group: 'com.yandex.android', module: 'mobmetricalib-identifiers' 
-   }
 }
