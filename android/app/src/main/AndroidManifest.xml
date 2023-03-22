@@ -25,8 +25,7 @@
         </intent>
     </queries>
 
-    <!--Убирает com.google.android.gms.permission.AD_ID из объединенного манифеста -->
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
 
     <!--Геолокация-->
     <uses-feature android:name="android.hardware.location.gps" />

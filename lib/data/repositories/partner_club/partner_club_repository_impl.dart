@@ -100,8 +100,6 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
       xPosition = '';
     }
 
-    xPosition = '';
-
     try {
       final partnerClubs = await _apiClient.getPartnerClubs(
         xPosition,
