@@ -126,8 +126,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               title: const Text('E-mail'),
               initialValue: userSnapshot?.email,
               isEmailField: true,
-              errorText:
-                  !status && email!.value.isNotEmpty ? email.error?.name : null,
+              errorText: !status ? email?.error?.name : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.emailChanged(email: value));
@@ -288,9 +287,7 @@ class AccountPage extends StatelessWidget with UserMixin {
             return AppTextFormField(
               title: const Text('Имя'),
               initialValue: userSnapshot?.firstName,
-              errorText: !status && firstName!.value.isNotEmpty
-                  ? firstName.error?.name
-                  : null,
+              errorText: !status ? firstName?.error?.name : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.firstNameChanged(firstName: value));
@@ -331,7 +328,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
-              errorText: secondName!.isNotValid ? secondName.error?.name : null,
+              errorText: !status ? secondName?.error?.name : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.secondNameChanged(secondName: value));
@@ -381,9 +378,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               padding: const EdgeInsets.only(left: 16, right: 16),
               helper: const Text('Дата рождения'),
               initialValue: dateFromStringNullable(bitrhday?.value),
-              errorText: !status && bitrhday!.value.isNotEmpty
-                  ? bitrhday.error?.name
-                  : null,
+              errorText: !status ? bitrhday?.error?.name : null,
               onTap: () async {
                 await showDatePicker(
                   context: context,
