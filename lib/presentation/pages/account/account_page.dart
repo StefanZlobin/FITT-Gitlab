@@ -9,6 +9,7 @@ import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
@@ -274,7 +275,6 @@ class AccountPage extends StatelessWidget with UserMixin {
           initial: (firstName, secondName, birthday, gender, email) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
-              controller: userSnapshot?.lastName != null ? null : controller,
               title: const Text('Имя'),
               initialValue: userSnapshot?.firstName,
               onChanged: (value) {
@@ -383,7 +383,7 @@ class AccountPage extends StatelessWidget with UserMixin {
             return AppDateForm(
               padding: const EdgeInsets.only(left: 16, right: 16),
               helper: const Text('Дата рождения'),
-              initialValue: userSnapshot?.birthday,
+              initialValue: dateFromStringNullable(bitrhday?.value),
               errorText: !status ? bitrhday?.error?.name : null,
               onTap: () async {
                 await showDatePicker(
