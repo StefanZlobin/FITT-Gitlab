@@ -102,6 +102,8 @@ dependencies:
   #Yandex App Metrica
   appmetrica_push_plugin: ^0.2.0
   appmetrica_plugin: ^1.1.0
+  #Permission handler
+  permission_handler: ^10.2.0
   #UUID
   uuid: ^3.0.7
 

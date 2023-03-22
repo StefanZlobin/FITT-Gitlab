@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clock/clock.dart';
 import 'package:fitt/core/constants/app_colors.dart';
@@ -15,7 +13,6 @@ import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
-import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/dialogs/delete_user_account_dialog.dart';
@@ -24,7 +21,6 @@ import 'package:fitt/presentation/forms/app_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
@@ -41,30 +37,41 @@ class AccountPage extends StatelessWidget with UserMixin {
       filter: {'#': RegExp(r'[0-9]')},
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Личные данные'),
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: const Icon(AppIcons.arr_big_left),
+    return BlocListener<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      listener: (context, state) {
+        state.whenOrNull(
+          error: (error) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(error)));
+          },
+        );
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Личные данные'),
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: const Icon(AppIcons.arr_big_left),
+          ),
         ),
-      ),
-      body: Form(
-        child: ListView(
-          children: [
-            _buildAvatarImage(userSnapshot),
-            _buildUpdateUserAvatarButton(imagePicker, context),
-            _buildFirstNameForm(controller),
-            _buildSecondNameForm(controller),
-            _buildBirthdayForm(context),
-            _buildPhoneNumberForm(phoneFormatter),
-            _buildEmailForm(),
-            const Separator(
-              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-            ),
-            _buildDeleteAccountButton(context),
-            _buildSaveButton(context),
-          ],
+        body: Form(
+          child: ListView(
+            children: [
+              _buildAvatarImage(userSnapshot),
+              _buildUpdateUserAvatarButton(imagePicker, context),
+              _buildFirstNameForm(controller),
+              _buildSecondNameForm(controller),
+              _buildBirthdayForm(context),
+              _buildPhoneNumberForm(phoneFormatter),
+              _buildEmailForm(),
+              const Separator(
+                margin: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+              ),
+              _buildDeleteAccountButton(context),
+              _buildSaveButton(context),
+            ],
+          ),
         ),
       ),
     );
@@ -123,7 +130,15 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          error: (error) => const SizedBox(),
+          error: (error) => AppTextFormField(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            title: const Text('E-mail'),
+            initialValue: userSnapshot?.email,
+            isEmailField: true,
+            onChanged: (value) {
+              getIt<AccountBloc>().add(AccountEvent.emailChanged(email: value));
+            },
+          ),
         );
       },
     );
@@ -170,7 +185,15 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          error: (error) => const SizedBox(),
+          error: (error) => AppTextFormField(
+            controller: userSnapshot?.firstName != null ? null : controller,
+            title: const Text('Имя'),
+            initialValue: userSnapshot?.firstName,
+            onChanged: (value) {
+              getIt<AccountBloc>()
+                  .add(AccountEvent.firstNameChanged(firstName: value));
+            },
+          ),
         );
       },
     );
@@ -206,7 +229,16 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          error: (error) => const SizedBox(),
+          error: (error) => AppTextFormField(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            controller: userSnapshot?.lastName != null ? null : controller,
+            title: const Text('Фамилия'),
+            initialValue: userSnapshot?.lastName,
+            onChanged: (value) {
+              getIt<AccountBloc>()
+                  .add(AccountEvent.secondNameChanged(secondName: value));
+            },
+          ),
         );
       },
     );
@@ -257,7 +289,24 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          error: (error) => const SizedBox(),
+          error: (error) => AppDateForm(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            helper: const Text('Дата рождения'),
+            initialValue: userSnapshot?.birthday,
+            onTap: () async {
+              await showDatePicker(
+                context: context,
+                initialDate: clock.yearsAgo(18),
+                firstDate: clock.yearsAgo(100),
+                lastDate: clock.yearsAgo(0),
+              );
+            },
+            onDateSelected: (value) {
+              getIt<AccountBloc>().add(
+                AccountEvent.birthdayChanged(birthday: value.toString()),
+              );
+            },
+          ),
         );
       },
     );
@@ -268,40 +317,9 @@ class AccountPage extends StatelessWidget with UserMixin {
     BuildContext context,
   ) {
     return TextButton(
-      onPressed: () async {
-        try {
-          await getIt<AppMetricaService>().reportEventToAppMetrica(
-            eventName: 'Показан попап с запросом доступа к фото',
-          );
-          final xFile =
-              await imagePicker.pickImage(source: ImageSource.gallery);
-          await getIt<AppMetricaService>().reportEventToAppMetrica(
-            eventName: 'Подтвержден попап с запросом доступа к фото',
-          );
-          final file = File(xFile!.path);
-          final size = await file.length();
-          if (size > 5242880) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Слишком большой размер изображения'),
-              ),
-            );
-            return;
-          }
-          final CroppedFile? croppedFile = await ImageCropper().cropImage(
-            sourcePath: xFile.path,
-          );
-
-          getIt<UserBloc>().add(
-            UserEvent.updateUserAvatar(
-              avatar: File(croppedFile!.path),
-            ),
-          );
-        } on Exception {
-          await getIt<AppMetricaService>().reportEventToAppMetrica(
-            eventName: 'Не подтвержден попап с запросом доступа к фото',
-          );
-        }
+      onPressed: () {
+        getIt<AccountBloc>()
+            .add(AccountEvent.photoChanged(imagePicker: imagePicker));
       },
       style: TextButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -349,47 +367,79 @@ class AccountPage extends StatelessWidget with UserMixin {
               },
             );
           },
-          error: (error) => const SizedBox(),
+          error: (error) => AppElevatedButton(
+            marginButton: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 32,
+              bottom: 24,
+            ),
+            textButton: const Text('Сохранить'),
+            onPressed: () {
+              getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
+              context.pop();
+            },
+          ),
         );
       },
     );
   }
 
   Widget _buildAvatarImage(User? user) {
-    return CachedNetworkImage(
-      imageUrl: user?.avatar ?? '',
-      imageBuilder: (context, imageProvider) {
-        return CenterLeft(
-          child: Container(
-            width: 96,
-            height: 96,
-            margin: const EdgeInsets.fromLTRB(16, 40, 16, 16),
-            decoration: ShapeDecoration(
-              shape: SuperellipseShape(
-                borderRadius: superellipseRadius(40),
+    return BlocBuilder<UserBloc, UserState>(
+      bloc: getIt<UserBloc>(),
+      builder: (context, state) {
+        return state.when(
+          error: (error) => const SizedBox(),
+          loading: () => const SizedBox(),
+          loadedWithNoUser: (user) => const SizedBox(),
+          loaded: (user) {
+            return CachedNetworkImage(
+              imageUrl: user?.avatar ?? '',
+              imageBuilder: (context, imageProvider) {
+                return CenterLeft(
+                  child: Container(
+                    width: 96,
+                    height: 96,
+                    margin: const EdgeInsets.fromLTRB(16, 40, 16, 16),
+                    decoration: ShapeDecoration(
+                      shape: SuperellipseShape(
+                        borderRadius: superellipseRadius(40),
+                      ),
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                        filterQuality: FilterQuality.high,
+                      ),
+                    ),
+                  ),
+                );
+              },
+              placeholder: (context, url) => CenterLeft(
+                child: Container(
+                  width: 96,
+                  height: 96,
+                  padding: const EdgeInsets.all(32),
+                  margin: const EdgeInsets.fromLTRB(16, 40, 16, 16),
+                  child: const CircularProgressIndicator(),
+                ),
               ),
-              image: DecorationImage(
-                image: imageProvider,
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.high,
-              ),
-            ),
-          ),
-        );
-      },
-      placeholder: (context, url) =>
-          const CenterLeft(child: CircularProgressIndicator()),
-      errorWidget: (context, url, dynamic error) {
-        return CenterLeft(
-          child: Container(
-            width: 96,
-            height: 96,
-            margin: const EdgeInsets.only(top: 40, left: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(96 * borderRadiusFactor),
-              color: const Color(0xFFD2D2D2),
-            ),
-          ),
+              errorWidget: (context, url, dynamic error) {
+                return CenterLeft(
+                  child: Container(
+                    width: 96,
+                    height: 96,
+                    margin: const EdgeInsets.only(top: 40, left: 16),
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(96 * borderRadiusFactor),
+                      color: const Color(0xFFD2D2D2),
+                    ),
+                  ),
+                );
+              },
+            );
+          },
         );
       },
     );

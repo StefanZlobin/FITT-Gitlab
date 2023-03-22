@@ -17,5 +17,7 @@ class AccountEvent with _$AccountEvent {
   const factory AccountEvent.genderChanged({
     required UserGenderEnum gender,
   }) = _AccountEventGenderChanged;
+  const factory AccountEvent.photoChanged({required ImagePicker imagePicker}) =
+      _AccountEventPhotoChanged;
   const factory AccountEvent.accountSubmitted() = _AccountEventAccountSubmitted;
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/enum/user_gender_enum.dart';
@@ -13,9 +14,13 @@ import 'package:fitt/domain/models/account_user_email.dart';
 import 'package:fitt/domain/models/account_user_first_name.dart';
 import 'package:fitt/domain/models/account_user_gender.dart';
 import 'package:fitt/domain/models/account_user_second_name.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/use_cases/user/user_use_case.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 part 'account_bloc.freezed.dart';
 part 'account_event.dart';
@@ -28,6 +33,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
     on<_AccountEventBirthdayChanged>(_onAccountEventBirthdayChanged);
     on<_AccountEventEmailChanged>(_onAccountEventEmailChanged);
     on<_AccountEventGenderChanged>(_onAccountEventGenderChanged);
+    on<_AccountEventPhotoChanged>(_onAccountEventPhotoChanged);
     on<_AccountEventAccountSubmitted>(_onAccountEventAccountSubmitted);
   }
 
@@ -47,6 +53,60 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
           ),
         ).copyWith,
       );
+
+  Future<void> _onAccountEventPhotoChanged(
+    _AccountEventPhotoChanged event,
+    Emitter<AccountState> emit,
+  ) async {
+    final PermissionStatus storageStatus = await Permission.storage.request();
+    final PermissionStatus photoStatus = await Permission.photos.request();
+    if ((storageStatus == PermissionStatus.denied && Platform.isAndroid) ||
+        (photoStatus == PermissionStatus.denied && Platform.isIOS)) {
+      emit(const AccountState.error(
+        error: 'Чтобы изменить фотографию аккаунта требуется доступ к галерее',
+      ));
+    }
+    if ((storageStatus == PermissionStatus.permanentlyDenied &&
+            Platform.isAndroid) ||
+        (photoStatus == PermissionStatus.permanentlyDenied && Platform.isIOS)) {
+      await openAppSettings();
+    }
+    if ((storageStatus == PermissionStatus.granted && Platform.isAndroid) ||
+        (photoStatus == PermissionStatus.granted && Platform.isIOS)) {
+      try {
+        await getIt<AppMetricaService>().reportEventToAppMetrica(
+          eventName: 'Показан попап с запросом доступа к фото',
+        );
+        final xFile = await event.imagePicker.pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 5,
+        );
+        await getIt<AppMetricaService>().reportEventToAppMetrica(
+          eventName: 'Подтвержден попап с запросом доступа к фото',
+        );
+        final file = File(xFile!.path);
+        final size = await file.length();
+        if (size > 5242880) {
+          emit(const AccountState.error(
+            error: 'Слишком большой размер изображения',
+          ));
+        }
+        final CroppedFile? croppedFile = await ImageCropper().cropImage(
+          sourcePath: xFile.path,
+        );
+        getIt<UserBloc>().add(
+          UserEvent.updateUserAvatar(
+            avatar: File(croppedFile!.path),
+          ),
+        );
+      } on Exception {
+        await getIt<AppMetricaService>().reportEventToAppMetrica(
+          eventName: 'Не подтвержден попап с запросом доступа к фото',
+        );
+      }
+    }
+  }
+
   void _onAccountEventFirstNameChanged(
     _AccountEventFirstNameChanged event,
     Emitter<AccountState> emit,
