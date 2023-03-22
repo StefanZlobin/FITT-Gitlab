@@ -5,6 +5,7 @@ import 'package:clock/clock.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/constants/border_avatar_radius.dart';
+import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
@@ -14,6 +15,7 @@ import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
+import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/dialogs/delete_user_account_dialog.dart';
 import 'package:fitt/presentation/forms/app_date_form.dart';
@@ -65,6 +67,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               _buildBirthdayForm(context),
               _buildPhoneNumberForm(phoneFormatter),
               _buildEmailForm(),
+              _buildGenderForm(),
               const Separator(
                 margin: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
               ),
@@ -141,6 +144,114 @@ class AccountPage extends StatelessWidget with UserMixin {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildGenderForm() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Text(
+            'Пол',
+            style: AppTypography.kH16.apply(color: AppColors.kBaseBlack),
+          ),
+        ),
+        Row(
+          children: [
+            BlocBuilder<AccountBloc, AccountState>(
+              bloc: getIt<AccountBloc>(),
+              builder: (context, state) {
+                return state.when(
+                  initial: (firstName, secondName, birthday, gender, email) {
+                    return AppRadioButton<UserGenderEnum>(
+                      padding: const EdgeInsets.only(left: 16),
+                      sortingValue: 'Мужской',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.male,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  formChanged: (_, __, ___, email, gender, status) {
+                    return AppRadioButton<UserGenderEnum>(
+                      padding: const EdgeInsets.only(left: 16),
+                      sortingValue: 'Мужской',
+                      isRadioButtonLeading: true,
+                      groupValue: gender!.value,
+                      value: UserGenderEnum.male,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  error: (error) {
+                    return AppRadioButton<UserGenderEnum>(
+                      padding: const EdgeInsets.only(left: 16),
+                      sortingValue: 'Мужской',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.male,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+            BlocBuilder<AccountBloc, AccountState>(
+              bloc: getIt<AccountBloc>(),
+              builder: (context, state) {
+                return state.when(
+                  initial: (firstName, secondName, birthday, gender, email) {
+                    return AppRadioButton<UserGenderEnum>(
+                      sortingValue: 'Женский',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.female,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  formChanged: (_, __, ___, email, gender, status) {
+                    return AppRadioButton<UserGenderEnum>(
+                      sortingValue: 'Женский',
+                      isRadioButtonLeading: true,
+                      groupValue: gender!.value,
+                      value: UserGenderEnum.female,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  error: (error) {
+                    return AppRadioButton<UserGenderEnum>(
+                      sortingValue: 'Женский',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.female,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ],
+        ),
+      ],
     );
   }
 
