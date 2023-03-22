@@ -38,7 +38,10 @@ class InputSecureCodePage extends StatelessWidget with UserMixin {
             if (userSnapshot == null) {
               context.pushNamed(
                 AppRoute.personalData.routeToPath,
-                extra: true,
+                extra: {
+                  'canSkip': true,
+                  'afterSignin': true,
+                },
               );
             }
             if (userSnapshot!.hasFullData) {
@@ -47,7 +50,10 @@ class InputSecureCodePage extends StatelessWidget with UserMixin {
             } else {
               context.pushNamed(
                 AppRoute.personalData.routeToPath,
-                extra: true,
+                extra: {
+                  'canSkip': true,
+                  'afterSignin': true,
+                },
               );
             }
           },
@@ -134,7 +140,8 @@ class InputSecureCodeForm extends StatelessWidget {
     MaskTextInputFormatter secureCodeFormatter,
     int? countSecureCodeEntryAttempts,
   ) {
-    final isError = countSecureCodeEntryAttempts != null && countSecureCodeEntryAttempts < 5;
+    final isError = countSecureCodeEntryAttempts != null &&
+        countSecureCodeEntryAttempts < 5;
     return Column(
       children: [
         TextField(

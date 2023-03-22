@@ -9,6 +9,7 @@ import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
+import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
@@ -158,6 +159,7 @@ class UserDetected extends StatelessWidget with UserMixin {
           onPressed: () {
             getIt<AuthBloc>()
                 .add(const AuthEvent.authenticationLogoutRequested());
+            getIt<UserBloc>().add(UserEvent.logout(user: userSnapshot!));
           },
         ),
       ],
