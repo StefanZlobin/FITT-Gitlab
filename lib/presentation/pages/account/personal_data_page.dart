@@ -65,7 +65,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     initialValue: userSnapshot?.firstName,
                     onChanged: (value) {
                       getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(firstName: value)));
+                        user: user!.copyWith(firstName: value),
+                      ));
                       getIt<AccountSaveButtonCubit>()
                           .disableButton(isDisabled: false);
                     },
@@ -78,7 +79,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     initialValue: userSnapshot?.lastName,
                     onChanged: (value) {
                       getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(lastName: value)));
+                        user: user!.copyWith(lastName: value),
+                      ));
                       getIt<AccountSaveButtonCubit>()
                           .disableButton(isDisabled: false);
                     },
@@ -99,7 +101,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     },
                     onDateSelected: (value) {
                       getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(birthday: value)));
+                        user: user!.copyWith(birthday: value),
+                      ));
                       getIt<AccountSaveButtonCubit>()
                           .disableButton(isDisabled: false);
                     },
@@ -113,7 +116,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                     validator: (v) => emailValidator.getValidationError(v),
                     onChanged: (value) {
                       getIt<UserBloc>().add(UserEvent.updateUserData(
-                          user: user!.copyWith(email: value)));
+                        user: user!.copyWith(email: value),
+                      ));
                       getIt<AccountSaveButtonCubit>()
                           .disableButton(isDisabled: false);
                     },
@@ -162,7 +166,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               isDisable: isDisabled,
               onPressed: () {
                 getIt<UserBloc>().add(UserEvent.updateUserData(
-                    user: user.copyWith(gender: genderGroup)));
+                  user: user.copyWith(gender: genderGroup),
+                ));
                 if (!afterSignin) {
                   context.pop();
                 } else {
