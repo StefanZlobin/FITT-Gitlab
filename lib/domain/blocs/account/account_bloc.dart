@@ -77,10 +77,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
         await getIt<AppMetricaService>().reportEventToAppMetrica(
           eventName: 'Показан попап с запросом доступа к фото',
         );
-        final xFile = await event.imagePicker.pickImage(
-          source: ImageSource.gallery,
-          imageQuality: 5,
-        );
+        final xFile =
+            await event.imagePicker.pickImage(source: ImageSource.gallery);
         await getIt<AppMetricaService>().reportEventToAppMetrica(
           eventName: 'Подтвержден попап с запросом доступа к фото',
         );
