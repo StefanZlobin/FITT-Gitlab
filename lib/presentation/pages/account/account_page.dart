@@ -33,6 +33,7 @@ class AccountPage extends StatelessWidget with UserMixin {
 
   @override
   Widget build(BuildContext context) {
+    getIt<AccountBloc>().add(const AccountEvent.zeroState());
     final ImagePicker imagePicker = ImagePicker();
     final phoneFormatter = MaskTextInputFormatter(
       mask: '+# (###) ###-##-##',
