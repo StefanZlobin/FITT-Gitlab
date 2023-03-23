@@ -25,6 +25,7 @@ mixin _$AccountEvent {
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$AccountEvent {
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$AccountEvent {
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$AccountEvent {
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +78,7 @@ mixin _$AccountEvent {
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +90,7 @@ mixin _$AccountEvent {
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,6 +189,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) {
     return firstNameChanged(firstName);
   }
@@ -197,6 +204,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) {
     return firstNameChanged?.call(firstName);
   }
@@ -211,6 +219,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -233,6 +242,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) {
     return firstNameChanged(this);
   }
@@ -247,6 +257,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) {
     return firstNameChanged?.call(this);
   }
@@ -261,6 +272,7 @@ class _$_AccountEventFirstNameChanged implements _AccountEventFirstNameChanged {
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -356,6 +368,7 @@ class _$_AccountEventSecondNameChanged
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) {
     return secondNameChanged(secondName);
   }
@@ -370,6 +383,7 @@ class _$_AccountEventSecondNameChanged
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) {
     return secondNameChanged?.call(secondName);
   }
@@ -384,6 +398,7 @@ class _$_AccountEventSecondNameChanged
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) {
     if (secondNameChanged != null) {
@@ -406,6 +421,7 @@ class _$_AccountEventSecondNameChanged
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) {
     return secondNameChanged(this);
   }
@@ -420,6 +436,7 @@ class _$_AccountEventSecondNameChanged
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) {
     return secondNameChanged?.call(this);
   }
@@ -434,6 +451,7 @@ class _$_AccountEventSecondNameChanged
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) {
     if (secondNameChanged != null) {
@@ -528,6 +546,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) {
     return birthdayChanged(birthday);
   }
@@ -542,6 +561,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) {
     return birthdayChanged?.call(birthday);
   }
@@ -556,6 +576,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) {
     if (birthdayChanged != null) {
@@ -578,6 +599,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) {
     return birthdayChanged(this);
   }
@@ -592,6 +614,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) {
     return birthdayChanged?.call(this);
   }
@@ -606,6 +629,7 @@ class _$_AccountEventBirthdayChanged implements _AccountEventBirthdayChanged {
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) {
     if (birthdayChanged != null) {
@@ -698,6 +722,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) {
     return emailChanged(email);
   }
@@ -712,6 +737,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) {
     return emailChanged?.call(email);
   }
@@ -726,6 +752,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -748,6 +775,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) {
     return emailChanged(this);
   }
@@ -762,6 +790,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) {
     return emailChanged?.call(this);
   }
@@ -776,6 +805,7 @@ class _$_AccountEventEmailChanged implements _AccountEventEmailChanged {
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -869,6 +899,7 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) {
     return genderChanged(gender);
   }
@@ -883,6 +914,7 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) {
     return genderChanged?.call(gender);
   }
@@ -897,6 +929,7 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) {
     if (genderChanged != null) {
@@ -919,6 +952,7 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) {
     return genderChanged(this);
   }
@@ -933,6 +967,7 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) {
     return genderChanged?.call(this);
   }
@@ -947,6 +982,7 @@ class _$_AccountEventGenderChanged implements _AccountEventGenderChanged {
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) {
     if (genderChanged != null) {
@@ -1040,6 +1076,7 @@ class _$_AccountEventPhotoChanged implements _AccountEventPhotoChanged {
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) {
     return photoChanged(imagePicker);
   }
@@ -1054,6 +1091,7 @@ class _$_AccountEventPhotoChanged implements _AccountEventPhotoChanged {
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) {
     return photoChanged?.call(imagePicker);
   }
@@ -1068,6 +1106,7 @@ class _$_AccountEventPhotoChanged implements _AccountEventPhotoChanged {
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) {
     if (photoChanged != null) {
@@ -1090,6 +1129,7 @@ class _$_AccountEventPhotoChanged implements _AccountEventPhotoChanged {
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) {
     return photoChanged(this);
   }
@@ -1104,6 +1144,7 @@ class _$_AccountEventPhotoChanged implements _AccountEventPhotoChanged {
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) {
     return photoChanged?.call(this);
   }
@@ -1118,6 +1159,7 @@ class _$_AccountEventPhotoChanged implements _AccountEventPhotoChanged {
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) {
     if (photoChanged != null) {
@@ -1185,6 +1227,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     required TResult Function(UserGenderEnum gender) genderChanged,
     required TResult Function(ImagePicker imagePicker) photoChanged,
     required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
   }) {
     return accountSubmitted();
   }
@@ -1199,6 +1242,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult? Function(UserGenderEnum gender)? genderChanged,
     TResult? Function(ImagePicker imagePicker)? photoChanged,
     TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
   }) {
     return accountSubmitted?.call();
   }
@@ -1213,6 +1257,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult Function(UserGenderEnum gender)? genderChanged,
     TResult Function(ImagePicker imagePicker)? photoChanged,
     TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
     required TResult orElse(),
   }) {
     if (accountSubmitted != null) {
@@ -1235,6 +1280,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     required TResult Function(_AccountEventPhotoChanged value) photoChanged,
     required TResult Function(_AccountEventAccountSubmitted value)
         accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
   }) {
     return accountSubmitted(this);
   }
@@ -1249,6 +1295,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult? Function(_AccountEventGenderChanged value)? genderChanged,
     TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
   }) {
     return accountSubmitted?.call(this);
   }
@@ -1263,6 +1310,7 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
     TResult Function(_AccountEventGenderChanged value)? genderChanged,
     TResult Function(_AccountEventPhotoChanged value)? photoChanged,
     TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
     required TResult orElse(),
   }) {
     if (accountSubmitted != null) {
@@ -1275,6 +1323,148 @@ class _$_AccountEventAccountSubmitted implements _AccountEventAccountSubmitted {
 abstract class _AccountEventAccountSubmitted implements AccountEvent {
   const factory _AccountEventAccountSubmitted() =
       _$_AccountEventAccountSubmitted;
+}
+
+/// @nodoc
+abstract class _$$_AccountEventZeroStateCopyWith<$Res> {
+  factory _$$_AccountEventZeroStateCopyWith(_$_AccountEventZeroState value,
+          $Res Function(_$_AccountEventZeroState) then) =
+      __$$_AccountEventZeroStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_AccountEventZeroStateCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$_AccountEventZeroState>
+    implements _$$_AccountEventZeroStateCopyWith<$Res> {
+  __$$_AccountEventZeroStateCopyWithImpl(_$_AccountEventZeroState _value,
+      $Res Function(_$_AccountEventZeroState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_AccountEventZeroState implements _AccountEventZeroState {
+  const _$_AccountEventZeroState();
+
+  @override
+  String toString() {
+    return 'AccountEvent.zeroState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_AccountEventZeroState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String secondName) secondNameChanged,
+    required TResult Function(String birthday) birthdayChanged,
+    required TResult Function(String email) emailChanged,
+    required TResult Function(UserGenderEnum gender) genderChanged,
+    required TResult Function(ImagePicker imagePicker) photoChanged,
+    required TResult Function() accountSubmitted,
+    required TResult Function() zeroState,
+  }) {
+    return zeroState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String secondName)? secondNameChanged,
+    TResult? Function(String birthday)? birthdayChanged,
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(UserGenderEnum gender)? genderChanged,
+    TResult? Function(ImagePicker imagePicker)? photoChanged,
+    TResult? Function()? accountSubmitted,
+    TResult? Function()? zeroState,
+  }) {
+    return zeroState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String secondName)? secondNameChanged,
+    TResult Function(String birthday)? birthdayChanged,
+    TResult Function(String email)? emailChanged,
+    TResult Function(UserGenderEnum gender)? genderChanged,
+    TResult Function(ImagePicker imagePicker)? photoChanged,
+    TResult Function()? accountSubmitted,
+    TResult Function()? zeroState,
+    required TResult orElse(),
+  }) {
+    if (zeroState != null) {
+      return zeroState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AccountEventFirstNameChanged value)
+        firstNameChanged,
+    required TResult Function(_AccountEventSecondNameChanged value)
+        secondNameChanged,
+    required TResult Function(_AccountEventBirthdayChanged value)
+        birthdayChanged,
+    required TResult Function(_AccountEventEmailChanged value) emailChanged,
+    required TResult Function(_AccountEventGenderChanged value) genderChanged,
+    required TResult Function(_AccountEventPhotoChanged value) photoChanged,
+    required TResult Function(_AccountEventAccountSubmitted value)
+        accountSubmitted,
+    required TResult Function(_AccountEventZeroState value) zeroState,
+  }) {
+    return zeroState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AccountEventFirstNameChanged value)? firstNameChanged,
+    TResult? Function(_AccountEventSecondNameChanged value)? secondNameChanged,
+    TResult? Function(_AccountEventBirthdayChanged value)? birthdayChanged,
+    TResult? Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult? Function(_AccountEventGenderChanged value)? genderChanged,
+    TResult? Function(_AccountEventPhotoChanged value)? photoChanged,
+    TResult? Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult? Function(_AccountEventZeroState value)? zeroState,
+  }) {
+    return zeroState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AccountEventFirstNameChanged value)? firstNameChanged,
+    TResult Function(_AccountEventSecondNameChanged value)? secondNameChanged,
+    TResult Function(_AccountEventBirthdayChanged value)? birthdayChanged,
+    TResult Function(_AccountEventEmailChanged value)? emailChanged,
+    TResult Function(_AccountEventGenderChanged value)? genderChanged,
+    TResult Function(_AccountEventPhotoChanged value)? photoChanged,
+    TResult Function(_AccountEventAccountSubmitted value)? accountSubmitted,
+    TResult Function(_AccountEventZeroState value)? zeroState,
+    required TResult orElse(),
+  }) {
+    if (zeroState != null) {
+      return zeroState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AccountEventZeroState implements AccountEvent {
+  const factory _AccountEventZeroState() = _$_AccountEventZeroState;
 }
 
 /// @nodoc

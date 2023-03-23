@@ -35,6 +35,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
     on<_AccountEventGenderChanged>(_onAccountEventGenderChanged);
     on<_AccountEventPhotoChanged>(_onAccountEventPhotoChanged);
     on<_AccountEventAccountSubmitted>(_onAccountEventAccountSubmitted);
+    on<_AccountEventZeroState>(_onAccountEventZeroState);
   }
 
   final userUserCase = UserUseCase();
@@ -55,6 +56,13 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
           ),
         ).copyWith,
       );
+
+  void _onAccountEventZeroState(
+    _AccountEventZeroState event,
+    Emitter<AccountState> emit,
+  ) {
+    emit(const AccountState.initial());
+  }
 
   Future<void> _onAccountEventPhotoChanged(
     _AccountEventPhotoChanged event,

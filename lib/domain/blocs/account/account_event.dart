@@ -20,4 +20,5 @@ class AccountEvent with _$AccountEvent {
   const factory AccountEvent.photoChanged({required ImagePicker imagePicker}) =
       _AccountEventPhotoChanged;
   const factory AccountEvent.accountSubmitted() = _AccountEventAccountSubmitted;
+  const factory AccountEvent.zeroState() = _AccountEventZeroState;
 }

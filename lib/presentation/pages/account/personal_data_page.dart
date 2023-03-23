@@ -6,16 +6,12 @@ import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
-import 'package:fitt/core/validation/date_validator.dart';
-import 'package:fitt/core/validation/email_validator.dart';
-import 'package:fitt/core/validation/name_validator.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
-import 'package:fitt/domain/cubits/account_save_button/account_save_button_cubit.dart';
-import 'package:fitt/domain/entities/user/user.dart';
+import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
+import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
 import 'package:fitt/presentation/forms/app_date_form.dart';
-import 'package:fitt/presentation/forms/app_gender_form.dart';
 import 'package:fitt/presentation/forms/app_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,118 +27,352 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
   final bool canSkip;
   final bool afterSignin;
 
-  //TODO: Реализовать логику страницы как в accountPage
   @override
   Widget build(BuildContext context) {
-    final nameValidator = NameValidator();
-    final dateValidator = DateValidator();
-    final emailValidator = EmailValidator();
-
+    getIt<AccountBloc>().add(const AccountEvent.zeroState());
     return Scaffold(
       appBar: _buildAppBar(context),
-      body: BlocBuilder<UserBloc, UserState>(
-        bloc: getIt<UserBloc>(),
-        builder: (context, state) {
-          return state.when(
-            loading: () => const Center(child: CircularProgressIndicator()),
-            loadedWithNoUser: (_) => const SizedBox(),
-            error: (_) => const SizedBox(),
-            loaded: (user) {
-              return ListView(
+      body: Column(
+        children: [
+          Form(
+            child: Expanded(
+              child: ListView(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 24,
+                    ),
                     child: Text(
                       'Введите свои личные данные\nДля идентификации пользователя клуб вправе потребовать удостоверение личности',
                       style: AppTypography.kBody14
                           .apply(color: AppColors.kPrimaryRed),
                     ),
                   ),
-                  AppTextFormField(
-                    title: const Text('Имя'),
-                    placeholder: 'Введите имя',
-                    validator: (v) => nameValidator.getValidationErrorName(v),
-                    initialValue: userSnapshot?.firstName,
-                    onChanged: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                        user: user!.copyWith(firstName: value),
-                      ));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
-                    },
-                  ),
-                  AppTextFormField(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    title: const Text('Фамилия'),
-                    placeholder: 'Введите фамилию',
-                    validator: (v) => nameValidator.getValidationErrorName(v),
-                    initialValue: userSnapshot?.lastName,
-                    onChanged: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                        user: user!.copyWith(lastName: value),
-                      ));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
-                    },
-                  ),
-                  AppDateForm(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    helper: const Text('Дата рождения'),
-                    validator: (v) => dateValidator.getValidationError(v),
-                    initialValue: userSnapshot?.birthday,
-                    placeholder: 'Введите дату рождения',
-                    onTap: () async {
-                      await showDatePicker(
-                        context: context,
-                        initialDate: clock.yearsAgo(18),
-                        firstDate: clock.yearsAgo(100),
-                        lastDate: clock.yearsAgo(0),
-                      );
-                    },
-                    onDateSelected: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                        user: user!.copyWith(birthday: value),
-                      ));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
-                    },
-                  ),
-                  AppTextFormField(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    title: const Text('E-mail'),
-                    placeholder: 'Введите E-mail',
-                    isEmailField: true,
-                    initialValue: userSnapshot?.email,
-                    validator: (v) => emailValidator.getValidationError(v),
-                    onChanged: (value) {
-                      getIt<UserBloc>().add(UserEvent.updateUserData(
-                        user: user!.copyWith(email: value),
-                      ));
-                      getIt<AccountSaveButtonCubit>()
-                          .disableButton(isDisabled: false);
-                    },
-                  ),
-                  const AppGenderFormField(
-                    padding: EdgeInsets.only(left: 16, right: 16),
-                    helper: Text('Пол'),
-                    userGender: UserGenderEnum.other,
-                  ),
-                  _buildSaveButton(context, user!),
+                  _buildFirstNameForm(),
+                  _buildSecondNameForm(),
+                  _buildBirthdayForm(context),
+                  _buildEmailForm(),
+                  _buildGenderForm(),
                 ],
-              );
-            },
-          );
-        },
+              ),
+            ),
+          ),
+          _buildSaveButton(context),
+        ],
       ),
     );
   }
 
-  Widget _buildSaveButton(BuildContext context, User user) {
-    return BlocBuilder<AccountSaveButtonCubit, AccountSaveButtonState>(
-      bloc: getIt<AccountSaveButtonCubit>(),
+  Widget _buildEmailForm() {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: () {
+          initial: (firstName, secondName, birthday, gender, email) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              title: const Text('E-mail'),
+              initialValue: userSnapshot?.email,
+              isEmailField: true,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.emailChanged(email: value));
+              },
+            );
+          },
+          formChanged: (_, __, ___, email, gender, status) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              title: const Text('E-mail'),
+              initialValue: userSnapshot?.email,
+              isEmailField: true,
+              errorText: !status ? email?.error?.name : null,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.emailChanged(email: value));
+              },
+            );
+          },
+          error: (error) => AppTextFormField(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            title: const Text('E-mail'),
+            initialValue: userSnapshot?.email,
+            isEmailField: true,
+            onChanged: (value) {
+              getIt<AccountBloc>().add(AccountEvent.emailChanged(email: value));
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildGenderForm() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Text(
+            'Пол',
+            style: AppTypography.kH16.apply(color: AppColors.kBaseBlack),
+          ),
+        ),
+        Row(
+          children: [
+            BlocBuilder<AccountBloc, AccountState>(
+              bloc: getIt<AccountBloc>(),
+              builder: (context, state) {
+                return state.when(
+                  initial: (firstName, secondName, birthday, gender, email) {
+                    return AppRadioButton<UserGenderEnum>(
+                      padding: const EdgeInsets.only(left: 16),
+                      sortingValue: 'Мужской',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.male,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  formChanged: (_, __, ___, email, gender, status) {
+                    return AppRadioButton<UserGenderEnum>(
+                      padding: const EdgeInsets.only(left: 16),
+                      sortingValue: 'Мужской',
+                      isRadioButtonLeading: true,
+                      groupValue: gender!.value,
+                      value: UserGenderEnum.male,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  error: (error) {
+                    return AppRadioButton<UserGenderEnum>(
+                      padding: const EdgeInsets.only(left: 16),
+                      sortingValue: 'Мужской',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.male,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+            BlocBuilder<AccountBloc, AccountState>(
+              bloc: getIt<AccountBloc>(),
+              builder: (context, state) {
+                return state.when(
+                  initial: (firstName, secondName, birthday, gender, email) {
+                    return AppRadioButton<UserGenderEnum>(
+                      sortingValue: 'Женский',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.female,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  formChanged: (_, __, ___, email, gender, status) {
+                    return AppRadioButton<UserGenderEnum>(
+                      sortingValue: 'Женский',
+                      isRadioButtonLeading: true,
+                      groupValue: gender!.value,
+                      value: UserGenderEnum.female,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                  error: (error) {
+                    return AppRadioButton<UserGenderEnum>(
+                      sortingValue: 'Женский',
+                      isRadioButtonLeading: true,
+                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      value: UserGenderEnum.female,
+                      onChanged: (value) {
+                        getIt<AccountBloc>()
+                            .add(AccountEvent.genderChanged(gender: value));
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFirstNameForm() {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (firstName, secondName, birthday, gender, email) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              title: const Text('Имя'),
+              initialValue: userSnapshot?.firstName,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.firstNameChanged(firstName: value));
+              },
+            );
+          },
+          formChanged:
+              (firstName, secondName, birthday, email, gender, status) {
+            return AppTextFormField(
+              title: const Text('Имя'),
+              initialValue: userSnapshot?.firstName,
+              errorText: !status ? firstName?.error?.name : null,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.firstNameChanged(firstName: value));
+              },
+            );
+          },
+          error: (error) => AppTextFormField(
+            title: const Text('Имя'),
+            initialValue: userSnapshot?.firstName,
+            onChanged: (value) {
+              getIt<AccountBloc>()
+                  .add(AccountEvent.firstNameChanged(firstName: value));
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSecondNameForm() {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (firstName, secondName, birthday, email, gender) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              title: const Text('Фамилия'),
+              initialValue: userSnapshot?.lastName,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.secondNameChanged(secondName: value));
+              },
+            );
+          },
+          formChanged: (_, secondName, __, ___, ____, status) {
+            return AppTextFormField(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              title: const Text('Фамилия'),
+              initialValue: userSnapshot?.lastName,
+              errorText: !status ? secondName?.error?.name : null,
+              onChanged: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.secondNameChanged(secondName: value));
+              },
+            );
+          },
+          error: (error) => AppTextFormField(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            title: const Text('Фамилия'),
+            initialValue: userSnapshot?.lastName,
+            onChanged: (value) {
+              getIt<AccountBloc>()
+                  .add(AccountEvent.secondNameChanged(secondName: value));
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildBirthdayForm(BuildContext context) {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (firstName, secondName, birthday, email, gender) {
+            return AppDateForm(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              helper: const Text('Дата рождения'),
+              initialValue: userSnapshot?.birthday,
+              onTap: () async {
+                await showDatePicker(
+                  context: context,
+                  initialDate: clock.yearsAgo(18),
+                  firstDate: clock.yearsAgo(100),
+                  lastDate: clock.yearsAgo(0),
+                );
+              },
+              onDateSelected: (value) {
+                getIt<AccountBloc>()
+                    .add(AccountEvent.emailChanged(email: value.toString()));
+              },
+            );
+          },
+          formChanged: (_, __, bitrhday, ___, gender, status) {
+            return AppDateForm(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              helper: const Text('Дата рождения'),
+              initialValue: dateFromStringNullable(bitrhday?.value),
+              errorText: !status ? bitrhday?.error?.name : null,
+              onTap: () async {
+                await showDatePicker(
+                  context: context,
+                  initialDate: clock.yearsAgo(18),
+                  firstDate: clock.yearsAgo(100),
+                  lastDate: clock.yearsAgo(0),
+                );
+              },
+              onDateSelected: (value) {
+                getIt<AccountBloc>().add(
+                  AccountEvent.birthdayChanged(birthday: value.toString()),
+                );
+              },
+            );
+          },
+          error: (error) => AppDateForm(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            helper: const Text('Дата рождения'),
+            initialValue: userSnapshot?.birthday,
+            onTap: () async {
+              await showDatePicker(
+                context: context,
+                initialDate: clock.yearsAgo(18),
+                firstDate: clock.yearsAgo(100),
+                lastDate: clock.yearsAgo(0),
+              );
+            },
+            onDateSelected: (value) {
+              getIt<AccountBloc>().add(
+                AccountEvent.birthdayChanged(birthday: value.toString()),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSaveButton(BuildContext context) {
+    return BlocBuilder<AccountBloc, AccountState>(
+      bloc: getIt<AccountBloc>(),
+      builder: (context, state) {
+        return state.when(
+          initial: (_, __, ___, ____, _____) {
             return const AppElevatedButton(
               marginButton: EdgeInsets.only(
                 left: 16,
@@ -154,7 +384,8 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               isDisable: true,
             );
           },
-          isDisabled: (isDisabled) {
+          formChanged:
+              (firstName, secondName, bitrhday, email, gender, status) {
             return AppElevatedButton(
               marginButton: const EdgeInsets.only(
                 left: 16,
@@ -163,21 +394,26 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                 bottom: 24,
               ),
               textButton: const Text('Сохранить'),
-              isDisable: isDisabled,
+              isDisable: !status,
               onPressed: () {
-                getIt<UserBloc>().add(UserEvent.updateUserData(
-                  user: user.copyWith(gender: genderGroup),
-                ));
-                if (!afterSignin) {
-                  context.pop();
-                } else {
-                  context.pop();
-                  context.pop();
-                  context.pop();
-                }
+                getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
+                context.pop();
               },
             );
           },
+          error: (error) => AppElevatedButton(
+            marginButton: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 32,
+              bottom: 24,
+            ),
+            textButton: const Text('Сохранить'),
+            onPressed: () {
+              getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
+              context.pop();
+            },
+          ),
         );
       },
     );
