@@ -31,9 +31,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     _LoginEventPhoneNumberChanged event,
     Emitter<LoginState> emit,
   ) async {
-    await getIt<AppMetricaService>().reportEventToAppMetrica(
-      eventName: 'Пользователь ввел номер телефона',
-    );
+    if (event.phoneNumber.isNotEmpty) {
+      await getIt<AppMetricaService>().reportEventToAppMetricaWithMap(
+        eventName: 'Пользователь ввел номер телефона',
+        attributes: {'номер телефона': event.phoneNumber},
+      );
+    }
     emit(LoginState.loaded(phoneNumber: event.phoneNumber));
   }
 

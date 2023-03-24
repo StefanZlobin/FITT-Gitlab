@@ -14,4 +14,19 @@ class AppMetricaServiceImpl implements AppMetricaService {
       );
     }
   }
+
+  @override
+  Future<void> reportEventToAppMetricaWithMap({
+    required String eventName,
+    required Map<String, Object>? attributes,
+  }) async {
+    try {
+      await AppMetrica.reportEventWithMap(eventName, attributes);
+    } on Exception catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+    }
+  }
 }
