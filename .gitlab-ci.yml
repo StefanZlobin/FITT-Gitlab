@@ -130,7 +130,7 @@ push-to-testflight:
     - cd ios
     - bundle install
   script:
-    - bundle exec fastlane run testflight app_version:"$BUILD_VERSION" ipa:"app-release.ipa"
+    - bundle exec fastlane run testflight app_version:$BUILD_VERSION ipa:app-release.ipa
   only:
    - development
   needs:
