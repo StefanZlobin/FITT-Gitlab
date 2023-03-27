@@ -23,15 +23,18 @@ versioning:
     then
       echo "BUILD_VERSION=$(release-it --ci --release-version | cut -d "-" -f 1)" >> version.env
       echo "BUILD_NUMBER=1000"  >> version.env
+      echo "ANDROID_TRACK=production"  >> version.env
       release-it --ci --changelog >> changelog.txt
     elif [[ $CI_BUILD_REF_NAME = "staging" ]]
     then
       echo "BUILD_VERSION=$(release-it --ci --release-version --preRelease | cut -d "-" -f 1)" >> version.env
       echo "BUILD_NUMBER=$(release-it --ci --release-version --preRelease | cut -d "-" -f 2)"  >> version.env
+      echo "ANDROID_TRACK=alfa"  >> version.env
       release-it --ci --changelog >> changelog.txt
     else
       echo "BUILD_VERSION=$(release-it --ci --release-version --preRelease | cut -d "-" -f 1)" >> version.env
       echo "BUILD_NUMBER=$(release-it --ci --release-version --preRelease | cut -d "-" -f 2)"  >> version.env
+      echo "ANDROID_TRACK=internal"  >> version.env
       release-it --ci --changelog >> changelog.txt
     fi
   only:
@@ -74,36 +77,17 @@ test:
  tags:
    - docker
 
-build-to-android-apk:
- stage: build
- before_script:
-   - flutter pub get
-   - flutter pub run build_runner build --delete-conflicting-outputs
- script:
-   - echo ${KEYSTORE_BASE64} | base64 -d > /tmp/upload-keystore.jks
-   - cp ${KEYFILE} ./android/key.properties
-   - flutter build apk --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
-   - mv build/app/outputs/flutter-apk/app-release.apk app-release.apk
- artifacts:
-   paths:
-     - app-release.apk
- tags:
-   - hard-work
-   - docker
- needs:
-   - versioning
- only:
-   - development
-
 build-to-android-aab:
  stage: build
  before_script:
-   - flutter pub get
-   - flutter pub run build_runner build --delete-conflicting-outputs
- script:
    - echo ${KEYSTORE_BASE64} | base64 -d > /tmp/upload-keystore.jks
-   - cp ${KEYFILE} ./android/key.properties
-   - flutter build appbundle --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
+   - cd android
+   - cp ${KEYFILE} ./key.properties
+   - bundle install
+ script:
+   - export $(bundle exec fastlane get_next_build_number | grep 'BUILD_NUMBER')
+   - bundle exec fastlane build_aab
+   - cd ..
    - mv build/app/outputs/bundle/release/app-release.aab app-release.aab
  artifacts:
    paths:
@@ -144,10 +128,11 @@ push-to-testflight:
   stage: release
   before_script: 
     - cd ios
+    - bundle install
+  script:
+    - bundle exec fastlane run testflight app_version:"$BUILD_VERSION" ipa:"app-release.ipa"
   only:
    - development
-  script:
-    - bundle exec fastlane run testflight app_version:"$BUILD_VERSION" build_number:"$BUILD_NUMBER" ipa:"app-release.ipa"
   needs:
     - job: build-to-ios
       artifacts: true
@@ -160,7 +145,7 @@ push-to-google_play:
     - cd android
     - bundle install
   script:
-    - AAB_FILE=../app-release.aab bundle exec fastlane beta
+    - AAB_FILE=../app-release.aab bundle exec fastlane deploy track:$ANDROID_TRACK
   only:
    - development
   needs:

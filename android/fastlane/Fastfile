@@ -21,22 +21,57 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    build_name = ENV['BUILD_VERSION']
+  lane :get_next_build_number do |options|
     json_key = ENV['GOOGLE_JSON_KEY']
-    aab_file = ENV['AAB_FILE']
-    previous_build_number = google_play_track_version_codes(
-      track: "internal",
-      json_key: json_key
-    )[0]
-    new_build_number = previous_build_number + 1
-    upload_to_play_store(track: 'internal', version_name:build_name, version_code:new_build_number, aab: aab_file, json_key: json_key)
+    track = options.fetch(:track, 'internal')
+    previous_build_number_internal = google_play_track_version_codes(
+      track: 'internal',
+      json_key:  json_key
+    )
+    previous_build_number_alfa = google_play_track_version_codes(
+      track: 'alpha',
+      json_key:  json_key
+    )
+    previous_build_number_production = google_play_track_version_codes(
+      track: 'production',
+      json_key:  json_key
+    )
+    previous_build_number = (previous_build_number_production+previous_build_number_alfa+previous_build_number_internal).max
+    build_number = previous_build_number + 1
+    print "BUILD_NUMBER=#{build_number}"
+  end
+
+  desc "Build new version app bundle"
+  lane :build_aab do
+    build_name = ENV['BUILD_VERSION']
+    build_number = ENV['BUILD_NUMBER']
+    api_host = ENV['API_HOST']
+    UI.message build_number 
+    UI.message build_name
+    UI.message api_host
+    Dir.chdir "../.." do
+      sh("flutter", "clean")
+      sh("flutter", "packages", "get")
+      sh("flutter", "pub", "run", "build_runner", "build", "--delete-conflicting-outputs",)
+      sh(
+        "flutter",
+        "build",
+        "appbundle",
+        "--release",
+        "--build-number=#{build_number}",
+        "--build-name=#{build_name}",
+        "--dart-define=API_HOST=#{api_host}",
+        )
+    end
   end
 
   desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  lane :deploy do |options|
+    build_name = ENV['BUILD_VERSION']
+    json_key = ENV['GOOGLE_JSON_KEY']
+    aab_file = ENV['AAB_FILE']
+    build_number = ENV['BUILD_NUMBER']
+    track = options.fetch(:track, 'internal')
+    upload_to_play_store(track: track, aab: aab_file, json_key: json_key)
   end
 end
