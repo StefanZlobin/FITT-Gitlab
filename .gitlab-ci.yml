@@ -16,6 +16,7 @@ versioning:
      GIT_DEPTH: 100
   before_script:
    - git checkout $CI_BUILD_REF_NAME
+   - git pull
    - npm install release-it @release-it/conventional-changelog -g
   script: 
    - |
@@ -138,6 +139,9 @@ push-to-testflight:
       artifacts: true
     - job: versioning
       artifacts: true
+  tags:
+   - ios
+   - raw-shell
  
 push-to-google_play:
   stage: release
