@@ -64,7 +64,8 @@ code_vesions:
    reports:
      dotenv: build_number.env
  tags:
-   - docker
+   - ios
+   - raw-shell
 
 code_quality:
  stage: analyze
