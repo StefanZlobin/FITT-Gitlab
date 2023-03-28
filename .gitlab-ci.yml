@@ -6,6 +6,10 @@ stages:
   - build
   - release
 
+variables:
+  GIT_STRATEGY: clone
+  GIT_DEPTH: 1
+
 before_script:
   - flutter pub get
 
@@ -14,6 +18,7 @@ versioning:
   stage: analyze
   variables:
      GIT_DEPTH: 100
+     GIT_STRATEGY: clone
   before_script:
    - git checkout $CI_BUILD_REF_NAME
    - git pull
@@ -23,18 +28,15 @@ versioning:
     if [[ $CI_BUILD_REF_NAME = "master" ]]
     then
       echo "BUILD_VERSION=$(release-it --ci --release-version | cut -d "-" -f 1)" >> version.env
-      echo "BUILD_NUMBER=1000"  >> version.env
       echo "ANDROID_TRACK=production"  >> version.env
       release-it --ci --changelog >> changelog.txt
     elif [[ $CI_BUILD_REF_NAME = "staging" ]]
     then
       echo "BUILD_VERSION=$(release-it --ci --release-version --preRelease | cut -d "-" -f 1)" >> version.env
-      echo "BUILD_NUMBER=$(release-it --ci --release-version --preRelease | cut -d "-" -f 2)"  >> version.env
       echo "ANDROID_TRACK=alfa"  >> version.env
       release-it --ci --changelog >> changelog.txt
     else
       echo "BUILD_VERSION=$(release-it --ci --release-version --preRelease | cut -d "-" -f 1)" >> version.env
-      echo "BUILD_NUMBER=$(release-it --ci --release-version --preRelease | cut -d "-" -f 2)"  >> version.env
       echo "ANDROID_TRACK=internal"  >> version.env
       release-it --ci --changelog >> changelog.txt
     fi
@@ -43,6 +45,26 @@ versioning:
   artifacts:
    reports:
      dotenv: version.env
+
+code_vesions:
+ stage: analyze
+ before_script: ['flutter pub get']
+ script:
+   - cd ios
+   - bundle install
+   - bundle exec fastlane get_next_build_number | grep 'IOS_BUILD_NUMBER' >> ../build_number.env
+   - cd ..
+   - cd android
+   - bundle install
+   - bundle exec fastlane get_next_build_number | grep 'ANDROID_BUILD_NUMBER' >> ../build_number.env
+   - cd ..
+   - export $(grep -v '^#' build_number.env | xargs)
+   - echo BUILD_NUMBER=$(echo "$ANDROID_BUILD_NUMBER\n$IOS_BUILD_NUMBER" | awk '{if(max==""){max=$1}; if($1>max) {max=$1}; } END {print max}') >> build_number.env
+ artifacts:
+   reports:
+     dotenv: build_number.env
+ tags:
+   - docker
 
 code_quality:
  stage: analyze
@@ -98,6 +120,7 @@ build-to-android-aab:
    - docker
  needs:
    - versioning
+   - code_vesions
  only:
    - development
 
@@ -107,18 +130,19 @@ build-to-ios:
     - flutter channel stable
     - flutter upgrade
     - flutter pub get
-    - flutter pub run build_runner build --delete-conflicting-outputs
     - cd ios
     - pod install --repo-update
     - cd ..
+    - flutter pub run build_runner build --delete-conflicting-outputs
   script:
-    - flutter build ipa --release --dart-define=API_HOST=$API_HOST --build-name=$BUILD_VERSION --build-number=$BUILD_NUMBER
+    - flutter build ipa --release --build-number=$BUILD_NUMBER --build-name=$BUILD_VERSION --dart-define=API_HOST=$API_HOST
     - mv build/ios/ipa/FITT.ipa app-release.ipa
   artifacts:
     paths:
       - app-release.ipa
   needs:
    - versioning
+   - code_vesions
   only:
    - development
   tags:
@@ -131,7 +155,7 @@ push-to-testflight:
     - cd ios
     - bundle install
   script:
-    - bundle exec fastlane run testflight app_version:$BUILD_VERSION ipa:../app-release.ipa
+    - IPA_FILE=../app-release.ipa bundle exec fastlane to_testflight
   only:
    - development
   needs:

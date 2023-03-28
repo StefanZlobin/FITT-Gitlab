@@ -38,7 +38,7 @@ platform :android do
     )
     previous_build_number = (previous_build_number_production+previous_build_number_alfa+previous_build_number_internal).max
     build_number = previous_build_number + 1
-    print "BUILD_NUMBER=#{build_number}"
+    print "ANDROID_BUILD_NUMBER=#{build_number}"
   end
 
   desc "Build new version app bundle"
