@@ -18,7 +18,7 @@ default_platform(:ios)
 platform :ios do
 
   lane :get_next_build_number do
-    previous_build_number = latest_testflight_build_number
+    previous_build_number = latest_testflight_build_number()
     build_number = previous_build_number + 1
     print "IOS_BUILD_NUMBER=#{build_number}"
   end
