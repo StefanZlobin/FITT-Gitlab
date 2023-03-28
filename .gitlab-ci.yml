@@ -41,7 +41,7 @@ versioning:
       echo "ANDROID_TRACK=internal"  >> version.env
       release-it --ci --changelog >> changelog.txt
     fi
-   - echo BUILD_NUMBER=$(echo "$ANDROID_BUILD_NUMBER\n$IOS_BUILD_NUMBER" | awk '{if(max==""){max=$1}; if($1>max) {max=$1}; } END {print max}') >> version.env
+   - echo BUILD_NUMBER=$(echo "$ANDROID_BUILD_NUMBER\\n$IOS_BUILD_NUMBER" | awk '{if(max==""){max=$1}; if($1>max) {max=$1}; } END {print max}') >> version.env
   only:
     - development
   needs:
