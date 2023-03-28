@@ -1,6 +1,7 @@
 image: cirrusci/flutter:3.7.1
 
 stages:
+  - prepare
   - analyze
   - test
   - build
@@ -40,32 +41,42 @@ versioning:
       echo "ANDROID_TRACK=internal"  >> version.env
       release-it --ci --changelog >> changelog.txt
     fi
+    - echo BUILD_NUMBER=$(echo "$ANDROID_BUILD_NUMBER\n$IOS_BUILD_NUMBER" | awk '{if(max==""){max=$1}; if($1>max) {max=$1}; } END {print max}') >> version.env
   only:
     - development
+  needs:
+   - code_vesions_ios
+   - code_vesions_android
   artifacts:
    reports:
      dotenv: version.env
 
-code_vesions:
+code_vesions_ios:
  stage: analyze
  before_script: ['flutter pub get']
  script:
    - cd ios
    - bundle install
-   - bundle exec fastlane get_next_build_number | grep 'IOS_BUILD_NUMBER' >> ../build_number.env
-   - cd ..
-   - cd android
-   - bundle install
-   - bundle exec fastlane get_next_build_number | grep 'ANDROID_BUILD_NUMBER' >> ../build_number.env
-   - cd ..
-   - export $(grep -v '^#' build_number.env | xargs)
-   - echo BUILD_NUMBER=$(echo "$ANDROID_BUILD_NUMBER\n$IOS_BUILD_NUMBER" | awk '{if(max==""){max=$1}; if($1>max) {max=$1}; } END {print max}') >> build_number.env
+   - bundle exec fastlane get_next_build_number | grep 'IOS_BUILD_NUMBER' >> ../build_number_ios.env
  artifacts:
    reports:
-     dotenv: build_number.env
+     dotenv: build_number_ios.env
  tags:
    - ios
    - raw-shell
+
+code_vesions_android:
+ stage: analyze
+ before_script: ['flutter pub get']
+ script:
+   - cd android
+   - bundle install
+   - bundle exec fastlane get_next_build_number | grep 'ANDROID_BUILD_NUMBER' >> ../build_number_android.env
+ artifacts:
+   reports:
+     dotenv: build_number_android.env
+ tags:
+   - docker
 
 code_quality:
  stage: analyze
@@ -109,7 +120,6 @@ build-to-android-aab:
    - cp ${KEYFILE} ./key.properties
    - bundle install
  script:
-   - export $(bundle exec fastlane get_next_build_number | grep 'BUILD_NUMBER')
    - bundle exec fastlane build_aab
    - cd ..
    - mv build/app/outputs/bundle/release/app-release.aab app-release.aab
@@ -121,7 +131,6 @@ build-to-android-aab:
    - docker
  needs:
    - versioning
-   - code_vesions
  only:
    - development
 
@@ -143,7 +152,6 @@ build-to-ios:
       - app-release.ipa
   needs:
    - versioning
-   - code_vesions
   only:
    - development
   tags:
