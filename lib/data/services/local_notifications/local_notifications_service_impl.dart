@@ -57,18 +57,17 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
     required Duration scheduleDuration,
   }) async {
     final isExist = await checkNotificationExist(id: id);
-    if (isExist && (title.isNotEmpty && body.isNotEmpty)) {
-      await localNotification.zonedSchedule(
-        id,
-        title,
-        body,
-        TZDateTime.now(local).add(scheduleDuration),
-        platformChannelSpecifics,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
-        androidAllowWhileIdle: true,
-      );
-    }
+    if (isExist && title.isEmpty && body.isEmpty) return;
+    await localNotification.zonedSchedule(
+      id,
+      title,
+      body,
+      TZDateTime.now(local).add(scheduleDuration),
+      platformChannelSpecifics,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      androidAllowWhileIdle: true,
+    );
   }
 
   @override
