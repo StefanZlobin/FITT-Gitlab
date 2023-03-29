@@ -1,7 +1,9 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/enum/user_role_enum.dart';
+import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/string_utils.dart' as string_utils;
 import 'package:fitt/domain/entities/user/anonymous_user.dart';
@@ -28,10 +30,40 @@ class User with _$User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  bool get hasFullData =>
-      string_utils.StringUtils.isNotEmpty(firstName) && string_utils.StringUtils.isNotEmpty(lastName);
+  UserProfile get userProfileForAppMetrica {
+    return UserProfile([
+      NameAttribute.withValue('$firstName $lastName'),
+      BirthDateAttribute.withAge(DateTime.now().year - birthday!.year),
+      StringAttribute.withValue('email', email),
+      StringAttribute.withValue('Номер телефона', phoneNumber),
+      GenderAttribute.withValue(
+        gender == UserGenderEnum.male
+            ? Gender.MALE
+            : gender == UserGenderEnum.female
+                ? Gender.FEMALE
+                : Gender.OTHER,
+      ),
+      StringAttribute.withValue(
+        'Дата рождения',
+        DateTimeUtils.dateFormatDetailed.format(birthday!).toString(),
+      ),
+      StringAttribute.withValue(
+        'Роль пользователя',
+        role == UserRoleEnum.administrator
+            ? 'Администратор'
+            : role == UserRoleEnum.customer
+                ? 'Пользователь'
+                : 'Аноним',
+      ),
+    ]);
+  }
 
-  String get userId => (phoneNumber != null) ? phoneNumber!.substring(8, 12) : '';
+  bool get hasFullData =>
+      string_utils.StringUtils.isNotEmpty(firstName) &&
+      string_utils.StringUtils.isNotEmpty(lastName);
+
+  String get userId =>
+      (phoneNumber != null) ? phoneNumber!.substring(8, 12) : '';
 
   //TODO удалить после сделанного блока аунтетификации
   bool get isLoggedIn => this is! AnonymousUser;

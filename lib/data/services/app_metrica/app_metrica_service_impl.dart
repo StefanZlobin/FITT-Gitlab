@@ -16,6 +16,27 @@ class AppMetricaServiceImpl implements AppMetricaService {
   }
 
   @override
+  Future<void> reportUserProfile({required UserProfile userProfile}) async {
+    try {
+      await AppMetrica.reportUserProfile(userProfile);
+    } on Exception catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
+  @override
+  Future<void> setUserProfileID({required String? profileId}) async {
+    try {
+      await AppMetrica.setUserProfileID(profileId);
+    } on Exception catch (e, stackTrace) {
+      await Sentry.captureException(e, stackTrace: stackTrace);
+    }
+  }
+
+  @override
   Future<void> reportEventToAppMetricaWithMap({
     required String eventName,
     required Map<String, Object>? attributes,

@@ -10,6 +10,7 @@ import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/authentication/auth_repository.dart';
 import 'package:fitt/domain/repositories/user/user_repository.dart';
+import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -41,6 +42,10 @@ class UserRepositoryImpl implements UserRepository {
     user = await _userLocalClient.getSignedUser();
     user ??= await getUserData();
     if (user != null) updateUser(user);
+    await getIt<AppMetricaService>()
+        .reportUserProfile(userProfile: userSnapshot!.userProfileForAppMetrica);
+    await getIt<AppMetricaService>()
+        .setUserProfileID(profileId: userSnapshot!.userId);
     return user;
   }
 

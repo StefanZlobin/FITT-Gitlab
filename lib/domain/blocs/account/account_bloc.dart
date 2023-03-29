@@ -219,6 +219,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
     );
     try {
       await userUserCase.updateUserData(user: userData);
+      await getIt<AppMetricaService>()
+          .reportUserProfile(userProfile: userData.userProfileForAppMetrica);
+      await getIt<AppMetricaService>()
+          .setUserProfileID(profileId: userSnapshot!.userId);
       getIt<UserBloc>().add(const UserEvent.checkUser());
       emit(const AccountState.initial());
     } on NetworkExceptions catch (e) {
