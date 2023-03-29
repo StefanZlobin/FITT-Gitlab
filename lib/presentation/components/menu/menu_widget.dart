@@ -25,7 +25,8 @@ class MenuWidget extends StatelessWidget with UserMixin {
               unknown: () => getIt<UserBloc>().add(const UserEvent.checkUser()),
               authenticated: () {
                 getIt<UserBloc>().add(const UserEvent.checkUser());
-                if (userSnapshot?.role == UserRoleEnum.administrator) {
+                if (userSnapshot?.role != UserRoleEnum.customer ||
+                    userSnapshot?.role != UserRoleEnum.anonymous) {
                   getIt<AdminClubsCubit>().getAdminClubs();
                 }
               },

@@ -17,7 +17,10 @@ class AdminClubsCubit extends Cubit<AdminClubsState> with UserMixin {
   Future<void> getAdminClubs() async {
     try {
       final adminClubs = await adminUseCase.getAdminClubs();
-      emit(_AdminClubsStateLoaded(adminClubs: adminClubs));
+      emit(_AdminClubsStateLoaded(
+        adminClubs: adminClubs,
+        nameOfOrganization: adminClubs.first.organization,
+      ));
     } on Exception catch (e) {
       emit(_AdminClubsStateError(error: e.toString()));
     }

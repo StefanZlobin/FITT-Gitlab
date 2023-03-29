@@ -19,21 +19,25 @@ mixin _$AdminClubsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AdminClub> adminClubs) loaded,
+    required TResult Function(
+            List<AdminClub> adminClubs, String nameOfOrganization)
+        loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<AdminClub> adminClubs)? loaded,
+    TResult? Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AdminClub> adminClubs)? loaded,
+    TResult Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -120,7 +124,9 @@ class _$_AdminClubsStateInitial implements _AdminClubsStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AdminClub> adminClubs) loaded,
+    required TResult Function(
+            List<AdminClub> adminClubs, String nameOfOrganization)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -130,7 +136,8 @@ class _$_AdminClubsStateInitial implements _AdminClubsStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<AdminClub> adminClubs)? loaded,
+    TResult? Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -140,7 +147,8 @@ class _$_AdminClubsStateInitial implements _AdminClubsStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AdminClub> adminClubs)? loaded,
+    TResult Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -195,7 +203,7 @@ abstract class _$$_AdminClubsStateLoadedCopyWith<$Res> {
           $Res Function(_$_AdminClubsStateLoaded) then) =
       __$$_AdminClubsStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<AdminClub> adminClubs});
+  $Res call({List<AdminClub> adminClubs, String nameOfOrganization});
 }
 
 /// @nodoc
@@ -210,12 +218,17 @@ class __$$_AdminClubsStateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? adminClubs = null,
+    Object? nameOfOrganization = null,
   }) {
     return _then(_$_AdminClubsStateLoaded(
       adminClubs: null == adminClubs
           ? _value._adminClubs
           : adminClubs // ignore: cast_nullable_to_non_nullable
               as List<AdminClub>,
+      nameOfOrganization: null == nameOfOrganization
+          ? _value.nameOfOrganization
+          : nameOfOrganization // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -223,7 +236,9 @@ class __$$_AdminClubsStateLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
-  const _$_AdminClubsStateLoaded({required final List<AdminClub> adminClubs})
+  const _$_AdminClubsStateLoaded(
+      {required final List<AdminClub> adminClubs,
+      required this.nameOfOrganization})
       : _adminClubs = adminClubs;
 
   final List<AdminClub> _adminClubs;
@@ -235,8 +250,11 @@ class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
   }
 
   @override
+  final String nameOfOrganization;
+
+  @override
   String toString() {
-    return 'AdminClubsState.loaded(adminClubs: $adminClubs)';
+    return 'AdminClubsState.loaded(adminClubs: $adminClubs, nameOfOrganization: $nameOfOrganization)';
   }
 
   @override
@@ -245,12 +263,14 @@ class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$_AdminClubsStateLoaded &&
             const DeepCollectionEquality()
-                .equals(other._adminClubs, _adminClubs));
+                .equals(other._adminClubs, _adminClubs) &&
+            (identical(other.nameOfOrganization, nameOfOrganization) ||
+                other.nameOfOrganization == nameOfOrganization));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_adminClubs));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_adminClubs), nameOfOrganization);
 
   @JsonKey(ignore: true)
   @override
@@ -263,32 +283,36 @@ class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AdminClub> adminClubs) loaded,
+    required TResult Function(
+            List<AdminClub> adminClubs, String nameOfOrganization)
+        loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(adminClubs);
+    return loaded(adminClubs, nameOfOrganization);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<AdminClub> adminClubs)? loaded,
+    TResult? Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(adminClubs);
+    return loaded?.call(adminClubs, nameOfOrganization);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AdminClub> adminClubs)? loaded,
+    TResult Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(adminClubs);
+      return loaded(adminClubs, nameOfOrganization);
     }
     return orElse();
   }
@@ -330,9 +354,11 @@ class _$_AdminClubsStateLoaded implements _AdminClubsStateLoaded {
 
 abstract class _AdminClubsStateLoaded implements AdminClubsState {
   const factory _AdminClubsStateLoaded(
-      {required final List<AdminClub> adminClubs}) = _$_AdminClubsStateLoaded;
+      {required final List<AdminClub> adminClubs,
+      required final String nameOfOrganization}) = _$_AdminClubsStateLoaded;
 
   List<AdminClub> get adminClubs;
+  String get nameOfOrganization;
   @JsonKey(ignore: true)
   _$$_AdminClubsStateLoadedCopyWith<_$_AdminClubsStateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -404,7 +430,9 @@ class _$_AdminClubsStateError implements _AdminClubsStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AdminClub> adminClubs) loaded,
+    required TResult Function(
+            List<AdminClub> adminClubs, String nameOfOrganization)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -414,7 +442,8 @@ class _$_AdminClubsStateError implements _AdminClubsStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<AdminClub> adminClubs)? loaded,
+    TResult? Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -424,7 +453,8 @@ class _$_AdminClubsStateError implements _AdminClubsStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AdminClub> adminClubs)? loaded,
+    TResult Function(List<AdminClub> adminClubs, String nameOfOrganization)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

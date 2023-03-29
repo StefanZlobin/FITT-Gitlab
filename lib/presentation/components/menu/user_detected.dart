@@ -33,14 +33,15 @@ class UserDetected extends StatelessWidget with UserMixin {
       children: [
         const UserAvatar(),
         //TODO: Если пользователь - администратор, то вывести доступные ему клубы
-        if (userSnapshot?.role == UserRoleEnum.administrator) ...[
+        if (userSnapshot?.role != UserRoleEnum.customer ||
+            userSnapshot?.role != UserRoleEnum.anonymous) ...[
           const Separator(),
           BlocBuilder<AdminClubsCubit, AdminClubsState>(
             bloc: getIt<AdminClubsCubit>(),
             builder: (context, state) {
               return state.when(
                 initial: () => const CircularProgressIndicator(),
-                loaded: (adminClubs) {
+                loaded: (adminClubs, nameOfOrganization) {
                   return AdminMenuTile(
                     onPressed: () {
                       getIt<AdminClubCubit>()
@@ -48,7 +49,8 @@ class UserDetected extends StatelessWidget with UserMixin {
                       context.push(AppRoute.adminWorkoutList.routeToPath);
                     },
                     title: Text(adminClubs.first.label),
-                    subtitle: const Text('Администратор'),
+                    subtitle: Text(userSnapshot!.role!
+                        .getUserRoleName(userSnapshot!.role!)),
                     trailing: const Icon(
                       AppIcons.arr_big_right,
                       size: 18,
