@@ -23,6 +23,7 @@ import 'package:fitt/presentation/pages/payment/payment_batch_succes_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_loading_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_reject_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_succes_page.dart';
+import 'package:fitt/presentation/pages/purchased_batch/purchased_batch_page.dart';
 import 'package:fitt/presentation/pages/sign_in/input_phone_number_page.dart';
 import 'package:fitt/presentation/pages/sign_in/input_secure_code_page.dart';
 import 'package:fitt/presentation/pages/workout/workout_page.dart';
@@ -247,6 +248,12 @@ class Routes {
       name: AppRoute.feedback.routeToName,
       builder: (context, state) =>
           const ShakeFeedbackWrapper(child: FeedbackPage()),
+    ),
+    GoRoute(
+      path: AppRoute.purchasedBatch.routeToPath,
+      name: AppRoute.purchasedBatch.routeToName,
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: PurchasedBatchPage()),
     ),
   ];
 

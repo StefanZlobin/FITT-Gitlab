@@ -12,6 +12,7 @@ class GetPartnerClubsRequestBody {
     this.maxPrice,
     this.minPrice,
     this.isFavorite = false,
+    this.withBatch = false,
     required this.poligon,
     required this.sorting,
   });
@@ -32,6 +33,8 @@ class GetPartnerClubsRequestBody {
   final String poligon;
   @JsonKey(name: 'only_favorite')
   final bool isFavorite;
+  @JsonKey(name: 'only_with_batch')
+  final bool withBatch;
 
   Map<String, dynamic> toJson() => _$GetPartnerClubsRequestBodyToJson(this);
 }

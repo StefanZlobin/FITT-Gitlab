@@ -10,10 +10,13 @@ part 'partner_club_api_client.g.dart';
 
 @RestApi()
 abstract class PartnerClubApiClient {
-  factory PartnerClubApiClient(Dio dio, {String? baseUrl}) = _PartnerClubApiClient;
+  factory PartnerClubApiClient(Dio dio, {String? baseUrl}) =
+      _PartnerClubApiClient;
 
   @GET('user/slots/{slot_id}')
-  Future<List<CalculatePrice>> getCalculatedPriceWorkout(@Path('slot_id') String slotUuid);
+  Future<List<CalculatePrice>> getCalculatedPriceWorkout(
+    @Path('slot_id') String slotUuid,
+  );
 
   @POST('user/clubs/{uuid}/favorite/')
   Future<PartnerClub> addClubToFavorites(@Path('uuid') String uuid);
@@ -32,4 +35,8 @@ abstract class PartnerClubApiClient {
     @Header('X-Position') String geolocation,
     @Queries() GetPartnerClubsRequestBody request,
   );
+
+  //TODO: реализовать метод отмены купленного пакета
+  @POST('')
+  Future<void> deletePurchasedBatch();
 }

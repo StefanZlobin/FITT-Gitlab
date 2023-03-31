@@ -8,6 +8,7 @@ import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -144,7 +145,7 @@ void _registerRepositories() {
   getIt.registerLazySingleton<WorkoutRepository>(
     () {
       _addTokenInterceptor();
-      
+
       return WorkoutRepositoryImpl(
         getIt(),
         baseUrl: Config.baseUrl,
@@ -264,4 +265,5 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AccountSaveButtonCubit>(
     () => AccountSaveButtonCubit(),
   );
+  getIt.registerLazySingleton<PurchasedBatchCubit>(() => PurchasedBatchCubit());
 }

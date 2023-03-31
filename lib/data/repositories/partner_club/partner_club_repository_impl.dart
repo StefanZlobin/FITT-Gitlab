@@ -110,6 +110,7 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
           poligon: polygon(northeast, southwest),
           sorting: clubSorting.convertSortingToField(clubSorting),
           isFavorite: clubFilters.favorite ?? false,
+          withBatch: clubFilters.onlyWithBatch ?? false,
         ),
       );
       return partnerClubs.results;
@@ -127,6 +128,19 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     try {
       final batches = await _apiClient.getClubBatches(clubUuid);
       return batches;
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
+  }
+
+  @override
+  Future<void> deletePurchasedBatch(int batchUuid) async {
+    try {
+      await _apiClient.deletePurchasedBatch();
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,

@@ -18,6 +18,7 @@ GetPartnerClubsRequestBody _$GetPartnerClubsRequestBodyFromJson(
       maxPrice: json['price_lte'] as int?,
       minPrice: json['price_gte'] as int?,
       isFavorite: json['only_favorite'] as bool? ?? false,
+      withBatch: json['only_with_batch'] as bool? ?? false,
       poligon: json['in_area'] as String,
       sorting: json['ordering'] as String,
     );
@@ -33,4 +34,5 @@ Map<String, dynamic> _$GetPartnerClubsRequestBodyToJson(
       'ordering': instance.sorting,
       'in_area': instance.poligon,
       'only_favorite': instance.isFavorite,
+      'only_with_batch': instance.withBatch,
     };
