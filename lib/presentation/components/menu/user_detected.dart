@@ -42,6 +42,7 @@ class UserDetected extends StatelessWidget with UserMixin {
               return state.when(
                 initial: () => const CircularProgressIndicator(),
                 loaded: (adminClubs, nameOfOrganization) {
+                  if (adminClubs.isEmpty) return const SizedBox();
                   return AdminMenuTile(
                     onPressed: () {
                       getIt<AdminClubCubit>()

@@ -38,7 +38,7 @@ class UserRepositoryImpl implements UserRepository {
   Future<User?> getSignedUser() async {
     await authRepository.getToken();
     User? user;
-    user = await _userLocalClient.getSignedUser();
+    //user = await _userLocalClient.getSignedUser();
     user ??= await getUserData();
     if (user != null) updateUser(user);
     return user;
