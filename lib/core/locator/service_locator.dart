@@ -1,13 +1,17 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:fitt/data/repositories/analytics/analytics_repository_impl.dart';
 import 'package:fitt/data/services/app_metrica/app_metrica_service_impl.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
+import 'package:fitt/domain/blocs/analytics/analytics_bloc.dart';
+import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -144,7 +148,7 @@ void _registerRepositories() {
   getIt.registerLazySingleton<WorkoutRepository>(
     () {
       _addTokenInterceptor();
-      
+
       return WorkoutRepositoryImpl(
         getIt(),
         baseUrl: Config.baseUrl,
@@ -176,6 +180,13 @@ void _registerRepositories() {
   getIt.registerLazySingleton<ResourceRepository>(
     () => ResourceRepositoryImpl(
       getIt(instanceName: 'no-token'),
+      baseUrl: Config.baseUrl,
+    ),
+  );
+
+  getIt.registerLazySingleton<AnalyticsRepository>(
+    () => AnalyticsRepositoryImpl(
+      getIt(),
       baseUrl: Config.baseUrl,
     ),
   );
@@ -263,5 +274,9 @@ void _registerBlocs() {
   getIt.registerLazySingleton<FeedbackCubit>(() => FeedbackCubit());
   getIt.registerLazySingleton<AccountSaveButtonCubit>(
     () => AccountSaveButtonCubit(),
+  );
+  getIt.registerLazySingleton<AnalyticsBloc>(() => AnalyticsBloc());
+  getIt.registerLazySingleton<AnalyticsFilteringBloc>(
+    () => AnalyticsFilteringBloc(),
   );
 }

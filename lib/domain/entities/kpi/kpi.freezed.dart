@@ -21,7 +21,7 @@ KPI _$KPIFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$KPI {
   /// KPI количества посетилей за какой-либо период
-  @JsonKey(name: 'visitors_count')
+  @JsonKey(name: 'customers_count')
   int get visitorsCount => throw _privateConstructorUsedError;
 
   /// KPI выручки за какой-либо период
@@ -29,19 +29,19 @@ mixin _$KPI {
   double get revenue => throw _privateConstructorUsedError;
 
   /// KPI длительности часов за какой-либо период
-  @JsonKey(name: 'duration_of_hours')
+  @JsonKey(name: 'hours')
   double get durationOfHours => throw _privateConstructorUsedError;
 
   /// KPI средней стоимости часа за какой-либо период
-  @JsonKey(name: 'average_cost_per_hour')
+  @JsonKey(name: 'avg_cost')
   double get averageCostPerHour => throw _privateConstructorUsedError;
 
   /// KPI динамика посетилей (измеряется в %) за какой-либо период
-  @JsonKey(name: 'dynamics_of_visitors')
+  @JsonKey(name: 'customers_count_dynamic_prev_period')
   double get dynamicsOfVisitors => throw _privateConstructorUsedError;
 
   /// KPI динамика выручки (измеряется в %) за какой-либо период
-  @JsonKey(name: 'revenue_dynamics')
+  @JsonKey(name: 'revenue_dynamic_prev_period')
   double get revenueDynamics => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,12 +55,18 @@ abstract class $KPICopyWith<$Res> {
       _$KPICopyWithImpl<$Res, KPI>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'visitors_count') int visitorsCount,
-      @JsonKey(name: 'revenue') double revenue,
-      @JsonKey(name: 'duration_of_hours') double durationOfHours,
-      @JsonKey(name: 'average_cost_per_hour') double averageCostPerHour,
-      @JsonKey(name: 'dynamics_of_visitors') double dynamicsOfVisitors,
-      @JsonKey(name: 'revenue_dynamics') double revenueDynamics});
+      {@JsonKey(name: 'customers_count')
+          int visitorsCount,
+      @JsonKey(name: 'revenue')
+          double revenue,
+      @JsonKey(name: 'hours')
+          double durationOfHours,
+      @JsonKey(name: 'avg_cost')
+          double averageCostPerHour,
+      @JsonKey(name: 'customers_count_dynamic_prev_period')
+          double dynamicsOfVisitors,
+      @JsonKey(name: 'revenue_dynamic_prev_period')
+          double revenueDynamics});
 }
 
 /// @nodoc
@@ -118,12 +124,18 @@ abstract class _$$_KPICopyWith<$Res> implements $KPICopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'visitors_count') int visitorsCount,
-      @JsonKey(name: 'revenue') double revenue,
-      @JsonKey(name: 'duration_of_hours') double durationOfHours,
-      @JsonKey(name: 'average_cost_per_hour') double averageCostPerHour,
-      @JsonKey(name: 'dynamics_of_visitors') double dynamicsOfVisitors,
-      @JsonKey(name: 'revenue_dynamics') double revenueDynamics});
+      {@JsonKey(name: 'customers_count')
+          int visitorsCount,
+      @JsonKey(name: 'revenue')
+          double revenue,
+      @JsonKey(name: 'hours')
+          double durationOfHours,
+      @JsonKey(name: 'avg_cost')
+          double averageCostPerHour,
+      @JsonKey(name: 'customers_count_dynamic_prev_period')
+          double dynamicsOfVisitors,
+      @JsonKey(name: 'revenue_dynamic_prev_period')
+          double revenueDynamics});
 }
 
 /// @nodoc
@@ -175,18 +187,24 @@ class __$$_KPICopyWithImpl<$Res> extends _$KPICopyWithImpl<$Res, _$_KPI>
 @JsonSerializable()
 class _$_KPI implements _KPI {
   const _$_KPI(
-      {@JsonKey(name: 'visitors_count') this.visitorsCount = 0,
-      @JsonKey(name: 'revenue') this.revenue = 0,
-      @JsonKey(name: 'duration_of_hours') this.durationOfHours = 0,
-      @JsonKey(name: 'average_cost_per_hour') this.averageCostPerHour = 0,
-      @JsonKey(name: 'dynamics_of_visitors') this.dynamicsOfVisitors = 0,
-      @JsonKey(name: 'revenue_dynamics') this.revenueDynamics = 0});
+      {@JsonKey(name: 'customers_count')
+          this.visitorsCount = 0,
+      @JsonKey(name: 'revenue')
+          this.revenue = 0,
+      @JsonKey(name: 'hours')
+          this.durationOfHours = 0,
+      @JsonKey(name: 'avg_cost')
+          this.averageCostPerHour = 0,
+      @JsonKey(name: 'customers_count_dynamic_prev_period')
+          this.dynamicsOfVisitors = 0,
+      @JsonKey(name: 'revenue_dynamic_prev_period')
+          this.revenueDynamics = 0});
 
   factory _$_KPI.fromJson(Map<String, dynamic> json) => _$$_KPIFromJson(json);
 
   /// KPI количества посетилей за какой-либо период
   @override
-  @JsonKey(name: 'visitors_count')
+  @JsonKey(name: 'customers_count')
   final int visitorsCount;
 
   /// KPI выручки за какой-либо период
@@ -196,22 +214,22 @@ class _$_KPI implements _KPI {
 
   /// KPI длительности часов за какой-либо период
   @override
-  @JsonKey(name: 'duration_of_hours')
+  @JsonKey(name: 'hours')
   final double durationOfHours;
 
   /// KPI средней стоимости часа за какой-либо период
   @override
-  @JsonKey(name: 'average_cost_per_hour')
+  @JsonKey(name: 'avg_cost')
   final double averageCostPerHour;
 
   /// KPI динамика посетилей (измеряется в %) за какой-либо период
   @override
-  @JsonKey(name: 'dynamics_of_visitors')
+  @JsonKey(name: 'customers_count_dynamic_prev_period')
   final double dynamicsOfVisitors;
 
   /// KPI динамика выручки (измеряется в %) за какой-либо период
   @override
-  @JsonKey(name: 'revenue_dynamics')
+  @JsonKey(name: 'revenue_dynamic_prev_period')
   final double revenueDynamics;
 
   @override
@@ -258,17 +276,17 @@ class _$_KPI implements _KPI {
 
 abstract class _KPI implements KPI {
   const factory _KPI(
-      {@JsonKey(name: 'visitors_count')
+      {@JsonKey(name: 'customers_count')
           final int visitorsCount,
       @JsonKey(name: 'revenue')
           final double revenue,
-      @JsonKey(name: 'duration_of_hours')
+      @JsonKey(name: 'hours')
           final double durationOfHours,
-      @JsonKey(name: 'average_cost_per_hour')
+      @JsonKey(name: 'avg_cost')
           final double averageCostPerHour,
-      @JsonKey(name: 'dynamics_of_visitors')
+      @JsonKey(name: 'customers_count_dynamic_prev_period')
           final double dynamicsOfVisitors,
-      @JsonKey(name: 'revenue_dynamics')
+      @JsonKey(name: 'revenue_dynamic_prev_period')
           final double revenueDynamics}) = _$_KPI;
 
   factory _KPI.fromJson(Map<String, dynamic> json) = _$_KPI.fromJson;
@@ -276,7 +294,7 @@ abstract class _KPI implements KPI {
   @override
 
   /// KPI количества посетилей за какой-либо период
-  @JsonKey(name: 'visitors_count')
+  @JsonKey(name: 'customers_count')
   int get visitorsCount;
   @override
 
@@ -286,22 +304,22 @@ abstract class _KPI implements KPI {
   @override
 
   /// KPI длительности часов за какой-либо период
-  @JsonKey(name: 'duration_of_hours')
+  @JsonKey(name: 'hours')
   double get durationOfHours;
   @override
 
   /// KPI средней стоимости часа за какой-либо период
-  @JsonKey(name: 'average_cost_per_hour')
+  @JsonKey(name: 'avg_cost')
   double get averageCostPerHour;
   @override
 
   /// KPI динамика посетилей (измеряется в %) за какой-либо период
-  @JsonKey(name: 'dynamics_of_visitors')
+  @JsonKey(name: 'customers_count_dynamic_prev_period')
   double get dynamicsOfVisitors;
   @override
 
   /// KPI динамика выручки (измеряется в %) за какой-либо период
-  @JsonKey(name: 'revenue_dynamics')
+  @JsonKey(name: 'revenue_dynamic_prev_period')
   double get revenueDynamics;
   @override
   @JsonKey(ignore: true)

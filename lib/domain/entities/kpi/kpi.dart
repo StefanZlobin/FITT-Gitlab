@@ -9,26 +9,26 @@ part 'kpi.g.dart';
 class KPI with _$KPI {
   const factory KPI({
     /// KPI количества посетилей за какой-либо период
-    @JsonKey(name: 'visitors_count') @Default(0) int visitorsCount,
+    @JsonKey(name: 'customers_count') @Default(0) int visitorsCount,
 
     /// KPI выручки за какой-либо период
     @JsonKey(name: 'revenue') @Default(0) double revenue,
 
     /// KPI длительности часов за какой-либо период
-    @JsonKey(name: 'duration_of_hours') @Default(0) double durationOfHours,
+    @JsonKey(name: 'hours') @Default(0) double durationOfHours,
 
     /// KPI средней стоимости часа за какой-либо период
-    @JsonKey(name: 'average_cost_per_hour')
-    @Default(0)
-        double averageCostPerHour,
+    @JsonKey(name: 'avg_cost') @Default(0) double averageCostPerHour,
 
     /// KPI динамика посетилей (измеряется в %) за какой-либо период
-    @JsonKey(name: 'dynamics_of_visitors')
+    @JsonKey(name: 'customers_count_dynamic_prev_period')
     @Default(0)
         double dynamicsOfVisitors,
 
     /// KPI динамика выручки (измеряется в %) за какой-либо период
-    @JsonKey(name: 'revenue_dynamics') @Default(0) double revenueDynamics,
+    @JsonKey(name: 'revenue_dynamic_prev_period')
+    @Default(0)
+        double revenueDynamics,
   }) = _KPI;
 
   factory KPI.fromJson(Map<String, dynamic> json) => _$KPIFromJson(json);
