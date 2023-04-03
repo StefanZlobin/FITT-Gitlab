@@ -27,11 +27,13 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
   @override
   Future<KPI> getClubsKPI({required AnalyticsFilters analyticsFilters}) async {
     try {
-      final analytics = await _apiClient.getAnalytics(
+      final analytics = await _apiClient.getDashboard(
         GetAnalyticsRequestBody(
           timeSlice: analyticsFilters.timeSlice
               .timeSliceToField(analyticsFilters.timeSlice),
           clubsUuid: analyticsFilters.clubsUuid,
+          startDate: analyticsFilters.startDate,
+          endDate: analyticsFilters.endDate,
         ),
       );
       updateAnalytics(analytics);

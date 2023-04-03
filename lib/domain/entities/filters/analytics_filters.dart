@@ -13,6 +13,8 @@ class AnalyticsFilters with _$AnalyticsFilters {
     @JsonKey(name: 'slice')
     @Default(TimeSliceEnum.week)
         TimeSliceEnum timeSlice,
+    @JsonKey(name: 'start_date') required DateTime startDate,
+    @JsonKey(name: 'end_date') required DateTime endDate,
   }) = _AnalyticsFilters;
 
   factory AnalyticsFilters.fromJson(Map<String, dynamic> json) =>

@@ -12,6 +12,8 @@ GetAnalyticsRequestBody _$GetAnalyticsRequestBodyFromJson(
       timeSlice: json['slice'] as String,
       clubsUuid:
           (json['club_ids'] as List<dynamic>).map((e) => e as String).toList(),
+      startDate: DateTime.parse(json['start_date'] as String),
+      endDate: DateTime.parse(json['end_date'] as String),
     );
 
 Map<String, dynamic> _$GetAnalyticsRequestBodyToJson(
@@ -19,4 +21,6 @@ Map<String, dynamic> _$GetAnalyticsRequestBodyToJson(
     <String, dynamic>{
       'slice': instance.timeSlice,
       'club_ids': instance.clubsUuid,
+      'start_date': instance.startDate.toIso8601String(),
+      'end_date': instance.endDate.toIso8601String(),
     };

@@ -22,7 +22,8 @@ _$_AdminClub _$$_AdminClubFromJson(Map<String, dynamic> json) => _$_AdminClub(
       status: json['status'] as String,
       email: json['email'] as String?,
       phone: json['phone'] as String,
-      organization: json['organization'] as String,
+      organization: OrganizationShortInfo.fromJson(
+          json['organization'] as Map<String, dynamic>),
       address: json['address'] as String?,
       facilities:
           (json['facilities'] as List<dynamic>?)?.map((e) => e as int).toList(),

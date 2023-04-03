@@ -10,5 +10,8 @@ abstract class AnalyticsApiClient {
   factory AnalyticsApiClient(Dio dio, {String? baseUrl}) = _AnalyticsApiClient;
 
   @GET('staff/clubs-analysis/dashboard/')
-  Future<KPI> getAnalytics(@Queries() GetAnalyticsRequestBody request);
+  Future<KPI> getDashboard(@Queries() GetAnalyticsRequestBody request);
+
+  @GET('staff/clubs-analysis/workout_charts/')
+  Future<KPI> get(@Queries() GetAnalyticsRequestBody request);
 }

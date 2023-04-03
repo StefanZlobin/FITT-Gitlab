@@ -24,6 +24,10 @@ mixin _$AnalyticsFilters {
   List<String> get clubsUuid => throw _privateConstructorUsedError;
   @JsonKey(name: 'slice')
   TimeSliceEnum get timeSlice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'start_date')
+  DateTime get startDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'end_date')
+  DateTime get endDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +43,9 @@ abstract class $AnalyticsFiltersCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'club_ids') List<String> clubsUuid,
-      @JsonKey(name: 'slice') TimeSliceEnum timeSlice});
+      @JsonKey(name: 'slice') TimeSliceEnum timeSlice,
+      @JsonKey(name: 'start_date') DateTime startDate,
+      @JsonKey(name: 'end_date') DateTime endDate});
 }
 
 /// @nodoc
@@ -57,6 +63,8 @@ class _$AnalyticsFiltersCopyWithImpl<$Res, $Val extends AnalyticsFilters>
   $Res call({
     Object? clubsUuid = null,
     Object? timeSlice = null,
+    Object? startDate = null,
+    Object? endDate = null,
   }) {
     return _then(_value.copyWith(
       clubsUuid: null == clubsUuid
@@ -67,6 +75,14 @@ class _$AnalyticsFiltersCopyWithImpl<$Res, $Val extends AnalyticsFilters>
           ? _value.timeSlice
           : timeSlice // ignore: cast_nullable_to_non_nullable
               as TimeSliceEnum,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: null == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -81,7 +97,9 @@ abstract class _$$_AnalyticsFiltersCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'club_ids') List<String> clubsUuid,
-      @JsonKey(name: 'slice') TimeSliceEnum timeSlice});
+      @JsonKey(name: 'slice') TimeSliceEnum timeSlice,
+      @JsonKey(name: 'start_date') DateTime startDate,
+      @JsonKey(name: 'end_date') DateTime endDate});
 }
 
 /// @nodoc
@@ -97,6 +115,8 @@ class __$$_AnalyticsFiltersCopyWithImpl<$Res>
   $Res call({
     Object? clubsUuid = null,
     Object? timeSlice = null,
+    Object? startDate = null,
+    Object? endDate = null,
   }) {
     return _then(_$_AnalyticsFilters(
       clubsUuid: null == clubsUuid
@@ -107,6 +127,14 @@ class __$$_AnalyticsFiltersCopyWithImpl<$Res>
           ? _value.timeSlice
           : timeSlice // ignore: cast_nullable_to_non_nullable
               as TimeSliceEnum,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: null == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -118,7 +146,11 @@ class _$_AnalyticsFilters implements _AnalyticsFilters {
       {@JsonKey(name: 'club_ids')
           final List<String> clubsUuid = const <String>[],
       @JsonKey(name: 'slice')
-          this.timeSlice = TimeSliceEnum.week})
+          this.timeSlice = TimeSliceEnum.week,
+      @JsonKey(name: 'start_date')
+          required this.startDate,
+      @JsonKey(name: 'end_date')
+          required this.endDate})
       : _clubsUuid = clubsUuid;
 
   factory _$_AnalyticsFilters.fromJson(Map<String, dynamic> json) =>
@@ -136,10 +168,16 @@ class _$_AnalyticsFilters implements _AnalyticsFilters {
   @override
   @JsonKey(name: 'slice')
   final TimeSliceEnum timeSlice;
+  @override
+  @JsonKey(name: 'start_date')
+  final DateTime startDate;
+  @override
+  @JsonKey(name: 'end_date')
+  final DateTime endDate;
 
   @override
   String toString() {
-    return 'AnalyticsFilters(clubsUuid: $clubsUuid, timeSlice: $timeSlice)';
+    return 'AnalyticsFilters(clubsUuid: $clubsUuid, timeSlice: $timeSlice, startDate: $startDate, endDate: $endDate)';
   }
 
   @override
@@ -150,13 +188,20 @@ class _$_AnalyticsFilters implements _AnalyticsFilters {
             const DeepCollectionEquality()
                 .equals(other._clubsUuid, _clubsUuid) &&
             (identical(other.timeSlice, timeSlice) ||
-                other.timeSlice == timeSlice));
+                other.timeSlice == timeSlice) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.endDate, endDate) || other.endDate == endDate));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_clubsUuid), timeSlice);
+      runtimeType,
+      const DeepCollectionEquality().hash(_clubsUuid),
+      timeSlice,
+      startDate,
+      endDate);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +220,9 @@ class _$_AnalyticsFilters implements _AnalyticsFilters {
 abstract class _AnalyticsFilters implements AnalyticsFilters {
   const factory _AnalyticsFilters(
           {@JsonKey(name: 'club_ids') final List<String> clubsUuid,
-          @JsonKey(name: 'slice') final TimeSliceEnum timeSlice}) =
+          @JsonKey(name: 'slice') final TimeSliceEnum timeSlice,
+          @JsonKey(name: 'start_date') required final DateTime startDate,
+          @JsonKey(name: 'end_date') required final DateTime endDate}) =
       _$_AnalyticsFilters;
 
   factory _AnalyticsFilters.fromJson(Map<String, dynamic> json) =
@@ -187,6 +234,12 @@ abstract class _AnalyticsFilters implements AnalyticsFilters {
   @override
   @JsonKey(name: 'slice')
   TimeSliceEnum get timeSlice;
+  @override
+  @JsonKey(name: 'start_date')
+  DateTime get startDate;
+  @override
+  @JsonKey(name: 'end_date')
+  DateTime get endDate;
   @override
   @JsonKey(ignore: true)
   _$$_AnalyticsFiltersCopyWith<_$_AnalyticsFilters> get copyWith =>

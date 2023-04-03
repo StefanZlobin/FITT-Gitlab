@@ -32,6 +32,8 @@ class AnalyticsFilteringBloc
     analyticsUseCase.getAnalytics(
       analyticsFilters: AnalyticsFilters(
         timeSlice: event.timeSlice,
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
       ),
     );
     emit(stateLoaded.copyWith(timeSlice: event.timeSlice));
@@ -42,7 +44,11 @@ class AnalyticsFilteringBloc
     Emitter<AnalyticsFilteringState> emit,
   ) {
     analyticsUseCase.getAnalytics(
-      analyticsFilters: AnalyticsFilters(clubsUuid: event.clubsUuid),
+      analyticsFilters: AnalyticsFilters(
+        clubsUuid: event.clubsUuid,
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+      ),
     );
     emit(stateLoaded.copyWith(clubsUuid: event.clubsUuid));
   }
