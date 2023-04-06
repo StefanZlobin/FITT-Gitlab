@@ -6,6 +6,10 @@ class AnalyticsFilteringEvent with _$AnalyticsFilteringEvent {
     required TimeSliceEnum timeSlice,
   }) = _AnalyticsFilteringEventTimeSliceChanged;
   const factory AnalyticsFilteringEvent.selectedClubsChanged({
-    required List<String> clubsUuid,
+    required String clubUuidSelected,
   }) = _AnalyticsFilteringEventSelectedClubsChanged;
+  const factory AnalyticsFilteringEvent.dateRangeChanged({
+    required TimeSliceEnum timeSlice,
+    required DateTime selectedDate,
+  }) = _AnalyticsFilteringEventDateRangeChanged;
 }

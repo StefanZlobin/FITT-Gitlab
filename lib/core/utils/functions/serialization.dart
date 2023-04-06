@@ -81,6 +81,11 @@ String? timeToStringNullable(DateTime? data) {
   return data == null ? null : timeToString(data);
 }
 
+String timeToFormattedString(DateTime data) {
+  final res = dateFormat.format(data);
+  return res;
+}
+
 class DurationConverter implements JsonConverter<Duration, int> {
   const DurationConverter();
 

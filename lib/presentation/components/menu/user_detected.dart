@@ -53,14 +53,9 @@ class UserDetected extends StatelessWidget with UserMixin {
                           .add(const AnalyticsFilteringEvent.timeSliceChanged(
                         timeSlice: TimeSliceEnum.week,
                       ));
-                      getIt<AnalyticsFilteringBloc>().add(
-                        const AnalyticsFilteringEvent.selectedClubsChanged(
-                          clubsUuid: ['4868de4d-cf57-4f97-a0b4-1eb4103c711b'],
-                        ),
-                      );
                       context.push(AppRoute.analytics.routeToPath);
                     },
-                    title: Text(adminClubs.first.label),
+                    title: Text(nameOfOrganization),
                     subtitle: Text(userSnapshot!.role!
                         .getUserRoleName(userSnapshot!.role!)),
                     trailing: const Icon(

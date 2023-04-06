@@ -24,9 +24,9 @@ mixin _$AnalyticsFilters {
   List<String> get clubsUuid => throw _privateConstructorUsedError;
   @JsonKey(name: 'slice')
   TimeSliceEnum get timeSlice => throw _privateConstructorUsedError;
-  @JsonKey(name: 'start_date')
+  @JsonKey(name: 'start_date', toJson: timeToFormattedString)
   DateTime get startDate => throw _privateConstructorUsedError;
-  @JsonKey(name: 'end_date')
+  @JsonKey(name: 'end_date', toJson: timeToFormattedString)
   DateTime get endDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,10 +42,14 @@ abstract class $AnalyticsFiltersCopyWith<$Res> {
       _$AnalyticsFiltersCopyWithImpl<$Res, AnalyticsFilters>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'club_ids') List<String> clubsUuid,
-      @JsonKey(name: 'slice') TimeSliceEnum timeSlice,
-      @JsonKey(name: 'start_date') DateTime startDate,
-      @JsonKey(name: 'end_date') DateTime endDate});
+      {@JsonKey(name: 'club_ids')
+          List<String> clubsUuid,
+      @JsonKey(name: 'slice')
+          TimeSliceEnum timeSlice,
+      @JsonKey(name: 'start_date', toJson: timeToFormattedString)
+          DateTime startDate,
+      @JsonKey(name: 'end_date', toJson: timeToFormattedString)
+          DateTime endDate});
 }
 
 /// @nodoc
@@ -96,10 +100,14 @@ abstract class _$$_AnalyticsFiltersCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'club_ids') List<String> clubsUuid,
-      @JsonKey(name: 'slice') TimeSliceEnum timeSlice,
-      @JsonKey(name: 'start_date') DateTime startDate,
-      @JsonKey(name: 'end_date') DateTime endDate});
+      {@JsonKey(name: 'club_ids')
+          List<String> clubsUuid,
+      @JsonKey(name: 'slice')
+          TimeSliceEnum timeSlice,
+      @JsonKey(name: 'start_date', toJson: timeToFormattedString)
+          DateTime startDate,
+      @JsonKey(name: 'end_date', toJson: timeToFormattedString)
+          DateTime endDate});
 }
 
 /// @nodoc
@@ -147,9 +155,9 @@ class _$_AnalyticsFilters implements _AnalyticsFilters {
           final List<String> clubsUuid = const <String>[],
       @JsonKey(name: 'slice')
           this.timeSlice = TimeSliceEnum.week,
-      @JsonKey(name: 'start_date')
+      @JsonKey(name: 'start_date', toJson: timeToFormattedString)
           required this.startDate,
-      @JsonKey(name: 'end_date')
+      @JsonKey(name: 'end_date', toJson: timeToFormattedString)
           required this.endDate})
       : _clubsUuid = clubsUuid;
 
@@ -169,10 +177,10 @@ class _$_AnalyticsFilters implements _AnalyticsFilters {
   @JsonKey(name: 'slice')
   final TimeSliceEnum timeSlice;
   @override
-  @JsonKey(name: 'start_date')
+  @JsonKey(name: 'start_date', toJson: timeToFormattedString)
   final DateTime startDate;
   @override
-  @JsonKey(name: 'end_date')
+  @JsonKey(name: 'end_date', toJson: timeToFormattedString)
   final DateTime endDate;
 
   @override
@@ -219,11 +227,14 @@ class _$_AnalyticsFilters implements _AnalyticsFilters {
 
 abstract class _AnalyticsFilters implements AnalyticsFilters {
   const factory _AnalyticsFilters(
-          {@JsonKey(name: 'club_ids') final List<String> clubsUuid,
-          @JsonKey(name: 'slice') final TimeSliceEnum timeSlice,
-          @JsonKey(name: 'start_date') required final DateTime startDate,
-          @JsonKey(name: 'end_date') required final DateTime endDate}) =
-      _$_AnalyticsFilters;
+      {@JsonKey(name: 'club_ids')
+          final List<String> clubsUuid,
+      @JsonKey(name: 'slice')
+          final TimeSliceEnum timeSlice,
+      @JsonKey(name: 'start_date', toJson: timeToFormattedString)
+          required final DateTime startDate,
+      @JsonKey(name: 'end_date', toJson: timeToFormattedString)
+          required final DateTime endDate}) = _$_AnalyticsFilters;
 
   factory _AnalyticsFilters.fromJson(Map<String, dynamic> json) =
       _$_AnalyticsFilters.fromJson;
@@ -235,10 +246,10 @@ abstract class _AnalyticsFilters implements AnalyticsFilters {
   @JsonKey(name: 'slice')
   TimeSliceEnum get timeSlice;
   @override
-  @JsonKey(name: 'start_date')
+  @JsonKey(name: 'start_date', toJson: timeToFormattedString)
   DateTime get startDate;
   @override
-  @JsonKey(name: 'end_date')
+  @JsonKey(name: 'end_date', toJson: timeToFormattedString)
   DateTime get endDate;
   @override
   @JsonKey(ignore: true)

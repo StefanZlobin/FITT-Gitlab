@@ -21,6 +21,6 @@ Map<String, dynamic> _$GetAnalyticsRequestBodyToJson(
     <String, dynamic>{
       'slice': instance.timeSlice,
       'club_ids': instance.clubsUuid,
-      'start_date': instance.startDate.toIso8601String(),
-      'end_date': instance.endDate.toIso8601String(),
+      'start_date': timeToFormattedString(instance.startDate),
+      'end_date': timeToFormattedString(instance.endDate),
     };

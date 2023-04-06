@@ -22,8 +22,8 @@ Map<String, dynamic> _$$_AnalyticsFiltersToJson(_$_AnalyticsFilters instance) =>
     <String, dynamic>{
       'club_ids': instance.clubsUuid,
       'slice': _$TimeSliceEnumEnumMap[instance.timeSlice]!,
-      'start_date': instance.startDate.toIso8601String(),
-      'end_date': instance.endDate.toIso8601String(),
+      'start_date': timeToFormattedString(instance.startDate),
+      'end_date': timeToFormattedString(instance.endDate),
     };
 
 const _$TimeSliceEnumEnumMap = {

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'analytics_bloc.dart';
+part of 'analytics_kpi_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$AnalyticsEvent {
+mixin _$AnalyticsKPIEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AnalyticsFilters analyticsFilters) started,
@@ -37,36 +37,36 @@ mixin _$AnalyticsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnalyticsEventStarted value) started,
-    required TResult Function(_AnalyticsEventKPIChanged value) kpiChanged,
+    required TResult Function(_AnalyticsKPIEventStarted value) started,
+    required TResult Function(_AnalyticsKPIEventChanged value) kpiChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AnalyticsEventStarted value)? started,
-    TResult? Function(_AnalyticsEventKPIChanged value)? kpiChanged,
+    TResult? Function(_AnalyticsKPIEventStarted value)? started,
+    TResult? Function(_AnalyticsKPIEventChanged value)? kpiChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AnalyticsEventStarted value)? started,
-    TResult Function(_AnalyticsEventKPIChanged value)? kpiChanged,
+    TResult Function(_AnalyticsKPIEventStarted value)? started,
+    TResult Function(_AnalyticsKPIEventChanged value)? kpiChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AnalyticsEventCopyWith<$Res> {
-  factory $AnalyticsEventCopyWith(
-          AnalyticsEvent value, $Res Function(AnalyticsEvent) then) =
-      _$AnalyticsEventCopyWithImpl<$Res, AnalyticsEvent>;
+abstract class $AnalyticsKPIEventCopyWith<$Res> {
+  factory $AnalyticsKPIEventCopyWith(
+          AnalyticsKPIEvent value, $Res Function(AnalyticsKPIEvent) then) =
+      _$AnalyticsKPIEventCopyWithImpl<$Res, AnalyticsKPIEvent>;
 }
 
 /// @nodoc
-class _$AnalyticsEventCopyWithImpl<$Res, $Val extends AnalyticsEvent>
-    implements $AnalyticsEventCopyWith<$Res> {
-  _$AnalyticsEventCopyWithImpl(this._value, this._then);
+class _$AnalyticsKPIEventCopyWithImpl<$Res, $Val extends AnalyticsKPIEvent>
+    implements $AnalyticsKPIEventCopyWith<$Res> {
+  _$AnalyticsKPIEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,10 +75,11 @@ class _$AnalyticsEventCopyWithImpl<$Res, $Val extends AnalyticsEvent>
 }
 
 /// @nodoc
-abstract class _$$_AnalyticsEventStartedCopyWith<$Res> {
-  factory _$$_AnalyticsEventStartedCopyWith(_$_AnalyticsEventStarted value,
-          $Res Function(_$_AnalyticsEventStarted) then) =
-      __$$_AnalyticsEventStartedCopyWithImpl<$Res>;
+abstract class _$$_AnalyticsKPIEventStartedCopyWith<$Res> {
+  factory _$$_AnalyticsKPIEventStartedCopyWith(
+          _$_AnalyticsKPIEventStarted value,
+          $Res Function(_$_AnalyticsKPIEventStarted) then) =
+      __$$_AnalyticsKPIEventStartedCopyWithImpl<$Res>;
   @useResult
   $Res call({AnalyticsFilters analyticsFilters});
 
@@ -86,11 +87,11 @@ abstract class _$$_AnalyticsEventStartedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AnalyticsEventStartedCopyWithImpl<$Res>
-    extends _$AnalyticsEventCopyWithImpl<$Res, _$_AnalyticsEventStarted>
-    implements _$$_AnalyticsEventStartedCopyWith<$Res> {
-  __$$_AnalyticsEventStartedCopyWithImpl(_$_AnalyticsEventStarted _value,
-      $Res Function(_$_AnalyticsEventStarted) _then)
+class __$$_AnalyticsKPIEventStartedCopyWithImpl<$Res>
+    extends _$AnalyticsKPIEventCopyWithImpl<$Res, _$_AnalyticsKPIEventStarted>
+    implements _$$_AnalyticsKPIEventStartedCopyWith<$Res> {
+  __$$_AnalyticsKPIEventStartedCopyWithImpl(_$_AnalyticsKPIEventStarted _value,
+      $Res Function(_$_AnalyticsKPIEventStarted) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +99,7 @@ class __$$_AnalyticsEventStartedCopyWithImpl<$Res>
   $Res call({
     Object? analyticsFilters = null,
   }) {
-    return _then(_$_AnalyticsEventStarted(
+    return _then(_$_AnalyticsKPIEventStarted(
       analyticsFilters: null == analyticsFilters
           ? _value.analyticsFilters
           : analyticsFilters // ignore: cast_nullable_to_non_nullable
@@ -117,22 +118,22 @@ class __$$_AnalyticsEventStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnalyticsEventStarted implements _AnalyticsEventStarted {
-  const _$_AnalyticsEventStarted({required this.analyticsFilters});
+class _$_AnalyticsKPIEventStarted implements _AnalyticsKPIEventStarted {
+  const _$_AnalyticsKPIEventStarted({required this.analyticsFilters});
 
   @override
   final AnalyticsFilters analyticsFilters;
 
   @override
   String toString() {
-    return 'AnalyticsEvent.started(analyticsFilters: $analyticsFilters)';
+    return 'AnalyticsKPIEvent.started(analyticsFilters: $analyticsFilters)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnalyticsEventStarted &&
+            other is _$_AnalyticsKPIEventStarted &&
             (identical(other.analyticsFilters, analyticsFilters) ||
                 other.analyticsFilters == analyticsFilters));
   }
@@ -143,9 +144,9 @@ class _$_AnalyticsEventStarted implements _AnalyticsEventStarted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnalyticsEventStartedCopyWith<_$_AnalyticsEventStarted> get copyWith =>
-      __$$_AnalyticsEventStartedCopyWithImpl<_$_AnalyticsEventStarted>(
-          this, _$identity);
+  _$$_AnalyticsKPIEventStartedCopyWith<_$_AnalyticsKPIEventStarted>
+      get copyWith => __$$_AnalyticsKPIEventStartedCopyWithImpl<
+          _$_AnalyticsKPIEventStarted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -181,8 +182,8 @@ class _$_AnalyticsEventStarted implements _AnalyticsEventStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnalyticsEventStarted value) started,
-    required TResult Function(_AnalyticsEventKPIChanged value) kpiChanged,
+    required TResult Function(_AnalyticsKPIEventStarted value) started,
+    required TResult Function(_AnalyticsKPIEventChanged value) kpiChanged,
   }) {
     return started(this);
   }
@@ -190,8 +191,8 @@ class _$_AnalyticsEventStarted implements _AnalyticsEventStarted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AnalyticsEventStarted value)? started,
-    TResult? Function(_AnalyticsEventKPIChanged value)? kpiChanged,
+    TResult? Function(_AnalyticsKPIEventStarted value)? started,
+    TResult? Function(_AnalyticsKPIEventChanged value)? kpiChanged,
   }) {
     return started?.call(this);
   }
@@ -199,8 +200,8 @@ class _$_AnalyticsEventStarted implements _AnalyticsEventStarted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AnalyticsEventStarted value)? started,
-    TResult Function(_AnalyticsEventKPIChanged value)? kpiChanged,
+    TResult Function(_AnalyticsKPIEventStarted value)? started,
+    TResult Function(_AnalyticsKPIEventChanged value)? kpiChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -210,23 +211,23 @@ class _$_AnalyticsEventStarted implements _AnalyticsEventStarted {
   }
 }
 
-abstract class _AnalyticsEventStarted implements AnalyticsEvent {
-  const factory _AnalyticsEventStarted(
+abstract class _AnalyticsKPIEventStarted implements AnalyticsKPIEvent {
+  const factory _AnalyticsKPIEventStarted(
           {required final AnalyticsFilters analyticsFilters}) =
-      _$_AnalyticsEventStarted;
+      _$_AnalyticsKPIEventStarted;
 
   AnalyticsFilters get analyticsFilters;
   @JsonKey(ignore: true)
-  _$$_AnalyticsEventStartedCopyWith<_$_AnalyticsEventStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AnalyticsKPIEventStartedCopyWith<_$_AnalyticsKPIEventStarted>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AnalyticsEventKPIChangedCopyWith<$Res> {
-  factory _$$_AnalyticsEventKPIChangedCopyWith(
-          _$_AnalyticsEventKPIChanged value,
-          $Res Function(_$_AnalyticsEventKPIChanged) then) =
-      __$$_AnalyticsEventKPIChangedCopyWithImpl<$Res>;
+abstract class _$$_AnalyticsKPIEventChangedCopyWith<$Res> {
+  factory _$$_AnalyticsKPIEventChangedCopyWith(
+          _$_AnalyticsKPIEventChanged value,
+          $Res Function(_$_AnalyticsKPIEventChanged) then) =
+      __$$_AnalyticsKPIEventChangedCopyWithImpl<$Res>;
   @useResult
   $Res call({KPI kpi});
 
@@ -234,11 +235,11 @@ abstract class _$$_AnalyticsEventKPIChangedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AnalyticsEventKPIChangedCopyWithImpl<$Res>
-    extends _$AnalyticsEventCopyWithImpl<$Res, _$_AnalyticsEventKPIChanged>
-    implements _$$_AnalyticsEventKPIChangedCopyWith<$Res> {
-  __$$_AnalyticsEventKPIChangedCopyWithImpl(_$_AnalyticsEventKPIChanged _value,
-      $Res Function(_$_AnalyticsEventKPIChanged) _then)
+class __$$_AnalyticsKPIEventChangedCopyWithImpl<$Res>
+    extends _$AnalyticsKPIEventCopyWithImpl<$Res, _$_AnalyticsKPIEventChanged>
+    implements _$$_AnalyticsKPIEventChangedCopyWith<$Res> {
+  __$$_AnalyticsKPIEventChangedCopyWithImpl(_$_AnalyticsKPIEventChanged _value,
+      $Res Function(_$_AnalyticsKPIEventChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -246,7 +247,7 @@ class __$$_AnalyticsEventKPIChangedCopyWithImpl<$Res>
   $Res call({
     Object? kpi = null,
   }) {
-    return _then(_$_AnalyticsEventKPIChanged(
+    return _then(_$_AnalyticsKPIEventChanged(
       kpi: null == kpi
           ? _value.kpi
           : kpi // ignore: cast_nullable_to_non_nullable
@@ -265,22 +266,22 @@ class __$$_AnalyticsEventKPIChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnalyticsEventKPIChanged implements _AnalyticsEventKPIChanged {
-  const _$_AnalyticsEventKPIChanged({required this.kpi});
+class _$_AnalyticsKPIEventChanged implements _AnalyticsKPIEventChanged {
+  const _$_AnalyticsKPIEventChanged({required this.kpi});
 
   @override
   final KPI kpi;
 
   @override
   String toString() {
-    return 'AnalyticsEvent.kpiChanged(kpi: $kpi)';
+    return 'AnalyticsKPIEvent.kpiChanged(kpi: $kpi)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnalyticsEventKPIChanged &&
+            other is _$_AnalyticsKPIEventChanged &&
             (identical(other.kpi, kpi) || other.kpi == kpi));
   }
 
@@ -290,9 +291,9 @@ class _$_AnalyticsEventKPIChanged implements _AnalyticsEventKPIChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnalyticsEventKPIChangedCopyWith<_$_AnalyticsEventKPIChanged>
-      get copyWith => __$$_AnalyticsEventKPIChangedCopyWithImpl<
-          _$_AnalyticsEventKPIChanged>(this, _$identity);
+  _$$_AnalyticsKPIEventChangedCopyWith<_$_AnalyticsKPIEventChanged>
+      get copyWith => __$$_AnalyticsKPIEventChangedCopyWithImpl<
+          _$_AnalyticsKPIEventChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -328,8 +329,8 @@ class _$_AnalyticsEventKPIChanged implements _AnalyticsEventKPIChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnalyticsEventStarted value) started,
-    required TResult Function(_AnalyticsEventKPIChanged value) kpiChanged,
+    required TResult Function(_AnalyticsKPIEventStarted value) started,
+    required TResult Function(_AnalyticsKPIEventChanged value) kpiChanged,
   }) {
     return kpiChanged(this);
   }
@@ -337,8 +338,8 @@ class _$_AnalyticsEventKPIChanged implements _AnalyticsEventKPIChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AnalyticsEventStarted value)? started,
-    TResult? Function(_AnalyticsEventKPIChanged value)? kpiChanged,
+    TResult? Function(_AnalyticsKPIEventStarted value)? started,
+    TResult? Function(_AnalyticsKPIEventChanged value)? kpiChanged,
   }) {
     return kpiChanged?.call(this);
   }
@@ -346,8 +347,8 @@ class _$_AnalyticsEventKPIChanged implements _AnalyticsEventKPIChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AnalyticsEventStarted value)? started,
-    TResult Function(_AnalyticsEventKPIChanged value)? kpiChanged,
+    TResult Function(_AnalyticsKPIEventStarted value)? started,
+    TResult Function(_AnalyticsKPIEventChanged value)? kpiChanged,
     required TResult orElse(),
   }) {
     if (kpiChanged != null) {
@@ -357,18 +358,18 @@ class _$_AnalyticsEventKPIChanged implements _AnalyticsEventKPIChanged {
   }
 }
 
-abstract class _AnalyticsEventKPIChanged implements AnalyticsEvent {
-  const factory _AnalyticsEventKPIChanged({required final KPI kpi}) =
-      _$_AnalyticsEventKPIChanged;
+abstract class _AnalyticsKPIEventChanged implements AnalyticsKPIEvent {
+  const factory _AnalyticsKPIEventChanged({required final KPI kpi}) =
+      _$_AnalyticsKPIEventChanged;
 
   KPI get kpi;
   @JsonKey(ignore: true)
-  _$$_AnalyticsEventKPIChangedCopyWith<_$_AnalyticsEventKPIChanged>
+  _$$_AnalyticsKPIEventChangedCopyWith<_$_AnalyticsKPIEventChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$AnalyticsState {
+mixin _$AnalyticsKPIState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -393,39 +394,39 @@ mixin _$AnalyticsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnalyticsStateInitial value) initial,
-    required TResult Function(_AnalyticsStateLoaded value) loaded,
-    required TResult Function(_AnalyticsStateError value) error,
+    required TResult Function(_AnalyticsKPIStateInitial value) initial,
+    required TResult Function(_AnalyticsKPIStateLoaded value) loaded,
+    required TResult Function(_AnalyticsKPIStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AnalyticsStateInitial value)? initial,
-    TResult? Function(_AnalyticsStateLoaded value)? loaded,
-    TResult? Function(_AnalyticsStateError value)? error,
+    TResult? Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult? Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult? Function(_AnalyticsKPIStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AnalyticsStateInitial value)? initial,
-    TResult Function(_AnalyticsStateLoaded value)? loaded,
-    TResult Function(_AnalyticsStateError value)? error,
+    TResult Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult Function(_AnalyticsKPIStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AnalyticsStateCopyWith<$Res> {
-  factory $AnalyticsStateCopyWith(
-          AnalyticsState value, $Res Function(AnalyticsState) then) =
-      _$AnalyticsStateCopyWithImpl<$Res, AnalyticsState>;
+abstract class $AnalyticsKPIStateCopyWith<$Res> {
+  factory $AnalyticsKPIStateCopyWith(
+          AnalyticsKPIState value, $Res Function(AnalyticsKPIState) then) =
+      _$AnalyticsKPIStateCopyWithImpl<$Res, AnalyticsKPIState>;
 }
 
 /// @nodoc
-class _$AnalyticsStateCopyWithImpl<$Res, $Val extends AnalyticsState>
-    implements $AnalyticsStateCopyWith<$Res> {
-  _$AnalyticsStateCopyWithImpl(this._value, this._then);
+class _$AnalyticsKPIStateCopyWithImpl<$Res, $Val extends AnalyticsKPIState>
+    implements $AnalyticsKPIStateCopyWith<$Res> {
+  _$AnalyticsKPIStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -434,35 +435,37 @@ class _$AnalyticsStateCopyWithImpl<$Res, $Val extends AnalyticsState>
 }
 
 /// @nodoc
-abstract class _$$_AnalyticsStateInitialCopyWith<$Res> {
-  factory _$$_AnalyticsStateInitialCopyWith(_$_AnalyticsStateInitial value,
-          $Res Function(_$_AnalyticsStateInitial) then) =
-      __$$_AnalyticsStateInitialCopyWithImpl<$Res>;
+abstract class _$$_AnalyticsKPIStateInitialCopyWith<$Res> {
+  factory _$$_AnalyticsKPIStateInitialCopyWith(
+          _$_AnalyticsKPIStateInitial value,
+          $Res Function(_$_AnalyticsKPIStateInitial) then) =
+      __$$_AnalyticsKPIStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AnalyticsStateInitialCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$_AnalyticsStateInitial>
-    implements _$$_AnalyticsStateInitialCopyWith<$Res> {
-  __$$_AnalyticsStateInitialCopyWithImpl(_$_AnalyticsStateInitial _value,
-      $Res Function(_$_AnalyticsStateInitial) _then)
+class __$$_AnalyticsKPIStateInitialCopyWithImpl<$Res>
+    extends _$AnalyticsKPIStateCopyWithImpl<$Res, _$_AnalyticsKPIStateInitial>
+    implements _$$_AnalyticsKPIStateInitialCopyWith<$Res> {
+  __$$_AnalyticsKPIStateInitialCopyWithImpl(_$_AnalyticsKPIStateInitial _value,
+      $Res Function(_$_AnalyticsKPIStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AnalyticsStateInitial implements _AnalyticsStateInitial {
-  const _$_AnalyticsStateInitial();
+class _$_AnalyticsKPIStateInitial implements _AnalyticsKPIStateInitial {
+  const _$_AnalyticsKPIStateInitial();
 
   @override
   String toString() {
-    return 'AnalyticsState.initial()';
+    return 'AnalyticsKPIState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AnalyticsStateInitial);
+        (other.runtimeType == runtimeType &&
+            other is _$_AnalyticsKPIStateInitial);
   }
 
   @override
@@ -505,9 +508,9 @@ class _$_AnalyticsStateInitial implements _AnalyticsStateInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnalyticsStateInitial value) initial,
-    required TResult Function(_AnalyticsStateLoaded value) loaded,
-    required TResult Function(_AnalyticsStateError value) error,
+    required TResult Function(_AnalyticsKPIStateInitial value) initial,
+    required TResult Function(_AnalyticsKPIStateLoaded value) loaded,
+    required TResult Function(_AnalyticsKPIStateError value) error,
   }) {
     return initial(this);
   }
@@ -515,9 +518,9 @@ class _$_AnalyticsStateInitial implements _AnalyticsStateInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AnalyticsStateInitial value)? initial,
-    TResult? Function(_AnalyticsStateLoaded value)? loaded,
-    TResult? Function(_AnalyticsStateError value)? error,
+    TResult? Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult? Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult? Function(_AnalyticsKPIStateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -525,9 +528,9 @@ class _$_AnalyticsStateInitial implements _AnalyticsStateInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AnalyticsStateInitial value)? initial,
-    TResult Function(_AnalyticsStateLoaded value)? loaded,
-    TResult Function(_AnalyticsStateError value)? error,
+    TResult Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult Function(_AnalyticsKPIStateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -537,15 +540,15 @@ class _$_AnalyticsStateInitial implements _AnalyticsStateInitial {
   }
 }
 
-abstract class _AnalyticsStateInitial implements AnalyticsState {
-  const factory _AnalyticsStateInitial() = _$_AnalyticsStateInitial;
+abstract class _AnalyticsKPIStateInitial implements AnalyticsKPIState {
+  const factory _AnalyticsKPIStateInitial() = _$_AnalyticsKPIStateInitial;
 }
 
 /// @nodoc
-abstract class _$$_AnalyticsStateLoadedCopyWith<$Res> {
-  factory _$$_AnalyticsStateLoadedCopyWith(_$_AnalyticsStateLoaded value,
-          $Res Function(_$_AnalyticsStateLoaded) then) =
-      __$$_AnalyticsStateLoadedCopyWithImpl<$Res>;
+abstract class _$$_AnalyticsKPIStateLoadedCopyWith<$Res> {
+  factory _$$_AnalyticsKPIStateLoadedCopyWith(_$_AnalyticsKPIStateLoaded value,
+          $Res Function(_$_AnalyticsKPIStateLoaded) then) =
+      __$$_AnalyticsKPIStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({KPI kpi});
 
@@ -553,11 +556,11 @@ abstract class _$$_AnalyticsStateLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AnalyticsStateLoadedCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$_AnalyticsStateLoaded>
-    implements _$$_AnalyticsStateLoadedCopyWith<$Res> {
-  __$$_AnalyticsStateLoadedCopyWithImpl(_$_AnalyticsStateLoaded _value,
-      $Res Function(_$_AnalyticsStateLoaded) _then)
+class __$$_AnalyticsKPIStateLoadedCopyWithImpl<$Res>
+    extends _$AnalyticsKPIStateCopyWithImpl<$Res, _$_AnalyticsKPIStateLoaded>
+    implements _$$_AnalyticsKPIStateLoadedCopyWith<$Res> {
+  __$$_AnalyticsKPIStateLoadedCopyWithImpl(_$_AnalyticsKPIStateLoaded _value,
+      $Res Function(_$_AnalyticsKPIStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -565,7 +568,7 @@ class __$$_AnalyticsStateLoadedCopyWithImpl<$Res>
   $Res call({
     Object? kpi = null,
   }) {
-    return _then(_$_AnalyticsStateLoaded(
+    return _then(_$_AnalyticsKPIStateLoaded(
       kpi: null == kpi
           ? _value.kpi
           : kpi // ignore: cast_nullable_to_non_nullable
@@ -584,22 +587,22 @@ class __$$_AnalyticsStateLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnalyticsStateLoaded implements _AnalyticsStateLoaded {
-  const _$_AnalyticsStateLoaded({required this.kpi});
+class _$_AnalyticsKPIStateLoaded implements _AnalyticsKPIStateLoaded {
+  const _$_AnalyticsKPIStateLoaded({required this.kpi});
 
   @override
   final KPI kpi;
 
   @override
   String toString() {
-    return 'AnalyticsState.loaded(kpi: $kpi)';
+    return 'AnalyticsKPIState.loaded(kpi: $kpi)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnalyticsStateLoaded &&
+            other is _$_AnalyticsKPIStateLoaded &&
             (identical(other.kpi, kpi) || other.kpi == kpi));
   }
 
@@ -609,9 +612,10 @@ class _$_AnalyticsStateLoaded implements _AnalyticsStateLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnalyticsStateLoadedCopyWith<_$_AnalyticsStateLoaded> get copyWith =>
-      __$$_AnalyticsStateLoadedCopyWithImpl<_$_AnalyticsStateLoaded>(
-          this, _$identity);
+  _$$_AnalyticsKPIStateLoadedCopyWith<_$_AnalyticsKPIStateLoaded>
+      get copyWith =>
+          __$$_AnalyticsKPIStateLoadedCopyWithImpl<_$_AnalyticsKPIStateLoaded>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -650,9 +654,9 @@ class _$_AnalyticsStateLoaded implements _AnalyticsStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnalyticsStateInitial value) initial,
-    required TResult Function(_AnalyticsStateLoaded value) loaded,
-    required TResult Function(_AnalyticsStateError value) error,
+    required TResult Function(_AnalyticsKPIStateInitial value) initial,
+    required TResult Function(_AnalyticsKPIStateLoaded value) loaded,
+    required TResult Function(_AnalyticsKPIStateError value) error,
   }) {
     return loaded(this);
   }
@@ -660,9 +664,9 @@ class _$_AnalyticsStateLoaded implements _AnalyticsStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AnalyticsStateInitial value)? initial,
-    TResult? Function(_AnalyticsStateLoaded value)? loaded,
-    TResult? Function(_AnalyticsStateError value)? error,
+    TResult? Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult? Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult? Function(_AnalyticsKPIStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -670,9 +674,9 @@ class _$_AnalyticsStateLoaded implements _AnalyticsStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AnalyticsStateInitial value)? initial,
-    TResult Function(_AnalyticsStateLoaded value)? loaded,
-    TResult Function(_AnalyticsStateError value)? error,
+    TResult Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult Function(_AnalyticsKPIStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -682,31 +686,31 @@ class _$_AnalyticsStateLoaded implements _AnalyticsStateLoaded {
   }
 }
 
-abstract class _AnalyticsStateLoaded implements AnalyticsState {
-  const factory _AnalyticsStateLoaded({required final KPI kpi}) =
-      _$_AnalyticsStateLoaded;
+abstract class _AnalyticsKPIStateLoaded implements AnalyticsKPIState {
+  const factory _AnalyticsKPIStateLoaded({required final KPI kpi}) =
+      _$_AnalyticsKPIStateLoaded;
 
   KPI get kpi;
   @JsonKey(ignore: true)
-  _$$_AnalyticsStateLoadedCopyWith<_$_AnalyticsStateLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AnalyticsKPIStateLoadedCopyWith<_$_AnalyticsKPIStateLoaded>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AnalyticsStateErrorCopyWith<$Res> {
-  factory _$$_AnalyticsStateErrorCopyWith(_$_AnalyticsStateError value,
-          $Res Function(_$_AnalyticsStateError) then) =
-      __$$_AnalyticsStateErrorCopyWithImpl<$Res>;
+abstract class _$$_AnalyticsKPIStateErrorCopyWith<$Res> {
+  factory _$$_AnalyticsKPIStateErrorCopyWith(_$_AnalyticsKPIStateError value,
+          $Res Function(_$_AnalyticsKPIStateError) then) =
+      __$$_AnalyticsKPIStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_AnalyticsStateErrorCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$_AnalyticsStateError>
-    implements _$$_AnalyticsStateErrorCopyWith<$Res> {
-  __$$_AnalyticsStateErrorCopyWithImpl(_$_AnalyticsStateError _value,
-      $Res Function(_$_AnalyticsStateError) _then)
+class __$$_AnalyticsKPIStateErrorCopyWithImpl<$Res>
+    extends _$AnalyticsKPIStateCopyWithImpl<$Res, _$_AnalyticsKPIStateError>
+    implements _$$_AnalyticsKPIStateErrorCopyWith<$Res> {
+  __$$_AnalyticsKPIStateErrorCopyWithImpl(_$_AnalyticsKPIStateError _value,
+      $Res Function(_$_AnalyticsKPIStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -714,7 +718,7 @@ class __$$_AnalyticsStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_AnalyticsStateError(
+    return _then(_$_AnalyticsKPIStateError(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -725,22 +729,22 @@ class __$$_AnalyticsStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnalyticsStateError implements _AnalyticsStateError {
-  const _$_AnalyticsStateError({required this.error});
+class _$_AnalyticsKPIStateError implements _AnalyticsKPIStateError {
+  const _$_AnalyticsKPIStateError({required this.error});
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'AnalyticsState.error(error: $error)';
+    return 'AnalyticsKPIState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnalyticsStateError &&
+            other is _$_AnalyticsKPIStateError &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -750,8 +754,8 @@ class _$_AnalyticsStateError implements _AnalyticsStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnalyticsStateErrorCopyWith<_$_AnalyticsStateError> get copyWith =>
-      __$$_AnalyticsStateErrorCopyWithImpl<_$_AnalyticsStateError>(
+  _$$_AnalyticsKPIStateErrorCopyWith<_$_AnalyticsKPIStateError> get copyWith =>
+      __$$_AnalyticsKPIStateErrorCopyWithImpl<_$_AnalyticsKPIStateError>(
           this, _$identity);
 
   @override
@@ -791,9 +795,9 @@ class _$_AnalyticsStateError implements _AnalyticsStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnalyticsStateInitial value) initial,
-    required TResult Function(_AnalyticsStateLoaded value) loaded,
-    required TResult Function(_AnalyticsStateError value) error,
+    required TResult Function(_AnalyticsKPIStateInitial value) initial,
+    required TResult Function(_AnalyticsKPIStateLoaded value) loaded,
+    required TResult Function(_AnalyticsKPIStateError value) error,
   }) {
     return error(this);
   }
@@ -801,9 +805,9 @@ class _$_AnalyticsStateError implements _AnalyticsStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AnalyticsStateInitial value)? initial,
-    TResult? Function(_AnalyticsStateLoaded value)? loaded,
-    TResult? Function(_AnalyticsStateError value)? error,
+    TResult? Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult? Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult? Function(_AnalyticsKPIStateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -811,9 +815,9 @@ class _$_AnalyticsStateError implements _AnalyticsStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AnalyticsStateInitial value)? initial,
-    TResult Function(_AnalyticsStateLoaded value)? loaded,
-    TResult Function(_AnalyticsStateError value)? error,
+    TResult Function(_AnalyticsKPIStateInitial value)? initial,
+    TResult Function(_AnalyticsKPIStateLoaded value)? loaded,
+    TResult Function(_AnalyticsKPIStateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -823,12 +827,12 @@ class _$_AnalyticsStateError implements _AnalyticsStateError {
   }
 }
 
-abstract class _AnalyticsStateError implements AnalyticsState {
-  const factory _AnalyticsStateError({required final String error}) =
-      _$_AnalyticsStateError;
+abstract class _AnalyticsKPIStateError implements AnalyticsKPIState {
+  const factory _AnalyticsKPIStateError({required final String error}) =
+      _$_AnalyticsKPIStateError;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_AnalyticsStateErrorCopyWith<_$_AnalyticsStateError> get copyWith =>
+  _$$_AnalyticsKPIStateErrorCopyWith<_$_AnalyticsKPIStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

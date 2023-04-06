@@ -5,6 +5,7 @@ import 'package:fitt/data/models/request/analytics/get_analytics_request_body.da
 import 'package:fitt/data/source/remote_data_source/analytics_api_client/analytics_api_client.dart';
 import 'package:fitt/domain/entities/filters/analytics_filters.dart';
 import 'package:fitt/domain/entities/kpi/kpi.dart';
+import 'package:fitt/domain/entities/workouts_chart_data/workouts_chart_data.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:rxdart/rxdart.dart';
@@ -24,10 +25,18 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
   @override
   Stream<KPI?> get analytics => _analyticsController;
 
+  final BehaviorSubject<WorkoutsChartData?> _workoutsChartDataController =
+      BehaviorSubject(sync: true);
+  void Function(WorkoutsChartData?) get updateworkoutsChartData =>
+      _workoutsChartDataController.sink.add;
+  @override
+  Stream<WorkoutsChartData?> get workoutsChartData =>
+      _workoutsChartDataController;
+
   @override
   Future<KPI> getClubsKPI({required AnalyticsFilters analyticsFilters}) async {
     try {
-      final analytics = await _apiClient.getDashboard(
+      final analytics = await _apiClient.getClubsKPI(
         GetAnalyticsRequestBody(
           timeSlice: analyticsFilters.timeSlice
               .timeSliceToField(analyticsFilters.timeSlice),
@@ -47,7 +56,33 @@ class AnalyticsRepositoryImpl implements AnalyticsRepository {
     }
   }
 
+  @override
+  Future<WorkoutsChartData> getWorkoutsChartData({
+    required AnalyticsFilters analyticsFilters,
+  }) async {
+    try {
+      final workoutsChartData = await _apiClient.getWorkoutsChartData(
+        GetAnalyticsRequestBody(
+          timeSlice: analyticsFilters.timeSlice
+              .timeSliceToField(analyticsFilters.timeSlice),
+          clubsUuid: analyticsFilters.clubsUuid,
+          startDate: analyticsFilters.startDate,
+          endDate: analyticsFilters.endDate,
+        ),
+      );
+      updateworkoutsChartData(workoutsChartData);
+      return workoutsChartData;
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
+  }
+
   void dispose() {
     _analyticsController.close();
+    _workoutsChartDataController.close();
   }
 }

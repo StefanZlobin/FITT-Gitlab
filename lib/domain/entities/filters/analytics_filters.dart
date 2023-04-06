@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:fitt/core/enum/time_slice_enum.dart';
+import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'analytics_filters.freezed.dart';
@@ -13,8 +14,10 @@ class AnalyticsFilters with _$AnalyticsFilters {
     @JsonKey(name: 'slice')
     @Default(TimeSliceEnum.week)
         TimeSliceEnum timeSlice,
-    @JsonKey(name: 'start_date') required DateTime startDate,
-    @JsonKey(name: 'end_date') required DateTime endDate,
+    @JsonKey(name: 'start_date', toJson: timeToFormattedString)
+        required DateTime startDate,
+    @JsonKey(name: 'end_date', toJson: timeToFormattedString)
+        required DateTime endDate,
   }) = _AnalyticsFilters;
 
   factory AnalyticsFilters.fromJson(Map<String, dynamic> json) =>

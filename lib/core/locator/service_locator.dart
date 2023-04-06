@@ -5,8 +5,9 @@ import 'package:fitt/data/repositories/analytics/analytics_repository_impl.dart'
 import 'package:fitt/data/services/app_metrica/app_metrica_service_impl.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
-import 'package:fitt/domain/blocs/analytics/analytics_bloc.dart';
+import 'package:fitt/domain/blocs/analytics_dashboard/analytics_dashboard_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
+import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
 import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/domain/blocs/login/login_bloc.dart';
@@ -275,7 +276,10 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AccountSaveButtonCubit>(
     () => AccountSaveButtonCubit(),
   );
-  getIt.registerLazySingleton<AnalyticsBloc>(() => AnalyticsBloc());
+  getIt.registerLazySingleton<AnalyticsKPIBloc>(() => AnalyticsKPIBloc());
+  getIt.registerLazySingleton<AnalyticsDashboardBloc>(
+    () => AnalyticsDashboardBloc(),
+  );
   getIt.registerLazySingleton<AnalyticsFilteringBloc>(
     () => AnalyticsFilteringBloc(),
   );

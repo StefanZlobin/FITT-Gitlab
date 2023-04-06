@@ -19,19 +19,25 @@ mixin _$AnalyticsFilteringEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TimeSliceEnum timeSlice) timeSliceChanged,
-    required TResult Function(List<String> clubsUuid) selectedClubsChanged,
+    required TResult Function(String clubUuidSelected) selectedClubsChanged,
+    required TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)
+        dateRangeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeSliceEnum timeSlice)? timeSliceChanged,
-    TResult? Function(List<String> clubsUuid)? selectedClubsChanged,
+    TResult? Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult? Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TimeSliceEnum timeSlice)? timeSliceChanged,
-    TResult Function(List<String> clubsUuid)? selectedClubsChanged,
+    TResult Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,6 +48,8 @@ mixin _$AnalyticsFilteringEvent {
     required TResult Function(
             _AnalyticsFilteringEventSelectedClubsChanged value)
         selectedClubsChanged,
+    required TResult Function(_AnalyticsFilteringEventDateRangeChanged value)
+        dateRangeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +58,8 @@ mixin _$AnalyticsFilteringEvent {
         timeSliceChanged,
     TResult? Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
         selectedClubsChanged,
+    TResult? Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +68,8 @@ mixin _$AnalyticsFilteringEvent {
         timeSliceChanged,
     TResult Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
         selectedClubsChanged,
+    TResult Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -154,7 +166,9 @@ class _$_AnalyticsFilteringEventTimeSliceChanged
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TimeSliceEnum timeSlice) timeSliceChanged,
-    required TResult Function(List<String> clubsUuid) selectedClubsChanged,
+    required TResult Function(String clubUuidSelected) selectedClubsChanged,
+    required TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)
+        dateRangeChanged,
   }) {
     return timeSliceChanged(timeSlice);
   }
@@ -163,7 +177,9 @@ class _$_AnalyticsFilteringEventTimeSliceChanged
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeSliceEnum timeSlice)? timeSliceChanged,
-    TResult? Function(List<String> clubsUuid)? selectedClubsChanged,
+    TResult? Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult? Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
   }) {
     return timeSliceChanged?.call(timeSlice);
   }
@@ -172,7 +188,9 @@ class _$_AnalyticsFilteringEventTimeSliceChanged
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TimeSliceEnum timeSlice)? timeSliceChanged,
-    TResult Function(List<String> clubsUuid)? selectedClubsChanged,
+    TResult Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
     required TResult orElse(),
   }) {
     if (timeSliceChanged != null) {
@@ -189,6 +207,8 @@ class _$_AnalyticsFilteringEventTimeSliceChanged
     required TResult Function(
             _AnalyticsFilteringEventSelectedClubsChanged value)
         selectedClubsChanged,
+    required TResult Function(_AnalyticsFilteringEventDateRangeChanged value)
+        dateRangeChanged,
   }) {
     return timeSliceChanged(this);
   }
@@ -200,6 +220,8 @@ class _$_AnalyticsFilteringEventTimeSliceChanged
         timeSliceChanged,
     TResult? Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
         selectedClubsChanged,
+    TResult? Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
   }) {
     return timeSliceChanged?.call(this);
   }
@@ -211,6 +233,8 @@ class _$_AnalyticsFilteringEventTimeSliceChanged
         timeSliceChanged,
     TResult Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
         selectedClubsChanged,
+    TResult Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
     required TResult orElse(),
   }) {
     if (timeSliceChanged != null) {
@@ -240,7 +264,7 @@ abstract class _$$_AnalyticsFilteringEventSelectedClubsChangedCopyWith<$Res> {
           $Res Function(_$_AnalyticsFilteringEventSelectedClubsChanged) then) =
       __$$_AnalyticsFilteringEventSelectedClubsChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<String> clubsUuid});
+  $Res call({String clubUuidSelected});
 }
 
 /// @nodoc
@@ -256,13 +280,13 @@ class __$$_AnalyticsFilteringEventSelectedClubsChangedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clubsUuid = null,
+    Object? clubUuidSelected = null,
   }) {
     return _then(_$_AnalyticsFilteringEventSelectedClubsChanged(
-      clubsUuid: null == clubsUuid
-          ? _value._clubsUuid
-          : clubsUuid // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      clubUuidSelected: null == clubUuidSelected
+          ? _value.clubUuidSelected
+          : clubUuidSelected // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -272,20 +296,14 @@ class __$$_AnalyticsFilteringEventSelectedClubsChangedCopyWithImpl<$Res>
 class _$_AnalyticsFilteringEventSelectedClubsChanged
     implements _AnalyticsFilteringEventSelectedClubsChanged {
   const _$_AnalyticsFilteringEventSelectedClubsChanged(
-      {required final List<String> clubsUuid})
-      : _clubsUuid = clubsUuid;
+      {required this.clubUuidSelected});
 
-  final List<String> _clubsUuid;
   @override
-  List<String> get clubsUuid {
-    if (_clubsUuid is EqualUnmodifiableListView) return _clubsUuid;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_clubsUuid);
-  }
+  final String clubUuidSelected;
 
   @override
   String toString() {
-    return 'AnalyticsFilteringEvent.selectedClubsChanged(clubsUuid: $clubsUuid)';
+    return 'AnalyticsFilteringEvent.selectedClubsChanged(clubUuidSelected: $clubUuidSelected)';
   }
 
   @override
@@ -293,13 +311,12 @@ class _$_AnalyticsFilteringEventSelectedClubsChanged
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AnalyticsFilteringEventSelectedClubsChanged &&
-            const DeepCollectionEquality()
-                .equals(other._clubsUuid, _clubsUuid));
+            (identical(other.clubUuidSelected, clubUuidSelected) ||
+                other.clubUuidSelected == clubUuidSelected));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_clubsUuid));
+  int get hashCode => Object.hash(runtimeType, clubUuidSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -314,29 +331,35 @@ class _$_AnalyticsFilteringEventSelectedClubsChanged
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TimeSliceEnum timeSlice) timeSliceChanged,
-    required TResult Function(List<String> clubsUuid) selectedClubsChanged,
+    required TResult Function(String clubUuidSelected) selectedClubsChanged,
+    required TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)
+        dateRangeChanged,
   }) {
-    return selectedClubsChanged(clubsUuid);
+    return selectedClubsChanged(clubUuidSelected);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TimeSliceEnum timeSlice)? timeSliceChanged,
-    TResult? Function(List<String> clubsUuid)? selectedClubsChanged,
+    TResult? Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult? Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
   }) {
-    return selectedClubsChanged?.call(clubsUuid);
+    return selectedClubsChanged?.call(clubUuidSelected);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TimeSliceEnum timeSlice)? timeSliceChanged,
-    TResult Function(List<String> clubsUuid)? selectedClubsChanged,
+    TResult Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
     required TResult orElse(),
   }) {
     if (selectedClubsChanged != null) {
-      return selectedClubsChanged(clubsUuid);
+      return selectedClubsChanged(clubUuidSelected);
     }
     return orElse();
   }
@@ -349,6 +372,8 @@ class _$_AnalyticsFilteringEventSelectedClubsChanged
     required TResult Function(
             _AnalyticsFilteringEventSelectedClubsChanged value)
         selectedClubsChanged,
+    required TResult Function(_AnalyticsFilteringEventDateRangeChanged value)
+        dateRangeChanged,
   }) {
     return selectedClubsChanged(this);
   }
@@ -360,6 +385,8 @@ class _$_AnalyticsFilteringEventSelectedClubsChanged
         timeSliceChanged,
     TResult? Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
         selectedClubsChanged,
+    TResult? Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
   }) {
     return selectedClubsChanged?.call(this);
   }
@@ -371,6 +398,8 @@ class _$_AnalyticsFilteringEventSelectedClubsChanged
         timeSliceChanged,
     TResult Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
         selectedClubsChanged,
+    TResult Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
     required TResult orElse(),
   }) {
     if (selectedClubsChanged != null) {
@@ -383,13 +412,188 @@ class _$_AnalyticsFilteringEventSelectedClubsChanged
 abstract class _AnalyticsFilteringEventSelectedClubsChanged
     implements AnalyticsFilteringEvent {
   const factory _AnalyticsFilteringEventSelectedClubsChanged(
-          {required final List<String> clubsUuid}) =
+          {required final String clubUuidSelected}) =
       _$_AnalyticsFilteringEventSelectedClubsChanged;
 
-  List<String> get clubsUuid;
+  String get clubUuidSelected;
   @JsonKey(ignore: true)
   _$$_AnalyticsFilteringEventSelectedClubsChangedCopyWith<
           _$_AnalyticsFilteringEventSelectedClubsChanged>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AnalyticsFilteringEventDateRangeChangedCopyWith<$Res> {
+  factory _$$_AnalyticsFilteringEventDateRangeChangedCopyWith(
+          _$_AnalyticsFilteringEventDateRangeChanged value,
+          $Res Function(_$_AnalyticsFilteringEventDateRangeChanged) then) =
+      __$$_AnalyticsFilteringEventDateRangeChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TimeSliceEnum timeSlice, DateTime selectedDate});
+}
+
+/// @nodoc
+class __$$_AnalyticsFilteringEventDateRangeChangedCopyWithImpl<$Res>
+    extends _$AnalyticsFilteringEventCopyWithImpl<$Res,
+        _$_AnalyticsFilteringEventDateRangeChanged>
+    implements _$$_AnalyticsFilteringEventDateRangeChangedCopyWith<$Res> {
+  __$$_AnalyticsFilteringEventDateRangeChangedCopyWithImpl(
+      _$_AnalyticsFilteringEventDateRangeChanged _value,
+      $Res Function(_$_AnalyticsFilteringEventDateRangeChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? timeSlice = null,
+    Object? selectedDate = null,
+  }) {
+    return _then(_$_AnalyticsFilteringEventDateRangeChanged(
+      timeSlice: null == timeSlice
+          ? _value.timeSlice
+          : timeSlice // ignore: cast_nullable_to_non_nullable
+              as TimeSliceEnum,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AnalyticsFilteringEventDateRangeChanged
+    implements _AnalyticsFilteringEventDateRangeChanged {
+  const _$_AnalyticsFilteringEventDateRangeChanged(
+      {required this.timeSlice, required this.selectedDate});
+
+  @override
+  final TimeSliceEnum timeSlice;
+  @override
+  final DateTime selectedDate;
+
+  @override
+  String toString() {
+    return 'AnalyticsFilteringEvent.dateRangeChanged(timeSlice: $timeSlice, selectedDate: $selectedDate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AnalyticsFilteringEventDateRangeChanged &&
+            (identical(other.timeSlice, timeSlice) ||
+                other.timeSlice == timeSlice) &&
+            (identical(other.selectedDate, selectedDate) ||
+                other.selectedDate == selectedDate));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, timeSlice, selectedDate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AnalyticsFilteringEventDateRangeChangedCopyWith<
+          _$_AnalyticsFilteringEventDateRangeChanged>
+      get copyWith => __$$_AnalyticsFilteringEventDateRangeChangedCopyWithImpl<
+          _$_AnalyticsFilteringEventDateRangeChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TimeSliceEnum timeSlice) timeSliceChanged,
+    required TResult Function(String clubUuidSelected) selectedClubsChanged,
+    required TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)
+        dateRangeChanged,
+  }) {
+    return dateRangeChanged(timeSlice, selectedDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TimeSliceEnum timeSlice)? timeSliceChanged,
+    TResult? Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult? Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
+  }) {
+    return dateRangeChanged?.call(timeSlice, selectedDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TimeSliceEnum timeSlice)? timeSliceChanged,
+    TResult Function(String clubUuidSelected)? selectedClubsChanged,
+    TResult Function(TimeSliceEnum timeSlice, DateTime selectedDate)?
+        dateRangeChanged,
+    required TResult orElse(),
+  }) {
+    if (dateRangeChanged != null) {
+      return dateRangeChanged(timeSlice, selectedDate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AnalyticsFilteringEventTimeSliceChanged value)
+        timeSliceChanged,
+    required TResult Function(
+            _AnalyticsFilteringEventSelectedClubsChanged value)
+        selectedClubsChanged,
+    required TResult Function(_AnalyticsFilteringEventDateRangeChanged value)
+        dateRangeChanged,
+  }) {
+    return dateRangeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AnalyticsFilteringEventTimeSliceChanged value)?
+        timeSliceChanged,
+    TResult? Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
+        selectedClubsChanged,
+    TResult? Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
+  }) {
+    return dateRangeChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AnalyticsFilteringEventTimeSliceChanged value)?
+        timeSliceChanged,
+    TResult Function(_AnalyticsFilteringEventSelectedClubsChanged value)?
+        selectedClubsChanged,
+    TResult Function(_AnalyticsFilteringEventDateRangeChanged value)?
+        dateRangeChanged,
+    required TResult orElse(),
+  }) {
+    if (dateRangeChanged != null) {
+      return dateRangeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AnalyticsFilteringEventDateRangeChanged
+    implements AnalyticsFilteringEvent {
+  const factory _AnalyticsFilteringEventDateRangeChanged(
+          {required final TimeSliceEnum timeSlice,
+          required final DateTime selectedDate}) =
+      _$_AnalyticsFilteringEventDateRangeChanged;
+
+  TimeSliceEnum get timeSlice;
+  DateTime get selectedDate;
+  @JsonKey(ignore: true)
+  _$$_AnalyticsFilteringEventDateRangeChangedCopyWith<
+          _$_AnalyticsFilteringEventDateRangeChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -398,7 +602,12 @@ mixin _$AnalyticsFilteringState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)
+    required TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)
         loaded,
     required TResult Function(String error) error,
   }) =>
@@ -406,14 +615,26 @@ mixin _$AnalyticsFilteringState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult? Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -505,7 +726,12 @@ class _$_AnalyticsFilteringStateInitial
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)
+    required TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)
         loaded,
     required TResult Function(String error) error,
   }) {
@@ -516,7 +742,13 @@ class _$_AnalyticsFilteringStateInitial
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult? Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -526,7 +758,13 @@ class _$_AnalyticsFilteringStateInitial
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -584,7 +822,12 @@ abstract class _$$_AnalyticsFilteringStateLoadedCopyWith<$Res> {
           $Res Function(_$_AnalyticsFilteringStateLoaded) then) =
       __$$_AnalyticsFilteringStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({TimeSliceEnum timeSlice, List<String> clubsUuid});
+  $Res call(
+      {TimeSliceEnum timeSlice,
+      Map<String, bool>? clubsUuid,
+      DateTime startDateRange,
+      DateTime endDateRange,
+      DateTime selectedDate});
 }
 
 /// @nodoc
@@ -601,17 +844,32 @@ class __$$_AnalyticsFilteringStateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? timeSlice = null,
-    Object? clubsUuid = null,
+    Object? clubsUuid = freezed,
+    Object? startDateRange = null,
+    Object? endDateRange = null,
+    Object? selectedDate = null,
   }) {
     return _then(_$_AnalyticsFilteringStateLoaded(
       timeSlice: null == timeSlice
           ? _value.timeSlice
           : timeSlice // ignore: cast_nullable_to_non_nullable
               as TimeSliceEnum,
-      clubsUuid: null == clubsUuid
+      clubsUuid: freezed == clubsUuid
           ? _value._clubsUuid
           : clubsUuid // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as Map<String, bool>?,
+      startDateRange: null == startDateRange
+          ? _value.startDateRange
+          : startDateRange // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDateRange: null == endDateRange
+          ? _value.endDateRange
+          : endDateRange // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -622,24 +880,35 @@ class _$_AnalyticsFilteringStateLoaded
     implements _AnalyticsFilteringStateLoaded {
   const _$_AnalyticsFilteringStateLoaded(
       {this.timeSlice = TimeSliceEnum.week,
-      final List<String> clubsUuid = const <String>[]})
+      final Map<String, bool>? clubsUuid,
+      required this.startDateRange,
+      required this.endDateRange,
+      required this.selectedDate})
       : _clubsUuid = clubsUuid;
 
   @override
   @JsonKey()
   final TimeSliceEnum timeSlice;
-  final List<String> _clubsUuid;
+  final Map<String, bool>? _clubsUuid;
   @override
-  @JsonKey()
-  List<String> get clubsUuid {
-    if (_clubsUuid is EqualUnmodifiableListView) return _clubsUuid;
+  Map<String, bool>? get clubsUuid {
+    final value = _clubsUuid;
+    if (value == null) return null;
+    if (_clubsUuid is EqualUnmodifiableMapView) return _clubsUuid;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_clubsUuid);
+    return EqualUnmodifiableMapView(value);
   }
 
   @override
+  final DateTime startDateRange;
+  @override
+  final DateTime endDateRange;
+  @override
+  final DateTime selectedDate;
+
+  @override
   String toString() {
-    return 'AnalyticsFilteringState.loaded(timeSlice: $timeSlice, clubsUuid: $clubsUuid)';
+    return 'AnalyticsFilteringState.loaded(timeSlice: $timeSlice, clubsUuid: $clubsUuid, startDateRange: $startDateRange, endDateRange: $endDateRange, selectedDate: $selectedDate)';
   }
 
   @override
@@ -650,12 +919,23 @@ class _$_AnalyticsFilteringStateLoaded
             (identical(other.timeSlice, timeSlice) ||
                 other.timeSlice == timeSlice) &&
             const DeepCollectionEquality()
-                .equals(other._clubsUuid, _clubsUuid));
+                .equals(other._clubsUuid, _clubsUuid) &&
+            (identical(other.startDateRange, startDateRange) ||
+                other.startDateRange == startDateRange) &&
+            (identical(other.endDateRange, endDateRange) ||
+                other.endDateRange == endDateRange) &&
+            (identical(other.selectedDate, selectedDate) ||
+                other.selectedDate == selectedDate));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, timeSlice, const DeepCollectionEquality().hash(_clubsUuid));
+      runtimeType,
+      timeSlice,
+      const DeepCollectionEquality().hash(_clubsUuid),
+      startDateRange,
+      endDateRange,
+      selectedDate);
 
   @JsonKey(ignore: true)
   @override
@@ -668,33 +948,53 @@ class _$_AnalyticsFilteringStateLoaded
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)
+    required TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)
         loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(timeSlice, clubsUuid);
+    return loaded(
+        timeSlice, clubsUuid, startDateRange, endDateRange, selectedDate);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult? Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(timeSlice, clubsUuid);
+    return loaded?.call(
+        timeSlice, clubsUuid, startDateRange, endDateRange, selectedDate);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(timeSlice, clubsUuid);
+      return loaded(
+          timeSlice, clubsUuid, startDateRange, endDateRange, selectedDate);
     }
     return orElse();
   }
@@ -738,10 +1038,16 @@ abstract class _AnalyticsFilteringStateLoaded
     implements AnalyticsFilteringState {
   const factory _AnalyticsFilteringStateLoaded(
       {final TimeSliceEnum timeSlice,
-      final List<String> clubsUuid}) = _$_AnalyticsFilteringStateLoaded;
+      final Map<String, bool>? clubsUuid,
+      required final DateTime startDateRange,
+      required final DateTime endDateRange,
+      required final DateTime selectedDate}) = _$_AnalyticsFilteringStateLoaded;
 
   TimeSliceEnum get timeSlice;
-  List<String> get clubsUuid;
+  Map<String, bool>? get clubsUuid;
+  DateTime get startDateRange;
+  DateTime get endDateRange;
+  DateTime get selectedDate;
   @JsonKey(ignore: true)
   _$$_AnalyticsFilteringStateLoadedCopyWith<_$_AnalyticsFilteringStateLoaded>
       get copyWith => throw _privateConstructorUsedError;
@@ -816,7 +1122,12 @@ class _$_AnalyticsFilteringStateError implements _AnalyticsFilteringStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)
+    required TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)
         loaded,
     required TResult Function(String error) error,
   }) {
@@ -827,7 +1138,13 @@ class _$_AnalyticsFilteringStateError implements _AnalyticsFilteringStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult? Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -837,7 +1154,13 @@ class _$_AnalyticsFilteringStateError implements _AnalyticsFilteringStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(TimeSliceEnum timeSlice, List<String> clubsUuid)? loaded,
+    TResult Function(
+            TimeSliceEnum timeSlice,
+            Map<String, bool>? clubsUuid,
+            DateTime startDateRange,
+            DateTime endDateRange,
+            DateTime selectedDate)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

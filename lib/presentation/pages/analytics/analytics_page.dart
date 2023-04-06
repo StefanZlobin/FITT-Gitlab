@@ -2,30 +2,30 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/time_slice_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
-import 'package:fitt/domain/blocs/analytics/analytics_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
+import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
+import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/entities/kpi/kpi.dart';
+import 'package:fitt/presentation/pages/analytics/widget/dashboard.dart';
 import 'package:fitt/presentation/pages/analytics/widget/kpi_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:superellipse_shape/superellipse_shape.dart';
 
 class AnalyticsPage extends StatelessWidget {
   const AnalyticsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    getIt<AdminClubsCubit>().getAdminClubs();
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Название сети'),
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: const Icon(AppIcons.arr_big_left),
-        ),
-      ),
-      body: BlocBuilder<AnalyticsBloc, AnalyticsState>(
-        bloc: getIt<AnalyticsBloc>(),
+      appBar: _buildAppBar(context),
+      body: BlocBuilder<AnalyticsKPIBloc, AnalyticsKPIState>(
+        bloc: getIt<AnalyticsKPIBloc>(),
         builder: (context, state) {
           return state.when(
             initial: () => const Center(child: CircularProgressIndicator()),
@@ -34,6 +34,9 @@ class AnalyticsPage extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 children: [
+                  const SizedBox(height: 24),
+                  const Dashboard(),
+                  const SizedBox(height: 24),
                   _buildTimeSliceFilter(),
                   const SizedBox(height: 24),
                   _buildKPICards(kpi),
@@ -43,6 +46,105 @@ class AnalyticsPage extends StatelessWidget {
             error: (error) => const SizedBox(),
           );
         },
+      ),
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      title: BlocBuilder<AdminClubsCubit, AdminClubsState>(
+        bloc: getIt<AdminClubsCubit>(),
+        builder: (context, state) {
+          return state.when(
+            initial: () => const SizedBox(),
+            loaded: (_, networkLabel) => Text(networkLabel),
+            error: (_) => const SizedBox(),
+          );
+        },
+      ),
+      leading: IconButton(
+        onPressed: () => context.pop(),
+        icon: const Icon(AppIcons.arr_big_left),
+      ),
+      bottom: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width, 56),
+        child: BlocBuilder<AdminClubsCubit, AdminClubsState>(
+          bloc: getIt<AdminClubsCubit>(),
+          builder: (context, state) {
+            return state.when(
+              initial: () => const SizedBox(),
+              loaded: (clubs, _) {
+                return Container(
+                  height: 40,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  child: BlocBuilder<AnalyticsFilteringBloc,
+                      AnalyticsFilteringState>(
+                    bloc: getIt<AnalyticsFilteringBloc>(),
+                    builder: (context, state) {
+                      return state.when(
+                        initial: () => const SizedBox(),
+                        loaded: (_, clubsUuid, __, ___, ____) {
+                          final activeClubsUuid = clubsUuid?.entries
+                                  .where((e) => e.value)
+                                  .map((e) => e.key)
+                                  .toList() ??
+                              [];
+                          return ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            padding: const EdgeInsets.only(left: 16),
+                            itemBuilder: (context, index) {
+                              final club = clubs[index];
+                              return GestureDetector(
+                                onTap: () {
+                                  getIt<AnalyticsFilteringBloc>().add(
+                                    AnalyticsFilteringEvent
+                                        .selectedClubsChanged(
+                                      clubUuidSelected: club.uuid!,
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 9.5,
+                                  ),
+                                  decoration: ShapeDecoration(
+                                    color: activeClubsUuid.contains(club.uuid)
+                                        ? AppColors.kPrimaryBlue
+                                        : null,
+                                    shape: SuperellipseShape(
+                                      borderRadius: superellipseRadius(12),
+                                      side: const BorderSide(
+                                        color: AppColors.kOxford20,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    club.label,
+                                    style: AppTypography.kBody14.apply(
+                                      color: activeClubsUuid.contains(club.uuid)
+                                          ? AppColors.kBaseWhite
+                                          : AppColors.kOxford40,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(width: 8),
+                            itemCount: clubs.length,
+                          );
+                        },
+                        error: (_) => const SizedBox(),
+                      );
+                    },
+                  ),
+                );
+              },
+              error: (_) => const SizedBox(),
+            );
+          },
+        ),
       ),
     );
   }
@@ -61,7 +163,7 @@ class AnalyticsPage extends StatelessWidget {
                   false,
                 );
               },
-              loaded: (timeSlice, clubsUuid) {
+              loaded: (timeSlice, clubsUuid, _, __, ___) {
                 return _buildItemFilter(
                   TimeSliceEnum.year,
                   timeSlice == TimeSliceEnum.year,
@@ -87,7 +189,7 @@ class AnalyticsPage extends StatelessWidget {
                   false,
                 );
               },
-              loaded: (timeSlice, clubsUuid) {
+              loaded: (timeSlice, clubsUuid, _, __, ___) {
                 return _buildItemFilter(
                   TimeSliceEnum.month,
                   timeSlice == TimeSliceEnum.month,
@@ -113,7 +215,7 @@ class AnalyticsPage extends StatelessWidget {
                   false,
                 );
               },
-              loaded: (timeSlice, clubsUuid) {
+              loaded: (timeSlice, clubsUuid, _, __, ___) {
                 return _buildItemFilter(
                   TimeSliceEnum.week,
                   timeSlice == TimeSliceEnum.week,
@@ -139,7 +241,7 @@ class AnalyticsPage extends StatelessWidget {
                   false,
                 );
               },
-              loaded: (timeSlice, clubsUuid) {
+              loaded: (timeSlice, clubsUuid, _, __, ___) {
                 return _buildItemFilter(
                   TimeSliceEnum.day,
                   timeSlice == TimeSliceEnum.day,
@@ -202,11 +304,11 @@ class AnalyticsPage extends StatelessWidget {
         ),
         KPICard(
           cardLabel: 'Динамика посетителей',
-          kpiValue: '${kpi.dynamicsOfVisitors}',
+          kpiValue: '${kpi.dynamicsOfVisitors}%',
         ),
         KPICard(
           cardLabel: 'Динамика выручки',
-          kpiValue: '${kpi.revenueDynamics}',
+          kpiValue: '${(kpi.revenueDynamics).toStringAsFixed(1)}%',
         ),
       ],
     );

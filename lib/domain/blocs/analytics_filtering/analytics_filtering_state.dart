@@ -6,7 +6,10 @@ class AnalyticsFilteringState with _$AnalyticsFilteringState {
       _AnalyticsFilteringStateInitial;
   const factory AnalyticsFilteringState.loaded({
     @Default(TimeSliceEnum.week) TimeSliceEnum timeSlice,
-    @Default(<String>[]) List<String> clubsUuid,
+    Map<String, bool>? clubsUuid,
+    required DateTime startDateRange,
+    required DateTime endDateRange,
+    required DateTime selectedDate,
   }) = _AnalyticsFilteringStateLoaded;
   const factory AnalyticsFilteringState.error({
     required String error,

@@ -9,5 +9,8 @@ class AnalyticsUseCase {
     required AnalyticsFilters analyticsFilters,
   }) async {
     await analyticsRepository.getClubsKPI(analyticsFilters: analyticsFilters);
+    await analyticsRepository.getWorkoutsChartData(
+      analyticsFilters: analyticsFilters,
+    );
   }
 }

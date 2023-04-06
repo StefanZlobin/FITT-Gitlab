@@ -19,7 +19,7 @@ class _AnalyticsApiClient implements AnalyticsApiClient {
   String? baseUrl;
 
   @override
-  Future<KPI> getDashboard(request) async {
+  Future<KPI> getClubsKPI(request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(request.toJson());
@@ -43,14 +43,14 @@ class _AnalyticsApiClient implements AnalyticsApiClient {
   }
 
   @override
-  Future<KPI> get(request) async {
+  Future<WorkoutsChartData> getWorkoutsChartData(request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(request.toJson());
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<KPI>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<WorkoutsChartData>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -62,7 +62,7 @@ class _AnalyticsApiClient implements AnalyticsApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = KPI.fromJson(_result.data!);
+    final value = WorkoutsChartData.fromJson(_result.data!);
     return value;
   }
 
