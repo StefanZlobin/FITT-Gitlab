@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:fitt/core/enum/club_sorting_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/domain/entities/club/partner_club.dart';
-import 'package:fitt/domain/entities/filters/club_filters.dart';
+import 'package:fitt/domain/entities/batch/user_batch.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/partner_club/partner_club_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,12 +13,9 @@ class PurchasedBatchCubit extends Cubit<PurchasedBatchState> {
 
   final partnerClubsRepository = getIt<PartnerClubRepository>();
 
-  Future<void> getClubsWithBatch() async {
+  Future<void> getUserBatches() async {
     try {
-      final clubsWithBatches = await partnerClubsRepository.getPartnerClubs(
-        clubFilters: const ClubFilters(favorite: false, onlyWithBatch: true),
-        clubSorting: ClubSortingEnum.nearest,
-      );
+      final clubsWithBatches = await partnerClubsRepository.getUserBatches();
       emit(PurchasedBatchState.loaded(batches: clubsWithBatches));
     } on NetworkExceptions catch (e) {
       emit(
@@ -29,10 +24,10 @@ class PurchasedBatchCubit extends Cubit<PurchasedBatchState> {
     }
   }
 
-  Future<void> deletePurchasedBatch(int batchUuid) async {
+  Future<void> cancelPurchasedBatch(int batchUuid, UserBatch userBatch) async {
     try {
-      await partnerClubsRepository.deletePurchasedBatch(batchUuid);
-      await getClubsWithBatch();
+      await partnerClubsRepository.cancelPurchasedBatch(batchUuid, userBatch);
+      await getUserBatches();
     } on NetworkExceptions catch (e) {
       emit(
         PurchasedBatchState.error(error: NetworkExceptions.getErrorMessage(e)),

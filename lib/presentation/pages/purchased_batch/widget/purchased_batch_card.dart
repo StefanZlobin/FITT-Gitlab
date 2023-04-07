@@ -6,7 +6,7 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
-import 'package:fitt/domain/entities/club/partner_club.dart';
+import 'package:fitt/domain/entities/batch/user_batch.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,10 +14,10 @@ import 'package:go_router/go_router.dart';
 class PurchasedBatchCard extends StatelessWidget {
   const PurchasedBatchCard({
     super.key,
-    required this.club,
+    required this.userBatch,
   });
 
-  final PartnerClub club;
+  final UserBatch userBatch;
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +36,14 @@ class PurchasedBatchCard extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 17),
                 color: AppColors.kBaseWhite.withOpacity(.6),
               ),
-              _buildClubWithBatchInfo(club, context),
+              _buildClubWithBatchInfo(userBatch, context),
             ],
           ),
           TopRight(
             child: GestureDetector(
               //TODO: получать реальный id пакета
-              onTap: () => getIt<PurchasedBatchCubit>().deletePurchasedBatch(1),
+              onTap: () => getIt<PurchasedBatchCubit>()
+                  .cancelPurchasedBatch(userBatch.uuid, userBatch),
               child: const Icon(
                 Icons.delete_forever,
                 color: AppColors.kBaseWhite,
@@ -100,7 +101,7 @@ class PurchasedBatchCard extends StatelessWidget {
     );
   }
 
-  Widget _buildClubWithBatchInfo(PartnerClub club, BuildContext context) {
+  Widget _buildClubWithBatchInfo(UserBatch userBatch, BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.all(0),
       minVerticalPadding: 0,
@@ -112,19 +113,19 @@ class PurchasedBatchCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: AppColors.kBaseWhite, width: 2),
           color: AppColors.kOxford60,
-          image: DecorationImage(
-            image: NetworkImage(club.photos!.first.small),
+          image: const DecorationImage(
+            image: NetworkImage(''),
             filterQuality: FilterQuality.high,
             opacity: .5,
           ),
         ),
       ),
       title: Text(
-        club.label!.toUpperCase(),
+        userBatch.club.clubLabel.toUpperCase(),
         style: AppTypography.kH18.apply(color: AppColors.kBaseWhite),
       ),
       subtitle: Text(
-        club.address!.shortAddress,
+        userBatch.club.address.shortAddress,
         style: AppTypography.kBody14.apply(
           color: AppColors.kBaseWhite.withOpacity(.7),
         ),
@@ -138,7 +139,7 @@ class PurchasedBatchCard extends StatelessWidget {
       onTap: () => context.pushNamed(
         AppRoute.club.routeToPath,
         params: {
-          'clubUuid': club.uuid!,
+          'clubUuid': userBatch.club.clubUuid,
         },
       ),
     );

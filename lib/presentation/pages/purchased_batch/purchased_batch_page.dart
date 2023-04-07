@@ -33,7 +33,7 @@ class PurchasedBatchPage extends StatelessWidget {
                     const SizedBox(height: 16),
                 itemBuilder: (context, index) {
                   final batch = batches[index];
-                  return PurchasedBatchCard(club: batch);
+                  return PurchasedBatchCard(userBatch: batch);
                 },
               );
             },

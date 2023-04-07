@@ -4,7 +4,7 @@ part of 'purchased_batch_cubit.dart';
 class PurchasedBatchState with _$PurchasedBatchState {
   const factory PurchasedBatchState.initial() = _PurchasedBatchStateInitial;
   const factory PurchasedBatchState.loaded({
-    required List<PartnerClub> batches,
+    required List<UserBatch> batches,
   }) = _PurchasedBatchStateLoaded;
   const factory PurchasedBatchState.error({
     required String error,

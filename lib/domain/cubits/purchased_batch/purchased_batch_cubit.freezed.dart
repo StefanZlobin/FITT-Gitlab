@@ -19,21 +19,21 @@ mixin _$PurchasedBatchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> batches) loaded,
+    required TResult Function(List<UserBatch> batches) loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<PartnerClub> batches)? loaded,
+    TResult? Function(List<UserBatch> batches)? loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PartnerClub> batches)? loaded,
+    TResult Function(List<UserBatch> batches)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -123,7 +123,7 @@ class _$_PurchasedBatchStateInitial implements _PurchasedBatchStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> batches) loaded,
+    required TResult Function(List<UserBatch> batches) loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -133,7 +133,7 @@ class _$_PurchasedBatchStateInitial implements _PurchasedBatchStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<PartnerClub> batches)? loaded,
+    TResult? Function(List<UserBatch> batches)? loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -143,7 +143,7 @@ class _$_PurchasedBatchStateInitial implements _PurchasedBatchStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PartnerClub> batches)? loaded,
+    TResult Function(List<UserBatch> batches)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -199,7 +199,7 @@ abstract class _$$_PurchasedBatchStateLoadedCopyWith<$Res> {
           $Res Function(_$_PurchasedBatchStateLoaded) then) =
       __$$_PurchasedBatchStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PartnerClub> batches});
+  $Res call({List<UserBatch> batches});
 }
 
 /// @nodoc
@@ -221,7 +221,7 @@ class __$$_PurchasedBatchStateLoadedCopyWithImpl<$Res>
       batches: null == batches
           ? _value._batches
           : batches // ignore: cast_nullable_to_non_nullable
-              as List<PartnerClub>,
+              as List<UserBatch>,
     ));
   }
 }
@@ -229,12 +229,12 @@ class __$$_PurchasedBatchStateLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PurchasedBatchStateLoaded implements _PurchasedBatchStateLoaded {
-  const _$_PurchasedBatchStateLoaded({required final List<PartnerClub> batches})
+  const _$_PurchasedBatchStateLoaded({required final List<UserBatch> batches})
       : _batches = batches;
 
-  final List<PartnerClub> _batches;
+  final List<UserBatch> _batches;
   @override
-  List<PartnerClub> get batches {
+  List<UserBatch> get batches {
     if (_batches is EqualUnmodifiableListView) return _batches;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_batches);
@@ -268,7 +268,7 @@ class _$_PurchasedBatchStateLoaded implements _PurchasedBatchStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> batches) loaded,
+    required TResult Function(List<UserBatch> batches) loaded,
     required TResult Function(String error) error,
   }) {
     return loaded(batches);
@@ -278,7 +278,7 @@ class _$_PurchasedBatchStateLoaded implements _PurchasedBatchStateLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<PartnerClub> batches)? loaded,
+    TResult? Function(List<UserBatch> batches)? loaded,
     TResult? Function(String error)? error,
   }) {
     return loaded?.call(batches);
@@ -288,7 +288,7 @@ class _$_PurchasedBatchStateLoaded implements _PurchasedBatchStateLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PartnerClub> batches)? loaded,
+    TResult Function(List<UserBatch> batches)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -335,10 +335,9 @@ class _$_PurchasedBatchStateLoaded implements _PurchasedBatchStateLoaded {
 
 abstract class _PurchasedBatchStateLoaded implements PurchasedBatchState {
   const factory _PurchasedBatchStateLoaded(
-          {required final List<PartnerClub> batches}) =
-      _$_PurchasedBatchStateLoaded;
+      {required final List<UserBatch> batches}) = _$_PurchasedBatchStateLoaded;
 
-  List<PartnerClub> get batches;
+  List<UserBatch> get batches;
   @JsonKey(ignore: true)
   _$$_PurchasedBatchStateLoadedCopyWith<_$_PurchasedBatchStateLoaded>
       get copyWith => throw _privateConstructorUsedError;
@@ -411,7 +410,7 @@ class _$_PurchasedBatchStateError implements _PurchasedBatchStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PartnerClub> batches) loaded,
+    required TResult Function(List<UserBatch> batches) loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -421,7 +420,7 @@ class _$_PurchasedBatchStateError implements _PurchasedBatchStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<PartnerClub> batches)? loaded,
+    TResult? Function(List<UserBatch> batches)? loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -431,7 +430,7 @@ class _$_PurchasedBatchStateError implements _PurchasedBatchStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PartnerClub> batches)? loaded,
+    TResult Function(List<UserBatch> batches)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

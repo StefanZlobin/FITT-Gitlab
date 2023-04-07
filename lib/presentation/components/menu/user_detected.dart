@@ -69,7 +69,7 @@ class UserDetected extends StatelessWidget with UserMixin {
         UserMenuTile(
           title: const Text('Купленные часы'),
           onPressed: () {
-            getIt<PurchasedBatchCubit>().getClubsWithBatch();
+            getIt<PurchasedBatchCubit>().getUserBatches();
             context.push(AppRoute.purchasedBatch.routeToPath);
           },
         ),
