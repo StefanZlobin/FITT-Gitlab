@@ -140,7 +140,10 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   }
 
   @override
-  Future<void> cancelPurchasedBatch(int batchUuid, UserBatch userBatch) async {
+  Future<void> cancelPurchasedBatch(
+    String batchUuid,
+    UserBatch userBatch,
+  ) async {
     try {
       await _apiClient.cancelPurchasedBatch(
         batchUuid.toString(),
@@ -173,7 +176,7 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   Future<List<UserBatch>> getUserBatches() async {
     try {
       final res = await _apiClient.getUserBatches(GetUserBatchesRequest());
-      return res;
+      return res.results;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,

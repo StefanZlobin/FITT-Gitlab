@@ -27,6 +27,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/checkin.png
   AssetGenImage get checkin => const AssetGenImage('assets/images/checkin.png');
 
+  /// File path: assets/images/dots.png
+  AssetGenImage get dots => const AssetGenImage('assets/images/dots.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -46,6 +49,7 @@ class $AssetsImagesGen {
         batch,
         batchMapMarker,
         checkin,
+        dots,
         logo,
         mapMarker,
         radar,

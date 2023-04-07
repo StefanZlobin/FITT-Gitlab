@@ -21,7 +21,7 @@ UserBatch _$UserBatchFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserBatch {
   @JsonKey(name: 'id')
-  int get uuid => throw _privateConstructorUsedError;
+  String get uuid => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'club')
@@ -29,11 +29,11 @@ mixin _$UserBatch {
   @JsonKey(name: 'available_hours')
   double get availableHours => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_hours')
-  double get totalHours => throw _privateConstructorUsedError;
+  int get totalHours => throw _privateConstructorUsedError;
   @JsonKey(name: 'batch_duration')
   String get duration => throw _privateConstructorUsedError;
   @JsonKey(name: 'expire_at')
-  DateTime get expireAt => throw _privateConstructorUsedError;
+  String get expireAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'can_cancelled')
   bool get canCancell => throw _privateConstructorUsedError;
 
@@ -49,13 +49,13 @@ abstract class $UserBatchCopyWith<$Res> {
       _$UserBatchCopyWithImpl<$Res, UserBatch>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int uuid,
+      {@JsonKey(name: 'id') String uuid,
       @JsonKey(name: 'status') String status,
       @JsonKey(name: 'club') ClubBatchInfo club,
       @JsonKey(name: 'available_hours') double availableHours,
-      @JsonKey(name: 'total_hours') double totalHours,
+      @JsonKey(name: 'total_hours') int totalHours,
       @JsonKey(name: 'batch_duration') String duration,
-      @JsonKey(name: 'expire_at') DateTime expireAt,
+      @JsonKey(name: 'expire_at') String expireAt,
       @JsonKey(name: 'can_cancelled') bool canCancell});
 
   $ClubBatchInfoCopyWith<$Res> get club;
@@ -87,7 +87,7 @@ class _$UserBatchCopyWithImpl<$Res, $Val extends UserBatch>
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ class _$UserBatchCopyWithImpl<$Res, $Val extends UserBatch>
       totalHours: null == totalHours
           ? _value.totalHours
           : totalHours // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -111,7 +111,7 @@ class _$UserBatchCopyWithImpl<$Res, $Val extends UserBatch>
       expireAt: null == expireAt
           ? _value.expireAt
           : expireAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       canCancell: null == canCancell
           ? _value.canCancell
           : canCancell // ignore: cast_nullable_to_non_nullable
@@ -136,13 +136,13 @@ abstract class _$$_UserBatchCopyWith<$Res> implements $UserBatchCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') int uuid,
+      {@JsonKey(name: 'id') String uuid,
       @JsonKey(name: 'status') String status,
       @JsonKey(name: 'club') ClubBatchInfo club,
       @JsonKey(name: 'available_hours') double availableHours,
-      @JsonKey(name: 'total_hours') double totalHours,
+      @JsonKey(name: 'total_hours') int totalHours,
       @JsonKey(name: 'batch_duration') String duration,
-      @JsonKey(name: 'expire_at') DateTime expireAt,
+      @JsonKey(name: 'expire_at') String expireAt,
       @JsonKey(name: 'can_cancelled') bool canCancell});
 
   @override
@@ -173,7 +173,7 @@ class __$$_UserBatchCopyWithImpl<$Res>
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -189,7 +189,7 @@ class __$$_UserBatchCopyWithImpl<$Res>
       totalHours: null == totalHours
           ? _value.totalHours
           : totalHours // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -197,7 +197,7 @@ class __$$_UserBatchCopyWithImpl<$Res>
       expireAt: null == expireAt
           ? _value.expireAt
           : expireAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       canCancell: null == canCancell
           ? _value.canCancell
           : canCancell // ignore: cast_nullable_to_non_nullable
@@ -225,7 +225,7 @@ class _$_UserBatch extends _UserBatch {
 
   @override
   @JsonKey(name: 'id')
-  final int uuid;
+  final String uuid;
   @override
   @JsonKey(name: 'status')
   final String status;
@@ -237,13 +237,13 @@ class _$_UserBatch extends _UserBatch {
   final double availableHours;
   @override
   @JsonKey(name: 'total_hours')
-  final double totalHours;
+  final int totalHours;
   @override
   @JsonKey(name: 'batch_duration')
   final String duration;
   @override
   @JsonKey(name: 'expire_at')
-  final DateTime expireAt;
+  final String expireAt;
   @override
   @JsonKey(name: 'can_cancelled')
   final bool canCancell;
@@ -295,7 +295,7 @@ class _$_UserBatch extends _UserBatch {
 abstract class _UserBatch extends UserBatch {
   factory _UserBatch(
       {@JsonKey(name: 'id')
-          required final int uuid,
+          required final String uuid,
       @JsonKey(name: 'status')
           required final String status,
       @JsonKey(name: 'club')
@@ -303,11 +303,11 @@ abstract class _UserBatch extends UserBatch {
       @JsonKey(name: 'available_hours')
           required final double availableHours,
       @JsonKey(name: 'total_hours')
-          required final double totalHours,
+          required final int totalHours,
       @JsonKey(name: 'batch_duration')
           required final String duration,
       @JsonKey(name: 'expire_at')
-          required final DateTime expireAt,
+          required final String expireAt,
       @JsonKey(name: 'can_cancelled')
           required final bool canCancell}) = _$_UserBatch;
   _UserBatch._() : super._();
@@ -317,7 +317,7 @@ abstract class _UserBatch extends UserBatch {
 
   @override
   @JsonKey(name: 'id')
-  int get uuid;
+  String get uuid;
   @override
   @JsonKey(name: 'status')
   String get status;
@@ -329,13 +329,13 @@ abstract class _UserBatch extends UserBatch {
   double get availableHours;
   @override
   @JsonKey(name: 'total_hours')
-  double get totalHours;
+  int get totalHours;
   @override
   @JsonKey(name: 'batch_duration')
   String get duration;
   @override
   @JsonKey(name: 'expire_at')
-  DateTime get expireAt;
+  String get expireAt;
   @override
   @JsonKey(name: 'can_cancelled')
   bool get canCancell;

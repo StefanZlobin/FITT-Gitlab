@@ -7,7 +7,7 @@ class GetUserBatchesRequest {
   GetUserBatchesRequest({
     this.limit = -1,
     this.offset = 0,
-    this.statusIn,
+    this.statusIn = 'ACTIVE, PREACTIVE',
     this.clubIdIn,
     this.expireAtGte,
     this.expireAtLte,
@@ -18,7 +18,7 @@ class GetUserBatchesRequest {
   @JsonKey(name: 'offset')
   final int offset;
   @JsonKey(name: 'status__in')
-  final String? statusIn;
+  final String statusIn;
   @JsonKey(name: 'club_id__in')
   final String? clubIdIn;
   @JsonKey(name: 'expire_at__gte')

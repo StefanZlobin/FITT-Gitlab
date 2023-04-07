@@ -12,6 +12,7 @@ import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
 import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:get_it/get_it.dart';
@@ -283,4 +284,5 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AnalyticsFilteringBloc>(
     () => AnalyticsFilteringBloc(),
   );
+  getIt.registerLazySingleton<PurchasedBatchCubit>(() => PurchasedBatchCubit());
 }

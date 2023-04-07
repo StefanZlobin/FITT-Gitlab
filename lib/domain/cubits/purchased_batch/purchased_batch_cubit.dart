@@ -24,7 +24,7 @@ class PurchasedBatchCubit extends Cubit<PurchasedBatchState> {
     }
   }
 
-  Future<void> cancelPurchasedBatch(int batchUuid, UserBatch userBatch) async {
+  Future<void> cancelPurchasedBatch(String batchUuid, UserBatch userBatch) async {
     try {
       await partnerClubsRepository.cancelPurchasedBatch(batchUuid, userBatch);
       await getUserBatches();

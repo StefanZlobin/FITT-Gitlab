@@ -1,12 +1,14 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
-import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
-import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/entities/batch/user_batch.dart';
+import 'package:fitt/gen/assets.gen.dart';
+import 'package:fitt/presentation/components/modals/cancel_batch_modal_bottom_sheet.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -41,13 +43,26 @@ class PurchasedBatchCard extends StatelessWidget {
           ),
           TopRight(
             child: GestureDetector(
-              //TODO: получать реальный id пакета
-              onTap: () => getIt<PurchasedBatchCubit>()
-                  .cancelPurchasedBatch(userBatch.uuid, userBatch),
-              child: const Icon(
-                Icons.delete_forever,
+              onTap: () {
+                showModalBottomSheet<void>(
+                  useRootNavigator: true,
+                  backgroundColor: AppColors.kBaseWhite,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
+                    ),
+                  ),
+                  context: context,
+                  builder: (context) {
+                    return CancelBatchModalBottomSheet(userBatch: userBatch);
+                  },
+                );
+              },
+              child: Assets.images.dots.image(
                 color: AppColors.kBaseWhite,
-                size: 28,
+                width: 28,
+                height: 28,
               ),
             ),
           ),
@@ -66,7 +81,7 @@ class PurchasedBatchCard extends StatelessWidget {
             style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
             children: [
               TextSpan(
-                text: '22',
+                text: '${userBatch.availableHours.floor()}',
                 style: AppTypography.kH86.apply(color: AppColors.kBaseWhite),
               ),
             ],
@@ -86,12 +101,13 @@ class PurchasedBatchCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              '13 дней'.toUpperCase(),
+              '${int.parse(userBatch.duration.split(' ')[0])} дней'
+                  .toUpperCase(),
               style: AppTypography.kH18.apply(color: AppColors.kBaseWhite),
             ),
             const SizedBox(height: 4),
             Text(
-              'до 25 марта 2023',
+              'до ${DateTimeUtils.dateFormatDetailed.format(dateFromString(userBatch.expireAt))}',
               style: AppTypography.kBody14
                   .apply(color: AppColors.kBaseWhite.withOpacity(.6)),
             ),

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fitt/data/models/request/partner_club/get_partner_clubs_request_body.dart';
 import 'package:fitt/data/models/request/user_batches/get_user_batches_request.dart';
 import 'package:fitt/data/models/response/partner_club/partner_club_slice.dart';
+import 'package:fitt/data/models/response/user_batches/user_batches_slice.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/domain/entities/batch/user_batch.dart';
 import 'package:fitt/domain/entities/calculate_price/calculate_price.dart';
@@ -39,7 +40,7 @@ abstract class PartnerClubApiClient {
   );
 
   @GET('user/batches/')
-  Future<List<UserBatch>> getUserBatches(
+  Future<UserBatchesSlice> getUserBatches(
     @Queries() GetUserBatchesRequest request,
   );
 
@@ -48,7 +49,7 @@ abstract class PartnerClubApiClient {
 
   @POST('user/batches/{id}/cancel/')
   Future<UserBatch> cancelPurchasedBatch(
-    @Path('uuid') String uuid,
+    @Path('id') String uuid,
     @Body() UserBatch userBatch,
   );
 }

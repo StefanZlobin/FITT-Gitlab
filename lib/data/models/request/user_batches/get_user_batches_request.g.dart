@@ -11,7 +11,7 @@ GetUserBatchesRequest _$GetUserBatchesRequestFromJson(
     GetUserBatchesRequest(
       limit: json['limit'] as int? ?? -1,
       offset: json['offset'] as int? ?? 0,
-      statusIn: json['status__in'] as String?,
+      statusIn: json['status__in'] as String? ?? 'ACTIVE, PREACTIVE',
       clubIdIn: json['club_id__in'] as String?,
       expireAtGte: json['expire_at__gte'] as String?,
       expireAtLte: json['expire_at__lte'] as String?,

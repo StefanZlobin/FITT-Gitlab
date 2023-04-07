@@ -7,13 +7,13 @@ part of 'user_batch.dart';
 // **************************************************************************
 
 _$_UserBatch _$$_UserBatchFromJson(Map<String, dynamic> json) => _$_UserBatch(
-      uuid: json['id'] as int,
+      uuid: json['id'] as String,
       status: json['status'] as String,
       club: ClubBatchInfo.fromJson(json['club'] as Map<String, dynamic>),
       availableHours: (json['available_hours'] as num).toDouble(),
-      totalHours: (json['total_hours'] as num).toDouble(),
+      totalHours: json['total_hours'] as int,
       duration: json['batch_duration'] as String,
-      expireAt: DateTime.parse(json['expire_at'] as String),
+      expireAt: json['expire_at'] as String,
       canCancell: json['can_cancelled'] as bool,
     );
 
@@ -25,6 +25,6 @@ Map<String, dynamic> _$$_UserBatchToJson(_$_UserBatch instance) =>
       'available_hours': instance.availableHours,
       'total_hours': instance.totalHours,
       'batch_duration': instance.duration,
-      'expire_at': instance.expireAt.toIso8601String(),
+      'expire_at': instance.expireAt,
       'can_cancelled': instance.canCancell,
     };

@@ -33,7 +33,7 @@ abstract class PartnerClubRepository {
   /// Removes partner club [clubUuid] to favorites.
   Future<PartnerClub> removeClubFromFavorites(String clubUuid);
 
-  Future<void> cancelPurchasedBatch(int batchUuid, UserBatch userBatch);
+  Future<void> cancelPurchasedBatch(String batchUuid, UserBatch userBatch);
 
   Future<List<UserBatch>> getUserBatches();
 

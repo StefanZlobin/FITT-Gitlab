@@ -9,13 +9,13 @@ part 'user_batch.g.dart';
 @freezed
 class UserBatch with _$UserBatch {
   factory UserBatch({
-    @JsonKey(name: 'id') required int uuid,
+    @JsonKey(name: 'id') required String uuid,
     @JsonKey(name: 'status') required String status,
     @JsonKey(name: 'club') required ClubBatchInfo club,
     @JsonKey(name: 'available_hours') required double availableHours,
-    @JsonKey(name: 'total_hours') required double totalHours,
+    @JsonKey(name: 'total_hours') required int totalHours,
     @JsonKey(name: 'batch_duration') required String duration,
-    @JsonKey(name: 'expire_at') required DateTime expireAt,
+    @JsonKey(name: 'expire_at') required String expireAt,
     @JsonKey(name: 'can_cancelled') required bool canCancell,
   }) = _UserBatch;
 
