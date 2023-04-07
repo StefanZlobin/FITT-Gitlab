@@ -7,7 +7,7 @@ enum AppRoute {
   information,
   feedback,
   // Purchased hours
-  purchasedHours,
+  purchasedBatch,
   // Workout
   workout,
   workoutList,
@@ -30,6 +30,8 @@ enum AppRoute {
   // Admin
   adminWorkoutList,
   adminWorkout,
+  // Staff analytics
+  analytics,
   // Account
   account,
   personalData,

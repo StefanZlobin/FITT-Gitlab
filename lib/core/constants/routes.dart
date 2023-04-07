@@ -9,6 +9,7 @@ import 'package:fitt/presentation/pages/account/account_page.dart';
 import 'package:fitt/presentation/pages/account/personal_data_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workout_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workouts_page.dart';
+import 'package:fitt/presentation/pages/analytics/analytics_page.dart';
 import 'package:fitt/presentation/pages/archive_workouts/archive_workouts_page.dart';
 import 'package:fitt/presentation/pages/favorite_clubs/favorite_clubs_page.dart';
 import 'package:fitt/presentation/pages/feedback/feedback_page.dart';
@@ -23,6 +24,7 @@ import 'package:fitt/presentation/pages/payment/payment_batch_succes_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_loading_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_reject_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_succes_page.dart';
+import 'package:fitt/presentation/pages/purchased_batch/purchased_batch_page.dart';
 import 'package:fitt/presentation/pages/sign_in/input_phone_number_page.dart';
 import 'package:fitt/presentation/pages/sign_in/input_secure_code_page.dart';
 import 'package:fitt/presentation/pages/workout/workout_page.dart';
@@ -248,6 +250,12 @@ class Routes {
       builder: (context, state) =>
           const ShakeFeedbackWrapper(child: FeedbackPage()),
     ),
+    GoRoute(
+      path: AppRoute.purchasedBatch.routeToPath,
+      name: AppRoute.purchasedBatch.routeToName,
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: PurchasedBatchPage()),
+    ),
   ];
 
   final adminRoutes = <GoRoute>[
@@ -265,6 +273,12 @@ class Routes {
           showHeader: state.extra! as bool,
         ),
       ),
+    ),
+    GoRoute(
+      path: AppRoute.analytics.routeToPath,
+      name: AppRoute.analytics.routeToName,
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: AnalyticsPage()),
     ),
   ];
 }

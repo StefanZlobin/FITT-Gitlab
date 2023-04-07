@@ -8,7 +8,22 @@ enum UserRoleEnum {
   customer,
   @JsonValue('ADMIN')
   administrator,
-  anonymous,
+  @JsonValue('MANAGER')
+  manager,
+  anonymous;
+
+  String getUserRoleName(UserRoleEnum v) {
+    switch (v) {
+      case UserRoleEnum.customer:
+        return 'Пользователь';
+      case UserRoleEnum.administrator:
+        return 'Администратор';
+      case UserRoleEnum.manager:
+        return 'Управляющий';
+      case UserRoleEnum.anonymous:
+        return 'Неизвестно';
+    }
+  }
 }
 
 enum UserTypeEnum {

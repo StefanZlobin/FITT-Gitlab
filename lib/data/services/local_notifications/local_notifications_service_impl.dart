@@ -57,7 +57,7 @@ class LocalNotificationsServiceImpl implements LocalNotificationsService {
     required Duration scheduleDuration,
   }) async {
     final isExist = await checkNotificationExist(id: id);
-    if (isExist && title.isEmpty && body.isEmpty) return;
+    if (isExist && (title.isEmpty && body.isEmpty)) return;
     await localNotification.zonedSchedule(
       id,
       title,

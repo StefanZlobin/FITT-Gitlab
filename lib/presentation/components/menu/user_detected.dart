@@ -1,6 +1,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/time_slice_enum.dart';
 import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
@@ -8,12 +9,13 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
+import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/user/user_bloc.dart';
-import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
+import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
@@ -33,22 +35,30 @@ class UserDetected extends StatelessWidget with UserMixin {
       children: [
         const UserAvatar(),
         //TODO: Если пользователь - администратор, то вывести доступные ему клубы
-        if (userSnapshot?.role == UserRoleEnum.administrator) ...[
+        if (userSnapshot?.role == UserRoleEnum.administrator ||
+            userSnapshot?.role == UserRoleEnum.manager) ...[
           const Separator(),
           BlocBuilder<AdminClubsCubit, AdminClubsState>(
             bloc: getIt<AdminClubsCubit>(),
             builder: (context, state) {
               return state.when(
                 initial: () => const CircularProgressIndicator(),
-                loaded: (adminClubs) {
+                loaded: (adminClubs, nameOfOrganization) {
+                  if (adminClubs.isEmpty) return const SizedBox();
                   return AdminMenuTile(
                     onPressed: () {
-                      getIt<AdminClubCubit>()
-                          .getAdminClub(adminClubUuid: adminClubs.first.uuid!);
-                      context.push(AppRoute.adminWorkoutList.routeToPath);
+                      //getIt<AdminClubCubit>()
+                      //    .getAdminClub(adminClubUuid: adminClubs.first.uuid!);
+                      //context.push(AppRoute.adminWorkoutList.routeToPath);
+                      getIt<AnalyticsFilteringBloc>()
+                          .add(const AnalyticsFilteringEvent.timeSliceChanged(
+                        timeSlice: TimeSliceEnum.week,
+                      ));
+                      context.push(AppRoute.analytics.routeToPath);
                     },
-                    title: Text(adminClubs.first.label),
-                    subtitle: const Text('Администратор'),
+                    title: Text(nameOfOrganization),
+                    subtitle: Text(userSnapshot!.role!
+                        .getUserRoleName(userSnapshot!.role!)),
                     trailing: const Icon(
                       AppIcons.arr_big_right,
                       size: 18,
@@ -62,6 +72,13 @@ class UserDetected extends StatelessWidget with UserMixin {
           ),
           const Separator(),
         ],
+        UserMenuTile(
+          title: const Text('Купленные часы'),
+          onPressed: () {
+            getIt<PurchasedBatchCubit>().getUserBatches();
+            context.push(AppRoute.purchasedBatch.routeToPath);
+          },
+        ),
         UserMenuTile(
           title: const Text('Тренировки'),
           subtitle: BlocBuilder<WorkoutsCubit, WorkoutsState>(

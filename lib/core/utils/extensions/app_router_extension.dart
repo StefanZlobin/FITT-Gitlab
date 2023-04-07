@@ -18,8 +18,8 @@ extension AppRouterExtension on AppRoute {
       case AppRoute.feedback:
         return '/${AppRoute.feedback.name}';
 
-      case AppRoute.purchasedHours:
-        return '/${AppRoute.purchasedHours.name}';
+      case AppRoute.purchasedBatch:
+        return '/${AppRoute.purchasedBatch.name}';
 
       case AppRoute.workout:
         return '/${AppRoute.workout.name}';
@@ -75,6 +75,9 @@ extension AppRouterExtension on AppRoute {
       case AppRoute.adminWorkout:
         return '/${AppRoute.adminWorkout.name}';
 
+      case AppRoute.analytics:
+        return '/${AppRoute.analytics.name}';
+
       case AppRoute.account:
         return '/${AppRoute.account.name}';
 
@@ -106,8 +109,8 @@ extension AppRouterExtension on AppRoute {
       case AppRoute.feedback:
         return AppRoute.feedback.name.toUpperCase();
 
-      case AppRoute.purchasedHours:
-        return AppRoute.purchasedHours.name.toUpperCase();
+      case AppRoute.purchasedBatch:
+        return AppRoute.purchasedBatch.name.toUpperCase();
 
       case AppRoute.workout:
         return '/${AppRoute.workout.name.toUpperCase()}';
@@ -162,6 +165,9 @@ extension AppRouterExtension on AppRoute {
 
       case AppRoute.adminWorkout:
         return '/${AppRoute.adminWorkout.name.toUpperCase()}';
+
+      case AppRoute.analytics:
+        return AppRoute.analytics.name.toUpperCase();
 
       case AppRoute.account:
         return AppRoute.account.name.toUpperCase();
