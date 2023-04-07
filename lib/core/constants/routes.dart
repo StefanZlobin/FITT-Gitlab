@@ -9,6 +9,7 @@ import 'package:fitt/presentation/pages/account/account_page.dart';
 import 'package:fitt/presentation/pages/account/personal_data_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workout_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workouts_page.dart';
+import 'package:fitt/presentation/pages/analytics/analytics_page.dart';
 import 'package:fitt/presentation/pages/archive_workouts/archive_workouts_page.dart';
 import 'package:fitt/presentation/pages/favorite_clubs/favorite_clubs_page.dart';
 import 'package:fitt/presentation/pages/feedback/feedback_page.dart';
@@ -272,6 +273,12 @@ class Routes {
           showHeader: state.extra! as bool,
         ),
       ),
+    ),
+    GoRoute(
+      path: AppRoute.analytics.routeToPath,
+      name: AppRoute.analytics.routeToName,
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: AnalyticsPage()),
     ),
   ];
 }

@@ -20,7 +20,7 @@ class AdminClubsCubit extends Cubit<AdminClubsState> with UserMixin {
       emit(_AdminClubsStateLoaded(
         adminClubs: adminClubs,
         nameOfOrganization:
-            adminClubs.isEmpty ? '' : adminClubs.first.organization,
+            adminClubs.isEmpty ? '' : adminClubs.first.organization.label,
       ));
     } on Exception catch (e) {
       emit(_AdminClubsStateError(error: e.toString()));

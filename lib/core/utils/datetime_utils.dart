@@ -29,8 +29,12 @@ class DateTimeUtils {
   static final DateFormat dateFormat = DateFormat.yMd();
   static final DateFormat dateFormatShort = DateFormat('dd.MM');
   static final DateFormat dateFormatDetailed = DateFormat('dd MMMM y');
+  static final DateFormat dateFormatMonthAndYear = DateFormat('MMMM, y');
   static final DateFormat dateFormatWithoutYear = DateFormat('d MMMM');
+  static final DateFormat datePostfix = DateFormat('EEEE');
   static final DateFormat timeFormat = DateFormat.Hm();
+  // ignore: non_constant_identifier_names
+  static final DateFormat ABBRMonth = DateFormat('MMM');
   static final DateFormat fullDateTimeFormat = DateFormat('dd MMMM y HH:mm');
 
   static String dateWithPrefix(DateTime date, [DateFormat? format]) {
@@ -41,10 +45,86 @@ class DateTimeUtils {
     return '$prefix, $formattedDate';
   }
 
+  static String dateWithPostfix(DateTime date, [DateFormat? format]) {
+    format ??= dateFormatWithoutYear;
+    final formattedDate = format.format(date);
+    return '$formattedDate (${postfix(date)}), ${date.year}';
+  }
+
+  static String dateFromTo(
+    DateTime startDate,
+    DateTime endDate, [
+    DateFormat? format,
+  ]) {
+    final from = 'с ${dateFormatWithoutYear.format(startDate)}';
+    final to = 'до ${dateFormatWithoutYear.format(endDate)}';
+    return '$from $to, ${startDate.year}';
+  }
+
+  static String dateMonth(DateTime date) {
+    return dateFormatMonthAndYear.format(date);
+  }
+
+  static String dateYear(DateTime date) {
+    return '${date.year} год';
+  }
+
   static String dateWithoutPrefix(DateTime date, [DateFormat? format]) {
     format ??= dateFormatWithoutYear;
     final formattedDate = format.format(date);
     return formattedDate;
+  }
+
+  static String abbrMonth(int monthNumber) {
+    switch (monthNumber) {
+      case 0:
+        return 'Я';
+      case 1:
+        return 'Ф';
+      case 2:
+        return 'М';
+      case 3:
+        return 'А';
+      case 4:
+        return 'М';
+      case 5:
+        return 'И';
+      case 6:
+        return 'И';
+      case 7:
+        return 'А';
+      case 8:
+        return 'С';
+      case 9:
+        return 'О';
+      case 10:
+        return 'Н';
+      case 11:
+        return 'Д';
+      default:
+        return '';
+    }
+  }
+
+  static String abbrWeek(int weekNumber) {
+    switch (weekNumber) {
+      case 0:
+        return 'Пн';
+      case 1:
+        return 'Вт';
+      case 2:
+        return 'Ср';
+      case 3:
+        return 'Чт';
+      case 4:
+        return 'Пт';
+      case 5:
+        return 'Сб';
+      case 6:
+        return 'Вс';
+      default:
+        return '';
+    }
   }
 
   /// Creates date prefix such as Вчера, Сегодня, Завтра
@@ -57,6 +137,11 @@ class DateTimeUtils {
     if (tomorrow) return 'Завтра';
     if (yesterday) return 'Вчера';
     return null;
+  }
+
+  static String postfix(DateTime date) {
+    final utc = date.toUtc();
+    return datePostfix.format(utc);
   }
 
   static String nextWorkoutSession(DateTime date) {
