@@ -15,6 +15,7 @@ import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
+import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
@@ -71,6 +72,13 @@ class UserDetected extends StatelessWidget with UserMixin {
           ),
           const Separator(),
         ],
+        UserMenuTile(
+          title: const Text('Купленные часы'),
+          onPressed: () {
+            getIt<PurchasedBatchCubit>().getUserBatches();
+            context.push(AppRoute.purchasedBatch.routeToPath);
+          },
+        ),
         UserMenuTile(
           title: const Text('Тренировки'),
           subtitle: BlocBuilder<WorkoutsCubit, WorkoutsState>(

@@ -7,7 +7,7 @@ enum AppRoute {
   information,
   feedback,
   // Purchased hours
-  purchasedHours,
+  purchasedBatch,
   // Workout
   workout,
   workoutList,
