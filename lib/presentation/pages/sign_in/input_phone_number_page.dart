@@ -103,7 +103,7 @@ class CompleteButton extends StatelessWidget {
                 'Повторный звонок через ${duration.inSeconds} c',
                 style: AppTypography.kH16.apply(color: AppColors.kBaseWhite),
               ),
-              isDisable: isError || phone.isEmpty,
+              isDisable: true,
               marginButton: const EdgeInsets.all(0),
               onPressed: () {
                 getIt<LoginBloc>().add(

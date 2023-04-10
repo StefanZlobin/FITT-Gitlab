@@ -12,64 +12,40 @@ class RepeatCallAfter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<LoginBloc, LoginState>(
-          bloc: getIt<LoginBloc>(),
-          listener: (context, state) {
-            state.whenOrNull(
-              error: (error, _, __) {
-                getIt<AuthenticationErrorTimerBloc>().state.whenOrNull(
-                  timerInitial: (duration) {
-                    getIt<AuthenticationErrorTimerBloc>().add(
-                      AuthenticationErrorTimerEvent.timerStarted(
-                        duration: duration,
-                      ),
-                    );
-                    getIt<AuthenticationErrorTimerBloc>(instanceName: 'inputPhonePage').add(
-                      AuthenticationErrorTimerEvent.timerStarted(
-                        duration: duration,
-                      ),
-                    );
-                  },
-                );
+    return BlocBuilder<AuthenticationErrorTimerBloc,
+        AuthenticationErrorTimerState>(
+      bloc: getIt<AuthenticationErrorTimerBloc>(),
+      builder: (context, state) {
+        return state.when(
+          timerInitial: (duration) => _buildTextRepeatCall(duration),
+          timerRunInProgress: (duration) => _buildTextRepeatCall(duration),
+          timerRunComplete: (countTimerEnd) {
+            getIt<LoginBloc>().countSecureCodeEntryAttempts = 5;
+            return GestureDetector(
+              onTap: () {
+                late final Duration duration;
+                if (countTimerEnd > 2) {
+                  duration = const Duration(minutes: 30);
+                } else if (countTimerEnd >= 1) {
+                  duration = const Duration(minutes: 5);
+                }
+                getIt<AuthenticationErrorTimerBloc>()
+                    .add(AuthenticationErrorTimerEvent.setTimerInitial(
+                  duration: duration,
+                ));
+                context.pop();
               },
+              child: Center(
+                child: Text(
+                  'Запросить звонок повторно',
+                  style:
+                      AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
+                ),
+              ),
             );
           },
-        ),
-      ],
-      child: BlocBuilder<AuthenticationErrorTimerBloc, AuthenticationErrorTimerState>(
-        bloc: getIt<AuthenticationErrorTimerBloc>(),
-        builder: (context, state) {
-          return state.when(
-            timerInitial: (duration) => _buildTextRepeatCall(duration),
-            timerRunInProgress: (duration) => _buildTextRepeatCall(duration),
-            timerRunComplete: (countTimerEnd) {
-              getIt<LoginBloc>().countSecureCodeEntryAttempts = 5;
-              return GestureDetector(
-                onTap: () {
-                  late final Duration duration;
-                  if (countTimerEnd > 2) {
-                    duration = const Duration(minutes: 30);
-                  } else if (countTimerEnd >= 1) {
-                    duration = const Duration(minutes: 5);
-                  }
-                  getIt<AuthenticationErrorTimerBloc>().add(AuthenticationErrorTimerEvent.setTimerInitial(
-                    duration: duration,
-                  ));
-                  context.pop();
-                },
-                child: Center(
-                  child: Text(
-                    'Запросить звонок повторно',
-                    style: AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
-                  ),
-                ),
-              );
-            },
-          );
-        },
-      ),
+        );
+      },
     );
   }
 

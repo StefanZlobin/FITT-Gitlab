@@ -14,9 +14,12 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  Duration _repeatCallAfter = const Duration(minutes: 1);
+
   final AuthUseCase authUseCase = AuthUseCase();
   final AuthRepository authRepository = getIt<AuthRepository>();
   final userUseCase = UserUseCase();
+
   late StreamSubscription<AuthenticationStatusEnum>
       _authenticationStatusSubscription;
 
@@ -45,10 +48,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       case AuthenticationStatusEnum.unknown:
         return emit(const AuthState.unknown());
       case AuthenticationStatusEnum.unauthenticated:
+        _repeatCallAfter *= 2;
         return emit(const AuthState.unauthenticated());
+      case AuthenticationStatusEnum.loading:
+        return emit(AuthState.loading(repearCallAfter: _repeatCallAfter));
       case AuthenticationStatusEnum.authenticated:
         await userUseCase.getSignedUser();
         return emit(const AuthState.authenticated());
+      case AuthenticationStatusEnum.error:
+        return emit(const AuthState.error(error: ''));
     }
   }
 

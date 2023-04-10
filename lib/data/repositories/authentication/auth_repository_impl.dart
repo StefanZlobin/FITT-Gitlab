@@ -22,18 +22,22 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthApiClient _apiClient;
   final AuthLocalClient _authLocalClient;
 
-  final BehaviorSubject<TokenPair?> _tokenController = BehaviorSubject(sync: true);
+  final BehaviorSubject<TokenPair?> _tokenController =
+      BehaviorSubject(sync: true);
   void Function(TokenPair?) get updateToken => _tokenController.sink.add;
   Stream<TokenPair?> get token => _tokenController;
 
   @override
   Stream<TokenPair?> get tokens => _tokenController;
 
-  final BehaviorSubject<AuthenticationStatusEnum> _authenticationStatusController =
+  final BehaviorSubject<AuthenticationStatusEnum>
+      _authenticationStatusController =
       BehaviorSubject.seeded(AuthenticationStatusEnum.unknown, sync: true);
-  void Function(AuthenticationStatusEnum) get updateAuthenticationStatus => _authenticationStatusController.sink.add;
+  void Function(AuthenticationStatusEnum) get updateAuthenticationStatus =>
+      _authenticationStatusController.sink.add;
   @override
-  Stream<AuthenticationStatusEnum> get authenticationStatus => _authenticationStatusController;
+  Stream<AuthenticationStatusEnum> get authenticationStatus =>
+      _authenticationStatusController;
 
   @override
   Future<TokenPair?> getToken() async {
@@ -51,6 +55,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> signIn({required String phoneNumber}) async {
     try {
+      updateAuthenticationStatus(AuthenticationStatusEnum.loading);
       await _apiClient.signIn(SignInRequestBody(phoneNumber));
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
@@ -77,6 +82,7 @@ class AuthRepositoryImpl implements AuthRepository {
       updateAuthenticationStatus(AuthenticationStatusEnum.authenticated);
       return token;
     } on DioError catch (e, stackTrace) {
+      updateAuthenticationStatus(AuthenticationStatusEnum.unauthenticated);
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
@@ -96,7 +102,8 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<TokenPair> refreshToken() async {
     final token = await getToken();
-    final newToken = await _apiClient.refreshTokens(RefreshTokenRequestBody(token?.refresh ?? ''));
+    final newToken = await _apiClient
+        .refreshTokens(RefreshTokenRequestBody(token?.refresh ?? ''));
     await saveToken(token: newToken);
     return newToken;
   }
