@@ -249,10 +249,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AuthenticationErrorTimerBloc>(
     () => AuthenticationErrorTimerBloc(ticker: const Ticker()),
   );
-  getIt.registerLazySingleton<AuthenticationErrorTimerBloc>(
-    instanceName: 'inputPhonePage',
-    () => AuthenticationErrorTimerBloc(ticker: const Ticker()),
-  );
   getIt.registerLazySingleton<ClubPhotoSliderCubit>(
     () => ClubPhotoSliderCubit(),
   );

@@ -76,7 +76,7 @@ class CompleteButton extends StatelessWidget {
     final phone = phoneNumber ?? '';
     return BlocBuilder<AuthenticationErrorTimerBloc,
         AuthenticationErrorTimerState>(
-      bloc: getIt<AuthenticationErrorTimerBloc>(instanceName: 'inputPhonePage'),
+      bloc: getIt<AuthenticationErrorTimerBloc>(),
       builder: (context, state) {
         return state.when(
           timerInitial: (duration) {

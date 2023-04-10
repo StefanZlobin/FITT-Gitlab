@@ -38,8 +38,8 @@ class AuthenticationErrorTimerBloc
         }
       } else if (authenticationStatus ==
           AuthenticationStatusEnum.unauthenticated) {
+        _repeatCallAfter += const Duration(minutes: 1);
         if (stateInProgress is! _TimerRunInProgress) {
-          _repeatCallAfter += const Duration(minutes: 5);
           add(AuthenticationErrorTimerEvent.setTimerInitial(
             duration: _repeatCallAfter,
           ));
