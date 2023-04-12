@@ -1,1 +1,7 @@
-enum AuthenticationStatusEnum { unknown, authenticated, unauthenticated }
+enum AuthenticationStatusEnum {
+  unknown,
+  authenticated,
+  unauthenticated,
+  loading,
+  error;
+}
