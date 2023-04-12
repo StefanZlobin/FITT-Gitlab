@@ -176,7 +176,7 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   Future<List<UserBatch>> getUserBatches() async {
     try {
       final res = await _apiClient.getUserBatches(GetUserBatchesRequest());
-      return res.results;
+      return res;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
