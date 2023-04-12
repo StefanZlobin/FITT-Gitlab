@@ -292,7 +292,7 @@ class AnalyticsPage extends StatelessWidget {
         ),
         KPICard(
           cardLabel: 'Выручка тыс.руб.',
-          kpiValue: '${((kpi.revenue ~/ 100) / 1000).floor()}',
+          kpiValue: '${(kpi.revenue ~/ 100) / 1000}',
         ),
         KPICard(
           cardLabel: 'Время ч',
@@ -300,7 +300,7 @@ class AnalyticsPage extends StatelessWidget {
         ),
         KPICard(
           cardLabel: 'Средняя стоимость ч, руб.',
-          kpiValue: '${((kpi.averageCostPerHour ~/ 100) / 1000).floor()}',
+          kpiValue: '${kpi.averageCostPerHour ~/ 100}',
         ),
         KPICard(
           cardLabel: 'Динамика посетителей',
