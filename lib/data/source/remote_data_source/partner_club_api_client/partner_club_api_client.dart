@@ -39,8 +39,13 @@ abstract class PartnerClubApiClient {
     @Queries() GetPartnerClubsRequestBody request,
   );
 
+  //@GET('user/batches/')
+  //Future<UserBatchesSlice> getUserBatches(
+  //  @Queries() GetUserBatchesRequest request,
+  //);
+
   @GET('user/batches/')
-  Future<UserBatchesSlice> getUserBatches(
+  Future<List<UserBatch>> getUserBatches(
     @Queries() GetUserBatchesRequest request,
   );
 

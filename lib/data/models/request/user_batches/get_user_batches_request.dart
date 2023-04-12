@@ -5,18 +5,18 @@ part 'get_user_batches_request.g.dart';
 @JsonSerializable()
 class GetUserBatchesRequest {
   GetUserBatchesRequest({
-    this.limit = -1,
-    this.offset = 0,
+    //this.limit = -1,
+    //this.offset = 0,
     this.statusIn = 'ACTIVE, PREACTIVE',
     this.clubIdIn,
     this.expireAtGte,
     this.expireAtLte,
   });
 
-  @JsonKey(name: 'limit')
-  final int limit;
-  @JsonKey(name: 'offset')
-  final int offset;
+  //@JsonKey(name: 'limit')
+  //final int limit;
+  //@JsonKey(name: 'offset')
+  //final int offset;
   @JsonKey(name: 'status__in')
   final String statusIn;
   @JsonKey(name: 'club_id__in')

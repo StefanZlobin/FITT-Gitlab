@@ -166,14 +166,14 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
   }
 
   @override
-  Future<UserBatchesSlice> getUserBatches(request) async {
+  Future<List<UserBatch>> getUserBatches(request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(request.toJson());
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<UserBatchesSlice>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<UserBatch>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -185,7 +185,9 @@ class _PartnerClubApiClient implements PartnerClubApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = UserBatchesSlice.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => UserBatch.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
