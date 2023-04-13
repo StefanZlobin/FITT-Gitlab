@@ -8,11 +8,11 @@ import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.d
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/entities/kpi/kpi.dart';
+import 'package:fitt/presentation/components/menu/manager_menu_wrapper.dart';
 import 'package:fitt/presentation/pages/analytics/widget/dashboard.dart';
 import 'package:fitt/presentation/pages/analytics/widget/kpi_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 class AnalyticsPage extends StatelessWidget {
@@ -23,6 +23,7 @@ class AnalyticsPage extends StatelessWidget {
     getIt<AdminClubsCubit>().getAdminClubs();
 
     return Scaffold(
+      drawer: const ManagerMenuWrapper(),
       appBar: _buildAppBar(context),
       body: BlocBuilder<AnalyticsKPIBloc, AnalyticsKPIState>(
         bloc: getIt<AnalyticsKPIBloc>(),
@@ -62,10 +63,12 @@ class AnalyticsPage extends StatelessWidget {
           );
         },
       ),
-      leading: IconButton(
-        onPressed: () => context.pop(),
-        icon: const Icon(AppIcons.arr_big_left),
-      ),
+      leading: Builder(builder: (c) {
+        return IconButton(
+          onPressed: () => Scaffold.of(c).openDrawer(),
+          icon: const Icon(AppIcons.menu_burger),
+        );
+      }),
       bottom: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 56),
         child: BlocBuilder<AdminClubsCubit, AdminClubsState>(
