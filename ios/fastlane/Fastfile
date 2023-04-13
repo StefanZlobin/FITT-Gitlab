@@ -34,7 +34,8 @@ platform :ios do
       reject_build_waiting_for_review: true,
       ipa: ipa_file,
       distribute_external: true,
-      notify_external_testers: true
+      notify_external_testers: true,
+      changelog: "Новая версия приложения для тестирования"
     )
   end
 
