@@ -1,10 +1,13 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/presentation/components/menu/admin_menu_wrapper.dart';
+import 'package:fitt/presentation/components/menu/manager_menu_wrapper.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_finished_workouts.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_planned_workouts.dart';
@@ -13,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class AdminWorkoutsPage extends StatelessWidget {
+class AdminWorkoutsPage extends StatelessWidget with UserMixin {
   const AdminWorkoutsPage({Key? key}) : super(key: key);
 
   @override
@@ -22,7 +25,9 @@ class AdminWorkoutsPage extends StatelessWidget {
       bloc: getIt<AdminClubCubit>(),
       builder: (context, state) {
         return Scaffold(
-          drawer: const AdminMenuWrapper(),
+          drawer: userSnapshot?.role == UserRoleEnum.manager
+              ? const ManagerMenuWrapper()
+              : const AdminMenuWrapper(),
           appBar: state.when(
             initial: () => AppBar(),
             loaded: (adminClub) {
