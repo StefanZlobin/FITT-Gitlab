@@ -32,7 +32,9 @@ platform :ios do
     upload_to_testflight(
       expire_previous_builds: true,
       reject_build_waiting_for_review: true,
-      ipa: ipa_file
+      ipa: ipa_file,
+      distribute_external: true,
+      notify_external_testers: true
     )
   end
 

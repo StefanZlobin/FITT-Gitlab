@@ -15,13 +15,37 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios get_next_build_number
+
+```sh
+[bundle exec] fastlane ios get_next_build_number
+```
+
+
+
+### ios to_testflight
+
+```sh
+[bundle exec] fastlane ios to_testflight
+```
+
+Description of what the lane does
+
+### ios build_ipa
+
+```sh
+[bundle exec] fastlane ios build_ipa
+```
+
+
+
 ### ios test
 
 ```sh
 [bundle exec] fastlane ios test
 ```
 
-Description of what the lane does
+
 
 ### ios preprod
 
