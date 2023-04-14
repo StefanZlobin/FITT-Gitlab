@@ -14,7 +14,12 @@ import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 class StaffClubsFilterRow extends StatelessWidget {
-  const StaffClubsFilterRow({super.key});
+  const StaffClubsFilterRow({
+    super.key,
+    required this.isAdminWorkoutsPage,
+  });
+
+  final bool isAdminWorkoutsPage;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +50,10 @@ class StaffClubsFilterRow extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       getIt<StaffClubsFiltersBloc>().add(
-                        StaffClubsFiltersEvent.selectClub(adminClub: club),
+                        StaffClubsFiltersEvent.selectClub(
+                          adminClub: club,
+                          isAdminWorkoutsPage: isAdminWorkoutsPage,
+                        ),
                       );
                     },
                     child: Container(
@@ -91,7 +99,12 @@ class StaffClubsFilterRow extends StatelessWidget {
     List<AdminClub> selectedClubs,
   ) {
     return GestureDetector(
-      onTap: () => context.push(AppRoute.staffClubsFilter.routeToPath),
+      onTap: () {
+        context.push(
+          AppRoute.staffClubsFilter.routeToPath,
+          extra: isAdminWorkoutsPage,
+        );
+      },
       child: Stack(
         alignment: Alignment.topRight,
         clipBehavior: Clip.none,

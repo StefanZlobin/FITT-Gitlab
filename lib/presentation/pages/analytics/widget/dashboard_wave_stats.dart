@@ -127,8 +127,7 @@ class DashboardWaveStats extends StatelessWidget {
               (maxStat == 0 ? 1 : maxStat),
       width: width,
       decoration: BoxDecoration(
-        color: workoutsChartLineData[i].countSheduledWorkout != 0 ||
-                workoutsChartLineData[i].countCompletedWorkout == 0
+        color: workoutsChartLineData[i].countCompletedWorkout == 0
             ? AppColors.kOxford40
             : AppColors.kBaseBlack,
         borderRadius: BorderRadius.circular(6),

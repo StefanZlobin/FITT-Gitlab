@@ -16,20 +16,24 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StaffClubsFiltersEvent {
-  AdminClub get adminClub => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AdminClub adminClub) selectClub,
+    required TResult Function(AdminClub adminClub, bool isAdminWorkoutsPage)
+        selectClub,
+    required TResult Function() clearSelectedClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AdminClub adminClub)? selectClub,
+    TResult? Function(AdminClub adminClub, bool isAdminWorkoutsPage)?
+        selectClub,
+    TResult? Function()? clearSelectedClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AdminClub adminClub)? selectClub,
+    TResult Function(AdminClub adminClub, bool isAdminWorkoutsPage)? selectClub,
+    TResult Function()? clearSelectedClubs,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -37,22 +41,24 @@ mixin _$StaffClubsFiltersEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StaffClubsFiltersEventSelectClub value)
         selectClub,
+    required TResult Function(_StaffClubsFiltersEventClearSelectedClubs value)
+        clearSelectedClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StaffClubsFiltersEventSelectClub value)? selectClub,
+    TResult? Function(_StaffClubsFiltersEventClearSelectedClubs value)?
+        clearSelectedClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StaffClubsFiltersEventSelectClub value)? selectClub,
+    TResult Function(_StaffClubsFiltersEventClearSelectedClubs value)?
+        clearSelectedClubs,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $StaffClubsFiltersEventCopyWith<StaffClubsFiltersEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,10 +67,6 @@ abstract class $StaffClubsFiltersEventCopyWith<$Res> {
   factory $StaffClubsFiltersEventCopyWith(StaffClubsFiltersEvent value,
           $Res Function(StaffClubsFiltersEvent) then) =
       _$StaffClubsFiltersEventCopyWithImpl<$Res, StaffClubsFiltersEvent>;
-  @useResult
-  $Res call({AdminClub adminClub});
-
-  $AdminClubCopyWith<$Res> get adminClub;
 }
 
 /// @nodoc
@@ -77,41 +79,17 @@ class _$StaffClubsFiltersEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? adminClub = null,
-  }) {
-    return _then(_value.copyWith(
-      adminClub: null == adminClub
-          ? _value.adminClub
-          : adminClub // ignore: cast_nullable_to_non_nullable
-              as AdminClub,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AdminClubCopyWith<$Res> get adminClub {
-    return $AdminClubCopyWith<$Res>(_value.adminClub, (value) {
-      return _then(_value.copyWith(adminClub: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_StaffClubsFiltersEventSelectClubCopyWith<$Res>
-    implements $StaffClubsFiltersEventCopyWith<$Res> {
+abstract class _$$_StaffClubsFiltersEventSelectClubCopyWith<$Res> {
   factory _$$_StaffClubsFiltersEventSelectClubCopyWith(
           _$_StaffClubsFiltersEventSelectClub value,
           $Res Function(_$_StaffClubsFiltersEventSelectClub) then) =
       __$$_StaffClubsFiltersEventSelectClubCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({AdminClub adminClub});
+  $Res call({AdminClub adminClub, bool isAdminWorkoutsPage});
 
-  @override
   $AdminClubCopyWith<$Res> get adminClub;
 }
 
@@ -129,13 +107,26 @@ class __$$_StaffClubsFiltersEventSelectClubCopyWithImpl<$Res>
   @override
   $Res call({
     Object? adminClub = null,
+    Object? isAdminWorkoutsPage = null,
   }) {
     return _then(_$_StaffClubsFiltersEventSelectClub(
       adminClub: null == adminClub
           ? _value.adminClub
           : adminClub // ignore: cast_nullable_to_non_nullable
               as AdminClub,
+      isAdminWorkoutsPage: null == isAdminWorkoutsPage
+          ? _value.isAdminWorkoutsPage
+          : isAdminWorkoutsPage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AdminClubCopyWith<$Res> get adminClub {
+    return $AdminClubCopyWith<$Res>(_value.adminClub, (value) {
+      return _then(_value.copyWith(adminClub: value));
+    });
   }
 }
 
@@ -143,14 +134,17 @@ class __$$_StaffClubsFiltersEventSelectClubCopyWithImpl<$Res>
 
 class _$_StaffClubsFiltersEventSelectClub
     implements _StaffClubsFiltersEventSelectClub {
-  const _$_StaffClubsFiltersEventSelectClub({required this.adminClub});
+  const _$_StaffClubsFiltersEventSelectClub(
+      {required this.adminClub, required this.isAdminWorkoutsPage});
 
   @override
   final AdminClub adminClub;
+  @override
+  final bool isAdminWorkoutsPage;
 
   @override
   String toString() {
-    return 'StaffClubsFiltersEvent.selectClub(adminClub: $adminClub)';
+    return 'StaffClubsFiltersEvent.selectClub(adminClub: $adminClub, isAdminWorkoutsPage: $isAdminWorkoutsPage)';
   }
 
   @override
@@ -159,11 +153,13 @@ class _$_StaffClubsFiltersEventSelectClub
         (other.runtimeType == runtimeType &&
             other is _$_StaffClubsFiltersEventSelectClub &&
             (identical(other.adminClub, adminClub) ||
-                other.adminClub == adminClub));
+                other.adminClub == adminClub) &&
+            (identical(other.isAdminWorkoutsPage, isAdminWorkoutsPage) ||
+                other.isAdminWorkoutsPage == isAdminWorkoutsPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, adminClub);
+  int get hashCode => Object.hash(runtimeType, adminClub, isAdminWorkoutsPage);
 
   @JsonKey(ignore: true)
   @override
@@ -176,27 +172,32 @@ class _$_StaffClubsFiltersEventSelectClub
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AdminClub adminClub) selectClub,
+    required TResult Function(AdminClub adminClub, bool isAdminWorkoutsPage)
+        selectClub,
+    required TResult Function() clearSelectedClubs,
   }) {
-    return selectClub(adminClub);
+    return selectClub(adminClub, isAdminWorkoutsPage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AdminClub adminClub)? selectClub,
+    TResult? Function(AdminClub adminClub, bool isAdminWorkoutsPage)?
+        selectClub,
+    TResult? Function()? clearSelectedClubs,
   }) {
-    return selectClub?.call(adminClub);
+    return selectClub?.call(adminClub, isAdminWorkoutsPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AdminClub adminClub)? selectClub,
+    TResult Function(AdminClub adminClub, bool isAdminWorkoutsPage)? selectClub,
+    TResult Function()? clearSelectedClubs,
     required TResult orElse(),
   }) {
     if (selectClub != null) {
-      return selectClub(adminClub);
+      return selectClub(adminClub, isAdminWorkoutsPage);
     }
     return orElse();
   }
@@ -206,6 +207,8 @@ class _$_StaffClubsFiltersEventSelectClub
   TResult map<TResult extends Object?>({
     required TResult Function(_StaffClubsFiltersEventSelectClub value)
         selectClub,
+    required TResult Function(_StaffClubsFiltersEventClearSelectedClubs value)
+        clearSelectedClubs,
   }) {
     return selectClub(this);
   }
@@ -214,6 +217,8 @@ class _$_StaffClubsFiltersEventSelectClub
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StaffClubsFiltersEventSelectClub value)? selectClub,
+    TResult? Function(_StaffClubsFiltersEventClearSelectedClubs value)?
+        clearSelectedClubs,
   }) {
     return selectClub?.call(this);
   }
@@ -222,6 +227,8 @@ class _$_StaffClubsFiltersEventSelectClub
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StaffClubsFiltersEventSelectClub value)? selectClub,
+    TResult Function(_StaffClubsFiltersEventClearSelectedClubs value)?
+        clearSelectedClubs,
     required TResult orElse(),
   }) {
     if (selectClub != null) {
@@ -234,16 +241,131 @@ class _$_StaffClubsFiltersEventSelectClub
 abstract class _StaffClubsFiltersEventSelectClub
     implements StaffClubsFiltersEvent {
   const factory _StaffClubsFiltersEventSelectClub(
-          {required final AdminClub adminClub}) =
+          {required final AdminClub adminClub,
+          required final bool isAdminWorkoutsPage}) =
       _$_StaffClubsFiltersEventSelectClub;
 
-  @override
   AdminClub get adminClub;
-  @override
+  bool get isAdminWorkoutsPage;
   @JsonKey(ignore: true)
   _$$_StaffClubsFiltersEventSelectClubCopyWith<
           _$_StaffClubsFiltersEventSelectClub>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_StaffClubsFiltersEventClearSelectedClubsCopyWith<$Res> {
+  factory _$$_StaffClubsFiltersEventClearSelectedClubsCopyWith(
+          _$_StaffClubsFiltersEventClearSelectedClubs value,
+          $Res Function(_$_StaffClubsFiltersEventClearSelectedClubs) then) =
+      __$$_StaffClubsFiltersEventClearSelectedClubsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_StaffClubsFiltersEventClearSelectedClubsCopyWithImpl<$Res>
+    extends _$StaffClubsFiltersEventCopyWithImpl<$Res,
+        _$_StaffClubsFiltersEventClearSelectedClubs>
+    implements _$$_StaffClubsFiltersEventClearSelectedClubsCopyWith<$Res> {
+  __$$_StaffClubsFiltersEventClearSelectedClubsCopyWithImpl(
+      _$_StaffClubsFiltersEventClearSelectedClubs _value,
+      $Res Function(_$_StaffClubsFiltersEventClearSelectedClubs) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_StaffClubsFiltersEventClearSelectedClubs
+    implements _StaffClubsFiltersEventClearSelectedClubs {
+  const _$_StaffClubsFiltersEventClearSelectedClubs();
+
+  @override
+  String toString() {
+    return 'StaffClubsFiltersEvent.clearSelectedClubs()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StaffClubsFiltersEventClearSelectedClubs);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AdminClub adminClub, bool isAdminWorkoutsPage)
+        selectClub,
+    required TResult Function() clearSelectedClubs,
+  }) {
+    return clearSelectedClubs();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AdminClub adminClub, bool isAdminWorkoutsPage)?
+        selectClub,
+    TResult? Function()? clearSelectedClubs,
+  }) {
+    return clearSelectedClubs?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AdminClub adminClub, bool isAdminWorkoutsPage)? selectClub,
+    TResult Function()? clearSelectedClubs,
+    required TResult orElse(),
+  }) {
+    if (clearSelectedClubs != null) {
+      return clearSelectedClubs();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StaffClubsFiltersEventSelectClub value)
+        selectClub,
+    required TResult Function(_StaffClubsFiltersEventClearSelectedClubs value)
+        clearSelectedClubs,
+  }) {
+    return clearSelectedClubs(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StaffClubsFiltersEventSelectClub value)? selectClub,
+    TResult? Function(_StaffClubsFiltersEventClearSelectedClubs value)?
+        clearSelectedClubs,
+  }) {
+    return clearSelectedClubs?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StaffClubsFiltersEventSelectClub value)? selectClub,
+    TResult Function(_StaffClubsFiltersEventClearSelectedClubs value)?
+        clearSelectedClubs,
+    required TResult orElse(),
+  }) {
+    if (clearSelectedClubs != null) {
+      return clearSelectedClubs(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StaffClubsFiltersEventClearSelectedClubs
+    implements StaffClubsFiltersEvent {
+  const factory _StaffClubsFiltersEventClearSelectedClubs() =
+      _$_StaffClubsFiltersEventClearSelectedClubs;
 }
 
 /// @nodoc

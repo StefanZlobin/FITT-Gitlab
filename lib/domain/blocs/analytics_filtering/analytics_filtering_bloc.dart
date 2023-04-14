@@ -118,10 +118,26 @@ class AnalyticsFilteringBloc
         );
       case TimeSliceEnum.year:
         return DateTimeRange(
-          start: DateTime(date.year - 1),
-          end: DateTime(date.year),
+          start: _defYearRange(date.year).start,
+          end: _defYearRange(date.year).end,
         );
     }
+  }
+
+  DateTimeRange _defYearRange(int year) {
+    int daysCount = 0;
+    final startDate = DateTime(year);
+
+    for (var i = 1; i <= 12; i++) {
+      daysCount += DateTime(year, i, 0).day;
+    }
+
+    daysCount -= 1;
+
+    return DateTimeRange(
+      start: DateTime(year),
+      end: startDate.add(Duration(days: daysCount)),
+    );
   }
 
   DateTimeRange _defMonthRange(int monthNumber) {
@@ -220,8 +236,10 @@ class AnalyticsFilteringBloc
         break;
       case TimeSliceEnum.year:
         for (var i = 1; i <= 12; i++) {
-          countDays += DateTime(selectedDay.year, i, 0).day;
+          final year = selectedDay.year - 1;
+          countDays += DateTime(year, i, 0).day;
         }
+        countDays -= 1;
         break;
     }
     return countDays;

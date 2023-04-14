@@ -71,7 +71,9 @@ class AnalyticsPage extends StatelessWidget {
       }),
       bottom: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 56),
-        child: const StaffClubsFilterRow(),
+        child: const StaffClubsFilterRow(
+          isAdminWorkoutsPage: false,
+        ),
       ),
     );
   }

@@ -54,7 +54,7 @@ class KPICard extends StatelessWidget {
               ),
               Text(
                 kpiValue,
-                style: AppTypography.kNum48.apply(color: AppColors.kOxford),
+                style: AppTypography.kNum36.apply(color: AppColors.kOxford),
               ),
             ],
           ),

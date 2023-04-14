@@ -9,7 +9,12 @@ import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 class StaffClubsFilterPage extends StatelessWidget {
-  const StaffClubsFilterPage({super.key});
+  const StaffClubsFilterPage({
+    super.key,
+    required this.isFromAdminWorkoutsPage,
+  });
+
+  final bool isFromAdminWorkoutsPage;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +44,10 @@ class StaffClubsFilterPage extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       getIt<StaffClubsFiltersBloc>().add(
-                        StaffClubsFiltersEvent.selectClub(adminClub: club),
+                        StaffClubsFiltersEvent.selectClub(
+                          adminClub: club,
+                          isAdminWorkoutsPage: isFromAdminWorkoutsPage,
+                        ),
                       );
                     },
                     child: Row(

@@ -77,29 +77,29 @@ class DateTimeUtils {
 
   static String abbrMonth(int monthNumber) {
     switch (monthNumber) {
-      case 0:
-        return 'Я';
       case 1:
-        return 'Ф';
+        return 'Я';
       case 2:
-        return 'М';
+        return 'Ф';
       case 3:
-        return 'А';
-      case 4:
         return 'М';
+      case 4:
+        return 'А';
       case 5:
-        return 'И';
+        return 'М';
       case 6:
         return 'И';
       case 7:
-        return 'А';
+        return 'И';
       case 8:
-        return 'С';
+        return 'А';
       case 9:
-        return 'О';
+        return 'С';
       case 10:
-        return 'Н';
+        return 'О';
       case 11:
+        return 'Н';
+      case 12:
         return 'Д';
       default:
         return '';
@@ -108,19 +108,19 @@ class DateTimeUtils {
 
   static String abbrWeek(int weekNumber) {
     switch (weekNumber) {
-      case 0:
-        return 'Пн';
       case 1:
-        return 'Вт';
+        return 'Пн';
       case 2:
-        return 'Ср';
+        return 'Вт';
       case 3:
-        return 'Чт';
+        return 'Ср';
       case 4:
-        return 'Пт';
+        return 'Чт';
       case 5:
-        return 'Сб';
+        return 'Пт';
       case 6:
+        return 'Сб';
+      case 7:
         return 'Вс';
       default:
         return '';

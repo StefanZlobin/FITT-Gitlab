@@ -284,8 +284,11 @@ class Routes {
     GoRoute(
       path: AppRoute.staffClubsFilter.routeToPath,
       name: AppRoute.staffClubsFilter.routeToName,
-      builder: (context, state) =>
-          const ShakeFeedbackWrapper(child: StaffClubsFilterPage()),
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: StaffClubsFilterPage(
+          isFromAdminWorkoutsPage: state.extra! as bool,
+        ),
+      ),
     ),
   ];
 }

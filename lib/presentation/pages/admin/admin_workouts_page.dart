@@ -4,6 +4,7 @@ import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
+import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/presentation/components/menu/admin_menu_wrapper.dart';
@@ -22,6 +23,9 @@ class AdminWorkoutsPage extends StatelessWidget with UserMixin {
 
   @override
   Widget build(BuildContext context) {
+    getIt<StaffClubsFiltersBloc>()
+        .add(const StaffClubsFiltersEvent.clearSelectedClubs());
+
     return BlocBuilder<AdminClubCubit, AdminClubState>(
       bloc: getIt<AdminClubCubit>(),
       builder: (context, state) {
@@ -33,7 +37,19 @@ class AdminWorkoutsPage extends StatelessWidget with UserMixin {
             initial: () => AppBar(),
             loaded: (adminClub) {
               return AppBar(
-                title: Text(adminClub.label),
+                title:
+                    BlocBuilder<StaffClubsFiltersBloc, StaffClubsFiltersState>(
+                  bloc: getIt<StaffClubsFiltersBloc>(),
+                  builder: (context, state) {
+                    return state.when(
+                      initial: () => const SizedBox(),
+                      loaded: (_, selectedClubs) {
+                        return Text(selectedClubs.first.label);
+                      },
+                      error: (error) => const SizedBox(),
+                    );
+                  },
+                ),
                 leading: Builder(builder: (c) {
                   return IconButton(
                     onPressed: () => Scaffold.of(c).openDrawer(),
@@ -42,7 +58,9 @@ class AdminWorkoutsPage extends StatelessWidget with UserMixin {
                 }),
                 bottom: PreferredSize(
                   preferredSize: Size(MediaQuery.of(context).size.width, 56),
-                  child: const StaffClubsFilterRow(),
+                  child: const StaffClubsFilterRow(
+                    isAdminWorkoutsPage: true,
+                  ),
                 ),
               );
             },
