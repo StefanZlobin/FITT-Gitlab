@@ -5,6 +5,7 @@ import 'package:fitt/core/helpers/shake_feedback_wrapper.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
+import 'package:fitt/presentation/components/staff_clubs_filter_page.dart';
 import 'package:fitt/presentation/pages/account/account_page.dart';
 import 'package:fitt/presentation/pages/account/personal_data_page.dart';
 import 'package:fitt/presentation/pages/admin/admin_workout_page.dart';
@@ -279,6 +280,12 @@ class Routes {
       name: AppRoute.analytics.routeToName,
       builder: (context, state) =>
           const ShakeFeedbackWrapper(child: AnalyticsPage()),
+    ),
+    GoRoute(
+      path: AppRoute.staffClubsFilter.routeToPath,
+      name: AppRoute.staffClubsFilter.routeToName,
+      builder: (context, state) =>
+          const ShakeFeedbackWrapper(child: StaffClubsFilterPage()),
     ),
   ];
 }

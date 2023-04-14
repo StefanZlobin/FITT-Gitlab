@@ -7,7 +7,7 @@ class AppIcons {
   const AppIcons._();
   /* icons arr */
   static const arr_big_left = QleverIconsetIconData(0xe902);
-  static const arr_big_right = QleverIconsetIconData(0xe905);
+  static const arr_big_right = QleverIconsetIconData(0xe903);
   static const arr_left = QleverIconsetIconData(0xe908);
   static const arr_up = QleverIconsetIconData(0xe90a);
   static const arr_right = QleverIconsetIconData(0xe903);
@@ -95,5 +95,6 @@ class AppIcons {
 }
 
 class QleverIconsetIconData extends IconData {
-  const QleverIconsetIconData(int codePoint) : super(codePoint, fontFamily: 'storm iconset');
+  const QleverIconsetIconData(int codePoint)
+      : super(codePoint, fontFamily: 'storm iconset');
 }
