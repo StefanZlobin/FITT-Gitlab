@@ -36,8 +36,8 @@ class UserDetected extends StatelessWidget with UserMixin {
       children: [
         const UserAvatar(),
         //TODO: Если пользователь - администратор, то вывести доступные ему клубы
-        if (userSnapshot?.role == UserRoleEnum.administrator ||
-            userSnapshot?.role == UserRoleEnum.manager) ...[
+        if (userSnapshot!.role!.contains(UserRoleEnum.administrator) ||
+            userSnapshot!.role!.contains(UserRoleEnum.manager)) ...[
           const Separator(),
           BlocBuilder<AdminClubsCubit, AdminClubsState>(
             bloc: getIt<AdminClubsCubit>(),
@@ -48,7 +48,7 @@ class UserDetected extends StatelessWidget with UserMixin {
                   if (adminClubs.isEmpty) return const SizedBox();
                   return AdminMenuTile(
                     onPressed: () {
-                      if (userSnapshot?.role == UserRoleEnum.manager) {
+                      if (userSnapshot!.role!.contains(UserRoleEnum.manager)) {
                         getIt<AnalyticsFilteringBloc>()
                             .add(const AnalyticsFilteringEvent.timeSliceChanged(
                           timeSlice: TimeSliceEnum.week,
@@ -62,8 +62,8 @@ class UserDetected extends StatelessWidget with UserMixin {
                       }
                     },
                     title: Text(nameOfOrganization),
-                    subtitle: Text(userSnapshot!.role!
-                        .getUserRoleName(userSnapshot!.role!)),
+                    subtitle: Text(userSnapshot!.role!.first
+                        .getUserRoleName(userSnapshot!.role!.first)),
                     trailing: const Icon(
                       AppIcons.arr_big_right,
                       size: 18,

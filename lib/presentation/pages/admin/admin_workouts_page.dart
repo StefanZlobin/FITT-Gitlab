@@ -26,7 +26,7 @@ class AdminWorkoutsPage extends StatelessWidget with UserMixin {
       bloc: getIt<AdminClubCubit>(),
       builder: (context, state) {
         return Scaffold(
-          drawer: userSnapshot?.role == UserRoleEnum.manager
+          drawer: userSnapshot!.role!.contains(UserRoleEnum.manager)
               ? const ManagerMenuWrapper()
               : const AdminMenuWrapper(),
           appBar: state.when(

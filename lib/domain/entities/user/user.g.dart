@@ -12,7 +12,9 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       lastName: json['last_name'] as String?,
       birthday: dateFromStringNullable(json['birthday'] as String?),
       email: json['email'] as String?,
-      role: $enumDecodeNullable(_$UserRoleEnumEnumMap, json['role']),
+      role: (json['role'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$UserRoleEnumEnumMap, e))
+          .toList(),
       gender: $enumDecodeNullable(_$UserGenderEnumEnumMap, json['gender']),
       phoneNumber: json['phone_number'] as String?,
       avatar: json['avatar'] as String?,
@@ -24,7 +26,7 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'last_name': instance.lastName,
       'birthday': dateToStringNullable(instance.birthday),
       'email': instance.email,
-      'role': _$UserRoleEnumEnumMap[instance.role],
+      'role': instance.role?.map((e) => _$UserRoleEnumEnumMap[e]!).toList(),
       'gender': _$UserGenderEnumEnumMap[instance.gender],
       'phone_number': instance.phoneNumber,
       'avatar': instance.avatar,

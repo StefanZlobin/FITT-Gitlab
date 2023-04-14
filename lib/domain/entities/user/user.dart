@@ -19,7 +19,7 @@ class User with _$User {
     @JsonKey(name: 'birthday', toJson: dateToStringNullable, fromJson: dateFromStringNullable)
         required DateTime? birthday,
     @JsonKey(name: 'email') required String? email,
-    @JsonKey(name: 'role') required UserRoleEnum? role,
+    @JsonKey(name: 'role') required List<UserRoleEnum>? role,
     @JsonKey(name: 'gender') required UserGenderEnum? gender,
     @JsonKey(name: 'phone_number') required String? phoneNumber,
     @JsonKey(name: 'avatar') required String? avatar,
