@@ -46,6 +46,13 @@ class MenuWidget extends StatelessWidget with UserMixin {
                       AuthenticationStatusEnum.authenticated,
                 ),
               ),
+              loadedWithNoUser: (user) {
+                getIt<AuthBloc>().add(
+                  const AuthEvent.authenticationStatusChanged(
+                    authenticationStatusEnum: AuthenticationStatusEnum.unknown,
+                  ),
+                );
+              },
             );
           },
         ),

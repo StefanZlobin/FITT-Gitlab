@@ -52,8 +52,8 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> deleteUser() async {
     try {
-      await _apiClient.deleteUserData();
       final user = await getSignedUser();
+      await _apiClient.deleteUserData();
       await _userLocalClient.deleteUser(user);
       await authRepository.signOut();
       updateUser(null);
