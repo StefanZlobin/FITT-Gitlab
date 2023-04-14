@@ -1,11 +1,9 @@
-// ignore_for_file: invalid_annotation_target
-
 import 'package:json_annotation/json_annotation.dart';
 
 enum PaymentStatusEnum {
-  @JsonEnum(valueField: 'SUCCESS')
+  @JsonValue('SUCCESS')
   success,
 
-  @JsonEnum(valueField: 'REJECT')
+  @JsonValue('REJECT')
   reject,
 }
