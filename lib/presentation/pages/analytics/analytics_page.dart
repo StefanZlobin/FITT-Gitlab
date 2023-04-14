@@ -233,12 +233,12 @@ class AnalyticsPage extends StatelessWidget {
         ),
         KPICard(
           cardLabel: 'Динамика посетителей',
-          kpiValue: '${kpi.dynamicsOfVisitors}%',
+          kpiValue: '${kpi.dynamicsOfVisitors.toStringAsFixed(2)}%',
           showInfo: true,
         ),
         KPICard(
           cardLabel: 'Динамика выручки',
-          kpiValue: '${(kpi.revenueDynamics).toStringAsFixed(1)}%',
+          kpiValue: '${(kpi.revenueDynamics).floor()}%',
           showInfo: true,
         ),
       ],
