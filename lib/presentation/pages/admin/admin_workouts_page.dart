@@ -9,6 +9,7 @@ import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/presentation/components/menu/admin_menu_wrapper.dart';
 import 'package:fitt/presentation/components/menu/manager_menu_wrapper.dart';
 import 'package:fitt/presentation/components/separator.dart';
+import 'package:fitt/presentation/components/staff_clubs_filter_row.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_finished_workouts.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_planned_workouts.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_started_workouts.dart';
@@ -39,6 +40,10 @@ class AdminWorkoutsPage extends StatelessWidget with UserMixin {
                     icon: const Icon(AppIcons.menu_burger),
                   );
                 }),
+                bottom: PreferredSize(
+                  preferredSize: Size(MediaQuery.of(context).size.width, 56),
+                  child: const StaffClubsFilterRow(),
+                ),
               );
             },
             error: (error) {

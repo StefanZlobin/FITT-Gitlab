@@ -2,18 +2,17 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/time_slice_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/entities/kpi/kpi.dart';
 import 'package:fitt/presentation/components/menu/manager_menu_wrapper.dart';
+import 'package:fitt/presentation/components/staff_clubs_filter_row.dart';
 import 'package:fitt/presentation/pages/analytics/widget/dashboard.dart';
 import 'package:fitt/presentation/pages/analytics/widget/kpi_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:superellipse_shape/superellipse_shape.dart';
 
 class AnalyticsPage extends StatelessWidget {
   const AnalyticsPage({super.key});
@@ -32,12 +31,13 @@ class AnalyticsPage extends StatelessWidget {
             initial: () => const Center(child: CircularProgressIndicator()),
             loaded: (kpi) {
               return ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                primary: true,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 children: [
                   const SizedBox(height: 24),
                   const Dashboard(),
-                  const SizedBox(height: 24),
                   _buildTimeSliceFilter(),
                   const SizedBox(height: 24),
                   _buildKPICards(kpi),
@@ -71,83 +71,7 @@ class AnalyticsPage extends StatelessWidget {
       }),
       bottom: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 56),
-        child: BlocBuilder<AdminClubsCubit, AdminClubsState>(
-          bloc: getIt<AdminClubsCubit>(),
-          builder: (context, state) {
-            return state.when(
-              initial: () => const SizedBox(),
-              loaded: (clubs, _) {
-                return Container(
-                  height: 40,
-                  margin: const EdgeInsets.only(bottom: 16),
-                  child: BlocBuilder<AnalyticsFilteringBloc,
-                      AnalyticsFilteringState>(
-                    bloc: getIt<AnalyticsFilteringBloc>(),
-                    builder: (context, state) {
-                      return state.when(
-                        initial: () => const SizedBox(),
-                        loaded: (_, clubsUuid, __, ___, ____) {
-                          final activeClubsUuid = clubsUuid?.entries
-                                  .where((e) => e.value)
-                                  .map((e) => e.key)
-                                  .toList() ??
-                              [];
-                          return ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.only(left: 16),
-                            itemBuilder: (context, index) {
-                              final club = clubs[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  getIt<AnalyticsFilteringBloc>().add(
-                                    AnalyticsFilteringEvent
-                                        .selectedClubsChanged(
-                                      clubUuidSelected: club.uuid!,
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 9.5,
-                                  ),
-                                  decoration: ShapeDecoration(
-                                    color: activeClubsUuid.contains(club.uuid)
-                                        ? AppColors.kPrimaryBlue
-                                        : null,
-                                    shape: SuperellipseShape(
-                                      borderRadius: superellipseRadius(12),
-                                      side: const BorderSide(
-                                        color: AppColors.kOxford20,
-                                      ),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    club.label,
-                                    style: AppTypography.kBody14.apply(
-                                      color: activeClubsUuid.contains(club.uuid)
-                                          ? AppColors.kBaseWhite
-                                          : AppColors.kOxford40,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(width: 8),
-                            itemCount: clubs.length,
-                          );
-                        },
-                        error: (_) => const SizedBox(),
-                      );
-                    },
-                  ),
-                );
-              },
-              error: (_) => const SizedBox(),
-            );
-          },
-        ),
+        child: const StaffClubsFilterRow(),
       ),
     );
   }
@@ -308,10 +232,12 @@ class AnalyticsPage extends StatelessWidget {
         KPICard(
           cardLabel: 'Динамика посетителей',
           kpiValue: '${kpi.dynamicsOfVisitors}%',
+          showInfo: true,
         ),
         KPICard(
           cardLabel: 'Динамика выручки',
           kpiValue: '${(kpi.revenueDynamics).toStringAsFixed(1)}%',
+          showInfo: true,
         ),
       ],
     );
