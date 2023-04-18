@@ -33,11 +33,16 @@ class AuthRepositoryImpl implements AuthRepository {
   final BehaviorSubject<AuthenticationStatusEnum>
       _authenticationStatusController =
       BehaviorSubject.seeded(AuthenticationStatusEnum.unknown, sync: true);
-  void Function(AuthenticationStatusEnum) get updateAuthenticationStatus =>
+  void Function(AuthenticationStatusEnum) get _updateAuthenticationStatus =>
       _authenticationStatusController.sink.add;
   @override
   Stream<AuthenticationStatusEnum> get authenticationStatus =>
       _authenticationStatusController;
+
+  @override
+  void updateAuthenticationStatus(AuthenticationStatusEnum value) {
+    _updateAuthenticationStatus(value);
+  }
 
   @override
   Future<TokenPair?> getToken() async {

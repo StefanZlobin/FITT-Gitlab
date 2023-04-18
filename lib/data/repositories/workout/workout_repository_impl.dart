@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:dio/dio.dart';
 import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
@@ -33,14 +34,14 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
 
   final BehaviorSubject<List<Workout>> _workoutsController =
       BehaviorSubject.seeded(<Workout>[], sync: true);
-  void Function(List<Workout>) get updateWorkouts =>
+  void Function(List<Workout>) get _updateWorkouts =>
       _workoutsController.sink.add;
   @override
   Stream<List<Workout>> get workouts => _workoutsController;
 
   final BehaviorSubject<Workout> _closestWorkoutController =
       BehaviorSubject(sync: true);
-  void Function(Workout) get updateClosestWorkout =>
+  void Function(Workout) get _updateClosestWorkout =>
       _closestWorkoutController.sink.add;
   @override
   Stream<Workout> get closestWorkout => _closestWorkoutController;
@@ -67,17 +68,9 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
     WorkoutSortingEnum workoutSorting = WorkoutSortingEnum.newFirst,
     WorkoutPhaseEnum workoutPhase = WorkoutPhaseEnum.planned,
   }) async {
-    late String xPosition;
-    try {
-      final geolocation =
-          await getIt<GeolocationService>().getCurrentPosition();
-      xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
-    } on Exception {
-      xPosition = '';
-    }
     try {
       final workouts = await _apiClient.getWorkouts(
-        xPosition,
+        await _getPosition(),
         GetWorkoutsRequestBody(
           limit: offset == -1 ? 0 : _perPage,
           offset: offset,
@@ -85,8 +78,42 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
           workoutSorting: workoutSorting.convertSortingToField(workoutSorting),
         ),
       );
-
+      _updateWorkouts(workouts.results);
       return workouts.results;
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
+  }
+
+  @override
+  Future<Workout?> getClosestWorkout({
+    int offset = -1,
+    WorkoutSortingEnum workoutSorting = WorkoutSortingEnum.newFirst,
+    WorkoutPhaseEnum workoutPhase = WorkoutPhaseEnum.inProcess,
+  }) async {
+    try {
+      final workouts = await _apiClient.getWorkouts(
+        await _getPosition(),
+        GetWorkoutsRequestBody(
+          limit: offset == -1 ? 0 : _perPage,
+          offset: offset,
+          workoutPhase: workoutPhase.convertSortingToField(workoutPhase),
+          workoutSorting: workoutSorting.convertSortingToField(workoutSorting),
+        ),
+      );
+      if (workouts.results.isEmpty) {
+        final res = await getWorkouts();
+        res.sort((a, b) => a.canStartTime.compareTo(b.canStartTime));
+        _updateClosestWorkout(res.first);
+        return res.firstOrNull;
+      } else {
+        _updateClosestWorkout(workouts.results.first);
+        return workouts.results.firstOrNull;
+      }
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
@@ -95,6 +122,20 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
 
       throw NetworkExceptions.getDioException(e);
     }
+  }
+
+  Future<String> _getPosition() async {
+    late String xPosition;
+
+    try {
+      final geolocation =
+          await getIt<GeolocationService>().getCurrentPosition();
+      xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
+    } on Exception {
+      xPosition = '';
+    }
+
+    return xPosition;
   }
 
   @override

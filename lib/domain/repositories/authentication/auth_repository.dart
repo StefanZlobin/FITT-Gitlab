@@ -16,4 +16,5 @@ abstract class AuthRepository {
 
   Stream<TokenPair?> get tokens;
   Stream<AuthenticationStatusEnum> get authenticationStatus;
+  void updateAuthenticationStatus(AuthenticationStatusEnum value);
 }
