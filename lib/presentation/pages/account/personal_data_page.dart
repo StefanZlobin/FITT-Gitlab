@@ -397,7 +397,11 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               isDisable: !status,
               onPressed: () {
                 getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
-                context.pop();
+                if (afterSignin) {
+                  context.push(AppRoute.map.routeToPath);
+                } else {
+                  context.pop();
+                }
               },
             );
           },
@@ -411,7 +415,11 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
             textButton: const Text('Сохранить'),
             onPressed: () {
               getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
-              context.pop();
+              if (afterSignin) {
+                context.push(AppRoute.map.routeToPath);
+              } else {
+                context.pop();
+              }
             },
           ),
         );
@@ -433,10 +441,10 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
           Center(
             child: GestureDetector(
               onTap: () {
-                if (!afterSignin) {
-                  context.pop();
-                } else {
+                if (afterSignin) {
                   context.push(AppRoute.map.routeToPath);
+                } else {
+                  context.pop();
                 }
               },
               child: Padding(
