@@ -11,8 +11,10 @@ import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.d
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
 import 'package:fitt/domain/blocs/auth/auth_bloc.dart';
 import 'package:fitt/domain/blocs/authentication_error_timer/authentication_error_timer_bloc.dart';
+import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/domain/blocs/login/login_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
 import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
 import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
@@ -290,4 +292,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<StaffClubsFiltersBloc>(
     () => StaffClubsFiltersBloc(),
   );
+  getIt.registerLazySingleton<ClosestWorkoutBloc>(() => ClosestWorkoutBloc());
+  getIt.registerLazySingleton<PaymentBloc>(() => PaymentBloc());
 }

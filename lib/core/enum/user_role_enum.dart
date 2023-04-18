@@ -3,7 +3,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum UserRoleEnum {
-  // TODO sync values
   @JsonValue('CUSTOMER')
   customer,
   @JsonValue('ADMIN')

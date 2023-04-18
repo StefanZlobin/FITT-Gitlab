@@ -1,9 +1,11 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/payment_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/entities/batch/batch.dart';
 import 'package:fitt/domain/entities/club/partner_club.dart';
@@ -60,39 +62,51 @@ class _WebviewState extends State<Webview> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocListener<NotificationsBloc, NotificationsState>(
-        bloc: notificationsBloc,
+      child: BlocListener<PaymentBloc, PaymentState>(
+        bloc: getIt<PaymentBloc>(),
         listener: (context, state) {
           state.whenOrNull(
-            paymentBatchSuccess: () {
-              context.pushNamed(
-                AppRoute.paymentBuyBatchSuccess.routeToPath,
-                extra: {
-                  'club': widget.club!,
-                  'batch': widget.batch!,
-                },
-              );
-              notificationsBloc.setInitialState();
+            paymentBatch: (paymentStatus) {
+              switch (paymentStatus) {
+                case PaymentStatusEnum.success:
+                  context.pushNamed(
+                    AppRoute.paymentBuyBatchSuccess.routeToPath,
+                    extra: {
+                      'club': widget.club!,
+                      'batch': widget.batch!,
+                    },
+                  );
+                  return getIt<PaymentBloc>().add(
+                    const PaymentEvent.dropState(),
+                  );
+                case PaymentStatusEnum.reject:
+                  context.pushNamed(
+                    AppRoute.paymentReject.routeToPath,
+                    extra: true,
+                  );
+                  return getIt<PaymentBloc>().add(
+                    const PaymentEvent.dropState(),
+                  );
+              }
             },
-            paymentBatchReject: () {
-              context.pushNamed(
-                AppRoute.paymentReject.routeToPath,
-                extra: true,
-              );
-              notificationsBloc.setInitialState();
-            },
-            paymentWorkoutSuccess: () {
-              getIt<WorkoutCubit>()
-                  .getWorkout(workoutUuid: widget.workoutUuid ?? '');
-              context.push(AppRoute.paymentSuccess.routeToPath);
-              notificationsBloc.setInitialState();
-            },
-            paymentWorkoutReject: () {
-              context.pushNamed(
-                AppRoute.paymentReject.routeToPath,
-                extra: false,
-              );
-              notificationsBloc.setInitialState();
+            paymentWorkout: (paymentStatus) {
+              switch (paymentStatus) {
+                case PaymentStatusEnum.success:
+                  getIt<WorkoutCubit>()
+                      .getWorkout(workoutUuid: widget.workoutUuid ?? '');
+                  context.push(AppRoute.paymentSuccess.routeToPath);
+                  return getIt<PaymentBloc>().add(
+                    const PaymentEvent.dropState(),
+                  );
+                case PaymentStatusEnum.reject:
+                  context.pushNamed(
+                    AppRoute.paymentReject.routeToPath,
+                    extra: false,
+                  );
+                  return getIt<PaymentBloc>().add(
+                    const PaymentEvent.dropState(),
+                  );
+              }
             },
           );
         },

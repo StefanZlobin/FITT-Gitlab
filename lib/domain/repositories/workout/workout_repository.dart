@@ -17,6 +17,9 @@ abstract class WorkoutRepository with Disposable {
   /// Getting a specific workout by its uuid
   Future<Workout> getWorkout(String uuid);
 
+    /// Getting a specific workout by its uuid
+  Future<Workout?> getClosestWorkout();
+
   /// Cancel workout
   Future<Workout> cancelWorkout({required Workout workout});
 

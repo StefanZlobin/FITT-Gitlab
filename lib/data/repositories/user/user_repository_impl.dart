@@ -41,6 +41,7 @@ class UserRepositoryImpl implements UserRepository {
     //user = await _userLocalClient.getSignedUser();
     user ??= await getUserData();
     if (user != null) updateUser(user);
+    //getIt<AuthRepository>().updateAuthenticationStatus(AuthenticationStatusEnum.authenticated);
     return user;
   }
 

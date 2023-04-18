@@ -4,6 +4,8 @@ import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/mixins/auth_mixin.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
+import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/use_cases/workout/workout_use_case.dart';
@@ -12,10 +14,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'workouts_cubit.freezed.dart';
 part 'workouts_state.dart';
 
-class WorkoutsCubit extends Cubit<WorkoutsState> with AuthMixin {
+class WorkoutsCubit extends Cubit<WorkoutsState> with AuthMixin, UserMixin {
   WorkoutsCubit() : super(const _WorkoutsStateInitial()) {
     auth.listen((AuthenticationStatusEnum auth) {
       if (auth == AuthenticationStatusEnum.authenticated) {
+        getWorkouts();
+      }
+    });
+
+    user.listen((User? user) {
+      if (user != null) {
         getWorkouts();
       }
     });

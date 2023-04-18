@@ -14,27 +14,30 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
       log(const JsonEncoder.withIndent('  ').convert(remoteMessage.toMap()));
 
       switch (remoteMessage.data['type']) {
-        case PushNotificationsEnum.paymentBatchNotification:
+        case 'PAYMENT_BATCH_NOTIFICATION':
           final status = remoteMessage.data['payment_status'].toString();
 
           return _updateStream(
             PushNotificationsEnum.paymentBatchNotification,
             paymentStatus: _checkPaymentStatus(status),
           );
-        case PushNotificationsEnum.paymentWorkoutNotification:
+        case 'PAYMENT_WORKOUT_NOTIFICATION':
           final status = remoteMessage.data['payment_status'].toString();
 
           return _updateStream(
             PushNotificationsEnum.paymentWorkoutNotification,
             paymentStatus: _checkPaymentStatus(status),
           );
-        case PushNotificationsEnum.changeWorkoutStatusNotification:
+        case 'CHANGE_WORKOUT':
           final workoutUuid = remoteMessage.data['id'].toString();
+          final status = remoteMessage.data['status'].toString();
 
-          return _updateStream(
-            PushNotificationsEnum.changeWorkoutStatusNotification,
-            workoutUuid: workoutUuid,
-          );
+          if (status != 'REG') {
+            return _updateStream(
+              PushNotificationsEnum.changeWorkoutStatusNotification,
+              workoutUuid: workoutUuid,
+            );
+          }
       }
     });
   }
