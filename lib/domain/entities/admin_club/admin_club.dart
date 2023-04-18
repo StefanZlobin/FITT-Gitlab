@@ -2,6 +2,7 @@
 
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/domain/entities/analyze_info/analyze_info.dart';
+import 'package:fitt/domain/entities/organization/organization_short_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'admin_club.freezed.dart';
@@ -25,8 +26,7 @@ class AdminClub with _$AdminClub {
     @JsonKey(name: 'status') required String status,
     @JsonKey(name: 'email') String? email,
     @JsonKey(name: 'phone') required String phone,
-    //@JsonKey(name: 'organization') required OrganizationShortInfo organization,
-    @JsonKey(name: 'organization') required String organization,
+    @JsonKey(name: 'organization') required OrganizationShortInfo organization,
     @JsonKey(name: 'address') String? address,
     @JsonKey(name: 'facilities') List<int>? facilities,
   }) = _AdminClub;

@@ -39,7 +39,8 @@ class DeleteUserAccountDialog extends StatelessWidget {
                 onPressed: () => context.pop(),
                 child: Text(
                   'Отменить',
-                  style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                  style:
+                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
                 ),
               ),
             ),
@@ -61,7 +62,8 @@ class DeleteUserAccountDialog extends StatelessWidget {
                 marginButton: const EdgeInsets.all(0),
                 textButton: Text(
                   'Удалить аккаунт',
-                  style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
+                  style:
+                      AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
                 ),
               ),
             ),

@@ -1,5 +1,7 @@
 // ignore_for_file: only_throw_errors
 
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
@@ -13,10 +15,14 @@ import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/workout/workout_repository.dart';
 import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class WorkoutRepositoryImpl implements WorkoutRepository {
-  WorkoutRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = WorkoutApiClient(dio, baseUrl: baseUrl);
+  WorkoutRepositoryImpl(
+    this.dio, {
+    this.baseUrl,
+  }) : _apiClient = WorkoutApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;
@@ -24,6 +30,20 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
 
   /// Number of elements per page
   static const int _perPage = 5;
+
+  final BehaviorSubject<List<Workout>> _workoutsController =
+      BehaviorSubject.seeded(<Workout>[], sync: true);
+  void Function(List<Workout>) get updateWorkouts =>
+      _workoutsController.sink.add;
+  @override
+  Stream<List<Workout>> get workouts => _workoutsController;
+
+  final BehaviorSubject<Workout> _closestWorkoutController =
+      BehaviorSubject(sync: true);
+  void Function(Workout) get updateClosestWorkout =>
+      _closestWorkoutController.sink.add;
+  @override
+  Stream<Workout> get closestWorkout => _closestWorkoutController;
 
   @override
   Future<Workout> getWorkout(String uuid) async {
@@ -49,7 +69,8 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
   }) async {
     late String xPosition;
     try {
-      final geolocation = await getIt<GeolocationService>().getCurrentPosition();
+      final geolocation =
+          await getIt<GeolocationService>().getCurrentPosition();
       xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
     } on Exception {
       xPosition = '';
@@ -131,5 +152,11 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
       
       throw NetworkExceptions.getDioException(e);
     }
+  }
+
+  @override
+  FutureOr onDispose() {
+    _workoutsController.close();
+    _closestWorkoutController.close();
   }
 }

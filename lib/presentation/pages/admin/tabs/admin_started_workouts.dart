@@ -50,7 +50,8 @@ class AdminStartedWorkouts extends StatelessWidget {
           bloc: notificationsBloc,
           listener: (context, state) {
             state.whenOrNull(
-              workoutStatusRF: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusRF: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.inProcess,
@@ -61,7 +62,8 @@ class AdminStartedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
-              workoutStatusFinished: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusFinished: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.inProcess,
@@ -72,7 +74,8 @@ class AdminStartedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
-              workoutStatusFF: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusFF: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.inProcess,
@@ -83,7 +86,8 @@ class AdminStartedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
-              workoutStatusMissed: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusMissed: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.inProcess,
@@ -105,10 +109,14 @@ class AdminStartedWorkouts extends StatelessWidget {
             initial: () => const Center(child: CircularProgressIndicator()),
             loaded: (adminWorkouts) {
               if (adminWorkouts.isEmpty) {
-                return Text(
-                  'Еще никто не начал тренировку',
-                  style: AppTypography.kH18.apply(color: AppColors.kPrimaryRed),
-                  textAlign: TextAlign.center,
+                return Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Text(
+                    'Здесь будут начатые тренировки.\nНет ни одной записи на ближайшее время',
+                    style:
+                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    textAlign: TextAlign.center,
+                  ),
                 );
               }
               return ListView.separated(

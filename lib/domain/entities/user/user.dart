@@ -24,14 +24,14 @@ class User with _$User {
     @JsonKey(name: 'phone_number') required String? phoneNumber,
     @JsonKey(name: 'avatar') required String? avatar,
   }) = _User;
-  
   User._();
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   bool get hasFullData =>
       string_utils.StringUtils.isNotEmpty(firstName) &&
-      string_utils.StringUtils.isNotEmpty(lastName);
+      string_utils.StringUtils.isNotEmpty(lastName) &&
+      string_utils.StringUtils.isNotEmpty(email);
 
   String get userId =>
       (phoneNumber != null) ? phoneNumber!.substring(8, 12) : '';

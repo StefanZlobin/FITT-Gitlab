@@ -45,10 +45,9 @@ mixin _$AdminClub {
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone')
-  String get phone =>
-      throw _privateConstructorUsedError; //@JsonKey(name: 'organization') required OrganizationShortInfo organization,
+  String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'organization')
-  String get organization => throw _privateConstructorUsedError;
+  OrganizationShortInfo get organization => throw _privateConstructorUsedError;
   @JsonKey(name: 'address')
   String? get address => throw _privateConstructorUsedError;
   @JsonKey(name: 'facilities')
@@ -93,13 +92,14 @@ abstract class $AdminClubCopyWith<$Res> {
       @JsonKey(name: 'phone')
           String phone,
       @JsonKey(name: 'organization')
-          String organization,
+          OrganizationShortInfo organization,
       @JsonKey(name: 'address')
           String? address,
       @JsonKey(name: 'facilities')
           List<int>? facilities});
 
   $AnalyzeInfoCopyWith<$Res>? get analyzeInfo;
+  $OrganizationShortInfoCopyWith<$Res> get organization;
 }
 
 /// @nodoc
@@ -188,7 +188,7 @@ class _$AdminClubCopyWithImpl<$Res, $Val extends AdminClub>
       organization: null == organization
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrganizationShortInfo,
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -209,6 +209,14 @@ class _$AdminClubCopyWithImpl<$Res, $Val extends AdminClub>
 
     return $AnalyzeInfoCopyWith<$Res>(_value.analyzeInfo!, (value) {
       return _then(_value.copyWith(analyzeInfo: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrganizationShortInfoCopyWith<$Res> get organization {
+    return $OrganizationShortInfoCopyWith<$Res>(_value.organization, (value) {
+      return _then(_value.copyWith(organization: value) as $Val);
     });
   }
 }
@@ -248,7 +256,7 @@ abstract class _$$_AdminClubCopyWith<$Res> implements $AdminClubCopyWith<$Res> {
       @JsonKey(name: 'phone')
           String phone,
       @JsonKey(name: 'organization')
-          String organization,
+          OrganizationShortInfo organization,
       @JsonKey(name: 'address')
           String? address,
       @JsonKey(name: 'facilities')
@@ -256,6 +264,8 @@ abstract class _$$_AdminClubCopyWith<$Res> implements $AdminClubCopyWith<$Res> {
 
   @override
   $AnalyzeInfoCopyWith<$Res>? get analyzeInfo;
+  @override
+  $OrganizationShortInfoCopyWith<$Res> get organization;
 }
 
 /// @nodoc
@@ -342,7 +352,7 @@ class __$$_AdminClubCopyWithImpl<$Res>
       organization: null == organization
           ? _value.organization
           : organization // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrganizationShortInfo,
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -435,10 +445,9 @@ class _$_AdminClub implements _AdminClub {
   @override
   @JsonKey(name: 'phone')
   final String phone;
-//@JsonKey(name: 'organization') required OrganizationShortInfo organization,
   @override
   @JsonKey(name: 'organization')
-  final String organization;
+  final OrganizationShortInfo organization;
   @override
   @JsonKey(name: 'address')
   final String? address;
@@ -553,7 +562,7 @@ abstract class _AdminClub implements AdminClub {
       @JsonKey(name: 'phone')
           required final String phone,
       @JsonKey(name: 'organization')
-          required final String organization,
+          required final OrganizationShortInfo organization,
       @JsonKey(name: 'address')
           final String? address,
       @JsonKey(name: 'facilities')
@@ -601,9 +610,9 @@ abstract class _AdminClub implements AdminClub {
   @override
   @JsonKey(name: 'phone')
   String get phone;
-  @override //@JsonKey(name: 'organization') required OrganizationShortInfo organization,
+  @override
   @JsonKey(name: 'organization')
-  String get organization;
+  OrganizationShortInfo get organization;
   @override
   @JsonKey(name: 'address')
   String? get address;

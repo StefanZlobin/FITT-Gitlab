@@ -1,11 +1,16 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
+import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/presentation/components/menu/admin_menu_wrapper.dart';
+import 'package:fitt/presentation/components/menu/manager_menu_wrapper.dart';
 import 'package:fitt/presentation/components/separator.dart';
+import 'package:fitt/presentation/components/staff_clubs_filter_row.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_finished_workouts.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_planned_workouts.dart';
 import 'package:fitt/presentation/pages/admin/tabs/admin_started_workouts.dart';
@@ -13,27 +18,50 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class AdminWorkoutsPage extends StatelessWidget {
+class AdminWorkoutsPage extends StatelessWidget with UserMixin {
   const AdminWorkoutsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    getIt<StaffClubsFiltersBloc>()
+        .add(const StaffClubsFiltersEvent.clearSelectedClubs());
+
     return BlocBuilder<AdminClubCubit, AdminClubState>(
       bloc: getIt<AdminClubCubit>(),
       builder: (context, state) {
         return Scaffold(
-          drawer: const AdminMenuWrapper(),
+          drawer: userSnapshot!.role!.contains(UserRoleEnum.manager)
+              ? const ManagerMenuWrapper()
+              : const AdminMenuWrapper(),
           appBar: state.when(
             initial: () => AppBar(),
             loaded: (adminClub) {
               return AppBar(
-                title: Text(adminClub.label),
+                title:
+                    BlocBuilder<StaffClubsFiltersBloc, StaffClubsFiltersState>(
+                  bloc: getIt<StaffClubsFiltersBloc>(),
+                  builder: (context, state) {
+                    return state.when(
+                      initial: () => const SizedBox(),
+                      loaded: (_, selectedClubs) {
+                        return Text(selectedClubs.first.label);
+                      },
+                      error: (error) => const SizedBox(),
+                    );
+                  },
+                ),
                 leading: Builder(builder: (c) {
                   return IconButton(
                     onPressed: () => Scaffold.of(c).openDrawer(),
                     icon: const Icon(AppIcons.menu_burger),
                   );
                 }),
+                bottom: PreferredSize(
+                  preferredSize: Size(MediaQuery.of(context).size.width, 56),
+                  child: const StaffClubsFilterRow(
+                    isAdminWorkoutsPage: true,
+                  ),
+                ),
               );
             },
             error: (error) {

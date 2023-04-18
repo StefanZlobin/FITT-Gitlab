@@ -48,10 +48,14 @@ class AdminFinishedWorkouts extends StatelessWidget {
           initial: () => const Center(child: CircularProgressIndicator()),
           loaded: (adminWorkouts) {
             if (adminWorkouts.isEmpty) {
-              return Text(
-                'Еще никто не закончил тренировку',
-                style: AppTypography.kH18.apply(color: AppColors.kPrimaryRed),
-                textAlign: TextAlign.center,
+              return Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Text(
+                  'Здесь будут завершенные тренировки.\nНет ни одной записи на ближайшее время',
+                  style:
+                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                  textAlign: TextAlign.center,
+                ),
               );
             }
             return ListView.separated(
