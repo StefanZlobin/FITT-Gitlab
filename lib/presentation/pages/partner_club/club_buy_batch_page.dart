@@ -114,7 +114,7 @@ class ClubBuyBatchPage extends StatelessWidget with UserMixin {
     return BottomCenter(
       child: AppElevatedButton(
         onPressedAsync: () async {
-          if (!userController.hasValue || userSnapshot == null) {
+          if (userSnapshot == null) {
             context.push(AppRoute.inputPhoneNumber.routeToPath);
           } else if (!userSnapshot!.hasFullData) {
             context.pushNamed(

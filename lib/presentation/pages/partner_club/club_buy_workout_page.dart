@@ -9,7 +9,7 @@ import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/cubits/buy_workout/buy_workout_cubit.dart';
 import 'package:fitt/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
@@ -149,17 +149,11 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
 
   Widget _buildPayButton(PartnerClub club, Activity activity) {
     return BottomCenter(
-      child: BlocBuilder<UserBloc, UserState>(
-        bloc: getIt<UserBloc>(),
+      child: BlocBuilder<UserAvatarBloc, UserAvatarState>(
+        bloc: getIt<UserAvatarBloc>(),
         builder: (context, state) {
           return state.when(
-            loading: () => _buildAppElevatedPayButton(
-              club,
-              activity,
-              true,
-              context,
-            ),
-            loadedWithNoUser: (_) => _buildAppElevatedPayButton(
+            initial: () => _buildAppElevatedPayButton(
               club,
               activity,
               true,
@@ -194,9 +188,7 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
       errorText:
           club.payAvailable! ? null : const Text('Подключаем систему оплаты'),
       onPressedAsync: () async {
-        if (!userController.hasValue ||
-            userController == null ||
-            userSnapshot == null) {
+        if (userSnapshot == null) {
           context.push(AppRoute.inputPhoneNumber.routeToPath);
         } else if (!userSnapshot!.hasFullData) {
           context.pushNamed(

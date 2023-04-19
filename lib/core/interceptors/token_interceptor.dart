@@ -5,19 +5,19 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
-import 'package:fitt/domain/repositories/authentication/auth_repository.dart';
+import 'package:fitt/features/authorization/domain/repositories/token/token_repository.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class TokenInterceptor extends Interceptor {
   TokenInterceptor({required this.dio}) {
-    authRepository.tokens.listen((event) {
+    _tokenRepository.token.listen((event) {
       token = event;
     });
   }
 
   final Dio dio;
-  final AuthRepository authRepository = getIt<AuthRepository>();
+  final TokenRepository _tokenRepository = getIt<TokenRepository>();
   TokenPair? token;
 
   String? _formatToken(String? token) => token == null ? null : 'Bearer $token';
@@ -35,7 +35,9 @@ class TokenInterceptor extends Interceptor {
   }
 
   Future<void> _tryRefreshTokens() async {
-    token = await authRepository.refreshToken();
+    if (token != null) {
+      token = await _tokenRepository.refreshToken(token: token!);
+    }
   }
 
   @override

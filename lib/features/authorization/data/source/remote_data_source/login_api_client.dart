@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:fitt/data/models/request/authentication/check_secure_code_request_body.dart';
-import 'package:fitt/data/models/request/authentication/signin_request_body.dart';
 import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
+import 'package:fitt/features/authorization/data/models/request/login/check_secure_code_request_body.dart';
+import 'package:fitt/features/authorization/data/models/request/login/signin_request_body.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'login_api_client.g.dart';

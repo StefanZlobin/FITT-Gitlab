@@ -13,7 +13,7 @@ import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
@@ -492,16 +492,15 @@ class AccountPage extends StatelessWidget with UserMixin {
   }
 
   Widget _buildAvatarImage(User? user) {
-    return BlocBuilder<UserBloc, UserState>(
-      bloc: getIt<UserBloc>(),
+    return BlocBuilder<UserAvatarBloc, UserAvatarState>(
+      bloc: getIt<UserAvatarBloc>(),
       builder: (context, state) {
         return state.when(
           error: (error) => const SizedBox(),
-          loading: () => const SizedBox(),
-          loadedWithNoUser: (user) => const SizedBox(),
+          initial: () => const SizedBox(),
           loaded: (user) {
             return CachedNetworkImage(
-              imageUrl: user?.avatar ?? '',
+              imageUrl: user.avatar ?? '',
               imageBuilder: (context, imageProvider) {
                 return CenterLeft(
                   child: Container(

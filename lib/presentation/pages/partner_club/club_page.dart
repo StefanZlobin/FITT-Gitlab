@@ -93,29 +93,25 @@ class ClubPage extends StatelessWidget with UserMixin {
         ),
       ),
       actions: [
-        if (userController.hasValue)
-          if (userController != null)
-            if (userSnapshot?.isLoggedIn ?? false)
-              GestureDetector(
-                onTap: () {
-                  getIt<ClubCubit>().setFavorite(
-                    favorite: club.isFavorite ?? false,
-                    clubUuid: clubUuid,
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Icon(
-                    club.isFavorite ?? false
-                        ? AppIcons.favorite_rounded
-                        : AppIcons.favorite_outlined_rounded,
-                    size: 20,
-                    color: club.isFavorite ?? false
-                        ? AppColors.kPrimaryBlue
-                        : null,
-                  ),
-                ),
+        if (userSnapshot?.isLoggedIn ?? false)
+          GestureDetector(
+            onTap: () {
+              getIt<ClubCubit>().setFavorite(
+                favorite: club.isFavorite ?? false,
+                clubUuid: clubUuid,
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Icon(
+                club.isFavorite ?? false
+                    ? AppIcons.favorite_rounded
+                    : AppIcons.favorite_outlined_rounded,
+                size: 20,
+                color: club.isFavorite ?? false ? AppColors.kPrimaryBlue : null,
               ),
+            ),
+          ),
       ],
     );
   }

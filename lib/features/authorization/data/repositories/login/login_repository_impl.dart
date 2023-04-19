@@ -1,11 +1,13 @@
 // ignore_for_file: only_throw_errors
 
 import 'package:dio/dio.dart';
-import 'package:fitt/data/models/request/authentication/check_secure_code_request_body.dart';
-import 'package:fitt/data/models/request/authentication/signin_request_body.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
+import 'package:fitt/features/authorization/data/models/request/login/check_secure_code_request_body.dart';
+import 'package:fitt/features/authorization/data/models/request/login/signin_request_body.dart';
 import 'package:fitt/features/authorization/data/source/remote_data_source/login_api_client.dart';
 import 'package:fitt/features/authorization/domain/repositories/login/login_repository.dart';
+import 'package:fitt/features/authorization/domain/repositories/token/token_repository.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
@@ -38,11 +40,14 @@ class LoginRepositoryImpl implements LoginRepository {
     required String fcmToken,
   }) async {
     try {
-      await _loginApiClient.checkSecureCode(CheckSecureCodeRequestBody(
+      final token =
+          await _loginApiClient.checkSecureCode(CheckSecureCodeRequestBody(
         phoneNumber,
         secureCode,
         fcmToken,
       ));
+
+      await getIt<TokenRepository>().saveToken(token: token);
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,

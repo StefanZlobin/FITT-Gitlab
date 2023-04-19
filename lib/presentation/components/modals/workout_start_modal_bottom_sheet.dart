@@ -2,14 +2,14 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/presentation/components/modals/widget/header_rounded_container_line.dart';
 import 'package:fitt/presentation/components/modals/widget/radar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class WorkoutStartModalBottomSheet extends StatelessWidget {
+class WorkoutStartModalBottomSheet extends StatelessWidget with UserMixin {
   const WorkoutStartModalBottomSheet({
     super.key,
   });
@@ -99,21 +99,9 @@ class WorkoutStartModalBottomSheet extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 24),
-        BlocBuilder<UserBloc, UserState>(
-          bloc: getIt<UserBloc>(),
-          builder: (context, state) {
-            return state.when(
-              loading: () => const SizedBox(),
-              loadedWithNoUser: (_) => const SizedBox(),
-              error: (error) => const SizedBox(),
-              loaded: (user) {
-                return Text(
-                  user!.userId.toString(),
-                  style: AppTypography.kH36.apply(color: AppColors.kBaseBlack),
-                );
-              },
-            );
-          },
+        Text(
+          userSnapshot!.userId.toString(),
+          style: AppTypography.kH36.apply(color: AppColors.kBaseBlack),
         ),
       ],
     );
