@@ -280,5 +280,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AnalyticsFilteringBloc>(
     () => AnalyticsFilteringBloc(),
   );
+
   getIt.registerLazySingleton<PurchasedBatchCubit>(() => PurchasedBatchCubit());
 }
