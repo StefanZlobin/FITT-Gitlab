@@ -6,7 +6,7 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
 import 'package:fitt/presentation/components/animated_dots.dart';
@@ -24,20 +24,19 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(
-      bloc: getIt<UserBloc>(),
+    return BlocBuilder<UserAvatarBloc, UserAvatarState>(
+      bloc: getIt<UserAvatarBloc>(),
       builder: (context, state) {
         return state.when(
-          loading: () => const SizedBox(),
+          initial: () => const SizedBox(),
           loaded: (user) => _buildUserMenuTile(context, user),
-          loadedWithNoUser: (_) => const SizedBox(),
           error: (error) => const SizedBox(),
         );
       },
     );
   }
 
-  Widget _buildUserMenuTile(BuildContext context, User? user) {
+  Widget _buildUserMenuTile(BuildContext context, User user) {
     return GestureDetector(
       onTap: () => isAdminPage
           ? context.push(AppRoute.map.routeToPath)
@@ -45,7 +44,7 @@ class UserAvatar extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
         leading: _setAvatarWidget(user),
-        title: user?.firstName == null && user?.lastName == null
+        title: user.firstName == null && user.lastName == null
             ? Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
@@ -60,8 +59,8 @@ class UserAvatar extends StatelessWidget {
                   ),
                 ),
               )
-            : Text('${user?.firstName} ${user?.lastName}'),
-        subtitle: user?.firstName == null && user?.lastName == null
+            : Text('${user.firstName} ${user.lastName}'),
+        subtitle: user.firstName == null && user.lastName == null
             ? null
             : FutureBuilder<Position?>(
                 future: getIt<GeolocationService>().getLastKnowPosition(),

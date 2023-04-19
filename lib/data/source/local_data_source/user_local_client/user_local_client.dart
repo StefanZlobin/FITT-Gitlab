@@ -19,7 +19,8 @@ class UserLocalClient {
     if (userJson == null) return null;
     final res = User.fromJson(
       userJson.map<String, dynamic>(
-        (dynamic key, dynamic value) => MapEntry<String, dynamic>(key!.toString(), value),
+        (dynamic key, dynamic value) =>
+            MapEntry<String, dynamic>(key!.toString(), value),
       ),
     );
     return res;
@@ -27,10 +28,11 @@ class UserLocalClient {
 
   Future<void> saveUser({required User user}) async {
     await _ensureInitialized();
+
     await _userStorage.put(0, user.toJson());
   }
 
-  Future<void> deleteUser(User? user) async {
+  Future<void> deleteUser() async {
     await _ensureInitialized();
 
     await _userStorage.delete(0);

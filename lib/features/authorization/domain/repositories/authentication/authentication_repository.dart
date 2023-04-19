@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_mixin
 
 import 'package:fitt/core/enum/authentication_status_enum.dart';
@@ -15,4 +14,7 @@ abstract class AuthenticationRepository with Disposable {
   Future<void> checkUser();
 
   Stream<AuthenticationStatusEnum> get authenticationStatus;
+  void updateAuthenticationStatus(
+    AuthenticationStatusEnum authenticationStatus,
+  );
 }

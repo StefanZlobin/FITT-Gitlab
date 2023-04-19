@@ -15,13 +15,8 @@ class UserUseCase {
     await userRepository.updateUserAvatar(photo: photo);
   }
 
-  Future<User?> getSignedUser() async {
-    final user = await userRepository.getSignedUser();
-    return user;
-  }
-
-  Future<User?> getUserFromNetwork() async {
-    final user = await userRepository.getUserData();
+  Future<User?> getUser({bool fromCache = false}) async {
+    final user = await userRepository.getUser(fromCache: fromCache);
     return user;
   }
 

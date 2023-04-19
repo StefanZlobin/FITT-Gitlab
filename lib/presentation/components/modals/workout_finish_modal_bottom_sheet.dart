@@ -4,8 +4,8 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/modals/widget/header_rounded_container_line.dart';
@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class WorkoutFinishModalBottomSheet extends StatelessWidget {
+class WorkoutFinishModalBottomSheet extends StatelessWidget with UserMixin {
   const WorkoutFinishModalBottomSheet({
     super.key,
     required this.workout,
@@ -74,21 +74,9 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 24),
-        BlocBuilder<UserBloc, UserState>(
-          bloc: getIt<UserBloc>(),
-          builder: (context, state) {
-            return state.when(
-              loading: () => const SizedBox(),
-              loadedWithNoUser: (_) => const SizedBox(),
-              error: (error) => const SizedBox(),
-              loaded: (user) {
-                return Text(
-                  user!.userId.toString(),
-                  style: AppTypography.kH36.apply(color: AppColors.kBaseBlack),
-                );
-              },
-            );
-          },
+        Text(
+          userSnapshot!.userId.toString(),
+          style: AppTypography.kH36.apply(color: AppColors.kBaseBlack),
         ),
       ],
     );
@@ -101,7 +89,9 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget {
         const Center(child: HeaderRoundedContainerLine(bigPadding: false)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Text('${DateTimeUtils.dateWithPrefix(DateTime.now())}, ${workout.club.label}'),
+          child: Text(
+            '${DateTimeUtils.dateWithPrefix(DateTime.now())}, ${workout.club.label}',
+          ),
         ),
         const SizedBox(height: 4),
         Padding(

@@ -1,1 +1,1 @@
-enum IdentificationStatusEnum { identificated, unidentification, unknown }
+enum IdentificationStatusEnum { identificated, unidentificated, unknown }
