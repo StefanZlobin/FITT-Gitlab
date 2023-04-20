@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/enum/workout_phase_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
-import 'package:fitt/domain/entities/workout/workout.dart';
-import 'package:fitt/domain/use_cases/workout/workout_use_case.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
+import 'package:fitt/features/workouts/domain/use_cases/workouts/workout_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'archive_workouts_cubit.freezed.dart';

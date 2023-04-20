@@ -1,22 +1,21 @@
 import 'dart:io';
 
+import 'package:fitt/core/constants/app_colors.dart';
+import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/cubits/geolocation/geolocation_cubit.dart';
+import 'package:fitt/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
+import 'package:fitt/features/workouts/presentation/components/closest_workout_card.dart';
+import 'package:fitt/presentation/components/menu/menu_widget.dart';
+import 'package:fitt/presentation/pages/map/widgets/club_carousel.dart';
+import 'package:fitt/presentation/pages/map/widgets/map_widget.dart';
+import 'package:fitt/presentation/pages/map/widgets/menu_button.dart';
+import 'package:fitt/presentation/pages/map/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
-
-import '../../../core/constants/app_colors.dart';
-import '../../../core/locator/service_locator.dart';
-import '../../../core/utils/app_icons.dart';
-import '../../../domain/cubits/geolocation/geolocation_cubit.dart';
-import '../../../domain/cubits/partner_clubs/partner_clubs_cubit.dart';
-import '../../components/menu/menu_widget.dart';
-import '../../components/workout/closest_workout_card.dart';
-import 'widgets/club_carousel.dart';
-import 'widgets/map_widget.dart';
-import 'widgets/menu_button.dart';
-import 'widgets/search_field.dart';
 
 class MapPage extends StatelessWidget {
   const MapPage({super.key});

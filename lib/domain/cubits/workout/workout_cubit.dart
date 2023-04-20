@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
-import 'package:fitt/domain/use_cases/workout/workout_use_case.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
+import 'package:fitt/features/workouts/domain/use_cases/workouts/workout_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'workout_cubit.freezed.dart';

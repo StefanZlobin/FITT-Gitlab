@@ -5,8 +5,8 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
-import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +44,8 @@ class CancelWorkoutDialog extends StatelessWidget {
                   onPressed: () => context.pop(),
                   child: Text(
                     'Вернуться',
-                    style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    style:
+                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
                   ),
                 ),
               ),
@@ -57,11 +58,15 @@ class CancelWorkoutDialog extends StatelessWidget {
                 child: AppElevatedButton(
                   isHeight: false,
                   onPressedAsync: () async {
-                    await getIt<WorkoutCubit>().cancelWorkout(w: workout).then((value) {
-                      getIt<LocalNotificationsService>().deleteLocalNotification(
+                    await getIt<WorkoutCubit>()
+                        .cancelWorkout(w: workout)
+                        .then((value) {
+                      getIt<LocalNotificationsService>()
+                          .deleteLocalNotification(
                         id: workout.workoutHashCode,
                       );
-                      getIt<LocalNotificationsService>().deleteLocalNotification(
+                      getIt<LocalNotificationsService>()
+                          .deleteLocalNotification(
                         id: workout.workoutHashCode - 2,
                       );
                       getIt<WorkoutsCubit>().getWorkouts();
@@ -76,8 +81,12 @@ class CancelWorkoutDialog extends StatelessWidget {
                     });
                   },
                   marginButton: const EdgeInsets.all(0),
-                  textButton:
-                      Text('Отменить тренировку', style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite)),
+                  textButton: Text(
+                    'Отменить тренировку',
+                    style: AppTypography.kBody14.apply(
+                      color: AppColors.kBaseWhite,
+                    ),
+                  ),
                 ),
               ),
             ),
