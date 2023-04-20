@@ -1,12 +1,16 @@
 import 'dart:io';
 
+import 'package:fitt/core/constants/app_colors.dart';
+import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
+import 'package:fitt/domain/cubits/geolocation/geolocation_cubit.dart';
+import 'package:fitt/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/presentation/pages/map/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
-import 'package:upgrader/upgrader.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/locator/service_locator.dart';

@@ -4,7 +4,7 @@ import 'package:fitt/data/models/request/workout/finish_workout_request_body.dar
 import 'package:fitt/data/models/request/workout/get_workouts_request_body.dart';
 import 'package:fitt/data/models/request/workout/start_workout_request_body.dart';
 import 'package:fitt/data/models/response/workout/workout_slice.dart';
-import 'package:fitt/domain/entities/workout/workout.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'workout_api_client.g.dart';

@@ -1,4 +1,4 @@
-import 'package:fitt/domain/entities/workout/workout.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'workout_slice.g.dart';

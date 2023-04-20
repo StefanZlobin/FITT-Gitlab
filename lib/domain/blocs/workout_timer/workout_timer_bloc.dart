@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
-import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/ticker.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'workout_timer_bloc.freezed.dart';
@@ -33,8 +33,12 @@ class WorkoutTimerBloc extends Bloc<WorkoutTimerEvent, WorkoutTimerState> {
         : emit(_WorkoutTimerStateTimerRunInProgress(duration: event.duration));
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker.tick(ticks: event.duration.inSeconds).listen(
-          (duration) =>
-              add(_WorkoutTimerEventTimerTicked(duration: Duration(seconds: duration), workout: event.workout)),
+          (duration) => add(
+            _WorkoutTimerEventTimerTicked(
+              duration: Duration(seconds: duration),
+              workout: event.workout,
+            ),
+          ),
         );
   }
 
@@ -54,7 +58,8 @@ class WorkoutTimerBloc extends Bloc<WorkoutTimerEvent, WorkoutTimerState> {
       //getIt<WorkoutsCubit>().getWorkouts();
       getIt<WorkoutCubit>().getWorkout(workoutUuid: event.workout.uuid);
     }
-    if (event.workout.status == WorkoutStatusEnum.started && event.workout.endTime.isBefore(DateTime.now())) {
+    if (event.workout.status == WorkoutStatusEnum.started &&
+        event.workout.endTime.isBefore(DateTime.now())) {
       return emit(_WorkoutTimerStateTimerRunInDanger(duration: event.duration));
     }
 

@@ -12,14 +12,15 @@ import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/authorization/authorization_bloc.dart';
+import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
 import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/repositories/user/user_repository.dart';
+import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
 import 'package:fitt/presentation/components/menu/widget/user_menu_tile.dart';
 import 'package:fitt/presentation/components/separator.dart';
@@ -114,14 +115,14 @@ class MenuUser extends StatelessWidget with UserMixin {
         ),
         UserMenuTile(
           title: const Text('Тренировки'),
-          subtitle: BlocBuilder<WorkoutsCubit, WorkoutsState>(
-            bloc: getIt<WorkoutsCubit>(),
+          subtitle: BlocBuilder<ClosestWorkoutBloc, ClosestWorkoutState>(
+            bloc: getIt<ClosestWorkoutBloc>(),
             builder: (context, state) {
               return state.when(
                 initial: () => const SizedBox(),
-                loading: () => const SizedBox(),
-                loaded: (_, closestWorkout) {
-                  final workout = closestWorkout;
+                loaded: (
+                  workout,
+                ) {
                   if (workout == null) return const SizedBox();
                   late String closestWorkoutText;
                   if (workout.inProgress) {
@@ -140,14 +141,13 @@ class MenuUser extends StatelessWidget with UserMixin {
               );
             },
           ),
-          trailing: BlocBuilder<WorkoutsCubit, WorkoutsState>(
-            bloc: getIt<WorkoutsCubit>(),
+          trailing: BlocBuilder<WorkoutsBloc, WorkoutsState>(
+            bloc: getIt<WorkoutsBloc>(),
             builder: (context, state) {
               return state.when(
                 initial: () => const SizedBox(),
                 error: (error) => const SizedBox(),
-                loading: () => const SizedBox(),
-                loaded: (workouts, _) {
+                loaded: (workouts) {
                   final countWorkout = workouts.length;
                   if (countWorkout == 0) return const SizedBox();
                   return Container(
@@ -170,8 +170,7 @@ class MenuUser extends StatelessWidget with UserMixin {
             },
           ),
           onPressed: () {
-            final workoutsBloc = getIt<WorkoutsCubit>();
-            workoutsBloc.getWorkouts();
+            getIt<WorkoutsBloc>().add(const WorkoutsEvent.getWorkouts());
             context.push(AppRoute.workoutList.routeToPath);
           },
         ),

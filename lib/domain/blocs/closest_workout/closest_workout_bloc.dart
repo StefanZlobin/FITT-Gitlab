@@ -4,10 +4,10 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/mixins/auth_mixin.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/entities/user/user.dart';
-import 'package:fitt/domain/entities/workout/workout.dart';
-import 'package:fitt/domain/repositories/workout/workout_repository.dart';
 import 'package:fitt/domain/services/push_notifications/push_notifications_service.dart';
-import 'package:fitt/domain/use_cases/workout/workout_use_case.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
+import 'package:fitt/features/workouts/domain/repositories/workout/workout_repository.dart';
+import 'package:fitt/features/workouts/domain/use_cases/workouts/workout_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'closest_workout_bloc.freezed.dart';

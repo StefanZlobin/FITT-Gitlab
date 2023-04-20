@@ -2,7 +2,7 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
@@ -37,14 +37,13 @@ class MenuButton extends StatelessWidget {
               size: 18,
             ),
           ),
-          BlocBuilder<WorkoutsCubit, WorkoutsState>(
-            bloc: getIt<WorkoutsCubit>(),
+          BlocBuilder<WorkoutsBloc, WorkoutsState>(
+            bloc: getIt<WorkoutsBloc>(),
             builder: (context, state) {
               return state.when(
                 initial: () => const SizedBox(),
                 error: (error) => const SizedBox(),
-                loading: () => const SizedBox(),
-                loaded: (workouts, _) {
+                loaded: (workouts) {
                   final countWorkout = workouts.length;
                   if (countWorkout == 0) {
                     return const SizedBox();
@@ -62,7 +61,8 @@ class MenuButton extends StatelessWidget {
                       child: Center(
                         child: Text(
                           '$countWorkout',
-                          style: AppTypography.kBody10.apply(color: AppColors.kBaseWhite),
+                          style: AppTypography.kBody10
+                              .apply(color: AppColors.kBaseWhite),
                         ),
                       ),
                     ),
