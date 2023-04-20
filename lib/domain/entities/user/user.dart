@@ -24,6 +24,7 @@ class User with _$User {
     @JsonKey(name: 'phone_number') required String? phoneNumber,
     @JsonKey(name: 'avatar') required String? avatar,
   }) = _User;
+  
   User._();
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
