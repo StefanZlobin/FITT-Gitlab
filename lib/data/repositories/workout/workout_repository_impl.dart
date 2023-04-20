@@ -29,12 +29,14 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
   Future<Workout> getWorkout(String uuid) async {
     try {
       final workout = await _apiClient.getWorkout(uuid);
+      
       return workout;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
       );
+
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -62,12 +64,14 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
           workoutSorting: workoutSorting.convertSortingToField(workoutSorting),
         ),
       );
+
       return workouts.results;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
       );
+
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -79,12 +83,14 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         workout.uuid,
         CancelWorkoutRequestBody(workout),
       );
+
       return canceledWorkout;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
       );
+      
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -96,12 +102,14 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         workout.uuid,
         FinishWorkoutRequestBody(workout),
       );
+
       return finishedWorkout;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
       );
+    
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -113,12 +121,14 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         workout.uuid,
         StartWorkoutRequestBody(workout),
       );
+
       return startedWorkout;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
       );
+      
       throw NetworkExceptions.getDioException(e);
     }
   }

@@ -5,6 +5,7 @@ import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
+import 'package:upgrader/upgrader.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/locator/service_locator.dart';
@@ -92,14 +93,24 @@ class MapPage extends StatelessWidget {
             );
           },
         ),
-        body: Stack(
-          children: const [
-            MapWidget(),
-            ClosestWorkoutCard(),
-            ClubCarousel(),
-            MenuButton(),
-            SearchField(),
-          ],
+        body: UpgradeAlert(
+          upgrader: Upgrader(
+            debugDisplayAlways: true,
+            shouldPopScope: () => false,
+            durationUntilAlertAgain: const Duration(days: 1),
+            dialogStyle: Platform.isIOS
+                ? UpgradeDialogStyle.cupertino
+                : UpgradeDialogStyle.material,
+          ),
+          child: Stack(
+            children: const [
+              MapWidget(),
+              ClosestWorkoutCard(),
+              ClubCarousel(),
+              MenuButton(),
+              SearchField(),
+            ],
+          ),
         ),
       ),
     );
