@@ -34,8 +34,8 @@ class UserDetected extends StatelessWidget with UserMixin {
       children: [
         const UserAvatar(),
         //TODO: Если пользователь - администратор, то вывести доступные ему клубы
-        if (userSnapshot?.role == UserRoleEnum.administrator ||
-            userSnapshot?.role == UserRoleEnum.manager) ...[
+        if (userSnapshot!.role!.contains(UserRoleEnum.administrator) ||
+            userSnapshot!.role!.contains(UserRoleEnum.manager)) ...[
           const Separator(),
           BlocBuilder<AdminClubsCubit, AdminClubsState>(
             bloc: getIt<AdminClubsCubit>(),
