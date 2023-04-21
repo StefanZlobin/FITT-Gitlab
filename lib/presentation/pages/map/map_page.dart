@@ -37,7 +37,6 @@ class MapPage extends StatelessWidget {
       },
       child: UpgradeAlert(
         upgrader: Upgrader(
-          debugDisplayAlways: true,
           shouldPopScope: () => false,
           durationUntilAlertAgain: const Duration(minutes: 1),
           dialogStyle: Platform.isIOS
