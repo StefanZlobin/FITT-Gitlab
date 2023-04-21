@@ -17,7 +17,6 @@ import '../../components/workout/closest_workout_card.dart';
 import 'widgets/club_carousel.dart';
 import 'widgets/map_widget.dart';
 import 'widgets/menu_button.dart';
-import 'widgets/search_field.dart';
 
 class MapPage extends StatelessWidget {
   const MapPage({super.key});
@@ -108,7 +107,7 @@ class MapPage extends StatelessWidget {
               ClosestWorkoutCard(),
               ClubCarousel(),
               MenuButton(),
-              SearchField(),
+              //SearchField(),
             ],
           ),
         ),
