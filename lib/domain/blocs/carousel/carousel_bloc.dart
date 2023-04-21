@@ -38,20 +38,20 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
       'Not finished handling of previous select',
     );
 
-    if (clubs.isNotEmpty && !forseUpdate) {
-      final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
-      assert(targetIndex != -1, 'Selected absent club');
+    //if (clubs.isNotEmpty && !forseUpdate) {
+    //  final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
+    //  assert(targetIndex != -1, 'Selected absent club');
 
-      unawaited(_listScrollController.animateToIndex(targetIndex));
-    } else {
-      final completer = _partnerClubsCompleter = Completer();
-      clubs = await completer.future;
+    //  unawaited(_listScrollController.animateToIndex(targetIndex));
+    //} else {
+    final completer = _partnerClubsCompleter = Completer();
+    clubs = await completer.future;
 
-      final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
-      assert(targetIndex != -1, 'Selected absent club');
+    final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
+    assert(targetIndex != -1, 'Selected absent club');
 
-      unawaited(_listScrollController.animateToIndex(targetIndex));
-    }
+    unawaited(_listScrollController.animateToIndex(targetIndex));
+    //}
   }
 
   Future<void> _onClubsChanged(
