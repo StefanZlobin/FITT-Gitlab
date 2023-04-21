@@ -3,7 +3,7 @@ description: One-time training purchases service.
 
 publish_to: "none"
 
-version: 1.4.0+45
+version: 1.4.10+66
 
 environment:
   sdk: ">=2.19.0 <3.3.3"
@@ -106,10 +106,8 @@ dependencies:
   permission_handler: ^10.2.0
   #UUID
   uuid: ^3.0.7
-  #Charts
-  #fl_chart: ^0.61.0
-  #charts_painter: ^3.1.1
-  syncfusion_flutter_charts: ^21.1.37
+  #Notify about new app version
+  upgrader: ^6.2.0
 
   #Cluster manager (Fluster)
   #aka Stefan

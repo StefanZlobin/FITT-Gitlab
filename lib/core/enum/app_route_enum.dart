@@ -30,6 +30,8 @@ enum AppRoute {
   // Admin
   adminWorkoutList,
   adminWorkout,
+  // Staff filters
+  staffClubsFilter,
   // Staff analytics
   analytics,
   // Account

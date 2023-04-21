@@ -78,6 +78,9 @@ extension AppRouterExtension on AppRoute {
       case AppRoute.analytics:
         return '/${AppRoute.analytics.name}';
 
+      case AppRoute.staffClubsFilter:
+        return '/${AppRoute.staffClubsFilter.name}';
+
       case AppRoute.account:
         return '/${AppRoute.account.name}';
 
@@ -168,6 +171,9 @@ extension AppRouterExtension on AppRoute {
 
       case AppRoute.analytics:
         return AppRoute.analytics.name.toUpperCase();
+
+      case AppRoute.staffClubsFilter:
+        return AppRoute.staffClubsFilter.name.toUpperCase();
 
       case AppRoute.account:
         return AppRoute.account.name.toUpperCase();

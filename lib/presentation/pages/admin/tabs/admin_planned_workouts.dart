@@ -71,7 +71,8 @@ class AdminPlannedWorkouts extends StatelessWidget {
           bloc: notificationsBloc,
           listener: (context, state) {
             state.whenOrNull(
-              workoutStatusRS: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusRS: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.planned,
@@ -82,7 +83,8 @@ class AdminPlannedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
-              workoutStatusPlanned: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusPlanned: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.planned,
@@ -93,7 +95,8 @@ class AdminPlannedWorkouts extends StatelessWidget {
                   sortBy: AdminWorkoutSortingEnum.planStartTimeDesc,
                 ),
               ),
-              workoutStatusStarted: () => getIt<AdminWorkoutsCubit>().getAdminWorkouts(
+              workoutStatusStarted: () =>
+                  getIt<AdminWorkoutsCubit>().getAdminWorkouts(
                 filters: AdminWorkoutsFiltersRequestBody(
                   clubIds: [adminClub.uuid!],
                   phase: WorkoutPhaseEnum.planned,
@@ -115,10 +118,14 @@ class AdminPlannedWorkouts extends StatelessWidget {
             initial: () => const Center(child: CircularProgressIndicator()),
             loaded: (adminWorkouts) {
               if (adminWorkouts.isEmpty) {
-                return Text(
-                  'В клубе сегодня нет занимающихся',
-                  style: AppTypography.kH18.apply(color: AppColors.kPrimaryRed),
-                  textAlign: TextAlign.center,
+                return Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Text(
+                    'Здесь будут предстоящие тренировки.\nНет ни одной записи на ближайшее время',
+                    style:
+                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                    textAlign: TextAlign.center,
+                  ),
                 );
               }
               return ListView.separated(

@@ -1,6 +1,7 @@
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
+import 'package:fitt/presentation/components/empty_widget.dart';
 import 'package:fitt/presentation/pages/purchased_batch/widget/purchased_batch_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +26,14 @@ class PurchasedBatchPage extends StatelessWidget {
           return state.when(
             initial: () => const Center(child: CircularProgressIndicator()),
             loaded: (batches) {
+              if (batches.isEmpty) {
+                return EmptyWidget(
+                  hintText:
+                      'Нет актуальных пакетов. Выберите клуб и приобретите пакет часов',
+                  buttonText: 'Подобрать клуб',
+                  onPressed: () => context.pop(),
+                );
+              }
               return ListView.separated(
                 padding:
                     const EdgeInsets.symmetric(vertical: 24, horizontal: 16),

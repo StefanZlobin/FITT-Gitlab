@@ -37,4 +37,17 @@ enum TimeSliceEnum {
         return 'Год'.toUpperCase();
     }
   }
+
+  String timeSliceToStringKPI(TimeSliceEnum v) {
+    switch (v) {
+      case TimeSliceEnum.day:
+        return 'предыдущим днем'.toLowerCase();
+      case TimeSliceEnum.week:
+        return 'предыдущей неделей'.toLowerCase();
+      case TimeSliceEnum.month:
+        return 'предыдущим месяцем'.toLowerCase();
+      case TimeSliceEnum.year:
+        return 'предыдущим годом'.toLowerCase();
+    }
+  }
 }
