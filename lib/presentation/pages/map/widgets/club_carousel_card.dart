@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
@@ -20,6 +21,10 @@ class ClubCarouselCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final partnerClubAddress = partnerClub.address!.shortAddress
+        .split(', ')
+        .whereNotIndexed((index, element) => index == 0)
+        .join(', ');
     return GestureDetector(
       onTap: () {
         context.pushNamed(AppRoute.club.routeToPath, params: {
@@ -114,14 +119,15 @@ class ClubCarouselCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    partnerClub.label!,
+                    partnerClub.label!.replaceAll(' ', '\u{000A0}'),
                     maxLines: 1,
                     style:
                         AppTypography.kH18.apply(color: AppColors.kBaseWhite),
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    partnerClub.address!.shortAddress,
+                    partnerClubAddress.replaceAll(' ', '\u{000A0}'),
+                    maxLines: 1,
                     style: AppTypography.kBody14
                         .apply(color: AppColors.kBaseWhite),
                     overflow: TextOverflow.ellipsis,
