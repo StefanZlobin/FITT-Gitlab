@@ -12,7 +12,6 @@ import '../../../../domain/blocs/carousel/carousel_bloc.dart';
 import '../../../../domain/blocs/map/map_bloc.dart';
 import '../../../../domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import '../../../../domain/entities/club/partner_club.dart';
-import '../../../../domain/entities/lat_lng/lat_lng.dart';
 import 'club_carousel_card.dart';
 
 class ClubCarousel extends StatelessWidget {
@@ -20,52 +19,15 @@ class ClubCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<MapBloc, MapState>(
-          bloc: getIt<MapBloc>(),
-          listener: (context, state) {
-            state.whenOrNull(
-              loaded: (mapPoints, visibleRegion, _, filters) {
-                getIt<PartnerClubsCubit>().getPartnerClubs(
-                  clubFilters: filters,
-                  northeast: LatLng(
-                    visibleRegion.northeast.latitude,
-                    visibleRegion.northeast.longitude,
-                  ),
-                  southwest: LatLng(
-                    visibleRegion.southwest.latitude,
-                    visibleRegion.southwest.longitude,
-                  ),
-                );
-              },
-            );
-          },
-        ),
-        BlocListener<PartnerClubsCubit, PartnerClubsState>(
-          bloc: getIt<PartnerClubsCubit>(),
-          listener: (context, state) {
-            state.whenOrNull(
-              loaded: (clubs) {
-                getIt<CarouselBloc>().add(
-                  CarouselEvent.clubsChanged(clubs),
-                );
-              },
-            );
-          },
-        ),
-      ],
-      child: BlocBuilder<PartnerClubsCubit, PartnerClubsState>(
-        bloc: getIt<PartnerClubsCubit>(),
-        buildWhen: (previous, current) => current != previous,
-        builder: (context, state) {
-          return state.when(
-            loading: () => const _BuildEmptyWidget(),
-            loaded: (partnerClubs) => _buildPartnerClubsWidget(partnerClubs),
-            error: (error) => const _BuildEmptyWidget(),
-          );
-        },
-      ),
+    return BlocBuilder<PartnerClubsCubit, PartnerClubsState>(
+      bloc: getIt<PartnerClubsCubit>(),
+      builder: (context, state) {
+        return state.when(
+          loading: () => const _BuildEmptyWidget(),
+          loaded: (partnerClubs) => _buildPartnerClubsWidget(partnerClubs),
+          error: (error) => const _BuildEmptyWidget(),
+        );
+      },
     );
   }
 

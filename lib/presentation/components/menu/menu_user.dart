@@ -18,7 +18,6 @@ import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
 import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
-import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
 import 'package:fitt/domain/repositories/user/user_repository.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
@@ -177,9 +176,6 @@ class MenuUser extends StatelessWidget with UserMixin {
         UserMenuTile(
           title: const Text('Избранное'),
           onPressed: () {
-            getIt<ResourceCubit>(
-              instanceName: 'favorite',
-            ).getClubFilters();
             getIt<PartnerClubsFavoriteCubit>().getPartnerClubs();
             context.push(AppRoute.clubListFavourite.routeToPath);
           },
@@ -187,7 +183,7 @@ class MenuUser extends StatelessWidget with UserMixin {
         UserMenuTile(
           title: const Text('История тренировок'),
           onPressed: () {
-            final workoutsBloc = getIt<ArchiveWorkoutsCubit>();
+            final workoutsBloc = getIt<ArchiveWorkoutsBloc>();
             workoutsBloc.getArchiveWorkouts();
             context.pushNamed(
               AppRoute.workoutArchiveList.routeToPath,

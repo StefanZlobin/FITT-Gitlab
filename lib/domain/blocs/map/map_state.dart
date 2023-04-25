@@ -9,6 +9,7 @@ class MapState with _$MapState {
     required gm.LatLngBounds visibleRegion,
     required List<MapMarker> markers,
     @Default(ClubFilters(favorite: false)) ClubFilters filters,
+    required bool isVisibleRegionUpdated,
   }) = _MapStateLoaded;
   const factory MapState.error() = _MapStateError;
 }

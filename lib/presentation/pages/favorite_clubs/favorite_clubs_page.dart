@@ -7,7 +7,6 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/filtering/filtering_cubit.dart';
 import 'package:fitt/domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
-import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
 import 'package:fitt/domain/entities/facility/facility.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
@@ -61,16 +60,6 @@ class FavoriteClubsPage extends StatelessWidget {
               clubSorting: (clubSortingEnum) =>
                   getIt<PartnerClubsFavoriteCubit>()
                       .getPartnerClubs(clubSorting: clubSortingEnum),
-            );
-          },
-        ),
-        BlocListener<ResourceCubit, ResourceState>(
-          bloc: getIt<ResourceCubit>(instanceName: 'favorite'),
-          listener: (context, state) {
-            state.whenOrNull(
-              loaded: (filters) => getIt<FilteringCubit>(
-                instanceName: 'favorite',
-              ).setFilters(filters: filters),
             );
           },
         ),

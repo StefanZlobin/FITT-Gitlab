@@ -98,6 +98,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
       placeholder: 'Задайте вопрос поддержке',
       validator: (value) => nameValidator.getValidationErrorName(value),
       isHight: true,
+      height: 80,
       onChanged: (value) {
         setState(() {
           commentController.text = value;
@@ -131,6 +132,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
 
   Widget _buildEmailForm(String? email) {
     return AppTextFormField(
+      height: 75,
       title: Text(
         'E-mail для связи',
         style: AppTypography.kH16.apply(color: AppColors.kOxford),

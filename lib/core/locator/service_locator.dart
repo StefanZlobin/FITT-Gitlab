@@ -11,12 +11,12 @@ import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.d
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
 import 'package:fitt/domain/blocs/authorization/authorization_bloc.dart';
 import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
+import 'package:fitt/domain/blocs/club_filtering/club_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/menu/menu_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
 import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
 import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
-import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
@@ -73,7 +73,6 @@ import '../../domain/cubits/geolocation/geolocation_cubit.dart';
 import '../../domain/cubits/modal_bottom_sheet/modal_bottom_sheet_cubit.dart';
 import '../../domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import '../../domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
-import '../../domain/cubits/resource/resource_cubit.dart';
 import '../../domain/cubits/sorting/sorting_cubit.dart';
 import '../../domain/cubits/workout/workout_cubit.dart';
 import '../../domain/cubits/workout_slider_button_type/workout_slider_button_type_cubit.dart';
@@ -261,9 +260,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<WorkoutsBloc>(() => WorkoutsBloc());
   getIt.registerLazySingleton<GeolocationCubit>(() => GeolocationCubit());
   getIt.registerLazySingleton<SearchBloc>(() => SearchBloc());
-  getIt.registerLazySingleton<ArchiveWorkoutsCubit>(
-    () => ArchiveWorkoutsCubit(),
-  );
   getIt.registerLazySingleton<WorkoutsArchiveBloc>(() => WorkoutsArchiveBloc());
 
   getIt.registerLazySingleton<MapBloc>(() => MapBloc());
@@ -291,16 +287,12 @@ void _registerBlocs() {
   getIt.registerLazySingleton<BuyBatchCubit>(() => BuyBatchCubit());
   getIt.registerLazySingleton<BuyWorkoutCubit>(() => BuyWorkoutCubit());
   getIt.registerLazySingleton<NotificationsBloc>(() => NotificationsBloc());
-  getIt.registerLazySingleton<ResourceCubit>(() => ResourceCubit());
-  getIt.registerLazySingleton<ResourceCubit>(
-    instanceName: 'favorite',
-    () => ResourceCubit(),
-  );
   getIt.registerLazySingleton<FilteringCubit>(() => FilteringCubit());
   getIt.registerLazySingleton<FilteringCubit>(
     instanceName: 'favorite',
     () => FilteringCubit(),
   );
+  getIt.registerLazySingleton<ClubFilteringBloc>(() => ClubFilteringBloc());
   getIt.registerLazySingleton<SortingCubit>(() => SortingCubit());
   getIt.registerLazySingleton<FeedbackCubit>(() => FeedbackCubit());
   getIt.registerLazySingleton<AccountSaveButtonCubit>(

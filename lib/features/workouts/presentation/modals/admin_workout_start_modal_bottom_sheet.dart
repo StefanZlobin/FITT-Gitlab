@@ -80,6 +80,7 @@ class AdminWorkoutStartModalBottomSheet extends StatelessWidget {
             focusNode: focusNode,
             initialValue: lockerNumber,
             isHight: true,
+            height: 80,
             title: const SizedBox(),
             placeholder: 'Ввести номер',
             validator: (v) => nameValidator.getValidationErrorName(v),

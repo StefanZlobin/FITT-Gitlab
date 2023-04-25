@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:collection/collection.dart';
+import 'package:fitt/domain/blocs/club_filtering/club_filtering_bloc.dart';
 import 'package:fluster/fluster.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -39,6 +40,25 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       _onCarouselCardFocused,
       transformer: restartable(),
     );
+
+    getIt<ClubFilteringBloc>().stream.listen((ClubFilteringState state) {
+      state.whenOrNull(
+        loaded: (selectedFacilities, selectedPrice, _, __) {
+          final activeFacilities = selectedFacilities!.entries
+              .where((element) => element.value)
+              .map((e) => e.key)
+              .toList();
+
+          add(MapEvent.filtersDetected(
+            filters: ClubFilters(
+              facilities: activeFacilities,
+              maxPrice: selectedPrice!.maxPrice,
+              minPrice: selectedPrice.minPrice,
+            ),
+          ));
+        },
+      );
+    });
   }
 
   final _mapUseCase = MapUseCase();
@@ -147,6 +167,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
             southwest:
                 gm.LatLng(event.southwest.latitude, event.southwest.longitude),
           ),
+          isVisibleRegionUpdated: true,
         ),
       );
     }
@@ -184,6 +205,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     emit(
       MapState.loaded(
+        isVisibleRegionUpdated: true,
         markers: markers.all,
         filters: _filters,
         mapPoints: mapPoints,
@@ -277,6 +299,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     }
 
     final newState = prevState.copyWith(
+      isVisibleRegionUpdated: false,
       markers: [
         for (final m in prevState.markers)
           if (m.markerId == marker.markerId)
@@ -306,6 +329,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     }
 
     final newState = prevState.copyWith(
+      isVisibleRegionUpdated: false,
       markers: [
         for (final m in prevState.markers)
           if (isTargetMarker(m, event.clubId)) ...{
