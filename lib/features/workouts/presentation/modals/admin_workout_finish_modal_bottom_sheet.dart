@@ -127,6 +127,7 @@ class AdminWorkoutFinishModalBottomSheet extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(24, 12, 24, 0),
             title: SizedBox(),
             isHight: true,
+            height: 80,
             placeholder: 'Напишите причину завершения тренировки',
           ),
         AppElevatedButton(

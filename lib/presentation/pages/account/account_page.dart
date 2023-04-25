@@ -112,6 +112,7 @@ class AccountPage extends StatelessWidget with UserMixin {
           initial: (firstName, secondName, birthday, gender, email) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
+              height: 75,
               title: const Text('E-mail'),
               initialValue: userSnapshot?.email,
               isEmailField: true,
@@ -123,6 +124,7 @@ class AccountPage extends StatelessWidget with UserMixin {
           },
           formChanged: (_, __, ___, email, gender, status) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('E-mail'),
               initialValue: userSnapshot?.email,
@@ -135,6 +137,7 @@ class AccountPage extends StatelessWidget with UserMixin {
             );
           },
           error: (error) => AppTextFormField(
+            height: 75,
             padding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text('E-mail'),
             initialValue: userSnapshot?.email,
@@ -260,6 +263,7 @@ class AccountPage extends StatelessWidget with UserMixin {
     MaskTextInputFormatter phoneFormatter,
   ) {
     return AppTextFormField(
+      height: 75,
       padding: const EdgeInsets.only(left: 16, right: 16),
       title: const Text('Номер телефона'),
       initialValue: phoneFormatter.maskText(userSnapshot?.phoneNumber ?? ''),
@@ -275,6 +279,7 @@ class AccountPage extends StatelessWidget with UserMixin {
           initial: (firstName, secondName, birthday, gender, email) {
             return AppTextFormField(
               padding: const EdgeInsets.only(left: 16, right: 16),
+              height: 75,
               title: const Text('Имя'),
               initialValue: userSnapshot?.firstName,
               onChanged: (value) {
@@ -287,6 +292,7 @@ class AccountPage extends StatelessWidget with UserMixin {
               (firstName, secondName, birthday, email, gender, status) {
             return AppTextFormField(
               title: const Text('Имя'),
+              height: 75,
               initialValue: userSnapshot?.firstName,
               errorText: !status ? firstName?.error?.name : null,
               onChanged: (value) {
@@ -297,6 +303,7 @@ class AccountPage extends StatelessWidget with UserMixin {
           },
           error: (error) => AppTextFormField(
             title: const Text('Имя'),
+            height: 75,
             initialValue: userSnapshot?.firstName,
             onChanged: (value) {
               getIt<AccountBloc>()
@@ -315,6 +322,7 @@ class AccountPage extends StatelessWidget with UserMixin {
         return state.when(
           initial: (firstName, secondName, birthday, email, gender) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
@@ -326,6 +334,7 @@ class AccountPage extends StatelessWidget with UserMixin {
           },
           formChanged: (_, secondName, __, ___, ____, status) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
@@ -337,6 +346,7 @@ class AccountPage extends StatelessWidget with UserMixin {
             );
           },
           error: (error) => AppTextFormField(
+            height: 75,
             padding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text('Фамилия'),
             initialValue: userSnapshot?.lastName,

@@ -414,6 +414,8 @@ mixin _$WorkoutsArchiveState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> workouts) loaded,
     required TResult Function(String error) error,
   }) =>
@@ -421,6 +423,7 @@ mixin _$WorkoutsArchiveState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult? Function(List<Workout> workouts)? loaded,
     TResult? Function(String error)? error,
   }) =>
@@ -428,6 +431,7 @@ mixin _$WorkoutsArchiveState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult Function(List<Workout> workouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -436,6 +440,7 @@ mixin _$WorkoutsArchiveState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutsArchiveStateInitial value) initial,
+    required TResult Function(_WorkoutsArchiveStateLoading value) loading,
     required TResult Function(_WorkoutsArchiveStateLoaded value) loaded,
     required TResult Function(_WorkoutsArchiveStateError value) error,
   }) =>
@@ -443,6 +448,7 @@ mixin _$WorkoutsArchiveState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult? Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult? Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult? Function(_WorkoutsArchiveStateError value)? error,
   }) =>
@@ -450,6 +456,7 @@ mixin _$WorkoutsArchiveState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult Function(_WorkoutsArchiveStateError value)? error,
     required TResult orElse(),
@@ -519,6 +526,8 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> workouts) loaded,
     required TResult Function(String error) error,
   }) {
@@ -529,6 +538,7 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult? Function(List<Workout> workouts)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -539,6 +549,7 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult Function(List<Workout> workouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -553,6 +564,7 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutsArchiveStateInitial value) initial,
+    required TResult Function(_WorkoutsArchiveStateLoading value) loading,
     required TResult Function(_WorkoutsArchiveStateLoaded value) loaded,
     required TResult Function(_WorkoutsArchiveStateError value) error,
   }) {
@@ -563,6 +575,7 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult? Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult? Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult? Function(_WorkoutsArchiveStateError value)? error,
   }) {
@@ -573,6 +586,7 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult Function(_WorkoutsArchiveStateError value)? error,
     required TResult orElse(),
@@ -586,6 +600,178 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
 
 abstract class _WorkoutsArchiveStateInitial implements WorkoutsArchiveState {
   const factory _WorkoutsArchiveStateInitial() = _$_WorkoutsArchiveStateInitial;
+}
+
+/// @nodoc
+abstract class _$$_WorkoutsArchiveStateLoadingCopyWith<$Res> {
+  factory _$$_WorkoutsArchiveStateLoadingCopyWith(
+          _$_WorkoutsArchiveStateLoading value,
+          $Res Function(_$_WorkoutsArchiveStateLoading) then) =
+      __$$_WorkoutsArchiveStateLoadingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Workout> prevWorkouts, bool isFirstFetch});
+}
+
+/// @nodoc
+class __$$_WorkoutsArchiveStateLoadingCopyWithImpl<$Res>
+    extends _$WorkoutsArchiveStateCopyWithImpl<$Res,
+        _$_WorkoutsArchiveStateLoading>
+    implements _$$_WorkoutsArchiveStateLoadingCopyWith<$Res> {
+  __$$_WorkoutsArchiveStateLoadingCopyWithImpl(
+      _$_WorkoutsArchiveStateLoading _value,
+      $Res Function(_$_WorkoutsArchiveStateLoading) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? prevWorkouts = null,
+    Object? isFirstFetch = null,
+  }) {
+    return _then(_$_WorkoutsArchiveStateLoading(
+      prevWorkouts: null == prevWorkouts
+          ? _value._prevWorkouts
+          : prevWorkouts // ignore: cast_nullable_to_non_nullable
+              as List<Workout>,
+      isFirstFetch: null == isFirstFetch
+          ? _value.isFirstFetch
+          : isFirstFetch // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_WorkoutsArchiveStateLoading implements _WorkoutsArchiveStateLoading {
+  const _$_WorkoutsArchiveStateLoading(
+      {required final List<Workout> prevWorkouts, required this.isFirstFetch})
+      : _prevWorkouts = prevWorkouts;
+
+  final List<Workout> _prevWorkouts;
+  @override
+  List<Workout> get prevWorkouts {
+    if (_prevWorkouts is EqualUnmodifiableListView) return _prevWorkouts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_prevWorkouts);
+  }
+
+  @override
+  final bool isFirstFetch;
+
+  @override
+  String toString() {
+    return 'WorkoutsArchiveState.loading(prevWorkouts: $prevWorkouts, isFirstFetch: $isFirstFetch)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WorkoutsArchiveStateLoading &&
+            const DeepCollectionEquality()
+                .equals(other._prevWorkouts, _prevWorkouts) &&
+            (identical(other.isFirstFetch, isFirstFetch) ||
+                other.isFirstFetch == isFirstFetch));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_prevWorkouts), isFirstFetch);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WorkoutsArchiveStateLoadingCopyWith<_$_WorkoutsArchiveStateLoading>
+      get copyWith => __$$_WorkoutsArchiveStateLoadingCopyWithImpl<
+          _$_WorkoutsArchiveStateLoading>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)
+        loading,
+    required TResult Function(List<Workout> workouts) loaded,
+    required TResult Function(String error) error,
+  }) {
+    return loading(prevWorkouts, isFirstFetch);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
+    TResult? Function(List<Workout> workouts)? loaded,
+    TResult? Function(String error)? error,
+  }) {
+    return loading?.call(prevWorkouts, isFirstFetch);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
+    TResult Function(List<Workout> workouts)? loaded,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(prevWorkouts, isFirstFetch);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WorkoutsArchiveStateInitial value) initial,
+    required TResult Function(_WorkoutsArchiveStateLoading value) loading,
+    required TResult Function(_WorkoutsArchiveStateLoaded value) loaded,
+    required TResult Function(_WorkoutsArchiveStateError value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult? Function(_WorkoutsArchiveStateLoading value)? loading,
+    TResult? Function(_WorkoutsArchiveStateLoaded value)? loaded,
+    TResult? Function(_WorkoutsArchiveStateError value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult Function(_WorkoutsArchiveStateLoading value)? loading,
+    TResult Function(_WorkoutsArchiveStateLoaded value)? loaded,
+    TResult Function(_WorkoutsArchiveStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WorkoutsArchiveStateLoading implements WorkoutsArchiveState {
+  const factory _WorkoutsArchiveStateLoading(
+      {required final List<Workout> prevWorkouts,
+      required final bool isFirstFetch}) = _$_WorkoutsArchiveStateLoading;
+
+  List<Workout> get prevWorkouts;
+  bool get isFirstFetch;
+  @JsonKey(ignore: true)
+  _$$_WorkoutsArchiveStateLoadingCopyWith<_$_WorkoutsArchiveStateLoading>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -664,6 +850,8 @@ class _$_WorkoutsArchiveStateLoaded implements _WorkoutsArchiveStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> workouts) loaded,
     required TResult Function(String error) error,
   }) {
@@ -674,6 +862,7 @@ class _$_WorkoutsArchiveStateLoaded implements _WorkoutsArchiveStateLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult? Function(List<Workout> workouts)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -684,6 +873,7 @@ class _$_WorkoutsArchiveStateLoaded implements _WorkoutsArchiveStateLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult Function(List<Workout> workouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -698,6 +888,7 @@ class _$_WorkoutsArchiveStateLoaded implements _WorkoutsArchiveStateLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutsArchiveStateInitial value) initial,
+    required TResult Function(_WorkoutsArchiveStateLoading value) loading,
     required TResult Function(_WorkoutsArchiveStateLoaded value) loaded,
     required TResult Function(_WorkoutsArchiveStateError value) error,
   }) {
@@ -708,6 +899,7 @@ class _$_WorkoutsArchiveStateLoaded implements _WorkoutsArchiveStateLoaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult? Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult? Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult? Function(_WorkoutsArchiveStateError value)? error,
   }) {
@@ -718,6 +910,7 @@ class _$_WorkoutsArchiveStateLoaded implements _WorkoutsArchiveStateLoaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult Function(_WorkoutsArchiveStateError value)? error,
     required TResult orElse(),
@@ -808,6 +1001,8 @@ class _$_WorkoutsArchiveStateError implements _WorkoutsArchiveStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)
+        loading,
     required TResult Function(List<Workout> workouts) loaded,
     required TResult Function(String error) error,
   }) {
@@ -818,6 +1013,7 @@ class _$_WorkoutsArchiveStateError implements _WorkoutsArchiveStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult? Function(List<Workout> workouts)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -828,6 +1024,7 @@ class _$_WorkoutsArchiveStateError implements _WorkoutsArchiveStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(List<Workout> prevWorkouts, bool isFirstFetch)? loading,
     TResult Function(List<Workout> workouts)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -842,6 +1039,7 @@ class _$_WorkoutsArchiveStateError implements _WorkoutsArchiveStateError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutsArchiveStateInitial value) initial,
+    required TResult Function(_WorkoutsArchiveStateLoading value) loading,
     required TResult Function(_WorkoutsArchiveStateLoaded value) loaded,
     required TResult Function(_WorkoutsArchiveStateError value) error,
   }) {
@@ -852,6 +1050,7 @@ class _$_WorkoutsArchiveStateError implements _WorkoutsArchiveStateError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult? Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult? Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult? Function(_WorkoutsArchiveStateError value)? error,
   }) {
@@ -862,6 +1061,7 @@ class _$_WorkoutsArchiveStateError implements _WorkoutsArchiveStateError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutsArchiveStateInitial value)? initial,
+    TResult Function(_WorkoutsArchiveStateLoading value)? loading,
     TResult Function(_WorkoutsArchiveStateLoaded value)? loaded,
     TResult Function(_WorkoutsArchiveStateError value)? error,
     required TResult orElse(),

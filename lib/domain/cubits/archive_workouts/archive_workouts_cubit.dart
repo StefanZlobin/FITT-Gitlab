@@ -8,8 +8,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'archive_workouts_cubit.freezed.dart';
 part 'archive_workouts_state.dart';
 
-class ArchiveWorkoutsCubit extends Cubit<ArchiveWorkoutsState> {
-  ArchiveWorkoutsCubit() : super(const ArchiveWorkoutsState.initial()) {
+class ArchiveWorkoutsBloc extends Cubit<ArchiveWorkoutsState> {
+  ArchiveWorkoutsBloc() : super(const ArchiveWorkoutsState.initial()) {
     getArchiveWorkouts();
   }
 

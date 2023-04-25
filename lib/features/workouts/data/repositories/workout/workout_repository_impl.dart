@@ -90,7 +90,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
       } else if (workoutPhase == WorkoutPhaseEnum.done) {
         _updateWorkoutsArchive(workouts.results);
       }
-      
+
       return workouts.results;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(

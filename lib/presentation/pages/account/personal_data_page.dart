@@ -71,6 +71,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
         return state.when(
           initial: (firstName, secondName, birthday, gender, email) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('E-mail'),
               initialValue: userSnapshot?.email,
@@ -83,6 +84,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
           },
           formChanged: (_, __, ___, email, gender, status) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('E-mail'),
               initialValue: userSnapshot?.email,
@@ -95,6 +97,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
             );
           },
           error: (error) => AppTextFormField(
+            height: 75,
             padding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text('E-mail'),
             initialValue: userSnapshot?.email,
@@ -223,6 +226,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
         return state.when(
           initial: (firstName, secondName, birthday, gender, email) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Имя'),
               initialValue: userSnapshot?.firstName,
@@ -235,6 +239,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
           formChanged:
               (firstName, secondName, birthday, email, gender, status) {
             return AppTextFormField(
+              height: 75,
               title: const Text('Имя'),
               initialValue: userSnapshot?.firstName,
               errorText: !status ? firstName?.error?.name : null,
@@ -245,6 +250,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
             );
           },
           error: (error) => AppTextFormField(
+            height: 75,
             title: const Text('Имя'),
             initialValue: userSnapshot?.firstName,
             onChanged: (value) {
@@ -264,6 +270,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
         return state.when(
           initial: (firstName, secondName, birthday, email, gender) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
@@ -275,6 +282,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
           },
           formChanged: (_, secondName, __, ___, ____, status) {
             return AppTextFormField(
+              height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
@@ -286,6 +294,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
             );
           },
           error: (error) => AppTextFormField(
+            height: 75,
             padding: const EdgeInsets.only(left: 16, right: 16),
             title: const Text('Фамилия'),
             initialValue: userSnapshot?.lastName,

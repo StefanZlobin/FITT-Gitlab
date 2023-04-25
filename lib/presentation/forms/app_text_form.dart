@@ -23,6 +23,9 @@ class AppTextFormField extends StatelessWidget {
     this.focusNode,
     this.errorText,
     this.controller,
+    this.height = 48,
+    this.keyboardType = TextInputType.text,
+    this.inputFormatters,
   });
 
   final Widget title;
@@ -41,6 +44,9 @@ class AppTextFormField extends StatelessWidget {
   final FocusNode? focusNode;
   final String? errorText;
   final TextEditingController? controller;
+  final double height;
+  final TextInputType keyboardType;
+  final TextInputFormatter? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +59,12 @@ class AppTextFormField extends StatelessWidget {
             style: AppTypography.kH16.apply(color: AppColors.kBaseBlack),
             child: title,
           ),
-          const SizedBox(height: 8),
+          if (height == 48) const SizedBox() else const SizedBox(height: 8),
           SizedBox(
-            height: isHight ? 80 : 75,
+            height: height, //isHight ? 80 : 75,
             child: TextFormField(
               controller: controller,
-              keyboardType: TextInputType.text,
+              keyboardType: keyboardType,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               readOnly: readOnly,
               enabled: !readOnly,
@@ -79,6 +85,7 @@ class AppTextFormField extends StatelessWidget {
                       );
                     },
                   ),
+                if (inputFormatters != null) inputFormatters!,
               ],
               initialValue: initialValue,
               style: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),

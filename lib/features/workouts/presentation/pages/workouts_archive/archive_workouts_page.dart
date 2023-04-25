@@ -1,12 +1,12 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
-import 'package:fitt/core/enum/workout_sorting_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
 import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/workouts_archive/workouts_archive_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/presentation/components/archive_workout_card.dart';
 import 'package:fitt/presentation/app.dart';
@@ -28,91 +28,59 @@ class ArchiveWorkoutsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getIt<SortingCubit>()
-        .setWorkoutSortingEnum(workoutSortingEnum: WorkoutSortingEnum.newFirst);
-
     final scrollController = ScrollController();
 
     scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
-          getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts();
+          getIt<ArchiveWorkoutsBloc>().getArchiveWorkouts();
         }
       }
     });
 
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<SortingCubit, SortingState>(
-          bloc: getIt<SortingCubit>(),
-          listener: (context, state) {
-            state.whenOrNull(
-              workoutSorting: (workoutSortingEnum) {
-                getIt<ArchiveWorkoutsCubit>().offset = 0;
-                getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
-                  workoutSorting: workoutSortingEnum,
-                  needClearLoadedWorkouts: true,
-                );
-              },
-            );
-          },
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => fromWorkoutPage
+              ? context.push(AppRoute.map.routeToPath)
+              : context.pop(),
+          icon: const Icon(AppIcons.arr_big_left),
         ),
-        BlocListener<ArchiveWorkoutsCubit, ArchiveWorkoutsState>(
-          bloc: getIt<ArchiveWorkoutsCubit>(),
-          listener: (context, state) {
-            state.whenOrNull(
-              loaded: (archiveWorkouts) {
-                // ignore: no-empty-block
-                if (archiveWorkouts.isEmpty) {}
-              },
-            );
-          },
-        ),
-      ],
-      child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () => fromWorkoutPage
-                ? context.push(AppRoute.map.routeToPath)
-                : context.pop(),
-            icon: const Icon(AppIcons.arr_big_left),
-          ),
-          title: Text(L.of(context).workoutArchivePageTitle),
-        ),
-        body: Column(
-          children: [
-            const SizedBox(height: 34),
-            _buildSortingWidget(context),
-            const SizedBox(height: 24),
-            BlocBuilder<ArchiveWorkoutsCubit, ArchiveWorkoutsState>(
-              bloc: getIt<ArchiveWorkoutsCubit>(),
-              builder: (context, state) {
-                return state.when(
-                  initial: () =>
-                      const Center(child: CircularProgressIndicator()),
-                  loading: (archiveWorkouts, isFirstFetch) {
-                    if (isFirstFetch) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    return _buildWorkoutsCardWidget(
-                      context,
-                      archiveWorkouts,
-                      scrollController,
-                      true,
-                    );
-                  },
-                  loaded: (workouts) => _buildWorkoutsCardWidget(
+        title: Text(L.of(context).workoutArchivePageTitle),
+      ),
+      body: Column(
+        children: [
+          const SizedBox(height: 34),
+          _buildSortingWidget(context),
+          const SizedBox(height: 24),
+          BlocBuilder<WorkoutsArchiveBloc, WorkoutsArchiveState>(
+            bloc: getIt<WorkoutsArchiveBloc>(),
+            builder: (context, state) {
+              return state.when(
+                initial: () => const Center(child: CircularProgressIndicator()),
+                loading: (archiveWorkouts, isFirstFetch) {
+                  if (isFirstFetch) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  
+                  return _buildWorkoutsCardWidget(
                     context,
-                    workouts,
+                    archiveWorkouts,
                     scrollController,
-                    false,
-                  ),
-                  error: (error) => const SizedBox(),
-                );
-              },
-            ),
-          ],
-        ),
+                    true,
+                  );
+                },
+                loaded: (workouts) => _buildWorkoutsCardWidget(
+                  context,
+                  workouts,
+                  scrollController,
+                  false,
+                ),
+                error: (error) => const SizedBox(),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

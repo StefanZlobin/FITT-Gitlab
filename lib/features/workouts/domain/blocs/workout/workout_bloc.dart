@@ -1,14 +1,36 @@
 import 'package:bloc/bloc.dart';
+import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/domain/errors/dio_errors.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
+import 'package:fitt/features/workouts/domain/repositories/workout/workout_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'workout_bloc.freezed.dart';
 part 'workout_event.dart';
 part 'workout_state.dart';
-part 'workout_bloc.freezed.dart';
 
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
-  WorkoutBloc() : super(_Initial()) {
-    on<WorkoutEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  WorkoutBloc() : super(const WorkoutState.initial()) {
+    on<_WorkoutEventGetWorkout>(_onWorkoutGetLoadWorkout);
+    on<_WorkoutEventSetWorkout>(_onWorkoutEventSetWorkout);
+  }
+
+  Future<void> _onWorkoutGetLoadWorkout(
+    _WorkoutEventGetWorkout event,
+    Emitter<WorkoutState> emit,
+  ) async {
+    try {
+      final w = await getIt<WorkoutRepository>().getWorkout(event.workoutUuid);
+      add(WorkoutEvent.setWorkout(workout: w));
+    } on NetworkExceptions catch (e) {
+      emit(WorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
+    }
+  }
+
+  void _onWorkoutEventSetWorkout(
+    _WorkoutEventSetWorkout event,
+    Emitter<WorkoutState> emit,
+  ) {
+    emit(WorkoutState.loaded(workout: event.workout));
   }
 }

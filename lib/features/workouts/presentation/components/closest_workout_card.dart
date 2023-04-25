@@ -28,7 +28,7 @@ class ClosestWorkoutCard extends StatelessWidget {
           error: (_) => const SizedBox(),
           loaded: (workout) {
             if (workout == null) return const SizedBox();
-            if (workout.canStartTime.day != DateTime.now().day) {
+            if (workout.canStartTime.day > DateTime.now().day) {
               return const SizedBox();
             }
             return _buildClosestWorkoutWidget(workout, context);

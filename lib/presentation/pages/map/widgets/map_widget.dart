@@ -4,9 +4,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/map/map_style.dart';
 import 'package:fitt/domain/blocs/map/map_bloc.dart';
 import 'package:fitt/domain/blocs/search/search_bloc.dart';
-import 'package:fitt/domain/cubits/filtering/filtering_cubit.dart';
 import 'package:fitt/domain/cubits/geolocation/geolocation_cubit.dart';
-import 'package:fitt/domain/entities/filters/club_filters.dart';
 import 'package:fitt/domain/entities/lat_lng/lat_lng.dart' as latlng;
 import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
 import 'package:flutter/material.dart';
@@ -49,31 +47,6 @@ class _MapWidgetState extends State<MapWidget> {
                         searchAddress.longitude,
                       ),
                       zoom: 16,
-                    ),
-                  ),
-                );
-              },
-            );
-          },
-        ),
-        BlocListener<FilteringCubit, FilteringState>(
-          bloc: getIt<FilteringCubit>(),
-          listener: (context, state) {
-            state.whenOrNull(
-              loaded: (
-                filters,
-                selectedFacilities,
-                _,
-                __,
-                ___,
-                activeFacilitiesList,
-              ) {
-                _mapBloc.add(
-                  MapEvent.filtersDetected(
-                    filters: ClubFilters(
-                      facilities: activeFacilitiesList,
-                      maxPrice: filters.maxPrice,
-                      minPrice: filters.minPrice,
                     ),
                   ),
                 );

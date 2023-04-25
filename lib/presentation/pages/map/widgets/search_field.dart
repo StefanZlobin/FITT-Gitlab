@@ -3,9 +3,8 @@ import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/domain/blocs/club_filtering/club_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/search/search_bloc.dart';
-import 'package:fitt/domain/cubits/filtering/filtering_cubit.dart';
-import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
 import 'package:fitt/domain/entities/address/search_address.dart';
 import 'package:fitt/gen/assets.gen.dart';
 import 'package:fitt/presentation/components/modals/filter_modal_bottom_sheet.dart';
@@ -105,7 +104,6 @@ class _SearchFieldState extends State<SearchField> {
                     color: AppColors.kOxford60,
                   ),
                   onPressed: () {
-                    getIt<ResourceCubit>().getClubFilters();
                     showModalBottomSheet<void>(
                       context: context,
                       isScrollControlled: true,
@@ -118,24 +116,18 @@ class _SearchFieldState extends State<SearchField> {
                   },
                 ),
               ),
-              BlocBuilder<FilteringCubit, FilteringState>(
-                bloc: getIt<FilteringCubit>(),
+              BlocBuilder<ClubFilteringBloc, ClubFilteringState>(
+                bloc: getIt<ClubFilteringBloc>(),
                 builder: (context, state) {
                   return state.when(
                     initial: () => const SizedBox(),
                     error: (error) => const SizedBox(),
-                    loaded: (
-                      filters,
-                      selectedFacilities,
-                      _,
-                      __,
-                      isPriceUpdate,
-                      activeFacilitiesList,
-                    ) {
-                      final countActiveFacilities =
-                          activeFacilitiesList?.length ?? 0;
+                    loaded: (facilities, _, isPUpdate, __) {
+                      final countActiveFacilities = facilities!.entries
+                          .where((element) => element.value)
+                          .length;
                       final countActiveFilters =
-                          countActiveFacilities + (isPriceUpdate ? 1 : 0);
+                          countActiveFacilities + (isPUpdate ? 1 : 0);
                       if (countActiveFilters == 0) return const SizedBox();
                       return Positioned(
                         right: 5,
