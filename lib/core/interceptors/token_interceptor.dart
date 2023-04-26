@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
-import 'package:fitt/features/authorization/domain/repositories/token/token_repository.dart';
+import 'package:fitt/features/auth/domain/repositories/token/token_repository.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 

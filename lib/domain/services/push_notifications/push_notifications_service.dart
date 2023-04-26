@@ -11,5 +11,5 @@ abstract class PushNotificationsService with Disposable {
   /// Нам не важно, какой статус у тренировки
   /// Так как мы будем обновлять стрим тренировки (или стрим тренировок)
   /// Исходя из полученного workout uuid
-  Stream<String?> get changeWorkoutStatusNotification;
+  Stream<Map<String, String>?> get changeWorkoutStatusNotification;
 }

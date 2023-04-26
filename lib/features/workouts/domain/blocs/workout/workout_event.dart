@@ -9,4 +9,8 @@ class WorkoutEvent with _$WorkoutEvent {
   const factory WorkoutEvent.setWorkout({
     required Workout workout,
   }) = _WorkoutEventSetWorkout;
+
+  const factory WorkoutEvent.cancelWorkout({
+    required Workout workout,
+  }) = _WorkoutEventCancelWorkout;
 }

@@ -2,12 +2,12 @@
 
 import 'package:dio/dio.dart';
 import 'package:fitt/core/enum/admin_workout_finish_reason_enum.dart';
-import 'package:fitt/data/models/request/admin/admin_set_locker_number_request_body.dart';
-import 'package:fitt/data/models/request/admin/admin_workout_finish_reason_request_body.dart';
-import 'package:fitt/data/models/request/admin/admin_workouts_filters_body.dart';
 import 'package:fitt/data/source/remote_data_source/admin_api_client/admin_api_client.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_set_locker_number_request_body.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_workout_finish_reason_request_body.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_workouts_filters_body.dart';
 import 'package:fitt/features/workouts/domain/entities/admin_workout/admin_workout.dart';
 import 'package:fitt/features/workouts/domain/repositories/admin/admin_repository.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';

@@ -1,6 +1,6 @@
 part of 'workouts_archive_bloc.dart';
 
-@freezed
+@Freezed(equal: false)
 class WorkoutsArchiveState with _$WorkoutsArchiveState {
   const factory WorkoutsArchiveState.initial() = _WorkoutsArchiveStateInitial;
   const factory WorkoutsArchiveState.loading({

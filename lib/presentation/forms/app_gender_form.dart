@@ -4,7 +4,7 @@ import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/entities/user/user.dart';
-import 'package:fitt/domain/repositories/user/user_repository.dart';
+import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
 import 'package:flutter/material.dart';
 

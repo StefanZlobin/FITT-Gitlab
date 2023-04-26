@@ -31,8 +31,8 @@ class WorkoutsBloc extends Bloc<WorkoutsEvent, WorkoutsState> with AuthMixin {
 
     getIt<PushNotificationsService>()
         .changeWorkoutStatusNotification
-        .listen((String? workoutUuid) {
-      if (workoutUuid != null) {
+        .listen((Map<String, String>? changeWorkoutNotification) {
+      if (changeWorkoutNotification != null) {
         add(const WorkoutsEvent.getWorkouts());
       }
     });

@@ -1,6 +1,6 @@
 part of 'workout_sorting_bloc.dart';
 
-@freezed
+@Freezed(equal: false)
 class WorkoutSortingState with _$WorkoutSortingState {
   const factory WorkoutSortingState.initial() = _WorkoutSortingStateInitial;
   const factory WorkoutSortingState.loaded({

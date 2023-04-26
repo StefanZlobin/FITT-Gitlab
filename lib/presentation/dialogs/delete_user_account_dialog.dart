@@ -1,7 +1,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/domain/repositories/user/user_repository.dart';
+import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

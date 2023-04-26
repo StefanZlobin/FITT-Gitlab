@@ -7,7 +7,7 @@ import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';

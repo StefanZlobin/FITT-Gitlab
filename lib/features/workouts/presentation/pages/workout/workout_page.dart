@@ -4,7 +4,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/timer_utils.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/presentation/components/archive_workout_card.dart';
 import 'package:fitt/features/workouts/presentation/components/workout_card.dart';
 import 'package:fitt/presentation/app.dart';
@@ -41,8 +41,8 @@ class WorkoutPage extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
-    return BlocBuilder<WorkoutCubit, WorkoutState>(
-      bloc: getIt<WorkoutCubit>(),
+    return BlocBuilder<WorkoutBloc, WorkoutState>(
+      bloc: getIt<WorkoutBloc>(),
       builder: (context, state) {
         return state.when(
           initial: () => const Center(child: CircularProgressIndicator()),

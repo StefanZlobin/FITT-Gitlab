@@ -1,6 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:fitt/domain/entities/facility/facility.dart';
+import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_filters.freezed.dart';
@@ -20,5 +20,6 @@ class ClubFilters with _$ClubFilters {
     @JsonKey(name: 'only_favorite') bool? favorite,
   }) = _ClubFilters;
 
-  factory ClubFilters.fromJson(Map<String, dynamic> json) => _$ClubFiltersFromJson(json);
+  factory ClubFilters.fromJson(Map<String, dynamic> json) =>
+      _$ClubFiltersFromJson(json);
 }

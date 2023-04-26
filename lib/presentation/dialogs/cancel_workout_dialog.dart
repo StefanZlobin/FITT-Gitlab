@@ -4,7 +4,6 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
@@ -69,11 +68,7 @@ class CancelWorkoutDialog extends StatelessWidget {
                           .deleteLocalNotification(
                         id: workout.workoutHashCode - 2,
                       );
-                      getIt<WorkoutsCubit>().getWorkouts();
-                      //getIt<ArchiveWorkoutsCubit>().offset = 0;
-                      //getIt<ArchiveWorkoutsCubit>().getArchiveWorkouts(
-                      //  needClearLoadedWorkouts: true,
-                      //);
+
                       context.pushNamed(
                         AppRoute.workoutArchiveList.routeToPath,
                         extra: true,

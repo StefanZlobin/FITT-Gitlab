@@ -38,8 +38,8 @@ class ClosestWorkoutBloc extends Bloc<ClosestWorkoutEvent, ClosestWorkoutState>
     });
 
     pushNotificationsService.changeWorkoutStatusNotification
-        .listen((String? workoutUuid) {
-      if (workoutUuid != null) {
+        .listen((Map<String, String>? changeWorkoutNotification) {
+      if (changeWorkoutNotification != null) {
         add(const ClosestWorkoutEvent.getClosestWorkout());
       }
     });

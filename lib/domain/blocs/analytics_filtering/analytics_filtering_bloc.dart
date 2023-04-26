@@ -5,9 +5,9 @@ import 'package:clock/clock.dart';
 import 'package:fitt/core/enum/time_slice_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/domain/entities/filters/analytics_filters.dart';
 import 'package:fitt/domain/use_cases/analytics/analytics_use_case.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

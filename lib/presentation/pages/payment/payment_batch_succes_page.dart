@@ -4,8 +4,8 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
-import 'package:fitt/domain/entities/batch/batch.dart';
-import 'package:fitt/domain/entities/club/partner_club.dart';
+import 'package:fitt/features/clubs/domain/entities/batch/batch.dart';
+import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/compact_map.dart';
 import 'package:fitt/presentation/components/separator.dart';
@@ -25,10 +25,13 @@ class PaymentBatchSuccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final duration = int.parse(batch.duration?.split(' ')[0] ?? '');
-    final batchExpireAt = batch.duration == null || batch.duration.toString().isEmpty
-        ? 'неограничено'
-        : DateTimeUtils.dateFormatWithoutYear.format(DateTime.now().add(Duration(days: duration)));
-    final batchStartAt = DateTimeUtils.dateFormatWithoutYear.format(DateTime.now());
+    final batchExpireAt =
+        batch.duration == null || batch.duration.toString().isEmpty
+            ? 'неограничено'
+            : DateTimeUtils.dateFormatWithoutYear
+                .format(DateTime.now().add(Duration(days: duration)));
+    final batchStartAt =
+        DateTimeUtils.dateFormatWithoutYear.format(DateTime.now());
 
     return Scaffold(
       body: Stack(
@@ -48,12 +51,14 @@ class PaymentBatchSuccessPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   club.address!.shortAddress,
-                  style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                  style:
+                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
                 ),
               ),
               Separator(
                 color: AppColors.kPrimaryBlue,
-                margin: EdgeInsets.fromLTRB(16, 16, MediaQuery.of(context).size.width - 40, 16),
+                margin: EdgeInsets.fromLTRB(
+                    16, 16, MediaQuery.of(context).size.width - 40, 16,),
                 height: 2,
               ),
               Padding(
@@ -78,7 +83,8 @@ class PaymentBatchSuccessPage extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
                   child: Text(
                     'Администратор клуба может попросить удостоверение личности. Не забудьте взять с собой паспорт.',
-                    style: AppTypography.kBody14.apply(color: AppColors.kOxford),
+                    style:
+                        AppTypography.kBody14.apply(color: AppColors.kOxford),
                     textAlign: TextAlign.center,
                   ),
                 ),

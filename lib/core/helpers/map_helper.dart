@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:fitt/core/constants/app_colors.dart';
-import 'package:fitt/domain/entities/map_point/map_marker.dart';
+import 'package:fitt/features/map/domain/entities/map_point/map_marker.dart';
 import 'package:fluster/fluster.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';

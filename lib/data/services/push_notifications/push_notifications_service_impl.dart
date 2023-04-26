@@ -36,6 +36,7 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
             return _updateStream(
               PushNotificationsEnum.changeWorkoutStatusNotification,
               workoutUuid: workoutUuid,
+              workoutStatus: status,
             );
           }
       }
@@ -58,12 +59,13 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
   Stream<PaymentStatusEnum?> get paymentWorkoutNotification =>
       _paymentWorkoutNotificationController;
 
-  final BehaviorSubject<String?> _changeWorkoutStatusNotificationController =
-      BehaviorSubject(sync: true);
-  void Function(String?) get updateChangeWorkoutStatusNotification =>
-      _changeWorkoutStatusNotificationController.sink.add;
+  final BehaviorSubject<Map<String, String>?>
+      _changeWorkoutStatusNotificationController = BehaviorSubject(sync: true);
+  void Function(Map<String, String>?)
+      get updateChangeWorkoutStatusNotification =>
+          _changeWorkoutStatusNotificationController.sink.add;
   @override
-  Stream<String?> get changeWorkoutStatusNotification =>
+  Stream<Map<String, String>?> get changeWorkoutStatusNotification =>
       _changeWorkoutStatusNotificationController;
 
   PaymentStatusEnum _checkPaymentStatus(String status) {
@@ -76,10 +78,13 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
     PushNotificationsEnum pushNotifications, {
     PaymentStatusEnum? paymentStatus,
     String? workoutUuid,
+    String? workoutStatus,
   }) {
     switch (pushNotifications) {
       case PushNotificationsEnum.changeWorkoutStatusNotification:
-        return updateChangeWorkoutStatusNotification(workoutUuid);
+        return updateChangeWorkoutStatusNotification(
+          {workoutUuid!: workoutStatus!},
+        );
       case PushNotificationsEnum.paymentBatchNotification:
         return updatePaymentBatchNotification(paymentStatus);
       case PushNotificationsEnum.paymentWorkoutNotification:

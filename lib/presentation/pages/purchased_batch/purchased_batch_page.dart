@@ -1,6 +1,6 @@
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
-import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
+import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/presentation/components/empty_widget.dart';
 import 'package:fitt/presentation/pages/purchased_batch/widget/purchased_batch_card.dart';
 import 'package:flutter/material.dart';

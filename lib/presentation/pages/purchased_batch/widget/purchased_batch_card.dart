@@ -6,7 +6,7 @@ import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
-import 'package:fitt/domain/entities/batch/user_batch.dart';
+import 'package:fitt/features/clubs/domain/entities/batch/user_batch.dart';
 import 'package:fitt/features/workouts/presentation/modals/cancel_batch_modal_bottom_sheet.dart';
 import 'package:fitt/gen/assets.gen.dart';
 import 'package:fitt/presentation/components/separator.dart';

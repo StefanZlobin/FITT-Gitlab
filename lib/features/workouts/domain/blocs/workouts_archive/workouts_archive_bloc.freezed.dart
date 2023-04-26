@@ -513,16 +513,6 @@ class _$_WorkoutsArchiveStateInitial implements _WorkoutsArchiveStateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutsArchiveStateInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -663,21 +653,6 @@ class _$_WorkoutsArchiveStateLoading implements _WorkoutsArchiveStateLoading {
   String toString() {
     return 'WorkoutsArchiveState.loading(prevWorkouts: $prevWorkouts, isFirstFetch: $isFirstFetch)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutsArchiveStateLoading &&
-            const DeepCollectionEquality()
-                .equals(other._prevWorkouts, _prevWorkouts) &&
-            (identical(other.isFirstFetch, isFirstFetch) ||
-                other.isFirstFetch == isFirstFetch));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_prevWorkouts), isFirstFetch);
 
   @JsonKey(ignore: true)
   @override
@@ -827,18 +802,6 @@ class _$_WorkoutsArchiveStateLoaded implements _WorkoutsArchiveStateLoaded {
     return 'WorkoutsArchiveState.loaded(workouts: $workouts)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutsArchiveStateLoaded &&
-            const DeepCollectionEquality().equals(other._workouts, _workouts));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_workouts));
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -978,17 +941,6 @@ class _$_WorkoutsArchiveStateError implements _WorkoutsArchiveStateError {
   String toString() {
     return 'WorkoutsArchiveState.error(error: $error)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutsArchiveStateError &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
