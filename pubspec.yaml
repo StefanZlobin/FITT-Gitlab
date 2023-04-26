@@ -3,7 +3,7 @@ description: One-time training purchases service.
 
 publish_to: "none"
 
-version: 1.4.10+66
+version: 1.4.11+67
 
 environment:
   sdk: ">=2.19.0 <3.3.3"
