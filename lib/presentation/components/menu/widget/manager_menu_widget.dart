@@ -6,7 +6,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
 import 'package:fitt/presentation/components/menu/widget/user_menu_tile.dart';
 import 'package:fitt/presentation/components/separator.dart';

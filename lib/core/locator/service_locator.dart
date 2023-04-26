@@ -9,51 +9,55 @@ import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.d
 import 'package:fitt/domain/blocs/analytics_dashboard/analytics_dashboard_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
-import 'package:fitt/domain/blocs/authorization/authorization_bloc.dart';
 import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
-import 'package:fitt/domain/blocs/club_filtering/club_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/menu/menu_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
 import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
 import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
-import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/services/push_notifications/push_notifications_service.dart';
-import 'package:fitt/features/authorization/data/repositories/authentication/authentication_repository_impl.dart';
-import 'package:fitt/features/authorization/data/repositories/authorization/authorization_repository_impl.dart';
-import 'package:fitt/features/authorization/data/repositories/identification/identification_repository_impl.dart';
-import 'package:fitt/features/authorization/data/repositories/login/login_repository_impl.dart';
-import 'package:fitt/features/authorization/data/repositories/token/token_repository_impl.dart';
-import 'package:fitt/features/authorization/domain/blocs/input_phone_number/input_phone_number_bloc.dart';
-import 'package:fitt/features/authorization/domain/blocs/input_secure_code/input_secure_code_bloc.dart';
-import 'package:fitt/features/authorization/domain/blocs/login/login_bloc.dart';
-import 'package:fitt/features/authorization/domain/blocs/login_error_timer/login_error_timer_bloc.dart';
-import 'package:fitt/features/authorization/domain/repositories/authentication/authentication_repository.dart';
-import 'package:fitt/features/authorization/domain/repositories/authorization/authorization_repository.dart';
-import 'package:fitt/features/authorization/domain/repositories/identification/identification_repository.dart';
-import 'package:fitt/features/authorization/domain/repositories/login/login_repository.dart';
-import 'package:fitt/features/authorization/domain/repositories/token/token_repository.dart';
+import 'package:fitt/features/auth/data/repositories/authentication/authentication_repository_impl.dart';
+import 'package:fitt/features/auth/data/repositories/authorization/authorization_repository_impl.dart';
+import 'package:fitt/features/auth/data/repositories/identification/identification_repository_impl.dart';
+import 'package:fitt/features/auth/data/repositories/login/login_repository_impl.dart';
+import 'package:fitt/features/auth/data/repositories/token/token_repository_impl.dart';
+import 'package:fitt/features/auth/domain/blocs/authorization/authorization_bloc.dart';
+import 'package:fitt/features/auth/domain/blocs/input_phone_number/input_phone_number_bloc.dart';
+import 'package:fitt/features/auth/domain/blocs/input_secure_code/input_secure_code_bloc.dart';
+import 'package:fitt/features/auth/domain/blocs/login/login_bloc.dart';
+import 'package:fitt/features/auth/domain/blocs/login_error_timer/login_error_timer_bloc.dart';
+import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
+import 'package:fitt/features/auth/domain/repositories/authorization/authorization_repository.dart';
+import 'package:fitt/features/auth/domain/repositories/identification/identification_repository.dart';
+import 'package:fitt/features/auth/domain/repositories/login/login_repository.dart';
+import 'package:fitt/features/auth/domain/repositories/token/token_repository.dart';
+import 'package:fitt/features/clubs/domain/blocs/club_filtering/club_filtering_bloc.dart';
+import 'package:fitt/features/clubs/domain/blocs/club_sorting/club_sorting_bloc.dart';
+import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_clubs_favorite_bloc.dart';
+import 'package:fitt/features/clubs/domain/cubits/calculate_workout_price/calculate_workout_price_cubit.dart';
+import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
+import 'package:fitt/features/clubs/domain/cubits/club_photo_slider/club_photo_slider_cubit.dart';
+import 'package:fitt/features/clubs/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
+import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
+import 'package:fitt/features/map/domain/blocs/carousel/carousel_bloc.dart';
+import 'package:fitt/features/map/domain/blocs/map/map_bloc.dart';
+import 'package:fitt/features/map/domain/blocs/search/search_bloc.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout_sorting/workout_sorting_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts_archive/workouts_archive_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../config/config.dart';
-import '../../data/repositories/map/map_repository_impl.dart';
-import '../../data/repositories/partner_club/partner_club_repository_impl.dart';
 import '../../data/repositories/payment/payment_repository_impl.dart';
 import '../../data/repositories/resource/resource_repository_impl.dart';
-import '../../data/repositories/search/search_repository_impl.dart';
-import '../../data/repositories/user/user_repository_impl.dart';
 import '../../data/services/geolocation/geolocation_service_impl.dart';
 import '../../data/services/local_notifications/local_notifications_service_impl.dart';
 import '../../data/source/local_data_source/user_local_client/user_local_client.dart';
 import '../../data/storages/local_storage.dart';
 import '../../data/storages/token_storage.dart';
-import '../../domain/blocs/carousel/carousel_bloc.dart';
-import '../../domain/blocs/map/map_bloc.dart';
-import '../../domain/blocs/search/search_bloc.dart';
 import '../../domain/blocs/workout_timer/workout_timer_bloc.dart';
 import '../../domain/cubits/account_save_button/account_save_button_cubit.dart';
 import '../../domain/cubits/admin_club/admin_club_cubit.dart';
@@ -64,27 +68,24 @@ import '../../domain/cubits/admin_workout_action_button/admin_workout_action_but
 import '../../domain/cubits/admin_workouts/admin_workouts_cubit.dart';
 import '../../domain/cubits/buy_batch/buy_batch_cubit.dart';
 import '../../domain/cubits/buy_workout/buy_workout_cubit.dart';
-import '../../domain/cubits/calculate_workout_price/calculate_workout_price_cubit.dart';
-import '../../domain/cubits/club/club_cubit.dart';
-import '../../domain/cubits/club_photo_slider/club_photo_slider_cubit.dart';
 import '../../domain/cubits/feedback/feedback_cubit.dart';
-import '../../domain/cubits/filtering/filtering_cubit.dart';
 import '../../domain/cubits/geolocation/geolocation_cubit.dart';
 import '../../domain/cubits/modal_bottom_sheet/modal_bottom_sheet_cubit.dart';
-import '../../domain/cubits/partner_clubs/partner_clubs_cubit.dart';
-import '../../domain/cubits/partner_clubs_favorite/partner_clubs_favorite_cubit.dart';
-import '../../domain/cubits/sorting/sorting_cubit.dart';
 import '../../domain/cubits/workout/workout_cubit.dart';
 import '../../domain/cubits/workout_slider_button_type/workout_slider_button_type_cubit.dart';
-import '../../domain/repositories/map/map_repository.dart';
-import '../../domain/repositories/partner_club/partner_club_repository.dart';
 import '../../domain/repositories/payment/payment_repository.dart';
 import '../../domain/repositories/resource/resource_repository.dart';
-import '../../domain/repositories/search/search_repository.dart';
-import '../../domain/repositories/user/user_repository.dart';
 import '../../domain/services/geolocation/geolocation_service.dart';
 import '../../domain/services/local_notifications/local_notifications_service.dart';
 import '../../domain/ticker.dart';
+import '../../features/auth/data/repositories/user/user_repository_impl.dart';
+import '../../features/auth/domain/repositories/user/user_repository.dart';
+import '../../features/clubs/data/repositories/partner_club/partner_club_repository_impl.dart';
+import '../../features/clubs/domain/repositories/partner_club/partner_club_repository.dart';
+import '../../features/map/data/repositories/map/map_repository_impl.dart';
+import '../../features/map/data/repositories/search/search_repository_impl.dart';
+import '../../features/map/domain/repositories/map/map_repository.dart';
+import '../../features/map/domain/repositories/search/search_repository.dart';
 import '../../features/workouts/data/repositories/admin/admin_repository_impl.dart';
 import '../../features/workouts/data/repositories/workout/workout_repository_impl.dart';
 import '../../features/workouts/domain/repositories/admin/admin_repository.dart';
@@ -237,6 +238,7 @@ void _regusterServices() {
 
 void _registerBlocs() {
   getIt.registerLazySingleton<WorkoutCubit>(() => WorkoutCubit());
+  getIt.registerLazySingleton<WorkoutBloc>(() => WorkoutBloc());
   getIt.registerFactory<WorkoutTimerBloc>(
     () => WorkoutTimerBloc(ticker: const Ticker()),
   );
@@ -256,12 +258,11 @@ void _registerBlocs() {
   getIt.registerLazySingleton<ModalBottomSheetCubit>(
     () => ModalBottomSheetCubit(),
   );
-  //getIt.registerLazySingleton<WorkoutsCubit>(() => WorkoutsCubit());
   getIt.registerLazySingleton<WorkoutsBloc>(() => WorkoutsBloc());
   getIt.registerLazySingleton<GeolocationCubit>(() => GeolocationCubit());
   getIt.registerLazySingleton<SearchBloc>(() => SearchBloc());
   getIt.registerLazySingleton<WorkoutsArchiveBloc>(() => WorkoutsArchiveBloc());
-
+  getIt.registerLazySingleton<WorkoutSortingBloc>(() => WorkoutSortingBloc());
   getIt.registerLazySingleton<MapBloc>(() => MapBloc());
   getIt.registerLazySingleton<CarouselBloc>(() => CarouselBloc());
   getIt.registerLazySingleton<LoginBloc>(() => LoginBloc());
@@ -271,9 +272,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AdminClubsCubit>(() => AdminClubsCubit());
   getIt.registerLazySingleton<AdminClubCubit>(() => AdminClubCubit());
   getIt.registerLazySingleton<PartnerClubsCubit>(() => PartnerClubsCubit());
-  getIt.registerLazySingleton<PartnerClubsFavoriteCubit>(
-    () => PartnerClubsFavoriteCubit(),
-  );
   getIt.registerLazySingleton<ClubCubit>(() => ClubCubit());
   getIt.registerLazySingleton<LoginErrorTimerBloc>(
     () => LoginErrorTimerBloc(ticker: const Ticker()),
@@ -287,13 +285,7 @@ void _registerBlocs() {
   getIt.registerLazySingleton<BuyBatchCubit>(() => BuyBatchCubit());
   getIt.registerLazySingleton<BuyWorkoutCubit>(() => BuyWorkoutCubit());
   getIt.registerLazySingleton<NotificationsBloc>(() => NotificationsBloc());
-  getIt.registerLazySingleton<FilteringCubit>(() => FilteringCubit());
-  getIt.registerLazySingleton<FilteringCubit>(
-    instanceName: 'favorite',
-    () => FilteringCubit(),
-  );
   getIt.registerLazySingleton<ClubFilteringBloc>(() => ClubFilteringBloc());
-  getIt.registerLazySingleton<SortingCubit>(() => SortingCubit());
   getIt.registerLazySingleton<FeedbackCubit>(() => FeedbackCubit());
   getIt.registerLazySingleton<AccountSaveButtonCubit>(
     () => AccountSaveButtonCubit(),
@@ -320,5 +312,9 @@ void _registerBlocs() {
   );
   getIt.registerLazySingleton<InputSecureCodeBloc>(
     () => InputSecureCodeBloc(),
+  );
+  getIt.registerLazySingleton<ClubSortingBloc>(() => ClubSortingBloc());
+  getIt.registerLazySingleton<PartnerClubsFavoriteBloc>(
+    () => PartnerClubsFavoriteBloc(),
   );
 }

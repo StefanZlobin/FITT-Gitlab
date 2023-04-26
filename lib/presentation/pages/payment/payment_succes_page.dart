@@ -4,9 +4,8 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/presentation/components/workout_card.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/compact_map.dart';
@@ -20,8 +19,8 @@ class PaymentSuccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<WorkoutCubit, WorkoutState>(
-        bloc: getIt<WorkoutCubit>(),
+      body: BlocBuilder<WorkoutBloc, WorkoutState>(
+        bloc: getIt<WorkoutBloc>(),
         builder: (context, state) {
           return state.when(
             initial: () => const Center(child: CircularProgressIndicator()),
@@ -113,8 +112,8 @@ class PaymentSuccessPage extends StatelessWidget {
                               workout.canStartTime.difference(DateTime.now()),
                         );
                       }
-                      await getIt<WorkoutsCubit>().getWorkouts().then((_) =>
-                          context.pushReplacement(AppRoute.map.routeToPath));
+                      // ignore: use_build_context_synchronously
+                      context.pushReplacement(AppRoute.map.routeToPath);
                     },
                   ),
                 ],

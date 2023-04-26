@@ -5,9 +5,9 @@ import 'package:fitt/core/enum/club_sorting_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
 import 'package:fitt/data/source/local_data_source/resource_local_client/resource_local_client.dart';
 import 'package:fitt/data/source/remote_data_source/resource_api_client/resource_api_client.dart';
-import 'package:fitt/domain/entities/facility/facility.dart';
 import 'package:fitt/domain/entities/price/price.dart';
 import 'package:fitt/domain/repositories/resource/resource_repository.dart';
+import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
 import 'package:rxdart/rxdart.dart';
 
 /// Class [ResourceRepositoryImpl] wich implements [ResourceRepository]
@@ -115,8 +115,11 @@ class ResourceRepositoryImpl implements ResourceRepository {
 
   @override
   void clubSortingItemsChanged({required ClubSortingEnum clubSortingEnum}) {
-    _clubSortingItemsController.value[clubSortingEnum] =
-        !_clubSortingItemsController.value[clubSortingEnum]!;
+    _clubSortingItemsController.value.forEach((key, _) {
+      _clubSortingItemsController.value[key] = false;
+    });
+
+    _clubSortingItemsController.value[clubSortingEnum] = true;
 
     updateClubSortingItems(_clubSortingItemsController.value);
   }
@@ -138,8 +141,11 @@ class ResourceRepositoryImpl implements ResourceRepository {
   void workoutSortingItemsChanged({
     required WorkoutSortingEnum workoutSortingEnum,
   }) {
-    _workoutSortingItemsController.value[workoutSortingEnum] =
-        !_workoutSortingItemsController.value[workoutSortingEnum]!;
+    _workoutSortingItemsController.value.forEach((key, _) {
+      _workoutSortingItemsController.value[key] = false;
+    });
+
+    _workoutSortingItemsController.value[workoutSortingEnum] = true;
 
     updateWorkoutSortingItems(_workoutSortingItemsController.value);
   }

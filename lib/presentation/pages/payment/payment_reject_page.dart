@@ -2,7 +2,7 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
-import 'package:fitt/domain/cubits/club/club_cubit.dart';
+import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -32,14 +32,16 @@ class PaymentRejectPage extends StatelessWidget {
                     const SizedBox(height: 32),
                     Text(
                       'Оплата отклонена',
-                      style: AppTypography.kH24.apply(color: AppColors.kBaseBlack),
+                      style:
+                          AppTypography.kH24.apply(color: AppColors.kBaseBlack),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       '${DateTimeUtils.dateFormatWithoutYear.format(DateTime.now())}, ${club.label}, ${club.address!.shortAddress}',
                       maxLines: 2,
                       softWrap: true,
-                      style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                      style: AppTypography.kBody14
+                          .apply(color: AppColors.kOxford60),
                     ),
                     Divider(
                       color: AppColors.kPrimaryBlue,
@@ -49,7 +51,8 @@ class PaymentRejectPage extends StatelessWidget {
                     ),
                     Text(
                       'Ваш платеж был отклонен платежной системой. Попробуйте повторить платеж через некоторое время.',
-                      style: AppTypography.kH14.apply(color: AppColors.kBaseBlack),
+                      style:
+                          AppTypography.kH14.apply(color: AppColors.kBaseBlack),
                     ),
                     const SizedBox(height: 16),
                     SizedBox(
@@ -60,12 +63,14 @@ class PaymentRejectPage extends StatelessWidget {
                           context.pop();
                           context.pop();
                         },
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) {
+                        style: ButtonStyle(backgroundColor:
+                            MaterialStateProperty.resolveWith((states) {
                           return AppColors.kBaseBlack;
                         })),
                         child: Text(
                           'Повторить оплату',
-                          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+                          style: AppTypography.kH14
+                              .apply(color: AppColors.kBaseWhite),
                         ),
                       ),
                     ),
@@ -85,8 +90,11 @@ class PaymentRejectPage extends StatelessWidget {
                           }
                         },
                         child: Text(
-                          isBatch ? 'Вернуться к выбору пакета' : 'Вернуться к выбору времени тренировки',
-                          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+                          isBatch
+                              ? 'Вернуться к выбору пакета'
+                              : 'Вернуться к выбору времени тренировки',
+                          style: AppTypography.kH14
+                              .apply(color: AppColors.kBaseWhite),
                         ),
                       ),
                     ),

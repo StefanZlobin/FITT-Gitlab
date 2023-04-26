@@ -6,9 +6,9 @@ import 'package:fitt/data/models/request/payment/buy_workout_by_batch_request_bo
 import 'package:fitt/data/models/request/payment/buy_workout_request_body.dart';
 import 'package:fitt/data/models/response/payment/buy_batch_response.dart';
 import 'package:fitt/data/source/remote_data_source/payment_api_client/payment_api_client.dart';
-import 'package:fitt/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/payment/payment_repository.dart';
+import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 
 class PaymentRepositoryImpl implements PaymentRepository {

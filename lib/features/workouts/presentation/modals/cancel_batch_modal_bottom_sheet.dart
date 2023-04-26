@@ -1,6 +1,6 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
-import 'package:fitt/domain/entities/batch/user_batch.dart';
+import 'package:fitt/features/clubs/domain/entities/batch/user_batch.dart';
 import 'package:fitt/features/workouts/presentation/modals/widget/header_rounded_container_line.dart';
 import 'package:fitt/presentation/dialogs/cancel_batch_dialog.dart';
 import 'package:flutter/material.dart';

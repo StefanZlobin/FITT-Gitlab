@@ -2,8 +2,8 @@
 
 import 'package:fitt/core/enum/club_sorting_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
-import 'package:fitt/domain/entities/facility/facility.dart';
 import 'package:fitt/domain/entities/price/price.dart';
+import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
 import 'package:get_it/get_it.dart';
 
 /// Pulls resources from the backend to implement filtering

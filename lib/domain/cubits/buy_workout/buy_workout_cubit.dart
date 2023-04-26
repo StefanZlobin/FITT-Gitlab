@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:fitt/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/use_cases/payment/payment_use_case.dart';
+import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

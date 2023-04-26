@@ -22,7 +22,7 @@ class WorkoutSortingBloc
         .workoutSortingItems
         .listen((Map<WorkoutSortingEnum, bool> sortingItems) {
       add(WorkoutSortingEvent.refreshState(
-        sortingItems:sortingItems,
+        sortingItems: sortingItems,
       ));
     });
   }

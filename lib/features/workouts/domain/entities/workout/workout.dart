@@ -3,7 +3,7 @@
 import 'package:fitt/core/constants/threshold.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/utils/functions/serialization.dart';
-import 'package:fitt/domain/entities/club/partner_club.dart';
+import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'workout.freezed.dart';

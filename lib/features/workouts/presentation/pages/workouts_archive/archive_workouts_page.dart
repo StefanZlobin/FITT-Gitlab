@@ -4,15 +4,14 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/cubits/archive_workouts/archive_workouts_cubit.dart';
-import 'package:fitt/domain/cubits/sorting/sorting_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout_sorting/workout_sorting_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts_archive/workouts_archive_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/presentation/components/archive_workout_card.dart';
 import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/animated_dots.dart';
 import 'package:fitt/presentation/components/empty_widget.dart';
-import 'package:fitt/presentation/components/modals/sorting_modal_bottom_sheet.dart';
+import 'package:fitt/presentation/components/modals/workout_sorting_modal_bottom_sheet.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +32,9 @@ class ArchiveWorkoutsPage extends StatelessWidget {
     scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
-          getIt<ArchiveWorkoutsBloc>().getArchiveWorkouts();
+          getIt<WorkoutsArchiveBloc>().add(
+            const WorkoutsArchiveEvent.getWorkouts(),
+          );
         }
       }
     });
@@ -48,39 +49,33 @@ class ArchiveWorkoutsPage extends StatelessWidget {
         ),
         title: Text(L.of(context).workoutArchivePageTitle),
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 34),
-          _buildSortingWidget(context),
-          const SizedBox(height: 24),
-          BlocBuilder<WorkoutsArchiveBloc, WorkoutsArchiveState>(
-            bloc: getIt<WorkoutsArchiveBloc>(),
-            builder: (context, state) {
-              return state.when(
-                initial: () => const Center(child: CircularProgressIndicator()),
-                loading: (archiveWorkouts, isFirstFetch) {
-                  if (isFirstFetch) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  
-                  return _buildWorkoutsCardWidget(
-                    context,
-                    archiveWorkouts,
-                    scrollController,
-                    true,
-                  );
-                },
-                loaded: (workouts) => _buildWorkoutsCardWidget(
-                  context,
-                  workouts,
-                  scrollController,
-                  false,
-                ),
-                error: (error) => const SizedBox(),
+      body: BlocBuilder<WorkoutsArchiveBloc, WorkoutsArchiveState>(
+        bloc: getIt<WorkoutsArchiveBloc>(),
+        buildWhen: (previous, current) => true,
+        builder: (context, state) {
+          return state.when(
+            initial: () => const Center(child: CircularProgressIndicator()),
+            loading: (archiveWorkouts, isFirstFetch) {
+              if (isFirstFetch) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              return _buildWorkoutsCardWidget(
+                context,
+                archiveWorkouts,
+                scrollController,
+                true,
               );
             },
-          ),
-        ],
+            loaded: (workouts) => _buildWorkoutsCardWidget(
+              context,
+              workouts,
+              scrollController,
+              false,
+            ),
+            error: (error) => const SizedBox(),
+          );
+        },
       ),
     );
   }
@@ -99,49 +94,56 @@ class ArchiveWorkoutsPage extends StatelessWidget {
         onPressed: () => context.pop(),
       );
     }
-    return SizedBox(
-      height: MediaQuery.of(context).size.height - 185,
-      child: ListView.separated(
-        padding: const EdgeInsets.only(bottom: 32),
-        controller: scrollController,
-        itemCount: workouts.length + (isLoading ? 1 : 0),
-        separatorBuilder: (_, index) {
-          return const Separator(color: AppColors.kOxford10);
-        },
-        itemBuilder: (context, index) {
-          if (index < workouts.length) {
-            final workout = workouts[index];
-            return ArchiveWorkoutCard(
-              workout: workout,
-              margin: index == 0
-                  ? const EdgeInsets.fromLTRB(16, 0, 16, 13)
-                  : const EdgeInsets.fromLTRB(16, 24, 16, 13),
-            );
-          } else {
-            scrollController.animateTo(
-              scrollController.position.maxScrollExtent + 144,
-              duration: const Duration(microseconds: 1),
-              curve: Curves.easeIn,
-            );
+    return Column(
+      children: [
+        const SizedBox(height: 34),
+        _buildSortingWidget(context),
+        const SizedBox(height: 24),
+        SizedBox(
+          height: MediaQuery.of(context).size.height - 185,
+          child: ListView.separated(
+            padding: const EdgeInsets.only(bottom: 32),
+            controller: scrollController,
+            itemCount: workouts.length + (isLoading ? 1 : 0),
+            separatorBuilder: (_, index) {
+              return const Separator(color: AppColors.kOxford10);
+            },
+            itemBuilder: (context, index) {
+              if (index < workouts.length) {
+                final workout = workouts[index];
+                return ArchiveWorkoutCard(
+                  workout: workout,
+                  margin: index == 0
+                      ? const EdgeInsets.fromLTRB(16, 0, 16, 13)
+                      : const EdgeInsets.fromLTRB(16, 24, 16, 13),
+                );
+              } else {
+                scrollController.animateTo(
+                  scrollController.position.maxScrollExtent + 144,
+                  duration: const Duration(microseconds: 1),
+                  curve: Curves.easeIn,
+                );
 
-            return SizedBox(
-              height: 144,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const AnimatedDots(),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Загружаем тренировки',
-                    style:
-                        AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                return SizedBox(
+                  height: 144,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const AnimatedDots(),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Загружаем тренировки',
+                        style: AppTypography.kBody14
+                            .apply(color: AppColors.kOxford60),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            );
-          }
-        },
-      ),
+                );
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -159,22 +161,29 @@ class ArchiveWorkoutsPage extends StatelessWidget {
           ),
           context: context,
           builder: (context) {
-            return const SortingModalBottomSheet();
+            return const WorkoutSortingModalBottomSheet();
           },
         );
       },
-      child: BlocBuilder<SortingCubit, SortingState>(
-        bloc: getIt<SortingCubit>(),
+      child: BlocBuilder<WorkoutSortingBloc, WorkoutSortingState>(
+        bloc: getIt<WorkoutSortingBloc>(),
+        buildWhen: (previous, current) => true,
         builder: (context, state) {
           return state.when(
             initial: () => const SizedBox(),
-            clubSorting: (_) => const SizedBox(),
-            workoutSorting: (workoutSortingEnum) {
+            loaded: (workoutSortingItems) {
+              final activeWorkoutSortingItem = workoutSortingItems.entries
+                  .where((e) => e.value)
+                  .map((e) => e.key)
+                  .toList()
+                  .first;
+
               return Row(
                 children: [
                   const SizedBox(width: 16),
                   Text(
-                    workoutSortingEnum.sortingToString(workoutSortingEnum),
+                    activeWorkoutSortingItem
+                        .sortingToString(activeWorkoutSortingItem),
                     style:
                         AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
                   ),
@@ -187,6 +196,7 @@ class ArchiveWorkoutsPage extends StatelessWidget {
                 ],
               );
             },
+            error: (_) => const SizedBox(),
           );
         },
       ),

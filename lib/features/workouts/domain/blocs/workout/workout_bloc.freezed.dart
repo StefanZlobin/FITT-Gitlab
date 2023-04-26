@@ -20,18 +20,21 @@ mixin _$WorkoutEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String workoutUuid) getWorkout,
     required TResult Function(Workout workout) setWorkout,
+    required TResult Function(Workout workout) cancelWorkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String workoutUuid)? getWorkout,
     TResult? Function(Workout workout)? setWorkout,
+    TResult? Function(Workout workout)? cancelWorkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String workoutUuid)? getWorkout,
     TResult Function(Workout workout)? setWorkout,
+    TResult Function(Workout workout)? cancelWorkout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$WorkoutEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutEventGetWorkout value) getWorkout,
     required TResult Function(_WorkoutEventSetWorkout value) setWorkout,
+    required TResult Function(_WorkoutEventCancelWorkout value) cancelWorkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutEventGetWorkout value)? getWorkout,
     TResult? Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult? Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutEventGetWorkout value)? getWorkout,
     TResult Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +148,7 @@ class _$_WorkoutEventGetWorkout implements _WorkoutEventGetWorkout {
   TResult when<TResult extends Object?>({
     required TResult Function(String workoutUuid) getWorkout,
     required TResult Function(Workout workout) setWorkout,
+    required TResult Function(Workout workout) cancelWorkout,
   }) {
     return getWorkout(workoutUuid);
   }
@@ -151,6 +158,7 @@ class _$_WorkoutEventGetWorkout implements _WorkoutEventGetWorkout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String workoutUuid)? getWorkout,
     TResult? Function(Workout workout)? setWorkout,
+    TResult? Function(Workout workout)? cancelWorkout,
   }) {
     return getWorkout?.call(workoutUuid);
   }
@@ -160,6 +168,7 @@ class _$_WorkoutEventGetWorkout implements _WorkoutEventGetWorkout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String workoutUuid)? getWorkout,
     TResult Function(Workout workout)? setWorkout,
+    TResult Function(Workout workout)? cancelWorkout,
     required TResult orElse(),
   }) {
     if (getWorkout != null) {
@@ -173,6 +182,7 @@ class _$_WorkoutEventGetWorkout implements _WorkoutEventGetWorkout {
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutEventGetWorkout value) getWorkout,
     required TResult Function(_WorkoutEventSetWorkout value) setWorkout,
+    required TResult Function(_WorkoutEventCancelWorkout value) cancelWorkout,
   }) {
     return getWorkout(this);
   }
@@ -182,6 +192,7 @@ class _$_WorkoutEventGetWorkout implements _WorkoutEventGetWorkout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutEventGetWorkout value)? getWorkout,
     TResult? Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult? Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
   }) {
     return getWorkout?.call(this);
   }
@@ -191,6 +202,7 @@ class _$_WorkoutEventGetWorkout implements _WorkoutEventGetWorkout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutEventGetWorkout value)? getWorkout,
     TResult Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
     required TResult orElse(),
   }) {
     if (getWorkout != null) {
@@ -287,6 +299,7 @@ class _$_WorkoutEventSetWorkout implements _WorkoutEventSetWorkout {
   TResult when<TResult extends Object?>({
     required TResult Function(String workoutUuid) getWorkout,
     required TResult Function(Workout workout) setWorkout,
+    required TResult Function(Workout workout) cancelWorkout,
   }) {
     return setWorkout(workout);
   }
@@ -296,6 +309,7 @@ class _$_WorkoutEventSetWorkout implements _WorkoutEventSetWorkout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String workoutUuid)? getWorkout,
     TResult? Function(Workout workout)? setWorkout,
+    TResult? Function(Workout workout)? cancelWorkout,
   }) {
     return setWorkout?.call(workout);
   }
@@ -305,6 +319,7 @@ class _$_WorkoutEventSetWorkout implements _WorkoutEventSetWorkout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String workoutUuid)? getWorkout,
     TResult Function(Workout workout)? setWorkout,
+    TResult Function(Workout workout)? cancelWorkout,
     required TResult orElse(),
   }) {
     if (setWorkout != null) {
@@ -318,6 +333,7 @@ class _$_WorkoutEventSetWorkout implements _WorkoutEventSetWorkout {
   TResult map<TResult extends Object?>({
     required TResult Function(_WorkoutEventGetWorkout value) getWorkout,
     required TResult Function(_WorkoutEventSetWorkout value) setWorkout,
+    required TResult Function(_WorkoutEventCancelWorkout value) cancelWorkout,
   }) {
     return setWorkout(this);
   }
@@ -327,6 +343,7 @@ class _$_WorkoutEventSetWorkout implements _WorkoutEventSetWorkout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WorkoutEventGetWorkout value)? getWorkout,
     TResult? Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult? Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
   }) {
     return setWorkout?.call(this);
   }
@@ -336,6 +353,7 @@ class _$_WorkoutEventSetWorkout implements _WorkoutEventSetWorkout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WorkoutEventGetWorkout value)? getWorkout,
     TResult Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
     required TResult orElse(),
   }) {
     if (setWorkout != null) {
@@ -353,6 +371,159 @@ abstract class _WorkoutEventSetWorkout implements WorkoutEvent {
   @JsonKey(ignore: true)
   _$$_WorkoutEventSetWorkoutCopyWith<_$_WorkoutEventSetWorkout> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_WorkoutEventCancelWorkoutCopyWith<$Res> {
+  factory _$$_WorkoutEventCancelWorkoutCopyWith(
+          _$_WorkoutEventCancelWorkout value,
+          $Res Function(_$_WorkoutEventCancelWorkout) then) =
+      __$$_WorkoutEventCancelWorkoutCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Workout workout});
+
+  $WorkoutCopyWith<$Res> get workout;
+}
+
+/// @nodoc
+class __$$_WorkoutEventCancelWorkoutCopyWithImpl<$Res>
+    extends _$WorkoutEventCopyWithImpl<$Res, _$_WorkoutEventCancelWorkout>
+    implements _$$_WorkoutEventCancelWorkoutCopyWith<$Res> {
+  __$$_WorkoutEventCancelWorkoutCopyWithImpl(
+      _$_WorkoutEventCancelWorkout _value,
+      $Res Function(_$_WorkoutEventCancelWorkout) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? workout = null,
+  }) {
+    return _then(_$_WorkoutEventCancelWorkout(
+      workout: null == workout
+          ? _value.workout
+          : workout // ignore: cast_nullable_to_non_nullable
+              as Workout,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WorkoutCopyWith<$Res> get workout {
+    return $WorkoutCopyWith<$Res>(_value.workout, (value) {
+      return _then(_value.copyWith(workout: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_WorkoutEventCancelWorkout implements _WorkoutEventCancelWorkout {
+  const _$_WorkoutEventCancelWorkout({required this.workout});
+
+  @override
+  final Workout workout;
+
+  @override
+  String toString() {
+    return 'WorkoutEvent.cancelWorkout(workout: $workout)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WorkoutEventCancelWorkout &&
+            (identical(other.workout, workout) || other.workout == workout));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, workout);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WorkoutEventCancelWorkoutCopyWith<_$_WorkoutEventCancelWorkout>
+      get copyWith => __$$_WorkoutEventCancelWorkoutCopyWithImpl<
+          _$_WorkoutEventCancelWorkout>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String workoutUuid) getWorkout,
+    required TResult Function(Workout workout) setWorkout,
+    required TResult Function(Workout workout) cancelWorkout,
+  }) {
+    return cancelWorkout(workout);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String workoutUuid)? getWorkout,
+    TResult? Function(Workout workout)? setWorkout,
+    TResult? Function(Workout workout)? cancelWorkout,
+  }) {
+    return cancelWorkout?.call(workout);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String workoutUuid)? getWorkout,
+    TResult Function(Workout workout)? setWorkout,
+    TResult Function(Workout workout)? cancelWorkout,
+    required TResult orElse(),
+  }) {
+    if (cancelWorkout != null) {
+      return cancelWorkout(workout);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WorkoutEventGetWorkout value) getWorkout,
+    required TResult Function(_WorkoutEventSetWorkout value) setWorkout,
+    required TResult Function(_WorkoutEventCancelWorkout value) cancelWorkout,
+  }) {
+    return cancelWorkout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WorkoutEventGetWorkout value)? getWorkout,
+    TResult? Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult? Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
+  }) {
+    return cancelWorkout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WorkoutEventGetWorkout value)? getWorkout,
+    TResult Function(_WorkoutEventSetWorkout value)? setWorkout,
+    TResult Function(_WorkoutEventCancelWorkout value)? cancelWorkout,
+    required TResult orElse(),
+  }) {
+    if (cancelWorkout != null) {
+      return cancelWorkout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WorkoutEventCancelWorkout implements WorkoutEvent {
+  const factory _WorkoutEventCancelWorkout({required final Workout workout}) =
+      _$_WorkoutEventCancelWorkout;
+
+  Workout get workout;
+  @JsonKey(ignore: true)
+  _$$_WorkoutEventCancelWorkoutCopyWith<_$_WorkoutEventCancelWorkout>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

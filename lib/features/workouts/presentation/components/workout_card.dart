@@ -8,7 +8,7 @@ import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/timer_utils.dart';
 import 'package:fitt/domain/blocs/workout_timer/workout_timer_bloc.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/presentation/components/buttons/workout_action_button.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
@@ -46,12 +46,12 @@ class WorkoutCard extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         if (!isPage) {
-          await getIt<WorkoutCubit>()
-              .getWorkout(workoutUuid: workout.uuid)
-              .then((value) => context.pushNamed(
-                    AppRoute.workout.routeToPath,
-                    extra: false,
-                  ));
+          getIt<WorkoutBloc>()
+              .add(WorkoutEvent.getWorkout(workoutUuid: workout.uuid));
+          context.pushNamed(
+            AppRoute.workout.routeToPath,
+            extra: false,
+          );
         }
       },
       child: Container(

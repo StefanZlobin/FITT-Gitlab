@@ -475,16 +475,6 @@ class _$_WorkoutSortingStateInitial implements _WorkoutSortingStateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSortingStateInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -611,19 +601,6 @@ class _$_WorkoutSortingStateLoaded implements _WorkoutSortingStateLoaded {
   String toString() {
     return 'WorkoutSortingState.loaded(sortingItems: $sortingItems)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSortingStateLoaded &&
-            const DeepCollectionEquality()
-                .equals(other._sortingItems, _sortingItems));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_sortingItems));
 
   @JsonKey(ignore: true)
   @override
@@ -757,17 +734,6 @@ class _$_WorkoutSortingStateError implements _WorkoutSortingStateError {
   String toString() {
     return 'WorkoutSortingState.error(error: $error)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WorkoutSortingStateError &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override

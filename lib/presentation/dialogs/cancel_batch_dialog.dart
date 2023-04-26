@@ -1,8 +1,8 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
-import 'package:fitt/domain/entities/batch/user_batch.dart';
+import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
+import 'package:fitt/features/clubs/domain/entities/batch/user_batch.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

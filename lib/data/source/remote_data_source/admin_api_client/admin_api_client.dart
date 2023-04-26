@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:fitt/data/models/request/admin/admin_set_locker_number_request_body.dart';
-import 'package:fitt/data/models/request/admin/admin_workout_finish_reason_request_body.dart';
-import 'package:fitt/data/models/request/admin/admin_workouts_filters_body.dart';
-import 'package:fitt/data/models/response/admin/admin_club_slice.dart';
-import 'package:fitt/data/models/response/admin/admin_workout_slice.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_set_locker_number_request_body.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_workout_finish_reason_request_body.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_workouts_filters_body.dart';
+import 'package:fitt/features/workouts/data/models/response/admin/admin_club_slice.dart';
+import 'package:fitt/features/workouts/data/models/response/admin/admin_workout_slice.dart';
 import 'package:fitt/features/workouts/domain/entities/admin_workout/admin_workout.dart';
 import 'package:retrofit/retrofit.dart';
 

@@ -4,6 +4,7 @@ import 'package:fitt/core/enum/workout_sorting_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/resource/resource_repository.dart';
+import 'package:fitt/domain/services/push_notifications/push_notifications_service.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/domain/repositories/workout/workout_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,12 +20,18 @@ class WorkoutsArchiveBloc
     on<_WorkoutsArchiveEventSetWorkouts>(_onWorkoutsArchiveEventSetWorkouts);
 
     getIt<WorkoutRepository>().workoutsArchive.listen((List<Workout> workouts) {
-      add(WorkoutsArchiveEvent.setWorkouts(workouts: workouts));
+      offset += workouts.length;
+      _workouts.addAll(workouts);
+
+      add(WorkoutsArchiveEvent.setWorkouts(workouts: _workouts));
     });
 
     getIt<ResourceRepository>()
         .workoutSortingItems
         .listen((Map<WorkoutSortingEnum, bool> workoutSortingitems) {
+      offset = 0;
+      _workouts.clear();
+
       add(
         WorkoutsArchiveEvent.getWorkouts(
           workoutPhase: WorkoutPhaseEnum.done,
@@ -33,16 +40,39 @@ class WorkoutsArchiveBloc
         ),
       );
     });
+
+    getIt<PushNotificationsService>()
+        .changeWorkoutStatusNotification
+        .listen((Map<String, String>? changeWorkoutNotification) {
+      if (changeWorkoutNotification != null &&
+          changeWorkoutNotification.values.first == 'CANCEL') {
+        offset = 0;
+        _workouts.clear();
+
+        add(const WorkoutsArchiveEvent.getWorkouts(
+          workoutPhase: WorkoutPhaseEnum.done,
+          workoutSorting: WorkoutSortingEnum.newFirst,
+        ));
+      }
+    });
   }
 
   int offset = 0;
+  final List<Workout> _workouts = [];
 
   Future<void> _onWorkoutsArchiveEventGetWorkouts(
     _WorkoutsArchiveEventGetWorkouts event,
     Emitter<WorkoutsArchiveState> emit,
   ) async {
+    emit(
+      WorkoutsArchiveState.loading(
+        prevWorkouts: _workouts,
+        isFirstFetch: offset == 0,
+      ),
+    );
     try {
       await getIt<WorkoutRepository>().getWorkouts(
+        offset: offset,
         workoutPhase: event.workoutPhase,
         workoutSorting: event.workoutSorting,
       );

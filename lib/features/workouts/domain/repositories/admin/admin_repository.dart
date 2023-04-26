@@ -1,6 +1,6 @@
 import 'package:fitt/core/enum/admin_workout_finish_reason_enum.dart';
-import 'package:fitt/data/models/request/admin/admin_workouts_filters_body.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_workouts_filters_body.dart';
 import 'package:fitt/features/workouts/domain/entities/admin_workout/admin_workout.dart';
 
 abstract class AdminRepository {

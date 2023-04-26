@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:fitt/data/models/request/admin/admin_workouts_filters_body.dart';
 import 'package:fitt/domain/use_cases/admin/admin_use_case.dart';
+import 'package:fitt/features/workouts/data/models/request/admin/admin_workouts_filters_body.dart';
 import 'package:fitt/features/workouts/domain/entities/admin_workout/admin_workout.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
