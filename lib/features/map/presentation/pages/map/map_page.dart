@@ -16,17 +16,7 @@ import 'package:fitt/presentation/components/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
-
-import '../../../core/constants/app_colors.dart';
-import '../../../core/locator/service_locator.dart';
-import '../../../core/utils/app_icons.dart';
-import '../../../domain/cubits/geolocation/geolocation_cubit.dart';
-import '../../../domain/cubits/partner_clubs/partner_clubs_cubit.dart';
-import '../../components/menu/menu_widget.dart';
-import '../../components/workout/closest_workout_card.dart';
-import 'widgets/club_carousel.dart';
-import 'widgets/map_widget.dart';
-import 'widgets/menu_button.dart';
+import 'package:upgrader/upgrader.dart';
 
 class MapPage extends StatelessWidget {
   const MapPage({super.key});
