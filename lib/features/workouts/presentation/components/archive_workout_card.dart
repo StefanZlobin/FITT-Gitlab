@@ -6,7 +6,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
@@ -31,12 +31,12 @@ class ArchiveWorkoutCard extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: () {
         if (!isPage) {
-          getIt<WorkoutCubit>().getWorkout(workoutUuid: workout.uuid).then(
-                (value) => context.pushNamed(
-                  AppRoute.workout.routeToPath,
-                  extra: true,
-                ),
-              );
+          getIt<WorkoutBloc>()
+              .add(WorkoutEvent.getWorkout(workoutUuid: workout.uuid));
+          context.pushNamed(
+            AppRoute.workout.routeToPath,
+            extra: true,
+          );
         }
       },
       child: Container(

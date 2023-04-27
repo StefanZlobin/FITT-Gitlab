@@ -11,8 +11,6 @@ import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/cubits/buy_workout/buy_workout_cubit.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
-import 'package:fitt/domain/cubits/workouts/workouts_cubit.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/activity/activity.dart';
@@ -43,8 +41,6 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
         state.whenOrNull(
           loaded: (workout) {
             if (workout.payForm == null) {
-              getIt<WorkoutsCubit>().getWorkouts(); //Remove
-              getIt<WorkoutCubit>().getWorkout(workoutUuid: workout.uuid);
               getIt<AppMetricaService>().reportEventToAppMetrica(
                 eventName: 'Пользователь купил тренировку за пакет часов',
               );

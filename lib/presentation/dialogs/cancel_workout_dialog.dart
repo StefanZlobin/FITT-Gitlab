@@ -1,10 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -57,23 +59,22 @@ class CancelWorkoutDialog extends StatelessWidget {
                 child: AppElevatedButton(
                   isHeight: false,
                   onPressedAsync: () async {
-                    await getIt<WorkoutCubit>()
-                        .cancelWorkout(w: workout)
-                        .then((value) {
-                      getIt<LocalNotificationsService>()
-                          .deleteLocalNotification(
-                        id: workout.workoutHashCode,
-                      );
-                      getIt<LocalNotificationsService>()
-                          .deleteLocalNotification(
-                        id: workout.workoutHashCode - 2,
-                      );
+                    getIt<WorkoutBloc>()
+                        .add(WorkoutEvent.cancelWorkout(workout: workout));
 
-                      context.pushNamed(
-                        AppRoute.workoutArchiveList.routeToPath,
-                        extra: true,
-                      );
-                    });
+                    await getIt<LocalNotificationsService>()
+                        .deleteLocalNotification(
+                      id: workout.workoutHashCode,
+                    );
+                    await getIt<LocalNotificationsService>()
+                        .deleteLocalNotification(
+                      id: workout.workoutHashCode - 2,
+                    );
+
+                    context.pushNamed(
+                      AppRoute.workoutArchiveList.routeToPath,
+                      extra: true,
+                    );
                   },
                   marginButton: const EdgeInsets.all(0),
                   textButton: Text(

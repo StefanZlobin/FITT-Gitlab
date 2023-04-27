@@ -5,7 +5,6 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/batch/batch.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/presentation/components/page_title.dart';
@@ -89,8 +88,6 @@ class _WebviewState extends State<Webview> {
             paymentWorkout: (paymentStatus) {
               switch (paymentStatus) {
                 case PaymentStatusEnum.success:
-                  getIt<WorkoutCubit>()
-                      .getWorkout(workoutUuid: widget.workoutUuid ?? '');
                   context.push(AppRoute.paymentSuccess.routeToPath);
                   return getIt<PaymentBloc>().add(
                     const PaymentEvent.dropState(),

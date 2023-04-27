@@ -13,4 +13,12 @@ class WorkoutEvent with _$WorkoutEvent {
   const factory WorkoutEvent.cancelWorkout({
     required Workout workout,
   }) = _WorkoutEventCancelWorkout;
+
+  const factory WorkoutEvent.startWorkout({
+    required Workout workout,
+  }) = _WorkoutEventStartWorkout;
+
+  const factory WorkoutEvent.finishWorkout({
+    required Workout workout,
+  }) = _WorkoutEventFinishWorkout;
 }

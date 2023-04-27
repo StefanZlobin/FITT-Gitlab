@@ -7,7 +7,7 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/presentation/components/buttons/workout_action_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
@@ -44,12 +44,12 @@ class ClosestWorkoutCard extends StatelessWidget {
   ) {
     return GestureDetector(
       onTap: () {
-        getIt<WorkoutCubit>()
-            .getWorkout(workoutUuid: closestWorkout.uuid)
-            .then((value) => context.pushNamed(
-                  AppRoute.workout.routeToPath,
-                  extra: false,
-                ));
+        getIt<WorkoutBloc>()
+            .add(WorkoutEvent.getWorkout(workoutUuid: closestWorkout.uuid));
+        context.pushNamed(
+          AppRoute.workout.routeToPath,
+          extra: false,
+        );
       },
       child: Container(
         padding: const EdgeInsets.all(8),

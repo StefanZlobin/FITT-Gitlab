@@ -71,7 +71,6 @@ import '../../domain/cubits/buy_workout/buy_workout_cubit.dart';
 import '../../domain/cubits/feedback/feedback_cubit.dart';
 import '../../domain/cubits/geolocation/geolocation_cubit.dart';
 import '../../domain/cubits/modal_bottom_sheet/modal_bottom_sheet_cubit.dart';
-import '../../domain/cubits/workout/workout_cubit.dart';
 import '../../domain/cubits/workout_slider_button_type/workout_slider_button_type_cubit.dart';
 import '../../domain/repositories/payment/payment_repository.dart';
 import '../../domain/repositories/resource/resource_repository.dart';
@@ -237,7 +236,6 @@ void _regusterServices() {
 }
 
 void _registerBlocs() {
-  getIt.registerLazySingleton<WorkoutCubit>(() => WorkoutCubit());
   getIt.registerLazySingleton<WorkoutBloc>(() => WorkoutBloc());
   getIt.registerFactory<WorkoutTimerBloc>(
     () => WorkoutTimerBloc(ticker: const Ticker()),

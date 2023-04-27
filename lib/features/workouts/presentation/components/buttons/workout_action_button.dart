@@ -9,9 +9,9 @@ import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/functions/app_modal_bottom_sheet.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
-import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/domain/cubits/workout_slider_button_type/workout_slider_button_type_cubit.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/presentation/modals/workout_finish_modal_bottom_sheet.dart';
 import 'package:fitt/features/workouts/presentation/modals/workout_start_modal_bottom_sheet.dart';
@@ -58,8 +58,8 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
         break;
     }
 
-    return BlocListener<WorkoutCubit, WorkoutState>(
-      bloc: getIt<WorkoutCubit>(),
+    return BlocListener<WorkoutBloc, WorkoutState>(
+      bloc: getIt<WorkoutBloc>(),
       listener: (context, state) {
         state.whenOrNull(
           loaded: (workout) {
@@ -134,7 +134,8 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
                       context,
                       const WorkoutStartModalBottomSheet(),
                     ));
-                    await getIt<WorkoutCubit>().startWorkout(w: workout);
+                    getIt<WorkoutBloc>()
+                        .add(WorkoutEvent.startWorkout(workout: workout));
                     await getIt<LocalNotificationsService>()
                         .scheduleLocalNotification(
                       id: workout.workoutHashCode - 3,
@@ -180,7 +181,8 @@ class WorkoutActionButton extends StatelessWidget with UserMixin {
                         WorkoutFinishModalBottomSheet(workout: workout),
                       ),
                     );
-                    await getIt<WorkoutCubit>().finishWorkout(w: workout);
+                    getIt<WorkoutBloc>()
+                        .add(WorkoutEvent.finishWorkout(workout: workout));
                     await getIt<LocalNotificationsService>()
                         .deleteLocalNotification(
                       id: workout.workoutHashCode - 3,
