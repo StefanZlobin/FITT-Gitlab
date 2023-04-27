@@ -88,8 +88,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> logoutUser() async {
     await _userLocalClient.deleteUser();
-    //TODO: расскоментировать метод, когда на препроде его починят
-    //await _apiClient.logoutUser();
+    await _apiClient.logoutUser();
     await getIt<TokenRepository>().deleteToken();
     updateUser(null);
   }
