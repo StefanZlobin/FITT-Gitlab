@@ -15,6 +15,7 @@ import 'package:fitt/features/clubs/presentation/pages/partner_club/club_buy_bat
 import 'package:fitt/features/clubs/presentation/pages/partner_club/club_buy_workout_page.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/club_information_page.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/club_page.dart';
+import 'package:fitt/features/clubs/presentation/pages/purchased_batch/purchased_batch_page.dart';
 import 'package:fitt/features/map/presentation/pages/map/map_page.dart';
 import 'package:fitt/features/workouts/presentation/pages/admin_workout/admin_workout_page.dart';
 import 'package:fitt/features/workouts/presentation/pages/admin_workouts/admin_workouts_page.dart';
@@ -29,7 +30,6 @@ import 'package:fitt/presentation/pages/payment/payment_batch_succes_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_loading_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_reject_page.dart';
 import 'package:fitt/presentation/pages/payment/payment_succes_page.dart';
-import 'package:fitt/presentation/pages/purchased_batch/purchased_batch_page.dart';
 import 'package:fitt/presentation/splash/splash.dart';
 import 'package:fitt/presentation/webview/webview.dart';
 import 'package:flutter/material.dart';
