@@ -12,7 +12,6 @@ import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
-import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
@@ -20,6 +19,7 @@ import 'package:fitt/features/auth/domain/blocs/authorization/authorization_bloc
 import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_clubs_favorite_bloc.dart';
 import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
+import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
 import 'package:fitt/presentation/components/menu/widget/user_menu_tile.dart';

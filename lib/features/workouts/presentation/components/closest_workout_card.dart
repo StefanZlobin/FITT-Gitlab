@@ -6,7 +6,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
+import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/presentation/components/buttons/workout_action_button.dart';

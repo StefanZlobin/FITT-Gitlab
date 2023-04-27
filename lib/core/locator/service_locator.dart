@@ -5,11 +5,9 @@ import 'package:fitt/data/repositories/analytics/analytics_repository_impl.dart'
 import 'package:fitt/data/services/app_metrica/app_metrica_service_impl.dart';
 import 'package:fitt/data/services/push_notifications/push_notifications_service_impl.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
-import 'package:fitt/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_dashboard/analytics_dashboard_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
-import 'package:fitt/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/domain/blocs/menu/menu_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
@@ -44,8 +42,11 @@ import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batc
 import 'package:fitt/features/map/domain/blocs/carousel/carousel_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/map/map_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/search/search_bloc.dart';
+import 'package:fitt/features/workouts/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
+import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workout_sorting/workout_sorting_bloc.dart';
+import 'package:fitt/features/workouts/domain/blocs/workout_timer/workout_timer_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts_archive/workouts_archive_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -58,7 +59,6 @@ import '../../data/services/local_notifications/local_notifications_service_impl
 import '../../data/source/local_data_source/user_local_client/user_local_client.dart';
 import '../../data/storages/local_storage.dart';
 import '../../data/storages/token_storage.dart';
-import '../../domain/blocs/workout_timer/workout_timer_bloc.dart';
 import '../../domain/cubits/account_save_button/account_save_button_cubit.dart';
 import '../../domain/cubits/admin_club/admin_club_cubit.dart';
 import '../../domain/cubits/admin_clubs/admin_clubs_cubit.dart';
