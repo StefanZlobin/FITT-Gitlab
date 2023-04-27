@@ -579,15 +579,6 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,

@@ -33,10 +33,6 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget with UserMixin {
         builder: (context, state) {
           return state.when(
             initial: () => _buildFinishLoadingWorkoutPullup(),
-            paymentBatchReject: () => const SizedBox(),
-            paymentBatchSuccess: () => const SizedBox(),
-            paymentWorkoutReject: () => const SizedBox(),
-            paymentWorkoutSuccess: () => const SizedBox(),
             workoutStatusPlanned: () => const SizedBox(),
             workoutStatusRS: () => const SizedBox(),
             workoutStatusFF: () => const SizedBox(),

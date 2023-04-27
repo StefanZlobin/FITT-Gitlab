@@ -1105,15 +1105,6 @@ class _$_MapStateInitial implements _MapStateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapStateInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -1235,15 +1226,6 @@ class _$_MapStateLoading implements _MapStateLoading {
   String toString() {
     return 'MapState.loading()';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapStateLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -1449,30 +1431,6 @@ class _$_MapStateLoaded implements _MapStateLoaded {
     return 'MapState.loaded(mapPoints: $mapPoints, visibleRegion: $visibleRegion, markers: $markers, filters: $filters, isVisibleRegionUpdated: $isVisibleRegionUpdated)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_MapStateLoaded &&
-            const DeepCollectionEquality()
-                .equals(other._mapPoints, _mapPoints) &&
-            (identical(other.visibleRegion, visibleRegion) ||
-                other.visibleRegion == visibleRegion) &&
-            const DeepCollectionEquality().equals(other._markers, _markers) &&
-            (identical(other.filters, filters) || other.filters == filters) &&
-            (identical(other.isVisibleRegionUpdated, isVisibleRegionUpdated) ||
-                other.isVisibleRegionUpdated == isVisibleRegionUpdated));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_mapPoints),
-      visibleRegion,
-      const DeepCollectionEquality().hash(_markers),
-      filters,
-      isVisibleRegionUpdated);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1618,15 +1576,6 @@ class _$_MapStateError implements _MapStateError {
   String toString() {
     return 'MapState.error()';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapStateError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs

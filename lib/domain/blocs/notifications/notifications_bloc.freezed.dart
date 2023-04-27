@@ -19,27 +19,40 @@ mixin _$NotificationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(Map<String, String> changeWorkoutNotification)
         onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(RemoteMessage remoteMessage)
+        onAdminChangeWorkoutNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
         onPaymentWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentBatchNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
+        onPaymentBatchNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult? Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult? Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +61,8 @@ mixin _$NotificationsEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_OnChangeWorkoutNotification value)
         onChangeWorkoutNotification,
+    required TResult Function(_OnAdminChangeWorkoutNotification value)
+        onAdminChangeWorkoutNotification,
     required TResult Function(_OnPaymentWorkoutNotification value)
         onPaymentWorkoutNotification,
     required TResult Function(_OnPaymentBatchNotification value)
@@ -59,6 +74,8 @@ mixin _$NotificationsEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult? Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult? Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult? Function(_OnPaymentBatchNotification value)?
@@ -70,6 +87,8 @@ mixin _$NotificationsEvent {
     TResult Function(_Started value)? started,
     TResult Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult Function(_OnPaymentBatchNotification value)?
@@ -135,11 +154,14 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(Map<String, String> changeWorkoutNotification)
         onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(RemoteMessage remoteMessage)
+        onAdminChangeWorkoutNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
         onPaymentWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentBatchNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
+        onPaymentBatchNotification,
   }) {
     return started();
   }
@@ -148,9 +170,14 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult? Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult? Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
   }) {
     return started?.call();
   }
@@ -159,9 +186,14 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -176,6 +208,8 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_OnChangeWorkoutNotification value)
         onChangeWorkoutNotification,
+    required TResult Function(_OnAdminChangeWorkoutNotification value)
+        onAdminChangeWorkoutNotification,
     required TResult Function(_OnPaymentWorkoutNotification value)
         onPaymentWorkoutNotification,
     required TResult Function(_OnPaymentBatchNotification value)
@@ -190,6 +224,8 @@ class _$_Started implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult? Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult? Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult? Function(_OnPaymentBatchNotification value)?
@@ -204,6 +240,8 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult Function(_OnPaymentBatchNotification value)?
@@ -228,7 +266,7 @@ abstract class _$$_OnChangeWorkoutNotificationCopyWith<$Res> {
           $Res Function(_$_OnChangeWorkoutNotification) then) =
       __$$_OnChangeWorkoutNotificationCopyWithImpl<$Res>;
   @useResult
-  $Res call({RemoteMessage message});
+  $Res call({Map<String, String> changeWorkoutNotification});
 }
 
 /// @nodoc
@@ -244,13 +282,13 @@ class __$$_OnChangeWorkoutNotificationCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? changeWorkoutNotification = null,
   }) {
     return _then(_$_OnChangeWorkoutNotification(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as RemoteMessage,
+      changeWorkoutNotification: null == changeWorkoutNotification
+          ? _value._changeWorkoutNotification
+          : changeWorkoutNotification // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
     ));
   }
 }
@@ -258,14 +296,22 @@ class __$$_OnChangeWorkoutNotificationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
-  const _$_OnChangeWorkoutNotification({required this.message});
+  const _$_OnChangeWorkoutNotification(
+      {required final Map<String, String> changeWorkoutNotification})
+      : _changeWorkoutNotification = changeWorkoutNotification;
 
+  final Map<String, String> _changeWorkoutNotification;
   @override
-  final RemoteMessage message;
+  Map<String, String> get changeWorkoutNotification {
+    if (_changeWorkoutNotification is EqualUnmodifiableMapView)
+      return _changeWorkoutNotification;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_changeWorkoutNotification);
+  }
 
   @override
   String toString() {
-    return 'NotificationsEvent.onChangeWorkoutNotification(message: $message)';
+    return 'NotificationsEvent.onChangeWorkoutNotification(changeWorkoutNotification: $changeWorkoutNotification)';
   }
 
   @override
@@ -273,11 +319,13 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnChangeWorkoutNotification &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(
+                other._changeWorkoutNotification, _changeWorkoutNotification));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_changeWorkoutNotification));
 
   @JsonKey(ignore: true)
   @override
@@ -290,37 +338,50 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(Map<String, String> changeWorkoutNotification)
         onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(RemoteMessage remoteMessage)
+        onAdminChangeWorkoutNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
         onPaymentWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentBatchNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
+        onPaymentBatchNotification,
   }) {
-    return onChangeWorkoutNotification(message);
+    return onChangeWorkoutNotification(changeWorkoutNotification);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult? Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult? Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
   }) {
-    return onChangeWorkoutNotification?.call(message);
+    return onChangeWorkoutNotification?.call(changeWorkoutNotification);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (onChangeWorkoutNotification != null) {
-      return onChangeWorkoutNotification(message);
+      return onChangeWorkoutNotification(changeWorkoutNotification);
     }
     return orElse();
   }
@@ -331,6 +392,8 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
     required TResult Function(_Started value) started,
     required TResult Function(_OnChangeWorkoutNotification value)
         onChangeWorkoutNotification,
+    required TResult Function(_OnAdminChangeWorkoutNotification value)
+        onAdminChangeWorkoutNotification,
     required TResult Function(_OnPaymentWorkoutNotification value)
         onPaymentWorkoutNotification,
     required TResult Function(_OnPaymentBatchNotification value)
@@ -345,6 +408,8 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
     TResult? Function(_Started value)? started,
     TResult? Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult? Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult? Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult? Function(_OnPaymentBatchNotification value)?
@@ -359,6 +424,8 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
     TResult Function(_Started value)? started,
     TResult Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult Function(_OnPaymentBatchNotification value)?
@@ -374,11 +441,197 @@ class _$_OnChangeWorkoutNotification implements _OnChangeWorkoutNotification {
 
 abstract class _OnChangeWorkoutNotification implements NotificationsEvent {
   const factory _OnChangeWorkoutNotification(
-      {required final RemoteMessage message}) = _$_OnChangeWorkoutNotification;
+          {required final Map<String, String> changeWorkoutNotification}) =
+      _$_OnChangeWorkoutNotification;
 
-  RemoteMessage get message;
+  Map<String, String> get changeWorkoutNotification;
   @JsonKey(ignore: true)
   _$$_OnChangeWorkoutNotificationCopyWith<_$_OnChangeWorkoutNotification>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnAdminChangeWorkoutNotificationCopyWith<$Res> {
+  factory _$$_OnAdminChangeWorkoutNotificationCopyWith(
+          _$_OnAdminChangeWorkoutNotification value,
+          $Res Function(_$_OnAdminChangeWorkoutNotification) then) =
+      __$$_OnAdminChangeWorkoutNotificationCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RemoteMessage remoteMessage});
+}
+
+/// @nodoc
+class __$$_OnAdminChangeWorkoutNotificationCopyWithImpl<$Res>
+    extends _$NotificationsEventCopyWithImpl<$Res,
+        _$_OnAdminChangeWorkoutNotification>
+    implements _$$_OnAdminChangeWorkoutNotificationCopyWith<$Res> {
+  __$$_OnAdminChangeWorkoutNotificationCopyWithImpl(
+      _$_OnAdminChangeWorkoutNotification _value,
+      $Res Function(_$_OnAdminChangeWorkoutNotification) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? remoteMessage = null,
+  }) {
+    return _then(_$_OnAdminChangeWorkoutNotification(
+      remoteMessage: null == remoteMessage
+          ? _value.remoteMessage
+          : remoteMessage // ignore: cast_nullable_to_non_nullable
+              as RemoteMessage,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnAdminChangeWorkoutNotification
+    implements _OnAdminChangeWorkoutNotification {
+  const _$_OnAdminChangeWorkoutNotification({required this.remoteMessage});
+
+  @override
+  final RemoteMessage remoteMessage;
+
+  @override
+  String toString() {
+    return 'NotificationsEvent.onAdminChangeWorkoutNotification(remoteMessage: $remoteMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnAdminChangeWorkoutNotification &&
+            (identical(other.remoteMessage, remoteMessage) ||
+                other.remoteMessage == remoteMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, remoteMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OnAdminChangeWorkoutNotificationCopyWith<
+          _$_OnAdminChangeWorkoutNotification>
+      get copyWith => __$$_OnAdminChangeWorkoutNotificationCopyWithImpl<
+          _$_OnAdminChangeWorkoutNotification>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Map<String, String> changeWorkoutNotification)
+        onChangeWorkoutNotification,
+    required TResult Function(RemoteMessage remoteMessage)
+        onAdminChangeWorkoutNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
+        onPaymentWorkoutNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
+        onPaymentBatchNotification,
+  }) {
+    return onAdminChangeWorkoutNotification(remoteMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult? Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
+  }) {
+    return onAdminChangeWorkoutNotification?.call(remoteMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
+    required TResult orElse(),
+  }) {
+    if (onAdminChangeWorkoutNotification != null) {
+      return onAdminChangeWorkoutNotification(remoteMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_OnChangeWorkoutNotification value)
+        onChangeWorkoutNotification,
+    required TResult Function(_OnAdminChangeWorkoutNotification value)
+        onAdminChangeWorkoutNotification,
+    required TResult Function(_OnPaymentWorkoutNotification value)
+        onPaymentWorkoutNotification,
+    required TResult Function(_OnPaymentBatchNotification value)
+        onPaymentBatchNotification,
+  }) {
+    return onAdminChangeWorkoutNotification(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult? Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
+    TResult? Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult? Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
+  }) {
+    return onAdminChangeWorkoutNotification?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_OnChangeWorkoutNotification value)?
+        onChangeWorkoutNotification,
+    TResult Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
+    TResult Function(_OnPaymentWorkoutNotification value)?
+        onPaymentWorkoutNotification,
+    TResult Function(_OnPaymentBatchNotification value)?
+        onPaymentBatchNotification,
+    required TResult orElse(),
+  }) {
+    if (onAdminChangeWorkoutNotification != null) {
+      return onAdminChangeWorkoutNotification(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnAdminChangeWorkoutNotification implements NotificationsEvent {
+  const factory _OnAdminChangeWorkoutNotification(
+          {required final RemoteMessage remoteMessage}) =
+      _$_OnAdminChangeWorkoutNotification;
+
+  RemoteMessage get remoteMessage;
+  @JsonKey(ignore: true)
+  _$$_OnAdminChangeWorkoutNotificationCopyWith<
+          _$_OnAdminChangeWorkoutNotification>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -389,7 +642,7 @@ abstract class _$$_OnPaymentWorkoutNotificationCopyWith<$Res> {
           $Res Function(_$_OnPaymentWorkoutNotification) then) =
       __$$_OnPaymentWorkoutNotificationCopyWithImpl<$Res>;
   @useResult
-  $Res call({RemoteMessage message});
+  $Res call({PaymentStatusEnum paymentStatus});
 }
 
 /// @nodoc
@@ -405,13 +658,13 @@ class __$$_OnPaymentWorkoutNotificationCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? paymentStatus = null,
   }) {
     return _then(_$_OnPaymentWorkoutNotification(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as RemoteMessage,
+      paymentStatus: null == paymentStatus
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as PaymentStatusEnum,
     ));
   }
 }
@@ -419,14 +672,14 @@ class __$$_OnPaymentWorkoutNotificationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
-  const _$_OnPaymentWorkoutNotification({required this.message});
+  const _$_OnPaymentWorkoutNotification({required this.paymentStatus});
 
   @override
-  final RemoteMessage message;
+  final PaymentStatusEnum paymentStatus;
 
   @override
   String toString() {
-    return 'NotificationsEvent.onPaymentWorkoutNotification(message: $message)';
+    return 'NotificationsEvent.onPaymentWorkoutNotification(paymentStatus: $paymentStatus)';
   }
 
   @override
@@ -434,11 +687,12 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnPaymentWorkoutNotification &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.paymentStatus, paymentStatus) ||
+                other.paymentStatus == paymentStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, paymentStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -451,37 +705,50 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(Map<String, String> changeWorkoutNotification)
         onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(RemoteMessage remoteMessage)
+        onAdminChangeWorkoutNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
         onPaymentWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentBatchNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
+        onPaymentBatchNotification,
   }) {
-    return onPaymentWorkoutNotification(message);
+    return onPaymentWorkoutNotification(paymentStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult? Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult? Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
   }) {
-    return onPaymentWorkoutNotification?.call(message);
+    return onPaymentWorkoutNotification?.call(paymentStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (onPaymentWorkoutNotification != null) {
-      return onPaymentWorkoutNotification(message);
+      return onPaymentWorkoutNotification(paymentStatus);
     }
     return orElse();
   }
@@ -492,6 +759,8 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
     required TResult Function(_Started value) started,
     required TResult Function(_OnChangeWorkoutNotification value)
         onChangeWorkoutNotification,
+    required TResult Function(_OnAdminChangeWorkoutNotification value)
+        onAdminChangeWorkoutNotification,
     required TResult Function(_OnPaymentWorkoutNotification value)
         onPaymentWorkoutNotification,
     required TResult Function(_OnPaymentBatchNotification value)
@@ -506,6 +775,8 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
     TResult? Function(_Started value)? started,
     TResult? Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult? Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult? Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult? Function(_OnPaymentBatchNotification value)?
@@ -520,6 +791,8 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
     TResult Function(_Started value)? started,
     TResult Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult Function(_OnPaymentBatchNotification value)?
@@ -535,9 +808,10 @@ class _$_OnPaymentWorkoutNotification implements _OnPaymentWorkoutNotification {
 
 abstract class _OnPaymentWorkoutNotification implements NotificationsEvent {
   const factory _OnPaymentWorkoutNotification(
-      {required final RemoteMessage message}) = _$_OnPaymentWorkoutNotification;
+          {required final PaymentStatusEnum paymentStatus}) =
+      _$_OnPaymentWorkoutNotification;
 
-  RemoteMessage get message;
+  PaymentStatusEnum get paymentStatus;
   @JsonKey(ignore: true)
   _$$_OnPaymentWorkoutNotificationCopyWith<_$_OnPaymentWorkoutNotification>
       get copyWith => throw _privateConstructorUsedError;
@@ -550,7 +824,7 @@ abstract class _$$_OnPaymentBatchNotificationCopyWith<$Res> {
           $Res Function(_$_OnPaymentBatchNotification) then) =
       __$$_OnPaymentBatchNotificationCopyWithImpl<$Res>;
   @useResult
-  $Res call({RemoteMessage message});
+  $Res call({PaymentStatusEnum paymentStatus});
 }
 
 /// @nodoc
@@ -566,13 +840,13 @@ class __$$_OnPaymentBatchNotificationCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? paymentStatus = null,
   }) {
     return _then(_$_OnPaymentBatchNotification(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as RemoteMessage,
+      paymentStatus: null == paymentStatus
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as PaymentStatusEnum,
     ));
   }
 }
@@ -580,14 +854,14 @@ class __$$_OnPaymentBatchNotificationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
-  const _$_OnPaymentBatchNotification({required this.message});
+  const _$_OnPaymentBatchNotification({required this.paymentStatus});
 
   @override
-  final RemoteMessage message;
+  final PaymentStatusEnum paymentStatus;
 
   @override
   String toString() {
-    return 'NotificationsEvent.onPaymentBatchNotification(message: $message)';
+    return 'NotificationsEvent.onPaymentBatchNotification(paymentStatus: $paymentStatus)';
   }
 
   @override
@@ -595,11 +869,12 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnPaymentBatchNotification &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.paymentStatus, paymentStatus) ||
+                other.paymentStatus == paymentStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, paymentStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -612,37 +887,50 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(Map<String, String> changeWorkoutNotification)
         onChangeWorkoutNotification,
-    required TResult Function(RemoteMessage message)
+    required TResult Function(RemoteMessage remoteMessage)
+        onAdminChangeWorkoutNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
         onPaymentWorkoutNotification,
-    required TResult Function(RemoteMessage message) onPaymentBatchNotification,
+    required TResult Function(PaymentStatusEnum paymentStatus)
+        onPaymentBatchNotification,
   }) {
-    return onPaymentBatchNotification(message);
+    return onPaymentBatchNotification(paymentStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult? Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult? Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult? Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult? Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
   }) {
-    return onPaymentBatchNotification?.call(message);
+    return onPaymentBatchNotification?.call(paymentStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(RemoteMessage message)? onChangeWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentWorkoutNotification,
-    TResult Function(RemoteMessage message)? onPaymentBatchNotification,
+    TResult Function(Map<String, String> changeWorkoutNotification)?
+        onChangeWorkoutNotification,
+    TResult Function(RemoteMessage remoteMessage)?
+        onAdminChangeWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentWorkoutNotification,
+    TResult Function(PaymentStatusEnum paymentStatus)?
+        onPaymentBatchNotification,
     required TResult orElse(),
   }) {
     if (onPaymentBatchNotification != null) {
-      return onPaymentBatchNotification(message);
+      return onPaymentBatchNotification(paymentStatus);
     }
     return orElse();
   }
@@ -653,6 +941,8 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
     required TResult Function(_Started value) started,
     required TResult Function(_OnChangeWorkoutNotification value)
         onChangeWorkoutNotification,
+    required TResult Function(_OnAdminChangeWorkoutNotification value)
+        onAdminChangeWorkoutNotification,
     required TResult Function(_OnPaymentWorkoutNotification value)
         onPaymentWorkoutNotification,
     required TResult Function(_OnPaymentBatchNotification value)
@@ -667,6 +957,8 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
     TResult? Function(_Started value)? started,
     TResult? Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult? Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult? Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult? Function(_OnPaymentBatchNotification value)?
@@ -681,6 +973,8 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
     TResult Function(_Started value)? started,
     TResult Function(_OnChangeWorkoutNotification value)?
         onChangeWorkoutNotification,
+    TResult Function(_OnAdminChangeWorkoutNotification value)?
+        onAdminChangeWorkoutNotification,
     TResult Function(_OnPaymentWorkoutNotification value)?
         onPaymentWorkoutNotification,
     TResult Function(_OnPaymentBatchNotification value)?
@@ -696,9 +990,10 @@ class _$_OnPaymentBatchNotification implements _OnPaymentBatchNotification {
 
 abstract class _OnPaymentBatchNotification implements NotificationsEvent {
   const factory _OnPaymentBatchNotification(
-      {required final RemoteMessage message}) = _$_OnPaymentBatchNotification;
+          {required final PaymentStatusEnum paymentStatus}) =
+      _$_OnPaymentBatchNotification;
 
-  RemoteMessage get message;
+  PaymentStatusEnum get paymentStatus;
   @JsonKey(ignore: true)
   _$$_OnPaymentBatchNotificationCopyWith<_$_OnPaymentBatchNotification>
       get copyWith => throw _privateConstructorUsedError;
@@ -709,10 +1004,6 @@ mixin _$NotificationsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -726,10 +1017,6 @@ mixin _$NotificationsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -743,10 +1030,6 @@ mixin _$NotificationsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -761,11 +1044,6 @@ mixin _$NotificationsState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -780,10 +1058,6 @@ mixin _$NotificationsState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -797,10 +1071,6 @@ mixin _$NotificationsState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -858,22 +1128,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -890,10 +1147,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -910,10 +1163,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -934,11 +1183,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -956,10 +1200,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -976,10 +1216,6 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -999,686 +1235,6 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements NotificationsState {
   const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$$_PaymentBatchSuccessCopyWith<$Res> {
-  factory _$$_PaymentBatchSuccessCopyWith(_$_PaymentBatchSuccess value,
-          $Res Function(_$_PaymentBatchSuccess) then) =
-      __$$_PaymentBatchSuccessCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PaymentBatchSuccessCopyWithImpl<$Res>
-    extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentBatchSuccess>
-    implements _$$_PaymentBatchSuccessCopyWith<$Res> {
-  __$$_PaymentBatchSuccessCopyWithImpl(_$_PaymentBatchSuccess _value,
-      $Res Function(_$_PaymentBatchSuccess) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_PaymentBatchSuccess implements _PaymentBatchSuccess {
-  const _$_PaymentBatchSuccess();
-
-  @override
-  String toString() {
-    return 'NotificationsState.paymentBatchSuccess()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaymentBatchSuccess);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
-    required TResult Function() workoutStatusPlanned,
-    required TResult Function() workoutStatusRS,
-    required TResult Function() workoutStatusStarted,
-    required TResult Function() workoutStatusRF,
-    required TResult Function() workoutStatusFinished,
-    required TResult Function() workoutStatusFF,
-    required TResult Function() workoutStatusMissed,
-    required TResult Function(String error) error,
-  }) {
-    return paymentBatchSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
-    TResult? Function()? workoutStatusPlanned,
-    TResult? Function()? workoutStatusRS,
-    TResult? Function()? workoutStatusStarted,
-    TResult? Function()? workoutStatusRF,
-    TResult? Function()? workoutStatusFinished,
-    TResult? Function()? workoutStatusFF,
-    TResult? Function()? workoutStatusMissed,
-    TResult? Function(String error)? error,
-  }) {
-    return paymentBatchSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
-    TResult Function()? workoutStatusPlanned,
-    TResult Function()? workoutStatusRS,
-    TResult Function()? workoutStatusStarted,
-    TResult Function()? workoutStatusRF,
-    TResult Function()? workoutStatusFinished,
-    TResult Function()? workoutStatusFF,
-    TResult Function()? workoutStatusMissed,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentBatchSuccess != null) {
-      return paymentBatchSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
-    required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
-    required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
-    required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
-    required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value)
-        workoutStatusFinished,
-    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
-    required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
-    required TResult Function(_Error value) error,
-  }) {
-    return paymentBatchSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult? Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult? Function(_Error value)? error,
-  }) {
-    return paymentBatchSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentBatchSuccess != null) {
-      return paymentBatchSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PaymentBatchSuccess implements NotificationsState {
-  const factory _PaymentBatchSuccess() = _$_PaymentBatchSuccess;
-}
-
-/// @nodoc
-abstract class _$$_PaymentBatchRejectCopyWith<$Res> {
-  factory _$$_PaymentBatchRejectCopyWith(_$_PaymentBatchReject value,
-          $Res Function(_$_PaymentBatchReject) then) =
-      __$$_PaymentBatchRejectCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PaymentBatchRejectCopyWithImpl<$Res>
-    extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentBatchReject>
-    implements _$$_PaymentBatchRejectCopyWith<$Res> {
-  __$$_PaymentBatchRejectCopyWithImpl(
-      _$_PaymentBatchReject _value, $Res Function(_$_PaymentBatchReject) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_PaymentBatchReject implements _PaymentBatchReject {
-  const _$_PaymentBatchReject();
-
-  @override
-  String toString() {
-    return 'NotificationsState.paymentBatchReject()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaymentBatchReject);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
-    required TResult Function() workoutStatusPlanned,
-    required TResult Function() workoutStatusRS,
-    required TResult Function() workoutStatusStarted,
-    required TResult Function() workoutStatusRF,
-    required TResult Function() workoutStatusFinished,
-    required TResult Function() workoutStatusFF,
-    required TResult Function() workoutStatusMissed,
-    required TResult Function(String error) error,
-  }) {
-    return paymentBatchReject();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
-    TResult? Function()? workoutStatusPlanned,
-    TResult? Function()? workoutStatusRS,
-    TResult? Function()? workoutStatusStarted,
-    TResult? Function()? workoutStatusRF,
-    TResult? Function()? workoutStatusFinished,
-    TResult? Function()? workoutStatusFF,
-    TResult? Function()? workoutStatusMissed,
-    TResult? Function(String error)? error,
-  }) {
-    return paymentBatchReject?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
-    TResult Function()? workoutStatusPlanned,
-    TResult Function()? workoutStatusRS,
-    TResult Function()? workoutStatusStarted,
-    TResult Function()? workoutStatusRF,
-    TResult Function()? workoutStatusFinished,
-    TResult Function()? workoutStatusFF,
-    TResult Function()? workoutStatusMissed,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentBatchReject != null) {
-      return paymentBatchReject();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
-    required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
-    required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
-    required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
-    required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value)
-        workoutStatusFinished,
-    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
-    required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
-    required TResult Function(_Error value) error,
-  }) {
-    return paymentBatchReject(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult? Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult? Function(_Error value)? error,
-  }) {
-    return paymentBatchReject?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentBatchReject != null) {
-      return paymentBatchReject(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PaymentBatchReject implements NotificationsState {
-  const factory _PaymentBatchReject() = _$_PaymentBatchReject;
-}
-
-/// @nodoc
-abstract class _$$_PaymentWorkoutSuccessCopyWith<$Res> {
-  factory _$$_PaymentWorkoutSuccessCopyWith(_$_PaymentWorkoutSuccess value,
-          $Res Function(_$_PaymentWorkoutSuccess) then) =
-      __$$_PaymentWorkoutSuccessCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PaymentWorkoutSuccessCopyWithImpl<$Res>
-    extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentWorkoutSuccess>
-    implements _$$_PaymentWorkoutSuccessCopyWith<$Res> {
-  __$$_PaymentWorkoutSuccessCopyWithImpl(_$_PaymentWorkoutSuccess _value,
-      $Res Function(_$_PaymentWorkoutSuccess) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_PaymentWorkoutSuccess implements _PaymentWorkoutSuccess {
-  const _$_PaymentWorkoutSuccess();
-
-  @override
-  String toString() {
-    return 'NotificationsState.paymentWorkoutSuccess()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaymentWorkoutSuccess);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
-    required TResult Function() workoutStatusPlanned,
-    required TResult Function() workoutStatusRS,
-    required TResult Function() workoutStatusStarted,
-    required TResult Function() workoutStatusRF,
-    required TResult Function() workoutStatusFinished,
-    required TResult Function() workoutStatusFF,
-    required TResult Function() workoutStatusMissed,
-    required TResult Function(String error) error,
-  }) {
-    return paymentWorkoutSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
-    TResult? Function()? workoutStatusPlanned,
-    TResult? Function()? workoutStatusRS,
-    TResult? Function()? workoutStatusStarted,
-    TResult? Function()? workoutStatusRF,
-    TResult? Function()? workoutStatusFinished,
-    TResult? Function()? workoutStatusFF,
-    TResult? Function()? workoutStatusMissed,
-    TResult? Function(String error)? error,
-  }) {
-    return paymentWorkoutSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
-    TResult Function()? workoutStatusPlanned,
-    TResult Function()? workoutStatusRS,
-    TResult Function()? workoutStatusStarted,
-    TResult Function()? workoutStatusRF,
-    TResult Function()? workoutStatusFinished,
-    TResult Function()? workoutStatusFF,
-    TResult Function()? workoutStatusMissed,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentWorkoutSuccess != null) {
-      return paymentWorkoutSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
-    required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
-    required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
-    required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
-    required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value)
-        workoutStatusFinished,
-    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
-    required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
-    required TResult Function(_Error value) error,
-  }) {
-    return paymentWorkoutSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult? Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult? Function(_Error value)? error,
-  }) {
-    return paymentWorkoutSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentWorkoutSuccess != null) {
-      return paymentWorkoutSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PaymentWorkoutSuccess implements NotificationsState {
-  const factory _PaymentWorkoutSuccess() = _$_PaymentWorkoutSuccess;
-}
-
-/// @nodoc
-abstract class _$$_PaymentWorkoutRejectCopyWith<$Res> {
-  factory _$$_PaymentWorkoutRejectCopyWith(_$_PaymentWorkoutReject value,
-          $Res Function(_$_PaymentWorkoutReject) then) =
-      __$$_PaymentWorkoutRejectCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PaymentWorkoutRejectCopyWithImpl<$Res>
-    extends _$NotificationsStateCopyWithImpl<$Res, _$_PaymentWorkoutReject>
-    implements _$$_PaymentWorkoutRejectCopyWith<$Res> {
-  __$$_PaymentWorkoutRejectCopyWithImpl(_$_PaymentWorkoutReject _value,
-      $Res Function(_$_PaymentWorkoutReject) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_PaymentWorkoutReject implements _PaymentWorkoutReject {
-  const _$_PaymentWorkoutReject();
-
-  @override
-  String toString() {
-    return 'NotificationsState.paymentWorkoutReject()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaymentWorkoutReject);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
-    required TResult Function() workoutStatusPlanned,
-    required TResult Function() workoutStatusRS,
-    required TResult Function() workoutStatusStarted,
-    required TResult Function() workoutStatusRF,
-    required TResult Function() workoutStatusFinished,
-    required TResult Function() workoutStatusFF,
-    required TResult Function() workoutStatusMissed,
-    required TResult Function(String error) error,
-  }) {
-    return paymentWorkoutReject();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
-    TResult? Function()? workoutStatusPlanned,
-    TResult? Function()? workoutStatusRS,
-    TResult? Function()? workoutStatusStarted,
-    TResult? Function()? workoutStatusRF,
-    TResult? Function()? workoutStatusFinished,
-    TResult? Function()? workoutStatusFF,
-    TResult? Function()? workoutStatusMissed,
-    TResult? Function(String error)? error,
-  }) {
-    return paymentWorkoutReject?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
-    TResult Function()? workoutStatusPlanned,
-    TResult Function()? workoutStatusRS,
-    TResult Function()? workoutStatusStarted,
-    TResult Function()? workoutStatusRF,
-    TResult Function()? workoutStatusFinished,
-    TResult Function()? workoutStatusFF,
-    TResult Function()? workoutStatusMissed,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentWorkoutReject != null) {
-      return paymentWorkoutReject();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
-    required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
-    required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
-    required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
-    required TResult Function(_WorkoutStatusRF value) workoutStatusRF,
-    required TResult Function(_WorkoutStatusFinished value)
-        workoutStatusFinished,
-    required TResult Function(_WorkoutStatusFF value) workoutStatusFF,
-    required TResult Function(_WorkoutStatusMissed value) workoutStatusMissed,
-    required TResult Function(_Error value) error,
-  }) {
-    return paymentWorkoutReject(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult? Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult? Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult? Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult? Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult? Function(_Error value)? error,
-  }) {
-    return paymentWorkoutReject?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
-    TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
-    TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
-    TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
-    TResult Function(_WorkoutStatusRF value)? workoutStatusRF,
-    TResult Function(_WorkoutStatusFinished value)? workoutStatusFinished,
-    TResult Function(_WorkoutStatusFF value)? workoutStatusFF,
-    TResult Function(_WorkoutStatusMissed value)? workoutStatusMissed,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (paymentWorkoutReject != null) {
-      return paymentWorkoutReject(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PaymentWorkoutReject implements NotificationsState {
-  const factory _PaymentWorkoutReject() = _$_PaymentWorkoutReject;
 }
 
 /// @nodoc
@@ -1708,22 +1264,9 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WorkoutStatusPlanned);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -1740,10 +1283,6 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -1760,10 +1299,6 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -1784,11 +1319,6 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -1806,10 +1336,6 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -1826,10 +1352,6 @@ class _$_WorkoutStatusPlanned implements _WorkoutStatusPlanned {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -1878,22 +1400,9 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WorkoutStatusRS);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -1910,10 +1419,6 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -1930,10 +1435,6 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -1954,11 +1455,6 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -1976,10 +1472,6 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -1996,10 +1488,6 @@ class _$_WorkoutStatusRS implements _WorkoutStatusRS {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2048,22 +1536,9 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WorkoutStatusStarted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -2080,10 +1555,6 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -2100,10 +1571,6 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -2124,11 +1591,6 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -2146,10 +1608,6 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2166,10 +1624,6 @@ class _$_WorkoutStatusStarted implements _WorkoutStatusStarted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2218,22 +1672,9 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WorkoutStatusRF);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -2250,10 +1691,6 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -2270,10 +1707,6 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -2294,11 +1727,6 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -2316,10 +1744,6 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2336,10 +1760,6 @@ class _$_WorkoutStatusRF implements _WorkoutStatusRF {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2388,22 +1808,9 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WorkoutStatusFinished);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -2420,10 +1827,6 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -2440,10 +1843,6 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -2464,11 +1863,6 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -2486,10 +1880,6 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2506,10 +1896,6 @@ class _$_WorkoutStatusFinished implements _WorkoutStatusFinished {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2558,22 +1944,9 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WorkoutStatusFF);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -2590,10 +1963,6 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -2610,10 +1979,6 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -2634,11 +1999,6 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -2656,10 +2016,6 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2676,10 +2032,6 @@ class _$_WorkoutStatusFF implements _WorkoutStatusFF {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2728,22 +2080,9 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WorkoutStatusMissed);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -2760,10 +2099,6 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -2780,10 +2115,6 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -2804,11 +2135,6 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -2826,10 +2152,6 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2846,10 +2168,6 @@ class _$_WorkoutStatusMissed implements _WorkoutStatusMissed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -2913,17 +2231,6 @@ class _$_Error implements _Error {
     return 'NotificationsState.error(error: $error)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Error &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -2934,10 +2241,6 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() paymentBatchSuccess,
-    required TResult Function() paymentBatchReject,
-    required TResult Function() paymentWorkoutSuccess,
-    required TResult Function() paymentWorkoutReject,
     required TResult Function() workoutStatusPlanned,
     required TResult Function() workoutStatusRS,
     required TResult Function() workoutStatusStarted,
@@ -2954,10 +2257,6 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? paymentBatchSuccess,
-    TResult? Function()? paymentBatchReject,
-    TResult? Function()? paymentWorkoutSuccess,
-    TResult? Function()? paymentWorkoutReject,
     TResult? Function()? workoutStatusPlanned,
     TResult? Function()? workoutStatusRS,
     TResult? Function()? workoutStatusStarted,
@@ -2974,10 +2273,6 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? paymentBatchSuccess,
-    TResult Function()? paymentBatchReject,
-    TResult Function()? paymentWorkoutSuccess,
-    TResult Function()? paymentWorkoutReject,
     TResult Function()? workoutStatusPlanned,
     TResult Function()? workoutStatusRS,
     TResult Function()? workoutStatusStarted,
@@ -2998,11 +2293,6 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_PaymentBatchSuccess value) paymentBatchSuccess,
-    required TResult Function(_PaymentBatchReject value) paymentBatchReject,
-    required TResult Function(_PaymentWorkoutSuccess value)
-        paymentWorkoutSuccess,
-    required TResult Function(_PaymentWorkoutReject value) paymentWorkoutReject,
     required TResult Function(_WorkoutStatusPlanned value) workoutStatusPlanned,
     required TResult Function(_WorkoutStatusRS value) workoutStatusRS,
     required TResult Function(_WorkoutStatusStarted value) workoutStatusStarted,
@@ -3020,10 +2310,6 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult? Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult? Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult? Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult? Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult? Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult? Function(_WorkoutStatusStarted value)? workoutStatusStarted,
@@ -3040,10 +2326,6 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_PaymentBatchSuccess value)? paymentBatchSuccess,
-    TResult Function(_PaymentBatchReject value)? paymentBatchReject,
-    TResult Function(_PaymentWorkoutSuccess value)? paymentWorkoutSuccess,
-    TResult Function(_PaymentWorkoutReject value)? paymentWorkoutReject,
     TResult Function(_WorkoutStatusPlanned value)? workoutStatusPlanned,
     TResult Function(_WorkoutStatusRS value)? workoutStatusRS,
     TResult Function(_WorkoutStatusStarted value)? workoutStatusStarted,

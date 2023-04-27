@@ -20,13 +20,10 @@ class WorkoutStartModalBottomSheet extends StatelessWidget with UserMixin {
       height: 500,
       child: BlocBuilder<NotificationsBloc, NotificationsState>(
         bloc: getIt<NotificationsBloc>(),
+        buildWhen: (previous, current) => true,
         builder: (context, state) {
           return state.when(
             initial: () => _buildStartLoadingPullup(),
-            paymentBatchReject: () => const SizedBox(),
-            paymentBatchSuccess: () => const SizedBox(),
-            paymentWorkoutReject: () => const SizedBox(),
-            paymentWorkoutSuccess: () => const SizedBox(),
             workoutStatusPlanned: () => const SizedBox(),
             workoutStatusFF: () => const SizedBox(),
             workoutStatusMissed: () => const SizedBox(),

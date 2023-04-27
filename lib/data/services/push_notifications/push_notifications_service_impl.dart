@@ -31,12 +31,15 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
         case 'CHANGE_WORKOUT':
           final workoutUuid = remoteMessage.data['id'].toString();
           final status = remoteMessage.data['status'].toString();
+          final userType = remoteMessage.data['user_type'].toString();
 
           if (status != 'REG') {
             return _updateStream(
               PushNotificationsEnum.changeWorkoutStatusNotification,
               workoutUuid: workoutUuid,
               workoutStatus: status,
+              userType: userType,
+              remoteMessage: remoteMessage,
             );
           }
       }
@@ -68,6 +71,15 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
   Stream<Map<String, String>?> get changeWorkoutStatusNotification =>
       _changeWorkoutStatusNotificationController;
 
+  final BehaviorSubject<RemoteMessage>
+      _adminChangeWorkoutStatusNotificationController =
+      BehaviorSubject(sync: true);
+  void Function(RemoteMessage) get updateAdminChangeWorkoutStatusNotification =>
+      _adminChangeWorkoutStatusNotificationController.sink.add;
+  @override
+  Stream<RemoteMessage> get adminChangeWorkoutStatusNotification =>
+      _adminChangeWorkoutStatusNotificationController;
+
   PaymentStatusEnum _checkPaymentStatus(String status) {
     return status == PaymentStatusEnum.success.name.toUpperCase()
         ? PaymentStatusEnum.success
@@ -79,12 +91,16 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
     PaymentStatusEnum? paymentStatus,
     String? workoutUuid,
     String? workoutStatus,
+    String? userType,
+    RemoteMessage? remoteMessage,
   }) {
     switch (pushNotifications) {
       case PushNotificationsEnum.changeWorkoutStatusNotification:
-        return updateChangeWorkoutStatusNotification(
-          {workoutUuid!: workoutStatus!},
-        );
+        return userType == 'ADMINISTRATOR'
+            ? updateAdminChangeWorkoutStatusNotification(remoteMessage!)
+            : updateChangeWorkoutStatusNotification(
+                {workoutUuid!: workoutStatus!},
+              );
       case PushNotificationsEnum.paymentBatchNotification:
         return updatePaymentBatchNotification(paymentStatus);
       case PushNotificationsEnum.paymentWorkoutNotification:
@@ -97,5 +113,6 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
     _paymentBatchNotificationController.close();
     _paymentWorkoutNotificationController.close();
     _changeWorkoutStatusNotificationController.close();
+    _adminChangeWorkoutStatusNotificationController.close();
   }
 }

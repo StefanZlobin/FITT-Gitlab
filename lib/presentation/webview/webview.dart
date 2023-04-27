@@ -4,7 +4,6 @@ import 'package:fitt/core/enum/payment_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
 import 'package:fitt/domain/cubits/workout/workout_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/batch/batch.dart';
@@ -36,8 +35,6 @@ class Webview extends StatefulWidget {
 }
 
 class _WebviewState extends State<Webview> {
-  final notificationsBloc = getIt<NotificationsBloc>();
-
   late final WebViewController _controller;
 
   @override
