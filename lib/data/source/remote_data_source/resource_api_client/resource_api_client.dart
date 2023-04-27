@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:fitt/domain/entities/facility/facility.dart';
 import 'package:fitt/domain/entities/price/price.dart';
+import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'resource_api_client.g.dart';

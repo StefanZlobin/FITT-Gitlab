@@ -8,7 +8,7 @@ import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/core/validation/email_validator.dart';
 import 'package:fitt/core/validation/name_validator.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/cubits/feedback/feedback_cubit.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/forms/app_text_form.dart';
@@ -60,13 +60,12 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
               child: Column(
                 children: [
                   _buildCommentForm(),
-                  BlocBuilder<UserBloc, UserState>(
-                    bloc: getIt<UserBloc>(),
+                  BlocBuilder<UserAvatarBloc, UserAvatarState>(
+                    bloc: getIt<UserAvatarBloc>(),
                     builder: (context, state) {
                       return state.when(
-                        loading: () => _buildEmailForm(null),
-                        loaded: (user) => _buildEmailForm(user?.email),
-                        loadedWithNoUser: (_) => _buildEmailForm(null),
+                        initial: () => _buildEmailForm(null),
+                        loaded: (user) => _buildEmailForm(user.email),
                         error: (_) => _buildEmailForm(null),
                       );
                     },
@@ -74,16 +73,15 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
                 ],
               ),
             ),
-            BlocBuilder<UserBloc, UserState>(
-              bloc: getIt<UserBloc>(),
+            BlocBuilder<UserAvatarBloc, UserAvatarState>(
+              bloc: getIt<UserAvatarBloc>(),
               builder: (context, state) {
                 return state.when(
-                  loading: () => _buildSentButton(context),
+                  initial: () => _buildSentButton(context),
                   loaded: (user) => _buildSentButton(
                     context,
-                    email: user?.email,
+                    email: user.email,
                   ),
-                  loadedWithNoUser: (_) => _buildSentButton(context),
                   error: (_) => _buildSentButton(context),
                 );
               },
@@ -100,6 +98,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
       placeholder: 'Задайте вопрос поддержке',
       validator: (value) => nameValidator.getValidationErrorName(value),
       isHight: true,
+      height: 80,
       onChanged: (value) {
         setState(() {
           commentController.text = value;
@@ -113,7 +112,8 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
     String? email,
   }) {
     final e = email ?? '';
-    final isDisable = commentController.text.isEmpty || (emailController.text.isEmpty && e.isEmpty);
+    final isDisable = commentController.text.isEmpty ||
+        (emailController.text.isEmpty && e.isEmpty);
     return BottomCenter(
       child: AppElevatedButton(
         onPressedAsync: () async {
@@ -132,6 +132,7 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
 
   Widget _buildEmailForm(String? email) {
     return AppTextFormField(
+      height: 75,
       title: Text(
         'E-mail для связи',
         style: AppTypography.kH16.apply(color: AppColors.kOxford),
@@ -162,7 +163,8 @@ class _FeedbackPageState extends State<FeedbackPage> with UserMixin {
       titleTextStyle: AppTypography.kH18.apply(color: AppColors.kBaseBlack),
       title: const Text('Сообщение успешно отправлено'),
       contentPadding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
-      contentTextStyle: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
+      contentTextStyle:
+          AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
       content: const Text(
         'Наш менеджер свяжется с вами в ближайшее время, по адресу почты который вы указали',
       ),

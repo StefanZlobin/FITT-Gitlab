@@ -4,8 +4,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
 import 'package:fitt/domain/use_cases/admin/admin_use_case.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';

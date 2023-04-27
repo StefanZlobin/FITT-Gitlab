@@ -6,13 +6,14 @@ import 'package:fitt/data/models/request/payment/buy_workout_by_batch_request_bo
 import 'package:fitt/data/models/request/payment/buy_workout_request_body.dart';
 import 'package:fitt/data/models/response/payment/buy_batch_response.dart';
 import 'package:fitt/data/source/remote_data_source/payment_api_client/payment_api_client.dart';
-import 'package:fitt/domain/entities/time_slot/time_slot.dart';
-import 'package:fitt/domain/entities/workout/workout.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/repositories/payment/payment_repository.dart';
+import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
+import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 
 class PaymentRepositoryImpl implements PaymentRepository {
-  PaymentRepositoryImpl(this.dio, {this.baseUrl}) : _apiClient = PaymentApiClient(dio, baseUrl: baseUrl);
+  PaymentRepositoryImpl(this.dio, {this.baseUrl})
+      : _apiClient = PaymentApiClient(dio, baseUrl: baseUrl);
 
   final Dio dio;
   final String? baseUrl;
@@ -58,7 +59,8 @@ class PaymentRepositoryImpl implements PaymentRepository {
     required String activityUuid,
   }) async {
     try {
-      final response = await _apiClient.buyWorkoutByBatch(BuyWorkoutByBatchRequestBody(
+      final response =
+          await _apiClient.buyWorkoutByBatch(BuyWorkoutByBatchRequestBody(
         activity: activityUuid,
         startTime: slot.startTime.toString(),
         endTime: slot.startTime.add(slot.duration).toString(),

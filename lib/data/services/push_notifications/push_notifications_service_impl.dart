@@ -14,27 +14,31 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
       log(const JsonEncoder.withIndent('  ').convert(remoteMessage.toMap()));
 
       switch (remoteMessage.data['type']) {
-        case PushNotificationsEnum.paymentBatchNotification:
+        case 'PAYMENT_BATCH_NOTIFICATION':
           final status = remoteMessage.data['payment_status'].toString();
 
           return _updateStream(
             PushNotificationsEnum.paymentBatchNotification,
             paymentStatus: _checkPaymentStatus(status),
           );
-        case PushNotificationsEnum.paymentWorkoutNotification:
+        case 'PAYMENT_WORKOUT_NOTIFICATION':
           final status = remoteMessage.data['payment_status'].toString();
 
           return _updateStream(
             PushNotificationsEnum.paymentWorkoutNotification,
             paymentStatus: _checkPaymentStatus(status),
           );
-        case PushNotificationsEnum.changeWorkoutStatusNotification:
+        case 'CHANGE_WORKOUT':
           final workoutUuid = remoteMessage.data['id'].toString();
+          final status = remoteMessage.data['status'].toString();
 
-          return _updateStream(
-            PushNotificationsEnum.changeWorkoutStatusNotification,
-            workoutUuid: workoutUuid,
-          );
+          if (status != 'REG') {
+            return _updateStream(
+              PushNotificationsEnum.changeWorkoutStatusNotification,
+              workoutUuid: workoutUuid,
+              workoutStatus: status,
+            );
+          }
       }
     });
   }
@@ -55,12 +59,13 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
   Stream<PaymentStatusEnum?> get paymentWorkoutNotification =>
       _paymentWorkoutNotificationController;
 
-  final BehaviorSubject<String?> _changeWorkoutStatusNotificationController =
-      BehaviorSubject(sync: true);
-  void Function(String?) get updateChangeWorkoutStatusNotification =>
-      _changeWorkoutStatusNotificationController.sink.add;
+  final BehaviorSubject<Map<String, String>?>
+      _changeWorkoutStatusNotificationController = BehaviorSubject(sync: true);
+  void Function(Map<String, String>?)
+      get updateChangeWorkoutStatusNotification =>
+          _changeWorkoutStatusNotificationController.sink.add;
   @override
-  Stream<String?> get changeWorkoutStatusNotification =>
+  Stream<Map<String, String>?> get changeWorkoutStatusNotification =>
       _changeWorkoutStatusNotificationController;
 
   PaymentStatusEnum _checkPaymentStatus(String status) {
@@ -73,10 +78,13 @@ class PushNotificationsServiceImpl implements PushNotificationsService {
     PushNotificationsEnum pushNotifications, {
     PaymentStatusEnum? paymentStatus,
     String? workoutUuid,
+    String? workoutStatus,
   }) {
     switch (pushNotifications) {
       case PushNotificationsEnum.changeWorkoutStatusNotification:
-        return updateChangeWorkoutStatusNotification(workoutUuid);
+        return updateChangeWorkoutStatusNotification(
+          {workoutUuid!: workoutStatus!},
+        );
       case PushNotificationsEnum.paymentBatchNotification:
         return updatePaymentBatchNotification(paymentStatus);
       case PushNotificationsEnum.paymentWorkoutNotification:

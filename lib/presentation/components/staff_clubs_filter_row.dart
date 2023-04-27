@@ -7,7 +7,7 @@ import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
-import 'package:fitt/domain/entities/admin_club/admin_club.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

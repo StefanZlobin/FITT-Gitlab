@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/enum/admin_workout_finish_reason_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/domain/entities/admin_workout/admin_workout.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/use_cases/admin/admin_use_case.dart';
+import 'package:fitt/features/workouts/domain/entities/admin_workout/admin_workout.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'admin_workout_cubit.freezed.dart';

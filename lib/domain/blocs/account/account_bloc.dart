@@ -6,7 +6,6 @@ import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/models/account_user_birthday.dart';
@@ -16,6 +15,7 @@ import 'package:fitt/domain/models/account_user_gender.dart';
 import 'package:fitt/domain/models/account_user_second_name.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/use_cases/user/user_use_case.dart';
+import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -102,11 +102,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
         final CroppedFile? croppedFile = await ImageCropper().cropImage(
           sourcePath: xFile.path,
         );
-        getIt<UserBloc>().add(
-          UserEvent.updateUserAvatar(
-            avatar: File(croppedFile!.path),
-          ),
-        );
+        await getIt<UserRepository>()
+            .updateUserAvatar(photo: File(croppedFile!.path));
       } on Exception {
         await getIt<AppMetricaService>().reportEventToAppMetrica(
           eventName: 'Не подтвержден попап с запросом доступа к фото',
@@ -219,7 +216,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
     );
     try {
       await userUserCase.updateUserData(user: userData);
-      getIt<UserBloc>().add(const UserEvent.checkUser());
       emit(const AccountState.initial());
     } on NetworkExceptions catch (e) {
       emit(AccountState.error(error: NetworkExceptions.getErrorMessage(e)));
