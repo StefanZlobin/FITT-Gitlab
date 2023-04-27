@@ -52,8 +52,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           add(MapEvent.filtersDetected(
             filters: ClubFilters(
               facilities: activeFacilities,
-              maxPrice: selectedPrice!.maxPrice,
-              minPrice: selectedPrice.minPrice,
+              maxPrice: selectedPrice?.maxPrice,
+              minPrice: selectedPrice?.minPrice,
               favorite: false,
             ),
           ));

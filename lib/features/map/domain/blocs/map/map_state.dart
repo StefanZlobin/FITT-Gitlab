@@ -1,6 +1,6 @@
 part of 'map_bloc.dart';
 
-@freezed
+@Freezed(equal: false)
 class MapState with _$MapState {
   const factory MapState.initial() = _MapStateInitial;
   const factory MapState.loading() = _MapStateLoading;

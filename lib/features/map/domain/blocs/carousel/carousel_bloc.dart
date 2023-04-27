@@ -3,7 +3,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/features/clubs/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
@@ -17,8 +16,8 @@ part 'carousel_state.dart';
 
 class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
   CarouselBloc() : super(const _Initial()) {
-    on<_ClubSelected>(_onClubSelected, transformer: sequential());
-    on<_ClubsChanged>(_onClubsChanged, transformer: restartable());
+    on<_ClubSelected>(_onClubSelected);
+    on<_ClubsChanged>(_onClubsChanged);
 
     getIt<PartnerClubsCubit>().stream.listen((PartnerClubsState state) {
       state.whenOrNull(
@@ -34,44 +33,28 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
       SnapScrollListController(itemExtent: 256);
   SnapScrollListController get scrollController => _listScrollController;
 
-  Completer<List<PartnerClub>>? _partnerClubsCompleter;
   List<PartnerClub> clubs = [];
-  bool forseUpdate = false;
 
   Future<void> _onClubSelected(
     _ClubSelected event,
     Emitter<CarouselState> emit,
   ) async {
     assert(
-      _partnerClubsCompleter == null,
-      'Not finished handling of previous select',
+      clubs.isNotEmpty,
+      'Cannot animate to club becouse clubs is empty',
     );
-
-    //if (clubs.isNotEmpty && !forseUpdate) {
-    //  final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
-    //  assert(targetIndex != -1, 'Selected absent club');
-
-    //  unawaited(_listScrollController.animateToIndex(targetIndex));
-    //} else {
-    final completer = _partnerClubsCompleter = Completer();
-    clubs = await completer.future;
 
     final targetIndex = clubs.indexWhere((club) => club.uuid == event.id);
     assert(targetIndex != -1, 'Selected absent club');
 
     unawaited(_listScrollController.animateToIndex(targetIndex));
-    //}
   }
 
   Future<void> _onClubsChanged(
     _ClubsChanged event,
     Emitter<CarouselState> emit,
   ) async {
-    forseUpdate = event.clubs.length != clubs.length ? true : false;
-    final completer = _partnerClubsCompleter;
-    if (completer != null) {
-      completer.complete(event.clubs);
-      _partnerClubsCompleter = null;
-    }
+    clubs = [];
+    clubs.addAll(event.clubs);
   }
 }

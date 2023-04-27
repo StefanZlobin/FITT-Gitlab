@@ -49,6 +49,7 @@ class MapPage extends StatelessWidget {
           floatingActionButton:
               BlocBuilder<PartnerClubsCubit, PartnerClubsState>(
             bloc: getIt<PartnerClubsCubit>(),
+            buildWhen: (previous, current) => true,
             builder: (context, state) {
               return state.when(
                 loading: () => const SizedBox(),

@@ -44,8 +44,8 @@ class PartnerClubsCubit extends Cubit<PartnerClubsState> {
               .map((e) => e.key)
               .toList();
           clubFilters = ClubFilters(
-            minPrice: selectedPrice!.minPrice,
-            maxPrice: selectedPrice.maxPrice,
+            minPrice: selectedPrice?.minPrice,
+            maxPrice: selectedPrice?.maxPrice,
             facilities: activeFacilities,
           );
 
