@@ -109,16 +109,6 @@ class _$_AdminWorkoutsStateInitial implements _AdminWorkoutsStateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AdminWorkoutsStateInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -242,19 +232,6 @@ class _$_AdminWorkoutsStateLoaded implements _AdminWorkoutsStateLoaded {
   String toString() {
     return 'AdminWorkoutsState.loaded(adminWorkouts: $adminWorkouts)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AdminWorkoutsStateLoaded &&
-            const DeepCollectionEquality()
-                .equals(other._adminWorkouts, _adminWorkouts));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_adminWorkouts));
 
   @JsonKey(ignore: true)
   @override
@@ -386,17 +363,6 @@ class _$_AdminWorkoutsStateError implements _AdminWorkoutsStateError {
   String toString() {
     return 'AdminWorkoutsState.error(error: $error)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AdminWorkoutsStateError &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override

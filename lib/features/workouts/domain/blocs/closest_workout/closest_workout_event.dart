@@ -6,6 +6,6 @@ class ClosestWorkoutEvent with _$ClosestWorkoutEvent {
       _ClosestWorkoutEventGetClosestWorkout;
 
   const factory ClosestWorkoutEvent.closestWorkoutDetected({
-    required Workout workout,
+    Workout? workout,
   }) = _ClosestWorkoutEventClosestWorkoutDetected;
 }
