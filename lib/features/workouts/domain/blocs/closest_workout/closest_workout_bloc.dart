@@ -45,9 +45,7 @@ class ClosestWorkoutBloc extends Bloc<ClosestWorkoutEvent, ClosestWorkoutState>
     });
 
     workoutRepository.closestWorkout.listen((Workout? workout) {
-      if (workout != null) {
-        add(ClosestWorkoutEvent.closestWorkoutDetected(workout: workout));
-      }
+      add(ClosestWorkoutEvent.closestWorkoutDetected(workout: workout));
     });
   }
 

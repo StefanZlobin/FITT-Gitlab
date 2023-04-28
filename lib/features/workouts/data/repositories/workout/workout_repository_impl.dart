@@ -46,18 +46,18 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
   @override
   Stream<List<Workout>> get workoutsArchive => _workoutsArchiveController;
 
-  final BehaviorSubject<Workout> _closestWorkoutController =
+  final BehaviorSubject<Workout?> _closestWorkoutController =
       BehaviorSubject(sync: true);
-  void Function(Workout) get _updateClosestWorkout =>
+  void Function(Workout?) get _updateClosestWorkout =>
       _closestWorkoutController.sink.add;
   @override
-  Stream<Workout> get closestWorkout => _closestWorkoutController;
+  Stream<Workout?> get closestWorkout => _closestWorkoutController;
 
   @override
   Future<Workout> getWorkout(String uuid) async {
     try {
       final workout = await _apiClient.getWorkout(uuid);
-      
+
       return workout;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
@@ -118,12 +118,13 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         ),
       );
       if (workouts.results.isEmpty) {
+        _updateClosestWorkout(null);
         final res = await getWorkouts();
         res.sort((a, b) => a.canStartTime.compareTo(b.canStartTime));
-        _updateClosestWorkout(res.first);
+        _updateClosestWorkout(res.firstOrNull);
         return res.firstOrNull;
       } else {
-        _updateClosestWorkout(workouts.results.first);
+        _updateClosestWorkout(workouts.results.firstOrNull);
         return workouts.results.firstOrNull;
       }
     } on DioError catch (e, stackTrace) {
@@ -164,7 +165,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         e,
         stackTrace: stackTrace,
       );
-      
+
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -183,7 +184,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         e,
         stackTrace: stackTrace,
       );
-    
+
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -202,7 +203,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
         e,
         stackTrace: stackTrace,
       );
-      
+
       throw NetworkExceptions.getDioException(e);
     }
   }

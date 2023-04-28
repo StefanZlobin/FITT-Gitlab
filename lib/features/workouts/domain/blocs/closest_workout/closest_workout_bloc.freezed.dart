@@ -19,19 +19,19 @@ mixin _$ClosestWorkoutEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getClosestWorkout,
-    required TResult Function(Workout workout) closestWorkoutDetected,
+    required TResult Function(Workout? workout) closestWorkoutDetected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getClosestWorkout,
-    TResult? Function(Workout workout)? closestWorkoutDetected,
+    TResult? Function(Workout? workout)? closestWorkoutDetected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getClosestWorkout,
-    TResult Function(Workout workout)? closestWorkoutDetected,
+    TResult Function(Workout? workout)? closestWorkoutDetected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,7 +124,7 @@ class _$_ClosestWorkoutEventGetClosestWorkout
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getClosestWorkout,
-    required TResult Function(Workout workout) closestWorkoutDetected,
+    required TResult Function(Workout? workout) closestWorkoutDetected,
   }) {
     return getClosestWorkout();
   }
@@ -133,7 +133,7 @@ class _$_ClosestWorkoutEventGetClosestWorkout
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getClosestWorkout,
-    TResult? Function(Workout workout)? closestWorkoutDetected,
+    TResult? Function(Workout? workout)? closestWorkoutDetected,
   }) {
     return getClosestWorkout?.call();
   }
@@ -142,7 +142,7 @@ class _$_ClosestWorkoutEventGetClosestWorkout
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getClosestWorkout,
-    TResult Function(Workout workout)? closestWorkoutDetected,
+    TResult Function(Workout? workout)? closestWorkoutDetected,
     required TResult orElse(),
   }) {
     if (getClosestWorkout != null) {
@@ -202,9 +202,9 @@ abstract class _$$_ClosestWorkoutEventClosestWorkoutDetectedCopyWith<$Res> {
           $Res Function(_$_ClosestWorkoutEventClosestWorkoutDetected) then) =
       __$$_ClosestWorkoutEventClosestWorkoutDetectedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Workout workout});
+  $Res call({Workout? workout});
 
-  $WorkoutCopyWith<$Res> get workout;
+  $WorkoutCopyWith<$Res>? get workout;
 }
 
 /// @nodoc
@@ -220,20 +220,24 @@ class __$$_ClosestWorkoutEventClosestWorkoutDetectedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? workout = null,
+    Object? workout = freezed,
   }) {
     return _then(_$_ClosestWorkoutEventClosestWorkoutDetected(
-      workout: null == workout
+      workout: freezed == workout
           ? _value.workout
           : workout // ignore: cast_nullable_to_non_nullable
-              as Workout,
+              as Workout?,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $WorkoutCopyWith<$Res> get workout {
-    return $WorkoutCopyWith<$Res>(_value.workout, (value) {
+  $WorkoutCopyWith<$Res>? get workout {
+    if (_value.workout == null) {
+      return null;
+    }
+
+    return $WorkoutCopyWith<$Res>(_value.workout!, (value) {
       return _then(_value.copyWith(workout: value));
     });
   }
@@ -243,10 +247,10 @@ class __$$_ClosestWorkoutEventClosestWorkoutDetectedCopyWithImpl<$Res>
 
 class _$_ClosestWorkoutEventClosestWorkoutDetected
     implements _ClosestWorkoutEventClosestWorkoutDetected {
-  const _$_ClosestWorkoutEventClosestWorkoutDetected({required this.workout});
+  const _$_ClosestWorkoutEventClosestWorkoutDetected({this.workout});
 
   @override
-  final Workout workout;
+  final Workout? workout;
 
   @override
   String toString() {
@@ -277,7 +281,7 @@ class _$_ClosestWorkoutEventClosestWorkoutDetected
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getClosestWorkout,
-    required TResult Function(Workout workout) closestWorkoutDetected,
+    required TResult Function(Workout? workout) closestWorkoutDetected,
   }) {
     return closestWorkoutDetected(workout);
   }
@@ -286,7 +290,7 @@ class _$_ClosestWorkoutEventClosestWorkoutDetected
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getClosestWorkout,
-    TResult? Function(Workout workout)? closestWorkoutDetected,
+    TResult? Function(Workout? workout)? closestWorkoutDetected,
   }) {
     return closestWorkoutDetected?.call(workout);
   }
@@ -295,7 +299,7 @@ class _$_ClosestWorkoutEventClosestWorkoutDetected
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getClosestWorkout,
-    TResult Function(Workout workout)? closestWorkoutDetected,
+    TResult Function(Workout? workout)? closestWorkoutDetected,
     required TResult orElse(),
   }) {
     if (closestWorkoutDetected != null) {
@@ -345,10 +349,9 @@ class _$_ClosestWorkoutEventClosestWorkoutDetected
 abstract class _ClosestWorkoutEventClosestWorkoutDetected
     implements ClosestWorkoutEvent {
   const factory _ClosestWorkoutEventClosestWorkoutDetected(
-          {required final Workout workout}) =
-      _$_ClosestWorkoutEventClosestWorkoutDetected;
+      {final Workout? workout}) = _$_ClosestWorkoutEventClosestWorkoutDetected;
 
-  Workout get workout;
+  Workout? get workout;
   @JsonKey(ignore: true)
   _$$_ClosestWorkoutEventClosestWorkoutDetectedCopyWith<
           _$_ClosestWorkoutEventClosestWorkoutDetected>

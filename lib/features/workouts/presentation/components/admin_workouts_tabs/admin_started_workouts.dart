@@ -48,6 +48,7 @@ class AdminStartedWorkouts extends StatelessWidget {
       listeners: [
         BlocListener<NotificationsBloc, NotificationsState>(
           bloc: notificationsBloc,
+          listenWhen: (previous, current) => true,
           listener: (context, state) {
             state.whenOrNull(
               workoutStatusRF: () =>
@@ -104,6 +105,7 @@ class AdminStartedWorkouts extends StatelessWidget {
       ],
       child: BlocBuilder<AdminWorkoutsCubit, AdminWorkoutsState>(
         bloc: getIt<AdminWorkoutsCubit>(),
+        buildWhen: (previous, current) => true,
         builder: (context, state) {
           return state.when(
             initial: () => const Center(child: CircularProgressIndicator()),

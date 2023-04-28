@@ -114,20 +114,34 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     _OnAdminChangeWorkoutNotification event,
     Emitter<NotificationsState> emit,
   ) {
-    if (Platform.isAndroid &&
-        event.remoteMessage.data['status'] == 'REQUIRED_START') {
-      getIt<LocalNotificationsService>().showLocalNotification(
-        id: event.remoteMessage.data['id'].toString().hashCode,
-        title: event.remoteMessage.notification?.title ?? '',
-        body: event.remoteMessage.notification?.body ?? '',
-      );
-    } else if (Platform.isAndroid &&
-        event.remoteMessage.data['status'] == 'REQUIRED_FINISH') {
-      getIt<LocalNotificationsService>().showLocalNotification(
-        id: event.remoteMessage.data['id'].toString().hashCode,
-        title: event.remoteMessage.notification?.title ?? '',
-        body: event.remoteMessage.notification?.body ?? '',
-      );
+    if (event.remoteMessage.data['status'] == 'REQUIRED_START') {
+      if (Platform.isAndroid) {
+        getIt<LocalNotificationsService>().showLocalNotification(
+          id: event.remoteMessage.data['id'].toString().hashCode,
+          title: event.remoteMessage.notification?.title ?? '',
+          body: event.remoteMessage.notification?.body ?? '',
+        );
+      }
+
+      emit(const NotificationsState.workoutStatusRS());
+    } else if (event.remoteMessage.data['status'] == 'REQUIRED_FINISH') {
+      if (Platform.isAndroid) {
+        getIt<LocalNotificationsService>().showLocalNotification(
+          id: event.remoteMessage.data['id'].toString().hashCode,
+          title: event.remoteMessage.notification?.title ?? '',
+          body: event.remoteMessage.notification?.body ?? '',
+        );
+      }
+
+      emit(const NotificationsState.workoutStatusRF());
+    } else if (event.remoteMessage.data['status'] == 'FINISH') {
+      emit(const NotificationsState.workoutStatusFinished());
+    } else if (event.remoteMessage.data['status'] == 'FORCE_FINISH') {
+      emit(const NotificationsState.workoutStatusFF());
+    } else if (event.remoteMessage.data['status'] == 'MISSED') {
+      emit(const NotificationsState.workoutStatusMissed());
+    } else if (event.remoteMessage.data['status'] == 'PLAN') {
+      emit(const NotificationsState.workoutStatusPlanned());
     }
   }
 }
