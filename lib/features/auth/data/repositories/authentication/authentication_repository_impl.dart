@@ -36,8 +36,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       }
     });
 
-    getIt<UserRepository>().user.listen((User? event) {
-      updateAuthStatus(AuthenticationStatusEnum.unauthenticated);
+    getIt<UserRepository>().user.listen((User? user) {
+      if (user == null) {
+        updateAuthStatus(AuthenticationStatusEnum.unauthenticated);
+      }
     });
   }
 

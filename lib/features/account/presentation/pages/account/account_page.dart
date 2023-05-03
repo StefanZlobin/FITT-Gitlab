@@ -379,8 +379,9 @@ class AccountPage extends StatelessWidget with UserMixin {
                 );
               },
               onDateSelected: (value) {
-                getIt<AccountBloc>()
-                    .add(AccountEvent.emailChanged(email: value.toString()));
+                getIt<AccountBloc>().add(
+                  AccountEvent.birthdayChanged(birthday: value.toString()),
+                );
               },
             );
           },
