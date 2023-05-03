@@ -120,6 +120,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     _MapEventFiltersDetected event,
     Emitter emit,
   ) async {
+    if (_prevLoaded == null) return;
+
     final filters = event.filters;
     final mapPoints = await _mapUseCase.getMapPoints(
       filters: filters,
@@ -281,8 +283,6 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   ) async {
     final marker = event.marker;
 
-    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(marker)));
-
     final prevState = _prevLoaded;
     if (prevState == null) {
       return;
@@ -313,6 +313,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     );
 
     emit(newState);
+
+    _carouselBloc.add(CarouselEvent.clubSelected(_clubId(marker)));
   }
 
   Future<void> _onCarouselCardFocused(

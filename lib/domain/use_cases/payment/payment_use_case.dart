@@ -1,7 +1,7 @@
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/data/models/response/payment/buy_batch_response.dart';
-import 'package:fitt/domain/repositories/payment/payment_repository.dart';
 import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
+import 'package:fitt/features/payment/domain/repositories/payment/payment_repository.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 
 class PaymentUseCase {

@@ -52,7 +52,6 @@ import 'package:fitt/features/workouts/domain/blocs/workouts_archive/workouts_ar
 import 'package:get_it/get_it.dart';
 
 import '../../config/config.dart';
-import '../../data/repositories/payment/payment_repository_impl.dart';
 import '../../data/repositories/resource/resource_repository_impl.dart';
 import '../../data/services/geolocation/geolocation_service_impl.dart';
 import '../../data/services/local_notifications/local_notifications_service_impl.dart';
@@ -72,7 +71,6 @@ import '../../domain/cubits/feedback/feedback_cubit.dart';
 import '../../domain/cubits/geolocation/geolocation_cubit.dart';
 import '../../domain/cubits/modal_bottom_sheet/modal_bottom_sheet_cubit.dart';
 import '../../domain/cubits/workout_slider_button_type/workout_slider_button_type_cubit.dart';
-import '../../domain/repositories/payment/payment_repository.dart';
 import '../../domain/repositories/resource/resource_repository.dart';
 import '../../domain/services/geolocation/geolocation_service.dart';
 import '../../domain/services/local_notifications/local_notifications_service.dart';
@@ -85,6 +83,8 @@ import '../../features/map/data/repositories/map/map_repository_impl.dart';
 import '../../features/map/data/repositories/search/search_repository_impl.dart';
 import '../../features/map/domain/repositories/map/map_repository.dart';
 import '../../features/map/domain/repositories/search/search_repository.dart';
+import '../../features/payment/data/repositories/payment/payment_repository_impl.dart';
+import '../../features/payment/domain/repositories/payment/payment_repository.dart';
 import '../../features/workouts/data/repositories/admin/admin_repository_impl.dart';
 import '../../features/workouts/data/repositories/workout/workout_repository_impl.dart';
 import '../../features/workouts/domain/repositories/admin/admin_repository.dart';
