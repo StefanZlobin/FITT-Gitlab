@@ -1,6 +1,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
@@ -8,6 +9,7 @@ import 'package:fitt/core/utils/age_utils.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/cubits/admin_workout/admin_workout_cubit.dart';
 import 'package:fitt/features/workouts/domain/entities/admin_workout/admin_workout.dart';
 import 'package:fitt/features/workouts/presentation/components/buttons/admin_workout_action_button.dart';
@@ -15,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
-class AdminPreviewWorkoutCard extends StatelessWidget {
+class AdminPreviewWorkoutCard extends StatelessWidget with UserMixin {
   const AdminPreviewWorkoutCard({
     super.key,
     required this.adminWorkout,
@@ -118,7 +120,8 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
                 ),
               ],
             ),
-            AdminWorkoutActionButton(adminWorkout: adminWorkout),
+            if (userSnapshot!.role!.contains(UserRoleEnum.administrator))
+              AdminWorkoutActionButton(adminWorkout: adminWorkout),
           ],
         ),
       ),
