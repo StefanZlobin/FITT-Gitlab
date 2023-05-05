@@ -4,11 +4,13 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/data/source/local_data_source/user_local_client/user_local_client.dart';
 import 'package:fitt/data/source/remote_data_source/user_api_client/user_api_client.dart';
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
+import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/token/token_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:rxdart/rxdart.dart';
@@ -97,6 +99,8 @@ class UserRepositoryImpl implements UserRepository {
   Future<void> deleteUser() async {
     await _apiClient.deleteUserData();
     await logoutUser(deleteUser: true);
+    getIt<AuthenticationRepository>()
+        .updateAuthenticationStatus(AuthenticationStatusEnum.unauthenticated);
   }
 
   @override

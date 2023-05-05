@@ -1,11 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/tokens/user_device_token.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/features/auth/domain/blocs/input_phone_number/input_phone_number_bloc.dart';
-import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
 import 'package:fitt/features/auth/domain/use_cases/login/login_use_case.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -26,7 +24,7 @@ class InputSecureCodeBloc
 
     getIt<InputPhoneNumberBloc>()
         .phoneNumber
-        .listen((String? phoneNumber) async {
+      .listen((String? phoneNumber) async {
       if (phoneNumber != null) {
         _phoneNumber = phoneNumber;
 
@@ -38,10 +36,6 @@ class InputSecureCodeBloc
         add(InputSecureCodeEvent.requestVerificationCode(
           phoneNumber: phoneNumber,
         ));
-
-        getIt<AuthenticationRepository>().updateAuthenticationStatus(
-          AuthenticationStatusEnum.loading,
-        );
       }
     });
   }

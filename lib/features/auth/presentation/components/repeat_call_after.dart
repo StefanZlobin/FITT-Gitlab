@@ -1,8 +1,10 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/features/auth/domain/blocs/input_secure_code/input_secure_code_bloc.dart';
 import 'package:fitt/features/auth/domain/blocs/login_error_timer/login_error_timer_bloc.dart';
+import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -32,6 +34,9 @@ class RepeatCallAfter extends StatelessWidget {
                     .add(LoginErrorTimerEvent.setTimerInitial(
                   duration: duration,
                 ));
+                getIt<AuthenticationRepository>().updateAuthenticationStatus(
+                  AuthenticationStatusEnum.unknown,
+                );
                 context.pop();
               },
               child: Center(

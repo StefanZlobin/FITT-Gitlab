@@ -38,7 +38,9 @@ class LoginErrorTimerBloc
         }
       } else if (authenticationStatus ==
           AuthenticationStatusEnum.unauthenticated) {
-        _repeatCallAfter += const Duration(minutes: 1);
+        if (countTimerEnd != 0) {
+          _repeatCallAfter += const Duration(minutes: 1);
+        }
         if (stateInProgress is! _TimerRunInProgress) {
           add(LoginErrorTimerEvent.setTimerInitial(
             duration: _repeatCallAfter,
