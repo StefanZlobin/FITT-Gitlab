@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
-import 'package:fitt/domain/entities/lat_lng/lat_lng.dart' as latlng;
+import 'package:fitt/features/map/domain/entities/lat_lng/lat_lng.dart'
+    as latlng;
 import 'package:fitt/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

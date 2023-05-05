@@ -3,32 +3,33 @@
 import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/helpers/shake_feedback_wrapper.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/domain/entities/batch/batch.dart';
-import 'package:fitt/domain/entities/club/partner_club.dart';
-import 'package:fitt/presentation/pages/account/account_page.dart';
-import 'package:fitt/presentation/pages/account/personal_data_page.dart';
-import 'package:fitt/presentation/pages/admin/admin_workout_page.dart';
-import 'package:fitt/presentation/pages/admin/admin_workouts_page.dart';
+import 'package:fitt/features/account/presentation/pages/account/account_page.dart';
+import 'package:fitt/features/account/presentation/pages/account/personal_data_page.dart';
+import 'package:fitt/features/auth/presentation/pages/input_phone_number_page.dart';
+import 'package:fitt/features/auth/presentation/pages/input_secure_code_page.dart';
+import 'package:fitt/features/clubs/domain/entities/batch/batch.dart';
+import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
+import 'package:fitt/features/clubs/presentation/pages/favorite_clubs/favorite_clubs_page.dart';
+import 'package:fitt/features/clubs/presentation/pages/partner_club/club_batches_page.dart';
+import 'package:fitt/features/clubs/presentation/pages/partner_club/club_buy_batch_page.dart';
+import 'package:fitt/features/clubs/presentation/pages/partner_club/club_buy_workout_page.dart';
+import 'package:fitt/features/clubs/presentation/pages/partner_club/club_information_page.dart';
+import 'package:fitt/features/clubs/presentation/pages/partner_club/club_page.dart';
+import 'package:fitt/features/clubs/presentation/pages/purchased_batch/purchased_batch_page.dart';
+import 'package:fitt/features/map/presentation/pages/map/map_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_batch_succes_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_loading_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_reject_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_succes_page.dart';
+import 'package:fitt/features/workouts/presentation/pages/admin_workout/admin_workout_page.dart';
+import 'package:fitt/features/workouts/presentation/pages/admin_workouts/admin_workouts_page.dart';
+import 'package:fitt/features/workouts/presentation/pages/workout/workout_page.dart';
+import 'package:fitt/features/workouts/presentation/pages/workouts/workouts_page.dart';
+import 'package:fitt/features/workouts/presentation/pages/workouts_archive/archive_workouts_page.dart';
+import 'package:fitt/presentation/components/staff_clubs_filter_page.dart';
 import 'package:fitt/presentation/pages/analytics/analytics_page.dart';
-import 'package:fitt/presentation/pages/archive_workouts/archive_workouts_page.dart';
-import 'package:fitt/presentation/pages/favorite_clubs/favorite_clubs_page.dart';
 import 'package:fitt/presentation/pages/feedback/feedback_page.dart';
 import 'package:fitt/presentation/pages/information/information_page.dart';
-import 'package:fitt/presentation/pages/map/map_page.dart';
-import 'package:fitt/presentation/pages/partner_club/club_batches_page.dart';
-import 'package:fitt/presentation/pages/partner_club/club_buy_batch_page.dart';
-import 'package:fitt/presentation/pages/partner_club/club_buy_workout_page.dart';
-import 'package:fitt/presentation/pages/partner_club/club_information_page.dart';
-import 'package:fitt/presentation/pages/partner_club/club_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_batch_succes_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_loading_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_reject_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_succes_page.dart';
-import 'package:fitt/presentation/pages/purchased_batch/purchased_batch_page.dart';
-import 'package:fitt/presentation/pages/sign_in/input_phone_number_page.dart';
-import 'package:fitt/presentation/pages/sign_in/input_secure_code_page.dart';
-import 'package:fitt/presentation/pages/workout/workout_page.dart';
-import 'package:fitt/presentation/pages/workouts/workouts_page.dart';
 import 'package:fitt/presentation/splash/splash.dart';
 import 'package:fitt/presentation/webview/webview.dart';
 import 'package:flutter/material.dart';
@@ -268,17 +269,30 @@ class Routes {
     GoRoute(
       path: AppRoute.adminWorkout.routeToPath,
       name: AppRoute.adminWorkout.routeToName,
-      builder: (context, state) => ShakeFeedbackWrapper(
-        child: AdminWorkoutPage(
-          showHeader: state.extra! as bool,
-        ),
-      ),
+      builder: (context, state) {
+        final param = state.extra! as Map<String, Object>;
+        return ShakeFeedbackWrapper(
+          child: AdminWorkoutPage(
+            showHeader: param['showHeader'] as bool,
+            canConfirmation: param['canConfirmation'] as bool,
+          ),
+        );
+      },
     ),
     GoRoute(
       path: AppRoute.analytics.routeToPath,
       name: AppRoute.analytics.routeToName,
       builder: (context, state) =>
           const ShakeFeedbackWrapper(child: AnalyticsPage()),
+    ),
+    GoRoute(
+      path: AppRoute.staffClubsFilter.routeToPath,
+      name: AppRoute.staffClubsFilter.routeToName,
+      builder: (context, state) => ShakeFeedbackWrapper(
+        child: StaffClubsFilterPage(
+          isFromAdminWorkoutsPage: state.extra! as bool,
+        ),
+      ),
     ),
   ];
 }

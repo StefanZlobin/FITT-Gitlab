@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 class AdminMenuTile extends StatelessWidget {
   const AdminMenuTile({
     super.key,
-    required this.onPressed,
+    this.onPressed,
     required this.title,
     this.subtitle,
     this.trailing,
     this.leading,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Widget title;
   final Widget? subtitle;
   final Widget? trailing;

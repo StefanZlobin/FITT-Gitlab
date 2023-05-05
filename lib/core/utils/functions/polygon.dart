@@ -1,4 +1,4 @@
-import 'package:fitt/domain/entities/lat_lng/lat_lng.dart';
+import 'package:fitt/features/map/domain/entities/lat_lng/lat_lng.dart';
 
 String polygon(LatLng? northeast, LatLng? southwest) {
   if (northeast == null || southwest == null) return '';

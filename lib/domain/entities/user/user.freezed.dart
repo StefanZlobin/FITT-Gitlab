@@ -34,7 +34,7 @@ mixin _$User {
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'role')
-  UserRoleEnum? get role => throw _privateConstructorUsedError;
+  List<UserRoleEnum>? get role => throw _privateConstructorUsedError;
   @JsonKey(name: 'gender')
   UserGenderEnum? get gender => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone_number')
@@ -64,7 +64,7 @@ abstract class $UserCopyWith<$Res> {
       @JsonKey(name: 'email')
           String? email,
       @JsonKey(name: 'role')
-          UserRoleEnum? role,
+          List<UserRoleEnum>? role,
       @JsonKey(name: 'gender')
           UserGenderEnum? gender,
       @JsonKey(name: 'phone_number')
@@ -120,7 +120,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as UserRoleEnum?,
+              as List<UserRoleEnum>?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -155,7 +155,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       @JsonKey(name: 'email')
           String? email,
       @JsonKey(name: 'role')
-          UserRoleEnum? role,
+          List<UserRoleEnum>? role,
       @JsonKey(name: 'gender')
           UserGenderEnum? gender,
       @JsonKey(name: 'phone_number')
@@ -205,9 +205,9 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
       role: freezed == role
-          ? _value.role
+          ? _value._role
           : role // ignore: cast_nullable_to_non_nullable
-              as UserRoleEnum?,
+              as List<UserRoleEnum>?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -239,14 +239,15 @@ class _$_User extends _User {
       @JsonKey(name: 'email')
           required this.email,
       @JsonKey(name: 'role')
-          required this.role,
+          required final List<UserRoleEnum>? role,
       @JsonKey(name: 'gender')
           required this.gender,
       @JsonKey(name: 'phone_number')
           required this.phoneNumber,
       @JsonKey(name: 'avatar')
           required this.avatar})
-      : super._();
+      : _role = role,
+        super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -268,9 +269,17 @@ class _$_User extends _User {
   @override
   @JsonKey(name: 'email')
   final String? email;
+  final List<UserRoleEnum>? _role;
   @override
   @JsonKey(name: 'role')
-  final UserRoleEnum? role;
+  List<UserRoleEnum>? get role {
+    final value = _role;
+    if (value == null) return null;
+    if (_role is EqualUnmodifiableListView) return _role;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   @JsonKey(name: 'gender')
   final UserGenderEnum? gender;
@@ -300,7 +309,7 @@ class _$_User extends _User {
             (identical(other.birthday, birthday) ||
                 other.birthday == birthday) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.role, role) || other.role == role) &&
+            const DeepCollectionEquality().equals(other._role, _role) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -309,8 +318,17 @@ class _$_User extends _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, patronomicName,
-      lastName, birthday, email, role, gender, phoneNumber, avatar);
+  int get hashCode => Object.hash(
+      runtimeType,
+      firstName,
+      patronomicName,
+      lastName,
+      birthday,
+      email,
+      const DeepCollectionEquality().hash(_role),
+      gender,
+      phoneNumber,
+      avatar);
 
   @JsonKey(ignore: true)
   @override
@@ -339,7 +357,7 @@ abstract class _User extends User {
       @JsonKey(name: 'email')
           required final String? email,
       @JsonKey(name: 'role')
-          required final UserRoleEnum? role,
+          required final List<UserRoleEnum>? role,
       @JsonKey(name: 'gender')
           required final UserGenderEnum? gender,
       @JsonKey(name: 'phone_number')
@@ -370,7 +388,7 @@ abstract class _User extends User {
   String? get email;
   @override
   @JsonKey(name: 'role')
-  UserRoleEnum? get role;
+  List<UserRoleEnum>? get role;
   @override
   @JsonKey(name: 'gender')
   UserGenderEnum? get gender;

@@ -1,7 +1,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
-import 'package:fitt/domain/blocs/user/user_bloc.dart';
+import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +39,8 @@ class DeleteUserAccountDialog extends StatelessWidget {
                 onPressed: () => context.pop(),
                 child: Text(
                   'Отменить',
-                  style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
+                  style:
+                      AppTypography.kBody14.apply(color: AppColors.kOxford60),
                 ),
               ),
             ),
@@ -49,19 +50,21 @@ class DeleteUserAccountDialog extends StatelessWidget {
               height: 48,
               child: AppElevatedButton(
                 onPressedAsync: () async {
-                  getIt<UserBloc>().add(const UserEvent.deleteAccount());
-                  await showDialog<void>(
-                    useRootNavigator: false,
-                    context: context,
-                    builder: (context) {
-                      return const SuccessDeleteUserAccountDialog();
-                    },
-                  );
+                  await getIt<UserRepository>().deleteUser().then((_) {
+                    showDialog<void>(
+                      useRootNavigator: false,
+                      context: context,
+                      builder: (context) {
+                        return const SuccessDeleteUserAccountDialog();
+                      },
+                    );
+                  });
                 },
                 marginButton: const EdgeInsets.all(0),
                 textButton: Text(
                   'Удалить аккаунт',
-                  style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
+                  style:
+                      AppTypography.kBody14.apply(color: AppColors.kBaseWhite),
                 ),
               ),
             ),

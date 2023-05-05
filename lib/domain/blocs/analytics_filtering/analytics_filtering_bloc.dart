@@ -3,8 +3,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:clock/clock.dart';
 import 'package:fitt/core/enum/time_slice_enum.dart';
+import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/domain/blocs/staff_clubs_filters/staff_clubs_filters_bloc.dart';
 import 'package:fitt/domain/entities/filters/analytics_filters.dart';
 import 'package:fitt/domain/use_cases/analytics/analytics_use_case.dart';
+import 'package:fitt/features/clubs/domain/entities/admin_club/admin_club.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -24,6 +27,16 @@ class AnalyticsFilteringBloc
     on<_AnalyticsFilteringEventDateRangeChanged>(
       _onAnalyticsFilteringEventDateRangeChanged,
     );
+
+    getIt<StaffClubsFiltersBloc>()
+        .selectedAdminClub
+        .listen((AdminClub? adminClub) {
+      if (adminClub != null) {
+        add(AnalyticsFilteringEvent.selectedClubsChanged(
+          clubUuidSelected: adminClub.uuid!,
+        ));
+      }
+    });
   }
 
   final analyticsUseCase = AnalyticsUseCase();
@@ -69,7 +82,7 @@ class AnalyticsFilteringBloc
     _AnalyticsFilteringEventDateRangeChanged event,
     Emitter<AnalyticsFilteringState> emit,
   ) {
-    emit(stateLoaded.copyWith(
+    final newState = stateLoaded.copyWith(
       startDateRange: defenitionDateRange(
         event.timeSlice,
         event.selectedDate,
@@ -79,7 +92,9 @@ class AnalyticsFilteringBloc
         event.selectedDate,
       ).end,
       selectedDate: event.selectedDate,
-    ));
+    );
+
+    emit(newState);
 
     _onRefreshData(stateLoaded);
   }
@@ -103,10 +118,26 @@ class AnalyticsFilteringBloc
         );
       case TimeSliceEnum.year:
         return DateTimeRange(
-          start: DateTime(date.year - 1),
-          end: DateTime(date.year),
+          start: _defYearRange(date.year).start,
+          end: _defYearRange(date.year).end,
         );
     }
+  }
+
+  DateTimeRange _defYearRange(int year) {
+    int daysCount = 0;
+    final startDate = DateTime(year);
+
+    for (var i = 1; i <= 12; i++) {
+      daysCount += DateTime(year, i, 0).day;
+    }
+
+    daysCount -= 1;
+
+    return DateTimeRange(
+      start: DateTime(year),
+      end: startDate.add(Duration(days: daysCount)),
+    );
   }
 
   DateTimeRange _defMonthRange(int monthNumber) {
@@ -204,7 +235,11 @@ class AnalyticsFilteringBloc
         countDays = DateTime(selectedDay.year, selectedDay.month, 0).day;
         break;
       case TimeSliceEnum.year:
-        countDays = DateTime(selectedDay.year).day;
+        for (var i = 1; i <= 12; i++) {
+          final year = selectedDay.year - 1;
+          countDays += DateTime(year, i, 0).day;
+        }
+        countDays -= 1;
         break;
     }
     return countDays;

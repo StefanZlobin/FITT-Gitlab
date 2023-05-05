@@ -14,14 +14,17 @@ abstract class UserApiClient {
   Future<User> getUserData();
 
   @PATCH('user/accounts/profile/')
-  Future<void> updateUserData(@Body() User user);
+  Future<User> updateUserData(@Body() User user);
 
   @DELETE('user/accounts/profile/')
   Future<void> deleteUserData();
 
+  @POST('user/accounts/logout/')
+  Future<void> logoutUser();
+
   @POST('user/accounts/profile/photo/')
   @MultiPart()
-  Future<void> uploadProfilePhoto(
+  Future<User> uploadProfilePhoto(
     @Part(name: 'photo') File photo,
   );
 }

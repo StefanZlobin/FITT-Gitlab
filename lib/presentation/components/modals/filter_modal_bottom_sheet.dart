@@ -2,14 +2,14 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
-import 'package:fitt/domain/cubits/filtering/filtering_cubit.dart';
-import 'package:fitt/domain/cubits/resource/resource_cubit.dart';
-import 'package:fitt/domain/entities/facility/facility.dart';
-import 'package:fitt/domain/entities/filters/club_filters.dart';
-import 'package:fitt/presentation/components/app_range_slider.dart';
+import 'package:fitt/domain/entities/price/price.dart';
+import 'package:fitt/features/clubs/domain/blocs/club_filtering/club_filtering_bloc.dart';
+import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
+import 'package:fitt/presentation/forms/app_text_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
@@ -40,70 +40,44 @@ class FilterModalBottomSheet extends StatelessWidget {
           _buildRoundedContainer(context),
           SizedBox(
             height: MediaQuery.of(context).size.height * .8 - 32 - 88,
-            child: BlocListener<ResourceCubit, ResourceState>(
-              bloc: getIt<ResourceCubit>(),
-              listener: (context, state) {
-                state.whenOrNull(
-                  loaded: (filters) =>
-                      getIt<FilteringCubit>().setFilters(filters: filters),
+            child: BlocBuilder<ClubFilteringBloc, ClubFilteringState>(
+              bloc: getIt<ClubFilteringBloc>(),
+              buildWhen: (previous, current) => true,
+              builder: (context, state) {
+                return state.when(
+                  initial: () =>
+                      const Center(child: CircularProgressIndicator()),
+                  loaded: (facilities, price, isPUpdate, isFUpdated) {
+                    return ListView(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      children: [
+                        _buildHeader(),
+                        const SizedBox(height: 32),
+                        _buildFacilitiesFilter(facilities!),
+                        const Separator(
+                          margin: EdgeInsets.symmetric(vertical: 32),
+                        ),
+                        _buildPriceFilterWidget(context, price),
+                      ],
+                    );
+                  },
+                  error: (error) => const SizedBox(),
                 );
               },
-              child: BlocBuilder<FilteringCubit, FilteringState>(
-                bloc: getIt<FilteringCubit>(),
-                builder: (context, state) {
-                  return state.when(
-                    initial: () =>
-                        const Center(child: CircularProgressIndicator()),
-                    loaded: (
-                      filters,
-                      selectedFacilities,
-                      minPrice,
-                      maxPrice,
-                      _,
-                      __,
-                    ) {
-                      return ListView(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        children: [
-                          _buildHeader(),
-                          const SizedBox(height: 32),
-                          _buildFacilitiesFilter(filters, selectedFacilities),
-                          const Separator(
-                            margin: EdgeInsets.symmetric(vertical: 32),
-                          ),
-                          _buildRangeSlider(filters, minPrice!, maxPrice!),
-                        ],
-                      );
-                    },
-                    error: (error) => const SizedBox(),
-                  );
-                },
-              ),
             ),
           ),
           BottomCenter(
-            child: BlocBuilder<FilteringCubit, FilteringState>(
-              bloc: getIt<FilteringCubit>(),
+            child: BlocBuilder<ClubFilteringBloc, ClubFilteringState>(
+              bloc: getIt<ClubFilteringBloc>(),
               builder: (context, state) {
                 return state.when(
                   initial: () => const SizedBox(),
                   error: (error) => const SizedBox(),
-                  loaded: (
-                    filters,
-                    selectedFacilities,
-                    _,
-                    __,
-                    isPriceUpdate,
-                    activeFacilitiesList,
-                  ) {
-                    final countActiveFacilities =
-                        activeFacilitiesList?.length ?? 0;
-                    final countActiveFilters =
-                        countActiveFacilities + (isPriceUpdate ? 1 : 0);
-                    if (countActiveFilters == 0) {
-                      return _buildShowClubsButton(context, isDisable: true);
+                  loaded: (_, __, isPriceUpdate, isFacilitiesUpdated) {
+                    if (isPriceUpdate || isFacilitiesUpdated) {
+                      return _buildShowClubsButton(context, isDisable: false);
                     }
-                    return _buildShowClubsButton(context, isDisable: false);
+                    return _buildShowClubsButton(context, isDisable: true);
                   },
                 );
               },
@@ -111,6 +85,84 @@ class FilterModalBottomSheet extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildPriceFilterWidget(BuildContext context, Price? price) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+          height: 48,
+          width: (MediaQuery.of(context).size.width - 32 - 8) / 2,
+          child: AppTextFormField(
+            title: const SizedBox(),
+            padding: const EdgeInsets.all(0),
+            keyboardType: const TextInputType.numberWithOptions(
+              signed: true,
+              decimal: true,
+            ),
+            inputFormatters: TextInputFormatter.withFunction(
+              (oldValue, newValue) {
+                if (newValue.text.contains('\u20BD')) {
+                  return TextEditingValue(
+                    text: newValue.text,
+                    selection: newValue.selection,
+                  );
+                }
+                return TextEditingValue(
+                  text: '${newValue.text} \u20BD',
+                  selection: newValue.selection,
+                );
+              },
+            ),
+            placeholder: '${price?.minPrice ?? 0} \u20BD',
+            onFieldSubmitted: (value) {
+              final minPrice = int.parse(value!.substring(0, value.length - 2));
+              final newPrice =
+                  Price(minPrice: minPrice, maxPrice: price!.maxPrice);
+              getIt<ClubFilteringBloc>().add(
+                ClubFilteringEvent.priceChanged(price: newPrice),
+              );
+            },
+          ),
+        ),
+        SizedBox(
+          height: 48,
+          width: (MediaQuery.of(context).size.width - 32 - 8) / 2,
+          child: AppTextFormField(
+            padding: const EdgeInsets.all(0),
+            title: const SizedBox(),
+            keyboardType: const TextInputType.numberWithOptions(
+              signed: true,
+              decimal: true,
+            ),
+            inputFormatters: TextInputFormatter.withFunction(
+              (oldValue, newValue) {
+                if (newValue.text.contains('\u20BD')) {
+                  return TextEditingValue(
+                    text: newValue.text,
+                    selection: newValue.selection,
+                  );
+                }
+                return TextEditingValue(
+                  text: '${newValue.text} \u20BD',
+                  selection: newValue.selection,
+                );
+              },
+            ),
+            placeholder: '${price?.maxPrice ?? 0} \u20BD',
+            onFieldSubmitted: (value) {
+              final maxPrice = int.parse(value!.substring(0, value.length - 2));
+              final newPrice =
+                  Price(minPrice: price!.minPrice, maxPrice: maxPrice);
+              getIt<ClubFilteringBloc>().add(
+                ClubFilteringEvent.priceChanged(price: newPrice),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -136,7 +188,8 @@ class FilterModalBottomSheet extends StatelessWidget {
           style: AppTypography.kH24B.apply(color: AppColors.kBaseBlack),
         ),
         TextButton(
-          onPressed: () => getIt<FilteringCubit>().resetFilters(),
+          onPressed: () => getIt<ClubFilteringBloc>()
+              .add(const ClubFilteringEvent.clearFilter()),
           child: Text(
             'Сбросить',
             style: AppTypography.kH14.apply(color: AppColors.kPrimaryBlue),
@@ -147,7 +200,6 @@ class FilterModalBottomSheet extends StatelessWidget {
   }
 
   Widget _buildFacilitiesFilter(
-    ClubFilters filters,
     Map<Facility, bool> selectedFacilities,
   ) {
     return Wrap(
@@ -157,9 +209,8 @@ class FilterModalBottomSheet extends StatelessWidget {
         for (var facility in selectedFacilities.entries) ...[
           GestureDetector(
             onTap: () {
-              getIt<FilteringCubit>().selectFacility(
-                facility: facility.key,
-                filters: filters,
+              getIt<ClubFilteringBloc>().add(
+                ClubFilteringEvent.facilitiesChanged(facility: facility.key),
               );
             },
             child: Container(
@@ -176,7 +227,7 @@ class FilterModalBottomSheet extends StatelessWidget {
                     topLeft: Radius.circular(24),
                   ),
                   side: facility.value
-                      ? BorderSide.none
+                      ? const BorderSide(color: AppColors.kPrimaryBlue)
                       : const BorderSide(color: AppColors.kOxford20),
                 ),
               ),
@@ -192,57 +243,6 @@ class FilterModalBottomSheet extends StatelessWidget {
           ),
         ],
       ],
-    );
-  }
-
-  Widget _buildRangeSlider(
-    ClubFilters filters,
-    int minPrice,
-    int maxPrice,
-  ) {
-    final currentValues = RangeValues(
-      filters.minPrice == null
-          ? minPrice.toDouble()
-          : filters.minPrice!.toDouble(),
-      filters.maxPrice == null
-          ? maxPrice.toDouble()
-          : filters.maxPrice!.toDouble(),
-    );
-    return RangeFilterWidget(
-      initialValues: currentValues,
-      bounds: RangeValues(minPrice.toDouble(), maxPrice.toDouble()),
-      popularityStats: const [
-        10,
-        20,
-        30,
-        50,
-        60,
-        70,
-        80,
-        60,
-        30,
-        10,
-        70,
-        100,
-        90,
-        40,
-        50,
-        30,
-        10,
-        80,
-        90,
-        40,
-        20,
-        30,
-        20,
-        15,
-        15,
-        10,
-        10,
-      ],
-      onChanged: (value) {
-        getIt<FilteringCubit>().updatePrice(price: value);
-      },
     );
   }
 
