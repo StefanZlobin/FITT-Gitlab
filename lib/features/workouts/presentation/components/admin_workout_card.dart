@@ -1,9 +1,11 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/age_utils.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/timer_utils.dart';
 import 'package:fitt/domain/cubits/admin_workout_action_button/admin_workout_action_button_cubit.dart';
 import 'package:fitt/features/workouts/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
@@ -13,7 +15,7 @@ import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AdminWorkoutCard extends StatelessWidget {
+class AdminWorkoutCard extends StatelessWidget with UserMixin {
   const AdminWorkoutCard({
     super.key,
     required this.adminWorkout,
@@ -49,7 +51,8 @@ class AdminWorkoutCard extends StatelessWidget {
             height: 32,
           ),
           if (showHeader) _buildWorkoutTimeInformationWidget(),
-          AdminWorkoutActionButton(adminWorkout: adminWorkout),
+          if (userSnapshot!.role!.contains(UserRoleEnum.administrator))
+            AdminWorkoutActionButton(adminWorkout: adminWorkout),
           const Separator(
             margin: EdgeInsets.symmetric(vertical: 32),
           ),
