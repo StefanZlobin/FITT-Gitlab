@@ -45,5 +45,7 @@ class PartnerClub with _$PartnerClub {
   factory PartnerClub.fromJson(Map<String, dynamic> json) =>
       _$PartnerClubFromJson(json);
 
-  String get shortLabel => label!.replaceRange(25, label!.length, '...');
+  String get shortLabel => label!.length < 25
+      ? label!
+      : label!.replaceRange(25, label!.length, '...');
 }
