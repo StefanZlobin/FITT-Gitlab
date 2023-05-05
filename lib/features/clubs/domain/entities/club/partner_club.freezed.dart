@@ -398,8 +398,8 @@ class __$$_PartnerClubCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PartnerClub implements _PartnerClub {
-  const _$_PartnerClub(
+class _$_PartnerClub extends _PartnerClub {
+  _$_PartnerClub(
       {@JsonKey(name: 'id')
           required this.uuid,
       @JsonKey(name: 'min_price', fromJson: toRublesNullable)
@@ -442,7 +442,8 @@ class _$_PartnerClub implements _PartnerClub {
         _facilities = facilities,
         _workSchedule = workSchedule,
         _activities = activities,
-        _documents = documents;
+        _documents = documents,
+        super._();
 
   factory _$_PartnerClub.fromJson(Map<String, dynamic> json) =>
       _$$_PartnerClubFromJson(json);
@@ -628,8 +629,8 @@ class _$_PartnerClub implements _PartnerClub {
   }
 }
 
-abstract class _PartnerClub implements PartnerClub {
-  const factory _PartnerClub(
+abstract class _PartnerClub extends PartnerClub {
+  factory _PartnerClub(
       {@JsonKey(name: 'id')
           required final String? uuid,
       @JsonKey(name: 'min_price', fromJson: toRublesNullable)
@@ -668,6 +669,7 @@ abstract class _PartnerClub implements PartnerClub {
           required final String? phoneNumber,
       @JsonKey(name: 'pay_available')
           required final bool? payAvailable}) = _$_PartnerClub;
+  _PartnerClub._() : super._();
 
   factory _PartnerClub.fromJson(Map<String, dynamic> json) =
       _$_PartnerClub.fromJson;

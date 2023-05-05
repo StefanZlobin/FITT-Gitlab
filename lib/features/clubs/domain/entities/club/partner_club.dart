@@ -16,7 +16,7 @@ part 'partner_club.g.dart';
 
 @freezed
 class PartnerClub with _$PartnerClub {
-  const factory PartnerClub({
+  factory PartnerClub({
     @JsonKey(name: 'id') required String? uuid,
     @JsonKey(name: 'min_price', fromJson: toRublesNullable)
         required int? minPrice,
@@ -40,6 +40,10 @@ class PartnerClub with _$PartnerClub {
     @JsonKey(name: 'pay_available') required bool? payAvailable,
   }) = _PartnerClub;
 
+  PartnerClub._();
+
   factory PartnerClub.fromJson(Map<String, dynamic> json) =>
       _$PartnerClubFromJson(json);
+
+  String get shortLabel => label!.replaceRange(25, label!.length, '...');
 }
