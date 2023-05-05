@@ -269,11 +269,15 @@ class Routes {
     GoRoute(
       path: AppRoute.adminWorkout.routeToPath,
       name: AppRoute.adminWorkout.routeToName,
-      builder: (context, state) => ShakeFeedbackWrapper(
-        child: AdminWorkoutPage(
-          showHeader: state.extra! as bool,
-        ),
-      ),
+      builder: (context, state) {
+        final param = state.extra! as Map<String, Object>;
+        return ShakeFeedbackWrapper(
+          child: AdminWorkoutPage(
+            showHeader: param['showHeader'] as bool,
+            canConfirmation: param['canConfirmation'] as bool,
+          ),
+        );
+      },
     ),
     GoRoute(
       path: AppRoute.analytics.routeToPath,

@@ -15,9 +15,11 @@ class AdminStartedWorkouts extends StatelessWidget {
   const AdminStartedWorkouts({
     super.key,
     required this.adminClub,
+    required this.canConfirmation,
   });
 
   final AdminClub adminClub;
+  final bool canConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +129,7 @@ class AdminStartedWorkouts extends StatelessWidget {
                   final adminWorkout = adminWorkouts[index];
                   return AdminPreviewWorkoutCard(
                     adminWorkout: adminWorkout,
-                    //adminClub: adminClub,
+                    canConfirmation: canConfirmation,
                   );
                 },
                 itemCount: adminWorkouts.length,

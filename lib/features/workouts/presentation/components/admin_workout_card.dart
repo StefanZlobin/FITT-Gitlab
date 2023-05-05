@@ -1,6 +1,5 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
-import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/age_utils.dart';
@@ -21,11 +20,13 @@ class AdminWorkoutCard extends StatelessWidget with UserMixin {
     required this.adminWorkout,
     this.margin = const EdgeInsets.fromLTRB(16, 24, 16, 24),
     this.showHeader = true,
+    required this.canConfirmation,
   });
 
   final AdminWorkout adminWorkout;
   final EdgeInsets margin;
   final bool showHeader;
+  final bool canConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class AdminWorkoutCard extends StatelessWidget with UserMixin {
             height: 32,
           ),
           if (showHeader) _buildWorkoutTimeInformationWidget(),
-          if (userSnapshot!.role!.contains(UserRoleEnum.administrator))
+          if (canConfirmation)
             AdminWorkoutActionButton(adminWorkout: adminWorkout),
           const Separator(
             margin: EdgeInsets.symmetric(vertical: 32),

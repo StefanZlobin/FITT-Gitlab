@@ -63,6 +63,7 @@ class AdminFinishedWorkouts extends StatelessWidget {
                 final adminWorkout = adminWorkouts[index];
                 return AdminPreviewWorkoutCard(
                   adminWorkout: adminWorkout,
+                  canConfirmation: false,
                 );
               },
               separatorBuilder: (_, __) => const SizedBox(height: 8),

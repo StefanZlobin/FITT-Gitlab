@@ -1,7 +1,6 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
-import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
@@ -21,9 +20,11 @@ class AdminPreviewWorkoutCard extends StatelessWidget with UserMixin {
   const AdminPreviewWorkoutCard({
     super.key,
     required this.adminWorkout,
+    required this.canConfirmation,
   });
 
   final AdminWorkout adminWorkout;
+  final bool canConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +32,13 @@ class AdminPreviewWorkoutCard extends StatelessWidget with UserMixin {
       onTap: () {
         getIt<AdminWorkoutCubit>()
             .getAdminWorkout(adminWorkoutUuid: adminWorkout.uuid!);
-        context.pushNamed(
-          AppRoute.adminWorkout.routeToPath,
-          extra: !(adminWorkout.status == WorkoutStatusEnum.finished ||
+        context.pushNamed(AppRoute.adminWorkout.routeToPath, extra: {
+          'showHeader': !(adminWorkout.status == WorkoutStatusEnum.finished ||
               adminWorkout.status == WorkoutStatusEnum.forceFinish ||
               adminWorkout.status == WorkoutStatusEnum.missed ||
               adminWorkout.status == WorkoutStatusEnum.canceled),
-        );
+          'canConfirmation': canConfirmation,
+        });
       },
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -120,7 +121,7 @@ class AdminPreviewWorkoutCard extends StatelessWidget with UserMixin {
                 ),
               ],
             ),
-            if (userSnapshot!.role!.contains(UserRoleEnum.administrator))
+            if (canConfirmation)
               AdminWorkoutActionButton(adminWorkout: adminWorkout),
           ],
         ),

@@ -11,9 +11,11 @@ class AdminWorkoutPage extends StatelessWidget {
   const AdminWorkoutPage({
     super.key,
     required this.showHeader,
+    required this.canConfirmation,
   });
 
   final bool showHeader;
+  final bool canConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class AdminWorkoutPage extends StatelessWidget {
                   AdminWorkoutCard(
                     adminWorkout: adminWorkout,
                     showHeader: showHeader,
+                    canConfirmation: canConfirmation,
                   ),
                 ],
               );
