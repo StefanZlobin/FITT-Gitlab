@@ -67,11 +67,11 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<User> updateUserAvatar({required File photo}) async {
     try {
-      final response = await _apiClient.uploadProfilePhoto(photo);
+      await _apiClient.uploadProfilePhoto(photo);
 
-      await saveUser(user: response);
+      final response = await getUser(fromCache: false);
 
-      return response;
+      return response!;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
