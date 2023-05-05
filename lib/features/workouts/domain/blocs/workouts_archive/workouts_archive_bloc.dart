@@ -45,7 +45,10 @@ class WorkoutsArchiveBloc
         .changeWorkoutStatusNotification
         .listen((Map<String, String>? changeWorkoutNotification) {
       if (changeWorkoutNotification != null &&
-          changeWorkoutNotification.values.first == 'CANCEL') {
+          (changeWorkoutNotification.values.first == 'CANCEL' ||
+              changeWorkoutNotification.values.first == 'FINISH' ||
+              changeWorkoutNotification.values.first == 'MISSED' ||
+              changeWorkoutNotification.values.first == 'FORCE_FINISH')) {
         offset = 0;
         _workouts.clear();
 
