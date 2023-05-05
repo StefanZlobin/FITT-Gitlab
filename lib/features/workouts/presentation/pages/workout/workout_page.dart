@@ -98,7 +98,6 @@ class WorkoutPage extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       showDialog<void>(
-                        useRootNavigator: false,
                         context: context,
                         builder: (context) {
                           return CancelWorkoutDialog(workout: workout);

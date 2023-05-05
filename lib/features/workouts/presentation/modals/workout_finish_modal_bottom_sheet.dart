@@ -135,7 +135,7 @@ class WorkoutFinishModalBottomSheet extends StatelessWidget with UserMixin {
               );
             },
             child: Text(
-              'Запланировать следущую тернировку',
+              'Запланировать следущую тренировку',
               style: AppTypography.kH16.apply(color: AppColors.kPrimaryBlue),
             ),
           ),
