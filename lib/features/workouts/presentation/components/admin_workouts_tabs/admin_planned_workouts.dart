@@ -16,9 +16,11 @@ class AdminPlannedWorkouts extends StatelessWidget {
   const AdminPlannedWorkouts({
     super.key,
     required this.adminClub,
+    required this.canConfirmation,
   });
 
   final AdminClub adminClub;
+  final bool canConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +122,7 @@ class AdminPlannedWorkouts extends StatelessWidget {
               if (adminWorkouts.isEmpty) {
                 return Padding(
                   padding: const EdgeInsets.only(top: 30),
-                  child: Text(
+                child: Text(
                     'Здесь будут предстоящие тренировки.\nНет ни одной записи на ближайшее время',
                     style:
                         AppTypography.kBody14.apply(color: AppColors.kOxford60),
@@ -131,7 +133,10 @@ class AdminPlannedWorkouts extends StatelessWidget {
               return ListView.separated(
                 itemBuilder: (context, index) {
                   final adminWorkout = adminWorkouts[index];
-                  return AdminPreviewWorkoutCard(adminWorkout: adminWorkout);
+                  return AdminPreviewWorkoutCard(
+                    adminWorkout: adminWorkout,
+                    canConfirmation: canConfirmation,
+                  );
                 },
                 separatorBuilder: (_, __) => const SizedBox(height: 8),
                 itemCount: adminWorkouts.length,

@@ -3,11 +3,13 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/features/auth/domain/blocs/input_phone_number/input_phone_number_bloc.dart';
 import 'package:fitt/features/auth/domain/blocs/login_error_timer/login_error_timer_bloc.dart';
+import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
 import 'package:fitt/presentation/app.dart';
 import 'package:fitt/presentation/components/auth_user_disclaimer.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
@@ -94,6 +96,10 @@ class CompleteButton extends StatelessWidget {
                   AppRoute.inputSecureCode.routeToPath,
                   extra: phoneNumber,
                 );
+
+                getIt<AuthenticationRepository>().updateAuthenticationStatus(
+                  AuthenticationStatusEnum.loading,
+                );
               },
             );
           },
@@ -122,6 +128,10 @@ class CompleteButton extends StatelessWidget {
                 context.pushNamed(
                   AppRoute.inputSecureCode.routeToPath,
                   extra: phoneNumber,
+                );
+
+                getIt<AuthenticationRepository>().updateAuthenticationStatus(
+                  AuthenticationStatusEnum.loading,
                 );
               },
             );

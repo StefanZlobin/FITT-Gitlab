@@ -8,6 +8,7 @@ import 'package:fitt/core/utils/age_utils.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/cubits/admin_workout/admin_workout_cubit.dart';
 import 'package:fitt/features/workouts/domain/entities/admin_workout/admin_workout.dart';
 import 'package:fitt/features/workouts/presentation/components/buttons/admin_workout_action_button.dart';
@@ -15,13 +16,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
-class AdminPreviewWorkoutCard extends StatelessWidget {
+class AdminPreviewWorkoutCard extends StatelessWidget with UserMixin {
   const AdminPreviewWorkoutCard({
     super.key,
     required this.adminWorkout,
+    required this.canConfirmation,
   });
 
   final AdminWorkout adminWorkout;
+  final bool canConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +32,13 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
       onTap: () {
         getIt<AdminWorkoutCubit>()
             .getAdminWorkout(adminWorkoutUuid: adminWorkout.uuid!);
-        context.pushNamed(
-          AppRoute.adminWorkout.routeToPath,
-          extra: !(adminWorkout.status == WorkoutStatusEnum.finished ||
+        context.pushNamed(AppRoute.adminWorkout.routeToPath, extra: {
+          'showHeader': !(adminWorkout.status == WorkoutStatusEnum.finished ||
               adminWorkout.status == WorkoutStatusEnum.forceFinish ||
               adminWorkout.status == WorkoutStatusEnum.missed ||
               adminWorkout.status == WorkoutStatusEnum.canceled),
-        );
+          'canConfirmation': canConfirmation,
+        });
       },
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -118,7 +121,8 @@ class AdminPreviewWorkoutCard extends StatelessWidget {
                 ),
               ],
             ),
-            AdminWorkoutActionButton(adminWorkout: adminWorkout),
+            if (canConfirmation)
+              AdminWorkoutActionButton(adminWorkout: adminWorkout),
           ],
         ),
       ),

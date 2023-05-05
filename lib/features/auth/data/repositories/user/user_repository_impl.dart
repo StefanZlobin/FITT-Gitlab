@@ -4,11 +4,13 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/data/source/local_data_source/user_local_client/user_local_client.dart';
 import 'package:fitt/data/source/remote_data_source/user_api_client/user_api_client.dart';
 import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
+import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/token/token_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:rxdart/rxdart.dart';
@@ -65,11 +67,11 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<User> updateUserAvatar({required File photo}) async {
     try {
-      final response = await _apiClient.uploadProfilePhoto(photo);
+      await _apiClient.uploadProfilePhoto(photo);
 
-      await saveUser(user: response);
+      final response = await getUser(fromCache: false);
 
-      return response;
+      return response!;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
@@ -86,9 +88,9 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> logoutUser() async {
-    await _userLocalClient.deleteUser();
-    await _apiClient.logoutUser();
+  Future<void> logoutUser({required bool deleteUser}) async {
+    if (!deleteUser) await _userLocalClient.deleteUser();
+    if (!deleteUser) await _apiClient.logoutUser();
     await getIt<TokenRepository>().deleteToken();
     updateUser(null);
   }
@@ -96,7 +98,9 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> deleteUser() async {
     await _apiClient.deleteUserData();
-    await logoutUser();
+    await logoutUser(deleteUser: true);
+    getIt<AuthenticationRepository>()
+        .updateAuthenticationStatus(AuthenticationStatusEnum.unauthenticated);
   }
 
   @override

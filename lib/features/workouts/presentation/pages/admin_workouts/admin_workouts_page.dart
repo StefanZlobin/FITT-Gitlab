@@ -94,8 +94,14 @@ class AdminWorkoutsPage extends StatelessWidget with UserMixin {
                       child: TabBarView(
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          AdminPlannedWorkouts(adminClub: adminClub),
-                          AdminStartedWorkouts(adminClub: adminClub),
+                          AdminPlannedWorkouts(
+                            adminClub: adminClub,
+                            canConfirmation: adminClub.permissionType! == 'ADM',
+                          ),
+                          AdminStartedWorkouts(
+                            adminClub: adminClub,
+                            canConfirmation: adminClub.permissionType! == 'ADM',
+                          ),
                           AdminFinishedWorkouts(adminClub: adminClub),
                         ],
                       ),

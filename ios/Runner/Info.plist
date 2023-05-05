@@ -44,6 +44,9 @@
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>It is important for the user to see his own location in order to assess the location
 			of the nearest fitness clubs on the map.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>It is important for the user to see his own location in order to assess the location
+			of the nearest fitness clubs on the map.</string>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>The gallery may be needed to display the user&apos;s avatar</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>

@@ -100,7 +100,7 @@ class ArchiveWorkoutCard extends StatelessWidget {
               style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
               children: [
                 TextSpan(
-                  text: '${workout.club.label}',
+                  text: workout.club.label!.replaceAll(' ', '\u{000A0}'),
                   style: AppTypography.kH24B.apply(color: AppColors.kOxford),
                 ),
               ],

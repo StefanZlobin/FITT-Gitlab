@@ -30,5 +30,5 @@ abstract class UserRepository with Disposable {
   Future<void> deleteUser();
 
   /// Сбрасывает токены в null
-  Future<void> logoutUser();
+  Future<void> logoutUser({required bool deleteUser});
 }

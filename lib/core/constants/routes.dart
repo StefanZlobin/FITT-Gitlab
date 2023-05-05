@@ -17,6 +17,10 @@ import 'package:fitt/features/clubs/presentation/pages/partner_club/club_informa
 import 'package:fitt/features/clubs/presentation/pages/partner_club/club_page.dart';
 import 'package:fitt/features/clubs/presentation/pages/purchased_batch/purchased_batch_page.dart';
 import 'package:fitt/features/map/presentation/pages/map/map_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_batch_succes_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_loading_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_reject_page.dart';
+import 'package:fitt/features/payment/presentation/pages/payment/payment_succes_page.dart';
 import 'package:fitt/features/workouts/presentation/pages/admin_workout/admin_workout_page.dart';
 import 'package:fitt/features/workouts/presentation/pages/admin_workouts/admin_workouts_page.dart';
 import 'package:fitt/features/workouts/presentation/pages/workout/workout_page.dart';
@@ -26,10 +30,6 @@ import 'package:fitt/presentation/components/staff_clubs_filter_page.dart';
 import 'package:fitt/presentation/pages/analytics/analytics_page.dart';
 import 'package:fitt/presentation/pages/feedback/feedback_page.dart';
 import 'package:fitt/presentation/pages/information/information_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_batch_succes_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_loading_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_reject_page.dart';
-import 'package:fitt/presentation/pages/payment/payment_succes_page.dart';
 import 'package:fitt/presentation/splash/splash.dart';
 import 'package:fitt/presentation/webview/webview.dart';
 import 'package:flutter/material.dart';
@@ -269,11 +269,15 @@ class Routes {
     GoRoute(
       path: AppRoute.adminWorkout.routeToPath,
       name: AppRoute.adminWorkout.routeToName,
-      builder: (context, state) => ShakeFeedbackWrapper(
-        child: AdminWorkoutPage(
-          showHeader: state.extra! as bool,
-        ),
-      ),
+      builder: (context, state) {
+        final param = state.extra! as Map<String, Object>;
+        return ShakeFeedbackWrapper(
+          child: AdminWorkoutPage(
+            showHeader: param['showHeader'] as bool,
+            canConfirmation: param['canConfirmation'] as bool,
+          ),
+        );
+      },
     ),
     GoRoute(
       path: AppRoute.analytics.routeToPath,

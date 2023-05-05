@@ -17,9 +17,7 @@ class AuthorizationRepositoryImpl
     getIt<AuthenticationRepository>()
         .authenticationStatus
         .listen((AuthenticationStatusEnum authenticationStatus) {
-      if (authenticationStatus == AuthenticationStatusEnum.authenticated) {
-        checkAuthorizationStatus();
-      }
+      checkAuthorizationStatus();
     });
   }
 
@@ -39,6 +37,10 @@ class AuthorizationRepositoryImpl
 
   @override
   Future<void> checkAuthorizationStatus() async {
+    if (userSnapshot == null) {
+      return updateAuthorizationStatus(AuthorizationStatusEnum.unknown);
+    }
+
     for (final role in userSnapshot!.role!) {
       switch (role) {
         case UserRoleEnum.customer:

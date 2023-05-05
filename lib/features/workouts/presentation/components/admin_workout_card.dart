@@ -4,6 +4,7 @@ import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/age_utils.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/timer_utils.dart';
 import 'package:fitt/domain/cubits/admin_workout_action_button/admin_workout_action_button_cubit.dart';
 import 'package:fitt/features/workouts/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
@@ -13,17 +14,19 @@ import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AdminWorkoutCard extends StatelessWidget {
+class AdminWorkoutCard extends StatelessWidget with UserMixin {
   const AdminWorkoutCard({
     super.key,
     required this.adminWorkout,
     this.margin = const EdgeInsets.fromLTRB(16, 24, 16, 24),
     this.showHeader = true,
+    required this.canConfirmation,
   });
 
   final AdminWorkout adminWorkout;
   final EdgeInsets margin;
   final bool showHeader;
+  final bool canConfirmation;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +52,8 @@ class AdminWorkoutCard extends StatelessWidget {
             height: 32,
           ),
           if (showHeader) _buildWorkoutTimeInformationWidget(),
-          AdminWorkoutActionButton(adminWorkout: adminWorkout),
+          if (canConfirmation)
+            AdminWorkoutActionButton(adminWorkout: adminWorkout),
           const Separator(
             margin: EdgeInsets.symmetric(vertical: 32),
           ),

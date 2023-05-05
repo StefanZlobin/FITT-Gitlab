@@ -24,7 +24,7 @@ class MapPage extends StatelessWidget {
     return UpgradeAlert(
       upgrader: Upgrader(
         shouldPopScope: () => false,
-        durationUntilAlertAgain: const Duration(minutes: 1),
+        durationUntilAlertAgain: const Duration(days: 1),
         dialogStyle: Platform.isIOS
             ? UpgradeDialogStyle.cupertino
             : UpgradeDialogStyle.material,

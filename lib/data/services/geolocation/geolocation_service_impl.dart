@@ -54,7 +54,7 @@ class GeolocationServiceImpl implements GeolocationService {
     try {
       final currentPosition = await _geolocatorPlatform.getCurrentPosition(
         locationSettings: const LocationSettings(
-          timeLimit: Duration(seconds: 5),
+          timeLimit: Duration(seconds: 10),
         ),
       );
       return currentPosition;

@@ -76,7 +76,6 @@ class WorkoutCard extends StatelessWidget {
                 textButton: const Text('Позвать друзей на тренировку'),
                 onPressed: () {
                   showDialog<void>(
-                    useRootNavigator: false,
                     context: context,
                     builder: (context) {
                       return AlertDialog(

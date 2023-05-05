@@ -206,7 +206,7 @@ class MenuUser extends StatelessWidget with UserMixin {
             style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
           ),
           onPressed: () async {
-            await getIt<UserRepository>().logoutUser();
+            await getIt<UserRepository>().logoutUser(deleteUser: false);
           },
         ),
       ],

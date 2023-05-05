@@ -7,6 +7,7 @@ import 'package:fitt/core/enum/authentication_status_enum.dart';
 import 'package:fitt/core/enum/identification_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/jwt_token/token_pair.dart';
+import 'package:fitt/domain/entities/user/user.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/identification/identification_repository.dart';
@@ -32,6 +33,12 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         updateAuthStatus(AuthenticationStatusEnum.unauthenticated);
       } else {
         checkUser();
+      }
+    });
+
+    getIt<UserRepository>().user.listen((User? user) {
+      if (user == null) {
+        updateAuthStatus(AuthenticationStatusEnum.unauthenticated);
       }
     });
   }

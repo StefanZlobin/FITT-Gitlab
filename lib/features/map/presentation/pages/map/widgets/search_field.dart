@@ -218,11 +218,11 @@ class _SearchFieldState extends State<SearchField> {
   Widget _buildAddressRow(SearchAddress searchAddress) {
     return GestureDetector(
       onTap: () {
-        searchController.clear();
-        searchController.close();
         getIt<SearchBloc>().add(
           SearchEvent.suggestionTap(searchAddress: searchAddress),
         );
+        searchController.clear();
+        searchController.close();
       },
       child: SizedBox(
         height: 72,
