@@ -24,7 +24,7 @@ class UserUseCase {
     await userRepository.deleteUser();
   }
 
-  Future<void> logoutUser() async {
-    await userRepository.logoutUser();
+  Future<void> logoutUser({required bool deleteUser}) async {
+    await userRepository.logoutUser(deleteUser: deleteUser);
   }
 }

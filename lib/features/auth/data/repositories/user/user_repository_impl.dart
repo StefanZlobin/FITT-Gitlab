@@ -86,9 +86,9 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> logoutUser() async {
-    await _userLocalClient.deleteUser();
-    await _apiClient.logoutUser();
+  Future<void> logoutUser({required bool deleteUser}) async {
+    if (!deleteUser) await _userLocalClient.deleteUser();
+    if (!deleteUser) await _apiClient.logoutUser();
     await getIt<TokenRepository>().deleteToken();
     updateUser(null);
   }
@@ -96,7 +96,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> deleteUser() async {
     await _apiClient.deleteUserData();
-    await logoutUser();
+    await logoutUser(deleteUser: true);
   }
 
   @override

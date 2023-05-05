@@ -30,9 +30,6 @@ class UserLocalClient {
     await _ensureInitialized();
 
     await _userStorage.put(0, user.toJson());
-
-    final u = await getSignedUser();
-    print(u);
   }
 
   Future<void> deleteUser() async {
