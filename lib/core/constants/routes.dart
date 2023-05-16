@@ -31,6 +31,7 @@ import 'package:fitt/presentation/pages/analytics/analytics_page.dart';
 import 'package:fitt/presentation/pages/feedback/feedback_page.dart';
 import 'package:fitt/presentation/pages/information/information_page.dart';
 import 'package:fitt/presentation/splash/splash.dart';
+import 'package:fitt/presentation/wallet/wallet.dart';
 import 'package:fitt/presentation/webview/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -256,6 +257,13 @@ class Routes {
       name: AppRoute.purchasedBatch.routeToName,
       builder: (context, state) =>
           const ShakeFeedbackWrapper(child: PurchasedBatchPage()),
+    ),
+    GoRoute(
+      path: AppRoute.wallet.routeToPath,
+      name: AppRoute.wallet.routeToName,
+      builder: (context, state) => const ShakeFeedbackWrapper(
+        child: Wallet(),
+      ),
     ),
   ];
 
