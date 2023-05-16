@@ -213,6 +213,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
       gender: _state.gender?.value ?? userSnapshot?.gender,
       phoneNumber: userSnapshot?.phoneNumber,
       avatar: userSnapshot?.avatar,
+      wallet: userSnapshot?.wallet,
     );
     try {
       await userUserCase.updateUserData(user: userData);
