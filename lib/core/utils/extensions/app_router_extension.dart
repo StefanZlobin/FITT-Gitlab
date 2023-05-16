@@ -92,6 +92,9 @@ extension AppRouterExtension on AppRoute {
 
       case AppRoute.inputSecureCode:
         return '/${AppRoute.inputSecureCode.name}';
+
+      case AppRoute.wallet:
+        return '/${AppRoute.wallet.name}';
     }
   }
 
@@ -186,6 +189,9 @@ extension AppRouterExtension on AppRoute {
 
       case AppRoute.inputSecureCode:
         return '/${AppRoute.inputSecureCode.name.toUpperCase()}';
+
+      case AppRoute.wallet:
+        return '/${AppRoute.wallet.name.toUpperCase()}';
     }
   }
 }
