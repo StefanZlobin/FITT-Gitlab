@@ -93,7 +93,7 @@ class MapPage extends StatelessWidget {
           children: const [
             MapWidget(),
             ClosestWorkoutCard(),
-            WalletWidget(),
+            WalletWidget(isMap: true),
             ClubCarousel(),
             MenuButton(),
             SearchField(),
