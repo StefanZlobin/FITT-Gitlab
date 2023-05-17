@@ -67,9 +67,9 @@ Widget walletPageWidget() {
       ),
       gradient: const LinearGradient(
         colors: [
-          AppColors.kThirdColor,
-          AppColors.kSecondColor,
-          AppColors.kFirstColor,
+          AppColors.kGradientBlueDark,
+          AppColors.kGradientPurpleLight,
+          AppColors.kGradientRedLight,
         ],
       ),
     ),
