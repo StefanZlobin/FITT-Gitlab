@@ -10,43 +10,41 @@ class Wallet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(AppIcons.arr_big_left),
-            onPressed: () => context.pop(),
-          ),
-          title: const Text('Кошелек', style: AppTypography.kH16),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(AppIcons.arr_big_left),
+          onPressed: () => context.pop(),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 24),
-              walletPageWidget(),
-              const SizedBox(height: 40),
-              const Text('Следующее пополнение', style: AppTypography.kH16),
-              const SizedBox(height: 6),
-              Text(
-                '15 августа 2023',
-                style: AppTypography.kParagraph16
-                    .apply(color: AppColors.kOxford60),
-              ),
-              const SizedBox(height: 32),
-              const Text(
-                'Информация об организации',
-                style: AppTypography.kH16,
-              ),
-              const SizedBox(height: 14),
-              Text(
-                '«FITNESS CLUB» - это современный фитнес-клуб в Калининском районе Санкт-Петербурга, созданный в соответствии со всеми критериями обеспечения качества и комфорта тренировочного процесса...',
-                style: AppTypography.kParagraph16
-                    .apply(color: AppColors.kOxford60),
-              ),
-            ],
-          ),
+        title: const Text('Кошелек', style: AppTypography.kH16),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 24),
+            walletPageWidget(),
+            const SizedBox(height: 40),
+            const Text('Следующее пополнение', style: AppTypography.kH16),
+            const SizedBox(height: 6),
+            Text(
+              '15 августа 2023',
+              style:
+                  AppTypography.kParagraph16.apply(color: AppColors.kOxford60),
+            ),
+            const SizedBox(height: 32),
+            const Text(
+              'Информация об организации',
+              style: AppTypography.kH16,
+            ),
+            const SizedBox(height: 14),
+            Text(
+              '«FITNESS CLUB» - это современный фитнес-клуб в Калининском районе Санкт-Петербурга, созданный в соответствии со всеми критериями обеспечения качества и комфорта тренировочного процесса...',
+              style:
+                  AppTypography.kParagraph16.apply(color: AppColors.kOxford60),
+            ),
+          ],
         ),
       ),
     );
