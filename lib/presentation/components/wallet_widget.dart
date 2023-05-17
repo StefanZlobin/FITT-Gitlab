@@ -9,7 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 class WalletWidget extends StatelessWidget {
-  const WalletWidget({super.key});
+  const WalletWidget({super.key, this.isMap = false});
+
+  final bool isMap;
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +55,13 @@ class WalletWidget extends StatelessWidget {
 
   Container _buildWallet(BuildContext context, {double margin = 0}) {
     return Container(
-      margin: EdgeInsets.only(
-        top: 126 + margin,
-        left: MediaQuery.of(context).size.width - 16 - 100,
-      ),
-      height: 40,
-      width: 100,
+      margin: isMap
+          ? EdgeInsets.only(
+              top: 126 + margin,
+              left: MediaQuery.of(context).size.width - 32 - 100,
+              right: 16,
+            )
+          : null,
       decoration: ShapeDecoration(
         shape: SuperellipseShape(
           borderRadius: const BorderRadius.only(
@@ -70,20 +73,20 @@ class WalletWidget extends StatelessWidget {
         ),
         gradient: const LinearGradient(
           colors: [
-            AppColors.kThirdColor,
-            AppColors.kSecondColor,
-            AppColors.kFirstColor,
+            AppColors.kGradientBlueDark,
+            AppColors.kGradientPurpleLight,
+            AppColors.kGradientRedLight,
           ],
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         child: Row(
           children: [
             const Icon(AppIcons.coolair, color: Colors.white),
             const SizedBox(width: 8),
             Text(
-              '27 690 р ',
+              '27 690 \u20BD',
               style: AppTypography.kBody14.apply(color: Colors.white),
             ),
           ],

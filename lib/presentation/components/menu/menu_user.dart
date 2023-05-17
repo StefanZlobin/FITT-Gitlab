@@ -109,10 +109,11 @@ class MenuUser extends StatelessWidget with UserMixin {
         ),
         UserMenuTile(
           title: const Text('Кошелек'),
+          subtitle: const Text('Кебаб трансгалактик'),
           onPressed: () {
             context.push(AppRoute.wallet.routeToName);
           },
-          trailing: const WalletWidget(),
+          trailing: const SizedBox(width: 120, child: WalletWidget()),
         ),
         UserMenuTile(
           title: const Text('Купленные часы'),

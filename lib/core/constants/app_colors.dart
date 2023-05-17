@@ -36,7 +36,7 @@ abstract class AppColors {
   static const Color kElevatedButtonActiveStateDark = Color(0xFF7A7A7A);
 
   // App gradient wallet colors
-  static const Color kFirstColor = Color(0xFF004589);
-  static const Color kSecondColor = Color(0xFF944CA0);
-  static const Color kThirdColor = Color(0xFFF56C6C);
+  static const Color kGradientRedLight = Color(0xFFF56C6C);
+  static const Color kGradientPurpleLight = Color(0xFF944CA0);
+  static const Color kGradientBlueDark = Color(0xFF004589);
 }
