@@ -24,7 +24,7 @@ class Wallet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 24),
-            walletPageWidget(),
+            _walletPageWidget(),
             const SizedBox(height: 40),
             const Text('Следующее пополнение', style: AppTypography.kH16),
             const SizedBox(height: 6),
@@ -51,7 +51,7 @@ class Wallet extends StatelessWidget {
   }
 }
 
-Widget walletPageWidget() {
+Widget _walletPageWidget() {
   return Container(
     height: 64,
     decoration: ShapeDecoration(

@@ -70,4 +70,23 @@ class PaymentRepositoryImpl implements PaymentRepository {
       throw NetworkExceptions.getDioException(e);
     }
   }
+
+  // Реализовать метод покупки тренировки за корп счет, когда у Артема на беке будет готово
+  @override
+  Future<Workout> buyWorkoutByCorpWallet({
+    required TimeSlot slot,
+    required String activityUuid,
+  }) async {
+    try {
+      final response =
+          await _apiClient.buyWorkoutByBatch(BuyWorkoutByBatchRequestBody(
+        activity: activityUuid,
+        startTime: slot.startTime.toString(),
+        endTime: slot.startTime.add(slot.duration).toString(),
+      ));
+      return response;
+    } on DioError catch (e) {
+      throw NetworkExceptions.getDioException(e);
+    }
+  }
 }
