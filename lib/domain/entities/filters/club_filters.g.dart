@@ -16,6 +16,12 @@ _$_ClubFilters _$$_ClubFiltersFromJson(Map<String, dynamic> json) =>
       onlyWithBatch: json['only_with_batch'] as bool?,
       onlyWithSlots: json['only_with_slots'] as bool?,
       favorite: json['only_favorite'] as bool?,
+      northeast: json['northeast'] == null
+          ? null
+          : LatLng.fromJson(json['northeast'] as List<dynamic>),
+      southwest: json['southwest'] == null
+          ? null
+          : LatLng.fromJson(json['southwest'] as List<dynamic>),
     );
 
 Map<String, dynamic> _$$_ClubFiltersToJson(_$_ClubFilters instance) =>
@@ -26,4 +32,6 @@ Map<String, dynamic> _$$_ClubFiltersToJson(_$_ClubFilters instance) =>
       'only_with_batch': instance.onlyWithBatch,
       'only_with_slots': instance.onlyWithSlots,
       'only_favorite': instance.favorite,
+      'northeast': instance.northeast,
+      'southwest': instance.southwest,
     };

@@ -20,7 +20,7 @@ ClubFilters _$ClubFiltersFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ClubFilters {
-//TODO: при фильтрации передавать только facility id
+// При фильтрации передавать только facility id
   @JsonKey(name: 'facility_ids')
   List<Facility>? get facilities => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_gte')
@@ -33,6 +33,10 @@ mixin _$ClubFilters {
   bool? get onlyWithSlots => throw _privateConstructorUsedError;
   @JsonKey(name: 'only_favorite')
   bool? get favorite => throw _privateConstructorUsedError;
+  @JsonKey(name: 'northeast')
+  LatLng? get northeast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'southwest')
+  LatLng? get southwest => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +56,9 @@ abstract class $ClubFiltersCopyWith<$Res> {
       @JsonKey(name: 'price_lte') int? maxPrice,
       @JsonKey(name: 'only_with_batch') bool? onlyWithBatch,
       @JsonKey(name: 'only_with_slots') bool? onlyWithSlots,
-      @JsonKey(name: 'only_favorite') bool? favorite});
+      @JsonKey(name: 'only_favorite') bool? favorite,
+      @JsonKey(name: 'northeast') LatLng? northeast,
+      @JsonKey(name: 'southwest') LatLng? southwest});
 }
 
 /// @nodoc
@@ -74,6 +80,8 @@ class _$ClubFiltersCopyWithImpl<$Res, $Val extends ClubFilters>
     Object? onlyWithBatch = freezed,
     Object? onlyWithSlots = freezed,
     Object? favorite = freezed,
+    Object? northeast = freezed,
+    Object? southwest = freezed,
   }) {
     return _then(_value.copyWith(
       facilities: freezed == facilities
@@ -100,6 +108,14 @@ class _$ClubFiltersCopyWithImpl<$Res, $Val extends ClubFilters>
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      northeast: freezed == northeast
+          ? _value.northeast
+          : northeast // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+      southwest: freezed == southwest
+          ? _value.southwest
+          : southwest // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
     ) as $Val);
   }
 }
@@ -118,7 +134,9 @@ abstract class _$$_ClubFiltersCopyWith<$Res>
       @JsonKey(name: 'price_lte') int? maxPrice,
       @JsonKey(name: 'only_with_batch') bool? onlyWithBatch,
       @JsonKey(name: 'only_with_slots') bool? onlyWithSlots,
-      @JsonKey(name: 'only_favorite') bool? favorite});
+      @JsonKey(name: 'only_favorite') bool? favorite,
+      @JsonKey(name: 'northeast') LatLng? northeast,
+      @JsonKey(name: 'southwest') LatLng? southwest});
 }
 
 /// @nodoc
@@ -138,6 +156,8 @@ class __$$_ClubFiltersCopyWithImpl<$Res>
     Object? onlyWithBatch = freezed,
     Object? onlyWithSlots = freezed,
     Object? favorite = freezed,
+    Object? northeast = freezed,
+    Object? southwest = freezed,
   }) {
     return _then(_$_ClubFilters(
       facilities: freezed == facilities
@@ -164,28 +184,39 @@ class __$$_ClubFiltersCopyWithImpl<$Res>
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      northeast: freezed == northeast
+          ? _value.northeast
+          : northeast // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+      southwest: freezed == southwest
+          ? _value.southwest
+          : southwest // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ClubFilters implements _ClubFilters {
+class _$_ClubFilters extends _ClubFilters {
   const _$_ClubFilters(
       {@JsonKey(name: 'facility_ids') final List<Facility>? facilities,
       @JsonKey(name: 'price_gte') this.minPrice,
       @JsonKey(name: 'price_lte') this.maxPrice,
       @JsonKey(name: 'only_with_batch') this.onlyWithBatch,
       @JsonKey(name: 'only_with_slots') this.onlyWithSlots,
-      @JsonKey(name: 'only_favorite') this.favorite})
-      : _facilities = facilities;
+      @JsonKey(name: 'only_favorite') this.favorite,
+      @JsonKey(name: 'northeast') this.northeast,
+      @JsonKey(name: 'southwest') this.southwest})
+      : _facilities = facilities,
+        super._();
 
   factory _$_ClubFilters.fromJson(Map<String, dynamic> json) =>
       _$$_ClubFiltersFromJson(json);
 
-//TODO: при фильтрации передавать только facility id
+// При фильтрации передавать только facility id
   final List<Facility>? _facilities;
-//TODO: при фильтрации передавать только facility id
+// При фильтрации передавать только facility id
   @override
   @JsonKey(name: 'facility_ids')
   List<Facility>? get facilities {
@@ -211,10 +242,16 @@ class _$_ClubFilters implements _ClubFilters {
   @override
   @JsonKey(name: 'only_favorite')
   final bool? favorite;
+  @override
+  @JsonKey(name: 'northeast')
+  final LatLng? northeast;
+  @override
+  @JsonKey(name: 'southwest')
+  final LatLng? southwest;
 
   @override
   String toString() {
-    return 'ClubFilters(facilities: $facilities, minPrice: $minPrice, maxPrice: $maxPrice, onlyWithBatch: $onlyWithBatch, onlyWithSlots: $onlyWithSlots, favorite: $favorite)';
+    return 'ClubFilters(facilities: $facilities, minPrice: $minPrice, maxPrice: $maxPrice, onlyWithBatch: $onlyWithBatch, onlyWithSlots: $onlyWithSlots, favorite: $favorite, northeast: $northeast, southwest: $southwest)';
   }
 
   @override
@@ -233,7 +270,11 @@ class _$_ClubFilters implements _ClubFilters {
             (identical(other.onlyWithSlots, onlyWithSlots) ||
                 other.onlyWithSlots == onlyWithSlots) &&
             (identical(other.favorite, favorite) ||
-                other.favorite == favorite));
+                other.favorite == favorite) &&
+            (identical(other.northeast, northeast) ||
+                other.northeast == northeast) &&
+            (identical(other.southwest, southwest) ||
+                other.southwest == southwest));
   }
 
   @JsonKey(ignore: true)
@@ -245,7 +286,9 @@ class _$_ClubFilters implements _ClubFilters {
       maxPrice,
       onlyWithBatch,
       onlyWithSlots,
-      favorite);
+      favorite,
+      northeast,
+      southwest);
 
   @JsonKey(ignore: true)
   @override
@@ -261,19 +304,22 @@ class _$_ClubFilters implements _ClubFilters {
   }
 }
 
-abstract class _ClubFilters implements ClubFilters {
+abstract class _ClubFilters extends ClubFilters {
   const factory _ClubFilters(
       {@JsonKey(name: 'facility_ids') final List<Facility>? facilities,
       @JsonKey(name: 'price_gte') final int? minPrice,
       @JsonKey(name: 'price_lte') final int? maxPrice,
       @JsonKey(name: 'only_with_batch') final bool? onlyWithBatch,
       @JsonKey(name: 'only_with_slots') final bool? onlyWithSlots,
-      @JsonKey(name: 'only_favorite') final bool? favorite}) = _$_ClubFilters;
+      @JsonKey(name: 'only_favorite') final bool? favorite,
+      @JsonKey(name: 'northeast') final LatLng? northeast,
+      @JsonKey(name: 'southwest') final LatLng? southwest}) = _$_ClubFilters;
+  const _ClubFilters._() : super._();
 
   factory _ClubFilters.fromJson(Map<String, dynamic> json) =
       _$_ClubFilters.fromJson;
 
-  @override //TODO: при фильтрации передавать только facility id
+  @override // При фильтрации передавать только facility id
   @JsonKey(name: 'facility_ids')
   List<Facility>? get facilities;
   @override
@@ -291,6 +337,12 @@ abstract class _ClubFilters implements ClubFilters {
   @override
   @JsonKey(name: 'only_favorite')
   bool? get favorite;
+  @override
+  @JsonKey(name: 'northeast')
+  LatLng? get northeast;
+  @override
+  @JsonKey(name: 'southwest')
+  LatLng? get southwest;
   @override
   @JsonKey(ignore: true)
   _$$_ClubFiltersCopyWith<_$_ClubFilters> get copyWith =>

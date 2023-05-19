@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:fitt/core/utils/functions/polygon.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
@@ -6,6 +8,7 @@ import 'package:fitt/features/map/data/source/remote_data_source/map_api_client/
 import 'package:fitt/features/map/domain/entities/lat_lng/lat_lng.dart';
 import 'package:fitt/features/map/domain/entities/map_point/map_point.dart';
 import 'package:fitt/features/map/domain/repositories/map/map_repository.dart';
+import 'package:rxdart/rxdart.dart';
 
 class MapRepositoryImpl implements MapRepository {
   MapRepositoryImpl(this.dio, {this.baseUrl})
@@ -14,6 +17,13 @@ class MapRepositoryImpl implements MapRepository {
   final Dio dio;
   final String? baseUrl;
   final MapApiClient _apiClient;
+
+  final BehaviorSubject<List<MapPoint>> _mapPointsController =
+      BehaviorSubject.seeded(<MapPoint>[], sync: true);
+  void Function(List<MapPoint>) get updateMapPoints =>
+      _mapPointsController.sink.add;
+  @override
+  Stream<List<MapPoint>> get mapPoints => _mapPointsController;
 
   @override
   Future<List<MapPoint>> getMapPoints({
@@ -32,5 +42,10 @@ class MapRepositoryImpl implements MapRepository {
     } on Exception catch (e) {
       throw Exception(e);
     }
+  }
+
+  @override
+  FutureOr onDispose() {
+    _mapPointsController.close();
   }
 }

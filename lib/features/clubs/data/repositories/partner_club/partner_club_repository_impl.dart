@@ -1,5 +1,7 @@
 // ignore_for_file: only_throw_errors
 
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:fitt/core/enum/club_sorting_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
@@ -16,6 +18,7 @@ import 'package:fitt/features/clubs/domain/entities/calculate_price/calculate_pr
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/features/clubs/domain/repositories/partner_club/partner_club_repository.dart';
 import 'package:fitt/features/map/domain/entities/lat_lng/lat_lng.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class PartnerClubRepositoryImpl implements PartnerClubRepository {
@@ -25,6 +28,13 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   final Dio dio;
   final String? baseUrl;
   final PartnerClubApiClient _apiClient;
+
+  final BehaviorSubject<List<PartnerClub>> _partnerClubsController =
+      BehaviorSubject.seeded(<PartnerClub>[], sync: true);
+  void Function(List<PartnerClub>) get updatePartnerClubs =>
+      _partnerClubsController.sink.add;
+  @override
+  Stream<List<PartnerClub>> get partnerClubs => _partnerClubsController;
 
   @override
   Future<PartnerClub> addClubToFavorites(String clubUuid) async {
@@ -115,6 +125,8 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
           withBatch: clubFilters.onlyWithBatch ?? false,
         ),
       );
+
+      updatePartnerClubs(partnerClubs.results);
       return partnerClubs.results;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
@@ -184,5 +196,10 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
       );
       throw NetworkExceptions.getDioException(e);
     }
+  }
+
+  @override
+  FutureOr onDispose() {
+    _partnerClubsController.close();
   }
 }
