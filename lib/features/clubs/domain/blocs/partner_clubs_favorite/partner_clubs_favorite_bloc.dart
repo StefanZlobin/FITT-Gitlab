@@ -51,14 +51,7 @@ class PartnerClubsFavoriteBloc
 
     getIt<ClubFilteringBloc>().stream.listen((ClubFilteringState state) {
       state.whenOrNull(
-        loaded: (selectedFacilities, selectedPrice, _, __) {
-          clubFilters = ClubFilters(
-            favorite: true,
-            facilities: selectedFacilities,
-            maxPrice: selectedPrice!.maxPrice,
-            minPrice: selectedPrice.minPrice,
-          );
-
+        loaded: (clubFilters, _, __) {
           add(PartnerClubsFavoriteEvent.getPartnerClubs(
             clubFilters: clubFilters,
             clubSortingEnum: clubSortingEnum,

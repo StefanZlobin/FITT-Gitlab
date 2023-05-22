@@ -47,17 +47,23 @@ class FilterModalBottomSheet extends StatelessWidget {
                 return state.when(
                   initial: () =>
                       const Center(child: CircularProgressIndicator()),
-                  loaded: (facilities, price, isPUpdate, isFUpdated) {
+                  loaded: (clubFilters, isPUpdate, isFUpdated) {
                     return ListView(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       children: [
                         _buildHeader(),
                         const SizedBox(height: 32),
-                        _buildFacilitiesFilter(facilities!),
+                        _buildFacilitiesFilter(clubFilters.facilities!),
                         const Separator(
                           margin: EdgeInsets.symmetric(vertical: 32),
                         ),
-                        _buildPriceFilterWidget(context, price),
+                        _buildPriceFilterWidget(
+                          context,
+                          Price(
+                            minPrice: clubFilters.minPrice,
+                            maxPrice: clubFilters.maxPrice,
+                          ),
+                        ),
                       ],
                     );
                   },
@@ -73,7 +79,7 @@ class FilterModalBottomSheet extends StatelessWidget {
                 return state.when(
                   initial: () => const SizedBox(),
                   error: (error) => const SizedBox(),
-                  loaded: (_, __, isPriceUpdate, isFacilitiesUpdated) {
+                  loaded: (_, isPriceUpdate, isFacilitiesUpdated) {
                     if (isPriceUpdate || isFacilitiesUpdated) {
                       return _buildShowClubsButton(context, isDisable: false);
                     }

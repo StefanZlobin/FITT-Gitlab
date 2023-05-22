@@ -20,42 +20,40 @@ class ClubFilteringBloc extends Bloc<ClubFilteringEvent, ClubFilteringState> {
     on<_ClubFilteringEventFacilitiesChanged>(
       _onClubFilteringEventFacilitiesChanged,
     );
-    on<_ClubFilteringEventRefreshState>(
-      _onClubFilteringEventRefreshState,
+    on<_ClubFilteringEventFiltersChanged>(
+      _onClubFilteringEventFiltersChanged,
     );
     on<_ClubFilteringEventClearFilter>(
       _onClubFilteringEventClearFilter,
     );
-    on<_ClubFilteringEventFiltersChanged>(
-      _onClubFilteringEventFiltersChanged,
-    );
 
     getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
-      add(ClubFilteringEvent.refreshState(
-        facilities: filters.facilities,
-        price: Price(minPrice: filters.minPrice, maxPrice: filters.maxPrice),
-      ));
+      final facilities = filters.facilities;
+      _isFacilitiesUpdated = facilities?.containsValue(true) ?? false;
+
+      add(ClubFilteringEvent.filtersChanged(filters: filters));
     });
   }
 
   _ClubFilteringStateLoaded get stateLoaded => state.maybeMap(
         loaded: (state) => state,
-        orElse: () => const _ClubFilteringStateLoaded(
-          selectedFacilities: {},
+        orElse: () => _ClubFilteringStateLoaded(
+          clubFilters: ClubFilters(),
         ),
       );
 
-  void _onClubFilteringEventFiltersChanged(
-    _ClubFilteringEventFiltersChanged event,
-    Emitter<ClubFilteringState> emit,
-  ) {
-    getIt<ResourceRepository>().filtersChanged(filters: event.filters);
-  }
+  // Сохранения диапозона цен, которые загрузились изначально
+  final minP = getIt<ResourceRepository>().minPrice;
+  final maxP = getIt<ResourceRepository>().maxPrice;
+
+  bool _isPriceUpdated = false;
+  bool _isFacilitiesUpdated = false;
 
   void _onClubFilteringEventPriceChanged(
     _ClubFilteringEventPriceChanged event,
     Emitter<ClubFilteringState> emit,
   ) {
+    _isPriceUpdated = true;
     getIt<ResourceRepository>().priceChanged(price: event.price);
   }
 
@@ -66,32 +64,23 @@ class ClubFilteringBloc extends Bloc<ClubFilteringEvent, ClubFilteringState> {
     getIt<ResourceRepository>().facilitiesChanged(facility: event.facility);
   }
 
-  void _onClubFilteringEventRefreshState(
-    _ClubFilteringEventRefreshState event,
+  void _onClubFilteringEventFiltersChanged(
+    _ClubFilteringEventFiltersChanged event,
     Emitter<ClubFilteringState> emit,
   ) {
-    final isPriceUpdated = getIt<ResourceRepository>().minPrice !=
-            (event.price?.minPrice ?? stateLoaded.selectedPrice?.minPrice) ||
-        getIt<ResourceRepository>().maxPrice !=
-            (event.price?.maxPrice ?? stateLoaded.selectedPrice?.maxPrice);
-    final isFacilitiesUpdated = event.facilities?.containsValue(true) ??
-        stateLoaded.selectedFacilities?.containsValue(true) ??
-        false;
-
-    emit(
-      ClubFilteringState.loaded(
-        selectedFacilities: event.facilities ?? stateLoaded.selectedFacilities,
-        selectedPrice: event.price ?? stateLoaded.selectedPrice,
-        isPriceUpdated: isPriceUpdated,
-        isFacilitiesUpdated: isFacilitiesUpdated,
-      ),
-    );
+    emit(ClubFilteringState.loaded(
+      clubFilters: event.filters,
+      isFacilitiesUpdated: _isFacilitiesUpdated,
+      isPriceUpdated: _isPriceUpdated,
+    ));
   }
 
   void _onClubFilteringEventClearFilter(
     _ClubFilteringEventClearFilter event,
     Emitter<ClubFilteringState> emit,
   ) {
+    _isFacilitiesUpdated = false;
+    _isPriceUpdated = false;
     getIt<ResourceRepository>().getFacilities();
     getIt<ResourceRepository>().getPrice();
   }

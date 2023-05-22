@@ -122,10 +122,12 @@ class _SearchFieldState extends State<SearchField> {
                   return state.when(
                     initial: () => const SizedBox(),
                     error: (error) => const SizedBox(),
-                    loaded: (facilities, _, isPUpdate, __) {
-                      final countActiveFacilities = facilities!.entries
-                          .where((element) => element.value)
-                          .length;
+                    loaded: (clubFilters, isPUpdate, __) {
+                      final countActiveFacilities = clubFilters
+                              .facilities?.entries
+                              .where((element) => element.value)
+                              .length ??
+                          0;
                       final countActiveFilters =
                           countActiveFacilities + (isPUpdate ? 1 : 0);
                       if (countActiveFilters == 0) return const SizedBox();

@@ -4,6 +4,7 @@ import 'package:fitt/core/enum/app_route_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
+import 'package:fitt/domain/repositories/resource/resource_repository.dart';
 import 'package:fitt/features/clubs/domain/blocs/club_filtering/club_filtering_bloc.dart';
 import 'package:fitt/features/clubs/domain/blocs/club_sorting/club_sorting_bloc.dart';
 import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_clubs_favorite_bloc.dart';
@@ -37,6 +38,8 @@ class FavoriteClubsPage extends StatelessWidget {
                 ),
                 leading: IconButton(
                   onPressed: () {
+                    getIt<ResourceRepository>()
+                        .favoriteChanged(isFavorite: false);
                     context.pop();
                   },
                   icon: const Icon(AppIcons.arr_big_left),
@@ -199,8 +202,8 @@ class FavoriteClubsPage extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox(),
-          loaded: (facilities, price, isPUpdated, isFUpdated) {
-            final activeFacilities = facilities!.entries
+          loaded: (clubFilters, isPUpdated, isFUpdated) {
+            final activeFacilities = clubFilters.facilities!.entries
                 .where((e) => e.value)
                 .map((e) => e.key)
                 .toList();
@@ -211,7 +214,7 @@ class FavoriteClubsPage extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: facilities.length + 2,
+                itemCount: clubFilters.facilities?.length ?? 0 + 2,
                 separatorBuilder: (context, index) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
                   if (index == 0) {
@@ -221,13 +224,14 @@ class FavoriteClubsPage extends StatelessWidget {
                       activeFacilities,
                     );
                   }
-                  if (index == facilities.length + 1) {
+                  if (index == clubFilters.facilities!.length + 1) {
                     return const SizedBox();
                   }
 
-                  final keys = facilities.keys.toList();
+                  final keys = clubFilters.facilities!.keys.toList();
                   final facility = keys[index - 1];
-                  final isFacilityActive = facilities[facility] ?? false;
+                  final isFacilityActive =
+                      clubFilters.facilities![facility] ?? false;
 
                   return _buildFacilityButton(facility, isFacilityActive);
                 },
