@@ -51,6 +51,7 @@ dependencies:
   #Firebase services
   firebase_core: ^2.4.0
   firebase_messaging: ^14.1.4
+  firebase_remote_config: ^4.2.1
   #Cache network images
   cached_network_image: ^3.2.3
   #DateTime
@@ -93,7 +94,7 @@ dependencies:
   #Shake
   shake: ^2.2.0
   #Sentry
-  sentry_flutter: ^6.20.1
+  sentry_flutter: ^7.6.1
   feedback_sentry: ^2.3.0
   #Page transition
   page_transition: ^2.0.9
@@ -108,6 +109,8 @@ dependencies:
   uuid: ^3.0.7
   #Notify about new app version
   upgrader: ^6.2.0
+  #Information about app
+  package_info_plus: ^4.0.1
 
   #Cluster manager (Fluster)
   #aka Stefan
