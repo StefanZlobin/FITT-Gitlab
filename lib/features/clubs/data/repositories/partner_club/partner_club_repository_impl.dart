@@ -116,13 +116,13 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
       final partnerClubs = await _apiClient.getPartnerClubs(
         xPosition,
         GetPartnerClubsRequestBody(
-          facilities: clubFilters.facilities?.map((e) => e.id).toList() ?? [],
+          facilities: clubFilters.getActiveFacilitiesIds,
           maxPrice: clubFilters.maxPrice,
           minPrice: clubFilters.minPrice,
           poligon: polygon(northeast, southwest),
           sorting: clubSorting.convertSortingToField(clubSorting),
-          isFavorite: clubFilters.favorite ?? false,
-          withBatch: clubFilters.onlyWithBatch ?? false,
+          isFavorite: clubFilters.favorite,
+          withBatch: clubFilters.onlyWithBatch,
         ),
       );
 

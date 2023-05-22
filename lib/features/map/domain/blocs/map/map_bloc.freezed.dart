@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MapEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ClubFilters filters, LatLng northeast,
+    required TResult Function(ClubFilters? filters, LatLng northeast,
             LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
@@ -29,7 +29,7 @@ mixin _$MapEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult? Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
@@ -40,7 +40,7 @@ mixin _$MapEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
@@ -105,13 +105,13 @@ abstract class _$$_MapEventCameraMoveCopyWith<$Res> {
       __$$_MapEventCameraMoveCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {ClubFilters filters,
+      {ClubFilters? filters,
       LatLng northeast,
       LatLng southwest,
       gm.LatLngBounds visibleRegion,
       double zoom});
 
-  $ClubFiltersCopyWith<$Res> get filters;
+  $ClubFiltersCopyWith<$Res>? get filters;
 }
 
 /// @nodoc
@@ -125,17 +125,17 @@ class __$$_MapEventCameraMoveCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? filters = null,
+    Object? filters = freezed,
     Object? northeast = null,
     Object? southwest = null,
     Object? visibleRegion = null,
     Object? zoom = null,
   }) {
     return _then(_$_MapEventCameraMove(
-      filters: null == filters
+      filters: freezed == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
-              as ClubFilters,
+              as ClubFilters?,
       northeast: null == northeast
           ? _value.northeast
           : northeast // ignore: cast_nullable_to_non_nullable
@@ -157,8 +157,12 @@ class __$$_MapEventCameraMoveCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ClubFiltersCopyWith<$Res> get filters {
-    return $ClubFiltersCopyWith<$Res>(_value.filters, (value) {
+  $ClubFiltersCopyWith<$Res>? get filters {
+    if (_value.filters == null) {
+      return null;
+    }
+
+    return $ClubFiltersCopyWith<$Res>(_value.filters!, (value) {
       return _then(_value.copyWith(filters: value));
     });
   }
@@ -168,15 +172,14 @@ class __$$_MapEventCameraMoveCopyWithImpl<$Res>
 
 class _$_MapEventCameraMove implements _MapEventCameraMove {
   const _$_MapEventCameraMove(
-      {this.filters = const ClubFilters(favorite: false),
+      {this.filters,
       required this.northeast,
       required this.southwest,
       required this.visibleRegion,
       required this.zoom});
 
   @override
-  @JsonKey()
-  final ClubFilters filters;
+  final ClubFilters? filters;
   @override
   final LatLng northeast;
   @override
@@ -220,7 +223,7 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ClubFilters filters, LatLng northeast,
+    required TResult Function(ClubFilters? filters, LatLng northeast,
             LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
@@ -234,7 +237,7 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult? Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
@@ -248,7 +251,7 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
@@ -307,13 +310,13 @@ class _$_MapEventCameraMove implements _MapEventCameraMove {
 
 abstract class _MapEventCameraMove implements MapEvent {
   const factory _MapEventCameraMove(
-      {final ClubFilters filters,
+      {final ClubFilters? filters,
       required final LatLng northeast,
       required final LatLng southwest,
       required final gm.LatLngBounds visibleRegion,
       required final double zoom}) = _$_MapEventCameraMove;
 
-  ClubFilters get filters;
+  ClubFilters? get filters;
   LatLng get northeast;
   LatLng get southwest;
   gm.LatLngBounds get visibleRegion;
@@ -367,11 +370,9 @@ class __$$_MapEventFiltersDetectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
-  const _$_MapEventFiltersDetected(
-      {this.filters = const ClubFilters(favorite: false)});
+  const _$_MapEventFiltersDetected({required this.filters});
 
   @override
-  @JsonKey()
   final ClubFilters filters;
 
   @override
@@ -401,7 +402,7 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ClubFilters filters, LatLng northeast,
+    required TResult Function(ClubFilters? filters, LatLng northeast,
             LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
@@ -415,7 +416,7 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult? Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
@@ -429,7 +430,7 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
@@ -487,7 +488,7 @@ class _$_MapEventFiltersDetected implements _MapEventFiltersDetected {
 }
 
 abstract class _MapEventFiltersDetected implements MapEvent {
-  const factory _MapEventFiltersDetected({final ClubFilters filters}) =
+  const factory _MapEventFiltersDetected({required final ClubFilters filters}) =
       _$_MapEventFiltersDetected;
 
   ClubFilters get filters;
@@ -571,7 +572,7 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ClubFilters filters, LatLng northeast,
+    required TResult Function(ClubFilters? filters, LatLng northeast,
             LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
@@ -585,7 +586,7 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult? Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
@@ -599,7 +600,7 @@ class _$_MapEventMarkerTapped implements _MapEventMarkerTapped {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
@@ -733,7 +734,7 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ClubFilters filters, LatLng northeast,
+    required TResult Function(ClubFilters? filters, LatLng northeast,
             LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
@@ -747,7 +748,7 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult? Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
@@ -761,7 +762,7 @@ class _$_MapEventCarouselCardFocused implements _MapEventCarouselCardFocused {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
@@ -894,7 +895,7 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ClubFilters filters, LatLng northeast,
+    required TResult Function(ClubFilters? filters, LatLng northeast,
             LatLng southwest, gm.LatLngBounds visibleRegion, double zoom)
         cameraMove,
     required TResult Function(ClubFilters filters) filtersDetected,
@@ -908,7 +909,7 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult? Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult? Function(ClubFilters filters)? filtersDetected,
@@ -922,7 +923,7 @@ class _$_MapEventMapCreated implements _MapEventMapCreated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ClubFilters filters, LatLng northeast, LatLng southwest,
+    TResult Function(ClubFilters? filters, LatLng northeast, LatLng southwest,
             gm.LatLngBounds visibleRegion, double zoom)?
         cameraMove,
     TResult Function(ClubFilters filters)? filtersDetected,
@@ -1397,7 +1398,7 @@ class _$_MapStateLoaded implements _MapStateLoaded {
       {required final List<MapPoint> mapPoints,
       required this.visibleRegion,
       required final List<MapMarker> markers,
-      this.filters = const ClubFilters(favorite: false),
+      required this.filters,
       required this.isVisibleRegionUpdated})
       : _mapPoints = mapPoints,
         _markers = markers;
@@ -1421,7 +1422,6 @@ class _$_MapStateLoaded implements _MapStateLoaded {
   }
 
   @override
-  @JsonKey()
   final ClubFilters filters;
   @override
   final bool isVisibleRegionUpdated;
@@ -1538,7 +1538,7 @@ abstract class _MapStateLoaded implements MapState {
       {required final List<MapPoint> mapPoints,
       required final gm.LatLngBounds visibleRegion,
       required final List<MapMarker> markers,
-      final ClubFilters filters,
+      required final ClubFilters filters,
       required final bool isVisibleRegionUpdated}) = _$_MapStateLoaded;
 
   List<MapPoint> get mapPoints;

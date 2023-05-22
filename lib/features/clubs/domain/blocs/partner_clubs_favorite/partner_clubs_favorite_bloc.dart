@@ -54,10 +54,7 @@ class PartnerClubsFavoriteBloc
         loaded: (selectedFacilities, selectedPrice, _, __) {
           clubFilters = ClubFilters(
             favorite: true,
-            facilities: selectedFacilities!.entries
-                .where((element) => element.value)
-                .map((e) => e.key)
-                .toList(),
+            facilities: selectedFacilities,
             maxPrice: selectedPrice!.maxPrice,
             minPrice: selectedPrice.minPrice,
           );
@@ -73,7 +70,7 @@ class PartnerClubsFavoriteBloc
 
   final PartnerClubsUseCase partnerClubsUseCase = PartnerClubsUseCase();
 
-  ClubFilters clubFilters = const ClubFilters(favorite: true);
+  ClubFilters clubFilters = ClubFilters(favorite: true);
   ClubSortingEnum clubSortingEnum = ClubSortingEnum.nearest;
 
   _PartnerClubsFavoriteStateLoaded get stateLoaded => state.maybeMap(

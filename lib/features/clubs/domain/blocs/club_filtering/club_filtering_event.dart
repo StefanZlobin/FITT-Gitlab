@@ -15,6 +15,10 @@ class ClubFilteringEvent with _$ClubFilteringEvent {
     Price? price,
   }) = _ClubFilteringEventRefreshState;
 
+  const factory ClubFilteringEvent.filtersChanged({
+    required ClubFilters filters,
+  }) = _ClubFilteringEventFiltersChanged;
+
   const factory ClubFilteringEvent.clearFilter() =
       _ClubFilteringEventClearFilter;
 }

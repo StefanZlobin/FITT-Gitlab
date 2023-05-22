@@ -22,6 +22,7 @@ mixin _$ClubFilteringEvent {
     required TResult Function(Facility facility) facilitiesChanged,
     required TResult Function(Map<Facility, bool>? facilities, Price? price)
         refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$ClubFilteringEvent {
     TResult? Function(Facility facility)? facilitiesChanged,
     TResult? Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +42,7 @@ mixin _$ClubFilteringEvent {
     TResult Function(Facility facility)? facilitiesChanged,
     TResult Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) =>
@@ -52,6 +55,8 @@ mixin _$ClubFilteringEvent {
         facilitiesChanged,
     required TResult Function(_ClubFilteringEventRefreshState value)
         refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +66,7 @@ mixin _$ClubFilteringEvent {
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +76,7 @@ mixin _$ClubFilteringEvent {
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) =>
@@ -177,6 +184,7 @@ class _$_ClubFilteringEventPriceChanged
     required TResult Function(Facility facility) facilitiesChanged,
     required TResult Function(Map<Facility, bool>? facilities, Price? price)
         refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
     return priceChanged(price);
@@ -189,6 +197,7 @@ class _$_ClubFilteringEventPriceChanged
     TResult? Function(Facility facility)? facilitiesChanged,
     TResult? Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
     return priceChanged?.call(price);
@@ -201,6 +210,7 @@ class _$_ClubFilteringEventPriceChanged
     TResult Function(Facility facility)? facilitiesChanged,
     TResult Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
@@ -219,6 +229,8 @@ class _$_ClubFilteringEventPriceChanged
         facilitiesChanged,
     required TResult Function(_ClubFilteringEventRefreshState value)
         refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
     return priceChanged(this);
@@ -231,6 +243,7 @@ class _$_ClubFilteringEventPriceChanged
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
     return priceChanged?.call(this);
@@ -243,6 +256,7 @@ class _$_ClubFilteringEventPriceChanged
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
@@ -348,6 +362,7 @@ class _$_ClubFilteringEventFacilitiesChanged
     required TResult Function(Facility facility) facilitiesChanged,
     required TResult Function(Map<Facility, bool>? facilities, Price? price)
         refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
     return facilitiesChanged(facility);
@@ -360,6 +375,7 @@ class _$_ClubFilteringEventFacilitiesChanged
     TResult? Function(Facility facility)? facilitiesChanged,
     TResult? Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
     return facilitiesChanged?.call(facility);
@@ -372,6 +388,7 @@ class _$_ClubFilteringEventFacilitiesChanged
     TResult Function(Facility facility)? facilitiesChanged,
     TResult Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
@@ -390,6 +407,8 @@ class _$_ClubFilteringEventFacilitiesChanged
         facilitiesChanged,
     required TResult Function(_ClubFilteringEventRefreshState value)
         refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
     return facilitiesChanged(this);
@@ -402,6 +421,7 @@ class _$_ClubFilteringEventFacilitiesChanged
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
     return facilitiesChanged?.call(this);
@@ -414,6 +434,7 @@ class _$_ClubFilteringEventFacilitiesChanged
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
@@ -544,6 +565,7 @@ class _$_ClubFilteringEventRefreshState
     required TResult Function(Facility facility) facilitiesChanged,
     required TResult Function(Map<Facility, bool>? facilities, Price? price)
         refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
     return refreshState(facilities, price);
@@ -556,6 +578,7 @@ class _$_ClubFilteringEventRefreshState
     TResult? Function(Facility facility)? facilitiesChanged,
     TResult? Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
     return refreshState?.call(facilities, price);
@@ -568,6 +591,7 @@ class _$_ClubFilteringEventRefreshState
     TResult Function(Facility facility)? facilitiesChanged,
     TResult Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
@@ -586,6 +610,8 @@ class _$_ClubFilteringEventRefreshState
         facilitiesChanged,
     required TResult Function(_ClubFilteringEventRefreshState value)
         refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
     return refreshState(this);
@@ -598,6 +624,7 @@ class _$_ClubFilteringEventRefreshState
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
     return refreshState?.call(this);
@@ -610,6 +637,7 @@ class _$_ClubFilteringEventRefreshState
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
@@ -629,6 +657,185 @@ abstract class _ClubFilteringEventRefreshState implements ClubFilteringEvent {
   Price? get price;
   @JsonKey(ignore: true)
   _$$_ClubFilteringEventRefreshStateCopyWith<_$_ClubFilteringEventRefreshState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ClubFilteringEventFiltersChangedCopyWith<$Res> {
+  factory _$$_ClubFilteringEventFiltersChangedCopyWith(
+          _$_ClubFilteringEventFiltersChanged value,
+          $Res Function(_$_ClubFilteringEventFiltersChanged) then) =
+      __$$_ClubFilteringEventFiltersChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ClubFilters filters});
+
+  $ClubFiltersCopyWith<$Res> get filters;
+}
+
+/// @nodoc
+class __$$_ClubFilteringEventFiltersChangedCopyWithImpl<$Res>
+    extends _$ClubFilteringEventCopyWithImpl<$Res,
+        _$_ClubFilteringEventFiltersChanged>
+    implements _$$_ClubFilteringEventFiltersChangedCopyWith<$Res> {
+  __$$_ClubFilteringEventFiltersChangedCopyWithImpl(
+      _$_ClubFilteringEventFiltersChanged _value,
+      $Res Function(_$_ClubFilteringEventFiltersChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filters = null,
+  }) {
+    return _then(_$_ClubFilteringEventFiltersChanged(
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as ClubFilters,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ClubFiltersCopyWith<$Res> get filters {
+    return $ClubFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ClubFilteringEventFiltersChanged
+    implements _ClubFilteringEventFiltersChanged {
+  const _$_ClubFilteringEventFiltersChanged({required this.filters});
+
+  @override
+  final ClubFilters filters;
+
+  @override
+  String toString() {
+    return 'ClubFilteringEvent.filtersChanged(filters: $filters)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ClubFilteringEventFiltersChanged &&
+            (identical(other.filters, filters) || other.filters == filters));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, filters);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ClubFilteringEventFiltersChangedCopyWith<
+          _$_ClubFilteringEventFiltersChanged>
+      get copyWith => __$$_ClubFilteringEventFiltersChangedCopyWithImpl<
+          _$_ClubFilteringEventFiltersChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Price price) priceChanged,
+    required TResult Function(Facility facility) facilitiesChanged,
+    required TResult Function(Map<Facility, bool>? facilities, Price? price)
+        refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
+    required TResult Function() clearFilter,
+  }) {
+    return filtersChanged(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Price price)? priceChanged,
+    TResult? Function(Facility facility)? facilitiesChanged,
+    TResult? Function(Map<Facility, bool>? facilities, Price? price)?
+        refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
+    TResult? Function()? clearFilter,
+  }) {
+    return filtersChanged?.call(filters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Price price)? priceChanged,
+    TResult Function(Facility facility)? facilitiesChanged,
+    TResult Function(Map<Facility, bool>? facilities, Price? price)?
+        refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
+    TResult Function()? clearFilter,
+    required TResult orElse(),
+  }) {
+    if (filtersChanged != null) {
+      return filtersChanged(filters);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ClubFilteringEventPriceChanged value)
+        priceChanged,
+    required TResult Function(_ClubFilteringEventFacilitiesChanged value)
+        facilitiesChanged,
+    required TResult Function(_ClubFilteringEventRefreshState value)
+        refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
+    required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
+  }) {
+    return filtersChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ClubFilteringEventPriceChanged value)? priceChanged,
+    TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
+        facilitiesChanged,
+    TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
+    TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
+  }) {
+    return filtersChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ClubFilteringEventPriceChanged value)? priceChanged,
+    TResult Function(_ClubFilteringEventFacilitiesChanged value)?
+        facilitiesChanged,
+    TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
+    TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
+    required TResult orElse(),
+  }) {
+    if (filtersChanged != null) {
+      return filtersChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClubFilteringEventFiltersChanged implements ClubFilteringEvent {
+  const factory _ClubFilteringEventFiltersChanged(
+          {required final ClubFilters filters}) =
+      _$_ClubFilteringEventFiltersChanged;
+
+  ClubFilters get filters;
+  @JsonKey(ignore: true)
+  _$$_ClubFilteringEventFiltersChangedCopyWith<
+          _$_ClubFilteringEventFiltersChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -679,6 +886,7 @@ class _$_ClubFilteringEventClearFilter
     required TResult Function(Facility facility) facilitiesChanged,
     required TResult Function(Map<Facility, bool>? facilities, Price? price)
         refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
     return clearFilter();
@@ -691,6 +899,7 @@ class _$_ClubFilteringEventClearFilter
     TResult? Function(Facility facility)? facilitiesChanged,
     TResult? Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
     return clearFilter?.call();
@@ -703,6 +912,7 @@ class _$_ClubFilteringEventClearFilter
     TResult Function(Facility facility)? facilitiesChanged,
     TResult Function(Map<Facility, bool>? facilities, Price? price)?
         refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
@@ -721,6 +931,8 @@ class _$_ClubFilteringEventClearFilter
         facilitiesChanged,
     required TResult Function(_ClubFilteringEventRefreshState value)
         refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
     return clearFilter(this);
@@ -733,6 +945,7 @@ class _$_ClubFilteringEventClearFilter
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
     return clearFilter?.call(this);
@@ -745,6 +958,7 @@ class _$_ClubFilteringEventClearFilter
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
     TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {

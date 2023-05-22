@@ -2,6 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:fitt/core/locator/service_locator.dart';
+import 'package:fitt/domain/entities/filters/club_filters.dart';
 import 'package:fitt/domain/entities/price/price.dart';
 import 'package:fitt/domain/repositories/resource/resource_repository.dart';
 import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
@@ -25,17 +26,15 @@ class ClubFilteringBloc extends Bloc<ClubFilteringEvent, ClubFilteringState> {
     on<_ClubFilteringEventClearFilter>(
       _onClubFilteringEventClearFilter,
     );
+    on<_ClubFilteringEventFiltersChanged>(
+      _onClubFilteringEventFiltersChanged,
+    );
 
-    getIt<ResourceRepository>()
-        .facilities
-        .listen((Map<Facility, bool> facilities) {
-      add(ClubFilteringEvent.refreshState(facilities: facilities));
-    });
-
-    getIt<ResourceRepository>().price.listen((Price? price) {
-      if (price != null) {
-        add(ClubFilteringEvent.refreshState(price: price));
-      }
+    getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
+      add(ClubFilteringEvent.refreshState(
+        facilities: filters.facilities,
+        price: Price(minPrice: filters.minPrice, maxPrice: filters.maxPrice),
+      ));
     });
   }
 
@@ -45,6 +44,13 @@ class ClubFilteringBloc extends Bloc<ClubFilteringEvent, ClubFilteringState> {
           selectedFacilities: {},
         ),
       );
+
+  void _onClubFilteringEventFiltersChanged(
+    _ClubFilteringEventFiltersChanged event,
+    Emitter<ClubFilteringState> emit,
+  ) {
+    getIt<ResourceRepository>().filtersChanged(filters: event.filters);
+  }
 
   void _onClubFilteringEventPriceChanged(
     _ClubFilteringEventPriceChanged event,
