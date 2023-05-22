@@ -10,10 +10,9 @@ class ClubFilteringEvent with _$ClubFilteringEvent {
     required Facility facility,
   }) = _ClubFilteringEventFacilitiesChanged;
 
-  const factory ClubFilteringEvent.refreshState({
-    Map<Facility, bool>? facilities,
-    Price? price,
-  }) = _ClubFilteringEventRefreshState;
+  const factory ClubFilteringEvent.filtersChanged({
+    required ClubFilters filters,
+  }) = _ClubFilteringEventFiltersChanged;
 
   const factory ClubFilteringEvent.clearFilter() =
       _ClubFilteringEventClearFilter;

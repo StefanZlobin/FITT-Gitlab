@@ -14,31 +14,22 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ClubFilters _$ClubFiltersFromJson(Map<String, dynamic> json) {
-  return _ClubFilters.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ClubFilters {
 // При фильтрации передавать только facility id
   @JsonKey(name: 'facility_ids')
-  List<Facility>? get facilities => throw _privateConstructorUsedError;
+  Map<Facility, bool>? get facilities => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_gte')
   int? get minPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'price_lte')
   int? get maxPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'only_with_batch')
-  bool? get onlyWithBatch => throw _privateConstructorUsedError;
+  bool get onlyWithBatch => throw _privateConstructorUsedError;
   @JsonKey(name: 'only_with_slots')
-  bool? get onlyWithSlots => throw _privateConstructorUsedError;
+  bool get onlyWithSlots => throw _privateConstructorUsedError;
   @JsonKey(name: 'only_favorite')
-  bool? get favorite => throw _privateConstructorUsedError;
-  @JsonKey(name: 'northeast')
-  LatLng? get northeast => throw _privateConstructorUsedError;
-  @JsonKey(name: 'southwest')
-  LatLng? get southwest => throw _privateConstructorUsedError;
+  bool get favorite => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ClubFiltersCopyWith<ClubFilters> get copyWith =>
       throw _privateConstructorUsedError;
@@ -51,14 +42,12 @@ abstract class $ClubFiltersCopyWith<$Res> {
       _$ClubFiltersCopyWithImpl<$Res, ClubFilters>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'facility_ids') List<Facility>? facilities,
+      {@JsonKey(name: 'facility_ids') Map<Facility, bool>? facilities,
       @JsonKey(name: 'price_gte') int? minPrice,
       @JsonKey(name: 'price_lte') int? maxPrice,
-      @JsonKey(name: 'only_with_batch') bool? onlyWithBatch,
-      @JsonKey(name: 'only_with_slots') bool? onlyWithSlots,
-      @JsonKey(name: 'only_favorite') bool? favorite,
-      @JsonKey(name: 'northeast') LatLng? northeast,
-      @JsonKey(name: 'southwest') LatLng? southwest});
+      @JsonKey(name: 'only_with_batch') bool onlyWithBatch,
+      @JsonKey(name: 'only_with_slots') bool onlyWithSlots,
+      @JsonKey(name: 'only_favorite') bool favorite});
 }
 
 /// @nodoc
@@ -77,17 +66,15 @@ class _$ClubFiltersCopyWithImpl<$Res, $Val extends ClubFilters>
     Object? facilities = freezed,
     Object? minPrice = freezed,
     Object? maxPrice = freezed,
-    Object? onlyWithBatch = freezed,
-    Object? onlyWithSlots = freezed,
-    Object? favorite = freezed,
-    Object? northeast = freezed,
-    Object? southwest = freezed,
+    Object? onlyWithBatch = null,
+    Object? onlyWithSlots = null,
+    Object? favorite = null,
   }) {
     return _then(_value.copyWith(
       facilities: freezed == facilities
           ? _value.facilities
           : facilities // ignore: cast_nullable_to_non_nullable
-              as List<Facility>?,
+              as Map<Facility, bool>?,
       minPrice: freezed == minPrice
           ? _value.minPrice
           : minPrice // ignore: cast_nullable_to_non_nullable
@@ -96,26 +83,18 @@ class _$ClubFiltersCopyWithImpl<$Res, $Val extends ClubFilters>
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int?,
-      onlyWithBatch: freezed == onlyWithBatch
+      onlyWithBatch: null == onlyWithBatch
           ? _value.onlyWithBatch
           : onlyWithBatch // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      onlyWithSlots: freezed == onlyWithSlots
+              as bool,
+      onlyWithSlots: null == onlyWithSlots
           ? _value.onlyWithSlots
           : onlyWithSlots // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      favorite: freezed == favorite
+              as bool,
+      favorite: null == favorite
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      northeast: freezed == northeast
-          ? _value.northeast
-          : northeast // ignore: cast_nullable_to_non_nullable
-              as LatLng?,
-      southwest: freezed == southwest
-          ? _value.southwest
-          : southwest // ignore: cast_nullable_to_non_nullable
-              as LatLng?,
+              as bool,
     ) as $Val);
   }
 }
@@ -129,14 +108,12 @@ abstract class _$$_ClubFiltersCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'facility_ids') List<Facility>? facilities,
+      {@JsonKey(name: 'facility_ids') Map<Facility, bool>? facilities,
       @JsonKey(name: 'price_gte') int? minPrice,
       @JsonKey(name: 'price_lte') int? maxPrice,
-      @JsonKey(name: 'only_with_batch') bool? onlyWithBatch,
-      @JsonKey(name: 'only_with_slots') bool? onlyWithSlots,
-      @JsonKey(name: 'only_favorite') bool? favorite,
-      @JsonKey(name: 'northeast') LatLng? northeast,
-      @JsonKey(name: 'southwest') LatLng? southwest});
+      @JsonKey(name: 'only_with_batch') bool onlyWithBatch,
+      @JsonKey(name: 'only_with_slots') bool onlyWithSlots,
+      @JsonKey(name: 'only_favorite') bool favorite});
 }
 
 /// @nodoc
@@ -153,17 +130,15 @@ class __$$_ClubFiltersCopyWithImpl<$Res>
     Object? facilities = freezed,
     Object? minPrice = freezed,
     Object? maxPrice = freezed,
-    Object? onlyWithBatch = freezed,
-    Object? onlyWithSlots = freezed,
-    Object? favorite = freezed,
-    Object? northeast = freezed,
-    Object? southwest = freezed,
+    Object? onlyWithBatch = null,
+    Object? onlyWithSlots = null,
+    Object? favorite = null,
   }) {
     return _then(_$_ClubFilters(
       facilities: freezed == facilities
           ? _value._facilities
           : facilities // ignore: cast_nullable_to_non_nullable
-              as List<Facility>?,
+              as Map<Facility, bool>?,
       minPrice: freezed == minPrice
           ? _value.minPrice
           : minPrice // ignore: cast_nullable_to_non_nullable
@@ -172,59 +147,46 @@ class __$$_ClubFiltersCopyWithImpl<$Res>
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
               as int?,
-      onlyWithBatch: freezed == onlyWithBatch
+      onlyWithBatch: null == onlyWithBatch
           ? _value.onlyWithBatch
           : onlyWithBatch // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      onlyWithSlots: freezed == onlyWithSlots
+              as bool,
+      onlyWithSlots: null == onlyWithSlots
           ? _value.onlyWithSlots
           : onlyWithSlots // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      favorite: freezed == favorite
+              as bool,
+      favorite: null == favorite
           ? _value.favorite
           : favorite // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      northeast: freezed == northeast
-          ? _value.northeast
-          : northeast // ignore: cast_nullable_to_non_nullable
-              as LatLng?,
-      southwest: freezed == southwest
-          ? _value.southwest
-          : southwest // ignore: cast_nullable_to_non_nullable
-              as LatLng?,
+              as bool,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_ClubFilters extends _ClubFilters {
-  const _$_ClubFilters(
-      {@JsonKey(name: 'facility_ids') final List<Facility>? facilities,
+  _$_ClubFilters(
+      {@JsonKey(name: 'facility_ids') final Map<Facility, bool>? facilities,
       @JsonKey(name: 'price_gte') this.minPrice,
       @JsonKey(name: 'price_lte') this.maxPrice,
-      @JsonKey(name: 'only_with_batch') this.onlyWithBatch,
-      @JsonKey(name: 'only_with_slots') this.onlyWithSlots,
-      @JsonKey(name: 'only_favorite') this.favorite,
-      @JsonKey(name: 'northeast') this.northeast,
-      @JsonKey(name: 'southwest') this.southwest})
+      @JsonKey(name: 'only_with_batch') this.onlyWithBatch = false,
+      @JsonKey(name: 'only_with_slots') this.onlyWithSlots = true,
+      @JsonKey(name: 'only_favorite') this.favorite = false})
       : _facilities = facilities,
         super._();
 
-  factory _$_ClubFilters.fromJson(Map<String, dynamic> json) =>
-      _$$_ClubFiltersFromJson(json);
-
 // При фильтрации передавать только facility id
-  final List<Facility>? _facilities;
+  final Map<Facility, bool>? _facilities;
 // При фильтрации передавать только facility id
   @override
   @JsonKey(name: 'facility_ids')
-  List<Facility>? get facilities {
+  Map<Facility, bool>? get facilities {
     final value = _facilities;
     if (value == null) return null;
-    if (_facilities is EqualUnmodifiableListView) return _facilities;
+    if (_facilities is EqualUnmodifiableMapView) return _facilities;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableMapView(value);
   }
 
   @override
@@ -235,23 +197,17 @@ class _$_ClubFilters extends _ClubFilters {
   final int? maxPrice;
   @override
   @JsonKey(name: 'only_with_batch')
-  final bool? onlyWithBatch;
+  final bool onlyWithBatch;
   @override
   @JsonKey(name: 'only_with_slots')
-  final bool? onlyWithSlots;
+  final bool onlyWithSlots;
   @override
   @JsonKey(name: 'only_favorite')
-  final bool? favorite;
-  @override
-  @JsonKey(name: 'northeast')
-  final LatLng? northeast;
-  @override
-  @JsonKey(name: 'southwest')
-  final LatLng? southwest;
+  final bool favorite;
 
   @override
   String toString() {
-    return 'ClubFilters(facilities: $facilities, minPrice: $minPrice, maxPrice: $maxPrice, onlyWithBatch: $onlyWithBatch, onlyWithSlots: $onlyWithSlots, favorite: $favorite, northeast: $northeast, southwest: $southwest)';
+    return 'ClubFilters(facilities: $facilities, minPrice: $minPrice, maxPrice: $maxPrice, onlyWithBatch: $onlyWithBatch, onlyWithSlots: $onlyWithSlots, favorite: $favorite)';
   }
 
   @override
@@ -270,14 +226,9 @@ class _$_ClubFilters extends _ClubFilters {
             (identical(other.onlyWithSlots, onlyWithSlots) ||
                 other.onlyWithSlots == onlyWithSlots) &&
             (identical(other.favorite, favorite) ||
-                other.favorite == favorite) &&
-            (identical(other.northeast, northeast) ||
-                other.northeast == northeast) &&
-            (identical(other.southwest, southwest) ||
-                other.southwest == southwest));
+                other.favorite == favorite));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -286,42 +237,28 @@ class _$_ClubFilters extends _ClubFilters {
       maxPrice,
       onlyWithBatch,
       onlyWithSlots,
-      favorite,
-      northeast,
-      southwest);
+      favorite);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_ClubFiltersCopyWith<_$_ClubFilters> get copyWith =>
       __$$_ClubFiltersCopyWithImpl<_$_ClubFilters>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ClubFiltersToJson(
-      this,
-    );
-  }
 }
 
 abstract class _ClubFilters extends ClubFilters {
-  const factory _ClubFilters(
-      {@JsonKey(name: 'facility_ids') final List<Facility>? facilities,
+  factory _ClubFilters(
+      {@JsonKey(name: 'facility_ids') final Map<Facility, bool>? facilities,
       @JsonKey(name: 'price_gte') final int? minPrice,
       @JsonKey(name: 'price_lte') final int? maxPrice,
-      @JsonKey(name: 'only_with_batch') final bool? onlyWithBatch,
-      @JsonKey(name: 'only_with_slots') final bool? onlyWithSlots,
-      @JsonKey(name: 'only_favorite') final bool? favorite,
-      @JsonKey(name: 'northeast') final LatLng? northeast,
-      @JsonKey(name: 'southwest') final LatLng? southwest}) = _$_ClubFilters;
-  const _ClubFilters._() : super._();
-
-  factory _ClubFilters.fromJson(Map<String, dynamic> json) =
-      _$_ClubFilters.fromJson;
+      @JsonKey(name: 'only_with_batch') final bool onlyWithBatch,
+      @JsonKey(name: 'only_with_slots') final bool onlyWithSlots,
+      @JsonKey(name: 'only_favorite') final bool favorite}) = _$_ClubFilters;
+  _ClubFilters._() : super._();
 
   @override // При фильтрации передавать только facility id
   @JsonKey(name: 'facility_ids')
-  List<Facility>? get facilities;
+  Map<Facility, bool>? get facilities;
   @override
   @JsonKey(name: 'price_gte')
   int? get minPrice;
@@ -330,19 +267,13 @@ abstract class _ClubFilters extends ClubFilters {
   int? get maxPrice;
   @override
   @JsonKey(name: 'only_with_batch')
-  bool? get onlyWithBatch;
+  bool get onlyWithBatch;
   @override
   @JsonKey(name: 'only_with_slots')
-  bool? get onlyWithSlots;
+  bool get onlyWithSlots;
   @override
   @JsonKey(name: 'only_favorite')
-  bool? get favorite;
-  @override
-  @JsonKey(name: 'northeast')
-  LatLng? get northeast;
-  @override
-  @JsonKey(name: 'southwest')
-  LatLng? get southwest;
+  bool get favorite;
   @override
   @JsonKey(ignore: true)
   _$$_ClubFiltersCopyWith<_$_ClubFilters> get copyWith =>
