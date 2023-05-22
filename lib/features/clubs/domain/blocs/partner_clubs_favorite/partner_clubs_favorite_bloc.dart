@@ -49,15 +49,11 @@ class PartnerClubsFavoriteBloc
       ));
     });
 
-    getIt<ClubFilteringBloc>().stream.listen((ClubFilteringState state) {
-      state.whenOrNull(
-        loaded: (clubFilters, _, __) {
-          add(PartnerClubsFavoriteEvent.getPartnerClubs(
-            clubFilters: clubFilters,
-            clubSortingEnum: clubSortingEnum,
-          ));
-        },
-      );
+    getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
+      add(PartnerClubsFavoriteEvent.getPartnerClubs(
+        clubFilters: clubFilters,
+        clubSortingEnum: clubSortingEnum,
+      ));
     });
   }
 
