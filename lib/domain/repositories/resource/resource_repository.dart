@@ -2,6 +2,7 @@
 
 import 'package:fitt/core/enum/club_sorting_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
+import 'package:fitt/domain/entities/filters/club_filters.dart';
 import 'package:fitt/domain/entities/price/price.dart';
 import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
 import 'package:get_it/get_it.dart';
@@ -16,6 +17,10 @@ abstract class ResourceRepository with Disposable {
   Future<void> getPrice();
   void priceChanged({required Price price});
 
+  void favoriteChanged({required bool isFavorite});
+
+  void filtersChanged({required ClubFilters filters});
+
   Future<void> getWorkoutSortingItems();
   void workoutSortingItemsChanged({
     required WorkoutSortingEnum workoutSortingEnum,
@@ -26,11 +31,13 @@ abstract class ResourceRepository with Disposable {
     required ClubSortingEnum clubSortingEnum,
   });
 
+  //void updateFilters({required ClubFilters clubFilters});
+
   int get minPrice;
   int get maxPrice;
+  ClubFilters get clubFilters;
 
-  Stream<Map<Facility, bool>> get facilities;
-  Stream<Price?> get price;
   Stream<Map<WorkoutSortingEnum, bool>> get workoutSortingItems;
   Stream<Map<ClubSortingEnum, bool>> get clubSortingItems;
+  Stream<ClubFilters> get filters;
 }

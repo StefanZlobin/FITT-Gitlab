@@ -4,22 +4,26 @@ import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_filters.freezed.dart';
-part 'club_filters.g.dart';
 
-@freezed
+@Freezed(fromJson: false)
 class ClubFilters with _$ClubFilters {
-  static const defaultValue = ClubFilters(favorite: false);
-
-  const factory ClubFilters({
-    //TODO: при фильтрации передавать только facility id
-    @JsonKey(name: 'facility_ids') List<Facility>? facilities,
+  factory ClubFilters({
+    // При фильтрации передавать только facility id
+    @JsonKey(name: 'facility_ids') Map<Facility, bool>? facilities,
     @JsonKey(name: 'price_gte') int? minPrice,
     @JsonKey(name: 'price_lte') int? maxPrice,
-    @JsonKey(name: 'only_with_batch') bool? onlyWithBatch,
-    @JsonKey(name: 'only_with_slots') bool? onlyWithSlots,
-    @JsonKey(name: 'only_favorite') bool? favorite,
+    @JsonKey(name: 'only_with_batch') @Default(false) bool onlyWithBatch,
+    @JsonKey(name: 'only_with_slots') @Default(true) bool onlyWithSlots,
+    @JsonKey(name: 'only_favorite') @Default(false) bool favorite,
   }) = _ClubFilters;
 
-  factory ClubFilters.fromJson(Map<String, dynamic> json) =>
-      _$ClubFiltersFromJson(json);
+  ClubFilters._();
+
+  List<int> get getActiveFacilitiesIds =>
+      facilities?.entries.where((f) => f.value).map((e) => e.key.id).toList() ??
+      [];
+
+  List<Facility> get getActiveFacilities =>
+      facilities?.entries.where((f) => f.value).map((e) => e.key).toList() ??
+      [];
 }

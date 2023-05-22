@@ -14,7 +14,7 @@ import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/cubits/admin_club/admin_club_cubit.dart';
 import 'package:fitt/domain/cubits/admin_clubs/admin_clubs_cubit.dart';
-import 'package:fitt/domain/entities/filters/club_filters.dart';
+import 'package:fitt/domain/repositories/resource/resource_repository.dart';
 import 'package:fitt/features/auth/domain/blocs/authorization/authorization_bloc.dart';
 import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_clubs_favorite_bloc.dart';
@@ -25,6 +25,7 @@ import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
 import 'package:fitt/presentation/components/menu/widget/user_menu_tile.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/components/user_avatar.dart';
+import 'package:fitt/presentation/components/wallet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -107,6 +108,14 @@ class MenuUser extends StatelessWidget with UserMixin {
           },
         ),
         UserMenuTile(
+          title: const Text('Кошелек'),
+          subtitle: const Text('Кебаб трансгалактик'),
+          onPressed: () {
+            context.push(AppRoute.wallet.routeToName);
+          },
+          trailing: const SizedBox(width: 120, child: WalletWidget()),
+        ),
+        UserMenuTile(
           title: const Text('Купленные часы'),
           onPressed: () {
             getIt<PurchasedBatchCubit>().getUserBatches();
@@ -177,9 +186,11 @@ class MenuUser extends StatelessWidget with UserMixin {
         UserMenuTile(
           title: const Text('Избранное'),
           onPressed: () {
+            getIt<ResourceRepository>().favoriteChanged(isFavorite: true);
+
             getIt<PartnerClubsFavoriteBloc>().add(
-              const PartnerClubsFavoriteEvent.getPartnerClubs(
-                clubFilters: ClubFilters(favorite: true),
+              PartnerClubsFavoriteEvent.getPartnerClubs(
+                clubFilters: getIt<ResourceRepository>().clubFilters,
                 clubSortingEnum: ClubSortingEnum.nearest,
               ),
             );

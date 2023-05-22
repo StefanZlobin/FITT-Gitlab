@@ -3,7 +3,7 @@ part of 'map_bloc.dart';
 @freezed
 class MapEvent with _$MapEvent {
   const factory MapEvent.cameraMove({
-    @Default(ClubFilters(favorite: false)) ClubFilters filters,
+    ClubFilters? filters,
     required LatLng northeast,
     required LatLng southwest,
     required gm.LatLngBounds visibleRegion,
@@ -11,7 +11,7 @@ class MapEvent with _$MapEvent {
   }) = _MapEventCameraMove;
 
   const factory MapEvent.filtersDetected({
-    @Default(ClubFilters(favorite: false)) ClubFilters filters,
+    required ClubFilters filters,
   }) = _MapEventFiltersDetected;
 
   const factory MapEvent.markerTapped(MapMarker marker) = _MapEventMarkerTapped;

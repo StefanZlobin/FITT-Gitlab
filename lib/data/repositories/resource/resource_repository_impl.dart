@@ -5,6 +5,7 @@ import 'package:fitt/core/enum/club_sorting_enum.dart';
 import 'package:fitt/core/enum/workout_sorting_enum.dart';
 import 'package:fitt/data/source/local_data_source/resource_local_client/resource_local_client.dart';
 import 'package:fitt/data/source/remote_data_source/resource_api_client/resource_api_client.dart';
+import 'package:fitt/domain/entities/filters/club_filters.dart';
 import 'package:fitt/domain/entities/price/price.dart';
 import 'package:fitt/domain/repositories/resource/resource_repository.dart';
 import 'package:fitt/features/clubs/domain/entities/facility/facility.dart';
@@ -28,23 +29,20 @@ class ResourceRepositoryImpl implements ResourceRepository {
   final ResourceApiClient _apiClient;
   final ResourceLocalClient _resourceLocalClient;
 
+  final Map<Facility, bool> _facilities = {};
+
   @override
   int minPrice = 0;
   @override
   int maxPrice = 0;
-
-  final BehaviorSubject<Map<Facility, bool>> _facilitiesController =
-      BehaviorSubject.seeded(<Facility, bool>{}, sync: true);
-  void Function(Map<Facility, bool>) get updateFacilities =>
-      _facilitiesController.sink.add;
   @override
-  Stream<Map<Facility, bool>> get facilities => _facilitiesController;
+  ClubFilters get clubFilters => _filtersController.value;
 
-  final BehaviorSubject<Price?> _priceController =
-      BehaviorSubject.seeded(null, sync: true);
-  void Function(Price?) get updatePrice => _priceController.sink.add;
+  final BehaviorSubject<ClubFilters> _filtersController =
+      BehaviorSubject.seeded(ClubFilters(favorite: false), sync: true);
+  void Function(ClubFilters) get updateFilters => _filtersController.sink.add;
   @override
-  Stream<Price?> get price => _priceController;
+  Stream<ClubFilters> get filters => _filtersController;
 
   final BehaviorSubject<Map<WorkoutSortingEnum, bool>>
       _workoutSortingItemsController =
@@ -70,11 +68,19 @@ class ResourceRepositoryImpl implements ResourceRepository {
       final res = await _apiClient.getFacilities();
 
       final facilities = {for (var f in res) f: false};
+      _facilities.addAll(facilities);
 
-      updateFacilities(facilities);
+      updateFilters(_filtersController.value.copyWith(facilities: _facilities));
     } on Exception catch (e) {
       throw Exception(e);
     }
+  }
+
+  @override
+  void facilitiesChanged({required Facility facility}) {
+    _facilities[facility] = !_facilities[facility]!;
+
+    updateFilters(_filtersController.value.copyWith(facilities: _facilities));
   }
 
   @override
@@ -83,10 +89,41 @@ class ResourceRepositoryImpl implements ResourceRepository {
       final price = await _apiClient.getPrice();
       minPrice = price.minPrice!;
       maxPrice = price.maxPrice!;
-      updatePrice(price);
+
+      updateFilters(_filtersController.value.copyWith(
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+      ));
     } on Exception catch (e) {
       throw Exception(e);
     }
+  }
+
+  @override
+  void priceChanged({required Price price}) {
+    updateFilters(_filtersController.value.copyWith(
+      minPrice: price.minPrice,
+      maxPrice: price.maxPrice,
+    ));
+  }
+
+  @override
+  void filtersChanged({required ClubFilters filters}) {
+    updateFilters(
+      _filtersController.value.copyWith(
+        minPrice: filters.minPrice,
+        maxPrice: filters.maxPrice,
+        facilities: filters.facilities,
+        favorite: filters.favorite,
+        onlyWithBatch: filters.onlyWithBatch,
+        onlyWithSlots: filters.onlyWithSlots,
+      ),
+    );
+  }
+
+  @override
+  void favoriteChanged({required bool isFavorite}) {
+    updateFilters(_filtersController.value.copyWith(favorite: isFavorite));
   }
 
   @override
@@ -125,19 +162,6 @@ class ResourceRepositoryImpl implements ResourceRepository {
   }
 
   @override
-  void facilitiesChanged({required Facility facility}) {
-    _facilitiesController.value[facility] =
-        !_facilitiesController.value[facility]!;
-
-    updateFacilities(_facilitiesController.value);
-  }
-
-  @override
-  void priceChanged({required Price price}) {
-    updatePrice(price);
-  }
-
-  @override
   void workoutSortingItemsChanged({
     required WorkoutSortingEnum workoutSortingEnum,
   }) {
@@ -152,8 +176,7 @@ class ResourceRepositoryImpl implements ResourceRepository {
 
   @override
   FutureOr onDispose() {
-    _facilitiesController.close();
-    _priceController.close();
+    _filtersController.close();
     _workoutSortingItemsController.close();
     _clubSortingItemsController.close();
   }

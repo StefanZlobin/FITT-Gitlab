@@ -8,7 +8,7 @@ class MapUseCase {
   final mapRepository = getIt<MapRepository>();
 
   Future<List<MapPoint>> getMapPoints({
-    ClubFilters filters = const ClubFilters(favorite: false),
+    required ClubFilters filters,
     required LatLng northeast,
     required LatLng southwest,
   }) async {
