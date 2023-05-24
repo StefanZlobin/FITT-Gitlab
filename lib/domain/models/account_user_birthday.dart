@@ -1,7 +1,16 @@
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:formz/formz.dart';
 
-enum AccountUserBirthdayValidationError { needsMoreThan18 }
+enum AccountUserBirthdayValidationError {
+  needsMoreThan18;
+
+  String convertEnumToString(AccountUserBirthdayValidationError v) {
+    switch (v) {
+      case AccountUserBirthdayValidationError.needsMoreThan18:
+        return 'Вам должно быть больше 17 лет';
+    }
+  }
+}
 
 class AccountUserBirthday
     extends FormzInput<String, AccountUserBirthdayValidationError> {

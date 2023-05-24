@@ -10,6 +10,7 @@ import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/features/payment/data/source/remote_data_source/payment_api_client/payment_api_client.dart';
 import 'package:fitt/features/payment/domain/repositories/payment/payment_repository.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class PaymentRepositoryImpl implements PaymentRepository {
   PaymentRepositoryImpl(this.dio, {this.baseUrl})
@@ -48,7 +49,17 @@ class PaymentRepositoryImpl implements PaymentRepository {
         price: slot.price,
       ));
       return response;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    } on Exception catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }

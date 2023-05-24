@@ -102,9 +102,19 @@ Future<void> setup() async {
 }
 
 void _registerDio() {
-  getIt.registerSingleton(Dio());
+  getIt.registerSingleton(Dio(
+    BaseOptions(
+      connectTimeout: 30000, // 30 seconds
+      receiveTimeout: 30000,
+    ),
+  ));
   getIt.registerSingleton(
-    Dio(),
+    Dio(
+      BaseOptions(
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      ),
+    ),
     instanceName: 'no-token',
   );
 }

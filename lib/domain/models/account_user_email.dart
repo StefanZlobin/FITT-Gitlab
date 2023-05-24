@@ -1,7 +1,19 @@
 import 'package:fitt/core/utils/string_utils.dart';
 import 'package:formz/formz.dart';
 
-enum AccountUserEmailValidationError { empty, incorrect }
+enum AccountUserEmailValidationError {
+  empty,
+  incorrect;
+
+  String convertEnumToString(AccountUserEmailValidationError v) {
+    switch (v) {
+      case AccountUserEmailValidationError.empty:
+        return 'Поле не должно быть пустым';
+      case AccountUserEmailValidationError.incorrect:
+        return 'Неверный формат почты';
+    }
+  }
+}
 
 class AccountUserEmail
     extends FormzInput<String, AccountUserEmailValidationError> {

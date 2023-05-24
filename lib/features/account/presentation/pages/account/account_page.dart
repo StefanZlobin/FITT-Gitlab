@@ -15,6 +15,7 @@ import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/entities/user/user.dart';
+import 'package:fitt/domain/models/account_user_birthday.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
 import 'package:fitt/presentation/components/separator.dart';
@@ -376,6 +377,7 @@ class AccountPage extends StatelessWidget with UserMixin {
                   initialDate: clock.yearsAgo(18),
                   firstDate: clock.yearsAgo(100),
                   lastDate: clock.yearsAgo(0),
+                  initialDatePickerMode: DatePickerMode.year,
                 );
               },
               onDateSelected: (value) {
@@ -390,13 +392,17 @@ class AccountPage extends StatelessWidget with UserMixin {
               padding: const EdgeInsets.only(left: 16, right: 16),
               helper: const Text('Дата рождения'),
               initialValue: dateFromStringNullable(bitrhday?.value),
-              errorText: !status ? bitrhday?.error?.name : null,
+              errorText: !status
+                  ? bitrhday?.error?.convertEnumToString(bitrhday.error ??
+                      AccountUserBirthdayValidationError.needsMoreThan18)
+                  : null,
               onTap: () async {
                 await showDatePicker(
                   context: context,
                   initialDate: clock.yearsAgo(18),
                   firstDate: clock.yearsAgo(100),
                   lastDate: clock.yearsAgo(0),
+                  initialDatePickerMode: DatePickerMode.year,
                 );
               },
               onDateSelected: (value) {
@@ -416,6 +422,7 @@ class AccountPage extends StatelessWidget with UserMixin {
                 initialDate: clock.yearsAgo(18),
                 firstDate: clock.yearsAgo(100),
                 lastDate: clock.yearsAgo(0),
+                initialDatePickerMode: DatePickerMode.year,
               );
             },
             onDateSelected: (value) {
