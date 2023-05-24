@@ -8,7 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await init();
+  
   Bloc.observer = SimpleBlocObserver();
   await SentryFlutter.init(
     (options) => {

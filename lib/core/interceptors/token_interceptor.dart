@@ -66,7 +66,6 @@ class TokenInterceptor extends Interceptor {
     await Sentry.captureException(
       err,
       stackTrace: err.stackTrace,
-      hint: err.requestOptions,
     );
   }
 }

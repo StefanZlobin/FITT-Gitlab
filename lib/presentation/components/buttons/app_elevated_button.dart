@@ -71,9 +71,13 @@ class _AppElevatedButtonState extends State<AppElevatedButton> {
                   color: AppColors.kBaseWhite.withOpacity(1),
                 ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: (!widget.isDisable) ? widget.buttonColor : AppColors.kOxford10,
+            backgroundColor:
+                (!widget.isDisable) ? widget.buttonColor : AppColors.kOxford10,
             elevation: 0,
-            fixedSize: Size(MediaQuery.of(context).size.width, widget.isHeight ? 56 : 48),
+            fixedSize: Size(
+              MediaQuery.of(context).size.width,
+              widget.isHeight ? 56 : 48,
+            ),
           ),
         ),
       ),
