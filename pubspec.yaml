@@ -3,7 +3,7 @@ description: One-time training purchases service.
 
 publish_to: "none"
 
-version: 1.4.22+80
+version: 1.4.24+82
 
 environment:
   sdk: ">=2.19.0 <3.3.3"
@@ -107,10 +107,10 @@ dependencies:
   permission_handler: ^10.2.0
   #UUID
   uuid: ^3.0.7
-  #Notify about new app version
-  upgrader: ^6.2.0
   #Information about app
   package_info_plus: ^4.0.1
+  #Store redirect
+  launch_review: ^3.0.1
 
   #Cluster manager (Fluster)
   #aka Stefan
