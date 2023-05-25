@@ -18,7 +18,7 @@ part 'partner_clubs_state.dart';
 class PartnerClubsCubit extends Cubit<PartnerClubsState> {
   PartnerClubsCubit() : super(const PartnerClubsState.loading()) {
     getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
-      clubFilters = filters;
+      clubFilters = filters.copyWith(favorite: false);
       getPartnerClubs(clubFilters);
     });
 
@@ -47,7 +47,7 @@ class PartnerClubsCubit extends Cubit<PartnerClubsState> {
   }) async {
     try {
       final partnerClubs = await partnerClubsUseCase.getParternClubs(
-        clubFilters: clubFilters,
+        clubFilters: clubFilters.copyWith(favorite: false),
         clubSorting: clubSorting,
         northeast: northeast,
         southwest: southwest,

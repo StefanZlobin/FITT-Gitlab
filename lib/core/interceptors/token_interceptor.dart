@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:fitt/core/locator/service_locator.dart';
@@ -66,6 +67,13 @@ class TokenInterceptor extends Interceptor {
     await Sentry.captureException(
       err,
       stackTrace: err.stackTrace,
+    );
+
+    log(
+      err.toString() +
+          err.requestOptions.toString() +
+          err.response.toString() +
+          err.stackTrace.toString(),
     );
   }
 }

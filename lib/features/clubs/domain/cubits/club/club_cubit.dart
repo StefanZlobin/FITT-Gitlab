@@ -95,11 +95,19 @@ class ClubCubit extends Cubit<ClubState> {
         ));
       }
     }
+
     //for (var i = 0; i < res.length; i++) {
     //  if (i == 0) continue;
     //  if (res[i].id != res[i - 1].id) resFiltered.add(res[i]);
     //}
-    return UnmodifiableListView<TimeSlot>(res);
+
+    final resFiltered = res
+        .asMap()
+        .map((key, value) => MapEntry(value.startTime, value))
+        .values
+        .toList();
+
+    return UnmodifiableListView<TimeSlot>(resFiltered);
   }
 
   SplayTreeMap<DateTime, ToggledFilter<DateTime>> _extractDateSlotsFromActivity(

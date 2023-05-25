@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:fitt/data/repositories/analytics/analytics_repository_impl.dart';
 import 'package:fitt/data/services/app_metrica/app_metrica_service_impl.dart';
 import 'package:fitt/data/services/push_notifications/push_notifications_service_impl.dart';
-import 'package:fitt/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_dashboard/analytics_dashboard_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
@@ -16,6 +15,7 @@ import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/services/push_notifications/push_notifications_service.dart';
+import 'package:fitt/features/account/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/features/auth/data/repositories/authentication/authentication_repository_impl.dart';
 import 'package:fitt/features/auth/data/repositories/authorization/authorization_repository_impl.dart';
 import 'package:fitt/features/auth/data/repositories/identification/identification_repository_impl.dart';
@@ -102,9 +102,19 @@ Future<void> setup() async {
 }
 
 void _registerDio() {
-  getIt.registerSingleton(Dio());
+  getIt.registerSingleton(Dio(
+    BaseOptions(
+      connectTimeout: 30000, // 30 seconds
+      receiveTimeout: 30000,
+    ),
+  ));
   getIt.registerSingleton(
-    Dio(),
+    Dio(
+      BaseOptions(
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+      ),
+    ),
     instanceName: 'no-token',
   );
 }

@@ -43,7 +43,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     );
 
     getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
-      add(MapEvent.filtersDetected(filters: filters));
+      add(MapEvent.filtersDetected(filters: filters.copyWith(favorite: false)));
     });
   }
 

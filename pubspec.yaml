@@ -3,7 +3,7 @@ description: One-time training purchases service.
 
 publish_to: "none"
 
-version: 1.4.24+82
+version: 1.4.25+83
 
 environment:
   sdk: ">=2.19.0 <3.3.3"
@@ -94,8 +94,9 @@ dependencies:
   #Shake
   shake: ^2.2.0
   #Sentry
-  sentry_flutter: ^7.6.1
+  sentry_flutter: ^7.6.2
   feedback_sentry: ^2.3.0
+  #sentry_dio: ^7.6.2 // TODO: Добавить эту либу
   #Page transition
   page_transition: ^2.0.9
   #Running line

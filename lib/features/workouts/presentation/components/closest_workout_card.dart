@@ -92,7 +92,7 @@ class ClosestWorkoutCard extends StatelessWidget {
                         AppTypography.kBody14.apply(color: AppColors.kOxford60),
                     children: [
                       TextSpan(
-                        text: closestWorkout.club.shortLabel,
+                        text: closestWorkout.club.shortLabel25,
                         style: AppTypography.kBody14
                             .apply(color: AppColors.kOxford40),
                       ),

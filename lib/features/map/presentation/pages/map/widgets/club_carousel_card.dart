@@ -3,8 +3,10 @@ import 'package:collection/collection.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
+import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/presentation/components/batch_available_hours.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,7 @@ class ClubCarouselCard extends StatelessWidget {
         .join(', ');
     return GestureDetector(
       onTap: () {
+        getIt<ClubCubit>().getPartnerClub(clubUuid: partnerClub.uuid!);
         context.pushNamed(AppRoute.club.routeToPath, params: {
           'clubUuid': partnerClub.uuid!,
         });

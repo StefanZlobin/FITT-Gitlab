@@ -129,10 +129,11 @@ class PurchasedBatchCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: AppColors.kBaseWhite, width: 2),
           color: AppColors.kOxford60,
-          image: const DecorationImage(
-            image: NetworkImage(''),
+          image: DecorationImage(
+            image: NetworkImage(userBatch.club.photos.first.small),
+            fit: BoxFit.fill,
             filterQuality: FilterQuality.high,
-            opacity: .5,
+            opacity: .9,
           ),
         ),
       ),

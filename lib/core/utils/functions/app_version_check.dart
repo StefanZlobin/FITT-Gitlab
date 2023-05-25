@@ -31,7 +31,8 @@ Future<void> appVersionCheck({required BuildContext context}) async {
       // ignore: use_build_context_synchronously
       await newAppVersionDialog(context: context);
     }
-  } on Exception catch (e) {
-    print(e);
+  } on Exception {
+    // ignore: unnecessary_statements
+    null;
   }
 }
