@@ -263,7 +263,11 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               isDisable: !isValid && status != FormzSubmissionStatus.success,
               onPressed: () {
                 getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
-                context.pop();
+                if (afterSignin) {
+                  context.push(AppRoute.map.routeToPath);
+                } else {
+                  context.pop();
+                }
               },
             );
           },
