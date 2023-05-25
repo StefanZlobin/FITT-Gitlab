@@ -2,7 +2,7 @@ part of 'account_bloc.dart';
 
 @freezed
 class AccountState with _$AccountState {
-  const factory AccountState.loaded({
+  factory AccountState.loaded({
     @Default(AccountUserFirstName.pure()) AccountUserFirstName firstName,
     @Default(AccountUserSecondName.pure()) AccountUserSecondName secondName,
     @Default(AccountUserBirthday.pure()) AccountUserBirthday birthday,

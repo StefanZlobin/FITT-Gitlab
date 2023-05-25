@@ -116,7 +116,9 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                       padding: const EdgeInsets.only(left: 16),
                       sortingValue: 'Мужской',
                       isRadioButtonLeading: true,
-                      groupValue: gender.value,
+                      groupValue: gender.value == UserGenderEnum.other
+                          ? userSnapshot?.gender ?? UserGenderEnum.other
+                          : gender.value,
                       value: UserGenderEnum.male,
                       onChanged: (value) {
                         getIt<AccountBloc>()
@@ -137,7 +139,9 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                       padding: const EdgeInsets.only(left: 16),
                       sortingValue: 'Женский',
                       isRadioButtonLeading: true,
-                      groupValue: gender.value,
+                      groupValue: gender.value == UserGenderEnum.other
+                          ? userSnapshot?.gender ?? UserGenderEnum.other
+                          : gender.value,
                       value: UserGenderEnum.female,
                       onChanged: (value) {
                         getIt<AccountBloc>()
@@ -247,7 +251,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          loaded: (_, __, ___, ____, _____, isValid, _______) {
+          loaded: (_, __, ___, ____, _____, isValid, status) {
             return AppElevatedButton(
               marginButton: const EdgeInsets.only(
                 left: 16,
@@ -256,7 +260,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                 bottom: 24,
               ),
               textButton: const Text('Сохранить'),
-              isDisable: !isValid,
+              isDisable: !isValid && status != FormzSubmissionStatus.success,
               onPressed: () {
                 getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
                 context.pop();

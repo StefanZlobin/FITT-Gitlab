@@ -29,7 +29,7 @@ part 'account_event.dart';
 part 'account_state.dart';
 
 class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
-  AccountBloc() : super(const AccountState.loaded()) {
+  AccountBloc() : super(AccountState.loaded()) {
     on<_AccountEventFirstNameChanged>(_onAccountEventFirstNameChanged);
     on<_AccountEventSecondNameChanged>(_onAccountEventSecondNameChanged);
     on<_AccountEventEmailChanged>(_onAccountEventEmailChanged);
@@ -37,13 +37,57 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
     on<_AccountEventGenderChanged>(_onAccountEventGenderChanged);
     on<_AccountEventPhotoChanged>(_onAccountEventPhotoChanged);
     on<_AccountEventAccountSubmitted>(_onAccountEventAccountSubmitted);
+
+    if (userSnapshot != null) {
+      // ignore: invalid_use_of_visible_for_testing_member
+      emit(
+        stateLoaded.copyWith(
+          firstName: AccountUserFirstName.dirty(userSnapshot?.firstName ?? ''),
+          secondName: AccountUserSecondName.dirty(userSnapshot?.lastName ?? ''),
+          birthday: AccountUserBirthday.dirty(
+            userSnapshot?.birthday != null
+                ? userSnapshot!.birthday.toString()
+                : DateTime.now().toString(),
+          ),
+          email: AccountUserEmail.dirty(userSnapshot?.email ?? ''),
+          gender: AccountUserGender.dirty(
+            userSnapshot?.gender ?? UserGenderEnum.other,
+          ),
+        ),
+      );
+    }
   }
 
   final userUserCase = UserUseCase();
 
   _AccountStateLoaded get stateLoaded => state.maybeMap(
         loaded: (s) => s,
-        orElse: () => const _AccountStateLoaded(),
+        //.copyWith(
+        //  firstName: AccountUserFirstName.dirty(userSnapshot?.firstName ?? ''),
+        //  secondName: AccountUserSecondName.dirty(userSnapshot?.lastName ?? ''),
+        //  birthday: AccountUserBirthday.dirty(
+        //    userSnapshot?.birthday != null
+        //        ? userSnapshot!.birthday.toString()
+        //        : DateTime.now().toString(),
+        //  ),
+        //  email: AccountUserEmail.dirty(userSnapshot?.email ?? ''),
+        //  gender: AccountUserGender.dirty(
+        //    userSnapshot?.gender ?? UserGenderEnum.other,
+        //  ),
+        //),
+        orElse: () => _AccountStateLoaded(
+          firstName: AccountUserFirstName.dirty(userSnapshot?.firstName ?? ''),
+          secondName: AccountUserSecondName.dirty(userSnapshot?.lastName ?? ''),
+          birthday: AccountUserBirthday.dirty(
+            userSnapshot?.birthday != null
+                ? userSnapshot!.birthday.toString()
+                : DateTime.now().toString(),
+          ),
+          email: AccountUserEmail.dirty(userSnapshot?.email ?? ''),
+          gender: AccountUserGender.dirty(
+            userSnapshot?.gender ?? UserGenderEnum.other,
+          ),
+        ),
       );
 
   void _onAccountEventFirstNameChanged(
