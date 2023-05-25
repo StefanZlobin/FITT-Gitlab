@@ -1455,7 +1455,7 @@ class __$$_AccountStateLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AccountStateLoaded implements _AccountStateLoaded {
-  const _$_AccountStateLoaded(
+  _$_AccountStateLoaded(
       {this.firstName = const AccountUserFirstName.pure(),
       this.secondName = const AccountUserSecondName.pure(),
       this.birthday = const AccountUserBirthday.pure(),
@@ -1611,7 +1611,7 @@ class _$_AccountStateLoaded implements _AccountStateLoaded {
 }
 
 abstract class _AccountStateLoaded implements AccountState {
-  const factory _AccountStateLoaded(
+  factory _AccountStateLoaded(
       {final AccountUserFirstName firstName,
       final AccountUserSecondName secondName,
       final AccountUserBirthday birthday,

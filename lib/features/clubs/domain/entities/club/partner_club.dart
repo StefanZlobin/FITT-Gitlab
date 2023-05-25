@@ -48,4 +48,8 @@ class PartnerClub with _$PartnerClub {
   String get shortLabel => label!.length < 20
       ? label!
       : label!.replaceRange(20, label!.length, '...');
+
+  String get shortLabel25 => label!.length < 25
+      ? label!
+      : label!.replaceRange(25, label!.length, '...');
 }

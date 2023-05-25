@@ -26,6 +26,8 @@ mixin _$ClubBatchInfo {
   String get clubLabel => throw _privateConstructorUsedError;
   @JsonKey(name: 'address')
   Address get address => throw _privateConstructorUsedError;
+  @JsonKey(name: 'photos')
+  List<Photo> get photos => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $ClubBatchInfoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String clubUuid,
       @JsonKey(name: 'label') String clubLabel,
-      @JsonKey(name: 'address') Address address});
+      @JsonKey(name: 'address') Address address,
+      @JsonKey(name: 'photos') List<Photo> photos});
 
   $AddressCopyWith<$Res> get address;
 }
@@ -63,6 +66,7 @@ class _$ClubBatchInfoCopyWithImpl<$Res, $Val extends ClubBatchInfo>
     Object? clubUuid = null,
     Object? clubLabel = null,
     Object? address = null,
+    Object? photos = null,
   }) {
     return _then(_value.copyWith(
       clubUuid: null == clubUuid
@@ -77,6 +81,10 @@ class _$ClubBatchInfoCopyWithImpl<$Res, $Val extends ClubBatchInfo>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
+      photos: null == photos
+          ? _value.photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<Photo>,
     ) as $Val);
   }
 
@@ -100,7 +108,8 @@ abstract class _$$_ClubBatchInfoCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') String clubUuid,
       @JsonKey(name: 'label') String clubLabel,
-      @JsonKey(name: 'address') Address address});
+      @JsonKey(name: 'address') Address address,
+      @JsonKey(name: 'photos') List<Photo> photos});
 
   @override
   $AddressCopyWith<$Res> get address;
@@ -120,6 +129,7 @@ class __$$_ClubBatchInfoCopyWithImpl<$Res>
     Object? clubUuid = null,
     Object? clubLabel = null,
     Object? address = null,
+    Object? photos = null,
   }) {
     return _then(_$_ClubBatchInfo(
       clubUuid: null == clubUuid
@@ -134,6 +144,10 @@ class __$$_ClubBatchInfoCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
+      photos: null == photos
+          ? _value._photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<Photo>,
     ));
   }
 }
@@ -144,8 +158,10 @@ class _$_ClubBatchInfo extends _ClubBatchInfo {
   _$_ClubBatchInfo(
       {@JsonKey(name: 'id') required this.clubUuid,
       @JsonKey(name: 'label') required this.clubLabel,
-      @JsonKey(name: 'address') required this.address})
-      : super._();
+      @JsonKey(name: 'address') required this.address,
+      @JsonKey(name: 'photos') required final List<Photo> photos})
+      : _photos = photos,
+        super._();
 
   factory _$_ClubBatchInfo.fromJson(Map<String, dynamic> json) =>
       _$$_ClubBatchInfoFromJson(json);
@@ -159,10 +175,18 @@ class _$_ClubBatchInfo extends _ClubBatchInfo {
   @override
   @JsonKey(name: 'address')
   final Address address;
+  final List<Photo> _photos;
+  @override
+  @JsonKey(name: 'photos')
+  List<Photo> get photos {
+    if (_photos is EqualUnmodifiableListView) return _photos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
 
   @override
   String toString() {
-    return 'ClubBatchInfo(clubUuid: $clubUuid, clubLabel: $clubLabel, address: $address)';
+    return 'ClubBatchInfo(clubUuid: $clubUuid, clubLabel: $clubLabel, address: $address, photos: $photos)';
   }
 
   @override
@@ -174,12 +198,14 @@ class _$_ClubBatchInfo extends _ClubBatchInfo {
                 other.clubUuid == clubUuid) &&
             (identical(other.clubLabel, clubLabel) ||
                 other.clubLabel == clubLabel) &&
-            (identical(other.address, address) || other.address == address));
+            (identical(other.address, address) || other.address == address) &&
+            const DeepCollectionEquality().equals(other._photos, _photos));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, clubUuid, clubLabel, address);
+  int get hashCode => Object.hash(runtimeType, clubUuid, clubLabel, address,
+      const DeepCollectionEquality().hash(_photos));
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +225,8 @@ abstract class _ClubBatchInfo extends ClubBatchInfo {
   factory _ClubBatchInfo(
           {@JsonKey(name: 'id') required final String clubUuid,
           @JsonKey(name: 'label') required final String clubLabel,
-          @JsonKey(name: 'address') required final Address address}) =
+          @JsonKey(name: 'address') required final Address address,
+          @JsonKey(name: 'photos') required final List<Photo> photos}) =
       _$_ClubBatchInfo;
   _ClubBatchInfo._() : super._();
 
@@ -215,6 +242,9 @@ abstract class _ClubBatchInfo extends ClubBatchInfo {
   @override
   @JsonKey(name: 'address')
   Address get address;
+  @override
+  @JsonKey(name: 'photos')
+  List<Photo> get photos;
   @override
   @JsonKey(ignore: true)
   _$$_ClubBatchInfoCopyWith<_$_ClubBatchInfo> get copyWith =>
