@@ -14,7 +14,7 @@ enum AccountUserGenderValidationError {
 
 class AccountUserGender
     extends FormzInput<UserGenderEnum, AccountUserGenderValidationError> {
-  const AccountUserGender.pure() : super.pure(UserGenderEnum.other);
+  const AccountUserGender.pure([super.value = UserGenderEnum.other]) : super.pure();
   const AccountUserGender.dirty([super.value = UserGenderEnum.other])
       : super.dirty();
 

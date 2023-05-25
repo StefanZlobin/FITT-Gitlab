@@ -12,7 +12,6 @@ import 'package:fitt/features/map/presentation/pages/map/widgets/menu_button.dar
 import 'package:fitt/features/map/presentation/pages/map/widgets/search_field.dart';
 import 'package:fitt/features/workouts/presentation/components/closest_workout_card.dart';
 import 'package:fitt/presentation/components/menu/menu_widget.dart';
-import 'package:fitt/presentation/components/wallet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
@@ -88,7 +87,7 @@ class MapPage extends StatelessWidget {
         children: const [
           MapWidget(),
           ClosestWorkoutCard(),
-          WalletWidget(isMap: true),
+          //WalletWidget(isMap: true),
           ClubCarousel(),
           MenuButton(),
           SearchField(),

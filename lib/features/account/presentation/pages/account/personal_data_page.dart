@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_statements
+
 import 'package:clock/clock.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
@@ -6,15 +8,15 @@ import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
-import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
-import 'package:fitt/domain/blocs/account/account_bloc.dart';
+import 'package:fitt/features/account/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:fitt/presentation/components/buttons/app_radio_button.dart';
 import 'package:fitt/presentation/forms/app_date_form.dart';
 import 'package:fitt/presentation/forms/app_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 
 class PersonalDataPage extends StatelessWidget with UserMixin {
@@ -29,7 +31,6 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
 
   @override
   Widget build(BuildContext context) {
-    getIt<AccountBloc>().add(const AccountEvent.zeroState());
     return Scaffold(
       appBar: _buildAppBar(context),
       body: Column(
@@ -69,43 +70,25 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, gender, email) {
+          loaded: (_, __, ___, email, ____, _____, status) {
             return AppTextFormField(
               height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('E-mail'),
               initialValue: userSnapshot?.email,
               isEmailField: true,
+              errorText:
+                  !email.isValid && status != FormzSubmissionStatus.initial
+                      ? email.error!.convertEnumToString(email.error!)
+                      : null,
+              keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.emailChanged(email: value));
               },
             );
           },
-          formChanged: (_, __, ___, email, gender, status) {
-            return AppTextFormField(
-              height: 75,
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              title: const Text('E-mail'),
-              initialValue: userSnapshot?.email,
-              isEmailField: true,
-              errorText: !status ? email?.error?.name : null,
-              onChanged: (value) {
-                getIt<AccountBloc>()
-                    .add(AccountEvent.emailChanged(email: value));
-              },
-            );
-          },
-          error: (error) => AppTextFormField(
-            height: 75,
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            title: const Text('E-mail'),
-            initialValue: userSnapshot?.email,
-            isEmailField: true,
-            onChanged: (value) {
-              getIt<AccountBloc>().add(AccountEvent.emailChanged(email: value));
-            },
-          ),
+          error: (status, error) => const SizedBox(),
         );
       },
     );
@@ -128,12 +111,12 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               bloc: getIt<AccountBloc>(),
               builder: (context, state) {
                 return state.when(
-                  initial: (firstName, secondName, birthday, gender, email) {
+                  loaded: (_, __, ___, ____, gender, _____, ______) {
                     return AppRadioButton<UserGenderEnum>(
                       padding: const EdgeInsets.only(left: 16),
                       sortingValue: 'Мужской',
                       isRadioButtonLeading: true,
-                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      groupValue: gender.value,
                       value: UserGenderEnum.male,
                       onChanged: (value) {
                         getIt<AccountBloc>()
@@ -141,32 +124,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                       },
                     );
                   },
-                  formChanged: (_, __, ___, email, gender, status) {
-                    return AppRadioButton<UserGenderEnum>(
-                      padding: const EdgeInsets.only(left: 16),
-                      sortingValue: 'Мужской',
-                      isRadioButtonLeading: true,
-                      groupValue: gender!.value,
-                      value: UserGenderEnum.male,
-                      onChanged: (value) {
-                        getIt<AccountBloc>()
-                            .add(AccountEvent.genderChanged(gender: value));
-                      },
-                    );
-                  },
-                  error: (error) {
-                    return AppRadioButton<UserGenderEnum>(
-                      padding: const EdgeInsets.only(left: 16),
-                      sortingValue: 'Мужской',
-                      isRadioButtonLeading: true,
-                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
-                      value: UserGenderEnum.male,
-                      onChanged: (value) {
-                        getIt<AccountBloc>()
-                            .add(AccountEvent.genderChanged(gender: value));
-                      },
-                    );
-                  },
+                  error: (status, error) => const SizedBox(),
                 );
               },
             ),
@@ -174,11 +132,12 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               bloc: getIt<AccountBloc>(),
               builder: (context, state) {
                 return state.when(
-                  initial: (firstName, secondName, birthday, gender, email) {
+                  loaded: (_, __, ___, ____, gender, _____, ______) {
                     return AppRadioButton<UserGenderEnum>(
+                      padding: const EdgeInsets.only(left: 16),
                       sortingValue: 'Женский',
                       isRadioButtonLeading: true,
-                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
+                      groupValue: gender.value,
                       value: UserGenderEnum.female,
                       onChanged: (value) {
                         getIt<AccountBloc>()
@@ -186,30 +145,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                       },
                     );
                   },
-                  formChanged: (_, __, ___, email, gender, status) {
-                    return AppRadioButton<UserGenderEnum>(
-                      sortingValue: 'Женский',
-                      isRadioButtonLeading: true,
-                      groupValue: gender!.value,
-                      value: UserGenderEnum.female,
-                      onChanged: (value) {
-                        getIt<AccountBloc>()
-                            .add(AccountEvent.genderChanged(gender: value));
-                      },
-                    );
-                  },
-                  error: (error) {
-                    return AppRadioButton<UserGenderEnum>(
-                      sortingValue: 'Женский',
-                      isRadioButtonLeading: true,
-                      groupValue: userSnapshot?.gender ?? UserGenderEnum.other,
-                      value: UserGenderEnum.female,
-                      onChanged: (value) {
-                        getIt<AccountBloc>()
-                            .add(AccountEvent.genderChanged(gender: value));
-                      },
-                    );
-                  },
+                  error: (status, error) => const SizedBox(),
                 );
               },
             ),
@@ -224,40 +160,22 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, gender, email) {
+          loaded: (firstName, _, __, ___, ____, _____, status) {
             return AppTextFormField(
-              height: 75,
-              padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Имя'),
+              height: 75,
               initialValue: userSnapshot?.firstName,
+              errorText:
+                  !firstName.isValid && status != FormzSubmissionStatus.initial
+                      ? firstName.error!.convertEnumToString(firstName.error!)
+                      : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.firstNameChanged(firstName: value));
               },
             );
           },
-          formChanged:
-              (firstName, secondName, birthday, email, gender, status) {
-            return AppTextFormField(
-              height: 75,
-              title: const Text('Имя'),
-              initialValue: userSnapshot?.firstName,
-              errorText: !status ? firstName?.error?.name : null,
-              onChanged: (value) {
-                getIt<AccountBloc>()
-                    .add(AccountEvent.firstNameChanged(firstName: value));
-              },
-            );
-          },
-          error: (error) => AppTextFormField(
-            height: 75,
-            title: const Text('Имя'),
-            initialValue: userSnapshot?.firstName,
-            onChanged: (value) {
-              getIt<AccountBloc>()
-                  .add(AccountEvent.firstNameChanged(firstName: value));
-            },
-          ),
+          error: (status, error) => const SizedBox(),
         );
       },
     );
@@ -268,41 +186,23 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, email, gender) {
+          loaded: (_, secondName, __, ___, ____, _____, status) {
             return AppTextFormField(
               height: 75,
               padding: const EdgeInsets.only(left: 16, right: 16),
               title: const Text('Фамилия'),
               initialValue: userSnapshot?.lastName,
+              errorText:
+                  !secondName.isValid && status != FormzSubmissionStatus.initial
+                      ? secondName.error!.convertEnumToString(secondName.error!)
+                      : null,
               onChanged: (value) {
                 getIt<AccountBloc>()
                     .add(AccountEvent.secondNameChanged(secondName: value));
               },
             );
           },
-          formChanged: (_, secondName, __, ___, ____, status) {
-            return AppTextFormField(
-              height: 75,
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              title: const Text('Фамилия'),
-              initialValue: userSnapshot?.lastName,
-              errorText: !status ? secondName?.error?.name : null,
-              onChanged: (value) {
-                getIt<AccountBloc>()
-                    .add(AccountEvent.secondNameChanged(secondName: value));
-              },
-            );
-          },
-          error: (error) => AppTextFormField(
-            height: 75,
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            title: const Text('Фамилия'),
-            initialValue: userSnapshot?.lastName,
-            onChanged: (value) {
-              getIt<AccountBloc>()
-                  .add(AccountEvent.secondNameChanged(secondName: value));
-            },
-          ),
+          error: (status, error) => const SizedBox(),
         );
       },
     );
@@ -313,11 +213,15 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (firstName, secondName, birthday, email, gender) {
+          loaded: (_, __, birthday, ___, ____, _____, status) {
             return AppDateForm(
               padding: const EdgeInsets.only(left: 16, right: 16),
               helper: const Text('Дата рождения'),
               initialValue: userSnapshot?.birthday,
+              errorText:
+                  !birthday.isValid && status != FormzSubmissionStatus.initial
+                      ? birthday.error!.convertEnumToString(birthday.error!)
+                      : null,
               onTap: () async {
                 await showDatePicker(
                   context: context,
@@ -328,49 +232,11 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
               },
               onDateSelected: (value) {
                 getIt<AccountBloc>()
-                    .add(AccountEvent.emailChanged(email: value.toString()));
+                    .add(AccountEvent.birthdayChanged(birthday: value));
               },
             );
           },
-          formChanged: (_, __, bitrhday, ___, gender, status) {
-            return AppDateForm(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              helper: const Text('Дата рождения'),
-              initialValue: dateFromStringNullable(bitrhday?.value),
-              errorText: !status ? bitrhday?.error?.name : null,
-              onTap: () async {
-                await showDatePicker(
-                  context: context,
-                  initialDate: clock.yearsAgo(18),
-                  firstDate: clock.yearsAgo(100),
-                  lastDate: clock.yearsAgo(0),
-                );
-              },
-              onDateSelected: (value) {
-                getIt<AccountBloc>().add(
-                  AccountEvent.birthdayChanged(birthday: value.toString()),
-                );
-              },
-            );
-          },
-          error: (error) => AppDateForm(
-            padding: const EdgeInsets.only(left: 16, right: 16),
-            helper: const Text('Дата рождения'),
-            initialValue: userSnapshot?.birthday,
-            onTap: () async {
-              await showDatePicker(
-                context: context,
-                initialDate: clock.yearsAgo(18),
-                firstDate: clock.yearsAgo(100),
-                lastDate: clock.yearsAgo(0),
-              );
-            },
-            onDateSelected: (value) {
-              getIt<AccountBloc>().add(
-                AccountEvent.birthdayChanged(birthday: value.toString()),
-              );
-            },
-          ),
+          error: (status, error) => const SizedBox(),
         );
       },
     );
@@ -381,20 +247,7 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
       bloc: getIt<AccountBloc>(),
       builder: (context, state) {
         return state.when(
-          initial: (_, __, ___, ____, _____) {
-            return const AppElevatedButton(
-              marginButton: EdgeInsets.only(
-                left: 16,
-                right: 16,
-                top: 32,
-                bottom: 24,
-              ),
-              textButton: Text('Сохранить'),
-              isDisable: true,
-            );
-          },
-          formChanged:
-              (firstName, secondName, bitrhday, email, gender, status) {
+          loaded: (_, __, ___, ____, _____, isValid, _______) {
             return AppElevatedButton(
               marginButton: const EdgeInsets.only(
                 left: 16,
@@ -403,32 +256,20 @@ class PersonalDataPage extends StatelessWidget with UserMixin {
                 bottom: 24,
               ),
               textButton: const Text('Сохранить'),
-              isDisable: !status,
+              isDisable: !isValid,
               onPressed: () {
                 getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
-                if (afterSignin) {
-                  context.push(AppRoute.map.routeToPath);
-                } else {
-                  context.pop();
-                }
+                context.pop();
               },
             );
           },
-          error: (error) => AppElevatedButton(
-            marginButton: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-              top: 32,
-              bottom: 24,
-            ),
+          error: (status, error) => AppElevatedButton(
+            marginButton:
+                const EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 24),
             textButton: const Text('Сохранить'),
+            isDisable: true,
             onPressed: () {
-              getIt<AccountBloc>().add(const AccountEvent.accountSubmitted());
-              if (afterSignin) {
-                context.push(AppRoute.map.routeToPath);
-              } else {
-                context.pop();
-              }
+              null;
             },
           ),
         );

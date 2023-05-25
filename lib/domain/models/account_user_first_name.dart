@@ -16,7 +16,7 @@ enum AccountUserFirstNameValidationError {
 
 class AccountUserFirstName
     extends FormzInput<String, AccountUserFirstNameValidationError> {
-  const AccountUserFirstName.pure() : super.pure('');
+  const AccountUserFirstName.pure([super.value = '']) : super.pure();
   const AccountUserFirstName.dirty([super.value = '']) : super.dirty();
 
   @override
