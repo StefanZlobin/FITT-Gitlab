@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:fitt/core/utils/functions/polygon.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
@@ -6,6 +8,8 @@ import 'package:fitt/features/map/data/source/remote_data_source/map_api_client/
 import 'package:fitt/features/map/domain/entities/lat_lng/lat_lng.dart';
 import 'package:fitt/features/map/domain/entities/map_point/map_point.dart';
 import 'package:fitt/features/map/domain/repositories/map/map_repository.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart' as gm;
+import 'package:rxdart/rxdart.dart';
 
 class MapRepositoryImpl implements MapRepository {
   MapRepositoryImpl(this.dio, {this.baseUrl})
@@ -15,16 +19,30 @@ class MapRepositoryImpl implements MapRepository {
   final String? baseUrl;
   final MapApiClient _apiClient;
 
+  final BehaviorSubject<List<MapPoint>> _mapPointsController =
+      BehaviorSubject.seeded(<MapPoint>[], sync: true);
+  void Function(List<MapPoint>) get updateMapPoints =>
+      _mapPointsController.sink.add;
+  @override
+  Stream<List<MapPoint>> get mapPoints => _mapPointsController;
+
+  final BehaviorSubject<gm.LatLngBounds?> _visibleRegionController =
+      BehaviorSubject.seeded(null, sync: true);
+  void Function(gm.LatLngBounds?) get updateVisibleRegion =>
+      _visibleRegionController.sink.add;
+  @override
+  Stream<gm.LatLngBounds?> get visibleRegion => _visibleRegionController;
+
   @override
   Future<List<MapPoint>> getMapPoints({
-    ClubFilters filters = const ClubFilters(favorite: false),
+    required ClubFilters filters,
     required LatLng northeast,
     required LatLng southwest,
   }) async {
     try {
       final mapPoints = await _apiClient.getMapPoints(GetMapPointsRequestBody(
         poligon: polygon(northeast, southwest),
-        facilities: filters.facilities?.map((e) => e.id).toList() ?? [],
+        facilities: filters.getActiveFacilitiesIds,
         maxPrice: filters.maxPrice,
         minPrice: filters.minPrice,
       ));
@@ -32,5 +50,22 @@ class MapRepositoryImpl implements MapRepository {
     } on Exception catch (e) {
       throw Exception(e);
     }
+  }
+
+  @override
+  void visibleRegionChanged({
+    required LatLng northeast,
+    required LatLng southwest,
+  }) {
+    updateVisibleRegion(gm.LatLngBounds(
+      southwest: southwest.toGoogleMaps(),
+      northeast: northeast.toGoogleMaps(),
+    ));
+  }
+
+  @override
+  FutureOr onDispose() {
+    _mapPointsController.close();
+    _visibleRegionController.close();
   }
 }

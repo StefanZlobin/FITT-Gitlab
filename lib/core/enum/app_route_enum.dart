@@ -40,5 +40,7 @@ enum AppRoute {
   inputPhoneNumber,
   inputSecureCode,
   // Webview
-  webview
+  webview,
+  // wallet
+  wallet
 }

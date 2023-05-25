@@ -11,13 +11,10 @@ import 'package:fitt/features/auth/domain/repositories/authorization/authorizati
 import 'package:fitt/features/auth/domain/repositories/identification/identification_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/token/token_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 /// Method that initializes all services and needed things before app started
 Future<void> init() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
   await setup();
   await Hive.initFlutter();
 

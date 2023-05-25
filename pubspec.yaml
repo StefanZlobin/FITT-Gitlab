@@ -3,7 +3,7 @@ description: One-time training purchases service.
 
 publish_to: "none"
 
-version: 1.4.22+80
+version: 1.4.25+83
 
 environment:
   sdk: ">=2.19.0 <3.3.3"
@@ -51,6 +51,7 @@ dependencies:
   #Firebase services
   firebase_core: ^2.4.0
   firebase_messaging: ^14.1.4
+  firebase_remote_config: ^4.2.1
   #Cache network images
   cached_network_image: ^3.2.3
   #DateTime
@@ -93,8 +94,9 @@ dependencies:
   #Shake
   shake: ^2.2.0
   #Sentry
-  sentry_flutter: ^6.20.1
+  sentry_flutter: ^7.6.2
   feedback_sentry: ^2.3.0
+  #sentry_dio: ^7.6.2 // TODO: Добавить эту либу
   #Page transition
   page_transition: ^2.0.9
   #Running line
@@ -106,8 +108,10 @@ dependencies:
   permission_handler: ^10.2.0
   #UUID
   uuid: ^3.0.7
-  #Notify about new app version
-  upgrader: ^6.2.0
+  #Information about app
+  package_info_plus: ^4.0.1
+  #Store redirect
+  launch_review: ^3.0.1
 
   #Cluster manager (Fluster)
   #aka Stefan

@@ -5,6 +5,7 @@ import 'package:fitt/core/enum/user_role_enum.dart';
 import 'package:fitt/core/utils/functions/serialization.dart';
 import 'package:fitt/core/utils/string_utils.dart' as string_utils;
 import 'package:fitt/domain/entities/user/anonymous_user.dart';
+import 'package:fitt/domain/entities/wallet/wallet.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -23,8 +24,9 @@ class User with _$User {
     @JsonKey(name: 'gender') required UserGenderEnum? gender,
     @JsonKey(name: 'phone_number') required String? phoneNumber,
     @JsonKey(name: 'avatar') required String? avatar,
+    @JsonKey(name: 'wallet') required Wallet? wallet,
   }) = _User;
-  
+
   User._();
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

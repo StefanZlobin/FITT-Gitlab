@@ -9,10 +9,11 @@ import 'package:fitt/core/enum/map_points_enum.dart';
 import 'package:fitt/core/helpers/map_helper.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/entities/filters/club_filters.dart';
-import 'package:fitt/features/clubs/domain/blocs/club_filtering/club_filtering_bloc.dart';
+import 'package:fitt/domain/repositories/resource/resource_repository.dart';
 import 'package:fitt/features/map/domain/entities/lat_lng/lat_lng.dart';
 import 'package:fitt/features/map/domain/entities/map_point/map_marker.dart';
 import 'package:fitt/features/map/domain/entities/map_point/map_point.dart';
+import 'package:fitt/features/map/domain/repositories/map/map_repository.dart';
 import 'package:fitt/features/map/domain/use_cases/map/map_use_case.dart';
 import 'package:fitt/gen/assets.gen.dart';
 import 'package:fluster/fluster.dart';
@@ -41,24 +42,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       transformer: restartable(),
     );
 
-    getIt<ClubFilteringBloc>().stream.listen((ClubFilteringState state) {
-      state.whenOrNull(
-        loaded: (selectedFacilities, selectedPrice, _, __) {
-          final activeFacilities = selectedFacilities!.entries
-              .where((element) => element.value)
-              .map((e) => e.key)
-              .toList();
-
-          add(MapEvent.filtersDetected(
-            filters: ClubFilters(
-              facilities: activeFacilities,
-              maxPrice: selectedPrice?.maxPrice,
-              minPrice: selectedPrice?.minPrice,
-              favorite: false,
-            ),
-          ));
-        },
-      );
+    getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
+      add(MapEvent.filtersDetected(filters: filters.copyWith(favorite: false)));
     });
   }
 
@@ -103,7 +88,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
         orElse: () => null,
       );
 
-  ClubFilters get _filters => _prevLoaded?.filters ?? ClubFilters.defaultValue;
+  ClubFilters get _filters =>
+      _prevLoaded?.filters ?? getIt<ResourceRepository>().clubFilters;
 
   CarouselBloc get _carouselBloc => getIt();
 
@@ -131,6 +117,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     add(
       MapEvent.cameraMove(
+        filters: filters,
         northeast: _prevLoaded!.visibleRegion.northeast.toEntity(),
         southwest: _prevLoaded!.visibleRegion.southwest.toEntity(),
         visibleRegion: _prevLoaded!.visibleRegion,
@@ -152,6 +139,11 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     _MapEventCameraMove event,
     Emitter<MapState> emit,
   ) async {
+    getIt<MapRepository>().visibleRegionChanged(
+      northeast: event.northeast,
+      southwest: event.southwest,
+    );
+
     final mapPoints = await _mapUseCase.getMapPoints(
       northeast: event.northeast,
       southwest: event.southwest,

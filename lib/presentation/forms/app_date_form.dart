@@ -52,6 +52,8 @@ class AppDateForm extends StatelessWidget {
                 height: 75,
                 child: DateTimeFormField(
                   initialValue: initialValue,
+                  initialEntryMode: DatePickerEntryMode.calendarOnly,
+                  initialDatePickerMode: DatePickerMode.year,
                   mode: DateTimeFieldPickerMode.date,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   dateTextStyle:

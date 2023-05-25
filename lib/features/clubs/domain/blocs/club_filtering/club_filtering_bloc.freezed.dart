@@ -20,8 +20,7 @@ mixin _$ClubFilteringEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(Price price) priceChanged,
     required TResult Function(Facility facility) facilitiesChanged,
-    required TResult Function(Map<Facility, bool>? facilities, Price? price)
-        refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,8 +28,7 @@ mixin _$ClubFilteringEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Price price)? priceChanged,
     TResult? Function(Facility facility)? facilitiesChanged,
-    TResult? Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,8 +36,7 @@ mixin _$ClubFilteringEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Price price)? priceChanged,
     TResult Function(Facility facility)? facilitiesChanged,
-    TResult Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) =>
@@ -50,8 +47,8 @@ mixin _$ClubFilteringEvent {
         priceChanged,
     required TResult Function(_ClubFilteringEventFacilitiesChanged value)
         facilitiesChanged,
-    required TResult Function(_ClubFilteringEventRefreshState value)
-        refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +57,7 @@ mixin _$ClubFilteringEvent {
     TResult? Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) =>
       throw _privateConstructorUsedError;
@@ -69,7 +66,7 @@ mixin _$ClubFilteringEvent {
     TResult Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) =>
@@ -175,8 +172,7 @@ class _$_ClubFilteringEventPriceChanged
   TResult when<TResult extends Object?>({
     required TResult Function(Price price) priceChanged,
     required TResult Function(Facility facility) facilitiesChanged,
-    required TResult Function(Map<Facility, bool>? facilities, Price? price)
-        refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
     return priceChanged(price);
@@ -187,8 +183,7 @@ class _$_ClubFilteringEventPriceChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Price price)? priceChanged,
     TResult? Function(Facility facility)? facilitiesChanged,
-    TResult? Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
     return priceChanged?.call(price);
@@ -199,8 +194,7 @@ class _$_ClubFilteringEventPriceChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Price price)? priceChanged,
     TResult Function(Facility facility)? facilitiesChanged,
-    TResult Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
@@ -217,8 +211,8 @@ class _$_ClubFilteringEventPriceChanged
         priceChanged,
     required TResult Function(_ClubFilteringEventFacilitiesChanged value)
         facilitiesChanged,
-    required TResult Function(_ClubFilteringEventRefreshState value)
-        refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
     return priceChanged(this);
@@ -230,7 +224,7 @@ class _$_ClubFilteringEventPriceChanged
     TResult? Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
     return priceChanged?.call(this);
@@ -242,7 +236,7 @@ class _$_ClubFilteringEventPriceChanged
     TResult Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
@@ -346,8 +340,7 @@ class _$_ClubFilteringEventFacilitiesChanged
   TResult when<TResult extends Object?>({
     required TResult Function(Price price) priceChanged,
     required TResult Function(Facility facility) facilitiesChanged,
-    required TResult Function(Map<Facility, bool>? facilities, Price? price)
-        refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
     return facilitiesChanged(facility);
@@ -358,8 +351,7 @@ class _$_ClubFilteringEventFacilitiesChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Price price)? priceChanged,
     TResult? Function(Facility facility)? facilitiesChanged,
-    TResult? Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
     return facilitiesChanged?.call(facility);
@@ -370,8 +362,7 @@ class _$_ClubFilteringEventFacilitiesChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Price price)? priceChanged,
     TResult Function(Facility facility)? facilitiesChanged,
-    TResult Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
@@ -388,8 +379,8 @@ class _$_ClubFilteringEventFacilitiesChanged
         priceChanged,
     required TResult Function(_ClubFilteringEventFacilitiesChanged value)
         facilitiesChanged,
-    required TResult Function(_ClubFilteringEventRefreshState value)
-        refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
     return facilitiesChanged(this);
@@ -401,7 +392,7 @@ class _$_ClubFilteringEventFacilitiesChanged
     TResult? Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
     return facilitiesChanged?.call(this);
@@ -413,7 +404,7 @@ class _$_ClubFilteringEventFacilitiesChanged
     TResult Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
@@ -438,115 +429,91 @@ abstract class _ClubFilteringEventFacilitiesChanged
 }
 
 /// @nodoc
-abstract class _$$_ClubFilteringEventRefreshStateCopyWith<$Res> {
-  factory _$$_ClubFilteringEventRefreshStateCopyWith(
-          _$_ClubFilteringEventRefreshState value,
-          $Res Function(_$_ClubFilteringEventRefreshState) then) =
-      __$$_ClubFilteringEventRefreshStateCopyWithImpl<$Res>;
+abstract class _$$_ClubFilteringEventFiltersChangedCopyWith<$Res> {
+  factory _$$_ClubFilteringEventFiltersChangedCopyWith(
+          _$_ClubFilteringEventFiltersChanged value,
+          $Res Function(_$_ClubFilteringEventFiltersChanged) then) =
+      __$$_ClubFilteringEventFiltersChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<Facility, bool>? facilities, Price? price});
+  $Res call({ClubFilters filters});
 
-  $PriceCopyWith<$Res>? get price;
+  $ClubFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
-class __$$_ClubFilteringEventRefreshStateCopyWithImpl<$Res>
+class __$$_ClubFilteringEventFiltersChangedCopyWithImpl<$Res>
     extends _$ClubFilteringEventCopyWithImpl<$Res,
-        _$_ClubFilteringEventRefreshState>
-    implements _$$_ClubFilteringEventRefreshStateCopyWith<$Res> {
-  __$$_ClubFilteringEventRefreshStateCopyWithImpl(
-      _$_ClubFilteringEventRefreshState _value,
-      $Res Function(_$_ClubFilteringEventRefreshState) _then)
+        _$_ClubFilteringEventFiltersChanged>
+    implements _$$_ClubFilteringEventFiltersChangedCopyWith<$Res> {
+  __$$_ClubFilteringEventFiltersChangedCopyWithImpl(
+      _$_ClubFilteringEventFiltersChanged _value,
+      $Res Function(_$_ClubFilteringEventFiltersChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? facilities = freezed,
-    Object? price = freezed,
+    Object? filters = null,
   }) {
-    return _then(_$_ClubFilteringEventRefreshState(
-      facilities: freezed == facilities
-          ? _value._facilities
-          : facilities // ignore: cast_nullable_to_non_nullable
-              as Map<Facility, bool>?,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as Price?,
+    return _then(_$_ClubFilteringEventFiltersChanged(
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as ClubFilters,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PriceCopyWith<$Res>? get price {
-    if (_value.price == null) {
-      return null;
-    }
-
-    return $PriceCopyWith<$Res>(_value.price!, (value) {
-      return _then(_value.copyWith(price: value));
+  $ClubFiltersCopyWith<$Res> get filters {
+    return $ClubFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$_ClubFilteringEventRefreshState
-    implements _ClubFilteringEventRefreshState {
-  const _$_ClubFilteringEventRefreshState(
-      {final Map<Facility, bool>? facilities, this.price})
-      : _facilities = facilities;
-
-  final Map<Facility, bool>? _facilities;
-  @override
-  Map<Facility, bool>? get facilities {
-    final value = _facilities;
-    if (value == null) return null;
-    if (_facilities is EqualUnmodifiableMapView) return _facilities;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
+class _$_ClubFilteringEventFiltersChanged
+    implements _ClubFilteringEventFiltersChanged {
+  const _$_ClubFilteringEventFiltersChanged({required this.filters});
 
   @override
-  final Price? price;
+  final ClubFilters filters;
 
   @override
   String toString() {
-    return 'ClubFilteringEvent.refreshState(facilities: $facilities, price: $price)';
+    return 'ClubFilteringEvent.filtersChanged(filters: $filters)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubFilteringEventRefreshState &&
-            const DeepCollectionEquality()
-                .equals(other._facilities, _facilities) &&
-            (identical(other.price, price) || other.price == price));
+            other is _$_ClubFilteringEventFiltersChanged &&
+            (identical(other.filters, filters) || other.filters == filters));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_facilities), price);
+  int get hashCode => Object.hash(runtimeType, filters);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubFilteringEventRefreshStateCopyWith<_$_ClubFilteringEventRefreshState>
-      get copyWith => __$$_ClubFilteringEventRefreshStateCopyWithImpl<
-          _$_ClubFilteringEventRefreshState>(this, _$identity);
+  _$$_ClubFilteringEventFiltersChangedCopyWith<
+          _$_ClubFilteringEventFiltersChanged>
+      get copyWith => __$$_ClubFilteringEventFiltersChangedCopyWithImpl<
+          _$_ClubFilteringEventFiltersChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Price price) priceChanged,
     required TResult Function(Facility facility) facilitiesChanged,
-    required TResult Function(Map<Facility, bool>? facilities, Price? price)
-        refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
-    return refreshState(facilities, price);
+    return filtersChanged(filters);
   }
 
   @override
@@ -554,11 +521,10 @@ class _$_ClubFilteringEventRefreshState
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Price price)? priceChanged,
     TResult? Function(Facility facility)? facilitiesChanged,
-    TResult? Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
-    return refreshState?.call(facilities, price);
+    return filtersChanged?.call(filters);
   }
 
   @override
@@ -566,13 +532,12 @@ class _$_ClubFilteringEventRefreshState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Price price)? priceChanged,
     TResult Function(Facility facility)? facilitiesChanged,
-    TResult Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
-    if (refreshState != null) {
-      return refreshState(facilities, price);
+    if (filtersChanged != null) {
+      return filtersChanged(filters);
     }
     return orElse();
   }
@@ -584,11 +549,11 @@ class _$_ClubFilteringEventRefreshState
         priceChanged,
     required TResult Function(_ClubFilteringEventFacilitiesChanged value)
         facilitiesChanged,
-    required TResult Function(_ClubFilteringEventRefreshState value)
-        refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
-    return refreshState(this);
+    return filtersChanged(this);
   }
 
   @override
@@ -597,10 +562,10 @@ class _$_ClubFilteringEventRefreshState
     TResult? Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
-    return refreshState?.call(this);
+    return filtersChanged?.call(this);
   }
 
   @override
@@ -609,26 +574,26 @@ class _$_ClubFilteringEventRefreshState
     TResult Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
-    if (refreshState != null) {
-      return refreshState(this);
+    if (filtersChanged != null) {
+      return filtersChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _ClubFilteringEventRefreshState implements ClubFilteringEvent {
-  const factory _ClubFilteringEventRefreshState(
-      {final Map<Facility, bool>? facilities,
-      final Price? price}) = _$_ClubFilteringEventRefreshState;
+abstract class _ClubFilteringEventFiltersChanged implements ClubFilteringEvent {
+  const factory _ClubFilteringEventFiltersChanged(
+          {required final ClubFilters filters}) =
+      _$_ClubFilteringEventFiltersChanged;
 
-  Map<Facility, bool>? get facilities;
-  Price? get price;
+  ClubFilters get filters;
   @JsonKey(ignore: true)
-  _$$_ClubFilteringEventRefreshStateCopyWith<_$_ClubFilteringEventRefreshState>
+  _$$_ClubFilteringEventFiltersChangedCopyWith<
+          _$_ClubFilteringEventFiltersChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -677,8 +642,7 @@ class _$_ClubFilteringEventClearFilter
   TResult when<TResult extends Object?>({
     required TResult Function(Price price) priceChanged,
     required TResult Function(Facility facility) facilitiesChanged,
-    required TResult Function(Map<Facility, bool>? facilities, Price? price)
-        refreshState,
+    required TResult Function(ClubFilters filters) filtersChanged,
     required TResult Function() clearFilter,
   }) {
     return clearFilter();
@@ -689,8 +653,7 @@ class _$_ClubFilteringEventClearFilter
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Price price)? priceChanged,
     TResult? Function(Facility facility)? facilitiesChanged,
-    TResult? Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult? Function(ClubFilters filters)? filtersChanged,
     TResult? Function()? clearFilter,
   }) {
     return clearFilter?.call();
@@ -701,8 +664,7 @@ class _$_ClubFilteringEventClearFilter
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Price price)? priceChanged,
     TResult Function(Facility facility)? facilitiesChanged,
-    TResult Function(Map<Facility, bool>? facilities, Price? price)?
-        refreshState,
+    TResult Function(ClubFilters filters)? filtersChanged,
     TResult Function()? clearFilter,
     required TResult orElse(),
   }) {
@@ -719,8 +681,8 @@ class _$_ClubFilteringEventClearFilter
         priceChanged,
     required TResult Function(_ClubFilteringEventFacilitiesChanged value)
         facilitiesChanged,
-    required TResult Function(_ClubFilteringEventRefreshState value)
-        refreshState,
+    required TResult Function(_ClubFilteringEventFiltersChanged value)
+        filtersChanged,
     required TResult Function(_ClubFilteringEventClearFilter value) clearFilter,
   }) {
     return clearFilter(this);
@@ -732,7 +694,7 @@ class _$_ClubFilteringEventClearFilter
     TResult? Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult? Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult? Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult? Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult? Function(_ClubFilteringEventClearFilter value)? clearFilter,
   }) {
     return clearFilter?.call(this);
@@ -744,7 +706,7 @@ class _$_ClubFilteringEventClearFilter
     TResult Function(_ClubFilteringEventPriceChanged value)? priceChanged,
     TResult Function(_ClubFilteringEventFacilitiesChanged value)?
         facilitiesChanged,
-    TResult Function(_ClubFilteringEventRefreshState value)? refreshState,
+    TResult Function(_ClubFilteringEventFiltersChanged value)? filtersChanged,
     TResult Function(_ClubFilteringEventClearFilter value)? clearFilter,
     required TResult orElse(),
   }) {
@@ -765,8 +727,8 @@ mixin _$ClubFilteringState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice, bool isPriceUpdated, bool isFacilitiesUpdated)
+    required TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
+            bool isFacilitiesUpdated)
         loaded,
     required TResult Function(String error) error,
   }) =>
@@ -774,10 +736,7 @@ mixin _$ClubFilteringState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult? Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult? Function(String error)? error,
@@ -786,10 +745,7 @@ mixin _$ClubFilteringState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult Function(String error)? error,
@@ -798,21 +754,21 @@ mixin _$ClubFilteringState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_ClubFilteringStateInitial value) initial,
     required TResult Function(_ClubFilteringStateLoaded value) loaded,
     required TResult Function(_ClubFilteringStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ClubFilteringStateInitial value)? initial,
     TResult? Function(_ClubFilteringStateLoaded value)? loaded,
     TResult? Function(_ClubFilteringStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ClubFilteringStateInitial value)? initial,
     TResult Function(_ClubFilteringStateLoaded value)? loaded,
     TResult Function(_ClubFilteringStateError value)? error,
     required TResult orElse(),
@@ -839,24 +795,27 @@ class _$ClubFilteringStateCopyWithImpl<$Res, $Val extends ClubFilteringState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_ClubFilteringStateInitialCopyWith<$Res> {
+  factory _$$_ClubFilteringStateInitialCopyWith(
+          _$_ClubFilteringStateInitial value,
+          $Res Function(_$_ClubFilteringStateInitial) then) =
+      __$$_ClubFilteringStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ClubFilteringStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_ClubFilteringStateInitialCopyWithImpl<$Res>
+    extends _$ClubFilteringStateCopyWithImpl<$Res, _$_ClubFilteringStateInitial>
+    implements _$$_ClubFilteringStateInitialCopyWith<$Res> {
+  __$$_ClubFilteringStateInitialCopyWithImpl(
+      _$_ClubFilteringStateInitial _value,
+      $Res Function(_$_ClubFilteringStateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_ClubFilteringStateInitial implements _ClubFilteringStateInitial {
+  const _$_ClubFilteringStateInitial();
 
   @override
   String toString() {
@@ -867,8 +826,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice, bool isPriceUpdated, bool isFacilitiesUpdated)
+    required TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
+            bool isFacilitiesUpdated)
         loaded,
     required TResult Function(String error) error,
   }) {
@@ -879,10 +838,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult? Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult? Function(String error)? error,
@@ -894,10 +850,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult Function(String error)? error,
@@ -912,7 +865,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_ClubFilteringStateInitial value) initial,
     required TResult Function(_ClubFilteringStateLoaded value) loaded,
     required TResult Function(_ClubFilteringStateError value) error,
   }) {
@@ -922,7 +875,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ClubFilteringStateInitial value)? initial,
     TResult? Function(_ClubFilteringStateLoaded value)? loaded,
     TResult? Function(_ClubFilteringStateError value)? error,
   }) {
@@ -932,7 +885,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ClubFilteringStateInitial value)? initial,
     TResult Function(_ClubFilteringStateLoaded value)? loaded,
     TResult Function(_ClubFilteringStateError value)? error,
     required TResult orElse(),
@@ -944,8 +897,8 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ClubFilteringState {
-  const factory _Initial() = _$_Initial;
+abstract class _ClubFilteringStateInitial implements ClubFilteringState {
+  const factory _ClubFilteringStateInitial() = _$_ClubFilteringStateInitial;
 }
 
 /// @nodoc
@@ -956,12 +909,9 @@ abstract class _$$_ClubFilteringStateLoadedCopyWith<$Res> {
       __$$_ClubFilteringStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {Map<Facility, bool>? selectedFacilities,
-      Price? selectedPrice,
-      bool isPriceUpdated,
-      bool isFacilitiesUpdated});
+      {ClubFilters clubFilters, bool isPriceUpdated, bool isFacilitiesUpdated});
 
-  $PriceCopyWith<$Res>? get selectedPrice;
+  $ClubFiltersCopyWith<$Res> get clubFilters;
 }
 
 /// @nodoc
@@ -975,20 +925,15 @@ class __$$_ClubFilteringStateLoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedFacilities = freezed,
-    Object? selectedPrice = freezed,
+    Object? clubFilters = null,
     Object? isPriceUpdated = null,
     Object? isFacilitiesUpdated = null,
   }) {
     return _then(_$_ClubFilteringStateLoaded(
-      selectedFacilities: freezed == selectedFacilities
-          ? _value._selectedFacilities
-          : selectedFacilities // ignore: cast_nullable_to_non_nullable
-              as Map<Facility, bool>?,
-      selectedPrice: freezed == selectedPrice
-          ? _value.selectedPrice
-          : selectedPrice // ignore: cast_nullable_to_non_nullable
-              as Price?,
+      clubFilters: null == clubFilters
+          ? _value.clubFilters
+          : clubFilters // ignore: cast_nullable_to_non_nullable
+              as ClubFilters,
       isPriceUpdated: null == isPriceUpdated
           ? _value.isPriceUpdated
           : isPriceUpdated // ignore: cast_nullable_to_non_nullable
@@ -1002,13 +947,9 @@ class __$$_ClubFilteringStateLoadedCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $PriceCopyWith<$Res>? get selectedPrice {
-    if (_value.selectedPrice == null) {
-      return null;
-    }
-
-    return $PriceCopyWith<$Res>(_value.selectedPrice!, (value) {
-      return _then(_value.copyWith(selectedPrice: value));
+  $ClubFiltersCopyWith<$Res> get clubFilters {
+    return $ClubFiltersCopyWith<$Res>(_value.clubFilters, (value) {
+      return _then(_value.copyWith(clubFilters: value));
     });
   }
 }
@@ -1017,25 +958,12 @@ class __$$_ClubFilteringStateLoadedCopyWithImpl<$Res>
 
 class _$_ClubFilteringStateLoaded implements _ClubFilteringStateLoaded {
   const _$_ClubFilteringStateLoaded(
-      {final Map<Facility, bool>? selectedFacilities,
-      this.selectedPrice,
+      {required this.clubFilters,
       this.isPriceUpdated = false,
-      this.isFacilitiesUpdated = false})
-      : _selectedFacilities = selectedFacilities;
-
-  final Map<Facility, bool>? _selectedFacilities;
-  @override
-  Map<Facility, bool>? get selectedFacilities {
-    final value = _selectedFacilities;
-    if (value == null) return null;
-    if (_selectedFacilities is EqualUnmodifiableMapView)
-      return _selectedFacilities;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
+      this.isFacilitiesUpdated = false});
 
   @override
-  final Price? selectedPrice;
+  final ClubFilters clubFilters;
   @override
   @JsonKey()
   final bool isPriceUpdated;
@@ -1045,7 +973,7 @@ class _$_ClubFilteringStateLoaded implements _ClubFilteringStateLoaded {
 
   @override
   String toString() {
-    return 'ClubFilteringState.loaded(selectedFacilities: $selectedFacilities, selectedPrice: $selectedPrice, isPriceUpdated: $isPriceUpdated, isFacilitiesUpdated: $isFacilitiesUpdated)';
+    return 'ClubFilteringState.loaded(clubFilters: $clubFilters, isPriceUpdated: $isPriceUpdated, isFacilitiesUpdated: $isFacilitiesUpdated)';
   }
 
   @JsonKey(ignore: true)
@@ -1059,47 +987,38 @@ class _$_ClubFilteringStateLoaded implements _ClubFilteringStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice, bool isPriceUpdated, bool isFacilitiesUpdated)
+    required TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
+            bool isFacilitiesUpdated)
         loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(
-        selectedFacilities, selectedPrice, isPriceUpdated, isFacilitiesUpdated);
+    return loaded(clubFilters, isPriceUpdated, isFacilitiesUpdated);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult? Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(
-        selectedFacilities, selectedPrice, isPriceUpdated, isFacilitiesUpdated);
+    return loaded?.call(clubFilters, isPriceUpdated, isFacilitiesUpdated);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(selectedFacilities, selectedPrice, isPriceUpdated,
-          isFacilitiesUpdated);
+      return loaded(clubFilters, isPriceUpdated, isFacilitiesUpdated);
     }
     return orElse();
   }
@@ -1107,7 +1026,7 @@ class _$_ClubFilteringStateLoaded implements _ClubFilteringStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_ClubFilteringStateInitial value) initial,
     required TResult Function(_ClubFilteringStateLoaded value) loaded,
     required TResult Function(_ClubFilteringStateError value) error,
   }) {
@@ -1117,7 +1036,7 @@ class _$_ClubFilteringStateLoaded implements _ClubFilteringStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ClubFilteringStateInitial value)? initial,
     TResult? Function(_ClubFilteringStateLoaded value)? loaded,
     TResult? Function(_ClubFilteringStateError value)? error,
   }) {
@@ -1127,7 +1046,7 @@ class _$_ClubFilteringStateLoaded implements _ClubFilteringStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ClubFilteringStateInitial value)? initial,
     TResult Function(_ClubFilteringStateLoaded value)? loaded,
     TResult Function(_ClubFilteringStateError value)? error,
     required TResult orElse(),
@@ -1141,13 +1060,11 @@ class _$_ClubFilteringStateLoaded implements _ClubFilteringStateLoaded {
 
 abstract class _ClubFilteringStateLoaded implements ClubFilteringState {
   const factory _ClubFilteringStateLoaded(
-      {final Map<Facility, bool>? selectedFacilities,
-      final Price? selectedPrice,
+      {required final ClubFilters clubFilters,
       final bool isPriceUpdated,
       final bool isFacilitiesUpdated}) = _$_ClubFilteringStateLoaded;
 
-  Map<Facility, bool>? get selectedFacilities;
-  Price? get selectedPrice;
+  ClubFilters get clubFilters;
   bool get isPriceUpdated;
   bool get isFacilitiesUpdated;
   @JsonKey(ignore: true)
@@ -1211,8 +1128,8 @@ class _$_ClubFilteringStateError implements _ClubFilteringStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice, bool isPriceUpdated, bool isFacilitiesUpdated)
+    required TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
+            bool isFacilitiesUpdated)
         loaded,
     required TResult Function(String error) error,
   }) {
@@ -1223,10 +1140,7 @@ class _$_ClubFilteringStateError implements _ClubFilteringStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult? Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult? Function(String error)? error,
@@ -1238,10 +1152,7 @@ class _$_ClubFilteringStateError implements _ClubFilteringStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            Map<Facility, bool>? selectedFacilities,
-            Price? selectedPrice,
-            bool isPriceUpdated,
+    TResult Function(ClubFilters clubFilters, bool isPriceUpdated,
             bool isFacilitiesUpdated)?
         loaded,
     TResult Function(String error)? error,
@@ -1256,7 +1167,7 @@ class _$_ClubFilteringStateError implements _ClubFilteringStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_ClubFilteringStateInitial value) initial,
     required TResult Function(_ClubFilteringStateLoaded value) loaded,
     required TResult Function(_ClubFilteringStateError value) error,
   }) {
@@ -1266,7 +1177,7 @@ class _$_ClubFilteringStateError implements _ClubFilteringStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ClubFilteringStateInitial value)? initial,
     TResult? Function(_ClubFilteringStateLoaded value)? loaded,
     TResult? Function(_ClubFilteringStateError value)? error,
   }) {
@@ -1276,7 +1187,7 @@ class _$_ClubFilteringStateError implements _ClubFilteringStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ClubFilteringStateInitial value)? initial,
     TResult Function(_ClubFilteringStateLoaded value)? loaded,
     TResult Function(_ClubFilteringStateError value)? error,
     required TResult orElse(),

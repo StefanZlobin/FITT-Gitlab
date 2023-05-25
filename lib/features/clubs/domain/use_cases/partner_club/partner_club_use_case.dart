@@ -15,7 +15,7 @@ class PartnerClubsUseCase {
   late final PartnerClubRepository partnerClubRepository;
 
   Future<List<PartnerClub>> getParternClubs({
-    ClubFilters clubFilters = const ClubFilters(favorite: false),
+    required ClubFilters clubFilters,
     ClubSortingEnum clubSorting = ClubSortingEnum.nearest,
     LatLng? northeast,
     LatLng? southwest,

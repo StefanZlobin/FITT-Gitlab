@@ -49,31 +49,17 @@ class PartnerClubsFavoriteBloc
       ));
     });
 
-    getIt<ClubFilteringBloc>().stream.listen((ClubFilteringState state) {
-      state.whenOrNull(
-        loaded: (selectedFacilities, selectedPrice, _, __) {
-          clubFilters = ClubFilters(
-            favorite: true,
-            facilities: selectedFacilities!.entries
-                .where((element) => element.value)
-                .map((e) => e.key)
-                .toList(),
-            maxPrice: selectedPrice!.maxPrice,
-            minPrice: selectedPrice.minPrice,
-          );
-
-          add(PartnerClubsFavoriteEvent.getPartnerClubs(
-            clubFilters: clubFilters,
-            clubSortingEnum: clubSortingEnum,
-          ));
-        },
-      );
+    getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
+      add(PartnerClubsFavoriteEvent.getPartnerClubs(
+        clubFilters: clubFilters,
+        clubSortingEnum: clubSortingEnum,
+      ));
     });
   }
 
   final PartnerClubsUseCase partnerClubsUseCase = PartnerClubsUseCase();
 
-  ClubFilters clubFilters = const ClubFilters(favorite: true);
+  ClubFilters clubFilters = ClubFilters(favorite: true);
   ClubSortingEnum clubSortingEnum = ClubSortingEnum.nearest;
 
   _PartnerClubsFavoriteStateLoaded get stateLoaded => state.maybeMap(

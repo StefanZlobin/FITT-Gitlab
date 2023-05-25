@@ -96,7 +96,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
-      );
+    );
       throw NetworkExceptions.getDioException(e);
     }
   }

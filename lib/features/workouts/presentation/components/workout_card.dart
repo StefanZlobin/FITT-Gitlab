@@ -255,7 +255,7 @@ class WorkoutCard extends StatelessWidget {
               style: AppTypography.kBody14.apply(color: AppColors.kOxford60),
               children: [
                 TextSpan(
-                  text: '${workout.club.label}',
+                  text: workout.club.shortLabel,
                   style: AppTypography.kH24B.apply(color: AppColors.kOxford),
                 ),
               ],

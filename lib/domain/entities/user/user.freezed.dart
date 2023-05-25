@@ -41,6 +41,8 @@ mixin _$User {
   String? get phoneNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'avatar')
   String? get avatar => throw _privateConstructorUsedError;
+  @JsonKey(name: 'wallet')
+  Wallet? get wallet => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -70,7 +72,11 @@ abstract class $UserCopyWith<$Res> {
       @JsonKey(name: 'phone_number')
           String? phoneNumber,
       @JsonKey(name: 'avatar')
-          String? avatar});
+          String? avatar,
+      @JsonKey(name: 'wallet')
+          Wallet? wallet});
+
+  $WalletCopyWith<$Res>? get wallet;
 }
 
 /// @nodoc
@@ -95,6 +101,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? gender = freezed,
     Object? phoneNumber = freezed,
     Object? avatar = freezed,
+    Object? wallet = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: freezed == firstName
@@ -133,7 +140,23 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
+      wallet: freezed == wallet
+          ? _value.wallet
+          : wallet // ignore: cast_nullable_to_non_nullable
+              as Wallet?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WalletCopyWith<$Res>? get wallet {
+    if (_value.wallet == null) {
+      return null;
+    }
+
+    return $WalletCopyWith<$Res>(_value.wallet!, (value) {
+      return _then(_value.copyWith(wallet: value) as $Val);
+    });
   }
 }
 
@@ -161,7 +184,12 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       @JsonKey(name: 'phone_number')
           String? phoneNumber,
       @JsonKey(name: 'avatar')
-          String? avatar});
+          String? avatar,
+      @JsonKey(name: 'wallet')
+          Wallet? wallet});
+
+  @override
+  $WalletCopyWith<$Res>? get wallet;
 }
 
 /// @nodoc
@@ -182,6 +210,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? gender = freezed,
     Object? phoneNumber = freezed,
     Object? avatar = freezed,
+    Object? wallet = freezed,
   }) {
     return _then(_$_User(
       firstName: freezed == firstName
@@ -220,6 +249,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
+      wallet: freezed == wallet
+          ? _value.wallet
+          : wallet // ignore: cast_nullable_to_non_nullable
+              as Wallet?,
     ));
   }
 }
@@ -245,7 +278,9 @@ class _$_User extends _User {
       @JsonKey(name: 'phone_number')
           required this.phoneNumber,
       @JsonKey(name: 'avatar')
-          required this.avatar})
+          required this.avatar,
+      @JsonKey(name: 'wallet')
+          required this.wallet})
       : _role = role,
         super._();
 
@@ -289,10 +324,13 @@ class _$_User extends _User {
   @override
   @JsonKey(name: 'avatar')
   final String? avatar;
+  @override
+  @JsonKey(name: 'wallet')
+  final Wallet? wallet;
 
   @override
   String toString() {
-    return 'User(firstName: $firstName, patronomicName: $patronomicName, lastName: $lastName, birthday: $birthday, email: $email, role: $role, gender: $gender, phoneNumber: $phoneNumber, avatar: $avatar)';
+    return 'User(firstName: $firstName, patronomicName: $patronomicName, lastName: $lastName, birthday: $birthday, email: $email, role: $role, gender: $gender, phoneNumber: $phoneNumber, avatar: $avatar, wallet: $wallet)';
   }
 
   @override
@@ -313,7 +351,8 @@ class _$_User extends _User {
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar));
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.wallet, wallet) || other.wallet == wallet));
   }
 
   @JsonKey(ignore: true)
@@ -328,7 +367,8 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(_role),
       gender,
       phoneNumber,
-      avatar);
+      avatar,
+      wallet);
 
   @JsonKey(ignore: true)
   @override
@@ -363,7 +403,9 @@ abstract class _User extends User {
       @JsonKey(name: 'phone_number')
           required final String? phoneNumber,
       @JsonKey(name: 'avatar')
-          required final String? avatar}) = _$_User;
+          required final String? avatar,
+      @JsonKey(name: 'wallet')
+          required final Wallet? wallet}) = _$_User;
   _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -398,6 +440,9 @@ abstract class _User extends User {
   @override
   @JsonKey(name: 'avatar')
   String? get avatar;
+  @override
+  @JsonKey(name: 'wallet')
+  Wallet? get wallet;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

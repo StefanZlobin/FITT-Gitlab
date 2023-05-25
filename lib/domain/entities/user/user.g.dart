@@ -18,6 +18,9 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       gender: $enumDecodeNullable(_$UserGenderEnumEnumMap, json['gender']),
       phoneNumber: json['phone_number'] as String?,
       avatar: json['avatar'] as String?,
+      wallet: json['wallet'] == null
+          ? null
+          : Wallet.fromJson(json['wallet'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -30,6 +33,7 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'gender': _$UserGenderEnumEnumMap[instance.gender],
       'phone_number': instance.phoneNumber,
       'avatar': instance.avatar,
+      'wallet': instance.wallet,
     };
 
 const _$UserRoleEnumEnumMap = {

@@ -1,11 +1,20 @@
 import 'package:fitt/core/enum/user_gender_enum.dart';
 import 'package:formz/formz.dart';
 
-enum AccountUserGenderValidationError { none }
+enum AccountUserGenderValidationError {
+  none;
+
+  String convertEnumToString(AccountUserGenderValidationError v) {
+    switch (v) {
+      case AccountUserGenderValidationError.none:
+        return 'Поле не должно быть пустым';
+    }
+  }
+}
 
 class AccountUserGender
     extends FormzInput<UserGenderEnum, AccountUserGenderValidationError> {
-  const AccountUserGender.pure() : super.pure(UserGenderEnum.other);
+  const AccountUserGender.pure([super.value = UserGenderEnum.other]) : super.pure();
   const AccountUserGender.dirty([super.value = UserGenderEnum.other])
       : super.dirty();
 
