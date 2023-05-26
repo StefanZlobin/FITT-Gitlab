@@ -58,7 +58,11 @@ class PaymentBatchSuccessPage extends StatelessWidget {
               Separator(
                 color: AppColors.kPrimaryBlue,
                 margin: EdgeInsets.fromLTRB(
-                    16, 16, MediaQuery.of(context).size.width - 40, 16,),
+                  16,
+                  16,
+                  MediaQuery.of(context).size.width - 40,
+                  16,
+                ),
                 height: 2,
               ),
               Padding(
@@ -90,7 +94,8 @@ class PaymentBatchSuccessPage extends StatelessWidget {
                 ),
                 AppElevatedButton(
                   textButton: const Text('Отлично'),
-                  onPressed: () => context.push(AppRoute.map.routeToPath),
+                  onPressed: () =>
+                      context.pushReplacement(AppRoute.map.routeToPath),
                 ),
               ],
             ),
