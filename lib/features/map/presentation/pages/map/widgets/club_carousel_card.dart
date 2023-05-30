@@ -23,10 +23,11 @@ class ClubCarouselCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final partnerClubAddress = partnerClub.address!.shortAddress
+    final partnerClubAddress = partnerClub.address!.addressWithMask
         .split(', ')
         .whereNotIndexed((index, element) => index == 0)
         .join(', ');
+
     return GestureDetector(
       onTap: () {
         getIt<ClubCubit>().getPartnerClub(clubUuid: partnerClub.uuid!);

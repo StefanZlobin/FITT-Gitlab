@@ -25,6 +25,7 @@ class MapPage extends StatelessWidget {
     appVersionCheck(context: context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: const MenuWidget(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
       floatingActionButton: BlocBuilder<PartnerClubsCubit, PartnerClubsState>(

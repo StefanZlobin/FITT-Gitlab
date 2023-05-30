@@ -8,6 +8,8 @@ part 'address.g.dart';
 
 @freezed
 class Address with _$Address {
+  Address._();
+
   factory Address({
     @JsonKey(name: 'short_address') required String shortAddress,
     @JsonKey(name: 'coordinates') required LatLng coordinates,
@@ -16,4 +18,16 @@ class Address with _$Address {
 
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
+
+  String get addressWithMask {
+    final reg = RegExp(r'ул');
+
+    final res = shortAddress.splitMapJoin(
+      reg,
+      onMatch: (m) => '${m[0]}.',
+      onNonMatch: (n) => n,
+    );
+
+    return res;
+  }
 }
