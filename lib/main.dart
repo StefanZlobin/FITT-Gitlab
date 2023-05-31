@@ -11,13 +11,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await init();
-  
+
   Bloc.observer = SimpleBlocObserver();
   await SentryFlutter.init(
     (options) => {
       options.dsn = Config.sentryDSN,
       options.tracesSampleRate = 1.0,
-      options.attachStacktrace = false,
+      options.attachStacktrace = true,
     },
     appRunner: () => runApp(const MyApp()),
   );
