@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "482222282116",
+    "project_id": "fitt-58bb7",
+    "storage_bucket": "fitt-58bb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482222282116:android:910d81ac142a3b142eb9d1",
+        "android_client_info": {
+          "package_name": "com.qlever.fitt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482222282116-5potgkev07lst2t167t3fgsktpvpbt9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qlever.fitt",
+            "certificate_hash": "59ed91123287e36b478f0095fb6234e1c0d2b59a"
+          }
+        },
+        {
+          "client_id": "482222282116-1cie2sg5mt3rmtrsr1j9trkp8i80nkuo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh55Z0Zf-e4bZDUw7c4cNP7QvRtlHVfqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482222282116-1cie2sg5mt3rmtrsr1j9trkp8i80nkuo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "482222282116-gosv62ub1uq5qtg5cfn0ssunleueo6gr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.qlever.fitt",
+                "app_store_id": "6444567325"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

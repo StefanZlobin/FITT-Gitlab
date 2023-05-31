@@ -79,6 +79,29 @@ android {
        }
    }
 
+   flavorDimensions "default"
+
+    productFlavors {
+        development {
+            dimension "default"
+            resValue "string", "app_name", "FITT dev"
+            applicationIdSuffix ".dev"
+            //applicationId "com.qlever.fitt.dev"
+        }
+        staging {
+            dimension "default"
+            resValue "string", "app_name", "FITT staging"
+            applicationIdSuffix ".stg"
+            //applicationId "com.qlever.fitt.stg"
+        }
+        production {
+            dimension "default"
+            resValue "string", "app_name", "FITT"
+            applicationIdSuffix ""
+            applicationId "com.qlever.fitt"
+        }
+    }
+
 }
 
 flutter {

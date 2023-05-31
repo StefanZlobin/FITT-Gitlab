@@ -6,8 +6,6 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleDisplayName</key>
-	<string>FITT</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -48,7 +46,7 @@
 	<string>It is important for the user to see his own location in order to assess the location
 			of the nearest fitness clubs on the map.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>The gallery may be needed to display the user's avatar</string>
+	<string>The gallery may be needed to display the user&apos;s avatar</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -75,6 +73,8 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleDisplayName</key>
+	<string>$(APP_DISPLAY_NAME)</string>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 </dict>

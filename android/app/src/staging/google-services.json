@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "604008768641",
+    "project_id": "fitt-staging",
+    "storage_bucket": "fitt-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604008768641:android:a72eb979838cc68ab81980",
+        "android_client_info": {
+          "package_name": "com.qlever.fitt.stg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9jhmIydldrupZpwAprgSWLwpbaY4rwOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
