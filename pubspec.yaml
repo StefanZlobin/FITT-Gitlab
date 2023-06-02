@@ -3,7 +3,7 @@ description: One-time training purchases service.
 
 publish_to: "none"
 
-version: 1.4.27+85
+version: 1.4.28+86
 
 environment:
   sdk: ">=2.19.0 <3.3.3"
@@ -112,6 +112,13 @@ dependencies:
   package_info_plus: ^4.0.1
   #Store redirect
   launch_review: ^3.0.1
+
+  #App native update
+  #aka Stefan
+  native_updater:
+    git:
+      url: https://github.com/StefanZlobin/native_updater.git
+      ref: master
 
   #Cluster manager (Fluster)
   #aka Stefan

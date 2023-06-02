@@ -959,6 +959,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.3"
+  in_app_update:
+    dependency: transitive
+    description:
+      name: in_app_update
+      sha256: "0be3b79405409d77999b57075322ae4703af7871d83529b5b52c246ada9861fe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
   intl:
     dependency: "direct main"
     description:
@@ -1087,6 +1095,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  native_updater:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "1c93192a02dcfb81b2c8e3e2c358847e35bc1bbc"
+      url: "https://github.com/StefanZlobin/native_updater.git"
+    source: git
+    version: "0.1.1"
   nested:
     dependency: transitive
     description:
@@ -1585,10 +1602,10 @@ packages:
     dependency: "direct main"
     description:
       name: url_launcher
-      sha256: "75f2846facd11168d007529d6cd8fcb2b750186bea046af9711f10b907e1587e"
+      sha256: eb1e00ab44303d50dd487aab67ebc575456c146c6af44422f9c13889984c00f3
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.10"
+    version: "6.1.11"
   url_launcher_android:
     dependency: transitive
     description:

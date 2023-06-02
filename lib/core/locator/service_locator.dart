@@ -4,9 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:fitt/data/repositories/analytics/analytics_repository_impl.dart';
 import 'package:fitt/data/services/app_metrica/app_metrica_service_impl.dart';
 import 'package:fitt/data/services/push_notifications/push_notifications_service_impl.dart';
+import 'package:fitt/data/services/remote_config/remote_config_service_impl.dart';
 import 'package:fitt/domain/blocs/analytics_dashboard/analytics_dashboard_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
+import 'package:fitt/domain/blocs/app_update/app_update_bloc.dart';
 import 'package:fitt/domain/blocs/menu/menu_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
@@ -15,6 +17,7 @@ import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/services/push_notifications/push_notifications_service.dart';
+import 'package:fitt/domain/services/remote_config/remote_config_service.dart';
 import 'package:fitt/features/account/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/features/auth/data/repositories/authentication/authentication_repository_impl.dart';
 import 'package:fitt/features/auth/data/repositories/authorization/authorization_repository_impl.dart';
@@ -243,6 +246,9 @@ void _regusterServices() {
   getIt.registerLazySingleton<PushNotificationsService>(
     () => PushNotificationsServiceImpl(),
   );
+  getIt.registerLazySingleton<RemoteConfigService>(
+    () => RemoteConfigServiceImpl(),
+  );
 }
 
 void _registerBlocs() {
@@ -325,4 +331,5 @@ void _registerBlocs() {
   getIt.registerLazySingleton<PartnerClubsFavoriteBloc>(
     () => PartnerClubsFavoriteBloc(),
   );
+  getIt.registerLazySingleton<AppUpdateBloc>(() => AppUpdateBloc());
 }

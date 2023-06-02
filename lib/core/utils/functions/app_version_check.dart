@@ -1,38 +1,33 @@
-import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:fitt/core/helpers/new_app_version_dialog.dart';
-import 'package:flutter/widgets.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+//import 'package:firebase_remote_config/firebase_remote_config.dart';
+//import 'package:package_info_plus/package_info_plus.dart';
 
-Future<void> appVersionCheck({required BuildContext context}) async {
-  // Get current installed app version
-  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  final currentVersion =
-      double.parse(packageInfo.version.trim().replaceAll('.', ''));
+//Future<bool> appVersionCheck() async {
+//  // Get current installed app version
+//  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+//  final currentVersion =
+//      double.parse(packageInfo.version.trim().replaceAll('.', ''));
 
-  // Get latest app version from firebase remote config
-  final remoteConfig = FirebaseRemoteConfig.instance;
+//  // Get latest app version from firebase remote config
+//  final remoteConfig = FirebaseRemoteConfig.instance;
 
-  await remoteConfig.setConfigSettings(
-    RemoteConfigSettings(
-      fetchTimeout: const Duration(seconds: 10),
-      minimumFetchInterval: Duration.zero,
-    ),
-  );
+//  await remoteConfig.setConfigSettings(
+//    RemoteConfigSettings(
+//      fetchTimeout: const Duration(milliseconds: 5),
+//      minimumFetchInterval: const Duration(seconds: 5),
+//    ),
+//  );
 
-  try {
-    await remoteConfig.fetchAndActivate();
-    remoteConfig.getString('new_app_version');
+//  try {
+//    await remoteConfig.fetchAndActivate();
+//    final res = remoteConfig.getString('new_app_version');
 
-    final newAppVersion = double.parse(
-      remoteConfig.getString('new_app_version').trim().replaceAll('.', ''),
-    );
+//    final newAppVersion = double.parse(
+//      res.trim().replaceAll('.', ''),
+//    );
 
-    if (newAppVersion > currentVersion) {
-      // ignore: use_build_context_synchronously
-      await newAppVersionDialog(context: context);
-    }
-  } on Exception {
-    // ignore: unnecessary_statements
-    null;
-  }
-}
+//    return newAppVersion > currentVersion;
+//  } on Exception catch (e) {
+//    print(e);
+//    return false;
+//  }
+//}

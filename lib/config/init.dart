@@ -3,9 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:fitt/config/config.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/permissions/firebase_notifications.dart';
+import 'package:fitt/domain/blocs/app_update/app_update_bloc.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/services/geolocation/geolocation_service.dart';
 import 'package:fitt/domain/services/local_notifications/local_notifications_service.dart';
+import 'package:fitt/domain/services/remote_config/remote_config_service.dart';
 import 'package:fitt/features/auth/domain/repositories/authentication/authentication_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/authorization/authorization_repository.dart';
 import 'package:fitt/features/auth/domain/repositories/identification/identification_repository.dart';
@@ -29,6 +31,8 @@ Future<void> init() async {
   await Firebase.initializeApp();
   await FirebaseNotificationsPermission().getFirebaseNotificationPermission();
 
+  await getIt<RemoteConfigService>().init();
+
   await getIt<LocalNotificationsService>().init();
   await getIt<GeolocationService>().requestPermission();
 
@@ -37,4 +41,6 @@ Future<void> init() async {
   getIt<AuthenticationRepository>();
   getIt<AuthorizationRepository>();
   getIt<UserRepository>();
+
+  getIt<AppUpdateBloc>().add(const AppUpdateEvent.checkUpdate());
 }
