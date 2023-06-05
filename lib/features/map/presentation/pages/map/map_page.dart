@@ -16,6 +16,7 @@ import 'package:fitt/presentation/components/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:native_updater/native_updater.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
 class MapPage extends StatelessWidget {
@@ -29,17 +30,21 @@ class MapPage extends StatelessWidget {
         state.whenOrNull(
           loaded: (needUpdate) {
             if (needUpdate) {
-              NativeUpdater.displayUpdateAlert(
-                context,
-                forceUpdate: false,
-                appStoreUrl: FittLinks.kAppStoreUrl,
-                iOSAlertTitle: 'Доступно обновление',
-                iOSDescription:
-                    'Рекомендуем установить последнию версию приложения "FITT"',
-                iOSUpdateButtonLabel: 'Обновить',
-                iOSCloseButtonLabel: 'Закрыть приложение',
-                iOSIgnoreButtonLabel: 'Позже',
-              );
+              try {
+                NativeUpdater.displayUpdateAlert(
+                  context,
+                  forceUpdate: false,
+                  appStoreUrl: FittLinks.kAppStoreUrl,
+                  iOSAlertTitle: 'Доступно обновление',
+                  iOSDescription:
+                      'Рекомендуем установить последнию версию приложения "FITT"',
+                  iOSUpdateButtonLabel: 'Обновить',
+                  iOSCloseButtonLabel: 'Закрыть приложение',
+                  iOSIgnoreButtonLabel: 'Позже',
+                );
+              } on Exception catch (e, stackTrace) {
+                Sentry.captureException(e, stackTrace: stackTrace);
+              }
             }
           },
         );

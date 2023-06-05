@@ -13,7 +13,7 @@ class RemoteConfigServiceImpl implements RemoteConfigService {
       firebaseRemoteConfig = FirebaseRemoteConfig.instance;
       await firebaseRemoteConfig.setConfigSettings(RemoteConfigSettings(
         fetchTimeout: const Duration(minutes: 1),
-        minimumFetchInterval: const Duration(hours: 1),
+        minimumFetchInterval: const Duration(minutes: 1),
       ));
 
       await firebaseRemoteConfig.fetchAndActivate();
