@@ -42,6 +42,7 @@ import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/club_photo_slider/club_photo_slider_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/features/map/domain/blocs/carousel/carousel_bloc.dart';
+import 'package:fitt/features/map/domain/blocs/is_searching/is_searching_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/map/map_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/search/search_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
@@ -251,6 +252,7 @@ void _regusterServices() {
 }
 
 void _registerBlocs() {
+  getIt.registerLazySingleton<IsSearchingBloc>(() => IsSearchingBloc());
   getIt.registerLazySingleton<WorkoutBloc>(() => WorkoutBloc());
   getIt.registerFactory<WorkoutTimerBloc>(
     () => WorkoutTimerBloc(ticker: const Ticker()),

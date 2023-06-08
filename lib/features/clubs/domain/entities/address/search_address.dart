@@ -7,7 +7,9 @@ part 'search_address.g.dart';
 
 @freezed
 class SearchAddress with _$SearchAddress {
-  const factory SearchAddress({
+  SearchAddress._();
+
+  factory SearchAddress({
     @JsonKey(name: 'country') required String country,
     @JsonKey(name: 'short_address') required String shortAddress,
     @JsonKey(name: 'suggestion_address') required String suggestionAddress,
@@ -22,5 +24,18 @@ class SearchAddress with _$SearchAddress {
     @JsonKey(name: 'geo_lon') required double longitude,
   }) = _SearchAddress;
 
-  factory SearchAddress.fromJson(Map<String, dynamic> json) => _$SearchAddressFromJson(json);
+  factory SearchAddress.fromJson(Map<String, dynamic> json) =>
+      _$SearchAddressFromJson(json);
+
+  String get suggestionAddressWithMask {
+    final reg = RegExp(r'(ул|^г)');
+
+    final res = shortAddress.splitMapJoin(
+      reg,
+      onMatch: (m) => '${m[0]}.',
+      onNonMatch: (n) => n,
+    );
+
+    return res;
+  }
 }

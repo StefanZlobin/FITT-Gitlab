@@ -253,8 +253,8 @@ class __$$_SearchAddressCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SearchAddress implements _SearchAddress {
-  const _$_SearchAddress(
+class _$_SearchAddress extends _SearchAddress {
+  _$_SearchAddress(
       {@JsonKey(name: 'country') required this.country,
       @JsonKey(name: 'short_address') required this.shortAddress,
       @JsonKey(name: 'suggestion_address') required this.suggestionAddress,
@@ -266,7 +266,8 @@ class _$_SearchAddress implements _SearchAddress {
       @JsonKey(name: 'postal_code') this.postalCode,
       @JsonKey(name: 'fias_level') this.fiasLevel,
       @JsonKey(name: 'geo_lat') required this.latitude,
-      @JsonKey(name: 'geo_lon') required this.longitude});
+      @JsonKey(name: 'geo_lon') required this.longitude})
+      : super._();
 
   factory _$_SearchAddress.fromJson(Map<String, dynamic> json) =>
       _$$_SearchAddressFromJson(json);
@@ -369,8 +370,8 @@ class _$_SearchAddress implements _SearchAddress {
   }
 }
 
-abstract class _SearchAddress implements SearchAddress {
-  const factory _SearchAddress(
+abstract class _SearchAddress extends SearchAddress {
+  factory _SearchAddress(
       {@JsonKey(name: 'country')
           required final String country,
       @JsonKey(name: 'short_address')
@@ -395,6 +396,7 @@ abstract class _SearchAddress implements SearchAddress {
           required final double latitude,
       @JsonKey(name: 'geo_lon')
           required final double longitude}) = _$_SearchAddress;
+  _SearchAddress._() : super._();
 
   factory _SearchAddress.fromJson(Map<String, dynamic> json) =
       _$_SearchAddress.fromJson;
