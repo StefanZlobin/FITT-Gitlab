@@ -31,7 +31,11 @@ class PaymentRepositoryImpl implements PaymentRepository {
         BuyBatchRequestBody(batchUuid),
       );
       return response;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -40,7 +44,7 @@ class PaymentRepositoryImpl implements PaymentRepository {
   Future<Workout> buyWorkout({
     required TimeSlot slot,
     required String activityUuid,
-  }) async { 
+  }) async {
     try {
       final response = await _apiClient.buyWorkout(BuyWorkoutRequestBody(
         activity: activityUuid,
@@ -77,7 +81,11 @@ class PaymentRepositoryImpl implements PaymentRepository {
         endTime: slot.startTime.add(slot.duration).toString(),
       ));
       return response;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -90,13 +98,17 @@ class PaymentRepositoryImpl implements PaymentRepository {
   }) async {
     try {
       final response =
-          await _apiClient.buyWorkoutByBatch(BuyWorkoutByBatchRequestBody(
+          await _apiClient.buyWorkoutByCorpWallet(BuyWorkoutByBatchRequestBody(
         activity: activityUuid,
         startTime: slot.startTime.toString(),
         endTime: slot.startTime.add(slot.duration).toString(),
       ));
       return response;
-    } on DioError catch (e) {
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
