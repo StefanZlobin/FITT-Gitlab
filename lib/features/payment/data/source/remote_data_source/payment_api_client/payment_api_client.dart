@@ -27,4 +27,9 @@ abstract class PaymentApiClient {
   Future<Workout> buyWorkoutByBatch(
     @Body() BuyWorkoutByBatchRequestBody request,
   );
+
+  @POST('user/workouts/buy_with_corporate_account/')
+  Future<Workout> buyWorkoutByCorpWallet(
+    @Body() BuyWorkoutByBatchRequestBody request,
+  );
 }
