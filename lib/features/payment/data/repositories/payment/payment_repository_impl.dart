@@ -40,7 +40,7 @@ class PaymentRepositoryImpl implements PaymentRepository {
   Future<Workout> buyWorkout({
     required TimeSlot slot,
     required String activityUuid,
-  }) async {
+  }) async { 
     try {
       final response = await _apiClient.buyWorkout(BuyWorkoutRequestBody(
         activity: activityUuid,

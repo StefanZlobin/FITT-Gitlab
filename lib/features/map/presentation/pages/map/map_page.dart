@@ -6,7 +6,8 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/domain/blocs/app_update/app_update_bloc.dart';
 import 'package:fitt/domain/cubits/geolocation/geolocation_cubit.dart';
-import 'package:fitt/features/clubs/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
+import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
+import 'package:fitt/features/map/domain/repositories/map/map_repository.dart';
 import 'package:fitt/features/map/presentation/pages/map/widgets/club_carousel.dart';
 import 'package:fitt/features/map/presentation/pages/map/widgets/map_widget.dart';
 import 'package:fitt/features/map/presentation/pages/map/widgets/menu_button.dart';
@@ -53,59 +54,52 @@ class MapPage extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         drawer: const MenuWidget(),
         floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
-        floatingActionButton: BlocBuilder<PartnerClubsCubit, PartnerClubsState>(
-          bloc: getIt<PartnerClubsCubit>(),
-          buildWhen: (previous, current) => true,
-          builder: (context, state) {
-            return state.when(
-              loading: () => const SizedBox(),
-              error: (error) => const SizedBox(),
-              loaded: (clubs) {
-                return Container(
-                  margin: EdgeInsets.only(
-                    bottom: 144 + 16 + (Platform.isAndroid ? 32 : 0),
+        floatingActionButton: StreamBuilder<List<PartnerClub>>(
+          stream: getIt<MapRepository>().clubs,
+          builder: (context, snapshot) {
+            return Container(
+              margin: EdgeInsets.only(
+                bottom: 144 + 16 + (Platform.isAndroid ? 32 : 0),
+              ),
+              height: 48,
+              width: 48,
+              child: FloatingActionButton(
+                onPressed: () async {
+                  await getIt<GeolocationCubit>().getCurrentPosition();
+                },
+                shape: SuperellipseShape(
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(32),
+                    topLeft: Radius.circular(32),
+                    bottomLeft: Radius.circular(32),
+                    bottomRight: Radius.circular(32),
                   ),
-                  height: 48,
-                  width: 48,
-                  child: FloatingActionButton(
-                    onPressed: () async {
-                      await getIt<GeolocationCubit>().getCurrentPosition();
-                    },
-                    shape: SuperellipseShape(
-                      borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(32),
-                        topLeft: Radius.circular(32),
-                        bottomLeft: Radius.circular(32),
-                        bottomRight: Radius.circular(32),
+                ),
+                backgroundColor: AppColors.kBaseWhite,
+                child: BlocBuilder<GeolocationCubit, GeolocationState>(
+                  bloc: getIt<GeolocationCubit>(),
+                  builder: (context, state) {
+                    return state.when(
+                      initial: () => const Icon(
+                        AppIcons.geo_user,
+                        color: AppColors.kPrimaryBlue,
+                        size: 18,
                       ),
-                    ),
-                    backgroundColor: AppColors.kBaseWhite,
-                    child: BlocBuilder<GeolocationCubit, GeolocationState>(
-                      bloc: getIt<GeolocationCubit>(),
-                      builder: (context, state) {
-                        return state.when(
-                          initial: () => const Icon(
-                            AppIcons.geo_user,
-                            color: AppColors.kPrimaryBlue,
-                            size: 18,
-                          ),
-                          loading: () => const CircularProgressIndicator(),
-                          locationDetected: (_) => const Icon(
-                            AppIcons.geo_user,
-                            color: AppColors.kPrimaryBlue,
-                            size: 18,
-                          ),
-                          locationDetectingError: (_) => const Icon(
-                            AppIcons.geo_user,
-                            color: AppColors.kPrimaryBlue,
-                            size: 18,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                );
-              },
+                      loading: () => const CircularProgressIndicator(),
+                      locationDetected: (_) => const Icon(
+                        AppIcons.geo_user,
+                        color: AppColors.kPrimaryBlue,
+                        size: 18,
+                      ),
+                      locationDetectingError: (_) => const Icon(
+                        AppIcons.geo_user,
+                        color: AppColors.kPrimaryBlue,
+                        size: 18,
+                      ),
+                    );
+                  },
+                ),
+              ),
             );
           },
         ),

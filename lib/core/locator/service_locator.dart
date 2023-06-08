@@ -40,7 +40,6 @@ import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_
 import 'package:fitt/features/clubs/domain/cubits/calculate_workout_price/calculate_workout_price_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/club_photo_slider/club_photo_slider_cubit.dart';
-import 'package:fitt/features/clubs/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/features/map/domain/blocs/carousel/carousel_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/map/map_bloc.dart';
@@ -285,7 +284,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AdminWorkoutCubit>(() => AdminWorkoutCubit());
   getIt.registerLazySingleton<AdminClubsCubit>(() => AdminClubsCubit());
   getIt.registerLazySingleton<AdminClubCubit>(() => AdminClubCubit());
-  getIt.registerLazySingleton<PartnerClubsCubit>(() => PartnerClubsCubit());
   getIt.registerLazySingleton<ClubCubit>(() => ClubCubit());
   getIt.registerLazySingleton<LoginErrorTimerBloc>(
     () => LoginErrorTimerBloc(ticker: const Ticker()),

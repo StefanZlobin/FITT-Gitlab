@@ -21,6 +21,7 @@ import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_
 import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
+import 'package:fitt/presentation/components/batch_available_hours.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
 import 'package:fitt/presentation/components/menu/widget/user_menu_tile.dart';
 import 'package:fitt/presentation/components/separator.dart';
@@ -116,6 +117,7 @@ class MenuUser extends StatelessWidget with UserMixin {
         //),
         UserMenuTile(
           title: const Text('Купленные часы'),
+          trailing: const BatchAvailableHours(hours: 12, isBig: false),
           onPressed: () {
             getIt<PurchasedBatchCubit>().getUserBatches();
             context.push(AppRoute.purchasedBatch.routeToPath);

@@ -29,6 +29,8 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   final String? baseUrl;
   final PartnerClubApiClient _apiClient;
 
+  ClubFilters clubFilters = ClubFilters(favorite: false);
+
   final BehaviorSubject<List<PartnerClub>> _partnerClubsController =
       BehaviorSubject.seeded(<PartnerClub>[], sync: true);
   void Function(List<PartnerClub>) get updatePartnerClubs =>

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:bloc/bloc.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:collection/collection.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/enum/map_points_enum.dart';
@@ -14,7 +13,6 @@ import 'package:fitt/features/map/domain/entities/lat_lng/lat_lng.dart';
 import 'package:fitt/features/map/domain/entities/map_point/map_marker.dart';
 import 'package:fitt/features/map/domain/entities/map_point/map_point.dart';
 import 'package:fitt/features/map/domain/repositories/map/map_repository.dart';
-import 'package:fitt/features/map/domain/use_cases/map/map_use_case.dart';
 import 'package:fitt/gen/assets.gen.dart';
 import 'package:fluster/fluster.dart';
 import 'package:flutter/material.dart';
@@ -30,26 +28,23 @@ part 'map_state.dart';
 
 class MapBloc extends Bloc<MapEvent, MapState> {
   MapBloc() : super(const _MapStateInitial()) {
-    on<_MapEventMapCreated>(_onMapCreated, transformer: restartable());
-    on<_MapEventCameraMove>(_onCameraMoved, transformer: restartable());
-    on<_MapEventFiltersDetected>(
-      _onFiltersDetected,
-      transformer: restartable(),
-    );
-    on<_MapEventMarkerTapped>(_onMarkerTapped, transformer: restartable());
-    on<_MapEventCarouselCardFocused>(
-      _onCarouselCardFocused,
-      transformer: restartable(),
-    );
+    on<_MapEventMapCreated>(_onMapCreated);
+    on<_MapEventCameraMove>(_onCameraMoved);
+    on<_MapEventFiltersDetected>(_onFiltersDetected);
+    on<_MapEventMarkerTapped>(_onMarkerTapped);
+    on<_MapEventCarouselCardFocused>(_onCarouselCardFocused);
 
     getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
       add(MapEvent.filtersDetected(filters: filters.copyWith(favorite: false)));
     });
   }
 
-  final _mapUseCase = MapUseCase();
+  final mapRepository = getIt<MapRepository>();
 
   final Completer<gm.GoogleMapController> _controller = Completer();
+  late final gm.GoogleMapController controller;
+
+  gm.CameraPosition? position;
 
   /// Minimum zoom at which the markers will cluster
   final int _minClusterZoom = 0;
@@ -99,6 +94,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   ) async {
     if (!_controller.isCompleted) {
       _controller.complete(event.controller);
+      controller = await _controller.future;
     }
   }
 
@@ -109,7 +105,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     if (_prevLoaded == null) return;
 
     final filters = event.filters;
-    final mapPoints = await _mapUseCase.getMapPoints(
+    final mapPoints = await mapRepository.getMapPointsByClub(
       filters: filters,
       northeast: _prevLoaded!.visibleRegion.northeast.toEntity(),
       southwest: _prevLoaded!.visibleRegion.southwest.toEntity(),
@@ -121,17 +117,17 @@ class MapBloc extends Bloc<MapEvent, MapState> {
         northeast: _prevLoaded!.visibleRegion.northeast.toEntity(),
         southwest: _prevLoaded!.visibleRegion.southwest.toEntity(),
         visibleRegion: _prevLoaded!.visibleRegion,
-        zoom: 12, // переделать
+        zoom: 12,
       ),
     );
 
-    emit(
-      _prevLoaded!.copyWith(
-        filters: filters,
-        mapPoints: mapPoints,
-        visibleRegion: _prevLoaded!.visibleRegion,
-      ),
+    final newState = _prevLoaded!.copyWith(
+      filters: filters,
+      mapPoints: mapPoints,
+      visibleRegion: _prevLoaded!.visibleRegion,
     );
+
+    emit(newState);
   }
 
   /// Inits [Fluster] and all the markers with network images and updates the loading state.
@@ -139,12 +135,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     _MapEventCameraMove event,
     Emitter<MapState> emit,
   ) async {
-    getIt<MapRepository>().visibleRegionChanged(
-      northeast: event.northeast,
-      southwest: event.southwest,
-    );
-
-    final mapPoints = await _mapUseCase.getMapPoints(
+    final mapPoints = await mapRepository.getMapPointsByClub(
       northeast: event.northeast,
       southwest: event.southwest,
       filters: _filters,
@@ -162,7 +153,6 @@ class MapBloc extends Bloc<MapEvent, MapState> {
             southwest:
                 gm.LatLng(event.southwest.latitude, event.southwest.longitude),
           ),
-          isVisibleRegionUpdated: true,
         ),
       );
     }
@@ -200,7 +190,6 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     emit(
       MapState.loaded(
-        isVisibleRegionUpdated: true,
         markers: markers.all,
         filters: _filters,
         mapPoints: mapPoints,
@@ -281,18 +270,14 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     }
 
     if (marker.isCluster) {
-      final controller = await _controller.future;
-      final zoom = await controller.getZoomLevel();
-      final update = gm.CameraUpdate.newLatLngZoom(
-        marker.coordinates,
-        zoom + 1,
-      );
+      final zoom = position?.zoom ?? await controller.getZoomLevel();
+      final update =
+          gm.CameraUpdate.newLatLngZoom(marker.coordinates, zoom + 2);
 
       unawaited(controller.animateCamera(update));
     }
 
     final newState = prevState.copyWith(
-      isVisibleRegionUpdated: false,
       markers: [
         for (final m in prevState.markers)
           if (m.markerId == marker.markerId)
@@ -324,7 +309,6 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     }
 
     final newState = prevState.copyWith(
-      isVisibleRegionUpdated: false,
       markers: [
         for (final m in prevState.markers)
           if (isTargetMarker(m, event.clubId)) ...{
