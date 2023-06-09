@@ -24,7 +24,7 @@ class User with _$User {
     @JsonKey(name: 'gender') required UserGenderEnum? gender,
     @JsonKey(name: 'phone_number') required String? phoneNumber,
     @JsonKey(name: 'avatar') required String? avatar,
-    @JsonKey(name: 'wallet') required Wallet? wallet,
+    @JsonKey(name: 'corporate_wallet') required Wallet? wallet,
   }) = _User;
 
   User._();
