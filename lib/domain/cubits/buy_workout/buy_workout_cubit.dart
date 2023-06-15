@@ -45,4 +45,21 @@ class BuyWorkoutCubit extends Cubit<BuyWorkoutState> {
       emit(BuyWorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
+
+  Future<void> buyWorkoutByWallet({
+    required TimeSlot slot,
+    required String activityUuid,
+  }) async {
+    emit(const BuyWorkoutState.initial());
+
+    try {
+      final workout = await paymentUseCase.buyWorkoutByWallet(
+        slot: slot,
+        activityUuid: activityUuid,
+      );
+      emit(BuyWorkoutState.loaded(workout: workout));
+    } on NetworkExceptions catch (e) {
+      emit(BuyWorkoutState.error(error: NetworkExceptions.getErrorMessage(e)));
+    }
+  }
 }

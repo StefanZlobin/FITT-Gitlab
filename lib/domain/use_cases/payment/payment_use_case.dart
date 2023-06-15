@@ -29,6 +29,17 @@ class PaymentUseCase {
     return workout;
   }
 
+  Future<Workout> buyWorkoutByWallet({
+    required TimeSlot slot,
+    required String activityUuid,
+  }) async {
+    final workout = await paymentRepository.buyWorkoutByCorpWallet(
+      slot: slot,
+      activityUuid: activityUuid,
+    );
+    return workout;
+  }
+
   Future<Workout> buyWorkoutByBatch({
     required TimeSlot slot,
     required String activityUuid,

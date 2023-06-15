@@ -37,7 +37,7 @@ class PartnerClub with _$PartnerClub {
     @JsonKey(name: 'description') required String? description,
     @JsonKey(name: 'email') required String? email,
     @JsonKey(name: 'phone') required String? phoneNumber,
-    @JsonKey(name: 'pay_available') required bool? payAvailable,
+    @JsonKey(name: 'pay_available') required bool payAvailable,
   }) = _PartnerClub;
 
   PartnerClub._();

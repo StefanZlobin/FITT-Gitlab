@@ -2,14 +2,16 @@ import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/features/clubs/domain/cubits/calculate_workout_price/calculate_workout_price_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
+import 'package:fitt/features/payment/presentation/components/payment_toggle.dart';
 import 'package:fitt/presentation/components/batch_available_hours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CalculatedPriceWorkout extends StatelessWidget {
+class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
   const CalculatedPriceWorkout({
     super.key,
     required this.club,
@@ -31,7 +33,7 @@ class CalculatedPriceWorkout extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             initial: () => const Center(child: CircularProgressIndicator()),
-            loaded: (calculatedPrice) {
+            loaded: (calculatedPrice, price) {
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
@@ -43,7 +45,12 @@ class CalculatedPriceWorkout extends StatelessWidget {
                       style:
                           AppTypography.kH16.apply(color: AppColors.kBaseBlack),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 14),
+                    if (userSnapshot?.wallet == null) ...[
+                      PaymentToggle(club: club, price: price),
+                      const SizedBox(height: 14),
+                    ],
+                    const SizedBox(height: 14),
                     ...calculatedPrice.map(
                       (e) {
                         return Padding(
