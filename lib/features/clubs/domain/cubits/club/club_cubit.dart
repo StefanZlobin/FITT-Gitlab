@@ -4,26 +4,30 @@ import 'dart:collection';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/features/clubs/domain/entities/activity/activity.dart';
 import 'package:fitt/features/clubs/domain/entities/batch/batch.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/features/clubs/domain/use_cases/partner_club/partner_club_use_case.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_workout_button/payment_workout_button_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_cubit.freezed.dart';
 part 'club_state.dart';
 
-class ClubCubit extends Cubit<ClubState> {
+class ClubCubit extends Cubit<ClubState> with UserMixin {
   ClubCubit() : super(const _ClubStateLoading());
 
   final partnerClubUseCase = PartnerClubsUseCase();
   late List<TimeSlot> flatSlots;
-  late _ClubStateLoaded _clubState;
+  late _ClubStateLoaded clubState;
   late String slotUuid;
+  late PartnerClub partnerClub;
 
   Future<void> setFavorite({
     required bool favorite,
@@ -41,35 +45,56 @@ class ClubCubit extends Cubit<ClubState> {
 
   Future<void> getPartnerClub({required String clubUuid}) async {
     try {
-      final partnerClub =
-          await partnerClubUseCase.getParternClub(clubUuid: clubUuid);
+      partnerClub = await partnerClubUseCase.getParternClub(clubUuid: clubUuid);
       final batches =
           await partnerClubUseCase.getClubBatches(clubUuid: clubUuid);
       flatSlots = _flattenSlots(partnerClub.activities!.first);
-      _clubState = _ClubStateLoaded(
+      clubState = _ClubStateLoaded(
         club: partnerClub,
         lastAvailableDateSelected: false,
         batches: batches,
       );
-      selectActivity(_clubState.club.activities!.first);
-      emit(_clubState);
+      selectActivity(clubState.club.activities!.first);
+      emit(clubState);
+
+      if (userSnapshot == null) {
+        getIt<PaymentWorkoutButtonBloc>()
+            .add(PaymentWorkoutButtonEvent.checkAvailablePayment(
+          paymentAvailable: partnerClub.payAvailable,
+          userHasFullData: UserExistEnum.none,
+        ));
+      } else if (!userSnapshot!.hasFullData) {
+        getIt<PaymentWorkoutButtonBloc>()
+            .add(PaymentWorkoutButtonEvent.checkAvailablePayment(
+          paymentAvailable: partnerClub.payAvailable,
+          userHasFullData: UserExistEnum.notFullData,
+        ));
+      } else {
+        getIt<PaymentWorkoutButtonBloc>()
+            .add(PaymentWorkoutButtonEvent.checkAvailablePayment(
+          paymentAvailable: partnerClub.payAvailable,
+          userHasFullData: UserExistEnum.fullData,
+        ));
+      }
     } on NetworkExceptions catch (e) {
       emit(_ClubStateError(error: NetworkExceptions.getErrorMessage(e)));
     }
   }
 
+  PartnerClub get club => partnerClub;
+
   TimeSlot? get selectedSlot {
-    if (!_clubState.dateSlots!.hasEnabledChildren ||
-        !_clubState.timeSlots!.hasEnabledChildren ||
-        !_clubState.durationSlots!.hasEnabledChildren) {
+    if (!clubState.dateSlots!.hasEnabledChildren ||
+        !clubState.timeSlots!.hasEnabledChildren ||
+        !clubState.durationSlots!.hasEnabledChildren) {
       return null;
     }
 
-    final date = _clubState.dateSlots!.enabledChildren.single.details;
-    final time = _clubState.timeSlots!.enabledChildren.single.details;
-    final duration = _clubState.durationSlots!.enabledChildren.single.details;
+    final date = clubState.dateSlots!.enabledChildren.single.details;
+    final time = clubState.timeSlots!.enabledChildren.single.details;
+    final duration = clubState.durationSlots!.enabledChildren.single.details;
 
-    final selectedActivity = _clubState.selectedActivity;
+    final selectedActivity = clubState.selectedActivity;
     if (selectedActivity == null) return null;
     final dSlots = selectedActivity.dateSlots;
 
@@ -163,9 +188,9 @@ class ClubCubit extends Cubit<ClubState> {
               ToggledFilter(
                 details: element.duration,
                 value:
-                    (_clubState.durationSlots?.hasEnabledChildren ?? false) &&
+                    (clubState.durationSlots?.hasEnabledChildren ?? false) &&
                         element.duration ==
-                            _clubState
+                            clubState
                                 .durationSlots!.enabledChildren.single.details,
               ),
         ),
@@ -175,18 +200,18 @@ class ClubCubit extends Cubit<ClubState> {
   void selectActivity(Activity activity) {
     flatSlots = _flattenSlots(activity);
 
-    final newState = _clubState.copyWith(
+    final newState = clubState.copyWith(
       selectedActivity: activity,
       dateSlots: FilterGroup<bool, ToggledFilter<DateTime>>(
         _extractDateSlotsFromActivity(activity),
       ),
     );
 
-    _clubState = newState;
+    clubState = newState;
 
     emit(_ClubStateLoaded(
-      club: _clubState.club,
-      batches: _clubState.batches,
+      club: clubState.club,
+      batches: clubState.batches,
       dateSlots: newState.dateSlots,
       lastAvailableDateSelected: false,
     ));
@@ -195,61 +220,61 @@ class ClubCubit extends Cubit<ClubState> {
   }
 
   void selectDateSlot(DateTime date) {
-    if (_clubState.dateSlots!.hasEnabledChildren &&
+    if (clubState.dateSlots!.hasEnabledChildren &&
         date.isAtSameMomentAs(
-          _clubState.dateSlots!.enabledChildren.single.details,
+          clubState.dateSlots!.enabledChildren.single.details,
         )) {
       return;
     }
 
     final timesMap = _extractTimeSlotsForDate(date, flatSlots);
 
-    final newState = _clubState.copyWith(
-      dateSlots: _clubState.dateSlots!.reset().update(date, true),
+    final newState = clubState.copyWith(
+      dateSlots: clubState.dateSlots!.reset().update(date, true),
       timeSlots: FilterGroup<bool, ToggledFilter<DateTime>>(timesMap),
       lastAvailableDateSelected:
-          _clubState.dateSlots!.children.last.details == date,
+          clubState.dateSlots!.children.last.details == date,
     );
 
-    _clubState = newState;
+    clubState = newState;
 
     emit(_ClubStateLoaded(
-      club: _clubState.club,
-      batches: _clubState.batches,
-      dateSlots: _clubState.dateSlots,
-      selectedActivity: _clubState.selectedActivity,
-      lastAvailableDateSelected: _clubState.lastAvailableDateSelected,
+      club: clubState.club,
+      batches: clubState.batches,
+      dateSlots: clubState.dateSlots,
+      selectedActivity: clubState.selectedActivity,
+      lastAvailableDateSelected: clubState.lastAvailableDateSelected,
     ));
 
     selectTimeSlot(timesMap.keys.first);
   }
 
   void selectTimeSlot(DateTime time) {
-    if (_clubState.timeSlots!.hasEnabledChildren &&
+    if (clubState.timeSlots!.hasEnabledChildren &&
         time.isAtSameMomentAs(
-          _clubState.timeSlots!.enabledChildren.single.details,
+          clubState.timeSlots!.enabledChildren.single.details,
         )) {
       return;
     }
 
     final durationMap = _extractDurationsForTime(time, flatSlots);
 
-    final newState = _clubState.copyWith(
-      timeSlots: _clubState.timeSlots!.reset().update(time, true),
+    final newState = clubState.copyWith(
+      timeSlots: clubState.timeSlots!.reset().update(time, true),
       durationSlots: FilterGroup<bool, ToggledFilter<Duration>>(durationMap),
     );
 
-    _clubState = newState;
+    clubState = newState;
 
     slotUuid = selectedSlot?.id != null ? selectedSlot!.id : flatSlots.first.id;
 
     emit(_ClubStateLoaded(
-      club: _clubState.club,
-      dateSlots: _clubState.dateSlots,
-      timeSlots: _clubState.timeSlots,
-      selectedActivity: _clubState.selectedActivity,
-      lastAvailableDateSelected: _clubState.lastAvailableDateSelected,
-      batches: _clubState.batches,
+      club: clubState.club,
+      dateSlots: clubState.dateSlots,
+      timeSlots: clubState.timeSlots,
+      selectedActivity: clubState.selectedActivity,
+      lastAvailableDateSelected: clubState.lastAvailableDateSelected,
+      batches: clubState.batches,
     ));
 
     selectDurationSlot(durationMap.keys.first);
@@ -257,23 +282,23 @@ class ClubCubit extends Cubit<ClubState> {
 
   void selectDurationSlot(Duration duration) {
     final selectedDuration =
-        _clubState.durationSlots!.reset().update(duration, true);
+        clubState.durationSlots!.reset().update(duration, true);
 
-    final newState = _clubState.copyWith(
+    final newState = clubState.copyWith(
       durationSlots: selectedDuration,
     );
 
-    _clubState = newState;
+    clubState = newState;
 
     emit(
       _ClubStateLoaded(
-        club: _clubState.club,
-        durationSlots: _clubState.durationSlots,
-        dateSlots: _clubState.dateSlots,
-        timeSlots: _clubState.timeSlots,
-        selectedActivity: _clubState.selectedActivity,
-        lastAvailableDateSelected: _clubState.lastAvailableDateSelected,
-        batches: _clubState.batches,
+        club: clubState.club,
+        durationSlots: clubState.durationSlots,
+        dateSlots: clubState.dateSlots,
+        timeSlots: clubState.timeSlots,
+        selectedActivity: clubState.selectedActivity,
+        lastAvailableDateSelected: clubState.lastAvailableDateSelected,
+        batches: clubState.batches,
       ),
     );
   }

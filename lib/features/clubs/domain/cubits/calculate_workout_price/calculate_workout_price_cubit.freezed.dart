@@ -19,21 +19,25 @@ mixin _$CalculateWorkoutPriceState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<CalculatePrice> calculatedPrice) loaded,
+    required TResult Function(
+            List<CalculatePrice> calculatedPrice, double price)
+        loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult? Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +130,9 @@ class _$_CalculateWorkoutPriceStateInitial
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<CalculatePrice> calculatedPrice) loaded,
+    required TResult Function(
+            List<CalculatePrice> calculatedPrice, double price)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -136,7 +142,8 @@ class _$_CalculateWorkoutPriceStateInitial
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult? Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -146,7 +153,8 @@ class _$_CalculateWorkoutPriceStateInitial
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -204,7 +212,7 @@ abstract class _$$_CalculateWorkoutPriceStateLoadedCopyWith<$Res> {
           $Res Function(_$_CalculateWorkoutPriceStateLoaded) then) =
       __$$_CalculateWorkoutPriceStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CalculatePrice> calculatedPrice});
+  $Res call({List<CalculatePrice> calculatedPrice, double price});
 }
 
 /// @nodoc
@@ -221,12 +229,17 @@ class __$$_CalculateWorkoutPriceStateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? calculatedPrice = null,
+    Object? price = null,
   }) {
     return _then(_$_CalculateWorkoutPriceStateLoaded(
       calculatedPrice: null == calculatedPrice
           ? _value._calculatedPrice
           : calculatedPrice // ignore: cast_nullable_to_non_nullable
               as List<CalculatePrice>,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -236,7 +249,8 @@ class __$$_CalculateWorkoutPriceStateLoadedCopyWithImpl<$Res>
 class _$_CalculateWorkoutPriceStateLoaded
     implements _CalculateWorkoutPriceStateLoaded {
   const _$_CalculateWorkoutPriceStateLoaded(
-      {required final List<CalculatePrice> calculatedPrice})
+      {required final List<CalculatePrice> calculatedPrice,
+      required this.price})
       : _calculatedPrice = calculatedPrice;
 
   final List<CalculatePrice> _calculatedPrice;
@@ -248,8 +262,11 @@ class _$_CalculateWorkoutPriceStateLoaded
   }
 
   @override
+  final double price;
+
+  @override
   String toString() {
-    return 'CalculateWorkoutPriceState.loaded(calculatedPrice: $calculatedPrice)';
+    return 'CalculateWorkoutPriceState.loaded(calculatedPrice: $calculatedPrice, price: $price)';
   }
 
   @override
@@ -258,12 +275,13 @@ class _$_CalculateWorkoutPriceStateLoaded
         (other.runtimeType == runtimeType &&
             other is _$_CalculateWorkoutPriceStateLoaded &&
             const DeepCollectionEquality()
-                .equals(other._calculatedPrice, _calculatedPrice));
+                .equals(other._calculatedPrice, _calculatedPrice) &&
+            (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_calculatedPrice));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_calculatedPrice), price);
 
   @JsonKey(ignore: true)
   @override
@@ -277,32 +295,36 @@ class _$_CalculateWorkoutPriceStateLoaded
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<CalculatePrice> calculatedPrice) loaded,
+    required TResult Function(
+            List<CalculatePrice> calculatedPrice, double price)
+        loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(calculatedPrice);
+    return loaded(calculatedPrice, price);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult? Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(calculatedPrice);
+    return loaded?.call(calculatedPrice, price);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(calculatedPrice);
+      return loaded(calculatedPrice, price);
     }
     return orElse();
   }
@@ -345,10 +367,11 @@ class _$_CalculateWorkoutPriceStateLoaded
 abstract class _CalculateWorkoutPriceStateLoaded
     implements CalculateWorkoutPriceState {
   const factory _CalculateWorkoutPriceStateLoaded(
-          {required final List<CalculatePrice> calculatedPrice}) =
-      _$_CalculateWorkoutPriceStateLoaded;
+      {required final List<CalculatePrice> calculatedPrice,
+      required final double price}) = _$_CalculateWorkoutPriceStateLoaded;
 
   List<CalculatePrice> get calculatedPrice;
+  double get price;
   @JsonKey(ignore: true)
   _$$_CalculateWorkoutPriceStateLoadedCopyWith<
           _$_CalculateWorkoutPriceStateLoaded>
@@ -426,7 +449,9 @@ class _$_CalculateWorkoutPriceStateError
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<CalculatePrice> calculatedPrice) loaded,
+    required TResult Function(
+            List<CalculatePrice> calculatedPrice, double price)
+        loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -436,7 +461,8 @@ class _$_CalculateWorkoutPriceStateError
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult? Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -446,7 +472,8 @@ class _$_CalculateWorkoutPriceStateError
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<CalculatePrice> calculatedPrice)? loaded,
+    TResult Function(List<CalculatePrice> calculatedPrice, double price)?
+        loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

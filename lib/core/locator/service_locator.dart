@@ -44,6 +44,9 @@ import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batc
 import 'package:fitt/features/map/domain/blocs/carousel/carousel_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/map/map_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/search/search_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_toggle/payment_toggle_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_type/payment_type_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_workout_button/payment_workout_button_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
@@ -251,6 +254,11 @@ void _regusterServices() {
 }
 
 void _registerBlocs() {
+  getIt.registerLazySingleton<PaymentToggleBloc>(() => PaymentToggleBloc());
+  getIt.registerLazySingleton<PaymentTypeBloc>(() => PaymentTypeBloc());
+  getIt.registerLazySingleton<PaymentWorkoutButtonBloc>(
+    () => PaymentWorkoutButtonBloc(),
+  );
   getIt.registerLazySingleton<WorkoutBloc>(() => WorkoutBloc());
   getIt.registerFactory<WorkoutTimerBloc>(
     () => WorkoutTimerBloc(ticker: const Ticker()),

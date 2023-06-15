@@ -9,21 +9,18 @@ import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/extensions/app_router_extension.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/core/utils/widget_alignments.dart';
-import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/cubits/buy_workout/buy_workout_cubit.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/activity/activity.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
-import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/features/clubs/presentation/components/club_buy_workout_disclaimer.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/calculate_price_workout.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/chip_filter.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/day_tile.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/day_tile_placeholder.dart';
-import 'package:fitt/gen/assets.gen.dart';
+import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/workout_pay_button.dart';
 import 'package:fitt/presentation/app.dart';
-import 'package:fitt/presentation/components/buttons/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -136,117 +133,16 @@ class ClubBuyWorkoutPage extends StatelessWidget with UserMixin {
             _buildPickDurationWidget(durationSlots),
             CalculatedPriceWorkout(club: club),
             ClubBuyWorkoutDisclaimer(club: club),
+            const SizedBox(height: 120),
           ],
         ),
-        _buildPayButton(club, selectedActivity),
-      ],
-    );
-  }
-
-  Widget _buildPayButton(PartnerClub club, Activity activity) {
-    return BottomCenter(
-      child: BlocBuilder<UserAvatarBloc, UserAvatarState>(
-        bloc: getIt<UserAvatarBloc>(),
-        builder: (context, state) {
-          return state.when(
-            initial: () => _buildAppElevatedPayButton(
-              club,
-              activity,
-              true,
-              context,
-            ),
-            loaded: (_) => _buildAppElevatedPayButton(
-              club,
-              activity,
-              false,
-              context,
-            ),
-            error: (_) => _buildAppElevatedPayButton(
-              club,
-              activity,
-              true,
-              context,
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  AppElevatedButton _buildAppElevatedPayButton(
-    PartnerClub club,
-    Activity activity,
-    bool isDisable,
-    BuildContext context,
-  ) {
-    return AppElevatedButton(
-      isDisable: !club.payAvailable!,
-      errorText:
-          club.payAvailable! ? null : const Text('Подключаем систему оплаты'),
-      onPressedAsync: () async {
-        if (userSnapshot == null) {
-          context.push(AppRoute.inputPhoneNumber.routeToPath);
-        } else if (!userSnapshot!.hasFullData) {
-          context.pushNamed(
-            AppRoute.personalData.routeToPath,
-            extra: {
-              'canSkip': false,
-              'afterSignin': false,
-            },
-          );
-        } else {
-          club.batchHoursAvailable != 0
-              ? await getIt<BuyWorkoutCubit>().buyWorkoutByBatch(
-                  slot: TimeSlot(
-                    id: getIt<ClubCubit>().selectedSlot!.id,
-                    startTime: getIt<ClubCubit>().selectedSlot!.startTime,
-                    duration: getIt<ClubCubit>().selectedSlot!.duration,
-                    price: getIt<ClubCubit>().selectedSlot!.price,
-                  ),
-                  activityUuid: activity.uuid,
-                )
-              : await getIt<BuyWorkoutCubit>().buyWorkout(
-                  slot: TimeSlot(
-                    id: getIt<ClubCubit>().selectedSlot!.id,
-                    startTime: getIt<ClubCubit>().selectedSlot!.startTime,
-                    duration: getIt<ClubCubit>().selectedSlot!.duration,
-                    price: getIt<ClubCubit>().selectedSlot!.price,
-                  ),
-                  activityUuid: activity.uuid,
-                );
-        }
-      },
-      textButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          if (club.batchHoursAvailable == 0)
-            Text(
-              'Стоимость ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
-              style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
-            )
-          else
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Стоимость',
-                  style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  '${getIt<ClubCubit>().selectedSlot!.duration.inHours}',
-                  style: AppTypography.kH24.apply(color: AppColors.kBaseWhite),
-                ),
-                const SizedBox(width: 4),
-                Assets.images.batch.image(filterQuality: FilterQuality.high),
-              ],
-            ),
-          Text(
-            'Перейти к оплате',
-            style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+        BottomCenter(
+          child: WorkoutPayButton(
+            club: club,
+            activity: selectedActivity,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

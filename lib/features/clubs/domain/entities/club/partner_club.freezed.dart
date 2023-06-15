@@ -57,7 +57,7 @@ mixin _$PartnerClub {
   @JsonKey(name: 'phone')
   String? get phoneNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'pay_available')
-  bool? get payAvailable => throw _privateConstructorUsedError;
+  bool get payAvailable => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -90,7 +90,7 @@ abstract class $PartnerClubCopyWith<$Res> {
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'phone') String? phoneNumber,
-      @JsonKey(name: 'pay_available') bool? payAvailable});
+      @JsonKey(name: 'pay_available') bool payAvailable});
 
   $AddressCopyWith<$Res>? get address;
   $RatingCopyWith<$Res>? get rating;
@@ -128,7 +128,7 @@ class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub>
     Object? description = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
-    Object? payAvailable = freezed,
+    Object? payAvailable = null,
   }) {
     return _then(_value.copyWith(
       uuid: freezed == uuid
@@ -203,10 +203,10 @@ class _$PartnerClubCopyWithImpl<$Res, $Val extends PartnerClub>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      payAvailable: freezed == payAvailable
+      payAvailable: null == payAvailable
           ? _value.payAvailable
           : payAvailable // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ) as $Val);
   }
 
@@ -274,7 +274,7 @@ abstract class _$$_PartnerClubCopyWith<$Res>
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'phone') String? phoneNumber,
-      @JsonKey(name: 'pay_available') bool? payAvailable});
+      @JsonKey(name: 'pay_available') bool payAvailable});
 
   @override
   $AddressCopyWith<$Res>? get address;
@@ -313,7 +313,7 @@ class __$$_PartnerClubCopyWithImpl<$Res>
     Object? description = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
-    Object? payAvailable = freezed,
+    Object? payAvailable = null,
   }) {
     return _then(_$_PartnerClub(
       uuid: freezed == uuid
@@ -388,10 +388,10 @@ class __$$_PartnerClubCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      payAvailable: freezed == payAvailable
+      payAvailable: null == payAvailable
           ? _value.payAvailable
           : payAvailable // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -544,7 +544,7 @@ class _$_PartnerClub extends _PartnerClub {
   final String? phoneNumber;
   @override
   @JsonKey(name: 'pay_available')
-  final bool? payAvailable;
+  final bool payAvailable;
 
   @override
   String toString() {
@@ -668,7 +668,7 @@ abstract class _PartnerClub extends PartnerClub {
       @JsonKey(name: 'phone')
           required final String? phoneNumber,
       @JsonKey(name: 'pay_available')
-          required final bool? payAvailable}) = _$_PartnerClub;
+          required final bool payAvailable}) = _$_PartnerClub;
   _PartnerClub._() : super._();
 
   factory _PartnerClub.fromJson(Map<String, dynamic> json) =
@@ -730,7 +730,7 @@ abstract class _PartnerClub extends PartnerClub {
   String? get phoneNumber;
   @override
   @JsonKey(name: 'pay_available')
-  bool? get payAvailable;
+  bool get payAvailable;
   @override
   @JsonKey(ignore: true)
   _$$_PartnerClubCopyWith<_$_PartnerClub> get copyWith =>
