@@ -21,10 +21,10 @@ Wallet _$WalletFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Wallet {
 // Текущий остаток на балансе в копейках
-  @JsonKey(name: 'balance')
+  @JsonKey(name: 'balance', fromJson: toRubles)
   int get balance =>
       throw _privateConstructorUsedError; // Лимит без вычета купленных тренировок
-  @JsonKey(name: 'total_limit')
+  @JsonKey(name: 'total_limit', fromJson: toRubles)
   int get totalLimit =>
       throw _privateConstructorUsedError; // Дата следующего попонения кошелька
   @JsonKey(
@@ -50,9 +50,9 @@ abstract class $WalletCopyWith<$Res> {
       _$WalletCopyWithImpl<$Res, Wallet>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'balance')
+      {@JsonKey(name: 'balance', fromJson: toRubles)
           int balance,
-      @JsonKey(name: 'total_limit')
+      @JsonKey(name: 'total_limit', fromJson: toRubles)
           int totalLimit,
       @JsonKey(fromJson: dateTimeFromString, toJson: dateTimeToString, name: 'next_replenishment')
           DateTime nextReplenishment,
@@ -113,9 +113,9 @@ abstract class _$$_WalletCopyWith<$Res> implements $WalletCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'balance')
+      {@JsonKey(name: 'balance', fromJson: toRubles)
           int balance,
-      @JsonKey(name: 'total_limit')
+      @JsonKey(name: 'total_limit', fromJson: toRubles)
           int totalLimit,
       @JsonKey(fromJson: dateTimeFromString, toJson: dateTimeToString, name: 'next_replenishment')
           DateTime nextReplenishment,
@@ -168,29 +168,30 @@ class __$$_WalletCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Wallet implements _Wallet {
-  const _$_Wallet(
-      {@JsonKey(name: 'balance')
+class _$_Wallet extends _Wallet {
+  _$_Wallet(
+      {@JsonKey(name: 'balance', fromJson: toRubles)
           required this.balance,
-      @JsonKey(name: 'total_limit')
+      @JsonKey(name: 'total_limit', fromJson: toRubles)
           required this.totalLimit,
       @JsonKey(fromJson: dateTimeFromString, toJson: dateTimeToString, name: 'next_replenishment')
           required this.nextReplenishment,
       @JsonKey(name: 'organization_label')
           required this.organizationLabel,
       @JsonKey(name: 'organization_description')
-          required this.organizationDescription});
+          required this.organizationDescription})
+      : super._();
 
   factory _$_Wallet.fromJson(Map<String, dynamic> json) =>
       _$$_WalletFromJson(json);
 
 // Текущий остаток на балансе в копейках
   @override
-  @JsonKey(name: 'balance')
+  @JsonKey(name: 'balance', fromJson: toRubles)
   final int balance;
 // Лимит без вычета купленных тренировок
   @override
-  @JsonKey(name: 'total_limit')
+  @JsonKey(name: 'total_limit', fromJson: toRubles)
   final int totalLimit;
 // Дата следующего попонения кошелька
   @override
@@ -249,11 +250,11 @@ class _$_Wallet implements _Wallet {
   }
 }
 
-abstract class _Wallet implements Wallet {
-  const factory _Wallet(
-      {@JsonKey(name: 'balance')
+abstract class _Wallet extends Wallet {
+  factory _Wallet(
+      {@JsonKey(name: 'balance', fromJson: toRubles)
           required final int balance,
-      @JsonKey(name: 'total_limit')
+      @JsonKey(name: 'total_limit', fromJson: toRubles)
           required final int totalLimit,
       @JsonKey(fromJson: dateTimeFromString, toJson: dateTimeToString, name: 'next_replenishment')
           required final DateTime nextReplenishment,
@@ -261,14 +262,15 @@ abstract class _Wallet implements Wallet {
           required final String organizationLabel,
       @JsonKey(name: 'organization_description')
           required final String organizationDescription}) = _$_Wallet;
+  _Wallet._() : super._();
 
   factory _Wallet.fromJson(Map<String, dynamic> json) = _$_Wallet.fromJson;
 
   @override // Текущий остаток на балансе в копейках
-  @JsonKey(name: 'balance')
+  @JsonKey(name: 'balance', fromJson: toRubles)
   int get balance;
   @override // Лимит без вычета купленных тренировок
-  @JsonKey(name: 'total_limit')
+  @JsonKey(name: 'total_limit', fromJson: toRubles)
   int get totalLimit;
   @override // Дата следующего попонения кошелька
   @JsonKey(

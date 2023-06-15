@@ -13,8 +13,10 @@ import 'package:fitt/features/map/presentation/pages/map/widgets/club_carousel.d
 import 'package:fitt/features/map/presentation/pages/map/widgets/map_widget.dart';
 import 'package:fitt/features/map/presentation/pages/map/widgets/menu_button.dart';
 import 'package:fitt/features/map/presentation/pages/map/widgets/search_field.dart';
+import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/presentation/components/closest_workout_card.dart';
 import 'package:fitt/presentation/components/menu/menu_widget.dart';
+import 'package:fitt/presentation/components/wallet_balance_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:native_updater/native_updater.dart';
@@ -116,15 +118,41 @@ class MapPage extends StatelessWidget {
           },
         ),
         body: Stack(
-          children: const [
-            MapWidget(),
-            ClosestWorkoutCard(),
-            //WalletWidget(isMap: true),
-            ClubCarousel(),
-            MenuButton(),
-            SearchField(),
+          children: [
+            const MapWidget(),
+            const ClosestWorkoutCard(),
+            BlocBuilder<ClosestWorkoutBloc, ClosestWorkoutState>(
+              bloc: getIt<ClosestWorkoutBloc>(),
+              builder: (context, state) {
+                return state.when(
+                  initial: () => _wallet(context),
+                  loaded: (workout) {
+                    if (workout == null) return _wallet(context);
+                    return AnimatedPositioned(
+                      duration: const Duration(milliseconds: 300),
+                      top: 115,
+                      child: _wallet(context),
+                    );
+                  },
+                  error: (_) => _wallet(context),
+                );
+              },
+            ),
+            const ClubCarousel(),
+            const MenuButton(),
+            const SearchField(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _wallet(BuildContext context) {
+    return WalletBalanceWidget(
+      margin: EdgeInsets.only(
+        top: 126,
+        left: MediaQuery.of(context).size.width - 32 - 104,
+        right: 16,
       ),
     );
   }

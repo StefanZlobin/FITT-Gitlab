@@ -1,7 +1,10 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
+import 'package:fitt/presentation/dialogs/wallet_balance_info_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
@@ -25,12 +28,13 @@ class Wallet extends StatelessWidget with UserMixin {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 24),
-            _walletPageWidget(),
+            _currentBalance(context),
             const SizedBox(height: 40),
             const Text('Следующее пополнение', style: AppTypography.kH16),
             const SizedBox(height: 6),
             Text(
-              '15 августа 2023',
+              DateTimeUtils.dateFormatDetailed
+                  .format(userSnapshot!.wallet!.nextReplenishment),
               style:
                   AppTypography.kParagraph16.apply(color: AppColors.kOxford60),
             ),
@@ -41,7 +45,7 @@ class Wallet extends StatelessWidget with UserMixin {
             ),
             const SizedBox(height: 14),
             Text(
-              '«FITNESS CLUB» - это современный фитнес-клуб в Калининском районе Санкт-Петербурга, созданный в соответствии со всеми критериями обеспечения качества и комфорта тренировочного процесса...',
+              '${userSnapshot!.wallet!.organizationLabel} ${userSnapshot!.wallet!.organizationDescription}',
               style:
                   AppTypography.kParagraph16.apply(color: AppColors.kOxford60),
             ),
@@ -50,30 +54,23 @@ class Wallet extends StatelessWidget with UserMixin {
       ),
     );
   }
-}
 
-Widget _walletPageWidget() {
-  return Container(
-    height: 64,
-    decoration: ShapeDecoration(
-      shape: SuperellipseShape(
-        borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(12),
-          topLeft: Radius.circular(12),
-          bottomLeft: Radius.circular(12),
-          bottomRight: Radius.circular(12),
+  Widget _currentBalance(BuildContext context) {
+    return Container(
+      height: 64,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: ShapeDecoration(
+        shape: SuperellipseShape(
+          borderRadius: superellipseRadius(12),
+        ),
+        gradient: const LinearGradient(
+          colors: [
+            AppColors.kGradientBlueDark,
+            AppColors.kGradientPurpleLight,
+            AppColors.kGradientRedLight,
+          ],
         ),
       ),
-      gradient: const LinearGradient(
-        colors: [
-          AppColors.kGradientBlueDark,
-          AppColors.kGradientPurpleLight,
-          AppColors.kGradientRedLight,
-        ],
-      ),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         children: [
           const Icon(AppIcons.coolair, color: Colors.white),
@@ -86,14 +83,21 @@ Widget _walletPageWidget() {
                 style: AppTypography.kBody14.apply(color: Colors.white),
               ),
               Text(
-                '27 690 р ',
+                userSnapshot!.wallet!.currentBalanceInRub,
                 style: AppTypography.kH24B.apply(color: Colors.white),
               ),
             ],
           ),
-          const SizedBox(width: 24),
+          const Expanded(child: SizedBox()),
           TextButton(
-            onPressed: null,
+            onPressed: () {
+              showDialog<void>(
+                context: context,
+                builder: (context) {
+                  return const WalletBalanceInfoDialog();
+                },
+              );
+            },
             child: Text(
               'Что это такое?',
               style: AppTypography.kBody14.apply(
@@ -104,6 +108,6 @@ Widget _walletPageWidget() {
           ),
         ],
       ),
-    ),
-  );
+    );
+  }
 }

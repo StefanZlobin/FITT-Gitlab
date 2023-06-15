@@ -26,7 +26,7 @@ import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
 import 'package:fitt/presentation/components/menu/widget/user_menu_tile.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/components/user_avatar.dart';
-import 'package:fitt/presentation/components/wallet_widget.dart';
+import 'package:fitt/presentation/components/wallet_balance_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -115,7 +115,7 @@ class MenuUser extends StatelessWidget with UserMixin {
             onPressed: () {
               context.push(AppRoute.wallet.routeToName);
             },
-            trailing: const SizedBox(width: 120, child: WalletWidget()),
+            trailing: const WalletBalanceWidget(margin: EdgeInsets.all(0)),
           ),
         UserMenuTile(
           title: const Text('Купленные часы'),

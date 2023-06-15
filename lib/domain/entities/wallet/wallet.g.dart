@@ -7,8 +7,8 @@ part of 'wallet.dart';
 // **************************************************************************
 
 _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
-      balance: json['balance'] as int,
-      totalLimit: json['total_limit'] as int,
+      balance: toRubles(json['balance'] as int),
+      totalLimit: toRubles(json['total_limit'] as int),
       nextReplenishment:
           dateTimeFromString(json['next_replenishment'] as String),
       organizationLabel: json['organization_label'] as String,
