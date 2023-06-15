@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 import 'dart:collection';
 
@@ -187,11 +189,9 @@ class ClubCubit extends Cubit<ClubState> with UserMixin {
               previous ??
               ToggledFilter(
                 details: element.duration,
-                value:
-                    (clubState.durationSlots?.hasEnabledChildren ?? false) &&
-                        element.duration ==
-                            clubState
-                                .durationSlots!.enabledChildren.single.details,
+                value: (clubState.durationSlots?.hasEnabledChildren ?? false) &&
+                    element.duration ==
+                        clubState.durationSlots!.enabledChildren.single.details,
               ),
         ),
       );

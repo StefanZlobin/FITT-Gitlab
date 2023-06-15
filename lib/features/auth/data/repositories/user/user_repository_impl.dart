@@ -36,13 +36,9 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<User?> getUser({required bool fromCache}) async {
-    late final User? user;
+    final user = await _apiClient.getUserData();
 
-    user = fromCache
-        ? await _userLocalClient.getSignedUser()
-        : await _apiClient.getUserData();
-
-    if (!fromCache && user != null) await saveUser(user: user);
+    await saveUser(user: user);
 
     return user;
   }
@@ -84,12 +80,12 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> saveUser({required User user}) async {
     updateUser(user);
-    await _userLocalClient.saveUser(user: user);
+    //await _userLocalClient.saveUser(user: user);
   }
 
   @override
   Future<void> logoutUser({required bool deleteUser}) async {
-    if (!deleteUser) await _userLocalClient.deleteUser();
+    //if (!deleteUser) await _userLocalClient.deleteUser();
     if (!deleteUser) await _apiClient.logoutUser();
     await getIt<TokenRepository>().deleteToken();
     updateUser(null);

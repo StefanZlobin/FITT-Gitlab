@@ -168,8 +168,8 @@ class __$$_WalletCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Wallet extends _Wallet {
-  _$_Wallet(
+class _$_Wallet implements _Wallet {
+  const _$_Wallet(
       {@JsonKey(name: 'balance')
           required this.balance,
       @JsonKey(name: 'total_limit')
@@ -179,8 +179,7 @@ class _$_Wallet extends _Wallet {
       @JsonKey(name: 'organization_label')
           required this.organizationLabel,
       @JsonKey(name: 'organization_description')
-          required this.organizationDescription})
-      : super._();
+          required this.organizationDescription});
 
   factory _$_Wallet.fromJson(Map<String, dynamic> json) =>
       _$$_WalletFromJson(json);
@@ -250,8 +249,8 @@ class _$_Wallet extends _Wallet {
   }
 }
 
-abstract class _Wallet extends Wallet {
-  factory _Wallet(
+abstract class _Wallet implements Wallet {
+  const factory _Wallet(
       {@JsonKey(name: 'balance')
           required final int balance,
       @JsonKey(name: 'total_limit')
@@ -262,7 +261,6 @@ abstract class _Wallet extends Wallet {
           required final String organizationLabel,
       @JsonKey(name: 'organization_description')
           required final String organizationDescription}) = _$_Wallet;
-  _Wallet._() : super._();
 
   factory _Wallet.fromJson(Map<String, dynamic> json) = _$_Wallet.fromJson;
 

@@ -8,7 +8,7 @@ part 'wallet.g.dart';
 
 @Freezed(toJson: true)
 class Wallet with _$Wallet {
-  factory Wallet({
+  const factory Wallet({
     // Текущий остаток на балансе в копейках
     @JsonKey(name: 'balance')
         required int balance,
@@ -29,8 +29,6 @@ class Wallet with _$Wallet {
     @JsonKey(name: 'organization_description')
         required String organizationDescription,
   }) = _Wallet;
-
-  Wallet._();
 
   factory Wallet.fromJson(Map<String, dynamic> json) => _$WalletFromJson(json);
 }
