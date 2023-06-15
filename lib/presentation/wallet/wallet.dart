@@ -1,11 +1,12 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
-class Wallet extends StatelessWidget {
+class Wallet extends StatelessWidget with UserMixin {
   const Wallet({super.key});
 
   @override

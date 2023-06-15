@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:fitt/core/utils/functions/serialization.dart';
-import 'package:fitt/domain/entities/user_organization/user_organization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'wallet.freezed.dart';
@@ -13,6 +12,9 @@ class Wallet with _$Wallet {
     // Текущий остаток на балансе в копейках
     @JsonKey(name: 'balance')
         required int balance,
+    // Лимит без вычета купленных тренировок
+    @JsonKey(name: 'total_limit')
+        required int totalLimit,
     // Дата следующего попонения кошелька
     @JsonKey(
       fromJson: dateTimeFromString,
@@ -20,7 +22,12 @@ class Wallet with _$Wallet {
       name: 'next_replenishment',
     )
         required DateTime nextReplenishment,
-    required UserOrganization organizationInfo,
+    // Наименование организации, в которой юзер состоит
+    @JsonKey(name: 'organization_label')
+        required String organizationLabel,
+    // Описание организации
+    @JsonKey(name: 'organization_description')
+        required String organizationDescription,
   }) = _Wallet;
 
   Wallet._();

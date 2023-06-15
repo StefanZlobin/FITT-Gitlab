@@ -41,7 +41,7 @@ mixin _$User {
   String? get phoneNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'avatar')
   String? get avatar => throw _privateConstructorUsedError;
-  @JsonKey(name: 'wallet')
+  @JsonKey(name: 'corporate_wallet')
   Wallet? get wallet => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ abstract class $UserCopyWith<$Res> {
           String? phoneNumber,
       @JsonKey(name: 'avatar')
           String? avatar,
-      @JsonKey(name: 'wallet')
+      @JsonKey(name: 'corporate_wallet')
           Wallet? wallet});
 
   $WalletCopyWith<$Res>? get wallet;
@@ -185,7 +185,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
           String? phoneNumber,
       @JsonKey(name: 'avatar')
           String? avatar,
-      @JsonKey(name: 'wallet')
+      @JsonKey(name: 'corporate_wallet')
           Wallet? wallet});
 
   @override
@@ -279,7 +279,7 @@ class _$_User extends _User {
           required this.phoneNumber,
       @JsonKey(name: 'avatar')
           required this.avatar,
-      @JsonKey(name: 'wallet')
+      @JsonKey(name: 'corporate_wallet')
           required this.wallet})
       : _role = role,
         super._();
@@ -325,7 +325,7 @@ class _$_User extends _User {
   @JsonKey(name: 'avatar')
   final String? avatar;
   @override
-  @JsonKey(name: 'wallet')
+  @JsonKey(name: 'corporate_wallet')
   final Wallet? wallet;
 
   @override
@@ -404,7 +404,7 @@ abstract class _User extends User {
           required final String? phoneNumber,
       @JsonKey(name: 'avatar')
           required final String? avatar,
-      @JsonKey(name: 'wallet')
+      @JsonKey(name: 'corporate_wallet')
           required final Wallet? wallet}) = _$_User;
   _User._() : super._();
 
@@ -441,7 +441,7 @@ abstract class _User extends User {
   @JsonKey(name: 'avatar')
   String? get avatar;
   @override
-  @JsonKey(name: 'wallet')
+  @JsonKey(name: 'corporate_wallet')
   Wallet? get wallet;
   @override
   @JsonKey(ignore: true)
