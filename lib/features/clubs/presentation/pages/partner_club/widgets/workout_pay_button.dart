@@ -82,6 +82,41 @@ class WorkoutPayButton extends StatelessWidget {
     UserExistEnum userHasFullData,
     PaymentTypeEnum paymentType,
   ) {
+    Widget price = const SizedBox();
+
+    switch (paymentType) {
+      case PaymentTypeEnum.money:
+        price = Text(
+          'Стоимость ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
+          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+        );
+        break;
+      case PaymentTypeEnum.batch:
+        price = Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Стоимость',
+              style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+            ),
+            const SizedBox(width: 4),
+            Text(
+              '${getIt<ClubCubit>().selectedSlot!.duration.inHours}',
+              style: AppTypography.kH24.apply(color: AppColors.kBaseWhite),
+            ),
+            const SizedBox(width: 4),
+            Assets.images.batch.image(filterQuality: FilterQuality.high),
+          ],
+        );
+        break;
+      case PaymentTypeEnum.corporateBalance:
+        price = Text(
+          'Стоимость 0 \u20BD',
+          style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
+        );
+        break;
+    }
+
     return AppElevatedButton(
       isDisable: !paymentAvailable,
       errorText:
@@ -102,45 +137,12 @@ class WorkoutPayButton extends StatelessWidget {
               .add(PaymentWorkoutButtonEvent.payment(
             paymentType: paymentType,
           ));
-
-          //club.batchHoursAvailable != 0
-          //    ? await getIt<BuyWorkoutCubit>().buyWorkoutByBatch(
-          //        slot: TimeSlot(
-          //          id: getIt<ClubCubit>().selectedSlot!.id,
-          //          startTime: getIt<ClubCubit>().selectedSlot!.startTime,
-          //          duration: getIt<ClubCubit>().selectedSlot!.duration,
-          //          price: getIt<ClubCubit>().selectedSlot!.price,
-          //        ),
-          //        activityUuid: activity.uuid,
-          //      )
-          
         }
       },
       textButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          if (club.batchHoursAvailable == 0)
-            Text(
-              'Стоимость ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
-              style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
-            )
-          else
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Стоимость',
-                  style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  '${getIt<ClubCubit>().selectedSlot!.duration.inHours}',
-                  style: AppTypography.kH24.apply(color: AppColors.kBaseWhite),
-                ),
-                const SizedBox(width: 4),
-                Assets.images.batch.image(filterQuality: FilterQuality.high),
-              ],
-            ),
+          price,
           Text(
             'Перейти к оплате',
             style: AppTypography.kH14.apply(color: AppColors.kBaseWhite),

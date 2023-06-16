@@ -1,6 +1,7 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/payment_type_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
@@ -9,6 +10,7 @@ import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/button_for_card.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_type/payment_type_bloc.dart';
 import 'package:fitt/presentation/components/batch_available_hours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -89,37 +91,59 @@ class OneTimeWorkoutCard extends StatelessWidget {
                 border: Border.all(color: AppColors.kBaseWhite),
                 color: AppColors.kBaseWhite,
               ),
-              child: Center(
-                child: club.batchHoursAvailable == 0
-                    ? Text(
-                        'Оплатить ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
-                        style: AppTypography.kH14
-                            .apply(color: AppColors.kPrimaryBlue),
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Оплатить',
-                            style: AppTypography.kH14
-                                .apply(color: AppColors.kPrimaryBlue),
-                          ),
-                          const SizedBox(width: 4),
-                          BatchAvailableHours(
-                            isBig: false,
-                            hours: getIt<ClubCubit>()
-                                .selectedSlot!
-                                .duration
-                                .inHours,
-                          ),
-                        ],
-                      ),
+              child: BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
+                bloc: getIt<PaymentTypeBloc>(),
+                builder: (context, state) {
+                  return state.when(
+                    initial: (paymentType) => _buildPayment(club, paymentType),
+                    loaded: (paymentType) => _buildPayment(club, paymentType),
+                    error: (_) => const SizedBox(),
+                  );
+                },
               ),
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget _buildPayment(PartnerClub club, PaymentTypeEnum paymentType) {
+    Widget price = const SizedBox();
+
+    switch (paymentType) {
+      case PaymentTypeEnum.money:
+        price = Text(
+          'Оплатить ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
+          style: AppTypography.kH14.apply(color: AppColors.kPrimaryBlue),
+        );
+        break;
+      case PaymentTypeEnum.batch:
+        price = Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Оплатить',
+              style: AppTypography.kH14.apply(color: AppColors.kPrimaryBlue),
+            ),
+            const SizedBox(width: 4),
+            BatchAvailableHours(
+              isBig: false,
+              hours:
+                  getIt<ClubCubit>().selectedSlot!.duration.inHours.toDouble(),
+            ),
+          ],
+        );
+        break;
+      case PaymentTypeEnum.corporateBalance:
+        price = Text(
+          'Оплатить 0 \u20BD',
+          style: AppTypography.kH14.apply(color: AppColors.kPrimaryBlue),
+        );
+        break;
+    }
+
+    return Center(child: price);
   }
 
   Text _buildSubtitle(double batchHoursAviable) {

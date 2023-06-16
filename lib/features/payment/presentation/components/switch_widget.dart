@@ -109,27 +109,6 @@ class SwitchWidget extends StatelessWidget {
   }
 
   Widget _buildSwitchButton(bool value) {
-    //if (!value) {
-    //  getIt<PaymentToggleBloc>().add(
-    //    const PaymentToggleEvent.toggleChanged(
-    //      paymentType: PaymentTypeEnum.corporateBalance,
-    //    ),
-    //  );
-    //} else if (club.batchHoursAvailable == null ||
-    //    club.batchHoursAvailable == 0) {
-    //  getIt<PaymentToggleBloc>().add(
-    //    const PaymentToggleEvent.toggleChanged(
-    //      paymentType: PaymentTypeEnum.money,
-    //    ),
-    //  );
-    //} else {
-    //  getIt<PaymentToggleBloc>().add(
-    //    const PaymentToggleEvent.toggleChanged(
-    //      paymentType: PaymentTypeEnum.batch,
-    //    ),
-    //  );
-    //}
-
     return GestureDetector(
       onTap: () => !value ? onPressed.call() : null,
       child: Container(

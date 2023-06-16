@@ -193,7 +193,7 @@ class ClubCarouselCard extends StatelessWidget {
                 child: TopRight(
                   child: BatchAvailableHours(
                     isBig: false,
-                    hours: partnerClub.batchHoursAvailable?.toInt() ?? 0,
+                    hours: partnerClub.batchHoursAvailable ?? 0,
                   ),
                 ),
               ),

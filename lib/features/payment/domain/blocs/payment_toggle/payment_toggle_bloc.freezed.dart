@@ -344,7 +344,7 @@ class __$$_PaymentToggleStateInitialCopyWithImpl<$Res>
 
 class _$_PaymentToggleStateInitial implements _PaymentToggleStateInitial {
   const _$_PaymentToggleStateInitial(
-      {this.paymentType = PaymentTypeEnum.corporateBalance});
+      {this.paymentType = PaymentTypeEnum.money});
 
   @override
   @JsonKey()

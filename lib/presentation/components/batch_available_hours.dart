@@ -10,14 +10,16 @@ class BatchAvailableHours extends StatelessWidget {
     this.isBig = true,
   }) : super(key: key);
 
-  final int hours;
+  final double hours;
   final bool isBig;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: isBig ? 32 : 24,
-      padding: isBig ? const EdgeInsets.fromLTRB(4, 4, 5.5, 4) : const EdgeInsets.fromLTRB(1, 1, 5.5, 1),
+      padding: isBig
+          ? const EdgeInsets.fromLTRB(4, 4, 5.5, 4)
+          : const EdgeInsets.fromLTRB(1, 1, 5.5, 1),
       decoration: BoxDecoration(
         color: AppColors.kPrimaryBlue,
         borderRadius: BorderRadius.circular(16),

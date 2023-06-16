@@ -1,11 +1,15 @@
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
+import 'package:fitt/core/enum/payment_type_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
 import 'package:fitt/features/clubs/domain/cubits/calculate_workout_price/calculate_workout_price_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
+import 'package:fitt/features/clubs/domain/entities/calculate_price/calculate_price.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_toggle/payment_toggle_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_type/payment_type_bloc.dart';
 import 'package:fitt/features/payment/presentation/components/payment_toggle.dart';
 import 'package:fitt/presentation/components/batch_available_hours.dart';
 import 'package:flutter/material.dart';
@@ -21,12 +25,28 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ClubCubit, ClubState>(
-      bloc: getIt<ClubCubit>(),
-      listener: (context, state) {
-        getIt<CalculateWorkoutPriceCubit>()
-            .getCalculatedPriceWorkout(slotUuid: getIt<ClubCubit>().slotUuid);
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ClubCubit, ClubState>(
+          bloc: getIt<ClubCubit>(),
+          listener: (context, state) {
+            getIt<CalculateWorkoutPriceCubit>().getCalculatedPriceWorkout(
+              slotUuid: getIt<ClubCubit>().slotUuid,
+            );
+          },
+        ),
+        BlocListener<PaymentToggleBloc, PaymentToggleState>(
+          bloc: getIt<PaymentToggleBloc>(),
+          listener: (context, state) {
+            state.when(
+              initial: (paymentType) => getIt<PaymentTypeBloc>()
+                  .add(PaymentTypeEvent.changedPaymentType(
+                paymentType: paymentType,
+              )),
+            );
+          },
+        ),
+      ],
       child:
           BlocBuilder<CalculateWorkoutPriceCubit, CalculateWorkoutPriceState>(
         bloc: getIt<CalculateWorkoutPriceCubit>(),
@@ -46,7 +66,8 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
                           AppTypography.kH16.apply(color: AppColors.kBaseBlack),
                     ),
                     const SizedBox(height: 14),
-                    if (userSnapshot?.wallet == null) ...[
+                    if (userSnapshot?.wallet != null ||
+                        club.batchHoursAvailable != 0) ...[
                       PaymentToggle(club: club, price: price),
                       const SizedBox(height: 14),
                     ],
@@ -79,10 +100,7 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
                                 )
                               else
                                 BatchAvailableHours(
-                                  hours: getIt<ClubCubit>()
-                                      .selectedSlot!
-                                      .duration
-                                      .inHours,
+                                  hours: calculatingBatchHours(e),
                                   isBig: false,
                                 ),
                             ],
@@ -90,29 +108,25 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
                         );
                       },
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Итого за тренировку',
-                          style: AppTypography.kH16
-                              .apply(color: AppColors.kBaseBlack),
-                        ),
-                        if (club.batchHoursAvailable == 0)
-                          Text(
-                            '${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
-                            style: AppTypography.kH16
-                                .apply(color: AppColors.kOxford),
-                          )
-                        else
-                          BatchAvailableHours(
-                            hours: getIt<ClubCubit>()
-                                .selectedSlot!
-                                .duration
-                                .inHours,
-                            isBig: false,
-                          ),
-                      ],
+                    BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
+                      bloc: getIt<PaymentTypeBloc>(),
+                      builder: (context, state) {
+                        return state.when(
+                          initial: (pType) => _paymentFrom(pType),
+                          loaded: (pType) => _paymentFrom(pType),
+                          error: (_) => const SizedBox(),
+                        );
+                      },
+                    ),
+                    BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
+                      bloc: getIt<PaymentTypeBloc>(),
+                      builder: (context, state) {
+                        return state.when(
+                          initial: (pType) => _buildCurrentWorkoutPrice(pType),
+                          loaded: (pType) => _buildCurrentWorkoutPrice(pType),
+                          error: (_) => const SizedBox(),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -124,4 +138,72 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
       ),
     );
   }
+
+  Widget _buildCurrentWorkoutPrice(PaymentTypeEnum pType) {
+    Widget priceWorkout = const SizedBox();
+
+    switch (pType) {
+      case PaymentTypeEnum.money:
+        priceWorkout = Text(
+          '${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
+          style: AppTypography.kH16.apply(color: AppColors.kOxford),
+        );
+        break;
+      case PaymentTypeEnum.batch:
+        priceWorkout = BatchAvailableHours(
+          hours: getIt<ClubCubit>().selectedSlot!.duration.inHours.toDouble(),
+          isBig: false,
+        );
+        break;
+      case PaymentTypeEnum.corporateBalance:
+        priceWorkout = Text(
+          '0 \u20BD',
+          style: AppTypography.kH16.apply(color: AppColors.kOxford),
+        );
+        break;
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'Итого за тренировку',
+          style: AppTypography.kH16.apply(color: AppColors.kBaseBlack),
+        ),
+        priceWorkout,
+      ],
+    );
+  }
+
+  Widget _paymentFrom(PaymentTypeEnum paymentType) {
+    final value = paymentType.valueToPaymentString(paymentType);
+
+    if (value == null) return const SizedBox();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            value,
+            style: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
+          ),
+          Text(
+            '- ${getIt<ClubCubit>().selectedSlot!.price} \u20BD',
+            style: AppTypography.kBody14.apply(color: AppColors.kPrimaryBlue),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+double calculatingBatchHours(CalculatePrice e) {
+  final diffStartEndTime = e.endTime.difference(e.startTime);
+  final res = double.parse(
+    '${diffStartEndTime.inHours}.${diffStartEndTime.inMinutes == 60 ? 0 : diffStartEndTime.inMinutes}',
+  );
+
+  return res;
 }
