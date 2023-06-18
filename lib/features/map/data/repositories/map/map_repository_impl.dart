@@ -85,7 +85,7 @@ class MapRepositoryImpl implements MapRepository {
           data: MapPointData(
             price: c.minPrice,
             count: null,
-            batchHours: c.batchHoursAvailable,
+            batchHours: c.batchHoursAvailable?.ceil(),
           ),
         ));
       }

@@ -17,8 +17,9 @@ class MapPointData with _$MapPointData {
         required int? price,
     required int? count,
     @JsonKey(name: 'available_hours')
-        required double? batchHours,
+        required int? batchHours,
   }) = _MapPointData;
 
-  factory MapPointData.fromJson(Map<String, dynamic> json) => _$MapPointDataFromJson(json);
+  factory MapPointData.fromJson(Map<String, dynamic> json) =>
+      _$MapPointDataFromJson(json);
 }

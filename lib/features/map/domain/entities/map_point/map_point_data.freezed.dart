@@ -25,7 +25,7 @@ mixin _$MapPointData {
   int? get price => throw _privateConstructorUsedError;
   int? get count => throw _privateConstructorUsedError;
   @JsonKey(name: 'available_hours')
-  double? get batchHours => throw _privateConstructorUsedError;
+  int? get batchHours => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +44,7 @@ abstract class $MapPointDataCopyWith<$Res> {
           int? price,
       int? count,
       @JsonKey(name: 'available_hours')
-          double? batchHours});
+          int? batchHours});
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ class _$MapPointDataCopyWithImpl<$Res, $Val extends MapPointData>
       batchHours: freezed == batchHours
           ? _value.batchHours
           : batchHours // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ) as $Val);
   }
 }
@@ -94,7 +94,7 @@ abstract class _$$_MapPointDataCopyWith<$Res>
           int? price,
       int? count,
       @JsonKey(name: 'available_hours')
-          double? batchHours});
+          int? batchHours});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class __$$_MapPointDataCopyWithImpl<$Res>
       batchHours: freezed == batchHours
           ? _value.batchHours
           : batchHours // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ));
   }
 }
@@ -150,7 +150,7 @@ class _$_MapPointData implements _MapPointData {
   final int? count;
   @override
   @JsonKey(name: 'available_hours')
-  final double? batchHours;
+  final int? batchHours;
 
   @override
   String toString() {
@@ -192,7 +192,7 @@ abstract class _MapPointData implements MapPointData {
           required final int? price,
       required final int? count,
       @JsonKey(name: 'available_hours')
-          required final double? batchHours}) = _$_MapPointData;
+          required final int? batchHours}) = _$_MapPointData;
 
   factory _MapPointData.fromJson(Map<String, dynamic> json) =
       _$_MapPointData.fromJson;
@@ -205,7 +205,7 @@ abstract class _MapPointData implements MapPointData {
   int? get count;
   @override
   @JsonKey(name: 'available_hours')
-  double? get batchHours;
+  int? get batchHours;
   @override
   @JsonKey(ignore: true)
   _$$_MapPointDataCopyWith<_$_MapPointData> get copyWith =>

@@ -10,7 +10,7 @@ _$_MapPointData _$$_MapPointDataFromJson(Map<String, dynamic> json) =>
     _$_MapPointData(
       price: toRublesNullable(json['min_price'] as int?),
       count: json['count'] as int?,
-      batchHours: (json['available_hours'] as num?)?.toDouble(),
+      batchHours: json['available_hours'] as int?,
     );
 
 Map<String, dynamic> _$$_MapPointDataToJson(_$_MapPointData instance) =>

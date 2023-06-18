@@ -10,7 +10,7 @@ class BatchAvailableHours extends StatelessWidget {
     this.isBig = true,
   }) : super(key: key);
 
-  final double hours;
+  final int hours;
   final bool isBig;
 
   @override

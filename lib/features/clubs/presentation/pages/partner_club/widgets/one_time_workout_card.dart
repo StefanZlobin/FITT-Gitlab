@@ -51,7 +51,7 @@ class OneTimeWorkoutCard extends StatelessWidget {
           _buildIcon(),
           _buildTitle(),
           const SizedBox(height: 4),
-          _buildSubtitle(club.batchHoursAvailable ?? 0),
+          _buildSubtitle(club.batchHoursAvailable?.ceil() ?? 0),
           const SizedBox(height: 16),
           ButtonForCard(
             isBig: true,
@@ -129,8 +129,7 @@ class OneTimeWorkoutCard extends StatelessWidget {
             const SizedBox(width: 4),
             BatchAvailableHours(
               isBig: false,
-              hours:
-                  getIt<ClubCubit>().selectedSlot!.duration.inHours.toDouble(),
+              hours: getIt<ClubCubit>().selectedSlot!.duration.inHours,
             ),
           ],
         );
@@ -146,7 +145,7 @@ class OneTimeWorkoutCard extends StatelessWidget {
     return Center(child: price);
   }
 
-  Text _buildSubtitle(double batchHoursAviable) {
+  Text _buildSubtitle(int batchHoursAviable) {
     return Text(
       batchHoursAviable > 0 ? 'Выгодные предложения' : 'Свободная тренировка',
       style: AppTypography.kBody14.apply(color: AppColors.kBaseWhite),

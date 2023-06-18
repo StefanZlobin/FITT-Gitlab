@@ -41,7 +41,7 @@ class MapUseCase {
         data: MapPointData(
           price: c.minPrice,
           count: null,
-          batchHours: c.batchHoursAvailable,
+          batchHours: c.batchHoursAvailable?.ceil(),
         ),
       ));
     }

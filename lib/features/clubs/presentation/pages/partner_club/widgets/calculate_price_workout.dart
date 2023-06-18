@@ -47,13 +47,32 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
           },
         ),
       ],
-      child:
-          BlocBuilder<CalculateWorkoutPriceCubit, CalculateWorkoutPriceState>(
-        bloc: getIt<CalculateWorkoutPriceCubit>(),
+      child: BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
+        bloc: getIt<PaymentTypeBloc>(),
         builder: (context, state) {
           return state.when(
-            initial: () => const Center(child: CircularProgressIndicator()),
-            loaded: (calculatedPrice, price) {
+            initial: (paymentType) => _buildCalculatedWorkoutPrice(paymentType),
+            loaded: (paymentType) => _buildCalculatedWorkoutPrice(paymentType),
+            error: (_) => const SizedBox(),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildCalculatedWorkoutPrice(PaymentTypeEnum paymentType) {
+    return BlocBuilder<CalculateWorkoutPriceCubit, CalculateWorkoutPriceState>(
+      bloc: getIt<CalculateWorkoutPriceCubit>(),
+      builder: (context, state) {
+        return state.when(
+          initial: () => const Center(child: CircularProgressIndicator()),
+          loaded: (calculatedPrice, price) {
+            if (paymentType == PaymentTypeEnum.batch) {
+              final startTime = getIt<ClubCubit>().selectedSlot!.startTime;
+              final endTime = getIt<ClubCubit>().selectedSlot!.endTime;
+              final durationInM = endTime.difference(startTime).inMinutes;
+              final durationInH = endTime.difference(startTime).inHours;
+
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
@@ -72,70 +91,99 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
                       const SizedBox(height: 14),
                     ],
                     const SizedBox(height: 14),
-                    ...calculatedPrice.map(
-                      (e) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Тренировка с ${DateTimeUtils.timeFormat.format(e.startTime)} до ${DateTimeUtils.timeFormat.format(e.endTime)} (${e.endTime.difference(e.startTime).inMinutes} минут)',
-                              ),
-                              if (calculatedPrice.length > 1) ...[
-                                const SizedBox(width: 4),
-                                GestureDetector(
-                                  child: const Icon(
-                                    Icons.info,
-                                    color: AppColors.kPrimaryBlue,
-                                    size: 16,
-                                  ),
-                                ),
-                              ],
-                              const Expanded(child: SizedBox()),
-                              if (club.batchHoursAvailable == 0)
-                                Text(
-                                  '${e.price} \u20BD',
-                                  style: AppTypography.kBody14
-                                      .apply(color: AppColors.kOxford),
-                                )
-                              else
-                                BatchAvailableHours(
-                                  hours: calculatingBatchHours(e),
-                                  isBig: false,
-                                ),
-                            ],
-                          ),
-                        );
-                      },
+                    Row(
+                      children: [
+                        Text(
+                          'Тренировка с ${DateTimeUtils.timeFormat.format(startTime)} до ${DateTimeUtils.timeFormat.format(endTime)} ($durationInM минут)',
+                        ),
+                        const Expanded(child: SizedBox()),
+                        BatchAvailableHours(
+                          hours: durationInH,
+                          isBig: false,
+                        ),
+                      ],
                     ),
-                    BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
-                      bloc: getIt<PaymentTypeBloc>(),
-                      builder: (context, state) {
-                        return state.when(
-                          initial: (pType) => _paymentFrom(pType),
-                          loaded: (pType) => _paymentFrom(pType),
-                          error: (_) => const SizedBox(),
-                        );
-                      },
-                    ),
-                    BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
-                      bloc: getIt<PaymentTypeBloc>(),
-                      builder: (context, state) {
-                        return state.when(
-                          initial: (pType) => _buildCurrentWorkoutPrice(pType),
-                          loaded: (pType) => _buildCurrentWorkoutPrice(pType),
-                          error: (_) => const SizedBox(),
-                        );
-                      },
-                    ),
+                    const SizedBox(height: 14),
+                    _buildCurrentWorkoutPrice(paymentType),
                   ],
                 ),
               );
-            },
-            error: (error) => const SizedBox(),
-          );
-        },
-      ),
+            }
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Сумма к оплате',
+                    style:
+                        AppTypography.kH16.apply(color: AppColors.kBaseBlack),
+                  ),
+                  const SizedBox(height: 14),
+                  if (userSnapshot?.wallet != null ||
+                      club.batchHoursAvailable != 0) ...[
+                    PaymentToggle(club: club, price: price),
+                    const SizedBox(height: 14),
+                  ],
+                  const SizedBox(height: 14),
+                  ...calculatedPrice.map(
+                    (e) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Тренировка с ${DateTimeUtils.timeFormat.format(e.startTime)} до ${DateTimeUtils.timeFormat.format(e.endTime)} (${e.endTime.difference(e.startTime).inMinutes} минут)',
+                            ),
+                            if (calculatedPrice.length > 1) ...[
+                              const SizedBox(width: 4),
+                              GestureDetector(
+                                child: const Icon(
+                                  Icons.info,
+                                  color: AppColors.kPrimaryBlue,
+                                  size: 16,
+                                ),
+                              ),
+                            ],
+                            const Expanded(child: SizedBox()),
+                            Text(
+                              '${e.price} \u20BD',
+                              style: AppTypography.kBody14
+                                  .apply(color: AppColors.kOxford),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
+                    bloc: getIt<PaymentTypeBloc>(),
+                    builder: (context, state) {
+                      return state.when(
+                        initial: (pType) => _paymentFrom(pType),
+                        loaded: (pType) => _paymentFrom(pType),
+                        error: (_) => const SizedBox(),
+                      );
+                    },
+                  ),
+                  BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
+                    bloc: getIt<PaymentTypeBloc>(),
+                    builder: (context, state) {
+                      return state.when(
+                        initial: (pType) => _buildCurrentWorkoutPrice(pType),
+                        loaded: (pType) => _buildCurrentWorkoutPrice(pType),
+                        error: (_) => const SizedBox(),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            );
+          },
+          error: (error) => const SizedBox(),
+        );
+      },
     );
   }
 
@@ -151,7 +199,7 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
         break;
       case PaymentTypeEnum.batch:
         priceWorkout = BatchAvailableHours(
-          hours: getIt<ClubCubit>().selectedSlot!.duration.inHours.toDouble(),
+          hours: getIt<ClubCubit>().selectedSlot!.duration.inHours,
           isBig: false,
         );
         break;
@@ -199,11 +247,11 @@ class CalculatedPriceWorkout extends StatelessWidget with UserMixin {
   }
 }
 
-double calculatingBatchHours(CalculatePrice e) {
+int calculatingBatchHours(CalculatePrice e) {
   final diffStartEndTime = e.endTime.difference(e.startTime);
   final res = double.parse(
     '${diffStartEndTime.inHours}.${diffStartEndTime.inMinutes == 60 ? 0 : diffStartEndTime.inMinutes}',
   );
 
-  return res;
+  return res.toInt();
 }
