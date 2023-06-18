@@ -37,11 +37,15 @@ class ClubCarouselCard extends StatelessWidget {
       },
       child: Container(
         width: 256,
-        height: 144,
-        margin: const EdgeInsets.only(right: 8),
+        height: 152,
+        //margin: const EdgeInsets.only(left: 8),
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: Colors.white.withOpacity(0),
           shape: SuperellipseShape(
+            side: BorderSide(
+              width: 4,
+              color: AppColors.kBaseBlack.withOpacity(0),
+            ),
             borderRadius: const BorderRadius.only(
               topRight: Radius.circular(44),
               topLeft: Radius.circular(44),

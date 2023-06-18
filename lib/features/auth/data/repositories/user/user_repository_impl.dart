@@ -35,12 +35,19 @@ class UserRepositoryImpl implements UserRepository {
   User? get userSnapshot => _userController.valueOrNull;
 
   @override
-  Future<User?> getUser({required bool fromCache}) async {
-    final user = await _apiClient.getUserData();
+  Future<User> getUser() async {
+    try {
+      final user = await _apiClient.getUserData();
+      await saveUser(user: user);
 
-    await saveUser(user: user);
-
-    return user;
+      return user;
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
   }
 
   @override
@@ -65,9 +72,9 @@ class UserRepositoryImpl implements UserRepository {
     try {
       await _apiClient.uploadProfilePhoto(photo);
 
-      final response = await getUser(fromCache: false);
+      final response = await getUser();
 
-      return response!;
+      return response;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,

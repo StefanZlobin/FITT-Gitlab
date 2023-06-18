@@ -6,9 +6,7 @@ import 'package:fitt/domain/entities/user/user.dart';
 import 'package:get_it/get_it.dart';
 
 abstract class UserRepository with Disposable {
-  /// Позволяет получить пользователя из хранилища (клиента)
-  /// Выбор хранилища зависит от флага [fromCache]
-  Future<User?> getUser({required bool fromCache});
+  Future<User?> getUser();
 
   /// Обновляет пользовательские данные
   Future<User> updateUserData({required User user});

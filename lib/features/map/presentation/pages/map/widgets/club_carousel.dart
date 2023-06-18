@@ -37,14 +37,14 @@ class ClubCarousel extends StatelessWidget {
 
     return BottomCenter(
       child: Container(
-        height: 144,
+        height: 152,
         margin: const EdgeInsets.only(bottom: 32),
         child: ScrollSnapList(
           scrollController: getIt<CarouselBloc>().scrollController,
           initialIndex: 0,
           margin: const EdgeInsets.all(0),
           padding: const EdgeInsets.all(0),
-          listPadding: 8,
+          listPadding: 4,
           curve: Curves.easeOut,
           snapOnScroll: true,
           itemCount: partnerClubs.length + 1,
@@ -52,9 +52,10 @@ class ClubCarousel extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == partnerClubs.length) {
               return SizedBox(
-                width: MediaQuery.of(context).size.width -
-                    MediaQuery.of(context).size.width +
-                    50,
+                width: (MediaQuery.of(context).size.width +
+                        256 -
+                        MediaQuery.of(context).size.width) /
+                    2,
               );
             }
             return ClubCarouselCard(partnerClub: partnerClubs[index]);

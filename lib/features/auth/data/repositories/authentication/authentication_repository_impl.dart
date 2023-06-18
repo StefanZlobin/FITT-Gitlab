@@ -69,7 +69,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     updateAuthStatus(AuthenticationStatusEnum.loading);
 
     try {
-      final user = await userRepository.getUser(fromCache: false);
+      final user = await userRepository.getUser();
 
       if (user != null) {
         updateAuthStatus(AuthenticationStatusEnum.authenticated);

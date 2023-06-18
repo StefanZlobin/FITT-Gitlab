@@ -15,6 +15,8 @@ class WalletBalanceWidget extends StatelessWidget with UserMixin {
 
   @override
   Widget build(BuildContext context) {
+    if (userSnapshot?.wallet == null) return const SizedBox();
+
     return Container(
       height: 40,
       margin: margin,
