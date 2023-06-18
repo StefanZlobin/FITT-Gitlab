@@ -50,6 +50,8 @@ class PartnerClubsFavoriteBloc
     });
 
     getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
+      clubFilters = filters;
+
       add(PartnerClubsFavoriteEvent.getPartnerClubs(
         clubFilters: clubFilters,
         clubSortingEnum: clubSortingEnum,
