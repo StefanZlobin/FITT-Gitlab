@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, avoid_bool_literals_in_conditional_expressions
 
 import 'dart:async';
 
@@ -50,6 +50,8 @@ class PartnerClubsFavoriteBloc
     });
 
     getIt<ResourceRepository>().filters.listen((ClubFilters filters) {
+      clubFilters = filters;
+
       add(PartnerClubsFavoriteEvent.getPartnerClubs(
         clubFilters: clubFilters,
         clubSortingEnum: clubSortingEnum,
@@ -92,11 +94,11 @@ class PartnerClubsFavoriteBloc
     _PartnerClubsFavoriteEventSetPartnerClubs event,
     Emitter<PartnerClubsFavoriteState> emit,
   ) {
-    final isFacilitiesUpdated = clubFilters.facilities?.isNotEmpty ?? false;
+    final isFacilitiesUpdated = clubFilters.facilities?.values.contains(true);
 
     emit(PartnerClubsFavoriteState.loaded(
       clubs: event.clubs,
-      isFacilitiesUpdated: isFacilitiesUpdated,
+      isFacilitiesUpdated: isFacilitiesUpdated ?? false,
     ));
   }
 
