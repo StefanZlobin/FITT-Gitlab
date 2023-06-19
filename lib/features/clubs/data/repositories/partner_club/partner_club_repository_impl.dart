@@ -131,10 +131,7 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
       updatePartnerClubs(partnerClubs.results);
       return partnerClubs.results;
     } on DioError catch (e, stackTrace) {
-      await Sentry.captureException(
-        e,
-        stackTrace: stackTrace,
-      );
+      await Sentry.captureException(e, stackTrace: stackTrace);
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -145,10 +142,7 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
       final batches = await _apiClient.getClubBatches(clubUuid);
       return batches;
     } on DioError catch (e, stackTrace) {
-      await Sentry.captureException(
-        e,
-        stackTrace: stackTrace,
-      );
+      await Sentry.captureException(e, stackTrace: stackTrace);
       throw NetworkExceptions.getDioException(e);
     }
   }
