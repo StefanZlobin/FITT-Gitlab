@@ -105,11 +105,11 @@ class ClubBatchCard extends StatelessWidget {
           error: (error) => const SizedBox(),
           loaded: (_, __, ___, ____, _____, ______, batches) {
             if (batches == null) {
-              return Padding(
-                padding: const EdgeInsets.only(top: 30),
+              return const Padding(
+                padding: EdgeInsets.only(top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.lock,
                       color: AppColors.kBaseWhite,
@@ -119,11 +119,11 @@ class ClubBatchCard extends StatelessWidget {
                 ),
               );
             } else if (batches.isEmpty) {
-              return Padding(
-                padding: const EdgeInsets.only(top: 30),
+              return const Padding(
+                padding: EdgeInsets.only(top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.lock,
                       color: AppColors.kBaseWhite,

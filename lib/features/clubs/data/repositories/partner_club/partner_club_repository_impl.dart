@@ -29,7 +29,7 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   final String? baseUrl;
   final PartnerClubApiClient _apiClient;
 
-  ClubFilters clubFilters = ClubFilters(favorite: false);
+  ClubFilters clubFilters = ClubFilters();
 
   final BehaviorSubject<List<PartnerClub>> _partnerClubsController =
       BehaviorSubject.seeded(<PartnerClub>[], sync: true);
