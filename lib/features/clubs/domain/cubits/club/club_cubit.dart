@@ -6,6 +6,7 @@ import 'dart:collection';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fitt/core/enum/payment_type_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/datetime_utils.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
@@ -15,6 +16,7 @@ import 'package:fitt/features/clubs/domain/entities/batch/batch.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/features/clubs/domain/entities/time_slot/time_slot.dart';
 import 'package:fitt/features/clubs/domain/use_cases/partner_club/partner_club_use_case.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_type/payment_type_bloc.dart';
 import 'package:fitt/features/payment/domain/blocs/payment_workout_button/payment_workout_button_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -77,6 +79,25 @@ class ClubCubit extends Cubit<ClubState> with UserMixin {
           paymentAvailable: partnerClub.payAvailable,
           userHasFullData: UserExistEnum.fullData,
         ));
+      }
+
+      if (userSnapshot?.wallet != null) {
+        getIt<PaymentTypeBloc>().add(const PaymentTypeEvent.changedPaymentType(
+          paymentType: PaymentTypeEnum.corporateBalance,
+        ));
+      } else {
+        if (partnerClub.batchHoursAvailable != null &&
+            partnerClub.batchHoursAvailable != 0) {
+          getIt<PaymentTypeBloc>()
+              .add(const PaymentTypeEvent.changedPaymentType(
+            paymentType: PaymentTypeEnum.batch,
+          ));
+        } else {
+          getIt<PaymentTypeBloc>()
+              .add(const PaymentTypeEvent.changedPaymentType(
+            paymentType: PaymentTypeEnum.money,
+          ));
+        }
       }
     } on NetworkExceptions catch (e) {
       emit(_ClubStateError(error: NetworkExceptions.getErrorMessage(e)));

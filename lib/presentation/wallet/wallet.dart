@@ -44,10 +44,32 @@ class Wallet extends StatelessWidget with UserMixin {
               style: AppTypography.kH16,
             ),
             const SizedBox(height: 14),
-            Text(
-              '${userSnapshot!.wallet!.organizationLabel} ${userSnapshot!.wallet!.organizationDescription}',
-              style:
-                  AppTypography.kParagraph16.apply(color: AppColors.kOxford60),
+            DefaultTextStyle(
+              style: AppTypography.kBody14.apply(color: AppColors.kBaseBlack),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Наименование организации: ${userSnapshot!.wallet!.organizationLabel}',
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Адрес организации: ${userSnapshot!.wallet!.organizationAddress}',
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Телефон организации: ${userSnapshot!.wallet!.organizationPhoneWithMask}',
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'ИНН организации: ${userSnapshot!.wallet!.organizationInn}',
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Email организации: ${userSnapshot!.wallet!.organizationEmail}',
+                  ),
+                ],
+              ),
             ),
           ],
         ),

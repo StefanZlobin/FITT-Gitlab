@@ -22,7 +22,8 @@ class PaymentToggle extends StatelessWidget with UserMixin {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (userSnapshot?.wallet != null) ...[
+        if (userSnapshot?.wallet != null &&
+            (userSnapshot?.wallet?.balance ?? 0) >= price) ...[
           SwitchWidget(
             paymentType: PaymentTypeEnum.corporateBalance,
             club: club,

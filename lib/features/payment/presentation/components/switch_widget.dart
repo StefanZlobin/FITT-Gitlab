@@ -5,7 +5,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
-import 'package:fitt/features/payment/domain/blocs/payment_toggle/payment_toggle_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_type/payment_type_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,88 +23,102 @@ class SwitchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PaymentToggleBloc, PaymentToggleState>(
-      bloc: getIt<PaymentToggleBloc>(),
+    return BlocBuilder<PaymentTypeBloc, PaymentTypeState>(
+      bloc: getIt<PaymentTypeBloc>(),
       builder: (context, state) {
         return state.when(
           initial: (pType) {
             String buttonText = '';
             final value = pType == paymentType;
 
-            switch (paymentType) {
-              case PaymentTypeEnum.corporateBalance:
-                buttonText =
-                    'Заплатить ${getIt<ClubCubit>().selectedSlot?.price} \u20BD из кошелька';
-                break;
-              case PaymentTypeEnum.money:
-                buttonText =
-                    'Заплатить ${getIt<ClubCubit>().selectedSlot?.price} \u20BD картой';
-                break;
-              case PaymentTypeEnum.batch:
-                buttonText = 'Оплатить пакетом часов';
-                break;
-            }
+            buttonText = _buttonText(buttonText);
 
-            return AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              height: 44,
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
-                border: value
-                    ? null
-                    : Border.all(
-                        color: AppColors.kPrimaryPurple,
-                        width: 2,
-                      ),
-                gradient: value
-                    ? const LinearGradient(
-                        colors: [
-                          AppColors.kGradientRedLight,
-                          AppColors.kGradientPurpleLight,
-                          AppColors.kGradientBlueDark,
-                        ],
-                      )
-                    : null,
-              ),
-              child: Row(
-                children: [
-                  GradientIcon(
-                    AppIcons.icon_pack,
-                    16,
-                    value
-                        ? const LinearGradient(
-                            colors: [
-                              AppColors.kBaseWhite,
-                              AppColors.kBaseWhite,
-                            ],
-                          )
-                        : const LinearGradient(
-                            colors: [
-                              AppColors.kGradientRedLight,
-                              AppColors.kGradientPurpleLight,
-                              AppColors.kGradientBlueDark,
-                            ],
-                          ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    buttonText,
-                    style: value
-                        ? AppTypography.kBody14
-                            .apply(color: AppColors.kBaseWhite)
-                        : AppTypography.kBody14
-                            .apply(color: AppColors.kPrimaryPurple),
-                  ),
-                  const Expanded(child: SizedBox()),
-                  _buildSwitchButton(value),
-                ],
-              ),
-            );
+            return _buildToggle(context, value, buttonText);
           },
+          loaded: (pType) {
+            String buttonText = '';
+            final value = pType == paymentType;
+
+            buttonText = _buttonText(buttonText);
+
+            return _buildToggle(context, value, buttonText);
+          },
+          error: (_) => const SizedBox(),
         );
       },
+    );
+  }
+
+  String _buttonText(String buttonText) {
+    switch (paymentType) {
+      case PaymentTypeEnum.corporateBalance:
+        return 'Заплатить ${getIt<ClubCubit>().selectedSlot?.price} \u20BD из кошелька';
+      case PaymentTypeEnum.money:
+        return 'Заплатить ${getIt<ClubCubit>().selectedSlot?.price} \u20BD картой';
+      case PaymentTypeEnum.batch:
+        return 'Оплатить пакетом часов';
+    }
+  }
+
+  AnimatedContainer _buildToggle(
+    BuildContext context,
+    bool value,
+    String buttonText,
+  ) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      height: 44,
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        border: value
+            ? null
+            : Border.all(
+                color: AppColors.kPrimaryPurple,
+                width: 2,
+              ),
+        gradient: value
+            ? const LinearGradient(
+                colors: [
+                  AppColors.kGradientRedLight,
+                  AppColors.kGradientPurpleLight,
+                  AppColors.kGradientBlueDark,
+                ],
+              )
+            : null,
+      ),
+      child: Row(
+        children: [
+          GradientIcon(
+            AppIcons.icon_pack,
+            16,
+            value
+                ? const LinearGradient(
+                    colors: [
+                      AppColors.kBaseWhite,
+                      AppColors.kBaseWhite,
+                    ],
+                  )
+                : const LinearGradient(
+                    colors: [
+                      AppColors.kGradientRedLight,
+                      AppColors.kGradientPurpleLight,
+                      AppColors.kGradientBlueDark,
+                    ],
+                  ),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            buttonText,
+            style: value
+                ? AppTypography.kBody14.apply(color: AppColors.kBaseWhite)
+                : AppTypography.kBody14.apply(color: AppColors.kPrimaryPurple),
+          ),
+          const Expanded(child: SizedBox()),
+          _buildSwitchButton(value),
+        ],
+      ),
     );
   }
 

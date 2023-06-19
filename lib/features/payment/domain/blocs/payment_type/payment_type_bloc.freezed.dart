@@ -17,19 +17,23 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PaymentTypeEvent {
   PaymentTypeEnum get paymentType => throw _privateConstructorUsedError;
+  bool? get isEnoughMoney => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentTypeEnum paymentType) changedPaymentType,
+    required TResult Function(PaymentTypeEnum paymentType, bool? isEnoughMoney)
+        changedPaymentType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PaymentTypeEnum paymentType)? changedPaymentType,
+    TResult? Function(PaymentTypeEnum paymentType, bool? isEnoughMoney)?
+        changedPaymentType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentTypeEnum paymentType)? changedPaymentType,
+    TResult Function(PaymentTypeEnum paymentType, bool? isEnoughMoney)?
+        changedPaymentType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +68,7 @@ abstract class $PaymentTypeEventCopyWith<$Res> {
           PaymentTypeEvent value, $Res Function(PaymentTypeEvent) then) =
       _$PaymentTypeEventCopyWithImpl<$Res, PaymentTypeEvent>;
   @useResult
-  $Res call({PaymentTypeEnum paymentType});
+  $Res call({PaymentTypeEnum paymentType, bool? isEnoughMoney});
 }
 
 /// @nodoc
@@ -81,12 +85,17 @@ class _$PaymentTypeEventCopyWithImpl<$Res, $Val extends PaymentTypeEvent>
   @override
   $Res call({
     Object? paymentType = null,
+    Object? isEnoughMoney = freezed,
   }) {
     return _then(_value.copyWith(
       paymentType: null == paymentType
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
               as PaymentTypeEnum,
+      isEnoughMoney: freezed == isEnoughMoney
+          ? _value.isEnoughMoney
+          : isEnoughMoney // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -100,7 +109,7 @@ abstract class _$$_PaymentTypeEventChangedPaymentTypeCopyWith<$Res>
       __$$_PaymentTypeEventChangedPaymentTypeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PaymentTypeEnum paymentType});
+  $Res call({PaymentTypeEnum paymentType, bool? isEnoughMoney});
 }
 
 /// @nodoc
@@ -117,12 +126,17 @@ class __$$_PaymentTypeEventChangedPaymentTypeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? paymentType = null,
+    Object? isEnoughMoney = freezed,
   }) {
     return _then(_$_PaymentTypeEventChangedPaymentType(
       paymentType: null == paymentType
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
               as PaymentTypeEnum,
+      isEnoughMoney: freezed == isEnoughMoney
+          ? _value.isEnoughMoney
+          : isEnoughMoney // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -131,14 +145,17 @@ class __$$_PaymentTypeEventChangedPaymentTypeCopyWithImpl<$Res>
 
 class _$_PaymentTypeEventChangedPaymentType
     implements _PaymentTypeEventChangedPaymentType {
-  const _$_PaymentTypeEventChangedPaymentType({required this.paymentType});
+  const _$_PaymentTypeEventChangedPaymentType(
+      {required this.paymentType, this.isEnoughMoney});
 
   @override
   final PaymentTypeEnum paymentType;
+  @override
+  final bool? isEnoughMoney;
 
   @override
   String toString() {
-    return 'PaymentTypeEvent.changedPaymentType(paymentType: $paymentType)';
+    return 'PaymentTypeEvent.changedPaymentType(paymentType: $paymentType, isEnoughMoney: $isEnoughMoney)';
   }
 
   @override
@@ -147,11 +164,13 @@ class _$_PaymentTypeEventChangedPaymentType
         (other.runtimeType == runtimeType &&
             other is _$_PaymentTypeEventChangedPaymentType &&
             (identical(other.paymentType, paymentType) ||
-                other.paymentType == paymentType));
+                other.paymentType == paymentType) &&
+            (identical(other.isEnoughMoney, isEnoughMoney) ||
+                other.isEnoughMoney == isEnoughMoney));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, paymentType);
+  int get hashCode => Object.hash(runtimeType, paymentType, isEnoughMoney);
 
   @JsonKey(ignore: true)
   @override
@@ -164,27 +183,30 @@ class _$_PaymentTypeEventChangedPaymentType
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentTypeEnum paymentType) changedPaymentType,
+    required TResult Function(PaymentTypeEnum paymentType, bool? isEnoughMoney)
+        changedPaymentType,
   }) {
-    return changedPaymentType(paymentType);
+    return changedPaymentType(paymentType, isEnoughMoney);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PaymentTypeEnum paymentType)? changedPaymentType,
+    TResult? Function(PaymentTypeEnum paymentType, bool? isEnoughMoney)?
+        changedPaymentType,
   }) {
-    return changedPaymentType?.call(paymentType);
+    return changedPaymentType?.call(paymentType, isEnoughMoney);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentTypeEnum paymentType)? changedPaymentType,
+    TResult Function(PaymentTypeEnum paymentType, bool? isEnoughMoney)?
+        changedPaymentType,
     required TResult orElse(),
   }) {
     if (changedPaymentType != null) {
-      return changedPaymentType(paymentType);
+      return changedPaymentType(paymentType, isEnoughMoney);
     }
     return orElse();
   }
@@ -223,11 +245,13 @@ class _$_PaymentTypeEventChangedPaymentType
 
 abstract class _PaymentTypeEventChangedPaymentType implements PaymentTypeEvent {
   const factory _PaymentTypeEventChangedPaymentType(
-          {required final PaymentTypeEnum paymentType}) =
-      _$_PaymentTypeEventChangedPaymentType;
+      {required final PaymentTypeEnum paymentType,
+      final bool? isEnoughMoney}) = _$_PaymentTypeEventChangedPaymentType;
 
   @override
   PaymentTypeEnum get paymentType;
+  @override
+  bool? get isEnoughMoney;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentTypeEventChangedPaymentTypeCopyWith<

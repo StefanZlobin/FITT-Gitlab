@@ -18,7 +18,9 @@ class WalletBalanceInfoDialog extends StatelessWidget {
       title: const Text('Остаток в кошельке'),
       contentPadding: const EdgeInsets.fromLTRB(16, 16, 0, 16),
       contentTextStyle: AppTypography.kBody14.apply(color: AppColors.kOxford),
-      content: const Text('Показывает сколько осталось денег на балансе'),
+      content: const Text(
+        'Это твой корпоративный кошелек. За его счет ты можешь оплатить тренировку. А еще, здесь ты будешь видеть свой остаток, который можешь тратить на покупку тренировок.',
+      ),
       actionsPadding: const EdgeInsets.only(bottom: 24, right: 16, left: 16),
       actions: [
         AppElevatedButton(

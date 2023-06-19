@@ -108,7 +108,8 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     late String xPosition;
     try {
       final geolocation =
-          await getIt<GeolocationService>().getCurrentPosition();
+          await getIt<GeolocationService>().getLastKnowPosition() ??
+              await getIt<GeolocationService>().getCurrentPosition();
       xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
     } on Exception {
       xPosition = '';
@@ -127,7 +128,6 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
           withBatch: clubFilters.onlyWithBatch,
         ),
       );
-
       updatePartnerClubs(partnerClubs.results);
       return partnerClubs.results;
     } on DioError catch (e, stackTrace) {

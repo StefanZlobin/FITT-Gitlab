@@ -4,6 +4,7 @@ import 'package:clock/clock.dart';
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/app_typography.dart';
 import 'package:fitt/core/enum/app_route_enum.dart';
+import 'package:fitt/core/enum/payment_type_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
@@ -14,6 +15,7 @@ import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/club_batch_card.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/club_photo_slider.dart';
 import 'package:fitt/features/clubs/presentation/pages/partner_club/widgets/one_time_workout_card.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_type/payment_type_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -53,14 +55,38 @@ class ClubPage extends StatelessWidget with UserMixin {
               timeSlots,
               durationSlots,
               batches,
-            ) =>
-                _buildPartnerClubPage(
-              context,
-              club,
-              dateSlots,
-              timeSlots,
-              durationSlots,
-            ),
+            ) {
+              final price = getIt<ClubCubit>().selectedSlot!.price;
+
+              if (userSnapshot?.wallet != null &&
+                  price <= (userSnapshot?.wallet?.balance ?? 0)) {
+                getIt<PaymentTypeBloc>()
+                    .add(const PaymentTypeEvent.changedPaymentType(
+                  paymentType: PaymentTypeEnum.corporateBalance,
+                ));
+              } else {
+                if (club.batchHoursAvailable != null &&
+                    club.batchHoursAvailable != 0) {
+                  getIt<PaymentTypeBloc>()
+                      .add(const PaymentTypeEvent.changedPaymentType(
+                    paymentType: PaymentTypeEnum.batch,
+                  ));
+                } else {
+                  getIt<PaymentTypeBloc>()
+                      .add(const PaymentTypeEvent.changedPaymentType(
+                    paymentType: PaymentTypeEnum.money,
+                  ));
+                }
+              }
+
+              return _buildPartnerClubPage(
+                context,
+                club,
+                dateSlots,
+                timeSlots,
+                durationSlots,
+              );
+            },
             error: (error) => const Text('error'),
           ),
         );

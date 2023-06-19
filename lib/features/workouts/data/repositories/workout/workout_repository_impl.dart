@@ -96,7 +96,7 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
       await Sentry.captureException(
         e,
         stackTrace: stackTrace,
-    );
+      );
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -142,7 +142,8 @@ class WorkoutRepositoryImpl implements WorkoutRepository {
 
     try {
       final geolocation =
-          await getIt<GeolocationService>().getCurrentPosition();
+          await getIt<GeolocationService>().getLastKnowPosition() ??
+              await getIt<GeolocationService>().getCurrentPosition();
       xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
     } on Exception {
       xPosition = '';
