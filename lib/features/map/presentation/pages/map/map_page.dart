@@ -148,11 +148,12 @@ class MapPage extends StatelessWidget {
   }
 
   Widget _wallet(BuildContext context) {
-    return WalletBalanceWidget(
+    return const WalletBalanceWidget(
       margin: EdgeInsets.only(
         top: 126,
-        left: MediaQuery.of(context).size.width - 32 - 104,
-        right: 16,
+        //left: MediaQuery.of(context).size.width - 32 - 104,
+        //right: 16,
+        left: 16,
       ),
     );
   }
