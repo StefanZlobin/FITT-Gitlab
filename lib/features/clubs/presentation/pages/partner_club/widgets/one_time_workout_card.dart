@@ -60,11 +60,11 @@ class OneTimeWorkoutCard extends StatelessWidget with UserMixin {
           ButtonForCard(
             isBig: true,
             onPressed: () async {
-              final price = getIt<ClubCubit>().selectedSlot!.price;
-              if (userSnapshot?.wallet != null &&
-                  (userSnapshot?.wallet?.balance ?? 0) < price) {
-                await _isEnoughMoneyForWallet(price, context);
-              }
+              //final price = getIt<ClubCubit>().selectedSlot!.price;
+              //if (userSnapshot?.wallet != null &&
+              //    (userSnapshot?.wallet?.balance ?? 0) < price) {
+              //  await _isEnoughMoneyForWallet(price, context);
+              //}
               context.push(AppRoute.clubBuyWorkout.routeToPath);
             },
             workoutSlot: DateTimeUtils.dateWithoutPrefix(
@@ -78,11 +78,11 @@ class OneTimeWorkoutCard extends StatelessWidget with UserMixin {
               ButtonForCard(
                 isBig: false,
                 onPressed: () async {
-                  final price = getIt<ClubCubit>().selectedSlot!.price;
-                  if (userSnapshot?.wallet != null &&
-                      (userSnapshot?.wallet?.balance ?? 0) < price) {
-                    await _isEnoughMoneyForWallet(price, context);
-                  }
+                  //final price = getIt<ClubCubit>().selectedSlot!.price;
+                  //if (userSnapshot?.wallet != null &&
+                  //    (userSnapshot?.wallet?.balance ?? 0) < price) {
+                  //  await _isEnoughMoneyForWallet(price, context);
+                  //}
 
                   context.push(AppRoute.clubBuyWorkout.routeToPath);
                 },
@@ -92,11 +92,11 @@ class OneTimeWorkoutCard extends StatelessWidget with UserMixin {
               ButtonForCard(
                 isBig: false,
                 onPressed: () async {
-                  final price = getIt<ClubCubit>().selectedSlot!.price;
-                  if (userSnapshot?.wallet != null &&
-                      (userSnapshot?.wallet?.balance ?? 0) < price) {
-                    await _isEnoughMoneyForWallet(price, context);
-                  }
+                  //final price = getIt<ClubCubit>().selectedSlot!.price;
+                  //if (userSnapshot?.wallet != null &&
+                  //    (userSnapshot?.wallet?.balance ?? 0) < price) {
+                  //  await _isEnoughMoneyForWallet(price, context);
+                  //}
 
                   context.push(AppRoute.clubBuyWorkout.routeToPath);
                 },
@@ -108,11 +108,11 @@ class OneTimeWorkoutCard extends StatelessWidget with UserMixin {
           const Expanded(child: SizedBox()),
           GestureDetector(
             onTap: () async {
-              final price = getIt<ClubCubit>().selectedSlot!.price;
-              if (userSnapshot?.wallet != null &&
-                  (userSnapshot?.wallet?.balance ?? 0) < price) {
-                await _isEnoughMoneyForWallet(price, context);
-              }
+              //final price = getIt<ClubCubit>().selectedSlot!.price;
+              //if (userSnapshot?.wallet != null &&
+              //    (userSnapshot?.wallet?.balance ?? 0) < price) {
+              //  await _isEnoughMoneyForWallet(price, context);
+              //}
 
               context.push(AppRoute.clubBuyWorkout.routeToPath);
             },

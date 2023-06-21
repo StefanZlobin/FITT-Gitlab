@@ -3,6 +3,7 @@
 import 'package:fitt/core/enum/payment_type_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/mixins/user_mixin.dart';
+import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/features/payment/domain/blocs/payment_toggle/payment_toggle_bloc.dart';
 import 'package:fitt/features/payment/presentation/components/switch_widget.dart';
@@ -23,7 +24,8 @@ class PaymentToggle extends StatelessWidget with UserMixin {
     return Column(
       children: [
         if (userSnapshot?.wallet != null &&
-            (userSnapshot?.wallet?.balance ?? 0) >= price) ...[
+            (userSnapshot?.wallet?.balance ?? 0) >=
+                getIt<ClubCubit>().selectedSlot!.price) ...[
           SwitchWidget(
             paymentType: PaymentTypeEnum.corporateBalance,
             club: club,

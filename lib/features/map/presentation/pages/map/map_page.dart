@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:fitt/core/constants/app_colors.dart';
 import 'package:fitt/core/constants/fitt_links.dart';
+import 'package:fitt/core/enum/workout_status_enum.dart';
 import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/core/utils/app_icons.dart';
+import 'package:fitt/core/utils/widget_alignments.dart';
 import 'package:fitt/domain/blocs/app_update/app_update_bloc.dart';
 import 'package:fitt/domain/cubits/geolocation/geolocation_cubit.dart';
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
@@ -125,16 +127,23 @@ class MapPage extends StatelessWidget {
               bloc: getIt<ClosestWorkoutBloc>(),
               builder: (context, state) {
                 return state.when(
-                  initial: () => _wallet(context),
+                  initial: () => _wallet(context, 0),
                   loaded: (workout) {
-                    if (workout == null) return _wallet(context);
-                    return AnimatedPositioned(
-                      duration: const Duration(milliseconds: 300),
-                      top: 115,
-                      child: _wallet(context),
-                    );
+                    if (workout == null) {
+                      return TopRight(child: _wallet(context, 0));
+                    }
+                    if (workout.status == WorkoutStatusEnum.requiresStart ||
+                        workout.status == WorkoutStatusEnum.requiersFinish ||
+                        workout.status == WorkoutStatusEnum.started ||
+                        workout.canStartTime
+                            .difference(DateTime.now())
+                            .isNegative) {
+                      return TopRight(child: _wallet(context, 115));
+                    }
+
+                    return TopRight(child: _wallet(context, 52));
                   },
-                  error: (_) => _wallet(context),
+                  error: (_) => TopRight(child: _wallet(context, 0)),
                 );
               },
             ),
@@ -147,13 +156,11 @@ class MapPage extends StatelessWidget {
     );
   }
 
-  Widget _wallet(BuildContext context) {
-    return const WalletBalanceWidget(
+  Widget _wallet(BuildContext context, double extraTopMargin) {
+    return WalletBalanceWidget(
       margin: EdgeInsets.only(
-        top: 126,
-        //left: MediaQuery.of(context).size.width - 32 - 104,
-        //right: 16,
-        left: 16,
+        top: 126 + extraTopMargin,
+        right: 16,
       ),
     );
   }
