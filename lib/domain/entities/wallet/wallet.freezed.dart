@@ -35,9 +35,18 @@ mixin _$Wallet {
       throw _privateConstructorUsedError; // Наименование организации, в которой юзер состоит
   @JsonKey(name: 'organization_label')
   String get organizationLabel =>
-      throw _privateConstructorUsedError; // Описание организации
-  @JsonKey(name: 'organization_description')
-  String get organizationDescription => throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; // ИНН организации
+  @JsonKey(name: 'organization_inn')
+  String get organizationInn =>
+      throw _privateConstructorUsedError; // Email организации
+  @JsonKey(name: 'email')
+  String get organizationEmail =>
+      throw _privateConstructorUsedError; // Адресс организации
+  @JsonKey(name: 'organization_address')
+  String get organizationAddress =>
+      throw _privateConstructorUsedError; // Телефон организации
+  @JsonKey(name: 'phone')
+  String get organizationPhone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,8 +67,14 @@ abstract class $WalletCopyWith<$Res> {
           DateTime nextReplenishment,
       @JsonKey(name: 'organization_label')
           String organizationLabel,
-      @JsonKey(name: 'organization_description')
-          String organizationDescription});
+      @JsonKey(name: 'organization_inn')
+          String organizationInn,
+      @JsonKey(name: 'email')
+          String organizationEmail,
+      @JsonKey(name: 'organization_address')
+          String organizationAddress,
+      @JsonKey(name: 'phone')
+          String organizationPhone});
 }
 
 /// @nodoc
@@ -79,7 +94,10 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
     Object? totalLimit = null,
     Object? nextReplenishment = null,
     Object? organizationLabel = null,
-    Object? organizationDescription = null,
+    Object? organizationInn = null,
+    Object? organizationEmail = null,
+    Object? organizationAddress = null,
+    Object? organizationPhone = null,
   }) {
     return _then(_value.copyWith(
       balance: null == balance
@@ -98,9 +116,21 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
           ? _value.organizationLabel
           : organizationLabel // ignore: cast_nullable_to_non_nullable
               as String,
-      organizationDescription: null == organizationDescription
-          ? _value.organizationDescription
-          : organizationDescription // ignore: cast_nullable_to_non_nullable
+      organizationInn: null == organizationInn
+          ? _value.organizationInn
+          : organizationInn // ignore: cast_nullable_to_non_nullable
+              as String,
+      organizationEmail: null == organizationEmail
+          ? _value.organizationEmail
+          : organizationEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      organizationAddress: null == organizationAddress
+          ? _value.organizationAddress
+          : organizationAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      organizationPhone: null == organizationPhone
+          ? _value.organizationPhone
+          : organizationPhone // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -121,8 +151,14 @@ abstract class _$$_WalletCopyWith<$Res> implements $WalletCopyWith<$Res> {
           DateTime nextReplenishment,
       @JsonKey(name: 'organization_label')
           String organizationLabel,
-      @JsonKey(name: 'organization_description')
-          String organizationDescription});
+      @JsonKey(name: 'organization_inn')
+          String organizationInn,
+      @JsonKey(name: 'email')
+          String organizationEmail,
+      @JsonKey(name: 'organization_address')
+          String organizationAddress,
+      @JsonKey(name: 'phone')
+          String organizationPhone});
 }
 
 /// @nodoc
@@ -139,7 +175,10 @@ class __$$_WalletCopyWithImpl<$Res>
     Object? totalLimit = null,
     Object? nextReplenishment = null,
     Object? organizationLabel = null,
-    Object? organizationDescription = null,
+    Object? organizationInn = null,
+    Object? organizationEmail = null,
+    Object? organizationAddress = null,
+    Object? organizationPhone = null,
   }) {
     return _then(_$_Wallet(
       balance: null == balance
@@ -158,9 +197,21 @@ class __$$_WalletCopyWithImpl<$Res>
           ? _value.organizationLabel
           : organizationLabel // ignore: cast_nullable_to_non_nullable
               as String,
-      organizationDescription: null == organizationDescription
-          ? _value.organizationDescription
-          : organizationDescription // ignore: cast_nullable_to_non_nullable
+      organizationInn: null == organizationInn
+          ? _value.organizationInn
+          : organizationInn // ignore: cast_nullable_to_non_nullable
+              as String,
+      organizationEmail: null == organizationEmail
+          ? _value.organizationEmail
+          : organizationEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      organizationAddress: null == organizationAddress
+          ? _value.organizationAddress
+          : organizationAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      organizationPhone: null == organizationPhone
+          ? _value.organizationPhone
+          : organizationPhone // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -178,8 +229,14 @@ class _$_Wallet extends _Wallet {
           required this.nextReplenishment,
       @JsonKey(name: 'organization_label')
           required this.organizationLabel,
-      @JsonKey(name: 'organization_description')
-          required this.organizationDescription})
+      @JsonKey(name: 'organization_inn')
+          required this.organizationInn,
+      @JsonKey(name: 'email')
+          required this.organizationEmail,
+      @JsonKey(name: 'organization_address')
+          required this.organizationAddress,
+      @JsonKey(name: 'phone')
+          required this.organizationPhone})
       : super._();
 
   factory _$_Wallet.fromJson(Map<String, dynamic> json) =>
@@ -204,14 +261,26 @@ class _$_Wallet extends _Wallet {
   @override
   @JsonKey(name: 'organization_label')
   final String organizationLabel;
-// Описание организации
+// ИНН организации
   @override
-  @JsonKey(name: 'organization_description')
-  final String organizationDescription;
+  @JsonKey(name: 'organization_inn')
+  final String organizationInn;
+// Email организации
+  @override
+  @JsonKey(name: 'email')
+  final String organizationEmail;
+// Адресс организации
+  @override
+  @JsonKey(name: 'organization_address')
+  final String organizationAddress;
+// Телефон организации
+  @override
+  @JsonKey(name: 'phone')
+  final String organizationPhone;
 
   @override
   String toString() {
-    return 'Wallet(balance: $balance, totalLimit: $totalLimit, nextReplenishment: $nextReplenishment, organizationLabel: $organizationLabel, organizationDescription: $organizationDescription)';
+    return 'Wallet(balance: $balance, totalLimit: $totalLimit, nextReplenishment: $nextReplenishment, organizationLabel: $organizationLabel, organizationInn: $organizationInn, organizationEmail: $organizationEmail, organizationAddress: $organizationAddress, organizationPhone: $organizationPhone)';
   }
 
   @override
@@ -226,15 +295,28 @@ class _$_Wallet extends _Wallet {
                 other.nextReplenishment == nextReplenishment) &&
             (identical(other.organizationLabel, organizationLabel) ||
                 other.organizationLabel == organizationLabel) &&
-            (identical(
-                    other.organizationDescription, organizationDescription) ||
-                other.organizationDescription == organizationDescription));
+            (identical(other.organizationInn, organizationInn) ||
+                other.organizationInn == organizationInn) &&
+            (identical(other.organizationEmail, organizationEmail) ||
+                other.organizationEmail == organizationEmail) &&
+            (identical(other.organizationAddress, organizationAddress) ||
+                other.organizationAddress == organizationAddress) &&
+            (identical(other.organizationPhone, organizationPhone) ||
+                other.organizationPhone == organizationPhone));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, balance, totalLimit,
-      nextReplenishment, organizationLabel, organizationDescription);
+  int get hashCode => Object.hash(
+      runtimeType,
+      balance,
+      totalLimit,
+      nextReplenishment,
+      organizationLabel,
+      organizationInn,
+      organizationEmail,
+      organizationAddress,
+      organizationPhone);
 
   @JsonKey(ignore: true)
   @override
@@ -260,8 +342,14 @@ abstract class _Wallet extends Wallet {
           required final DateTime nextReplenishment,
       @JsonKey(name: 'organization_label')
           required final String organizationLabel,
-      @JsonKey(name: 'organization_description')
-          required final String organizationDescription}) = _$_Wallet;
+      @JsonKey(name: 'organization_inn')
+          required final String organizationInn,
+      @JsonKey(name: 'email')
+          required final String organizationEmail,
+      @JsonKey(name: 'organization_address')
+          required final String organizationAddress,
+      @JsonKey(name: 'phone')
+          required final String organizationPhone}) = _$_Wallet;
   _Wallet._() : super._();
 
   factory _Wallet.fromJson(Map<String, dynamic> json) = _$_Wallet.fromJson;
@@ -281,9 +369,18 @@ abstract class _Wallet extends Wallet {
   @override // Наименование организации, в которой юзер состоит
   @JsonKey(name: 'organization_label')
   String get organizationLabel;
-  @override // Описание организации
-  @JsonKey(name: 'organization_description')
-  String get organizationDescription;
+  @override // ИНН организации
+  @JsonKey(name: 'organization_inn')
+  String get organizationInn;
+  @override // Email организации
+  @JsonKey(name: 'email')
+  String get organizationEmail;
+  @override // Адресс организации
+  @JsonKey(name: 'organization_address')
+  String get organizationAddress;
+  @override // Телефон организации
+  @JsonKey(name: 'phone')
+  String get organizationPhone;
   @override
   @JsonKey(ignore: true)
   _$$_WalletCopyWith<_$_Wallet> get copyWith =>

@@ -34,7 +34,6 @@ class WorkoutsArchiveBloc
 
       add(
         WorkoutsArchiveEvent.getWorkouts(
-          workoutPhase: WorkoutPhaseEnum.done,
           workoutSorting:
               workoutSortingitems.entries.firstWhere((e) => e.value).key,
         ),
@@ -52,10 +51,7 @@ class WorkoutsArchiveBloc
         offset = 0;
         _workouts.clear();
 
-        add(const WorkoutsArchiveEvent.getWorkouts(
-          workoutPhase: WorkoutPhaseEnum.done,
-          workoutSorting: WorkoutSortingEnum.newFirst,
-        ));
+        add(const WorkoutsArchiveEvent.getWorkouts());
       }
     });
   }
