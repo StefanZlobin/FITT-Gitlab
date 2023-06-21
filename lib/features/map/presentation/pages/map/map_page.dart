@@ -132,6 +132,9 @@ class MapPage extends StatelessWidget {
                     if (workout == null) {
                       return TopRight(child: _wallet(context, 0));
                     }
+                    if (workout.startTime.day != DateTime.now().day) {
+                      return TopRight(child: _wallet(context, 0));
+                    }
                     if (workout.status == WorkoutStatusEnum.requiresStart ||
                         workout.status == WorkoutStatusEnum.requiersFinish ||
                         workout.status == WorkoutStatusEnum.started ||
