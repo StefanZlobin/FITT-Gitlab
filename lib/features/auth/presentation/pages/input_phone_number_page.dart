@@ -31,8 +31,8 @@ class InputPhoneNumberPage extends StatelessWidget {
         ),
         title: Text(L.of(context).inputPhoneNumber),
       ),
-      body: Column(
-        children: const [
+      body: const Column(
+        children: [
           InputPhoneNumberHint(),
           InputPhoneNumberForm(),
           Expanded(child: SizedBox()),

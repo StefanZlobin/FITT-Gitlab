@@ -16,7 +16,15 @@ class CalculateWorkoutPriceCubit extends Cubit<CalculateWorkoutPriceState> {
     try {
       final calculatedPrice = await partnerClubUseCase
           .getCalculatedPriceWorkout(slotUuid: slotUuid);
-      emit(_CalculateWorkoutPriceStateLoaded(calculatedPrice: calculatedPrice));
+      double price = 0;
+      final prices = calculatedPrice.map((e) => e.price);
+      for (final e in prices) {
+        price += e;
+      }
+      emit(_CalculateWorkoutPriceStateLoaded(
+        calculatedPrice: calculatedPrice,
+        price: price,
+      ));
     } on Exception catch (e) {
       emit(_CalculateWorkoutPriceStateError(error: e.toString()));
     }

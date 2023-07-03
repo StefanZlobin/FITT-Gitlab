@@ -36,6 +36,10 @@ class AuthorizationRepositoryImpl
       _authorizationStatus;
 
   @override
+  AuthorizationStatusEnum get authorizationStatusGet =>
+      _authorizationStatusController.value;
+
+  @override
   Future<void> checkAuthorizationStatus() async {
     if (userSnapshot == null) {
       return updateAuthorizationStatus(AuthorizationStatusEnum.unknown);

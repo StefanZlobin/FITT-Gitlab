@@ -96,6 +96,9 @@ class _MapWidgetState extends State<MapWidget> {
             mapToolbarEnabled: false,
             zoomControlsEnabled: false,
             onMapCreated: _onMapCreated,
+            onCameraMove: (position) {
+              _mapBloc.position = position;
+            },
             onCameraIdle: () async {
               final c = await _controller.future;
               final visibleRegion = await c.getVisibleRegion();

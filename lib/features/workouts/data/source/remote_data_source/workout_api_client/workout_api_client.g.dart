@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'workout_api_client.dart';

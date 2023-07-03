@@ -5,6 +5,7 @@ import 'package:fitt/core/locator/service_locator.dart';
 import 'package:fitt/domain/errors/dio_errors.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/services/push_notifications/push_notifications_service.dart';
+import 'package:fitt/features/auth/domain/repositories/user/user_repository.dart';
 import 'package:fitt/features/workouts/domain/entities/workout/workout.dart';
 import 'package:fitt/features/workouts/domain/repositories/workout/workout_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -56,6 +57,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     Emitter<WorkoutState> emit,
   ) {
     getIt<WorkoutRepository>().cancelWorkout(workout: event.workout);
+    getIt<UserRepository>().getUser();
   }
 
   Future<void> _onWorkoutEventStartWorkout(

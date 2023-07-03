@@ -29,6 +29,8 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
   final String? baseUrl;
   final PartnerClubApiClient _apiClient;
 
+  ClubFilters clubFilters = ClubFilters();
+
   final BehaviorSubject<List<PartnerClub>> _partnerClubsController =
       BehaviorSubject.seeded(<PartnerClub>[], sync: true);
   void Function(List<PartnerClub>) get updatePartnerClubs =>
@@ -106,7 +108,8 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
     late String xPosition;
     try {
       final geolocation =
-          await getIt<GeolocationService>().getCurrentPosition();
+          await getIt<GeolocationService>().getLastKnowPosition() ??
+              await getIt<GeolocationService>().getCurrentPosition();
       xPosition = 'Point(${geolocation.latitude} ${geolocation.longitude})';
     } on Exception {
       xPosition = '';
@@ -125,14 +128,10 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
           withBatch: clubFilters.onlyWithBatch,
         ),
       );
-
       updatePartnerClubs(partnerClubs.results);
       return partnerClubs.results;
     } on DioError catch (e, stackTrace) {
-      await Sentry.captureException(
-        e,
-        stackTrace: stackTrace,
-      );
+      await Sentry.captureException(e, stackTrace: stackTrace);
       throw NetworkExceptions.getDioException(e);
     }
   }
@@ -143,10 +142,7 @@ class PartnerClubRepositoryImpl implements PartnerClubRepository {
       final batches = await _apiClient.getClubBatches(clubUuid);
       return batches;
     } on DioError catch (e, stackTrace) {
-      await Sentry.captureException(
-        e,
-        stackTrace: stackTrace,
-      );
+      await Sentry.captureException(e, stackTrace: stackTrace);
       throw NetworkExceptions.getDioException(e);
     }
   }

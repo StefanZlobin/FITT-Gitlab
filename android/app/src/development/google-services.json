@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "144412481312",
+    "project_id": "fitt-development",
+    "storage_bucket": "fitt-development.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144412481312:android:bc3dc5e6725c1e4ce62945",
+        "android_client_info": {
+          "package_name": "com.qlever.fitt.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4zk1YJxSXEK0lZiWR2wiPpXA1rwNZ2r8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -62,19 +62,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> with UserMixin {
 
   _AccountStateLoaded get stateLoaded => state.maybeMap(
         loaded: (s) => s,
-        //.copyWith(
-        //  firstName: AccountUserFirstName.dirty(userSnapshot?.firstName ?? ''),
-        //  secondName: AccountUserSecondName.dirty(userSnapshot?.lastName ?? ''),
-        //  birthday: AccountUserBirthday.dirty(
-        //    userSnapshot?.birthday != null
-        //        ? userSnapshot!.birthday.toString()
-        //        : DateTime.now().toString(),
-        //  ),
-        //  email: AccountUserEmail.dirty(userSnapshot?.email ?? ''),
-        //  gender: AccountUserGender.dirty(
-        //    userSnapshot?.gender ?? UserGenderEnum.other,
-        //  ),
-        //),
         orElse: () => _AccountStateLoaded(
           firstName: AccountUserFirstName.dirty(userSnapshot?.firstName ?? ''),
           secondName: AccountUserSecondName.dirty(userSnapshot?.lastName ?? ''),

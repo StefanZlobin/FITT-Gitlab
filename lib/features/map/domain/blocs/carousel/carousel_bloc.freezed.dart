@@ -20,21 +20,18 @@ mixin _$CarouselEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String id) clubSelected,
-    required TResult Function(List<PartnerClub> clubs) clubsChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String id)? clubSelected,
-    TResult? Function(List<PartnerClub> clubs)? clubsChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String id)? clubSelected,
-    TResult Function(List<PartnerClub> clubs)? clubsChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +39,18 @@ mixin _$CarouselEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsChanged value) clubsChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsChanged value)? clubsChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsChanged value)? clubsChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,7 +119,6 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String id) clubSelected,
-    required TResult Function(List<PartnerClub> clubs) clubsChanged,
   }) {
     return started();
   }
@@ -135,7 +128,6 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String id)? clubSelected,
-    TResult? Function(List<PartnerClub> clubs)? clubsChanged,
   }) {
     return started?.call();
   }
@@ -145,7 +137,6 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String id)? clubSelected,
-    TResult Function(List<PartnerClub> clubs)? clubsChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -159,7 +150,6 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsChanged value) clubsChanged,
   }) {
     return started(this);
   }
@@ -169,7 +159,6 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsChanged value)? clubsChanged,
   }) {
     return started?.call(this);
   }
@@ -179,7 +168,6 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsChanged value)? clubsChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -267,7 +255,6 @@ class _$_ClubSelected with DiagnosticableTreeMixin implements _ClubSelected {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String id) clubSelected,
-    required TResult Function(List<PartnerClub> clubs) clubsChanged,
   }) {
     return clubSelected(id);
   }
@@ -277,7 +264,6 @@ class _$_ClubSelected with DiagnosticableTreeMixin implements _ClubSelected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String id)? clubSelected,
-    TResult? Function(List<PartnerClub> clubs)? clubsChanged,
   }) {
     return clubSelected?.call(id);
   }
@@ -287,7 +273,6 @@ class _$_ClubSelected with DiagnosticableTreeMixin implements _ClubSelected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String id)? clubSelected,
-    TResult Function(List<PartnerClub> clubs)? clubsChanged,
     required TResult orElse(),
   }) {
     if (clubSelected != null) {
@@ -301,7 +286,6 @@ class _$_ClubSelected with DiagnosticableTreeMixin implements _ClubSelected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsChanged value) clubsChanged,
   }) {
     return clubSelected(this);
   }
@@ -311,7 +295,6 @@ class _$_ClubSelected with DiagnosticableTreeMixin implements _ClubSelected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsChanged value)? clubsChanged,
   }) {
     return clubSelected?.call(this);
   }
@@ -321,7 +304,6 @@ class _$_ClubSelected with DiagnosticableTreeMixin implements _ClubSelected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsChanged value)? clubsChanged,
     required TResult orElse(),
   }) {
     if (clubSelected != null) {
@@ -337,159 +319,6 @@ abstract class _ClubSelected implements CarouselEvent {
   String get id;
   @JsonKey(ignore: true)
   _$$_ClubSelectedCopyWith<_$_ClubSelected> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_ClubsChangedCopyWith<$Res> {
-  factory _$$_ClubsChangedCopyWith(
-          _$_ClubsChanged value, $Res Function(_$_ClubsChanged) then) =
-      __$$_ClubsChangedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<PartnerClub> clubs});
-}
-
-/// @nodoc
-class __$$_ClubsChangedCopyWithImpl<$Res>
-    extends _$CarouselEventCopyWithImpl<$Res, _$_ClubsChanged>
-    implements _$$_ClubsChangedCopyWith<$Res> {
-  __$$_ClubsChangedCopyWithImpl(
-      _$_ClubsChanged _value, $Res Function(_$_ClubsChanged) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clubs = null,
-  }) {
-    return _then(_$_ClubsChanged(
-      null == clubs
-          ? _value._clubs
-          : clubs // ignore: cast_nullable_to_non_nullable
-              as List<PartnerClub>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_ClubsChanged with DiagnosticableTreeMixin implements _ClubsChanged {
-  const _$_ClubsChanged(final List<PartnerClub> clubs) : _clubs = clubs;
-
-  final List<PartnerClub> _clubs;
-  @override
-  List<PartnerClub> get clubs {
-    if (_clubs is EqualUnmodifiableListView) return _clubs;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_clubs);
-  }
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CarouselEvent.clubsChanged(clubs: $clubs)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CarouselEvent.clubsChanged'))
-      ..add(DiagnosticsProperty('clubs', clubs));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ClubsChanged &&
-            const DeepCollectionEquality().equals(other._clubs, _clubs));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_clubs));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ClubsChangedCopyWith<_$_ClubsChanged> get copyWith =>
-      __$$_ClubsChangedCopyWithImpl<_$_ClubsChanged>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String id) clubSelected,
-    required TResult Function(List<PartnerClub> clubs) clubsChanged,
-  }) {
-    return clubsChanged(clubs);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String id)? clubSelected,
-    TResult? Function(List<PartnerClub> clubs)? clubsChanged,
-  }) {
-    return clubsChanged?.call(clubs);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String id)? clubSelected,
-    TResult Function(List<PartnerClub> clubs)? clubsChanged,
-    required TResult orElse(),
-  }) {
-    if (clubsChanged != null) {
-      return clubsChanged(clubs);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsChanged value) clubsChanged,
-  }) {
-    return clubsChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsChanged value)? clubsChanged,
-  }) {
-    return clubsChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsChanged value)? clubsChanged,
-    required TResult orElse(),
-  }) {
-    if (clubsChanged != null) {
-      return clubsChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ClubsChanged implements CarouselEvent {
-  const factory _ClubsChanged(final List<PartnerClub> clubs) = _$_ClubsChanged;
-
-  List<PartnerClub> get clubs;
-  @JsonKey(ignore: true)
-  _$$_ClubsChangedCopyWith<_$_ClubsChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

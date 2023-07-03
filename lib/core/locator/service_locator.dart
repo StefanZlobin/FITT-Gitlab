@@ -4,9 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:fitt/data/repositories/analytics/analytics_repository_impl.dart';
 import 'package:fitt/data/services/app_metrica/app_metrica_service_impl.dart';
 import 'package:fitt/data/services/push_notifications/push_notifications_service_impl.dart';
+import 'package:fitt/data/services/remote_config/remote_config_service_impl.dart';
 import 'package:fitt/domain/blocs/analytics_dashboard/analytics_dashboard_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_filtering/analytics_filtering_bloc.dart';
 import 'package:fitt/domain/blocs/analytics_kpi/analytics_kpi_bloc.dart';
+import 'package:fitt/domain/blocs/app_update/app_update_bloc.dart';
 import 'package:fitt/domain/blocs/menu/menu_bloc.dart';
 import 'package:fitt/domain/blocs/notifications/notifications_bloc.dart';
 import 'package:fitt/domain/blocs/payment/payment_bloc.dart';
@@ -15,6 +17,7 @@ import 'package:fitt/domain/blocs/user_avatar/user_avatar_bloc.dart';
 import 'package:fitt/domain/repositories/analytics/analytics_repository.dart';
 import 'package:fitt/domain/services/app_metrica/app_metrica_service.dart';
 import 'package:fitt/domain/services/push_notifications/push_notifications_service.dart';
+import 'package:fitt/domain/services/remote_config/remote_config_service.dart';
 import 'package:fitt/features/account/domain/blocs/account/account_bloc.dart';
 import 'package:fitt/features/auth/data/repositories/authentication/authentication_repository_impl.dart';
 import 'package:fitt/features/auth/data/repositories/authorization/authorization_repository_impl.dart';
@@ -37,11 +40,14 @@ import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_
 import 'package:fitt/features/clubs/domain/cubits/calculate_workout_price/calculate_workout_price_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/club/club_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/club_photo_slider/club_photo_slider_cubit.dart';
-import 'package:fitt/features/clubs/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/features/map/domain/blocs/carousel/carousel_bloc.dart';
+import 'package:fitt/features/map/domain/blocs/is_searching/is_searching_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/map/map_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/search/search_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_toggle/payment_toggle_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_type/payment_type_bloc.dart';
+import 'package:fitt/features/payment/domain/blocs/payment_workout_button/payment_workout_button_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/admin_workout_timer/admin_workout_timer_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workout/workout_bloc.dart';
@@ -243,9 +249,18 @@ void _regusterServices() {
   getIt.registerLazySingleton<PushNotificationsService>(
     () => PushNotificationsServiceImpl(),
   );
+  getIt.registerLazySingleton<RemoteConfigService>(
+    () => RemoteConfigServiceImpl(),
+  );
 }
 
 void _registerBlocs() {
+  getIt.registerLazySingleton<IsSearchingBloc>(() => IsSearchingBloc());
+  getIt.registerLazySingleton<PaymentToggleBloc>(() => PaymentToggleBloc());
+  getIt.registerLazySingleton<PaymentTypeBloc>(() => PaymentTypeBloc());
+  getIt.registerLazySingleton<PaymentWorkoutButtonBloc>(
+    () => PaymentWorkoutButtonBloc(),
+  );
   getIt.registerLazySingleton<WorkoutBloc>(() => WorkoutBloc());
   getIt.registerFactory<WorkoutTimerBloc>(
     () => WorkoutTimerBloc(ticker: const Ticker()),
@@ -279,7 +294,6 @@ void _registerBlocs() {
   getIt.registerLazySingleton<AdminWorkoutCubit>(() => AdminWorkoutCubit());
   getIt.registerLazySingleton<AdminClubsCubit>(() => AdminClubsCubit());
   getIt.registerLazySingleton<AdminClubCubit>(() => AdminClubCubit());
-  getIt.registerLazySingleton<PartnerClubsCubit>(() => PartnerClubsCubit());
   getIt.registerLazySingleton<ClubCubit>(() => ClubCubit());
   getIt.registerLazySingleton<LoginErrorTimerBloc>(
     () => LoginErrorTimerBloc(ticker: const Ticker()),
@@ -325,4 +339,5 @@ void _registerBlocs() {
   getIt.registerLazySingleton<PartnerClubsFavoriteBloc>(
     () => PartnerClubsFavoriteBloc(),
   );
+  getIt.registerLazySingleton<AppUpdateBloc>(() => AppUpdateBloc());
 }

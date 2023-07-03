@@ -63,8 +63,8 @@ class InputSecureCodePage extends StatelessWidget with UserMixin {
           ),
           title: Text(L.of(context).inputSecureCode),
         ),
-        body: Column(
-          children: const [
+        body: const Column(
+          children: [
             InputSecureCodeHint(),
             InputSecureCodeForm(),
             Expanded(child: SizedBox()),

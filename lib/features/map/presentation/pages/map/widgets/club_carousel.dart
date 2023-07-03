@@ -1,8 +1,8 @@
 import 'package:fitt/features/clubs/domain/entities/club/partner_club.dart';
 import 'package:fitt/features/map/domain/blocs/carousel/carousel_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/map/map_bloc.dart';
+import 'package:fitt/features/map/domain/repositories/map/map_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 
@@ -11,7 +11,6 @@ import '../../../../../../core/constants/app_typography.dart';
 import '../../../../../../core/locator/service_locator.dart';
 import '../../../../../../core/superellipse.dart';
 import '../../../../../../core/utils/widget_alignments.dart';
-import '../../../../../clubs/domain/cubits/partner_clubs/partner_clubs_cubit.dart';
 import 'club_carousel_card.dart';
 
 class ClubCarousel extends StatelessWidget {
@@ -19,14 +18,14 @@ class ClubCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PartnerClubsCubit, PartnerClubsState>(
-      bloc: getIt<PartnerClubsCubit>(),
-      builder: (context, state) {
-        return state.when(
-          loading: () => const _BuildEmptyWidget(),
-          loaded: (partnerClubs) => _buildPartnerClubsWidget(partnerClubs),
-          error: (error) => const _BuildEmptyWidget(),
-        );
+    return StreamBuilder<List<PartnerClub>>(
+      stream: getIt<MapRepository>().clubs,
+      builder: (context, snapshot) {
+        final clubs = snapshot.data ?? [];
+
+        if (clubs.isEmpty) return const _BuildEmptyWidget();
+
+        return _buildPartnerClubsWidget(clubs);
       },
     );
   }
@@ -38,16 +37,14 @@ class ClubCarousel extends StatelessWidget {
 
     return BottomCenter(
       child: Container(
-        height: 144,
+        height: 152,
         margin: const EdgeInsets.only(bottom: 32),
         child: ScrollSnapList(
           scrollController: getIt<CarouselBloc>().scrollController,
           initialIndex: 0,
-          callbackDuringInitialization: () => getIt<MapBloc>()
-              .add(MapEvent.carouselCardFocused(partnerClubs[0].uuid!)),
           margin: const EdgeInsets.all(0),
           padding: const EdgeInsets.all(0),
-          listPadding: 8,
+          listPadding: 4,
           curve: Curves.easeOut,
           snapOnScroll: true,
           itemCount: partnerClubs.length + 1,
@@ -55,7 +52,10 @@ class ClubCarousel extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == partnerClubs.length) {
               return SizedBox(
-                width: MediaQuery.of(context).size.width - 256,
+                width: (MediaQuery.of(context).size.width +
+                        256 -
+                        MediaQuery.of(context).size.width) /
+                    2,
               );
             }
             return ClubCarouselCard(partnerClub: partnerClubs[index]);

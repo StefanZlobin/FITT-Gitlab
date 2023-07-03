@@ -32,11 +32,7 @@ class FavoriteClubsPage extends StatelessWidget {
                   L.of(context).clubFavouriteListPageTitle(clubs.length),
                 ),
                 leading: IconButton(
-                  onPressed: () {
-                    //getIt<ResourceRepository>()
-                    //    .favoriteChanged(isFavorite: false);
-                    context.pop();
-                  },
+                  onPressed: () => context.pop(),
                   icon: const Icon(AppIcons.arr_big_left),
                 ),
               );

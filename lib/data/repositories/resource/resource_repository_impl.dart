@@ -39,7 +39,7 @@ class ResourceRepositoryImpl implements ResourceRepository {
   ClubFilters get clubFilters => _filtersController.value;
 
   final BehaviorSubject<ClubFilters> _filtersController =
-      BehaviorSubject.seeded(ClubFilters(favorite: false), sync: true);
+      BehaviorSubject.seeded(ClubFilters(), sync: true);
   void Function(ClubFilters) get updateFilters => _filtersController.sink.add;
   @override
   Stream<ClubFilters> get filters => _filtersController;

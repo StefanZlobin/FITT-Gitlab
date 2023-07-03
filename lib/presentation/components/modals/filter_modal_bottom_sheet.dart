@@ -23,6 +23,7 @@ class FilterModalBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * .8 + 25 + 16,
+      padding: MediaQuery.of(context).viewInsets,
       decoration: ShapeDecoration(
         color: AppColors.kBaseWhite,
         shape: SuperellipseShape(

@@ -44,7 +44,7 @@
 
     <application
     android:allowBackup = "false"
-        android:label="FITT"
+        android:label="@string/app_name"
     android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">

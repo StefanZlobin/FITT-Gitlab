@@ -35,16 +35,19 @@ class UserRepositoryImpl implements UserRepository {
   User? get userSnapshot => _userController.valueOrNull;
 
   @override
-  Future<User?> getUser({required bool fromCache}) async {
-    late final User? user;
+  Future<User> getUser() async {
+    try {
+      final user = await _apiClient.getUserData();
+      await saveUser(user: user);
 
-    user = fromCache
-        ? await _userLocalClient.getSignedUser()
-        : await _apiClient.getUserData();
-
-    if (!fromCache && user != null) await saveUser(user: user);
-
-    return user;
+      return user;
+    } on DioError catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+      throw NetworkExceptions.getDioException(e);
+    }
   }
 
   @override
@@ -69,9 +72,9 @@ class UserRepositoryImpl implements UserRepository {
     try {
       await _apiClient.uploadProfilePhoto(photo);
 
-      final response = await getUser(fromCache: false);
+      final response = await getUser();
 
-      return response!;
+      return response;
     } on DioError catch (e, stackTrace) {
       await Sentry.captureException(
         e,
@@ -84,12 +87,12 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> saveUser({required User user}) async {
     updateUser(user);
-    await _userLocalClient.saveUser(user: user);
+    //await _userLocalClient.saveUser(user: user);
   }
 
   @override
   Future<void> logoutUser({required bool deleteUser}) async {
-    if (!deleteUser) await _userLocalClient.deleteUser();
+    //if (!deleteUser) await _userLocalClient.deleteUser();
     if (!deleteUser) await _apiClient.logoutUser();
     await getIt<TokenRepository>().deleteToken();
     updateUser(null);

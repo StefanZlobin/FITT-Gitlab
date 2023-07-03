@@ -7,15 +7,24 @@ part of 'wallet.dart';
 // **************************************************************************
 
 _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
-      balance: json['balance'] as int,
+      balance: toRubles(json['balance'] as int),
+      totalLimit: toRubles(json['total_limit'] as int),
       nextReplenishment:
           dateTimeFromString(json['next_replenishment'] as String),
-      organizationInfo: UserOrganization.fromJson(
-          json['organizationInfo'] as Map<String, dynamic>),
+      organizationLabel: json['organization_label'] as String,
+      organizationInn: json['organization_inn'] as String,
+      organizationEmail: json['email'] as String,
+      organizationAddress: json['organization_address'] as String,
+      organizationPhone: json['phone'] as String,
     );
 
 Map<String, dynamic> _$$_WalletToJson(_$_Wallet instance) => <String, dynamic>{
       'balance': instance.balance,
+      'total_limit': instance.totalLimit,
       'next_replenishment': dateTimeToString(instance.nextReplenishment),
-      'organizationInfo': instance.organizationInfo,
+      'organization_label': instance.organizationLabel,
+      'organization_inn': instance.organizationInn,
+      'email': instance.organizationEmail,
+      'organization_address': instance.organizationAddress,
+      'phone': instance.organizationPhone,
     };

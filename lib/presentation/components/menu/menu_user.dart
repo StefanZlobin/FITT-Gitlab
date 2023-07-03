@@ -21,10 +21,12 @@ import 'package:fitt/features/clubs/domain/blocs/partner_clubs_favorite/partner_
 import 'package:fitt/features/clubs/domain/cubits/purchased_batch/purchased_batch_cubit.dart';
 import 'package:fitt/features/workouts/domain/blocs/closest_workout/closest_workout_bloc.dart';
 import 'package:fitt/features/workouts/domain/blocs/workouts/workouts_bloc.dart';
+import 'package:fitt/presentation/components/batch_available_hours.dart';
 import 'package:fitt/presentation/components/menu/widget/admin_menu_tile.dart';
 import 'package:fitt/presentation/components/menu/widget/user_menu_tile.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:fitt/presentation/components/user_avatar.dart';
+import 'package:fitt/presentation/components/wallet_balance_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -106,16 +108,18 @@ class MenuUser extends StatelessWidget with UserMixin {
             );
           },
         ),
-        //UserMenuTile(
-        //  title: const Text('Кошелек'),
-        //  subtitle: const Text('Кебаб трансгалактик'),
-        //  onPressed: () {
-        //    context.push(AppRoute.wallet.routeToName);
-        //  },
-        //  trailing: const SizedBox(width: 120, child: WalletWidget()),
-        //),
+        if (userSnapshot?.wallet != null)
+          UserMenuTile(
+            title: const Text('Кошелек'),
+            subtitle: Text(userSnapshot!.wallet!.organizationLabel),
+            onPressed: () {
+              context.push(AppRoute.wallet.routeToName);
+            },
+            trailing: const WalletBalanceWidget(margin: EdgeInsets.all(0)),
+          ),
         UserMenuTile(
           title: const Text('Купленные часы'),
+          trailing: const BatchAvailableHours(hours: 12, isBig: false),
           onPressed: () {
             getIt<PurchasedBatchCubit>().getUserBatches();
             context.push(AppRoute.purchasedBatch.routeToPath);

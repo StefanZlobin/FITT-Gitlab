@@ -5,13 +5,14 @@ import 'package:fitt/core/superellipse.dart';
 import 'package:fitt/core/utils/app_icons.dart';
 import 'package:fitt/features/clubs/domain/blocs/club_filtering/club_filtering_bloc.dart';
 import 'package:fitt/features/clubs/domain/entities/address/search_address.dart';
+import 'package:fitt/features/map/domain/blocs/is_searching/is_searching_bloc.dart';
 import 'package:fitt/features/map/domain/blocs/search/search_bloc.dart';
 import 'package:fitt/gen/assets.gen.dart';
 import 'package:fitt/presentation/components/modals/filter_modal_bottom_sheet.dart';
 import 'package:fitt/presentation/components/separator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:material_floating_search_bar_2/material_floating_search_bar_2.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({super.key});
@@ -28,6 +29,14 @@ class _SearchFieldState extends State<SearchField> {
   Widget build(BuildContext context) {
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
+
+    if (searchController.isOpen) {
+      getIt<IsSearchingBloc>()
+          .add(const IsSearchingEvent.onSearch(isSearching: true));
+    } else {
+      getIt<IsSearchingBloc>()
+          .add(const IsSearchingEvent.onSearch(isSearching: false));
+    }
 
     return FloatingSearchBar(
       axisAlignment: isPortrait ? 1.0 : -1.0,
@@ -237,15 +246,10 @@ class _SearchFieldState extends State<SearchField> {
               child: Image(image: Assets.images.checkin.provider()),
             ),
             const SizedBox(width: 12),
-            Text(
-              searchAddress.suggestionAddress.toString(),
-              style: AppTypography.kBody14.apply(color: AppColors.kOxford),
-              overflow: TextOverflow.ellipsis,
-            ),
             Expanded(
               child: Text(
-                ' ${searchAddress.city.toString()}',
-                style: AppTypography.kBody14.apply(color: AppColors.kOxford40),
+                searchAddress.suggestionAddressWithMask,
+                style: AppTypography.kBody14.apply(color: AppColors.kOxford),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

@@ -10,4 +10,5 @@ abstract class AuthorizationRepository with Disposable {
   Future<void> checkAuthorizationStatus();
 
   Stream<AuthorizationStatusEnum> get authorizationStatus;
+  AuthorizationStatusEnum get authorizationStatusGet;
 }

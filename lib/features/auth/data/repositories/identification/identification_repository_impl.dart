@@ -31,13 +31,13 @@ class IdentificationRepositoryImpl implements IdentificationRepository {
 
   @override
   Future<void> checkUserInCache() async {
-    final user = await userRepository.getUser(fromCache: true);
+    //final user = await userRepository.getUser();
 
-    if (user != null) {
-      updateIdentificationStatus(IdentificationStatusEnum.identificated);
-    } else {
-      updateIdentificationStatus(IdentificationStatusEnum.unidentificated);
-    }
+    //if (user != null) {
+    //  updateIdentificationStatus(IdentificationStatusEnum.identificated);
+    //} else {
+    //  updateIdentificationStatus(IdentificationStatusEnum.unidentificated);
+    //}
   }
 
   @override

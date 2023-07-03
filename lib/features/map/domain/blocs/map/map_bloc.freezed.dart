@@ -1000,8 +1000,7 @@ mixin _$MapState {
             List<MapPoint> mapPoints,
             gm.LatLngBounds visibleRegion,
             List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) =>
@@ -1010,12 +1009,8 @@ mixin _$MapState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) =>
@@ -1024,12 +1019,8 @@ mixin _$MapState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -1114,8 +1105,7 @@ class _$_MapStateInitial implements _MapStateInitial {
             List<MapPoint> mapPoints,
             gm.LatLngBounds visibleRegion,
             List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
@@ -1127,12 +1117,8 @@ class _$_MapStateInitial implements _MapStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -1144,12 +1130,8 @@ class _$_MapStateInitial implements _MapStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -1237,8 +1219,7 @@ class _$_MapStateLoading implements _MapStateLoading {
             List<MapPoint> mapPoints,
             gm.LatLngBounds visibleRegion,
             List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
@@ -1250,12 +1231,8 @@ class _$_MapStateLoading implements _MapStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -1267,12 +1244,8 @@ class _$_MapStateLoading implements _MapStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -1335,8 +1308,7 @@ abstract class _$$_MapStateLoadedCopyWith<$Res> {
       {List<MapPoint> mapPoints,
       gm.LatLngBounds visibleRegion,
       List<MapMarker> markers,
-      ClubFilters filters,
-      bool isVisibleRegionUpdated});
+      ClubFilters filters});
 
   $ClubFiltersCopyWith<$Res> get filters;
 }
@@ -1356,7 +1328,6 @@ class __$$_MapStateLoadedCopyWithImpl<$Res>
     Object? visibleRegion = null,
     Object? markers = null,
     Object? filters = null,
-    Object? isVisibleRegionUpdated = null,
   }) {
     return _then(_$_MapStateLoaded(
       mapPoints: null == mapPoints
@@ -1375,10 +1346,6 @@ class __$$_MapStateLoadedCopyWithImpl<$Res>
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as ClubFilters,
-      isVisibleRegionUpdated: null == isVisibleRegionUpdated
-          ? _value.isVisibleRegionUpdated
-          : isVisibleRegionUpdated // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 
@@ -1398,8 +1365,7 @@ class _$_MapStateLoaded implements _MapStateLoaded {
       {required final List<MapPoint> mapPoints,
       required this.visibleRegion,
       required final List<MapMarker> markers,
-      required this.filters,
-      required this.isVisibleRegionUpdated})
+      required this.filters})
       : _mapPoints = mapPoints,
         _markers = markers;
 
@@ -1423,12 +1389,10 @@ class _$_MapStateLoaded implements _MapStateLoaded {
 
   @override
   final ClubFilters filters;
-  @override
-  final bool isVisibleRegionUpdated;
 
   @override
   String toString() {
-    return 'MapState.loaded(mapPoints: $mapPoints, visibleRegion: $visibleRegion, markers: $markers, filters: $filters, isVisibleRegionUpdated: $isVisibleRegionUpdated)';
+    return 'MapState.loaded(mapPoints: $mapPoints, visibleRegion: $visibleRegion, markers: $markers, filters: $filters)';
   }
 
   @JsonKey(ignore: true)
@@ -1446,13 +1410,11 @@ class _$_MapStateLoaded implements _MapStateLoaded {
             List<MapPoint> mapPoints,
             gm.LatLngBounds visibleRegion,
             List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
-    return loaded(
-        mapPoints, visibleRegion, markers, filters, isVisibleRegionUpdated);
+    return loaded(mapPoints, visibleRegion, markers, filters);
   }
 
   @override
@@ -1460,17 +1422,12 @@ class _$_MapStateLoaded implements _MapStateLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
-    return loaded?.call(
-        mapPoints, visibleRegion, markers, filters, isVisibleRegionUpdated);
+    return loaded?.call(mapPoints, visibleRegion, markers, filters);
   }
 
   @override
@@ -1478,19 +1435,14 @@ class _$_MapStateLoaded implements _MapStateLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(
-          mapPoints, visibleRegion, markers, filters, isVisibleRegionUpdated);
+      return loaded(mapPoints, visibleRegion, markers, filters);
     }
     return orElse();
   }
@@ -1538,14 +1490,12 @@ abstract class _MapStateLoaded implements MapState {
       {required final List<MapPoint> mapPoints,
       required final gm.LatLngBounds visibleRegion,
       required final List<MapMarker> markers,
-      required final ClubFilters filters,
-      required final bool isVisibleRegionUpdated}) = _$_MapStateLoaded;
+      required final ClubFilters filters}) = _$_MapStateLoaded;
 
   List<MapPoint> get mapPoints;
   gm.LatLngBounds get visibleRegion;
   List<MapMarker> get markers;
   ClubFilters get filters;
-  bool get isVisibleRegionUpdated;
   @JsonKey(ignore: true)
   _$$_MapStateLoadedCopyWith<_$_MapStateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1586,8 +1536,7 @@ class _$_MapStateError implements _MapStateError {
             List<MapPoint> mapPoints,
             gm.LatLngBounds visibleRegion,
             List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)
+            ClubFilters filters)
         loaded,
     required TResult Function() error,
   }) {
@@ -1599,12 +1548,8 @@ class _$_MapStateError implements _MapStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult? Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -1616,12 +1561,8 @@ class _$_MapStateError implements _MapStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<MapPoint> mapPoints,
-            gm.LatLngBounds visibleRegion,
-            List<MapMarker> markers,
-            ClubFilters filters,
-            bool isVisibleRegionUpdated)?
+    TResult Function(List<MapPoint> mapPoints, gm.LatLngBounds visibleRegion,
+            List<MapMarker> markers, ClubFilters filters)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
